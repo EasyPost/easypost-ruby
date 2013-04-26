@@ -1,13 +1,20 @@
 Installation
 ---------------
 
-Build the gem:
+Clone this repository:
+
+```
+git clone git@github.com:sawyer/easypost-ruby.git
+```
+
+Build and install the gem:
 
 ```
 gem build easypost.gemspec
+gem install easypost-1.2.gem
 ```
 
-Import the EasyPost client:
+Import the EasyPost client in your application:
 
 ```
 require 'easypost'
@@ -17,6 +24,9 @@ Example
 ------------------
 
 ```ruby
+require 'easypost'
+EasyPost.api_key = 'cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi'
+
 to_address = EasyPost::Address.create(
   :name => 'Sawyer Bateman',
   :street1 => '1A Larkspur Cres.',
