@@ -3,7 +3,7 @@ module EasyPost
     def self.objects_to_ids(obj)
       case obj
       when Resource
-        return obj.id
+        return {:id => obj.id}
       when Hash
         result = {}
         obj.each { |k, v| result[k] = objects_to_ids(v) unless v.nil? }
@@ -17,26 +17,26 @@ module EasyPost
 
     def self.convert_to_easypost_object(response, api_key)
       types = { 'Address' => Address,
-        'ScanForm' => ScanForm }
-        # 'CustomsItem' => CustomsItem,
-        # 'CustomsInfo' => CustomsInfo,
-        # 'Parcel' => Parcel,
-        # 'Shipment' => Shipment,
-        # 'Rate' => Rate,
-        # 'PostageLabel' => PostageLabel }
+        'ScanForm' => ScanForm,
+        'CustomsItem' => CustomsItem,
+        'CustomsInfo' => CustomsInfo,
+        'Parcel' => Parcel,
+        'Shipment' => Shipment,
+        'Rate' => Rate,
+        'PostageLabel' => PostageLabel }
 
       prefixes = { 'adr' => Address,
-        'sf' => ScanForm }
-        # 'cstitem' => CustomsItem,
-        # 'cstinfo' => CustomsInfo,
-        # 'prcl' => Parcel,
-        # 'shp' => Shipment,
-        # 'rate' => Rate,
-        # 'pl' => PostageLabel }
+        'sf' => ScanForm,
+        'cstitem' => CustomsItem,
+        'cstinfo' => CustomsInfo,
+        'prcl' => Parcel,
+        'shp' => Shipment,
+        'rate' => Rate,
+        'pl' => PostageLabel }
 
       case response
       when Array
-        return resp.map { |i| convert_to_easypost_object(i, api_key) }
+        return response.map { |i| convert_to_easypost_object(i, api_key) }
       when Hash
         if cls_name = response[:object]
           cls = types[cls_name]
@@ -73,30 +73,23 @@ module EasyPost
 
     def self.flatten_params(params, parent_key=nil)
       result = []
-      params.each do |k, v|
-        calculated_key = parent_key ? "#{parent_key}[#{url_encode(k)}]" : url_encode(k)
-        case v
-        when Hash
-          result += flatten_params(v, calculated_key)
-        when Array
-          result += flatten_params_array(v, calculated_key)
-        else
-          result << [calculated_key, v]
+      if params.is_a?(Hash)
+        params.each do |k, v|
+          calculated_key = parent_key ? "#{parent_key}[#{url_encode(k)}]" : url_encode(k)
+          if v.is_a?(Hash) or v.is_a?(Array)
+            result += flatten_params(v, calculated_key)
+          else
+            result << [calculated_key, v]
+          end
         end
-      end
-      return result
-    end
-
-    def self.flatten_params_array(value, calculated_key)
-      result = []
-      value.each do |v|
-        case v
-        when Hash
-          result += flatten_params(v, calculated_key)
-        when Array
-          result += flatten_params_array(v, calculated_key)
-        else
-          result << ["#{calculated_key}[]", v]
+      elsif params.is_a?(Array)
+        params.each_with_index do |v, i|
+          calculated_key = parent_key ? "#{parent_key}[#{i}]" : i
+          if v.is_a?(Hash) or v.is_a?(Array)
+            result += flatten_params(v, calculated_key)
+          else
+            result << [calculated_key, v]
+          end
         end
       end
       return result

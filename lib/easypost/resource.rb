@@ -19,7 +19,7 @@ module EasyPost
 
     def url
       unless self.id
-        raise InvalidRequestError.new("Could not determine which URL to request: #{self.class} instance has invalid ID: #{self.id.inspect}", 'id')
+        raise Error.new("Could not determine which URL to request: #{self.class} instance has invalid ID: #{self.id.inspect}")
       end
       return "#{self.class.url}/#{CGI.escape(id)}"
     end
