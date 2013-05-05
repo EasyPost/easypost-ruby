@@ -58,5 +58,18 @@ describe EasyPost::Address do
       expect(verified_address).to be_an_instance_of(EasyPost::Address)
       expect(verified_address[:message]).to raise_error(NoMethodError) 
     end
+
+    it 'is not able to verify address' do
+      address = EasyPost::Address.create(
+        :company => 'Simpler Postage Inc',
+        :street1 => '388 Junk Teerts',
+        :street2 => 'Apt 20',
+        :city => 'San Francisco',
+        :state => 'CA',
+        :zip => '941abc07'
+      )
+
+      expect { verified_address = address.verify() }.to raise_error(EasyPost::Error, "Address Not Found.")
+    end
   end
 end

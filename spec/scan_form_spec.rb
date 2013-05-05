@@ -31,6 +31,18 @@ describe EasyPost::ScanForm do
         expect(scan_form.tracking_codes).to be_an_instance_of(Array)
         expect(scan_form.tracking_codes.size).to eq(5)
       end
+
+      it 'fails to create without tracking codes' do
+        expect{EasyPost::ScanForm.create()}.to raise_error(EasyPost::Error)
+
+        begin
+          EasyPost::ScanForm.create()
+        rescue EasyPost::Error => e
+          #puts e.inspect
+          expect(e.message).to eq('Invalid or missing param: tracking_codes')
+          expect(e.param).to eq('tracking_codes')
+        end
+      end
     end
   end
   

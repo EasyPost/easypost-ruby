@@ -73,10 +73,6 @@ module EasyPost
       payload = Util.flatten_params(params).collect{|(key, value)| "#{key}=#{Util.url_encode(value)}"}.join('&')
     end
 
-    # puts url
-    # puts payload
-    # puts '******************'
-
     headers = {
       :user_agent => "EasyPost/v2 RubyClient/1.2",
       :authorization => "Bearer #{api_key}",
@@ -99,9 +95,13 @@ module EasyPost
         begin
           response_json = MultiJson.load(response_body, :symbolize_keys => true)
         rescue MultiJson::DecodeError
-          raise Error.new("Invalid response from API, unable to decode.", response.code, response.body)
+          raise Error.new("Invalid response from API, unable to decode.", response_code, response_body)
         end
-        raise Error.new(e.message, response_code, response_body, response_json)
+        begin
+          raise Error.new(response_json[:error][:message], response_code, response_body, response_json)
+        rescue NoMethodError, TypeError
+          raise Error.new(response_json[:error], response_code, response_body, response_json)
+        end
       else
         raise Error.new(e.message)
       end
