@@ -4,7 +4,7 @@ Installation
 Clone this repository:
 
 ```
-git clone git@github.com:sawyer/easypost-ruby.git
+git clone git@github.com:EasyPost/easypost-ruby-beta.git
 ```
 
 Build and install the gem:
@@ -92,7 +92,7 @@ puts shipment.postage_label.label_url
 Documentation
 --------------------
 
-Up-to-date documentation at: https://www.geteasypost.com/docs
+Up-to-date documentation at: https://www.geteasypost.com/docs/v2
 
 Tests
 --------------------
