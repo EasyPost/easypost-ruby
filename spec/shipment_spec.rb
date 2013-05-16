@@ -24,7 +24,7 @@ describe EasyPost::Shipment do
       expect(shipment).to be_an_instance_of(EasyPost::Shipment)
 
       shipment.buy(
-        :rate => shipment.rates[0]
+        :rate => shipment.lowest_rate('usps')
       )
       expect(shipment.postage_label.label_url.length).to be > 0
     end
@@ -35,7 +35,7 @@ describe EasyPost::Shipment do
       expect(to_address).to be_an_instance_of(EasyPost::Address)
       expect(from_address).to be_an_instance_of(EasyPost::Address)
 
-      parcel = parcel_package
+      parcel = parcel_dimensions
       expect(parcel).to be_an_instance_of(EasyPost::Parcel)
 
       shipment = EasyPost::Shipment.create(
@@ -52,5 +52,57 @@ describe EasyPost::Shipment do
     end
   end
 
-    
+  describe '#stamp' do
+    it 'returns a stamp for a domestic shipment' do
+      to_address = address_california
+      from_address = address_missouri
+      expect(to_address).to be_an_instance_of(EasyPost::Address)
+      expect(from_address).to be_an_instance_of(EasyPost::Address)
+
+      parcel = parcel_dimensions
+      expect(parcel).to be_an_instance_of(EasyPost::Parcel)
+
+      shipment = EasyPost::Shipment.create(
+        :to_address => to_address,
+        :from_address => from_address,
+        :parcel => parcel
+      )
+      expect(shipment).to be_an_instance_of(EasyPost::Shipment)
+
+      shipment.buy(
+        :rate => shipment.lowest_rate('usps')
+      )
+
+      stamp_url = shipment.stamp
+
+      expect(stamp_url.length).to be > 0
+    end
+  end
+
+  describe '#barcode' do
+    it 'returns a barcode for a domestic shipment' do
+      to_address = address_california
+      from_address = address_missouri
+      expect(to_address).to be_an_instance_of(EasyPost::Address)
+      expect(from_address).to be_an_instance_of(EasyPost::Address)
+
+      parcel = parcel_dimensions
+      expect(parcel).to be_an_instance_of(EasyPost::Parcel)
+
+      shipment = EasyPost::Shipment.create(
+        :to_address => to_address,
+        :from_address => from_address,
+        :parcel => parcel
+      )
+      expect(shipment).to be_an_instance_of(EasyPost::Shipment)
+
+      shipment.buy(
+        :rate => shipment.lowest_rate('usps')
+      )
+
+      barcode_url = shipment.barcode
+
+      expect(barcode_url.length).to be > 0
+    end
+  end
 end
