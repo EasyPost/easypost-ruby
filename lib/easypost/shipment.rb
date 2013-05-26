@@ -13,6 +13,12 @@ module EasyPost
       return self
     end
 
+    def refund(params={})
+      response, api_key = EasyPost.request(:get, url + '/refund', @api_key, params)
+      self.refresh_from(response, @api_key, true)
+      return self
+    end
+
     def lowest_rate(carriers='')
       lowest = nil
 
