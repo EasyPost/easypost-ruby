@@ -2,6 +2,38 @@ require 'spec_helper'
 
 describe EasyPost::Shipment do
 
+  describe '#create' do
+    it 'creates a shipment object' do
+      from_address = EasyPost::Address.create( 
+        :name => "Benchmark Merchandising", 
+        :street1 => "329 W 18th Street", 
+        :city => "Chicago", 
+        :state => "IL", 
+        :zip => "60616" 
+      ) 
+      to_address = EasyPost::Address.create( 
+        :street1 => "902 Broadway 4th Floor", 
+        :city => "New York", 
+        :state => "NY", 
+        :zip => "10010" 
+      )       
+      parcel = EasyPost::Parcel.create( 
+        :weight => 7.2, 
+        :height => 2, 
+        :width => 7.5, 
+        :length => 10.5 
+      )
+            
+      shipment = EasyPost::Shipment.create(
+        :to_address => to_address,
+        :from_address => from_address,
+        :parcel => parcel
+      )
+      expect(shipment).to be_an_instance_of(EasyPost::Shipment)
+      
+    end
+  end
+
   describe '#buy' do
     it 'purchases postage for an international shipment' do
       to_address = address_canada
@@ -105,4 +137,5 @@ describe EasyPost::Shipment do
       expect(barcode_url.length).to be > 0
     end
   end
+
 end

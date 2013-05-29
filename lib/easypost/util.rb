@@ -24,6 +24,7 @@ module EasyPost
         'Shipment' => Shipment,
         'Rate' => Rate,
         'Refund' => Refund,
+        'Batch' => Batch,
         'PostageLabel' => PostageLabel }
 
       prefixes = { 'adr' => Address,
@@ -34,6 +35,7 @@ module EasyPost
         'shp' => Shipment,
         'rate' => Rate,
         'rfnd' => Refund,
+        'batch' => Batch,
         'pl' => PostageLabel }
 
       case response

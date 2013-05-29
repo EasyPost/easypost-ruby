@@ -10,7 +10,7 @@ module EasyPost
       if self.class_name == 'resource'
         raise NotImplementedError.new('Resource is an abstract class.  You should perform actions on its subclasses (Address, Shipment, etc.)')
       end
-      if(self.class_name[-1] == 's')
+      if(self.class_name[-1] == 's' || self.class_name[-1] == 'h')
         return "/#{CGI.escape(self.class_name.downcase)}es"
       else
         return "/#{CGI.escape(class_name.downcase)}s"
