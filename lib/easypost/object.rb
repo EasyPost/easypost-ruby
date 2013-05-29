@@ -83,10 +83,6 @@ module EasyPost
       MultiJson.dump(@values)
     end
 
-    def as_json
-      @values.as_json
-    end
-
     def to_hash
       @values
     end
