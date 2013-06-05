@@ -40,18 +40,21 @@ module EasyPost
     def refresh_from(values, api_key, partial=false)
       @api_key = api_key
 
-      removed = partial ? Set.new : Set.new(@values.keys - values.keys)
+      # removed = partial ? Set.new : Set.new(@values.keys - values.keys)
       added = Set.new(values.keys - @values.keys)
       
       instance_eval do
-        remove_accessors(removed)
+        # remove_accessors(removed)
         add_accessors(added)
       end
-      removed.each do |k|
-        @values.delete(k)
-        @transient_values.add(k)
-        @unsaved_values.delete(k)
-      end
+      # removed.each do |k|
+      #   if k.in(@transitent_values)
+      #     next
+      #   end
+      #   @values.delete(k)
+      #   @transient_values.add(k)
+      #   @unsaved_values.delete(k)
+      # end
       values.each do |k, v|
         @values[k] = Util.convert_to_easypost_object(v, api_key)
         @transient_values.delete(k)
