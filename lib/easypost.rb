@@ -23,8 +23,7 @@ require 'easypost/error'
 
 module EasyPost
   @@api_key = nil
-  @@api_base = 'https://www.geteasypost.com/api/v2'
-  #@@api_base = 'http://localhost:5000/api/v2'
+  @@api_base = 'https://api.easypost.com/v2'
   @@api_version = nil
 
   def self.api_url(url='')

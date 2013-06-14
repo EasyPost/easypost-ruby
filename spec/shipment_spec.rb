@@ -102,7 +102,7 @@ describe EasyPost::Shipment do
       expect(shipment).to be_an_instance_of(EasyPost::Shipment)
 
       shipment.buy(
-        :rate => shipment.lowest_rate('usps')
+        :rate => shipment.lowest_rate(['USPS', 'UPS'], 'priority, express')
       )
 
       stamp_url = shipment.stamp
@@ -129,7 +129,7 @@ describe EasyPost::Shipment do
       expect(shipment).to be_an_instance_of(EasyPost::Shipment)
 
       shipment.buy(
-        :rate => shipment.lowest_rate('usps')
+        :rate => shipment.lowest_rate('usps', ['Priority'])
       )
 
       barcode_url = shipment.barcode

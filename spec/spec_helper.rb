@@ -1,6 +1,6 @@
 require 'easypost'
 EasyPost.api_key = 'cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi'
-# EasyPost.api_base = 'http://localhost:5000/api/v2'
+# EasyPost.api_base = 'http://localhost:5000/v2'
 
 def address_canada
   address = EasyPost::Address.create(

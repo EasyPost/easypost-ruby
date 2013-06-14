@@ -1,3 +1,7 @@
+# EasyPost Ruby Client Library
+
+EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com
+
 Installation
 ---------------
 
@@ -92,7 +96,7 @@ puts shipment.postage_label.label_url
 Documentation
 --------------------
 
-Up-to-date documentation at: https://www.geteasypost.com/docs/v2
+Up-to-date documentation at: https://easypost.com/docs/v2
 
 Tests
 --------------------

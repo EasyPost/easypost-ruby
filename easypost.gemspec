@@ -10,15 +10,14 @@ Gem::Specification.new do |spec|
   spec.summary     = 'EasyPost Ruby client library'
   spec.description = 'Client library for accessing the EasyPost shipping API via Ruby.'
   spec.authors     = ['Jon Calhoun', 'Sawyer Bateman']
-  spec.email       = 'contact@easypost.co'
-  spec.homepage = 'https://www.geteasypost.com/docs'
+  spec.email       = 'contact@easypost.com'
+  spec.homepage = 'https://easypost.com/docs/v2'
   
   spec.files         = `git ls-files`.split("\n")
   spec.test_files    = `git ls-files -- test/*`.split("\n")
   spec.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   spec.require_path  = 'lib'
 
-  spec.add_dependency('typhoeus', ["~> 0.5.3"])
   spec.add_dependency('rest-client', '~> 1.4')
   spec.add_dependency('multi_json', '>= 1.0.4', '< 2')
 end
