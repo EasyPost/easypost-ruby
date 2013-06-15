@@ -6,15 +6,6 @@ module EasyPost
     @@immutable_values = Set.new([:api_key, :id])
 
     def initialize(id=nil, api_key=nil)
-      # parameter overloading!
-      # if id.is_a?(Hash)
-      #   @retrieve_options = id.dup
-      #   @retrieve_options.delete(:id)
-      #   id = id[:id]
-      # else
-      #   @retrieve_options = {}
-      # end
-
       @api_key = api_key
       @values = {}
       @unsaved_values = Set.new
@@ -34,27 +25,18 @@ module EasyPost
 
     def inspect()
       id_string = (self.respond_to?(:id) && !self.id.nil?) ? " id=#{self.id}" : ""
-      "#<#{self.class}:0x#{self.object_id.to_s(16)}#{id_string}> JSON: " + MultiJson.dump(@values, :pretty => true)
+      "#<#{self.class}:#{id_string}> JSON: " + MultiJson.dump(@values, :pretty => true)
     end
 
     def refresh_from(values, api_key, partial=false)
       @api_key = api_key
 
-      # removed = partial ? Set.new : Set.new(@values.keys - values.keys)
       added = Set.new(values.keys - @values.keys)
       
       instance_eval do
-        # remove_accessors(removed)
         add_accessors(added)
       end
-      # removed.each do |k|
-      #   if k.in(@transitent_values)
-      #     next
-      #   end
-      #   @values.delete(k)
-      #   @transient_values.add(k)
-      #   @unsaved_values.delete(k)
-      # end
+      
       values.each do |k, v|
         @values[k] = Util.convert_to_easypost_object(v, api_key)
         @transient_values.delete(k)
@@ -79,7 +61,7 @@ module EasyPost
       @values.values
     end
 
-    def to_json
+    def to_json(options = {})
       MultiJson.dump(@values)
     end
 
