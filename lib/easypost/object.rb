@@ -65,7 +65,7 @@ module EasyPost
       MultiJson.dump(@values)
     end
 
-    def as_json
+    def as_json(options = {})
       @values.as_json
     end
 
