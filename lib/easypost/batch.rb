@@ -16,5 +16,19 @@ module EasyPost
       return self
     end
 
+    def remove_shipments(params={})
+      response, api_key = EasyPost.request(:post, url + '/remove_shipments', @api_key, params)
+      self.refresh_from(response, @api_key, true)
+      
+      return self
+    end
+
+    def add_shipments(params={})
+      response, api_key = EasyPost.request(:post, url + '/add_shipments', @api_key, params)
+      self.refresh_from(response, @api_key, true)
+      
+      return self
+    end
+
   end
 end
