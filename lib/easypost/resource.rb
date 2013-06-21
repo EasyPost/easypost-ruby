@@ -2,7 +2,7 @@ module EasyPost
   class Resource < EasyPostObject
     def self.class_name
       camel = self.name.split('::')[-1]
-      snake = camel[0] + camel[1..-1].gsub(/([A-Z])/, '_\1')
+      snake = camel[0..0] + camel[1..-1].gsub(/([A-Z])/, '_\1')
       return snake.downcase
     end
 
@@ -10,7 +10,7 @@ module EasyPost
       if self.class_name == 'resource'
         raise NotImplementedError.new('Resource is an abstract class.  You should perform actions on its subclasses (Address, Shipment, etc.)')
       end
-      if(self.class_name[-1] == 's' || self.class_name[-1] == 'h')
+      if(self.class_name[-1..-1] == 's' || self.class_name[-1..-1] == 'h')
         return "/#{CGI.escape(self.class_name.downcase)}es"
       else
         return "/#{CGI.escape(class_name.downcase)}s"

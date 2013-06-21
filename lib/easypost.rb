@@ -99,6 +99,7 @@ module EasyPost
           raise Error.new("Invalid response from API, unable to decode.", response_code, response_body)
         end
         begin
+          raise NoMethodError if response_json[:error][:message] == nil
           raise Error.new(response_json[:error][:message], response_code, response_body, response_json)
         rescue NoMethodError, TypeError
           raise Error.new(response_json[:error], response_code, response_body, response_json)
