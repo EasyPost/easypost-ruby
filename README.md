@@ -5,17 +5,10 @@ EasyPost is a simple shipping API. You can sign up for an account at https://eas
 Installation
 ---------------
 
-Clone this repository:
+Install the gem:
 
 ```
-git clone git@github.com:EasyPost/easypost-ruby-beta.git
-```
-
-Build and install the gem:
-
-```
-gem build easypost.gemspec
-gem install easypost-1.2.gem
+gem install
 ```
 
 Import the EasyPost client in your application:

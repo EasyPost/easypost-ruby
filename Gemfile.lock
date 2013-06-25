@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    easypost (1.2)
+    easypost (2.0.0)
       multi_json (>= 1.0.4, < 2)
       rest-client (~> 1.4)
 

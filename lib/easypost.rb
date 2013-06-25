@@ -75,7 +75,7 @@ module EasyPost
     end
 
     headers = {
-      :user_agent => "EasyPost/v2 RubyClient/1.2",
+      :user_agent => "EasyPost/v2 RubyClient/2.0.0",
       :authorization => "Bearer #{api_key}",
       :content_type => 'application/x-www-form-urlencoded'
     }.merge(headers)
