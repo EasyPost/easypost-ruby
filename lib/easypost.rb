@@ -5,6 +5,7 @@ require 'rest_client'
 require 'multi_json'
 
 # Resources
+require 'easypost/version'
 require 'easypost/util'
 require 'easypost/object'
 require 'easypost/resource'
@@ -75,7 +76,7 @@ module EasyPost
     end
 
     headers = {
-      :user_agent => "EasyPost/v2 RubyClient/2.0.0",
+      :user_agent => "EasyPost/v2 RubyClient/#{VERSION}",
       :authorization => "Bearer #{api_key}",
       :content_type => 'application/x-www-form-urlencoded'
     }.merge(headers)

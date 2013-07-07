@@ -1,0 +1,6 @@
+=== 2.0.1 2013-07-07
+
+* API Addition: Address.create_and_verify returns a verified address in one step.
+* API Addition: Shipment.label forces the creation of additional label formats (pdf, epl2, zpl).
+* API Addition: Shipment.insure purchases insurance for a shipment.
+* Library Update: Added the ability to negatively filter carriers and services with Shipment.lowest_rate (e.g. '!usps').

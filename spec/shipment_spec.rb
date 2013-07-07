@@ -138,4 +138,21 @@ describe EasyPost::Shipment do
     end
   end
 
+  describe '#lowest_rate' do
+    context 'domestic shipment' do
+      before :all do
+        @shipment = EasyPost::Shipment.create(
+          :from_address => address_california,
+          :to_address   => address_missouri,
+          :parcel => parcel_dimensions
+        )
+      end
+
+      it 'filters negative services' do
+        rate = @shipment.lowest_rate('USPS', '!MediaMail, !LibraryMail')
+        
+        expect(rate.service).to eql('ParcelSelect')
+      end
+    end
+  end
 end
