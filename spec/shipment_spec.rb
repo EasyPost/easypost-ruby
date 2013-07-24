@@ -155,4 +155,17 @@ describe EasyPost::Shipment do
       end
     end
   end
+
+  describe '#track_with_code' do
+    it 'returns tracking information' do
+      tracking = EasyPost::Shipment.track_with_code({
+        :carrier       => 'usps',
+        :tracking_code => '9499907123456123456781'
+      })
+
+      expect(tracking).to be_an_instance_of(Hash)
+      expect(tracking[:tracking_details].length).to be > 0
+      expect(tracking[:status].length).to be > 0
+    end
+  end
 end

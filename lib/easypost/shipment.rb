@@ -1,6 +1,12 @@
 module EasyPost
   class Shipment < Resource
 
+    def self.track_with_code(params={})
+      response, api_key = EasyPost.request(:get, url + '/track', @api_key, params)
+
+      return response
+    end
+
     def get_rates(params={})
       response, api_key = EasyPost.request(:get, url + '/rates', @api_key, params)
       self.refresh_from(response, @api_key, true)

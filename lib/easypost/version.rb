@@ -1,3 +1,3 @@
 module EasyPost
-  VERSION = "2.0.1"
+  VERSION = File.open(File.expand_path("../../../VERSION", __FILE__)).read()
 end

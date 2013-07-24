@@ -6,12 +6,12 @@ require 'easypost/version'
 Gem::Specification.new do |spec|
   spec.name        = 'easypost'
   spec.version     = EasyPost::VERSION
-  spec.date        = '2013-06-25'
+  spec.date        = '2013-07-23'
   spec.summary     = 'EasyPost Ruby Client Library'
   spec.description = 'Client library for accessing the EasyPost shipping API via Ruby.'
   spec.authors     = ['Jon Calhoun', 'Sawyer Bateman']
   spec.email       = 'contact@easypost.com'
-  spec.homepage    = 'https://easypost.com/docs'
+  spec.homepage    = 'https://www.easypost.com/docs'
   
   spec.files         = `git ls-files`.split("\n")
   spec.test_files    = `git ls-files -- test/*`.split("\n")
