@@ -19,6 +19,7 @@ require 'easypost/postage_label'
 require 'easypost/scan_form'
 require 'easypost/refund'
 require 'easypost/batch'
+require 'easypost/tracker'
 
 require 'easypost/error'
 
