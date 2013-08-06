@@ -8,7 +8,7 @@ Installation
 Install the gem:
 
 ```
-gem install
+gem install easypost
 ```
 
 Import the EasyPost client in your application:
