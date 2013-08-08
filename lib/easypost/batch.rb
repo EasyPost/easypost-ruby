@@ -9,24 +9,31 @@ module EasyPost
       return Util.convert_to_easypost_object(response, api_key)
     end
 
+    def buy(params={})
+      response, api_key = EasyPost.request(:post, url + '/buy', @api_key, params)
+      self.refresh_from(response, @api_key, true)
+
+      return self
+    end
+
     def label(params={})
       response, api_key = EasyPost.request(:post, url + '/label', @api_key, params)
       self.refresh_from(response, @api_key, true)
-      
+
       return self
     end
 
     def remove_shipments(params={})
       response, api_key = EasyPost.request(:post, url + '/remove_shipments', @api_key, params)
       self.refresh_from(response, @api_key, true)
-      
+
       return self
     end
 
     def add_shipments(params={})
       response, api_key = EasyPost.request(:post, url + '/add_shipments', @api_key, params)
       self.refresh_from(response, @api_key, true)
-      
+
       return self
     end
 
