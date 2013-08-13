@@ -72,4 +72,19 @@ describe EasyPost::Address do
       expect { verified_address = address.verify() }.to raise_error(EasyPost::Error, /Address Not Found./)
     end
   end
+
+  it "can be serialized with Marshal" do
+    address = EasyPost::Address.create(
+      :name => 'Sawyer Bateman',
+      :street1 => '1A Larkspur Cres.',
+      :city => 'St. Albert',
+      :state => 'AB',
+      :zip => 't8n2m4',
+      :country => 'CA'
+    )
+    expect { Marshal.dump(address) }.to_not raise_error(TypeError)
+    serialized_address = Marshal.load(Marshal.dump(address))
+    expect(serialized_address).to be_an_instance_of(EasyPost::Address)
+    expect(serialized_address.zip).to eq('t8n2m4')
+  end
 end

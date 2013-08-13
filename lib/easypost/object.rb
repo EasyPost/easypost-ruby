@@ -85,6 +85,15 @@ module EasyPost
       @values[:id]
     end
 
+    def marshal_dump
+      [to_hash, api_key]
+    end
+
+    def marshal_load(ary)
+      initialize(ary.first[:id], ary.last)
+      refresh_from(ary.first, ary.last)
+    end
+
     protected
 
     def metaclass
