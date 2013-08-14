@@ -37,5 +37,11 @@ module EasyPost
       return self
     end
 
+    def stamp_and_barcode_by_reference(params={})
+      response, api_key = EasyPost.request(:get, url + '/stamp_and_barcode_by_reference', @api_key, params)
+
+      return response
+    end
+
   end
 end
