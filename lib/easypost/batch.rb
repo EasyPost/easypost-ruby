@@ -43,5 +43,11 @@ module EasyPost
       return response
     end
 
+    def scan_form(params={})
+      response, api_key = EasyPost.request(:post, url + '/scan_form', @api_key, params)
+
+      return response
+    end
+
   end
 end
