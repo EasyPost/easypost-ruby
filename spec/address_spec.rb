@@ -34,7 +34,7 @@ describe EasyPost::Address do
 
       verified_address = address.verify()
       expect(verified_address).to be_an_instance_of(EasyPost::Address)
-      expect(verified_address[:message].length).to be > 0 
+      expect(verified_address[:message].length).to be > 0
     end
 
     it 'verifies an address without message' do
@@ -56,7 +56,7 @@ describe EasyPost::Address do
 
       verified_address = address.verify()
       expect(verified_address).to be_an_instance_of(EasyPost::Address)
-      expect(verified_address[:message]).to raise_error(NoMethodError) 
+      expect(verified_address[:message]).to be_nil
     end
 
     it 'is not able to verify address' do
