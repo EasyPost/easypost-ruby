@@ -44,7 +44,7 @@ end
 def parcel_dimensions
   parcel = EasyPost::Parcel.create(
     :width => 15.2,
-    :length => 18, 
+    :length => 18,
     :height => 9.5,
     :weight => 35.1
   )

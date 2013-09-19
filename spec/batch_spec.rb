@@ -51,6 +51,7 @@ describe EasyPost::Batch do
 
       # expect(batch.state).to equal("created")
       # expect(batch.status[:created]).to equal(2)
+
     end
   end
 
@@ -69,6 +70,7 @@ describe EasyPost::Batch do
         :city => "New York",
         :state => "NY",
         :zip => "10010"
+
       )
       parcel = EasyPost::Parcel.create(
         :weight => 7.2,
