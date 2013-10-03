@@ -1,3 +1,8 @@
+=== 2.0.10 2013-10-03
+
+* API Addition: Event resource added for webhook consumption.
+
+
 === 2.0.9 2013-09-19
 
 * Interface Change: Changed batch.scan_form to batch.create_scan_form to support the ability to refer to scan forms associated to batches.

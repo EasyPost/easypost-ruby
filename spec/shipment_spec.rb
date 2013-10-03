@@ -4,33 +4,34 @@ describe EasyPost::Shipment do
 
   describe '#create' do
     it 'creates a shipment object' do
-      from_address = EasyPost::Address.create( 
-        :name => "Benchmark Merchandising", 
-        :street1 => "329 W 18th Street", 
-        :city => "Chicago", 
-        :state => "IL", 
-        :zip => "60616" 
-      ) 
-      to_address = EasyPost::Address.create( 
-        :street1 => "902 Broadway 4th Floor", 
-        :city => "New York", 
-        :state => "NY", 
-        :zip => "10010" 
-      )       
-      parcel = EasyPost::Parcel.create( 
-        :weight => 7.2, 
-        :height => 2, 
-        :width => 7.5, 
-        :length => 10.5 
+      from_address = EasyPost::Address.create(
+        :name => "Benchmark Merchandising",
+        :street1 => "329 W 18th Street",
+        :city => "Chicago",
+        :state => "IL",
+        :zip => "60616"
       )
-            
+      to_address = EasyPost::Address.create(
+        :street1 => "902 Broadway 4th Floor",
+        :city => "New York",
+        :state => "NY",
+        :zip => "10010"
+      )
+      parcel = EasyPost::Parcel.create(
+        :weight => 7.2,
+        :height => 2,
+        :width => 7.5,
+        :length => 10.5
+      )
+
       shipment = EasyPost::Shipment.create(
         :to_address => to_address,
         :from_address => from_address,
         :parcel => parcel
       )
       expect(shipment).to be_an_instance_of(EasyPost::Shipment)
-      
+      expect(shipment.from_address).to be_an_instance_of(EasyPost::Address)
+
     end
   end
 
@@ -46,7 +47,7 @@ describe EasyPost::Shipment do
 
       customs_info = customs_info_poor
       expect(customs_info).to be_an_instance_of(EasyPost::CustomsInfo)
-      
+
       shipment = EasyPost::Shipment.create(
         :to_address => to_address,
         :from_address => from_address,
@@ -150,7 +151,7 @@ describe EasyPost::Shipment do
 
       it 'filters negative services' do
         rate = @shipment.lowest_rate('USPS', '!MediaMail, !LibraryMail')
-        
+
         expect(rate.service).to eql('ParcelSelect')
       end
     end
@@ -168,4 +169,5 @@ describe EasyPost::Shipment do
       expect(tracking[:status].length).to be > 0
     end
   end
+
 end
