@@ -163,10 +163,9 @@ describe EasyPost::Shipment do
         :carrier       => 'usps',
         :tracking_code => '9499907123456123456781'
       })
-
-      expect(tracking).to be_an_instance_of(Hash)
-      expect(tracking[:tracking_details].length).to be > 0
-      expect(tracking[:status].length).to be > 0
+      expect(tracking).to be_an_instance_of(Array)
+      expect(tracking[0][:status].length).to be > 0
+      expect(tracking[0][:message].length).to be > 0
     end
   end
 

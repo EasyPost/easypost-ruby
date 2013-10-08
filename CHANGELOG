@@ -1,3 +1,7 @@
+=== Not versioned
+
+* Fixed tests to account for the tracking code returning and array of details instead of a Hash
+
 === 2.0.10 2013-10-03
 
 * API Addition: Event resource added for webhook consumption.
