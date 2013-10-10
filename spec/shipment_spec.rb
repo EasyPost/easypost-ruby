@@ -40,7 +40,6 @@ describe EasyPost::Shipment do
       to_address = address_canada
       from_address = address_california
       expect(to_address).to be_an_instance_of(EasyPost::Address)
-      expect(from_address).to be_an_instance_of(EasyPost::Address)
 
       parcel = parcel_dimensions
       expect(parcel).to be_an_instance_of(EasyPost::Parcel)
@@ -65,7 +64,6 @@ describe EasyPost::Shipment do
     it 'purchases postage for a domestic shipment' do
       to_address = address_california
       from_address = address_missouri
-      expect(to_address).to be_an_instance_of(EasyPost::Address)
       expect(from_address).to be_an_instance_of(EasyPost::Address)
 
       parcel = parcel_dimensions
@@ -89,7 +87,6 @@ describe EasyPost::Shipment do
     it 'returns a stamp for a domestic shipment' do
       to_address = address_california
       from_address = address_missouri
-      expect(to_address).to be_an_instance_of(EasyPost::Address)
       expect(from_address).to be_an_instance_of(EasyPost::Address)
 
       parcel = parcel_dimensions
@@ -116,7 +113,6 @@ describe EasyPost::Shipment do
     it 'returns a barcode for a domestic shipment' do
       to_address = address_california
       from_address = address_missouri
-      expect(to_address).to be_an_instance_of(EasyPost::Address)
       expect(from_address).to be_an_instance_of(EasyPost::Address)
 
       parcel = parcel_dimensions
