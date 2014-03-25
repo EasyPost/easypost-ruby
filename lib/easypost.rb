@@ -95,6 +95,17 @@ module EasyPost
     begin
       response = execute_request(opts)
     rescue RestClient::ExceptionWithResponse => e
+      #sleep and retry if we hit a timeout from the server
+      if e.http_code == 503
+        puts "We've hit a 503"
+        @count ||= 20
+        if @count > 0
+          @count = @count - 1
+          sleep 10
+          retry
+        end
+      end
+      
       if response_code = e.http_code and response_body = e.http_body
         begin
           response_json = MultiJson.load(response_body, :symbolize_keys => true)
