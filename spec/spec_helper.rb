@@ -16,7 +16,7 @@ def address_canada
 end
 
 def address_california
-  address = EasyPost::Address.create(
+  {
     :company => 'Simpler Postage Inc',
     :street1 => '388 Townsend Street',
     :street2 => 'Apt 20',
@@ -24,8 +24,7 @@ def address_california
     :state => 'CA',
     :zip => '94107',
     :phone => '415-456-7890'
-  )
-  return address
+  }
 end
 
 def address_missouri
@@ -44,7 +43,7 @@ end
 def parcel_dimensions
   parcel = EasyPost::Parcel.create(
     :width => 15.2,
-    :length => 18, 
+    :length => 18,
     :height => 9.5,
     :weight => 35.1
   )

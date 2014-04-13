@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.date        = Time.now.strftime("%Y-%m-%d")
   spec.summary     = 'EasyPost Ruby Client Library'
   spec.description = 'Client library for accessing the EasyPost shipping API via Ruby.'
-  spec.authors     = ['Jon Calhoun', 'Sawyer Bateman']
+  spec.authors     = ['Sawyer Bateman']
   spec.email       = 'contact@easypost.com'
   spec.homepage    = 'https://www.easypost.com/docs'
 

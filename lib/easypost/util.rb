@@ -24,6 +24,7 @@ module EasyPost
         'Shipment' => Shipment,
         'Rate' => Rate,
         'Refund' => Refund,
+        'Event' => Event,
         'Batch' => Batch,
         'Tracker' => Tracker,
         'PostageLabel' => PostageLabel }
@@ -36,6 +37,7 @@ module EasyPost
         'shp' => Shipment,
         'rate' => Rate,
         'rfnd' => Refund,
+        'evt' => Event,
         'batch' => Batch,
         'trk' => Tracker,
         'pl' => PostageLabel }
@@ -48,8 +50,10 @@ module EasyPost
           cls = types[cls_name]
         elsif response[:id] && cls_prefix = response[:id][0..response[:id].index('_')]
           cls = prefixes[cls_prefix[0..-2]]
+        elsif response['id'] && cls_prefix = response['id'][0..response['id'].index('_')]
+          cls = prefixes[cls_prefix[0..-2]]
         end
-      
+
         cls ||= EasyPostObject
         return cls.construct_from(response, api_key)
       else
