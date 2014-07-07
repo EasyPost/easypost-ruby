@@ -1,12 +1,6 @@
 module EasyPost
   class Shipment < Resource
 
-    def self.track_with_code(params={})
-      response, api_key = EasyPost.request(:get, url + '/track', @api_key, params)
-
-      return response
-    end
-
     def get_rates(params={})
       response, api_key = EasyPost.request(:get, url + '/rates', @api_key, params)
       self.refresh_from(response, @api_key, true)
@@ -76,7 +70,7 @@ module EasyPost
       lowest = nil
 
       self.get_rates unless self.rates
-      
+
       if !carriers.is_a?(Array)
         carriers = carriers.split(',')
       end
@@ -125,13 +119,13 @@ module EasyPost
           next
         end
 
-        if lowest == nil || k.rate.to_f < lowest.rate.to_f          
+        if lowest == nil || k.rate.to_f < lowest.rate.to_f
             lowest = k
         end
       end
 
       raise Error.new('No rates found.') if lowest == nil
-      
+
       return lowest
     end
 

@@ -21,6 +21,9 @@ require 'easypost/refund'
 require 'easypost/event'
 require 'easypost/batch'
 require 'easypost/tracker'
+require 'easypost/item'
+require 'easypost/container'
+require 'easypost/order'
 
 require 'easypost/error'
 
