@@ -31,6 +31,8 @@ module EasyPost
   @@api_key = nil
   @@api_base = 'https://api.easypost.com/v2'
   @@api_version = nil
+  @@open_timeout = 30
+  @@timeout = 60
 
   def self.api_url(url='')
     @@api_base + url
@@ -58,6 +60,22 @@ module EasyPost
 
   def self.api_version
     @@api_version
+  end
+
+  def self.open_timeout=(open_timeout)
+    @@open_timeout = open_timeout
+  end
+
+  def self.open_timeout
+    @@open_timeout
+  end
+
+  def self.timeout=(timeout)
+    @@timeout = timeout
+  end
+
+  def self.timeout
+    @@timeout
   end
 
   def self.request(method, url, api_key, params={}, headers={})
@@ -90,9 +108,9 @@ module EasyPost
       :method => method,
       :url => url,
       :headers => headers,
-      :open_timeout => 30,
+      :open_timeout => open_timeout,
       :payload => payload,
-      :timeout => 60
+      :timeout => timeout
     }.merge(ssl_opts)
 
     begin
