@@ -27,6 +27,9 @@ module EasyPost
         'Event' => Event,
         'Batch' => Batch,
         'Tracker' => Tracker,
+        'Item' => Item,
+        'Container' => Container,
+        'Order' => Order,
         'PostageLabel' => PostageLabel }
 
       prefixes = { 'adr' => Address,
@@ -40,6 +43,9 @@ module EasyPost
         'evt' => Event,
         'batch' => Batch,
         'trk' => Tracker,
+        'item' => Item,
+        'container' => Container,
+        'order' => Order,
         'pl' => PostageLabel }
 
       case response
