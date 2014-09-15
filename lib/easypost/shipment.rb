@@ -71,9 +71,7 @@ module EasyPost
 
       self.get_rates unless self.rates
 
-      if !carriers.is_a?(Array)
-        carriers = carriers.split(',')
-      end
+      carriers = carriers.is_a?(String) ? carriers.split(',') : Array(carriers)
       carriers.map!(&:downcase)
       carriers.map!(&:strip)
 
@@ -86,9 +84,7 @@ module EasyPost
         end
       end
 
-      if !services.is_a?(Array)
-        services = services.split(',')
-      end
+      services = services.is_a?(String) ? services.split(',') : Array(services)
       services.map!(&:downcase)
       services.map!(&:strip)
 
