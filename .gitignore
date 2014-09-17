@@ -2,6 +2,7 @@
 *.rbc
 .bundle
 .config
+Gemfile.lock
 coverage
 InstalledFiles
 lib/bundler/man
