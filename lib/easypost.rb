@@ -62,27 +62,21 @@ module EasyPost
     @@api_version
   end
 
-  def self.open_timeout=(open_timeout)
-    @@open_timeout = open_timeout
+  def self.http_config
+    @@http_config ||= {
+      timeout: 60,
+      open_timeout: 30,
+      verify_ssl: false
+    }
   end
 
-  def self.open_timeout
-    @@open_timeout
-  end
-
-  def self.timeout=(timeout)
-    @@timeout = timeout
-  end
-
-  def self.timeout
-    @@timeout
+  def self.http_config=(http_config_params)
+    self.http_config.merge!(http_config_params)
   end
 
   def self.request(method, url, api_key, params={}, headers={})
     api_key ||= @@api_key
     raise Error.new('No API key provided.') unless api_key
-
-    ssl_opts = { :verify_ssl => false }
 
     params = Util.objects_to_ids(params)
     url = self.api_url(url)
@@ -104,14 +98,14 @@ module EasyPost
       :content_type => 'application/x-www-form-urlencoded'
     }.merge(headers)
 
-    opts = {
-      :method => method,
-      :url => url,
-      :headers => headers,
-      :open_timeout => open_timeout,
-      :payload => payload,
-      :timeout => timeout
-    }.merge(ssl_opts)
+    opts = http_config.merge(
+      {
+        :method => method,
+        :url => url,
+        :headers => headers,
+        :payload => payload
+      }
+    )
 
     begin
       response = execute_request(opts)
