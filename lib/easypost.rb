@@ -66,7 +66,8 @@ module EasyPost
     @@http_config ||= {
       timeout: 60,
       open_timeout: 30,
-      verify_ssl: false
+      verify_ssl: false,
+      ssl_version: "TLSv1",
     }
   end
 
