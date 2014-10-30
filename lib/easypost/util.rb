@@ -30,6 +30,8 @@ module EasyPost
         'Item' => Item,
         'Container' => Container,
         'Order' => Order,
+        'Pickup' => Pickup,
+        'PickupRate' => PickupRate,
         'PostageLabel' => PostageLabel }
 
       prefixes = { 'adr' => Address,
@@ -46,6 +48,8 @@ module EasyPost
         'item' => Item,
         'container' => Container,
         'order' => Order,
+        'pickup' => Pickup,
+        'pickuprate' => PickupRate,
         'pl' => PostageLabel }
 
       case response

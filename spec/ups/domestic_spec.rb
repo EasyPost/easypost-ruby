@@ -54,6 +54,21 @@ describe 'ups domestic' do
     expect(shipment.postage_label.label_url).to end_with(".epl2")
   end
 
+  # it 'buys an order with shipment level cod', focus: true do
+  #   order = EasyPost::Order.create(
+  #     to_address: ADDRESS[:california],
+  #     from_address: ADDRESS[:missouri],
+  #     options: {cod_amount: 19.99},
+  #     shipments: [{
+  #       parcel: {length: 8, width: 6, height: 4, weight: 12}
+  #     },{
+  #       parcel: {length: 8, width: 6, height: 4, weight: 12}
+  #     }]
+  #   )
+  #   p order
+  #   # order.buy(carrier: "ups", service: "Ground")
+  # end
+
   after(:all) do
     begin
       expect(@rates[:next_day_air].rate.to_i).to be > @rates[:ground].rate.to_i

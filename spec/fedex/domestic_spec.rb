@@ -159,6 +159,16 @@ describe 'fedex domestic' do
     expect(order.shipments[1].postage_label.label_url).to be
   end
 
+  it 'buys a label using a thid party account number' do
+    shipment = EasyPost::Shipment.create(
+      :to_address   => ADDRESS[:california],
+      :from_address => ADDRESS[:missouri],
+      :parcel       => PARCEL[:dimensions],
+      :options      => {:bill_third_party_account => "12345678"}
+    )
+    expect { shipment.buy(rate: shipment.lowest_rate("fedex")) }.to raise_error(EasyPost::Error, /ShippingChargesPayment Payor - The payor's account number is invalid/)
+  end
+
   after(:all) do
     begin
       expect(@rates[:residential_evening].rate.to_i).to be > @rates[:residential].rate.to_i

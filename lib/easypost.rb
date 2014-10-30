@@ -24,6 +24,8 @@ require 'easypost/tracker'
 require 'easypost/item'
 require 'easypost/container'
 require 'easypost/order'
+require 'easypost/pickup'
+require 'easypost/pickup_rate'
 
 require 'easypost/error'
 
