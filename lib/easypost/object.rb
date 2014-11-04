@@ -32,11 +32,11 @@ module EasyPost
       @api_key = api_key
 
       added = Set.new(values.keys - @values.keys)
-      
+
       instance_eval do
         add_accessors(added)
       end
-      
+
       values.each do |k, v|
         @values[k] = Util.convert_to_easypost_object(v, api_key)
         @transient_values.delete(k)
