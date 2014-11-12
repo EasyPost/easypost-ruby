@@ -1,5 +1,8 @@
 # EasyPost Ruby Client Library
 
+[<img src="https://circleci.com/gh/EasyPost/easypost-ruby.png?circle-token=80adb5236ed1fdce20810b055af79c63c3d5796b">](https://circleci.com/gh/EasyPost/easypost-ruby)
+
+
 EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com
 
 Installation
