@@ -1,14 +1,13 @@
 require 'spec_helper'
 
 describe EasyPost::Shipment do
-
   describe '#create' do
     it 'creates a shipment object' do
 
       shipment = EasyPost::Shipment.create(
-        :to_address   => ADDRESS[:california],
-        :from_address => ADDRESS[:missouri],
-        :parcel       => PARCEL[:dimensions]
+        to_address: ADDRESS[:california],
+        from_address: EasyPost::Address.create(ADDRESS[:missouri]),
+        parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
       )
       expect(shipment).to be_an_instance_of(EasyPost::Shipment)
       expect(shipment.from_address).to be_an_instance_of(EasyPost::Address)
@@ -20,29 +19,29 @@ describe EasyPost::Shipment do
     it 'purchases postage for an international shipment' do
 
       shipment = EasyPost::Shipment.create(
-        :to_address   => ADDRESS[:canada],
-        :from_address => ADDRESS[:california],
-        :parcel       => PARCEL[:dimensions],
-        :customs_info => CUSTOMS_INFO[:shirt]
+        to_address: EasyPost::Address.create(ADDRESS[:canada]),
+        from_address: ADDRESS[:california],
+        parcel: EasyPost::Parcel.create(PARCEL[:dimensions]),
+        customs_info: EasyPost::CustomsInfo.create(CUSTOMS_INFO[:shirt])
       )
       expect(shipment).to be_an_instance_of(EasyPost::Shipment)
 
       shipment.buy(
-        :rate => shipment.lowest_rate("usps")
+        rate: shipment.lowest_rate("usps")
       )
       expect(shipment.postage_label.label_url.length).to be > 0
     end
 
     it 'purchases postage for a domestic shipment' do
       shipment = EasyPost::Shipment.create(
-        :to_address   => ADDRESS[:missouri],
-        :from_address => ADDRESS[:california],
-        :parcel       => PARCEL[:dimensions]
+        to_address: EasyPost::Address.create(ADDRESS[:missouri]),
+        from_address: ADDRESS[:california],
+        parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
       )
       expect(shipment).to be_an_instance_of(EasyPost::Shipment)
 
       shipment.buy(
-        :rate => shipment.lowest_rate("usps")
+        rate: shipment.lowest_rate("usps")
       )
       expect(shipment.postage_label.label_url.length).to be > 0
     end
@@ -51,14 +50,14 @@ describe EasyPost::Shipment do
   describe '#stamp' do
     it 'returns a stamp for a domestic shipment' do
       shipment = EasyPost::Shipment.create(
-        :to_address   => ADDRESS[:missouri],
-        :from_address => ADDRESS[:california],
-        :parcel       => PARCEL[:dimensions]
+        to_address: EasyPost::Address.create(ADDRESS[:missouri]),
+        from_address: ADDRESS[:california],
+        parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
       )
       expect(shipment).to be_an_instance_of(EasyPost::Shipment)
 
       shipment.buy(
-        :rate => shipment.lowest_rate(['USPS', 'UPS'], 'priority, express')
+        rate: shipment.lowest_rate(['USPS', 'UPS'], 'priority, express')
       )
 
       stamp_url = shipment.stamp
@@ -70,14 +69,14 @@ describe EasyPost::Shipment do
   describe '#barcode' do
     it 'returns a barcode for a domestic shipment' do
       shipment = EasyPost::Shipment.create(
-        :to_address   => ADDRESS[:missouri],
-        :from_address => ADDRESS[:california],
-        :parcel       => PARCEL[:dimensions]
+        to_address: EasyPost::Address.create(ADDRESS[:missouri]),
+        from_address: ADDRESS[:california],
+        parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
       )
       expect(shipment).to be_an_instance_of(EasyPost::Shipment)
 
       shipment.buy(
-        :rate => shipment.lowest_rate('usps', ['Priority'])
+        rate: shipment.lowest_rate('usps', ['Priority'])
       )
 
       barcode_url = shipment.barcode
@@ -90,9 +89,9 @@ describe EasyPost::Shipment do
     context 'domestic shipment' do
       before :all do
         @shipment = EasyPost::Shipment.create(
-        :to_address   => ADDRESS[:missouri],
-        :from_address => ADDRESS[:california],
-        :parcel       => PARCEL[:dimensions]
+          to_address: EasyPost::Address.create(ADDRESS[:missouri]),
+        from_address: ADDRESS[:california],
+        parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
       )
       end
 
@@ -103,5 +102,4 @@ describe EasyPost::Shipment do
       end
     end
   end
-
 end
