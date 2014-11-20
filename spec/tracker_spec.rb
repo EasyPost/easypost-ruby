@@ -4,7 +4,7 @@ describe EasyPost::Tracker do
   describe '#create' do
     it 'tracks' do
       tracking_code = 'EZ2000000002'
-      carrier = 'ups'
+      carrier = 'usps'
 
       tracker = EasyPost::Tracker.create({
         tracking_code: tracking_code,

@@ -14,7 +14,7 @@ module EasyPost
         verified_address = EasyPost::Util::convert_to_easypost_object(response[:address], api_key)
         return verified_address
       else
-        raise Error.new("Unable to verify address.")
+        raise_verification_failure
       end
     end
 

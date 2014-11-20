@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe EasyPost::Container do
-
   describe '#create' do
     it 'creates a container object' do
       container = EasyPost::Container.create(
@@ -73,15 +72,5 @@ describe EasyPost::Container do
       expect(container_2.height).to eq(container_1.height)
       expect(container_1.type).to eq("BOX")
     end
-
-    it 'retrieves global containers' do
-      container_1 = EasyPost::Container.retrieve("container_USPSFR03")
-      container_2 = EasyPost::Container.retrieve("container_USPSFR02")
-
-      expect(container_1).to be_an_instance_of(EasyPost::Container)
-      expect(container_2).to be_an_instance_of(EasyPost::Container)
-      expect(container_1.reference).to eq(container_2.reference)
-    end
   end
-
 end

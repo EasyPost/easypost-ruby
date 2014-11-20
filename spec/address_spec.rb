@@ -55,15 +55,15 @@ describe EasyPost::Address do
 
     it 'is not able to verify address' do
       address = EasyPost::Address.create(
-        :company => 'Simpler Postage Inc',
-        :street1 => '388 Junk Teerts',
-        :street2 => 'Apt 20',
-        :city    => 'San Francisco',
-        :state   => 'CA',
-        :zip     => '941abc07'
+        company: 'Simpler Postage Inc',
+        street1: '388 Junk Teerts',
+        street2: 'Apt 20',
+        city: 'San Francisco',
+        state: 'CA',
+        zip: '941abc07'
       )
 
-      expect { verified_address = address.verify() }.to raise_error(EasyPost::Error, /Unable to verify address./)
+      expect { verified_address = address.verify() }.to raise_error(EasyPost::Error, /Unable to verify addres/)
     end
   end
 end
