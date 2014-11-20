@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'easypost'
 EasyPost.api_key = 'cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi'
-EasyPost.api_base = 'http://ep-vm-test:5000/v2'
 
 ADDRESS = {}
 ADDRESS[:california] = {
