@@ -63,7 +63,7 @@ describe EasyPost::Address do
         zip: '941abc07'
       )
 
-      expect { verified_address = address.verify() }.to raise_error(EasyPost::Error, /Address Not Found./)
+      expect { verified_address = address.verify() }.to raise_error(EasyPost::Error, /Unable to verify addres/)
     end
   end
 end

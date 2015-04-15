@@ -14,12 +14,16 @@ module EasyPost
         verified_address = EasyPost::Util::convert_to_easypost_object(response[:address], api_key)
         return verified_address
       else
-        raise Error.new("Unable to verify address.")
+        raise_verification_failure
       end
     end
 
     def verify(params={}, carrier=nil)
-      response, api_key = EasyPost.request(:get, url + '/verify?carrier=' + String(carrier), @api_key, params)
+      begin
+        response, api_key = EasyPost.request(:get, url + '/verify?carrier=' + String(carrier), @api_key, params)
+      rescue
+        raise_verification_failure
+      end
 
       if response.has_key?(:address)
         if response.has_key?(:message)
@@ -28,11 +32,14 @@ module EasyPost
         verified_address = EasyPost::Util::convert_to_easypost_object(response[:address], api_key)
         return verified_address
       else
-        raise Error.new("Unable to verify address.")
+        raise_verification_failure
       end
 
       return self
     end
 
+    def raise_verification_failure
+      raise Error.new("Unable to verify address.")
+    end
   end
 end

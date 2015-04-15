@@ -7,12 +7,12 @@ describe EasyPost::Pickup do
     it 'creates a pickup and returns rates' do
       shipment = EasyPost::Shipment.create(
         to_address: ADDRESS[:california],
-        from_address: EasyPost::Address.create(ADDRESS[:missouri]),
-        parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
+        from_address: ADDRESS[:missouri],
+        parcel: PARCEL[:dimensions]
       )
       shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
       pickup = EasyPost::Pickup.create(
-        address: EasyPost::Address.create(ADDRESS[:missouri]),
+        address: ADDRESS[:missouri],
         reference: "12345678",
         min_datetime: DateTime.now(),
         max_datetime: DateTime.now() + 14400,
@@ -28,8 +28,8 @@ describe EasyPost::Pickup do
     it 'fails to create a pickup' do
       shipment = EasyPost::Shipment.create(
         to_address: ADDRESS[:california],
-        from_address: EasyPost::Address.create(ADDRESS[:missouri]),
-        parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
+        from_address: ADDRESS[:missouri],
+        parcel: PARCEL[:dimensions]
       )
       shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
       expect { pickup = EasyPost::Pickup.create(
@@ -47,8 +47,8 @@ describe EasyPost::Pickup do
     it 'buys a pickup rate' do
       shipment = EasyPost::Shipment.create(
         to_address: ADDRESS[:california],
-        from_address: EasyPost::Address.create(ADDRESS[:missouri]),
-        parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
+        from_address: ADDRESS[:missouri],
+        parcel: PARCEL[:dimensions]
       )
       shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
       pickup = EasyPost::Pickup.create(

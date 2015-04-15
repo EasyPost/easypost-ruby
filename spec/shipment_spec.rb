@@ -47,6 +47,23 @@ describe EasyPost::Shipment do
     end
   end
 
+  it 'creates and returns a tracker with shipment purchase' do
+      shipment = EasyPost::Shipment.create(
+        :to_address   => ADDRESS[:missouri],
+        :from_address => ADDRESS[:california],
+        :parcel       => PARCEL[:dimensions]
+      )
+      expect(shipment).to be_an_instance_of(EasyPost::Shipment)
+
+      shipment.buy(
+        :rate => shipment.lowest_rate("usps")
+      )
+
+      tracker = shipment.tracker
+      expect(tracker.shipment_id).to eq(shipment.id)
+      expect(tracker.tracking_details.length).to be > 0
+  end
+
   describe '#stamp' do
     it 'returns a stamp for a domestic shipment' do
       shipment = EasyPost::Shipment.create(
