@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe EasyPost::Pickup do
-  before { EasyPost.api_key = "WzJHJ6SoPnBVYu0ae4aIHA" }
+  before { EasyPost.api_key = "cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi" }
 
   describe '#create' do
     it 'creates a pickup and returns rates' do

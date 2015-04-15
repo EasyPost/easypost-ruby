@@ -1,7 +1,12 @@
-=== 2.0.15 2014-11-20
+=== 2.0.15 2015-04-15
 
 * Added tracker to shipment buy response
 * Updated tracker tests
+
+
+=== 2.0.14 2015-04-15
+
+* Added User and CarrierAccount models with CRUD functionality
 
 
 === 2.0.13 2014-10-30
