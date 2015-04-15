@@ -1,47 +1,80 @@
 require 'spec_helper'
 
 describe EasyPost::CarrierAccount do
-  it 'performs all basic CRUD actions on a CarrierAccount' do
-    original_num_cas = EasyPost::CarrierAccount.all.count
+  it 'performs retrieve on a carrier account' do
+    id = 'ca_r8hLl9jS'
+    ca = EasyPost::CarrierAccount.retrieve(id)
 
-    description = "A test Ups Account"
-    reference = "RubyClientUpsTestAccount"
+    expect(ca.id).to eq(id)
+  end
 
-    created_ca = EasyPost::CarrierAccount.create(
-      type: "UpsAccount",
-      description: description,
-      reference: reference,
-      credentials: {
-        account_number: "A1A1A1",
+  context 'perform CRUD functions' do
+    it 'performs all basic CRUD actions on a CarrierAccount' do
+      original_num_cas = EasyPost::CarrierAccount.all.count
+
+      description = "A test Ups Account"
+      reference = "RubyClientUpsTestAccount"
+
+      created_ca = EasyPost::CarrierAccount.create(
+        type: "UpsAccount",
+        description: description,
+        reference: reference,
+        credentials: {
+          account_number: "A1A1A1",
+          user_id: "UPSDOTCOM_USERNAME",
+          password: "UPSDOTCOM_PASSWORD",
+          access_license_number: "UPS_ACCESS_LICENSE_NUMBER"
+        }
+      )
+
+      id = created_ca["id"]
+
+      interm_num_cas = EasyPost::CarrierAccount.all.count
+      expect(interm_num_cas).to eq(original_num_cas + 1)
+
+      retrieved_ca = EasyPost::CarrierAccount.retrieve(id)
+
+      expect(retrieved_ca["id"]).to eq(created_ca["id"])
+      expect(retrieved_ca["description"]).to eq(description)
+      expect(retrieved_ca["reference"]).to eq(reference)
+
+      updated_description = "An updated description for a test Ups Account"
+      updated_account_number = "B2B2B2B2"
+      retrieved_ca.description = updated_description
+      retrieved_ca.credentials = {
+        account_number: updated_account_number,
         user_id: "UPSDOTCOM_USERNAME",
         password: "UPSDOTCOM_PASSWORD",
         access_license_number: "UPS_ACCESS_LICENSE_NUMBER"
       }
-    )
+      retrieved_ca.save
 
-    id = created_ca["id"]
+      updated_ca = EasyPost::CarrierAccount.retrieve(id)
+      expect(updated_ca["id"]).to eq(created_ca["id"])
+      expect(updated_ca["description"]).to eq(updated_description)
+      expect(updated_ca["credentials"]["account_number"]).to eq(updated_account_number)
 
-    interm_num_cas = EasyPost::CarrierAccount.all.count
-    expect(interm_num_cas).to eq(original_num_cas + 1)
+      reupdated_account_number = "C3C3C3C3C3"
+      updated_user_id = "A_NEW_UPS_USERNAME"
+      updated_ca.credentials[:account_number] = reupdated_account_number
+      updated_ca.credentials[:user_id] = updated_user_id
+      updated_ca.save
 
-    retrieved_ca = EasyPost::CarrierAccount.retrieve(id)
+      reupdated_ca = EasyPost::CarrierAccount.retrieve(id)
+      expect(reupdated_ca["id"]).to eq(created_ca["id"])
+      expect(reupdated_ca["credentials"]["account_number"]).to eq(reupdated_account_number)
+      expect(reupdated_ca["credentials"]["user_id"]).to eq(updated_user_id)
 
-    expect(retrieved_ca["id"]).to eq(created_ca["id"])
-    expect(retrieved_ca["description"]).to eq(description)
-    expect(retrieved_ca["reference"]).to eq(reference)
+      final_ca = reupdated_ca.save
+      expect(final_ca["id"]).to eq(created_ca["id"])
+      expect(final_ca["credentials"]["account_number"]).to eq(reupdated_account_number)
+      expect(final_ca["credentials"]["user_id"]).to eq(updated_user_id)
 
-    updated_description = "An updated description for a test Ups Account"
-    retrieved_ca.description = updated_description
-    retrieved_ca.save
+      final_ca.delete
 
-    updated_ca = EasyPost::CarrierAccount.retrieve(id)
-    expect(updated_ca["id"]).to eq(created_ca["id"])
-    expect(updated_ca["description"]).to eq(updated_description)
-
-    updated_ca.delete
-
-    final_num_cas = EasyPost::CarrierAccount.all.count
-    expect(final_num_cas).to eq(original_num_cas)
+      final_num_cas = EasyPost::CarrierAccount.all.count
+      expect(final_num_cas).to eq(original_num_cas)
+    end
   end
 
   describe '#types' do

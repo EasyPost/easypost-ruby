@@ -2,7 +2,7 @@ module EasyPost
   class EasyPostObject
     include Enumerable
 
-    attr_accessor :api_key
+    attr_accessor :api_key, :unsaved_values
     @@immutable_values = Set.new([:api_key, :id])
 
     def initialize(id=nil, api_key=nil)
