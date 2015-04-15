@@ -2,70 +2,71 @@ require 'spec_helper'
 
 describe EasyPost::User do
   before do
-    EasyPost.api_key = "gMhH1to1hGSKgncBhkJtlA"
+    EasyPost.api_key = "PRODUCTION API KEY"
   end
 
-  it 'performs all basic CRUD actions on a User' do
-    me = EasyPost::User.retrieve_me
-    original_children_count = me.children.count
+  # Uncomment these tests to test CRUD operations on the User model
+  # Note: You must provide a Production Api Key in order to run these tests
 
-    name = 'Ruby All-Things-Testing'
+  # it 'performs all basic CRUD actions on a User' do
+  #   me = EasyPost::User.retrieve_me
+  #   original_children_count = me.children.count
 
-    sub_user = EasyPost::User.create(
-      name: name,
-      password: 'password1',
-      password_confirmation: 'password1',
-      phone_number: '7778675309'
-    )
+  #   name = 'Ruby All-Things-Testing'
 
-    id = sub_user.id
-    email = sub_user.email
+  #   sub_user = EasyPost::User.create(
+  #     name: name,
+  #     password: 'password1',
+  #     password_confirmation: 'password1',
+  #     phone_number: '7778675309'
+  #   )
 
-    retrieved_user = EasyPost::User.retrieve(id)
-    expect(retrieved_user.id).to eq(id)
-    expect(retrieved_user.email).to eq(email)
-    expect(retrieved_user.name).to eq(name)
+  #   id = sub_user.id
+  #   email = sub_user.email
 
-    new_me = EasyPost::User.retrieve_me
-    interm_children_count = new_me.children.count
-    expect(interm_children_count).to eq(original_children_count + 1)
+  #   retrieved_user = EasyPost::User.retrieve(id)
+  #   expect(retrieved_user.id).to eq(id)
+  #   expect(retrieved_user.email).to eq(email)
+  #   expect(retrieved_user.name).to eq(name)
 
-    new_name = 'Ruby All-Things-Tested'
-    retrieved_user.name = new_name
-    retrieved_user.save
+  #   new_me = EasyPost::User.retrieve_me
+  #   interm_children_count = new_me.children.count
+  #   expect(interm_children_count).to eq(original_children_count + 1)
 
-    updated_user = EasyPost::User.retrieve(id)
-    expect(updated_user.id).to eq(id)
-    expect(updated_user.email).to eq(email)
-    expect(updated_user.name).to eq(new_name)
-  end
+  #   new_name = 'Ruby All-Things-Tested'
+  #   retrieved_user.name = new_name
+  #   retrieved_user.save
 
-  describe '#all_api_keys' do
-    it 'returns the correct set of api_keys' do
-      EasyPost.api_key = "gMhH1to1hGSKgncBhkJtlA"
+  #   updated_user = EasyPost::User.retrieve(id)
+  #   expect(updated_user.id).to eq(id)
+  #   expect(updated_user.email).to eq(email)
+  #   expect(updated_user.name).to eq(new_name)
+  # end
 
-      api_keys = EasyPost::User.all_api_keys
+  # describe '#all_api_keys' do
+  #   it 'returns the correct set of api_keys' do
+  #     api_keys = EasyPost::User.all_api_keys
 
-      my_keys = api_keys.keys
-      expect(my_keys.first.mode).to eq("production")
-      expect(my_keys.last.mode).to eq("test")
+  #     my_keys = api_keys.keys
+  #     expect(my_keys.first.mode).to eq("production")
+  #     expect(my_keys.last.mode).to eq("test")
 
-      me = EasyPost::User.retrieve_me
-      children_count = me.children.count
+  #     me = EasyPost::User.retrieve_me
+  #     children_count = me.children.count
 
-      expect(api_keys.children.count).to eq(children_count)
-    end
-  end
+  #     expect(api_keys.children.count).to eq(children_count)
+  #   end
+  # end
 
-  describe '#api_keys' do
-    it 'returns different keys for the parent and child users' do
-      me = EasyPost::User.retrieve_me
-      my_keys = me.api_keys
+  # describe '#api_keys' do
+  #   it 'returns different keys for the parent and child users' do
+  #     me = EasyPost::User.retrieve_me
+  #     my_keys = me.api_keys
 
-      child = me.children.first
-      child_keys = child.api_keys
+  #     child = me.children.first
+  #     child_keys = child.api_keys
 
-      expect(my_keys).not_to eq(child_keys)
-    end
-  end
+  #     expect(my_keys).not_to eq(child_keys)
+  #   end
+  # end
 end
