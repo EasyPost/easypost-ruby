@@ -32,7 +32,9 @@ module EasyPost
         'Order' => Order,
         'Pickup' => Pickup,
         'PickupRate' => PickupRate,
-        'PostageLabel' => PostageLabel }
+        'PostageLabel' => PostageLabel,
+        'CarrierAccount' => CarrierAccount,
+        'User' => User }
 
       prefixes = { 'adr' => Address,
         'sf' => ScanForm,
@@ -50,7 +52,9 @@ module EasyPost
         'order' => Order,
         'pickup' => Pickup,
         'pickuprate' => PickupRate,
-        'pl' => PostageLabel }
+        'pl' => PostageLabel,
+        'ca' => CarrierAccount,
+        'user' => User }
 
       case response
       when Array
