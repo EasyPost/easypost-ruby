@@ -1,3 +1,10 @@
+=== 2.1.1 2015-04-15
+
+* CarrierAccount will now correctly save in-place modifications to credentials
+* Nested variables should now be saved correctly across all models
+* Fixed version numbering confusion (the previous version was 2.0.15, not 2.1.0)
+
+
 === 2.0.15 2015-04-15
 
 * Added tracker to shipment buy response
