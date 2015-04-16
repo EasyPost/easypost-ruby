@@ -58,7 +58,17 @@ module EasyPost
       if @unsaved_values.length > 0
         values = {}
         @unsaved_values.each { |k| values[k] = @values[k] }
-        response, api_key = EasyPost.request(:post, url, @api_key, values)
+
+        for key in @unsaved_values
+          value = values[key]
+          if value.is_a?(EasyPost::EasyPostObject)
+            values[key] = value.flatten_unsaved
+          end
+        end
+
+        wrapped_params = {self.class.class_name => values}
+
+        response, api_key = EasyPost.request(:put, url, @api_key, wrapped_params)
         refresh_from(response, api_key)
       end
       return self

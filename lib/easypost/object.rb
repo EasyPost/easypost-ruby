@@ -2,19 +2,21 @@ module EasyPost
   class EasyPostObject
     include Enumerable
 
-    attr_accessor :api_key
+    attr_accessor :parent, :name, :api_key, :unsaved_values
     @@immutable_values = Set.new([:api_key, :id])
 
-    def initialize(id=nil, api_key=nil)
+    def initialize(id=nil, api_key=nil, parent=nil, name=nil)
       @api_key = api_key
       @values = {}
       @unsaved_values = Set.new
       @transient_values = Set.new
+      @parent = parent
+      @name = name
       self.id = id if id
     end
 
-    def self.construct_from(values, api_key=nil)
-      obj = self.new(values[:id], api_key)
+    def self.construct_from(values, api_key=nil, parent=nil, name=nil)
+      obj = self.new(values[:id], api_key, parent, name)
       obj.refresh_from(values, api_key)
       obj
     end
@@ -38,7 +40,7 @@ module EasyPost
       end
 
       values.each do |k, v|
-        @values[k] = Util.convert_to_easypost_object(v, api_key)
+        @values[k] = Util.convert_to_easypost_object(v, api_key, self, k)
         @transient_values.delete(k)
         @unsaved_values.delete(k)
       end
@@ -87,6 +89,21 @@ module EasyPost
 
     protected
 
+    def flatten_unsaved
+      values = {}
+      for key in @unsaved_values
+        value = @values[key]
+
+        values[key] = value
+
+        if value.is_a?(EasyPost::EasyPostObject)
+          values[key] = flatten_unsaved(value)
+        end
+      end
+
+      return values
+    end
+
     def metaclass
       class << self; self; end
     end
@@ -111,6 +128,18 @@ module EasyPost
           define_method(k_eq) do |v|
             @values[k] = v
             @unsaved_values.add(k)
+
+            cur = self
+            cur_parent = self.parent
+            param = {}
+            while cur_parent
+              if cur.name
+                cur_parent.unsaved_values.add(cur.name)
+              end
+
+              cur = cur_parent
+              cur_parent = cur.parent
+            end
           end
         end
       end

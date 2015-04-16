@@ -15,7 +15,7 @@ module EasyPost
       end
     end
 
-    def self.convert_to_easypost_object(response, api_key)
+    def self.convert_to_easypost_object(response, api_key, parent=nil, name=nil)
       types = { 'Address' => Address,
         'ScanForm' => ScanForm,
         'CustomsItem' => CustomsItem,
@@ -58,7 +58,7 @@ module EasyPost
 
       case response
       when Array
-        return response.map { |i| convert_to_easypost_object(i, api_key) }
+        return response.map { |i| convert_to_easypost_object(i, api_key, parent) }
       when Hash
         if cls_name = response[:object]
           cls = types[cls_name]
@@ -69,7 +69,7 @@ module EasyPost
         end
 
         cls ||= EasyPostObject
-        return cls.construct_from(response, api_key)
+        return cls.construct_from(response, api_key, parent, name)
       else
         return response
       end
