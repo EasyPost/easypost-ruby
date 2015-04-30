@@ -8,7 +8,7 @@ module EasyPost
     attr_reader :code
     attr_reader :errors
 
-    def initialize(message=nil, http_status=nil, http_body=nil, json_body=nil)
+    def initialize(message=nil, http_status=nil, http_body=nil, json_body={})
       @message = message
       @http_status = http_status
       @http_body = http_body
