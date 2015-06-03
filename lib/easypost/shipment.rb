@@ -41,6 +41,13 @@ module EasyPost
       return self
     end
 
+    def print(params={})
+      if params.instance_of?(EasyPost::Printer)
+        return params.print(self.postage_label)
+      end
+      return false
+    end
+
     def label(params={})
       if params.is_a?(String)
         temp = params.clone

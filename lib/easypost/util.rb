@@ -33,6 +33,8 @@ module EasyPost
         'Pickup' => Pickup,
         'PickupRate' => PickupRate,
         'PostageLabel' => PostageLabel,
+        'Printer' => Printer,
+        'PrintJob' => PrintJob,
         'CarrierAccount' => CarrierAccount,
         'User' => User }
 
@@ -53,6 +55,8 @@ module EasyPost
         'pickup' => Pickup,
         'pickuprate' => PickupRate,
         'pl' => PostageLabel,
+        'printer' => Printer,
+        'printjob' => PrintJob,
         'ca' => CarrierAccount,
         'user' => User }
 

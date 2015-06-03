@@ -26,6 +26,8 @@ require 'easypost/container'
 require 'easypost/order'
 require 'easypost/pickup'
 require 'easypost/pickup_rate'
+require 'easypost/printer'
+require 'easypost/print_job'
 require 'easypost/carrier_account'
 require 'easypost/user'
 

@@ -84,4 +84,14 @@ CUSTOMS_INFO = {
       hs_tariff_number: 123456
     }]
   }
+  merchandise: {
+    customs_certify: true,
+    customs_signer: 'Dr. Pepper',
+    contents_type: 'merchandise',
+    contents_explanation: '', # only required when contents_type: 'other'
+    eel_pfc: 'NOEEI 30.37(a)',
+    non_delivery_option: 'abandon',
+    restriction_type: 'none',
+    restriction_comments: ''
+  }
 }
