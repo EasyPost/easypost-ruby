@@ -26,11 +26,7 @@ module EasyPost
       end
 
       if response.has_key?(:address)
-        if response.has_key?(:message)
-          response[:address][:message] = response[:message]
-        end
-        verified_address = EasyPost::Util::convert_to_easypost_object(response[:address], api_key)
-        return verified_address
+        return EasyPost::Util::convert_to_easypost_object(response[:address], api_key)
       else
         raise_verification_failure
       end
