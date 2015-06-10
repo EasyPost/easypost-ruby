@@ -1,5 +1,6 @@
 module EasyPost
   class Address < Resource
+    attr_accessor :message # Backwards compatibility
 
     def self.create_and_verify(params={}, carrier=nil, api_key=nil)
       wrapped_params = {}
