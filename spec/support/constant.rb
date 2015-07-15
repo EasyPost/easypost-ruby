@@ -83,7 +83,7 @@ CUSTOMS_INFO = {
       origin_country: 'us',
       hs_tariff_number: 123456
     }]
-  }
+  },
   merchandise: {
     customs_certify: true,
     customs_signer: 'Dr. Pepper',

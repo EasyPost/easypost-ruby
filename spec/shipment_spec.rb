@@ -61,7 +61,6 @@ describe EasyPost::Shipment do
 
       tracker = shipment.tracker
       expect(tracker.shipment_id).to eq(shipment.id)
-      expect(tracker.tracking_details.length).to be > 0
   end
 
   describe '#stamp' do

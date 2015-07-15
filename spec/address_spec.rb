@@ -11,10 +11,11 @@ describe EasyPost::Address do
   end
 
   describe '#verify' do
-    it 'verifies an address with message' do
-      address = EasyPost::Address.create(ADDRESS[:california].reject {|k,v| k == :street2})
+    it 'verifies an address with an error' do
+      address = EasyPost::Address.create(
+        ADDRESS[:california].reject {|k,v| k == :street2 || k == :company}
+      )
 
-      expect(address.company).to eq('EasyPost')
       expect(address.street1).to eq('164 Townsend Street')
       expect(address.city).to eq('San Francisco')
       expect(address.state).to eq('CA')
@@ -22,9 +23,9 @@ describe EasyPost::Address do
       expect(address.country).to eq('US')
       expect(address.street2).to be_nil
 
-      verified_address = address.verify()
-      expect(verified_address).to be_an_instance_of(EasyPost::Address)
-      expect(verified_address[:message].length).to be > 0
+      expect {
+        address.verify()
+      }.to raise_error EasyPost::Error, /Unable to verify addres/
     end
 
     it 'verifies an address without message' do
@@ -38,7 +39,7 @@ describe EasyPost::Address do
     end
 
     it 'verifies an address using fedex' do
-      address = EasyPost::Address.create(ADDRESS[:california].reject {|k,v| k == :street2})
+      address = EasyPost::Address.create(ADDRESS[:california])
 
       expect(address.company).to eq('EasyPost')
       expect(address.street1).to eq('164 Townsend Street')
@@ -46,11 +47,9 @@ describe EasyPost::Address do
       expect(address.state).to eq('CA')
       expect(address.zip).to eq('94107')
       expect(address.country).to eq('US')
-      expect(address.street2).to be_nil
 
       verified_address = address.verify(carrier: :fedex)
       expect(verified_address).to be_an_instance_of(EasyPost::Address)
-      expect(verified_address[:message].length).to be > 0
     end
 
     it 'is not able to verify address' do
@@ -63,7 +62,9 @@ describe EasyPost::Address do
         zip: '941abc07'
       )
 
-      expect { verified_address = address.verify() }.to raise_error(EasyPost::Error, /Unable to verify addres/)
+      expect {
+        address.verify()
+      }.to raise_error(EasyPost::Error, /Unable to verify addres/)
     end
   end
 end
