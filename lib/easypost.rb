@@ -21,6 +21,15 @@ require 'easypost/refund'
 require 'easypost/event'
 require 'easypost/batch'
 require 'easypost/tracker'
+require 'easypost/item'
+require 'easypost/container'
+require 'easypost/order'
+require 'easypost/pickup'
+require 'easypost/pickup_rate'
+require 'easypost/printer'
+require 'easypost/print_job'
+require 'easypost/carrier_account'
+require 'easypost/user'
 
 require 'easypost/error'
 
@@ -28,6 +37,8 @@ module EasyPost
   @@api_key = nil
   @@api_base = 'https://api.easypost.com/v2'
   @@api_version = nil
+  @@open_timeout = 30
+  @@timeout = 60
 
   def self.api_url(url='')
     @@api_base + url
@@ -57,11 +68,22 @@ module EasyPost
     @@api_version
   end
 
+  def self.http_config
+    @@http_config ||= {
+      timeout: 60,
+      open_timeout: 30,
+      verify_ssl: false,
+      ssl_version: "TLSv1",
+    }
+  end
+
+  def self.http_config=(http_config_params)
+    self.http_config.merge!(http_config_params)
+  end
+
   def self.request(method, url, api_key, params={}, headers={})
     api_key ||= @@api_key
     raise Error.new('No API key provided.') unless api_key
-
-    ssl_opts = { :verify_ssl => false }
 
     params = Util.objects_to_ids(params)
     url = self.api_url(url)
@@ -83,14 +105,14 @@ module EasyPost
       :content_type => 'application/x-www-form-urlencoded'
     }.merge(headers)
 
-    opts = {
-      :method => method,
-      :url => url,
-      :headers => headers,
-      :open_timeout => 30,
-      :payload => payload,
-      :timeout => 60
-    }.merge(ssl_opts)
+    opts = http_config.merge(
+      {
+        :method => method,
+        :url => url,
+        :headers => headers,
+        :payload => payload
+      }
+    )
 
     begin
       response = execute_request(opts)

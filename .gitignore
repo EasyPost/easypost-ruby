@@ -2,6 +2,7 @@
 *.rbc
 .bundle
 .config
+Gemfile.lock
 coverage
 InstalledFiles
 lib/bundler/man
@@ -25,3 +26,4 @@ Icon
 ._*
 .Spotlight-V100
 .Trashes
+vendor/

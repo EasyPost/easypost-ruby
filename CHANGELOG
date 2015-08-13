@@ -1,3 +1,48 @@
+=== 2.1.4 2015-06-03
+
+* Add Printer and PrintJob resources.
+
+
+=== 2.1.3 2015-04-30
+
+* Bux fix, EasyPost::Errors no longer break with a nil json body.
+
+
+=== 2.1.2 2015-04-29
+
+* EasyPost::Errors now correctly parse field errors and error codes.
+
+
+=== 2.1.1 2015-04-15
+
+* CarrierAccount will now correctly save in-place modifications to credentials
+* Nested variables should now be saved correctly across all models
+* Fixed version numbering confusion (the previous version was 2.0.15, not 2.1.0)
+
+
+=== 2.0.15 2015-04-15
+
+* Added tracker to shipment buy response
+* Updated tracker tests
+
+
+=== 2.0.14 2015-04-15
+
+* Added User and CarrierAccount models with CRUD functionality
+
+
+=== 2.0.13 2014-10-30
+
+* Added Pickup, PickupRate resources.
+* Added ability to pass api_key to a few resources that were missing it.
+
+
+=== 2.0.12 2014-07-07
+
+* Added Item, Container, and Order resources.
+* Fixed and added a lot of tests.
+
+
 === 2.0.11 2013-12-16
 
 * Added Event.receive method for parsing events sent by webhook.
