@@ -2,6 +2,10 @@ module EasyPost
   class Address < Resource
     attr_accessor :message # Backwards compatibility
 
+    def self.raise_verification_failure
+      raise Error.new("Unable to verify address.")
+    end
+
     def self.create_and_verify(params={}, carrier=nil, api_key=nil)
       wrapped_params = {}
       wrapped_params[self.class_name().to_sym] = params
@@ -23,20 +27,16 @@ module EasyPost
       begin
         response, api_key = EasyPost.request(:get, url + '/verify?carrier=' + String(carrier), @api_key, params)
       rescue
-        raise_verification_failure
+        self.class.raise_verification_failure
       end
 
       if response.has_key?(:address)
         return EasyPost::Util::convert_to_easypost_object(response[:address], api_key)
       else
-        raise_verification_failure
+        self.class.raise_verification_failure
       end
 
       return self
-    end
-
-    def raise_verification_failure
-      raise Error.new("Unable to verify address.")
     end
   end
 end
