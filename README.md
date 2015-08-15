@@ -48,7 +48,7 @@ from_address = EasyPost::Address.create(
 
 parcel = EasyPost::Parcel.create(
   :width => 15.2,
-  :length => 18, 
+  :length => 18,
   :height => 9.5,
   :weight => 35.1
 )
@@ -88,6 +88,23 @@ shipment.buy(
 puts shipment.postage_label.label_url
 
 ```
+
+Configuration
+-----------------
+
+### EasyPost.retry_count
+
+
+Defaults to 0.
+
+The number of times to retry timeouts connecting to server (503s)
+
+### EasyPost.retry_wait_time
+
+Defaults to 10 seconds.
+
+The number of seconds to sleep between each attempt to reach the server after a 503.
+
 
 Documentation
 --------------------
