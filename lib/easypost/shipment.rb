@@ -127,7 +127,7 @@ module EasyPost
         end
       end
 
-      raise Error.new('No rates found.') if lowest == nil
+      raise UserError.new('No rates found.') if lowest == nil
 
       return lowest
     end

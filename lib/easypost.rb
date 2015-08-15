@@ -101,7 +101,7 @@ module EasyPost
   
   def self.request(method, url, api_key, params={}, headers={})
     api_key ||= @@api_key
-    raise ClientError.new('No API key provided.') unless api_key
+    raise UserError.new('No API key provided.') unless api_key
 
     params = Util.objects_to_ids(params)
     url = self.api_url(url)

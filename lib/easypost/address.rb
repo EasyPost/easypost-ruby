@@ -36,7 +36,7 @@ module EasyPost
     end
 
     def raise_verification_failure
-      raise Error.new("Unable to verify address.")
+      raise UserError.new("Unable to verify address.")
     end
   end
 end
