@@ -39,7 +39,25 @@ module EasyPost
   @@api_version = nil
   @@open_timeout = 30
   @@timeout = 60
+  @@retry_count = 0
+  @@retry_wait_time = 10
+  
+  def self.retry_count
+    @@retry_count
+  end
 
+  def self.retry_count=(count)
+    @@retry_count = count
+  end
+
+  def self.retry_wait_time
+    @@retry_wait_time
+  end
+
+  def self.retry_wait_time= wait
+    @@retry_wait_time = wait
+  end
+  
   def self.api_url(url='')
     @@api_base + url
   end
@@ -80,10 +98,10 @@ module EasyPost
   def self.http_config=(http_config_params)
     self.http_config.merge!(http_config_params)
   end
-
+  
   def self.request(method, url, api_key, params={}, headers={})
     api_key ||= @@api_key
-    raise Error.new('No API key provided.') unless api_key
+    raise ClientError.new('No API key provided.') unless api_key
 
     params = Util.objects_to_ids(params)
     url = self.api_url(url)
@@ -117,13 +135,13 @@ module EasyPost
     begin
       response = execute_request(opts)
     rescue RestClient::ExceptionWithResponse => e
-      #sleep and retry if we hit a timeout from the server
+      
       if e.http_code == 503
-        puts "We've hit a 503"
-        @count ||= 20
+        
+        @count ||= EasyPost.retry_count || 0
         if @count > 0
           @count = @count - 1
-          sleep 10
+          sleep EasyPost.retry_wait_time || 1
           retry
         end
       end
@@ -132,25 +150,25 @@ module EasyPost
         begin
           response_json = MultiJson.load(response_body, :symbolize_keys => true)
         rescue MultiJson::DecodeError
-          raise Error.new("Invalid response from API, unable to decode.", response_code, response_body)
+          raise APIError.new("Invalid response from API, unable to decode.", response_code, response_body)
         end
         begin
           raise NoMethodError if response_json[:error][:message] == nil
-          raise Error.new(response_json[:error][:message], response_code, response_body, response_json)
+          raise APIError.new(response_json[:error][:message], response_code, response_body, response_json)
         rescue NoMethodError, TypeError
           raise Error.new(response_json[:error], response_code, response_body, response_json)
         end
       else
-        raise Error.new(e.message)
+        raise APIError.new(e.message)
       end
     rescue RestClient::Exception, Errno::ECONNREFUSED => e
-      raise Error.new(e.message)
+      raise APIError.new(e.message)
     end
 
     begin
       response_json = MultiJson.load(response.body, :symbolize_keys => true)
     rescue MultiJson::DecodeError
-      raise Error.new("Invalid response object from API, unable to decode.", response.code, response.body)
+      raise APIError.new("Invalid response object from API, unable to decode.", response.code, response.body)
     end
 
     return [response_json, api_key]

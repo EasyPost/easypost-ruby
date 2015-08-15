@@ -24,16 +24,25 @@ module EasyPost
     def to_s
       s = "#{@code} (#{@http_status}): #{@message}";
       if @errors
-          s += "\nField errors:\n"
-          @errors.each do |field_error|
-            field_error.each do |k, v|
-              s += "  #{k}: #{v}\n"
-            end
-            s += "\n"
+        s += "\nField errors:\n"
+        @errors.each do |field_error|
+          field_error.each do |k, v|
+            s += "  #{k}: #{v}\n"
           end
+          s += "\n"
+        end
       end
       s
     end
   end
+  
+  class APIError < Error
+    
+  end
+
+  class UserError < Error
+    
+  end
+  
 end
 
