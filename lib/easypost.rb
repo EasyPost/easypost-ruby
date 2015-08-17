@@ -154,7 +154,7 @@ module EasyPost
         end
         begin
           raise NoMethodError if response_json[:error][:message] == nil
-          raise APIError.new(response_json[:error][:message], response_code, response_body, response_json)
+          raise UserError.new(response_json[:error][:message], response_code, response_body, response_json)
         rescue NoMethodError, TypeError
           raise Error.new(response_json[:error], response_code, response_body, response_json)
         end
