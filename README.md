@@ -28,21 +28,21 @@ require 'easypost'
 EasyPost.api_key = 'cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi'
 
 to_address = EasyPost::Address.create(
-  :name => 'Sawyer Bateman',
-  :street1 => '1A Larkspur Cres.',
-  :city => 'St. Albert',
-  :state => 'AB',
-  :zip => 't8n2m4',
-  :country => 'CA',
-  :phone => '780-273-8374'
+  :name => 'Dr. Steve Brule',
+  :street1 => '179 N Harbor Dr',
+  :city => 'Redondo Beach',
+  :state => 'CA',
+  :zip => '90277',
+  :country => 'US',
+  :phone => '310-808-5243'
 )
 from_address = EasyPost::Address.create(
-  :company => 'Simpler Postage Inc',
-  :street1 => '388 Townsend Street',
-  :street2 => 'Apt 20',
+  :company => 'EasyPost',
+  :street1 => '118 2nd Street',
+  :street2 => '4th Floor',
   :city => 'San Francisco',
   :state => 'CA',
-  :zip => '94107',
+  :zip => '94105',
   :phone => '415-456-7890'
 )
 
