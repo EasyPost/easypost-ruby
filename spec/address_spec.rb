@@ -6,7 +6,7 @@ describe EasyPost::Address do
       it "should raise an error" do
         expect(EasyPost).to receive(:request).and_return([{}, ""])
         expect {
-          EasyPost::Address.create_and_verify(ADDRESS[:california])
+          EasyPost::Address.create_and_verify(ADDRESS[:canada_no_phone])
         }.to raise_error EasyPost::Error, /Unable to verify addres/
       end
     end
@@ -76,6 +76,46 @@ describe EasyPost::Address do
       expect {
         address.verify()
       }.to raise_error(EasyPost::Error, /Unable to verify addres/)
+    end
+
+    it 'requires street1 field' do
+      address = EasyPost::Address.create(
+        ADDRESS[:california].reject {|k,v| k == :street1 }
+      )
+
+      begin
+        address.verify()
+      rescue => e
+        expect(e.message).to match /Unable to verify addres/
+        expect(e.errors[:street1]).to match /can't be empty/
+      end
+    end
+
+    it 'requires city and state when zip is empty' do
+      address = EasyPost::Address.create(
+        ADDRESS[:california].reject {|k,v| [:city, :state, :zip].include? k  }
+      )
+
+      begin
+        address.verify()
+      rescue => e
+        expect(e.message).to match /Unable to verify addres/
+        expect(e.errors[:city]).to match /can't be empty/
+        expect(e.errors[:state]).to match /can't be empty/
+      end
+    end
+
+    it 'requires country field' do
+      address = EasyPost::Address.create(
+        ADDRESS[:california].reject {|k,v| k == :country }
+      )
+
+      begin
+        address.verify()
+      rescue => e
+        expect(e.message).to match /Unable to verify addres/
+        expect(e.errors[:country]).to match /can't be empty/
+      end
     end
   end
 end
