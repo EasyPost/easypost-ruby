@@ -1,3 +1,24 @@
+=== 2.1.8 2015-10-21
+
+* Added Cancel method for Pickups (thanks Ramie Blatt!)
+
+
+=== 2.1.7 2015-10-05
+
+* Fixed Address.create_and_verify and changed how errors are raised (thanks Dimitri Roche!)
+* Require newer version of the multi_json package
+
+
+=== 2.1.6 2015-06-10
+
+* Added Address message accessor for backwards compatability
+
+
+=== 2.1.5 2015-06-10
+
+* Removed Address.message
+
+
 === 2.1.4 2015-06-03
 
 * Add Printer and PrintJob resources.

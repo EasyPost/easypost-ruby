@@ -3,13 +3,16 @@ require 'spec_helper'
 describe EasyPost::Pickup do
   before { EasyPost.api_key = "cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi" }
 
+  let(:shipment) do
+    shipment = EasyPost::Shipment.create(
+      to_address: ADDRESS[:california],
+      from_address: ADDRESS[:missouri],
+      parcel: PARCEL[:dimensions]
+    )
+  end
+
   describe '#create' do
     it 'creates a pickup and returns rates' do
-      shipment = EasyPost::Shipment.create(
-        to_address: ADDRESS[:california],
-        from_address: ADDRESS[:missouri],
-        parcel: PARCEL[:dimensions]
-      )
       shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
       pickup = EasyPost::Pickup.create(
         address: ADDRESS[:missouri],
@@ -26,11 +29,6 @@ describe EasyPost::Pickup do
     end
 
     it 'fails to create a pickup' do
-      shipment = EasyPost::Shipment.create(
-        to_address: ADDRESS[:california],
-        from_address: ADDRESS[:missouri],
-        parcel: PARCEL[:dimensions]
-      )
       shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
       expect { pickup = EasyPost::Pickup.create(
         address: ADDRESS[:california],
@@ -45,11 +43,6 @@ describe EasyPost::Pickup do
 
   describe '#buy' do
     it 'buys a pickup rate' do
-      shipment = EasyPost::Shipment.create(
-        to_address: ADDRESS[:california],
-        from_address: ADDRESS[:missouri],
-        parcel: PARCEL[:dimensions]
-      )
       shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
       pickup = EasyPost::Pickup.create(
         address: ADDRESS[:california],
@@ -63,6 +56,28 @@ describe EasyPost::Pickup do
       pickup.buy(pickup.pickup_rates.first)
 
       expect(pickup.confirmation).not_to be_empty
+    end
+  end
+
+  describe '#cancel' do
+    it 'cancels a pickup' do
+      shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
+      pickup = EasyPost::Pickup.create(
+        address: ADDRESS[:california],
+        reference: "buy12345678",
+        min_datetime: DateTime.now(),
+        max_datetime: DateTime.now() + 14400,
+        is_account_address: false,
+        instructions: "",
+        shipment: shipment
+      )
+      pickup.buy(pickup.pickup_rates.first)
+
+      expect(pickup.status).to eq("scheduled")
+
+      pickup.cancel
+
+      expect(pickup.status).to eq("canceled")
     end
   end
 end

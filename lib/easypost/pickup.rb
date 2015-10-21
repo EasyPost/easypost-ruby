@@ -21,6 +21,5 @@ module EasyPost
 
       return self
     end
-
   end
 end
