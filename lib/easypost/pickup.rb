@@ -15,5 +15,12 @@ module EasyPost
       return self
     end
 
+    def cancel(params={})
+      response, api_key = EasyPost.request(:post, url + '/cancel', @api_key, params)
+      self.refresh_from(response, @api_key, true)
+
+      return self
+    end
+
   end
 end
