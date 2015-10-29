@@ -63,6 +63,25 @@ describe EasyPost::Shipment do
       expect(tracker.shipment_id).to eq(shipment.id)
   end
 
+  describe '#insure' do
+    it 'buys and insures a shipments' do
+      shipment = EasyPost::Shipment.create(
+        :to_address   => ADDRESS[:missouri],
+        :from_address => ADDRESS[:california],
+        :parcel       => PARCEL[:dimensions]
+      )
+      expect(shipment).to be_an_instance_of(EasyPost::Shipment)
+
+      shipment.buy(
+        :rate => shipment.lowest_rate("usps")
+      )
+
+      shipment.insure(amount: 100)
+
+      expect(shipment.insurance).to eq("100.00")
+    end
+  end
+
   describe '#stamp' do
     it 'returns a stamp for a domestic shipment' do
       shipment = EasyPost::Shipment.create(
@@ -116,6 +135,15 @@ describe EasyPost::Shipment do
 
         expect(rate.service).to eql('ParcelSelect')
       end
+    end
+  end
+
+  describe '#retrieve' do
+    it 'retrieves shipment by tracking_code and correctly sets ID field (this was a bug in python)' do
+      tracking_code = "LN123456789US"
+      shipment = EasyPost::Shipment.retrieve(tracking_code)
+
+      expect(shipment.id).not_to eq(tracking_code)
     end
   end
 end

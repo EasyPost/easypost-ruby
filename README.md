@@ -48,7 +48,7 @@ from_address = EasyPost::Address.create(
 
 parcel = EasyPost::Parcel.create(
   :width => 15.2,
-  :length => 18, 
+  :length => 18,
   :height => 9.5,
   :weight => 35.1
 )
@@ -84,6 +84,10 @@ shipment = EasyPost::Shipment.create(
 shipment.buy(
   :rate => shipment.lowest_rate
 )
+
+shipment.insure(amount: 100)
+
+puts shipment.insurance
 
 puts shipment.postage_label.label_url
 
