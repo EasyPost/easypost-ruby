@@ -1,3 +1,10 @@
+=== 2.1.10 2015-12-23
+
+* Added verify and verify_strict params to Address.create
+* Added Tracker.create_list and Tracker.all_updated for working with large 
+numbers of Trackers.
+
+
 === 2.1.9 2015-11-04
 
 * Added new tests for Tracker.all
