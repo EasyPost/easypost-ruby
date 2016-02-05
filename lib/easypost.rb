@@ -81,9 +81,11 @@ module EasyPost
     self.http_config.merge!(http_config_params)
   end
 
-  def self.request(method, url, api_key, params={}, headers={})
+  def self.request(method, url, api_key, params={}, headers={}, api_key_required=true)
     api_key ||= @@api_key
-    raise Error.new('No API key provided.') unless api_key
+    if api_key_required
+      raise Error.new('No API key provided.') unless api_key
+    end
 
     params = Util.objects_to_ids(params)
     url = self.api_url(url)
