@@ -5,6 +5,22 @@ describe EasyPost::User do
     EasyPost.api_key = "PRODUCTION API KEY"
   end
 
+  # This test requires APIKEY to be nil
+  # it 'creates a new user' do
+  #   EasyPost.api_key = nil
+
+  #   user = EasyPost::User.create({
+  #     name: "Chad Vader",
+  #     email: 'c.vader3@example.com',
+  #     password: "4theempire",
+  #     password_confirmation: "4theempire",
+  #     phone_number: '555-123-4321'
+  #   })
+
+  #   expect(user.id).not_to be_nil
+  # end
+
+
   # Uncomment these tests to test CRUD operations on the User model
   # Note: You must provide a Production Api Key in order to run these tests
 

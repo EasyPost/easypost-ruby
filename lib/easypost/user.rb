@@ -1,5 +1,12 @@
 module EasyPost
   class User < Resource
+    def self.create(params={}, api_key=nil)
+      wrapped_params = {}
+      wrapped_params[self.class_name().to_sym] = params
+      response, api_key = EasyPost.request(:post, self.url, api_key, wrapped_params, {}, false)
+      return Util.convert_to_easypost_object(response, api_key)
+    end
+
     def save
       if @unsaved_values.length > 0
         values = {}

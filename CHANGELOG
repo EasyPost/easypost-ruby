@@ -1,7 +1,12 @@
+=== 2.1.11 2016-02-04
+
+* Allowed user creation for top-level users
+
+
 === 2.1.10 2015-12-23
 
 * Added verify and verify_strict params to Address.create
-* Added Tracker.create_list and Tracker.all_updated for working with large 
+* Added Tracker.create_list and Tracker.all_updated for working with large
 numbers of Trackers.
 
 
