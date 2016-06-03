@@ -48,13 +48,13 @@ describe EasyPost::Tracker do
         carrier: carrier
       })
 
-      trackers = EasyPost::Tracker.all(start_datetime: datetime)
+      trackers = EasyPost::Tracker.all(start_datetime: datetime, tracking_code: tracking_code)
 
       expect(trackers["trackers"].count).to eq(1)
       expect(trackers["trackers"].first.id).to eq(tracker.id)
       expect(trackers["has_more"]).to eq(false)
 
-      trackers = EasyPost::Tracker.all(end_datetime: datetime)
+      trackers = EasyPost::Tracker.all(end_datetime: datetime, tracking_code: tracking_code)
 
       expect(trackers["trackers"].count).to eq(30)
       trackers["trackers"].each do |trk|
@@ -74,14 +74,14 @@ describe EasyPost::Tracker do
         carrier: carrier
       })
 
-      trackers = EasyPost::Tracker.all(after_id: tracker.id)
+      trackers = EasyPost::Tracker.all(after_id: tracker.id, tracking_code: tracking_code)
 
       expect(trackers["trackers"].count).to eq(1)
       expect(trackers["trackers"].first.id).to eq(tracker2.id)
       expect(trackers["trackers"].first.id).not_to eq(tracker.id)
       expect(trackers["has_more"]).to eq(false)
 
-      trackers = EasyPost::Tracker.all(before_id: tracker.id)
+      trackers = EasyPost::Tracker.all(before_id: tracker.id, tracking_code: tracking_code)
 
       expect(trackers["trackers"].count).to eq(30)
       trackers["trackers"].each do |trk|
