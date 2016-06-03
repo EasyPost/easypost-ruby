@@ -24,15 +24,15 @@ describe EasyPost::Address do
   describe '#verify' do
     it 'verifies an address with an error' do
       address = EasyPost::Address.create(
-        ADDRESS[:california].reject {|k,v| k == :street2 || k == :company}
+        ADDRESS[:california].reject {|k,v| k == :street1 || k == :company}
       )
 
-      expect(address.street1).to eq('164 Townsend Street')
+      expect(address.street1).to be_nil
+      expect(address.street2).to eq('Unit 1')
       expect(address.city).to eq('San Francisco')
       expect(address.state).to eq('CA')
       expect(address.zip).to eq('94107')
       expect(address.country).to eq('US')
-      expect(address.street2).to be_nil
 
       expect {
         address.verify()
@@ -49,7 +49,7 @@ describe EasyPost::Address do
       expect(verified_address[:message]).to be_nil
     end
 
-    it 'verifies an address using fedex' do
+    it 'verifies an address using a carrier' do
       address = EasyPost::Address.create(ADDRESS[:california])
 
       expect(address.company).to eq('EasyPost')
@@ -59,7 +59,7 @@ describe EasyPost::Address do
       expect(address.zip).to eq('94107')
       expect(address.country).to eq('US')
 
-      verified_address = address.verify(carrier: :fedex)
+      verified_address = address.verify(carrier: :usps)
       expect(verified_address).to be_an_instance_of(EasyPost::Address)
     end
 
