@@ -16,7 +16,8 @@ module EasyPost
     end
 
     def self.convert_to_easypost_object(response, api_key, parent=nil, name=nil)
-      types = { 'Address' => Address,
+      types = {
+        'Address' => Address,
         'ScanForm' => ScanForm,
         'CustomsItem' => CustomsItem,
         'CustomsInfo' => CustomsInfo,
@@ -28,6 +29,7 @@ module EasyPost
         'Batch' => Batch,
         'Tracker' => Tracker,
         'Item' => Item,
+        'Insurance' => Insurance,
         'Container' => Container,
         'Order' => Order,
         'Pickup' => Pickup,
@@ -36,9 +38,11 @@ module EasyPost
         'Printer' => Printer,
         'PrintJob' => PrintJob,
         'CarrierAccount' => CarrierAccount,
-        'User' => User }
+        'User' => User
+      }
 
-      prefixes = { 'adr' => Address,
+      prefixes = {
+        'adr' => Address,
         'sf' => ScanForm,
         'cstitem' => CustomsItem,
         'cstinfo' => CustomsInfo,
@@ -50,6 +54,7 @@ module EasyPost
         'batch' => Batch,
         'trk' => Tracker,
         'item' => Item,
+        'ins' => Insurance,
         'container' => Container,
         'order' => Order,
         'pickup' => Pickup,
@@ -58,7 +63,8 @@ module EasyPost
         'printer' => Printer,
         'printjob' => PrintJob,
         'ca' => CarrierAccount,
-        'user' => User }
+        'user' => User
+      }
 
       case response
       when Array
