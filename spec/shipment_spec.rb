@@ -45,22 +45,42 @@ describe EasyPost::Shipment do
       )
       expect(shipment.postage_label.label_url.length).to be > 0
     end
-  end
 
-  it 'creates and returns a tracker with shipment purchase' do
-      shipment = EasyPost::Shipment.create(
-        :to_address   => ADDRESS[:missouri],
-        :from_address => ADDRESS[:california],
-        :parcel       => PARCEL[:dimensions]
-      )
-      expect(shipment).to be_an_instance_of(EasyPost::Shipment)
+    it 'creates and returns a tracker with shipment purchase' do
+        shipment = EasyPost::Shipment.create(
+          :to_address   => ADDRESS[:missouri],
+          :from_address => ADDRESS[:california],
+          :parcel       => PARCEL[:dimensions]
+        )
+        expect(shipment).to be_an_instance_of(EasyPost::Shipment)
 
-      shipment.buy(
-        :rate => shipment.lowest_rate("usps")
-      )
+        shipment.buy(
+          :rate => shipment.lowest_rate("usps")
+        )
 
-      tracker = shipment.tracker
-      expect(tracker.shipment_id).to eq(shipment.id)
+        tracker = shipment.tracker
+        expect(tracker.shipment_id).to eq(shipment.id)
+    end
+
+    it 'purchases postage when only a rate id is provided' do
+        shipment = EasyPost::Shipment.create(
+          :to_address   => ADDRESS[:missouri],
+          :from_address => ADDRESS[:california],
+          :parcel       => PARCEL[:dimensions]
+        )
+        expect(shipment).to be_an_instance_of(EasyPost::Shipment)
+
+        rate = shipment.rates.first
+        rate_hash = {id: rate.id}
+
+        shipment.buy(
+          :rate => rate_hash
+        )
+
+        expect(shipment.postage_label.label_url.length).to be > 0
+        tracker = shipment.tracker
+        expect(tracker.shipment_id).to eq(shipment.id)
+    end
   end
 
   describe '#insure' do
