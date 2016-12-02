@@ -31,6 +31,10 @@ require 'easypost/printer'
 require 'easypost/print_job'
 require 'easypost/carrier_account'
 require 'easypost/user'
+require 'easypost/report'
+require 'easypost/shipment_report'
+require 'easypost/payment_log_report'
+require 'easypost/tracker_report'
 
 require 'easypost/error'
 
