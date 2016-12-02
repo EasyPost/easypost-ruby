@@ -56,14 +56,14 @@ describe EasyPost::Report do
       describe '#all' do
         it 'retrieves all user created reports' do
           report_1 = EasyPost::Report.create(
-            start_date: Date.today - 30,
-            end_date: Date.today,
+            start_date: '2013-03-20',
+            end_date: '2013-04-20',
             type: type
           )
 
           report_2 = EasyPost::Report.create(
-            start_date: '2015-01-20' ,
-            end_date: '2015-02-20' ,
+            start_date: '2013-01-20',
+            end_date: '2013-02-20',
             type: type
           )
           reports = EasyPost::Report.all(type: type)
