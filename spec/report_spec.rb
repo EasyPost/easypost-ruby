@@ -28,14 +28,6 @@ describe EasyPost::Report do
           # will switch that test on when tracker status is deployed
           # expect(report.status).to eq 'available'
         end
-
-        it 'fails to create a report object' do
-          expect { EasyPost::Report.create(
-            start_date: Date.today - 30,
-            end_date: Date.today,
-            type: 'foobar'
-          ) }.to raise_exception(EasyPost::Error)
-        end
       end
 
       describe '#retrieve' do
@@ -71,6 +63,15 @@ describe EasyPost::Report do
           expect(reports.count).to eq 2
         end
       end
+    end
+  end
+
+  it 'fails to create a report object' do
+      expect { EasyPost::Report.create(
+        start_date: Date.today - 30,
+        end_date: Date.today,
+        type: 'foobar'
+      ) }.to raise_exception(EasyPost::Error)
     end
   end
 end

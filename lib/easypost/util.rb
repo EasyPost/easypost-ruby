@@ -42,7 +42,7 @@ module EasyPost
         'Report' => Report,
         'ShipmentReport' => ShipmentReport,
         'PaymentLogReport' => PaymentLogReport,
-        'TrakerReport' => TrackerReport
+        'TrackerReport' => TrackerReport
       }
 
       prefixes = {

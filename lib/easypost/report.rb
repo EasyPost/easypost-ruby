@@ -35,7 +35,7 @@ module EasyPost
       if report_types.include?(filters[:type].to_s)
         url += "/#{filters[:type]}"
       else
-        raise Error.new("Undertermined Report Type")
+        raise Error.new("Undertemined Report Type")
       end
 
       response, api_key = EasyPost.request(:get, url, api_key, filters)
