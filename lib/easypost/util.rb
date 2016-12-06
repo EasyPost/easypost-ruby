@@ -39,7 +39,6 @@ module EasyPost
         'PrintJob' => PrintJob,
         'CarrierAccount' => CarrierAccount,
         'User' => User,
-        'Report' => Report,
         'ShipmentReport' => ShipmentReport,
         'PaymentLogReport' => PaymentLogReport,
         'TrackerReport' => TrackerReport

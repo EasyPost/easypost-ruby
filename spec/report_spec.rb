@@ -4,7 +4,7 @@ describe EasyPost::Report do
   [:shipment, :tracker, :payment_log].each do |report_type|
     context "report" do
       let(:type) { report_type }
-      let(:type_factory) {
+      let(:type_name) {
         case type
         when :shipment
           "ShipmentReport"
@@ -24,7 +24,7 @@ describe EasyPost::Report do
                                            end_date: Date.today,
                                            type: type
                                            )
-          expect(report.object).to eq type_factory
+          expect(report.object).to eq type_name
           # will switch that test on when tracker status is deployed
           # expect(report.status).to eq 'available'
         end
@@ -37,10 +37,10 @@ describe EasyPost::Report do
                                              end_date: Date.today,
                                              type: type
                                              )
-          report_2 = EasyPost::Report.retrieve(public_id: report_1.id)
+          report_2 = EasyPost::Report.retrieve(id: report_1.id)
 
-          expect(report_1.object).to eq type_factory
-          expect(report_2.object).to eq type_factory
+          expect(report_1.object).to eq type_name
+          expect(report_2.object).to eq type_name
           expect(report_2.id).to eq(report_1.id)
         end
       end
@@ -49,13 +49,13 @@ describe EasyPost::Report do
         it 'retrieves all user created reports' do
           report_1 = EasyPost::Report.create(
                                              start_date: Date.today - 25,
-                                             end_date: Date.today - 1,
+                                             end_date: Date.today,
                                              type: type
                                              )
 
           report_2 = EasyPost::Report.create(
                                              start_date: Date.today - 29,
-                                             end_date: Date.today - 2,
+                                             end_date: Date.today,
                                              type: type
                                              )
           reports = EasyPost::Report.all(type: type)
