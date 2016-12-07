@@ -64,8 +64,8 @@ describe EasyPost::User do
   #     api_keys = EasyPost::User.all_api_keys
 
   #     my_keys = api_keys.keys
-  #     expect(my_keys.first.mode).to eq("production")
-  #     expect(my_keys.last.mode).to eq("test")
+  #     expect(my_keys.first.mode).to eq("test")
+  #     expect(my_keys.last.mode).to eq("production")
 
   #     me = EasyPost::User.retrieve_me
   #     children_count = me.children.count
