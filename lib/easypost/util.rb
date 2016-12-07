@@ -39,9 +39,7 @@ module EasyPost
         'PrintJob' => PrintJob,
         'CarrierAccount' => CarrierAccount,
         'User' => User,
-        'ShipmentReport' => ShipmentReport,
-        'PaymentLogReport' => PaymentLogReport,
-        'TrackerReport' => TrackerReport
+        'Report' => Report
       }
 
       prefixes = {
@@ -67,9 +65,6 @@ module EasyPost
         'printjob' => PrintJob,
         'ca' => CarrierAccount,
         'user' => User,
-        'shrep' => ShipmentReport,
-        'plrep' => PaymentLogReport,
-        'trkrep' => TrackerReport
       }
 
       case response
