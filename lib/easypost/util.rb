@@ -38,7 +38,8 @@ module EasyPost
         'Printer' => Printer,
         'PrintJob' => PrintJob,
         'CarrierAccount' => CarrierAccount,
-        'User' => User
+        'User' => User,
+        'Report' => Report
       }
 
       prefixes = {
@@ -63,7 +64,7 @@ module EasyPost
         'printer' => Printer,
         'printjob' => PrintJob,
         'ca' => CarrierAccount,
-        'user' => User
+        'user' => User,
       }
 
       case response
