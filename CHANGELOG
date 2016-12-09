@@ -1,3 +1,7 @@
+=== 2.4.0 2016-12-08
+
+* Add report resource to ruby client
+
 === 2.3.0 2016-11-25
 
 * Updated dependencies to allow rest-client 2.0.0 and above
