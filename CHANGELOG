@@ -1,3 +1,7 @@
+=== 2.5.0 2016-12-19
+
+* Add prefixes to report in utils
+
 === 2.4.0 2016-12-08
 
 * Add report resource to ruby client
