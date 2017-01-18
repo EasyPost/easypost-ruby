@@ -42,7 +42,8 @@ module EasyPost
         'Report' => Report,
         'ShipmentReport' => Report,
         'PaymentLogReport' => Report,
-        'TrackerReport' => Report
+        'TrackerReport' => Report,
+        'Webhook' => Webhook
       }
 
       prefixes = {
@@ -70,7 +71,8 @@ module EasyPost
         'user' => User,
         'shprep' => Report,
         'plrep' => Report,
-        'trkrep' => Report
+        'trkrep' => Report,
+        'hook' => Webhook
       }
 
       case response
