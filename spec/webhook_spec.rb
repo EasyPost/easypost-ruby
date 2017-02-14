@@ -34,7 +34,7 @@ describe EasyPost::Webhook do
     describe '#index' do
       it 'indexes with the recently created webhook as the last one' do
         webhook
-        webhooks = EasyPost::Webhook.all({})
+        webhooks = EasyPost::Webhook.all()
 
         hook = webhooks["webhooks"].last
 
@@ -48,7 +48,7 @@ describe EasyPost::Webhook do
 
     describe '#retrieve' do
       it 'retrieves' do
-        hook = webhook.update({})
+        hook = webhook.update()
 
         expect(hook.id).to           eq(webhook.id)
         expect(hook.url).to          eq(url)
