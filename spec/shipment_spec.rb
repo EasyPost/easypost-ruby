@@ -16,34 +16,52 @@ describe EasyPost::Shipment do
   end
 
   describe '#buy' do
-    it 'purchases postage for an international shipment' do
+    context 'with valid attributes' do
+      it 'purchases postage for an international shipment' do
 
-      shipment = EasyPost::Shipment.create(
-        to_address: EasyPost::Address.create(ADDRESS[:canada]),
-        from_address: ADDRESS[:california],
-        parcel: EasyPost::Parcel.create(PARCEL[:dimensions]),
-        customs_info: EasyPost::CustomsInfo.create(CUSTOMS_INFO[:shirt])
-      )
-      expect(shipment).to be_an_instance_of(EasyPost::Shipment)
+        shipment = EasyPost::Shipment.create(
+          to_address: EasyPost::Address.create(ADDRESS[:canada]),
+          from_address: ADDRESS[:california],
+          parcel: EasyPost::Parcel.create(PARCEL[:dimensions]),
+          customs_info: EasyPost::CustomsInfo.create(CUSTOMS_INFO[:shirt])
+        )
+        expect(shipment).to be_an_instance_of(EasyPost::Shipment)
 
-      shipment.buy(
-        rate: shipment.lowest_rate("usps")
-      )
-      expect(shipment.postage_label.label_url.length).to be > 0
+        shipment.buy(
+          rate: shipment.lowest_rate("usps")
+        )
+        expect(shipment.postage_label.label_url.length).to be > 0
+      end
+
+      it 'purchases postage for a domestic shipment' do
+        shipment = EasyPost::Shipment.create(
+          to_address: EasyPost::Address.create(ADDRESS[:missouri]),
+          from_address: ADDRESS[:california],
+          parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
+        )
+        expect(shipment).to be_an_instance_of(EasyPost::Shipment)
+
+        shipment.buy(
+          rate: shipment.lowest_rate("usps")
+        )
+        expect(shipment.postage_label.label_url.length).to be > 0
+      end
     end
 
-    it 'purchases postage for a domestic shipment' do
-      shipment = EasyPost::Shipment.create(
-        to_address: EasyPost::Address.create(ADDRESS[:missouri]),
-        from_address: ADDRESS[:california],
-        parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
-      )
-      expect(shipment).to be_an_instance_of(EasyPost::Shipment)
+    context 'with invalid from address' do
+      let(:invalid_from_address) { ADDRESS[:california].clone.tap { |addr| addr[:phone] = '33' } }
 
-      shipment.buy(
-        rate: shipment.lowest_rate("usps")
-      )
-      expect(shipment.postage_label.label_url.length).to be > 0
+      it 'throws error', k: true do
+        shipment = EasyPost::Shipment.create(
+            to_address: EasyPost::Address.create(ADDRESS[:canada]),
+            from_address: invalid_from_address,
+            parcel: EasyPost::Parcel.create(PARCEL[:dimensions]),
+            customs_info: EasyPost::CustomsInfo.create(CUSTOMS_INFO[:shirt])
+        )
+
+        expect { shipment.buy(rate: shipment.lowest_rate("usps")) }.
+            to raise_error(EasyPost::Error)
+      end
     end
 
     it 'creates and returns a tracker with shipment purchase' do
