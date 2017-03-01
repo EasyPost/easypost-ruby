@@ -1,6 +1,13 @@
 module EasyPost
   class Order < Resource
 
+    def get_rates(params={})
+      response, api_key = EasyPost.request(:get, url + '/rates', @api_key, params)
+      self.refresh_from(response, @api_key, true)
+
+      return self
+    end
+
     def buy(params={})
       if params.instance_of?(EasyPost::Rate)
         temp = params.clone
