@@ -1,6 +1,7 @@
 # EasyPost Ruby Client Library
 
 [<img src="https://circleci.com/gh/EasyPost/easypost-ruby.png?circle-token=80adb5236ed1fdce20810b055af79c63c3d5796b">](https://circleci.com/gh/EasyPost/easypost-ruby)
+[![API Testing](https://img.shields.io/badge/API%20Test-RapidAPI-blue.svg)](https://rapidapi.com/package/EasyPostTracking/functions?utm_source=EasyPostGithub&utm_medium=button&utm_content=Vender_GitHub)
 
 
 EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com
