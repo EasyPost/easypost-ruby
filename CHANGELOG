@@ -1,3 +1,7 @@
+=== 2.7.0 2017-04-04
+
+* Changed Report CRUD signatures. requires report type to be passed
+
 === 2.6.2 2017-02-14
 
 * Added get_rates method for Orders
