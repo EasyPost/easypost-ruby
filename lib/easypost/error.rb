@@ -14,9 +14,9 @@ module EasyPost
       @http_body = http_body
       @json_body = json_body
 
-      @param = @json_body.fetch(:error, {}).fetch(:param, nil)
-      @code = @json_body.fetch(:error, {}).fetch(:code, nil)
-      @errors = @json_body.fetch(:error, {}).fetch(:errors, nil)
+      @param = @json_body.fetch(:error, {}).fetch(:param, nil) rescue nil
+      @code = @json_body.fetch(:error, {}).fetch(:code, nil) rescue nil
+      @errors = @json_body.fetch(:error, {}).fetch(:errors, nil) rescue nil
 
       super(message)
     end
