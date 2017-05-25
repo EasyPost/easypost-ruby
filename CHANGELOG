@@ -1,26 +1,37 @@
+=== 2.7.1 2017-05-25
+
+* Allow reports to be retrieved without passing a type
+
+
 === 2.7.0 2017-04-04
 
 * Changed Report CRUD signatures. requires report type to be passed
+
 
 === 2.6.2 2017-02-14
 
 * Added get_rates method for Orders
 
+
 === 2.6.1 2017-01-19
 
 * Updated create method for ScanForms
+
 
 === 2.6.0 2017-01-17
 
 * Add basic CRUD methods for Webhooks
 
+
 === 2.5.0 2016-12-19
 
 * Add prefixes to report in utils
 
+
 === 2.4.0 2016-12-08
 
 * Add report resource to ruby client
+
 
 === 2.3.0 2016-11-25
 

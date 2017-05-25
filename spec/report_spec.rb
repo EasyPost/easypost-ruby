@@ -15,13 +15,24 @@ describe EasyPost::Report do
   end
 
   describe '#retrieve' do
-    it 'retrieves a user created report by public_id' do
+    it 'retrieves a user created report by public_id as a hash' do
       report_1 = EasyPost::Report.create(
                                          start_date: Date.today - 30,
                                          end_date: Date.today,
                                          type: TYPE
                                          )
-      report_2 = EasyPost::Report.retrieve(type: TYPE, id: report_1.id)
+      report_2 = EasyPost::Report.retrieve(id: report_1.id)
+
+      expect(report_2.id).to eq(report_1.id)
+    end
+
+    it 'retrieves a user created report by public_id as a string' do
+      report_1 = EasyPost::Report.create(
+                                         start_date: Date.today - 30,
+                                         end_date: Date.today,
+                                         type: TYPE
+                                         )
+      report_2 = EasyPost::Report.retrieve(report_1.id)
 
       expect(report_2.id).to eq(report_1.id)
     end

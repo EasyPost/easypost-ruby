@@ -10,11 +10,15 @@ module EasyPost
     end
 
     def self.retrieve(params, api_key=nil)
-      url = "#{self.url}/#{params[:type]}/#{params[:id]}"
-      obj_id = params[:id].split("_")[0]
+      id = if params.is_a?(String)
+        params
+      else
+        params[:id]
+      end
 
-      response, api_key = EasyPost.request(:get, url, api_key, params)
-      return EasyPost::Util::convert_to_easypost_object(response, api_key) if response
+      instance = self.new(id, api_key)
+      instance.refresh
+      return instance
     end
 
     def self.all(filters={}, api_key=nil)
