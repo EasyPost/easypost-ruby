@@ -1,3 +1,8 @@
+=== 2.7.2 2017-06-08
+
+* Added lowest_rate method for Orders
+
+
 === 2.7.1 2017-05-25
 
 * Allow reports to be retrieved without passing a type

@@ -1,7 +1,6 @@
 module EasyPost
-  print("module loaded")
   class Order < Resource
-     print("I'm being loaded")
+
     def get_rates(params={})
       response, api_key = EasyPost.request(:get, url + '/rates', @api_key, params)
       self.refresh_from(response, @api_key, true)
@@ -20,11 +19,6 @@ module EasyPost
       response, api_key = EasyPost.request(:post, url + '/buy', @api_key, params)
       self.refresh_from(response, @api_key, true)
 
-      return self
-    end
-
-    def hello_world
-      print("in here\n")
       return self
     end
 
@@ -86,9 +80,6 @@ module EasyPost
 
       return lowest
     end
-
-  end
-end
 
   end
 end

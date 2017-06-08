@@ -1,6 +1,22 @@
 require 'spec_helper'
 
 describe EasyPost::Order do
+  describe '#lowest_rate' do
+    it 'gets lowest rate' do
+      order = EasyPost::Order.create(
+        to_address: ADDRESS[:california],
+        from_address: ADDRESS[:missouri],
+        shipments: [{
+          parcel: {length: 8, width: 6, height: 4, weight: 12}
+        }]
+      )
+
+      rate = order.lowest_rate('!UPS')
+      expect(rate).not_to be_nil
+      expect(rate.service).not_to eq('NextDayAir')
+      expect(rate.service).not_to eq('Express')
+    end
+  end
   describe '#get_rates' do
     it 'refreshes rates' do
       order = EasyPost::Order.create(
