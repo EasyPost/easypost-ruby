@@ -33,6 +33,7 @@ require 'easypost/carrier_account'
 require 'easypost/user'
 require 'easypost/report'
 require 'easypost/webhook'
+require 'easypost/rating'
 
 require 'easypost/error'
 
@@ -85,6 +86,7 @@ module EasyPost
   end
 
   def self.request(method, url, api_key, params={}, headers={}, api_key_required=true)
+    isRating = false
     api_key ||= @@api_key
     if api_key_required
       raise Error.new('No API key provided.') unless api_key
@@ -92,6 +94,11 @@ module EasyPost
 
     params = Util.objects_to_ids(params)
     url = self.api_url(url)
+    if url[-15..-1] == "rating/v1/rates"
+      url = "https://api.easypost.com/rating/v1/rates"
+      isRating = true
+    end
+    
     case method.to_s.downcase.to_sym
     when :get, :head, :delete
       # Make params into GET parameters
@@ -100,8 +107,12 @@ module EasyPost
         url += "#{URI.parse(url).query ? '&' : '?'}#{query_string}"
       end
       payload = nil
-    else
-      payload = Util.flatten_params(params).collect{|(key, value)| "#{key}=#{Util.url_encode(value)}"}.join('&')
+    else 
+      if isRating == false
+        payload = Util.flatten_params(params).collect{|(key, value)| "#{key}=#{Util.url_encode(value)}"}.join('&')
+      else
+        payload = params
+      end 
     end
 
     headers = {
@@ -118,7 +129,6 @@ module EasyPost
         :payload => payload
       }
     )
-
     begin
       response = execute_request(opts)
     rescue RestClient::ExceptionWithResponse => e
