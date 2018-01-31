@@ -79,16 +79,22 @@ module EasyPost
       when Array
         return response.map { |i| convert_to_easypost_object(i, api_key, parent) }
       when Hash
-        begin
-          if cls_name = response[:object]
-            cls = types[cls_name]
-          elsif response[:id] && cls_prefix = response[:id][0..response[:id].index('_')]
-            cls = prefixes[cls_prefix[0..-2]]
-          elsif response['id'] && cls_prefix = response['id'][0..response['id'].index('_')]
+        if cls_name = response[:object]
+          cls = types[cls_name]
+        elsif response[:id]
+          if response[:id].index('_').nil?
+            cls = EasyPostObject
+          elsif cls_prefix = response[:id][0..response[:id].index('_')]
             cls = prefixes[cls_prefix[0..-2]]
           end
-        rescue ArgumentError => e
-        end  
+        elsif response['id']
+          if response[:id].index('_').nil?
+            cls = EasyPostObject
+          elsif cls_prefix = response['id'][0..response['id'].index('_')]
+            cls = prefixes[cls_prefix[0..-2]]
+          end
+        end
+
         cls ||= EasyPostObject
         return cls.construct_from(response, api_key, parent, name)
       else
