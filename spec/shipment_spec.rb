@@ -115,44 +115,6 @@ describe EasyPost::Shipment do
     end
   end
 
-  describe '#stamp' do
-    it 'returns a stamp for a domestic shipment' do
-      shipment = EasyPost::Shipment.create(
-        to_address: EasyPost::Address.create(ADDRESS[:missouri]),
-        from_address: ADDRESS[:california],
-        parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
-      )
-      expect(shipment).to be_an_instance_of(EasyPost::Shipment)
-
-      shipment.buy(
-        rate: shipment.lowest_rate(['USPS', 'UPS'], 'priority, express')
-      )
-
-      stamp_url = shipment.stamp
-
-      expect(stamp_url.length).to be > 0
-    end
-  end
-
-  describe '#barcode' do
-    it 'returns a barcode for a domestic shipment' do
-      shipment = EasyPost::Shipment.create(
-        to_address: EasyPost::Address.create(ADDRESS[:missouri]),
-        from_address: ADDRESS[:california],
-        parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
-      )
-      expect(shipment).to be_an_instance_of(EasyPost::Shipment)
-
-      shipment.buy(
-        rate: shipment.lowest_rate('usps', ['Priority'])
-      )
-
-      barcode_url = shipment.barcode
-
-      expect(barcode_url.length).to be > 0
-    end
-  end
-
   describe '#lowest_rate' do
     context 'domestic shipment' do
       before :all do
