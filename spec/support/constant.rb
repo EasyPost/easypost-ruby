@@ -95,3 +95,12 @@ CUSTOMS_INFO = {
     restriction_comments: ''
   }
 }
+
+OPTIONS = {
+  mws: {
+    fulfiller_order_items: [{
+      id: '12345678901234',
+      quantity: 1
+    }]
+  }
+}

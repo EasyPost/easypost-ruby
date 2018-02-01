@@ -13,6 +13,19 @@ describe EasyPost::Shipment do
       expect(shipment.from_address).to be_an_instance_of(EasyPost::Address)
 
     end
+
+    it 'creates a shipment object when options hash contains id' do
+
+      shipment = EasyPost::Shipment.create(
+        to_address: ADDRESS[:california],
+        from_address: EasyPost::Address.create(ADDRESS[:missouri]),
+        parcel: EasyPost::Parcel.create(PARCEL[:dimensions]),
+        options: OPTIONS[:mws]
+      )
+      expect(shipment).to be_an_instance_of(EasyPost::Shipment)
+      expect(shipment.options.fulfiller_order_items.first).to be_an_instance_of(EasyPost::EasyPostObject)
+
+    end
   end
 
   describe '#buy' do
