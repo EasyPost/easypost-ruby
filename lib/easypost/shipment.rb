@@ -61,18 +61,6 @@ module EasyPost
       return self
     end
 
-    def stamp(params={})
-      response, api_key = EasyPost.request(:get, url + '/stamp', @api_key, params)
-
-      return response[:stamp_url]
-    end
-
-    def barcode(params={})
-      response, api_key = EasyPost.request(:get, url + '/barcode', @api_key, params)
-
-      return response[:barcode_url]
-    end
-
     def lowest_rate(carriers=[], services=[])
       lowest = nil
 
