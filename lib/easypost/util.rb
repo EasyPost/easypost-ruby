@@ -86,7 +86,7 @@ module EasyPost
             cls = prefixes[cls_prefix[0..-2]]
           end
         elsif response['id']
-          if response[:id].index('_').nil?
+          if response['id'].index('_').nil?
             cls = EasyPostObject
           elsif cls_prefix = response['id'][0..response['id'].index('_')]
             cls = prefixes[cls_prefix[0..-2]]
