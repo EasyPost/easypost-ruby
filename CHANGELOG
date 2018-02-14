@@ -1,3 +1,8 @@
+=== 3.0.0 2018-02-09
+
+* Require use of ruby ~> 2.0 and TLSv1.2
+
+
 === 2.7.3 2017-05-25
 
 * Fix bug with introduced around certain JSON objects with IDs (thanks vladvinnikov!)

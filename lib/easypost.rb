@@ -75,7 +75,7 @@ module EasyPost
       timeout: 60,
       open_timeout: 30,
       verify_ssl: false,
-      ssl_version: "TLSv1",
+      ssl_version: :TLSv1_2,
     }
   end
 
