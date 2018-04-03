@@ -125,6 +125,18 @@ describe EasyPost::Shipment do
         rate = shipment.lowest_rate('USPS', '!MediaMail, !LibraryMail')
         expect(rate.service).to eql('ParcelSelect')
       end
+
+      it 'doesn\'t modify carriers array' do
+        carriers = %w(USPS)
+        @shipment.lowest_rate(carriers)
+        expect(carriers).to eq(%w(USPS))
+      end
+
+      it 'doesn\'t modify services array' do
+        services = %w(ParcelSelect)
+        @shipment.lowest_rate('USPS', services)
+        expect(services).to eq(%w(ParcelSelect))
+      end
     end
   end
 
