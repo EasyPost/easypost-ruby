@@ -5,9 +5,11 @@ module EasyPost
     def self.create(params={}, api_key=nil)
       url = self.url
 
+      address = params.reject { |k,_| k == :verify || k == :verify_strict }
+      
       if params[:verify] || params[:verify_strict]
-        verify = params.delete(:verify) || []
-        verify_strict = params.delete(:verify_strict) || []
+        verify = params[:verify] || []
+        verify_strict = params[:verify_strict] || []
 
         url += "?"
         verify.each do |verification|
@@ -18,7 +20,7 @@ module EasyPost
         end
       end
 
-      response, api_key = EasyPost.request(:post, url, api_key, {address: params})
+      response, api_key = EasyPost.request(:post, url, api_key, {address: address})
       return Util.convert_to_easypost_object(response, api_key)
     end
 
