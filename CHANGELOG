@@ -38,17 +38,17 @@
 
 * Enforce TLS certificate validity by default
 
-=== 3.0.0 2018-02-09
+=== 3.0.0 2018-02-15
 
 * Require use of ruby ~> 2.0 and TLSv1.2
 
 
-=== 2.7.3 2017-05-25
+=== 2.7.3 2018-02-05
 
 * Fix bug with introduced around certain JSON objects with IDs (thanks vladvinnikov!)
 
 
-=== 2.7.2 2018-01-31
+=== 2.7.2 2018-02-01
 
 * Removed unused and unsupported code paths for Container model
 * Removed unused and unsupported code path for Stamp and Barcode methods on the Shipment model
