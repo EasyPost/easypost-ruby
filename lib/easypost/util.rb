@@ -42,6 +42,8 @@ module EasyPost
         'ShipmentReport' => Report,
         'PaymentLogReport' => Report,
         'TrackerReport' => Report,
+        'RefundReport' => Report,
+        'ShipmentInvoiceReport' => Report,
         'Webhook' => Webhook
       }
 
@@ -70,6 +72,8 @@ module EasyPost
         'shprep' => Report,
         'plrep' => Report,
         'trkrep' => Report,
+        'refrep' => Report,
+        'shpinvrep' => Report,
         'hook' => Webhook
       }
 
