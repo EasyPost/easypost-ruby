@@ -16,7 +16,7 @@ describe EasyPost::Util do
     it "flattens" do
       expect(described_class.flatten_params({:foo => "bar"})).to eq([["foo", "bar"]])
       expect(described_class.flatten_params({:foo => ["bar", "baz"]})).to eq([["foo[0]", "bar"], ["foo[1]", "baz"]])
-      expect(described_class.flatten_params({:foo => {"bar": "baz"}})).to eq([["foo[bar]", "baz"]])
+      expect(described_class.flatten_params({:foo => {"bar" => "baz"}})).to eq([["foo[bar]", "baz"]])
     end
   end
 end
