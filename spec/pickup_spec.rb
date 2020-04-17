@@ -11,7 +11,7 @@ describe EasyPost::Pickup do
     )
   end
 
-  describe '#create' do
+  describe '#create', pending: "UPS account is broken" do
     it 'creates a pickup and returns rates' do
       shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
       pickup = EasyPost::Pickup.create(
@@ -41,7 +41,7 @@ describe EasyPost::Pickup do
     end
   end
 
-  describe '#buy' do
+  describe '#buy', pending: "UPS account is broken" do
     it 'buys a pickup rate' do
       shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
       pickup = EasyPost::Pickup.create(
@@ -59,7 +59,7 @@ describe EasyPost::Pickup do
     end
   end
 
-  describe '#cancel' do
+  describe '#cancel', pending: "UPS account is broken" do
     it 'cancels a pickup' do
       shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
       pickup = EasyPost::Pickup.create(
