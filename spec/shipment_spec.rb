@@ -135,7 +135,7 @@ describe EasyPost::Shipment do
 
   describe '#retrieve' do
     it 'retrieves shipment by tracking_code and correctly sets ID field (this was a bug in python)' do
-      tracking_code = "LN123456789US"
+      tracking_code = "CM218228743US"
       shipment = EasyPost::Shipment.retrieve(tracking_code)
 
       expect(shipment.id).not_to eq(tracking_code)
