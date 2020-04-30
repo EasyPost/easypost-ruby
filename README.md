@@ -1,6 +1,6 @@
 # EasyPost Ruby Client Library
 
-[![Build Status](https://travis-ci.org/EasyPost/easypost-ruby.svg?branch=master)](https://travis-ci.org/EasyPost/easypost-ruby)
+[![Build Status](https://travis-ci.com/EasyPost/easypost-ruby.svg?branch=master)](https://travis-ci.com/EasyPost/easypost-ruby)
 
 
 EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com
