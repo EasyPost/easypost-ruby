@@ -1,0 +1,266 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/shipments
+    body:
+      encoding: UTF-8
+      string: shipment[to_address][name]=Sawyer%20Bateman&shipment[to_address][street1]=58%20Larkspur%20Cres.&shipment[to_address][city]=St.%20Albert&shipment[to_address][state]=AB&shipment[to_address][zip]=T8N2M4&shipment[to_address][country]=CA&shipment[to_address][phone]=780-123-4567&shipment[from_address][company]=EasyPost&shipment[from_address][street1]=164%20Townsend%20Street&shipment[from_address][street2]=Unit%201&shipment[from_address][city]=San%20Francisco&shipment[from_address][state]=CA&shipment[from_address][zip]=94107&shipment[from_address][phone]=415-123-4567&shipment[parcel][width]=12&shipment[parcel][length]=16.5&shipment[parcel][height]=9.5&shipment[parcel][weight]=40.1&shipment[customs_info][integrated_form_type]=form_2976&shipment[customs_info][customs_certify]=true&shipment[customs_info][customs_signer]=Dr.%20Pepper&shipment[customs_info][contents_type]=gift&shipment[customs_info][contents_explanation]=&shipment[customs_info][eel_pfc]=NOEEI%2030.37(a)&shipment[customs_info][non_delivery_option]=abandon&shipment[customs_info][restriction_type]=none&shipment[customs_info][restriction_comments]=&shipment[customs_info][customs_items][0][description]=EasyPost%20T-shirts&shipment[customs_info][customs_items][0][quantity]=2&shipment[customs_info][customs_items][0][value]=23.56&shipment[customs_info][customs_items][0][weight]=20&shipment[customs_info][customs_items][0][origin_country]=us&shipment[customs_info][customs_items][0][hs_tariff_number]=123456
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
+      Authorization: "<AUTHORIZATION>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '1475'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cc18d73b5ea30d32fc9bec6d000deb46
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/shipments/shp_c72831fd9e9a444796fca5716235a80c"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.798659'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb6sj
+      X-Version-Label:
+      - easypost-202004232052-2747d42303-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 5834894b53
+      - intlb2sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"created_at":"2020-04-24T16:00:50Z","is_return":false,"messages":[],"mode":"test","options":{"currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"reference":null,"status":"unknown","tracking_code":null,"updated_at":"2020-04-24T16:00:50Z","batch_id":null,"batch_status":null,"batch_message":null,"customs_info":{"id":"cstinfo_e3941758b2be457387cd23e117b13f4f","object":"CustomsInfo","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","contents_explanation":"","contents_type":"gift","customs_certify":true,"customs_signer":"Dr.
+        Pepper","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"abandon","restriction_comments":"","restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_aa3bc89ae9d6462fb45bc9c932490723","object":"CustomsItem","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","description":"EasyPost
+        T-shirts","hs_tariff_number":"123456","origin_country":"US","quantity":2,"value":"23.56","weight":20.0,"code":null,"mode":"test","manufacturer":null,"currency":null}]},"from_address":{"id":"adr_74aa7469f43241afa8f01e2f6a750a78","object":"Address","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","name":null,"company":"EasyPost","street1":"164
+        Townsend Street","street2":"Unit 1","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"insurance":null,"order_id":null,"parcel":{"id":"prcl_668dc7382aa047e9b05345ad72a04f77","object":"Parcel","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","length":16.5,"width":12.0,"height":9.5,"predefined_package":null,"weight":40.1,"mode":"test"},"postage_label":null,"rates":[{"id":"rate_4dcb3b7597c54503acb1c8dc6cf0b115","object":"Rate","created_at":"2020-04-24T16:00:51Z","updated_at":"2020-04-24T16:00:51Z","mode":"test","service":"ExpressMailInternational","carrier":"USPS","rate":"56.80","currency":"USD","retail_rate":"61.05","retail_currency":"USD","list_rate":"56.80","list_currency":"USD","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_c72831fd9e9a444796fca5716235a80c","carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"id":"rate_f9d565b589e44a57a65fe11fc4992b8c","object":"Rate","created_at":"2020-04-24T16:00:51Z","updated_at":"2020-04-24T16:00:51Z","mode":"test","service":"PriorityMailInternational","carrier":"USPS","rate":"40.09","currency":"USD","retail_rate":"42.20","retail_currency":"USD","list_rate":"40.09","list_currency":"USD","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_c72831fd9e9a444796fca5716235a80c","carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"id":"rate_ddda129b01ed4c28bfaf9f32aea725ef","object":"Rate","created_at":"2020-04-24T16:00:51Z","updated_at":"2020-04-24T16:00:51Z","mode":"test","service":"Expedited","carrier":"UPS","rate":"201.29","currency":"USD","retail_rate":"173.35","retail_currency":"USD","list_rate":"189.99","list_currency":"USD","delivery_days":3,"delivery_date":"2020-04-29T23:30:00Z","delivery_date_guaranteed":true,"est_delivery_days":3,"shipment_id":"shp_c72831fd9e9a444796fca5716235a80c","carrier_account_id":"ca_e63ca9a0935f4adebd2b4f287f442f02"},{"id":"rate_c62d5b4ae3a749529233a9949ca303c9","object":"Rate","created_at":"2020-04-24T16:00:51Z","updated_at":"2020-04-24T16:00:51Z","mode":"test","service":"UPSSaver","carrier":"UPS","rate":"236.97","currency":"USD","retail_rate":"209.38","retail_currency":"USD","list_rate":"224.49","list_currency":"USD","delivery_days":2,"delivery_date":"2020-04-28T23:30:00Z","delivery_date_guaranteed":true,"est_delivery_days":2,"shipment_id":"shp_c72831fd9e9a444796fca5716235a80c","carrier_account_id":"ca_e63ca9a0935f4adebd2b4f287f442f02"},{"id":"rate_5e410e834ff8486183bb1846c9498ae3","object":"Rate","created_at":"2020-04-24T16:00:51Z","updated_at":"2020-04-24T16:00:51Z","mode":"test","service":"UPSStandard","carrier":"UPS","rate":"42.27","currency":"USD","retail_rate":"40.60","retail_currency":"USD","list_rate":"40.78","list_currency":"USD","delivery_days":4,"delivery_date":"2020-04-30T23:30:00Z","delivery_date_guaranteed":true,"est_delivery_days":4,"shipment_id":"shp_c72831fd9e9a444796fca5716235a80c","carrier_account_id":"ca_e63ca9a0935f4adebd2b4f287f442f02"}],"refund_status":null,"scan_form":null,"selected_rate":null,"tracker":null,"to_address":{"id":"adr_cc1fcf63f17840ffb4640304e0c7836c","object":"Address","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","name":"Sawyer
+        Bateman","company":null,"street1":"58 Larkspur Cres.","street2":null,"city":"St.
+        Albert","state":"AB","zip":"T8N2M4","country":"CA","phone":"7801234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"usps_zone":null,"return_address":{"id":"adr_74aa7469f43241afa8f01e2f6a750a78","object":"Address","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","name":null,"company":"EasyPost","street1":"164
+        Townsend Street","street2":"Unit 1","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"buyer_address":{"id":"adr_cc1fcf63f17840ffb4640304e0c7836c","object":"Address","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","name":"Sawyer
+        Bateman","company":null,"street1":"58 Larkspur Cres.","street2":null,"city":"St.
+        Albert","state":"AB","zip":"T8N2M4","country":"CA","phone":"7801234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"forms":[],"fees":[],"id":"shp_c72831fd9e9a444796fca5716235a80c","object":"Shipment"}'
+    http_version: null
+  recorded_at: Fri, 24 Apr 2020 16:00:51 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/shipments/shp_c72831fd9e9a444796fca5716235a80c/buy
+    body:
+      encoding: UTF-8
+      string: rate[id]=rate_f9d565b589e44a57a65fe11fc4992b8c
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
+      Authorization: "<AUTHORIZATION>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '46'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cc18d73c5ea30d33fc9bec88000debe4
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '1.618987'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4sj
+      X-Version-Label:
+      - easypost-202004232052-2747d42303-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 5834894b53
+      - intlb2sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"created_at":"2020-04-24T16:00:50Z","is_return":false,"messages":[],"mode":"test","options":{"currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"reference":null,"status":"unknown","tracking_code":"CM218231084US","updated_at":"2020-04-24T16:00:52Z","batch_id":null,"batch_status":null,"batch_message":null,"customs_info":{"id":"cstinfo_e3941758b2be457387cd23e117b13f4f","object":"CustomsInfo","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","contents_explanation":"","contents_type":"gift","customs_certify":true,"customs_signer":"Dr.
+        Pepper","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"abandon","restriction_comments":"","restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_aa3bc89ae9d6462fb45bc9c932490723","object":"CustomsItem","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","description":"EasyPost
+        T-shirts","hs_tariff_number":"123456","origin_country":"US","quantity":2,"value":"23.56","weight":20.0,"code":null,"mode":"test","manufacturer":null,"currency":null}]},"from_address":{"id":"adr_74aa7469f43241afa8f01e2f6a750a78","object":"Address","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","name":null,"company":"EasyPost","street1":"164
+        Townsend Street","street2":"Unit 1","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"insurance":null,"order_id":null,"parcel":{"id":"prcl_668dc7382aa047e9b05345ad72a04f77","object":"Parcel","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","length":16.5,"width":12.0,"height":9.5,"predefined_package":null,"weight":40.1,"mode":"test"},"postage_label":{"object":"PostageLabel","id":"pl_66684cf53a074761894e2fbe80a59a35","created_at":"2020-04-24T16:00:52Z","updated_at":"2020-04-24T16:00:52Z","date_advance":0,"integrated_form":"none","label_date":"2020-04-24T16:00:52Z","label_resolution":300,"label_size":"6x4","label_type":"default","label_file_type":"image/png","label_url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/postage_label/20200424/a1311f65426a436d8a55ab8ad7112a4b.png","label_pdf_url":null,"label_zpl_url":null,"label_epl2_url":null,"label_file":null},"rates":[{"id":"rate_4dcb3b7597c54503acb1c8dc6cf0b115","object":"Rate","created_at":"2020-04-24T16:00:51Z","updated_at":"2020-04-24T16:00:51Z","mode":"test","service":"ExpressMailInternational","carrier":"USPS","rate":"56.80","currency":"USD","retail_rate":"61.05","retail_currency":"USD","list_rate":"56.80","list_currency":"USD","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_c72831fd9e9a444796fca5716235a80c","carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"id":"rate_f9d565b589e44a57a65fe11fc4992b8c","object":"Rate","created_at":"2020-04-24T16:00:51Z","updated_at":"2020-04-24T16:00:51Z","mode":"test","service":"PriorityMailInternational","carrier":"USPS","rate":"40.09","currency":"USD","retail_rate":"42.20","retail_currency":"USD","list_rate":"40.09","list_currency":"USD","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_c72831fd9e9a444796fca5716235a80c","carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"id":"rate_ddda129b01ed4c28bfaf9f32aea725ef","object":"Rate","created_at":"2020-04-24T16:00:51Z","updated_at":"2020-04-24T16:00:51Z","mode":"test","service":"Expedited","carrier":"UPS","rate":"201.29","currency":"USD","retail_rate":"173.35","retail_currency":"USD","list_rate":"189.99","list_currency":"USD","delivery_days":3,"delivery_date":"2020-04-29T23:30:00Z","delivery_date_guaranteed":true,"est_delivery_days":3,"shipment_id":"shp_c72831fd9e9a444796fca5716235a80c","carrier_account_id":"ca_e63ca9a0935f4adebd2b4f287f442f02"},{"id":"rate_c62d5b4ae3a749529233a9949ca303c9","object":"Rate","created_at":"2020-04-24T16:00:51Z","updated_at":"2020-04-24T16:00:51Z","mode":"test","service":"UPSSaver","carrier":"UPS","rate":"236.97","currency":"USD","retail_rate":"209.38","retail_currency":"USD","list_rate":"224.49","list_currency":"USD","delivery_days":2,"delivery_date":"2020-04-28T23:30:00Z","delivery_date_guaranteed":true,"est_delivery_days":2,"shipment_id":"shp_c72831fd9e9a444796fca5716235a80c","carrier_account_id":"ca_e63ca9a0935f4adebd2b4f287f442f02"},{"id":"rate_5e410e834ff8486183bb1846c9498ae3","object":"Rate","created_at":"2020-04-24T16:00:51Z","updated_at":"2020-04-24T16:00:51Z","mode":"test","service":"UPSStandard","carrier":"UPS","rate":"42.27","currency":"USD","retail_rate":"40.60","retail_currency":"USD","list_rate":"40.78","list_currency":"USD","delivery_days":4,"delivery_date":"2020-04-30T23:30:00Z","delivery_date_guaranteed":true,"est_delivery_days":4,"shipment_id":"shp_c72831fd9e9a444796fca5716235a80c","carrier_account_id":"ca_e63ca9a0935f4adebd2b4f287f442f02"}],"refund_status":null,"scan_form":null,"selected_rate":{"id":"rate_f9d565b589e44a57a65fe11fc4992b8c","object":"Rate","created_at":"2020-04-24T16:00:52Z","updated_at":"2020-04-24T16:00:52Z","mode":"test","service":"PriorityMailInternational","carrier":"USPS","rate":"40.09","currency":"USD","retail_rate":"42.20","retail_currency":"USD","list_rate":"40.09","list_currency":"USD","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_c72831fd9e9a444796fca5716235a80c","carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},"tracker":{"id":"trk_303288a8ce7346a8a128688b8245aa24","object":"Tracker","mode":"test","tracking_code":"CM218231084US","status":"unknown","status_detail":"unknown","created_at":"2020-04-24T16:00:53Z","updated_at":"2020-04-24T16:00:53Z","signed_by":null,"weight":null,"est_delivery_date":null,"shipment_id":"shp_c72831fd9e9a444796fca5716235a80c","carrier":"USPS","tracking_details":[],"fees":[],"carrier_detail":null,"public_url":"https://track.easypost.com/djE6dHJrXzMwMzI4OGE4Y2U3MzQ2YThhMTI4Njg4YjgyNDVhYTI0"},"to_address":{"id":"adr_cc1fcf63f17840ffb4640304e0c7836c","object":"Address","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","name":"Sawyer
+        Bateman","company":null,"street1":"58 Larkspur Cres.","street2":null,"city":"St.
+        Albert","state":"AB","zip":"T8N2M4","country":"CA","phone":"7801234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"usps_zone":null,"return_address":{"id":"adr_74aa7469f43241afa8f01e2f6a750a78","object":"Address","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","name":null,"company":"EasyPost","street1":"164
+        Townsend Street","street2":"Unit 1","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"buyer_address":{"id":"adr_cc1fcf63f17840ffb4640304e0c7836c","object":"Address","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","name":"Sawyer
+        Bateman","company":null,"street1":"58 Larkspur Cres.","street2":null,"city":"St.
+        Albert","state":"AB","zip":"T8N2M4","country":"CA","phone":"7801234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"forms":[{"object":"Form","id":"form_ec5f860397194dbf8001dd18135e125b","created_at":"2020-04-24T16:00:52Z","updated_at":"2020-04-24T16:00:53Z","mode":"test","form_type":"commercial_invoice","form_url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/form/20200424/e06e8dd559854b0fbd8707e49125d11b.pdf","submitted_electronically":true}],"fees":[{"object":"Fee","type":"LabelFee","amount":"0.01000","charged":true,"refunded":false},{"object":"Fee","type":"PostageFee","amount":"40.09000","charged":true,"refunded":false}],"id":"shp_c72831fd9e9a444796fca5716235a80c","object":"Shipment"}'
+    http_version: null
+  recorded_at: Fri, 24 Apr 2020 16:00:53 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/scan_forms
+    body:
+      encoding: UTF-8
+      string: shipments[0][id]=shp_c72831fd9e9a444796fca5716235a80c
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
+      Authorization: "<AUTHORIZATION>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '53'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cc18d73e5ea30d35fc9bec89000dece2
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.335546'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb2sj
+      X-Version-Label:
+      - easypost-202004232052-2747d42303-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 5834894b53
+      - intlb2sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"sf_16a32c69a9f7489a9fc20d30f96d3f01","object":"ScanForm","created_at":"2020-04-24T16:00:53Z","updated_at":"2020-04-24T16:00:53Z","tracking_codes":["CM218231084US"],"address":{"id":"adr_74aa7469f43241afa8f01e2f6a750a78","object":"Address","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","name":null,"company":"EasyPost","street1":"164
+        Townsend Street","street2":"Unit 1","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/scan_form/20200424/9bab779d4e3b41bd9b0b01a0650444bf.pdf","form_file_type":null,"batch_id":"batch_1617a043824448c4946f3380a82aad39","confirmation":null}'
+    http_version: null
+  recorded_at: Fri, 24 Apr 2020 16:00:53 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/scan_forms?page_size=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
+      Authorization: "<AUTHORIZATION>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cc18d73f5ea30d35fc9bec8a000ded23
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.040670'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb11sj
+      X-Version-Label:
+      - easypost-202004232052-2747d42303-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 5834894b53
+      - intlb2sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"scan_forms":[{"id":"sf_16a32c69a9f7489a9fc20d30f96d3f01","object":"ScanForm","created_at":"2020-04-24T16:00:53Z","updated_at":"2020-04-24T16:00:53Z","tracking_codes":["CM218231084US"],"address":{"id":"adr_74aa7469f43241afa8f01e2f6a750a78","object":"Address","created_at":"2020-04-24T16:00:50Z","updated_at":"2020-04-24T16:00:50Z","name":null,"company":"EasyPost","street1":"164
+        Townsend Street","street2":"Unit 1","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/scan_form/20200424/9bab779d4e3b41bd9b0b01a0650444bf.pdf","form_file_type":null,"batch_id":"batch_1617a043824448c4946f3380a82aad39","confirmation":null},{"id":"sf_75114d4b6aeb484b9a4e0bd185bc6b69","object":"ScanForm","created_at":"2020-04-24T16:00:49Z","updated_at":"2020-04-24T16:00:49Z","tracking_codes":["CM218231075US"],"address":{"id":"adr_4c06d78c58e546649a2342bfe25df21a","object":"Address","created_at":"2020-04-24T16:00:47Z","updated_at":"2020-04-24T16:00:47Z","name":null,"company":"EasyPost","street1":"164
+        Townsend Street","street2":"Unit 1","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/scan_form/20200424/1fe53bc5e96a4dac80153fa1400ceca1.pdf","form_file_type":null,"batch_id":"batch_74f4db5bcdad48f5ad0827c1b9e82a06","confirmation":null}],"has_more":true}'
+    http_version: null
+  recorded_at: Fri, 24 Apr 2020 16:00:53 GMT
+recorded_with: VCR 5.1.0

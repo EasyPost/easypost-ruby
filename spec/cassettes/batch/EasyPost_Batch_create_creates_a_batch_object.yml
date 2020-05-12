@@ -1,0 +1,319 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses
+    body:
+      encoding: UTF-8
+      string: address[company]=Airport%20Shipping&address[street1]=601%20Brasilia%20Avenue&address[city]=Kansas%20City&address[state]=MO&address[zip]=64153&address[phone]=314-924-0383&address[email]=kansas_shipping%40example.com
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
+      Authorization: "<AUTHORIZATION>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '214'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cc18d7395ea30d0dfc9be8ac000dd55d
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_9cebab7f53f641e283e137c956ac94de"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.033296'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb2sj
+      X-Version-Label:
+      - easypost-202004232052-2747d42303-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 5834894b53
+      - intlb2sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"adr_9cebab7f53f641e283e137c956ac94de","object":"Address","created_at":"2020-04-24T16:00:13Z","updated_at":"2020-04-24T16:00:13Z","name":null,"company":"Airport
+        Shipping","street1":"601 Brasilia Avenue","street2":null,"city":"Kansas City","state":"MO","zip":"64153","country":"US","phone":"3149240383","email":"kansas_shipping@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+    http_version: null
+  recorded_at: Fri, 24 Apr 2020 16:00:13 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/parcels
+    body:
+      encoding: UTF-8
+      string: parcel[width]=12&parcel[length]=16.5&parcel[height]=9.5&parcel[weight]=40.1
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
+      Authorization: "<AUTHORIZATION>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '75'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cc18d73a5ea30d0dfc9be8ad000dd573
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/parcels/prcl_1061055ed54042aeadc164b58c41dbe2"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.030906'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4sj
+      X-Version-Label:
+      - easypost-202004232052-2747d42303-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 5834894b53
+      - intlb2sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"prcl_1061055ed54042aeadc164b58c41dbe2","object":"Parcel","created_at":"2020-04-24T16:00:13Z","updated_at":"2020-04-24T16:00:13Z","length":16.5,"width":12.0,"height":9.5,"predefined_package":null,"weight":40.1,"mode":"test"}'
+    http_version: null
+  recorded_at: Fri, 24 Apr 2020 16:00:13 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses
+    body:
+      encoding: UTF-8
+      string: address[name]=Sawyer%20Bateman&address[street1]=58%20Larkspur%20Cres.&address[city]=St.%20Albert&address[state]=AB&address[zip]=T8N2M4&address[country]=CA&address[phone]=780-123-4567
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
+      Authorization: "<AUTHORIZATION>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '182'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cc18d73b5ea30d0dfc9be8ae000dd597
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_df4d3c839a754e7eba66985c8dcb7f18"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.029311'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb8sj
+      X-Version-Label:
+      - easypost-202004232052-2747d42303-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 5834894b53
+      - intlb1sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"adr_df4d3c839a754e7eba66985c8dcb7f18","object":"Address","created_at":"2020-04-24T16:00:13Z","updated_at":"2020-04-24T16:00:13Z","name":"Sawyer
+        Bateman","company":null,"street1":"58 Larkspur Cres.","street2":null,"city":"St.
+        Albert","state":"AB","zip":"T8N2M4","country":"CA","phone":"7801234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+    http_version: null
+  recorded_at: Fri, 24 Apr 2020 16:00:13 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/parcels
+    body:
+      encoding: UTF-8
+      string: parcel[width]=12&parcel[length]=16.5&parcel[height]=9.5&parcel[weight]=40.1
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
+      Authorization: "<AUTHORIZATION>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '75'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cc18d73c5ea30d0efc9be8af000dd5bf
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/parcels/prcl_cf7e6ccab92249c0bfac56fe0abcc75a"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.035159'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb2sj
+      X-Version-Label:
+      - easypost-202004232052-2747d42303-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 5834894b53
+      - intlb1sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"prcl_cf7e6ccab92249c0bfac56fe0abcc75a","object":"Parcel","created_at":"2020-04-24T16:00:14Z","updated_at":"2020-04-24T16:00:14Z","length":16.5,"width":12.0,"height":9.5,"predefined_package":null,"weight":40.1,"mode":"test"}'
+    http_version: null
+  recorded_at: Fri, 24 Apr 2020 16:00:14 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/batches
+    body:
+      encoding: UTF-8
+      string: batch[shipment][0][from_address][company]=EasyPost&batch[shipment][0][from_address][street1]=164%20Townsend%20Street&batch[shipment][0][from_address][street2]=Unit%201&batch[shipment][0][from_address][city]=San%20Francisco&batch[shipment][0][from_address][state]=CA&batch[shipment][0][from_address][zip]=94107&batch[shipment][0][from_address][phone]=415-123-4567&batch[shipment][0][to_address][id]=adr_9cebab7f53f641e283e137c956ac94de&batch[shipment][0][parcel][id]=prcl_1061055ed54042aeadc164b58c41dbe2&batch[shipment][1][from_address][company]=EasyPost&batch[shipment][1][from_address][street1]=164%20Townsend%20Street&batch[shipment][1][from_address][street2]=Unit%201&batch[shipment][1][from_address][city]=San%20Francisco&batch[shipment][1][from_address][state]=CA&batch[shipment][1][from_address][zip]=94107&batch[shipment][1][from_address][phone]=415-123-4567&batch[shipment][1][to_address][id]=adr_df4d3c839a754e7eba66985c8dcb7f18&batch[shipment][1][parcel][id]=prcl_cf7e6ccab92249c0bfac56fe0abcc75a&batch[reference]=batch123456789
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
+      Authorization: "<AUTHORIZATION>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '1039'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cc18d73d5ea30d0efc9be8b0000dd5cd
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.051941'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb11sj
+      X-Version-Label:
+      - easypost-202004232052-2747d42303-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 5834894b53
+      - intlb2sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"batch_3797aefc8b8a452992dc5648456c09ca","object":"Batch","mode":"test","state":"creating","num_shipments":2,"reference":"batch123456789","created_at":"2020-04-24T16:00:14Z","updated_at":"2020-04-24T16:00:14Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+    http_version: null
+  recorded_at: Fri, 24 Apr 2020 16:00:14 GMT
+recorded_with: VCR 5.1.0
