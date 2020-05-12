@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe EasyPost::Pickup do
   let(:noon_tomorrow) { (Date.today + 1).to_datetime + Rational(12, 24) }
-  let(:shipment) do
+  let!(:shipment) do
     EasyPost::Shipment.create(
       to_address: ADDRESS[:california],
       from_address: ADDRESS[:missouri],

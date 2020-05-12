@@ -1,0 +1,124 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/reports/shipment
+    body:
+      encoding: UTF-8
+      string: start_date=2020-04-12&end_date=2020-05-12&type=shipment
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
+      Authorization: "<AUTHORIZATION>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '55'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - d2411b7d5eb9f3c0fb0a1c890000667a
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.091542'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb11sj
+      X-Version-Label:
+      - easypost-202005112229-ce23998a81-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2sj 5834894b53
+      - intlb2sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"shprep_8a445753a8924b9ea8a00f463111b80d","object":"ShipmentReport","created_at":"2020-05-12T00:42:12Z","updated_at":"2020-05-12T00:42:24Z","start_date":"2020-04-12","end_date":"2020-05-12","mode":"test","status":"available","url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/shipment_report/20200512/shprep_8a445753a8924b9ea8a00f463111b80d.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIOR7PKFCRZS3YA6Q%2F20200512%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200512T005424Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=5ca464941b4490910e59510bec8569df3b5492a435f50637515b81a84daf326a","url_expires_at":"2020-05-12T00:54:54+00:00","include_children":false}'
+    http_version: null
+  recorded_at: Tue, 12 May 2020 00:54:24 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/reports/shprep_8a445753a8924b9ea8a00f463111b80d
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
+      Authorization: "<AUTHORIZATION>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - '0059c8475eb9f3c1fb55c7a40001d6dd'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.045233'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb8sj
+      X-Version-Label:
+      - easypost-202005112229-ce23998a81-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1wdc 5834894b53
+      - intlb1sj 5834894b53
+      - intlb1wdc 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"shprep_8a445753a8924b9ea8a00f463111b80d","object":"ShipmentReport","created_at":"2020-05-12T00:42:12Z","updated_at":"2020-05-12T00:42:24Z","start_date":"2020-04-12","end_date":"2020-05-12","mode":"test","status":"available","url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/shipment_report/20200512/shprep_8a445753a8924b9ea8a00f463111b80d.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIOR7PKFCRZS3YA6Q%2F20200512%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200512T005425Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=1c8024e7038b14158acb03b769961f5842e7847eefca78826420fe877b48a545","url_expires_at":"2020-05-12T00:54:55+00:00","include_children":false}'
+    http_version: null
+  recorded_at: Tue, 12 May 2020 00:54:25 GMT
+recorded_with: VCR 5.1.0

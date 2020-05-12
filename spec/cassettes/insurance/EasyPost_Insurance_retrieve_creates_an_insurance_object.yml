@@ -1,0 +1,129 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/insurances
+    body:
+      encoding: UTF-8
+      string: insurance[to_address][company]=EasyPost&insurance[to_address][street1]=164%20Townsend%20Street&insurance[to_address][street2]=Unit%201&insurance[to_address][city]=San%20Francisco&insurance[to_address][state]=CA&insurance[to_address][zip]=94107&insurance[to_address][phone]=415-123-4567&insurance[from_address][company]=Airport%20Shipping&insurance[from_address][street1]=601%20Brasilia%20Avenue&insurance[from_address][city]=Kansas%20City&insurance[from_address][state]=MO&insurance[from_address][zip]=64153&insurance[from_address][phone]=314-924-0383&insurance[from_address][email]=kansas_shipping%40example.com&insurance[amount]=101.0&insurance[tracking_code]=EZ2000000002&insurance[carrier]=usps
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
+      Authorization: "<AUTHORIZATION>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Content-Length:
+      - '698'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cc18d73d5ea30d10fc9be8ce000dd7bf
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/insurances/ins_02ad25eb0ea44a2ab2bb8f5d1f7f9f87"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.306780'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4sj
+      X-Version-Label:
+      - easypost-202004232052-2747d42303-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 5834894b53
+      - intlb1sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"ins_02ad25eb0ea44a2ab2bb8f5d1f7f9f87","object":"Insurance","mode":"test","reference":null,"status":"pending","amount":"101.00000","provider":"easypost","provider_id":null,"to_address":{"id":"adr_028269e585664d559d410a4219464b19","object":"Address","created_at":"2020-04-24T16:00:17Z","updated_at":"2020-04-24T16:00:17Z","name":null,"company":"EASYPOST","street1":"164
+        TOWNSEND ST UNIT 1","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1990","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":37.77893,"longitude":-122.39279,"time_zone":"America/Los_Angeles"}}}},"from_address":{"id":"adr_23f56736caec4fcfb2ae19b4c3bd7ced","object":"Address","created_at":"2020-04-24T16:00:17Z","updated_at":"2020-04-24T16:00:17Z","name":null,"company":"AIRPORT
+        SHIPPING","street1":"601 BRASILIA AVE","street2":"","city":"KANSAS CITY","state":"MO","zip":"64153-2054","country":"US","phone":"3149240383","email":"KANSAS_SHIPPING@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":39.29598,"longitude":-94.75217,"time_zone":"America/Chicago"}}}},"shipment_id":null,"tracker":{"id":"trk_05e756c1d0144b149a0a522881c0b6d4","object":"Tracker","mode":null,"tracking_code":null,"status":"unknown","status_detail":"unknown","created_at":"2020-04-24T16:00:17Z","updated_at":"2020-04-24T16:00:17Z","signed_by":null,"weight":null,"est_delivery_date":null,"shipment_id":null,"carrier":null,"tracking_details":[],"fees":[],"carrier_detail":null,"public_url":"https://track.easypost.com/djE6dHJrXzA1ZTc1NmMxZDAxNDRiMTQ5YTBhNTIyODgxYzBiNmQ0"},"tracking_code":"EZ2000000002","fee":{"object":"Fee","type":"InsuranceFee","amount":"1.01000","charged":true,"refunded":false},"messages":[],"created_at":"2020-04-24T16:00:17Z","updated_at":"2020-04-24T16:00:17Z"}'
+    http_version: null
+  recorded_at: Fri, 24 Apr 2020 16:00:17 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/insurances/ins_02ad25eb0ea44a2ab2bb8f5d1f7f9f87
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
+      Authorization: "<AUTHORIZATION>"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - api.easypost.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - cc18d73e5ea30d11fc9be8cf000dd7f0
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.049240'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb8sj
+      X-Version-Label:
+      - easypost-202004232052-2747d42303-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 5834894b53
+      - intlb2sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"ins_02ad25eb0ea44a2ab2bb8f5d1f7f9f87","object":"Insurance","mode":"test","reference":null,"status":"pending","amount":"101.00000","provider":"easypost","provider_id":null,"to_address":{"id":"adr_028269e585664d559d410a4219464b19","object":"Address","created_at":"2020-04-24T16:00:17Z","updated_at":"2020-04-24T16:00:17Z","name":null,"company":"EASYPOST","street1":"164
+        TOWNSEND ST UNIT 1","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1990","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":37.77893,"longitude":-122.39279,"time_zone":"America/Los_Angeles"}}}},"from_address":{"id":"adr_23f56736caec4fcfb2ae19b4c3bd7ced","object":"Address","created_at":"2020-04-24T16:00:17Z","updated_at":"2020-04-24T16:00:17Z","name":null,"company":"AIRPORT
+        SHIPPING","street1":"601 BRASILIA AVE","street2":"","city":"KANSAS CITY","state":"MO","zip":"64153-2054","country":"US","phone":"3149240383","email":"KANSAS_SHIPPING@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":39.29598,"longitude":-94.75217,"time_zone":"America/Chicago"}}}},"shipment_id":null,"tracker":{"id":"trk_05e756c1d0144b149a0a522881c0b6d4","object":"Tracker","mode":null,"tracking_code":null,"status":"unknown","status_detail":"unknown","created_at":"2020-04-24T16:00:17Z","updated_at":"2020-04-24T16:00:17Z","signed_by":null,"weight":null,"est_delivery_date":null,"shipment_id":null,"carrier":null,"tracking_details":[],"fees":[],"carrier_detail":null,"public_url":"https://track.easypost.com/djE6dHJrXzA1ZTc1NmMxZDAxNDRiMTQ5YTBhNTIyODgxYzBiNmQ0"},"tracking_code":"EZ2000000002","fee":{"object":"Fee","type":"InsuranceFee","amount":"1.01000","charged":true,"refunded":false},"messages":[],"created_at":"2020-04-24T16:00:17Z","updated_at":"2020-04-24T16:00:17Z"}'
+    http_version: null
+  recorded_at: Fri, 24 Apr 2020 16:00:17 GMT
+recorded_with: VCR 5.1.0

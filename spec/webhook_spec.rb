@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe EasyPost::Webhook do
-  let(:url)       { "http://example.com" }
-  let(:webhook)   { EasyPost::Webhook.create({url: url}) }
+  let(:url) { "http://example.com" }
+  let!(:webhook) { EasyPost::Webhook.create({url: url}) }
 
   context 'with automated cleanup' do
     after do
@@ -46,8 +46,8 @@ describe EasyPost::Webhook do
       end
     end
 
-    describe '#retrieve' do
-      it 'retrieves' do
+    describe '#update' do
+      it 'updates' do
         hook = webhook.update()
 
         expect(hook.id).to           eq(webhook.id)
