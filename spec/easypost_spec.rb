@@ -1,6 +1,20 @@
 require "spec_helper"
 
 describe EasyPost do
+  describe "#http_config=" do
+    it "overrides existing without destorying others" do
+      described_class.http_config = {timeout: 15}
+      expect(described_class.http_config[:timeout]).to eq 15
+      expect(described_class.http_config[:open_timeout]).to eq 30
+    end
+
+    it "adds new without destroying others" do
+      described_class.http_config = {proxy: "http://foo:bar@127.0.0.1:5000"}
+      expect(described_class.http_config[:proxy]).to eq "http://foo:bar@127.0.0.1:5000"
+      expect(described_class.http_config[:open_timeout]).to eq 30
+    end
+  end
+
   describe "#make_client" do
     it "respects http_config" do
       client = described_class.make_client(URI("https://www.example.com"))

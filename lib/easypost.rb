@@ -53,8 +53,8 @@ module EasyPost
     @api_base
   end
 
-  def self.http_config
-    @http_config ||= {
+  def self.reset_http_config
+    @http_config = {
       timeout: 60,
       open_timeout: 30,
       verify_ssl: OpenSSL::SSL::VERIFY_PEER,
@@ -62,18 +62,45 @@ module EasyPost
     }
   end
 
+  def self.http_config
+    @http_config ||= reset_http_config
+  end
+
   def self.http_config=(http_config_params)
     http_config.merge!(http_config_params)
   end
 
   def self.make_client(uri)
-    client = Net::HTTP.new(uri.host, uri.port)
-
+    client = if http_config[:proxy]
+               proxy_uri = URI(http_config[:proxy])
+               Net::HTTP.new(
+                 uri.host,
+                 uri.port,
+                 proxy_uri.host,
+                 proxy_uri.port,
+                 proxy_uri.user,
+                 proxy_uri.password
+               )
+             else
+               Net::HTTP.new(uri.host, uri.port)
+             end
     client.use_ssl = true
-    client.verify_mode = http_config[:verify_ssl]
-    client.ssl_version = http_config[:ssl_version]
-    client.read_timeout = http_config[:timeout]
-    client.open_timeout = http_config[:open_timeout]
+
+    http_config.each do |name, value|
+      # Discrepancies between RestClient and Net::HTTP.
+      if name == :verify_ssl
+        name = :verify_mode
+      elsif name == :timeout
+        name = :read_timeout
+      end
+
+      # Handled in the creation of the client.
+      if name == :proxy
+        next
+      end
+
+      client.send("#{name}=", value)
+    end
 
     client
   end
