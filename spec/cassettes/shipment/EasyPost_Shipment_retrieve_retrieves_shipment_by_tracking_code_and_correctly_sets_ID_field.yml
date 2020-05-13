@@ -7,17 +7,16 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
       User-Agent:
-      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
-      Authorization: "<AUTHORIZATION>"
+      - Basic Qm12YVdoZzhtUDI2UVhXZFRwbFlXQTo=
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
       Content-Type:
-      - application/x-www-form-urlencoded
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Host:
-      - api.easypost.com
+      - application/json
+      Authorization: "<AUTHORIZATION>"
   response:
     status:
       code: 200
@@ -30,7 +29,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Ep-Request-Uuid:
-      - cc18d73e5ea30e3dfc9bf0ad000e7665
+      - 217dab585ebaf153f53197f7000d5242
       Cache-Control:
       - no-cache, no-store, must-revalidate, private
       Pragma:
@@ -40,20 +39,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.157018'
+      - '0.159008'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7sj
+      - bigweb3sj
       X-Version-Label:
-      - easypost-202004241544-936cda81c5-master
+      - easypost-202005112229-ce23998a81-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb1sj 5834894b53
+      - extlb1wdc 5834894b53
       - intlb2sj 5834894b53
+      - intlb2wdc 5834894b53
       Strict-Transport-Security:
       - max-age=15768000; includeSubDomains; preload
     body:
@@ -74,12 +72,12 @@ http_interactions:
         Package Service","container_type":null,"est_delivery_date_local":null,"est_delivery_time_local":null,"origin_location":"HOUSTON
         TX, 77001","origin_tracking_location":{"object":"TrackingLocation","city":"NORTH
         HOUSTON","state":"TX","country":null,"zip":"77315"},"destination_location":"CHARLESTON
-        SC, 29401","destination_tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"},"guaranteed_delivery_date":null,"alternate_identifier":null,"initial_delivery_attempt":"2020-03-23T13:23:26Z"},"finalized":true,"is_return":false,"public_url":"https://track.easypost.com/djE6dHJrXzhkYTIyOTI2MzhhMjRhY2M4YzVkZjdmYTZmZmYzZWQ2","fees":[]},"to_address":{"id":"adr_e0cae06bb610446a803315994c7756fe","object":"Address","created_at":"2020-04-20T23:29:24Z","updated_at":"2020-04-20T23:29:24Z","name":"Sawyer
+        SC, 29401","destination_tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"},"guaranteed_delivery_date":null,"alternate_identifier":null,"initial_delivery_attempt":"2020-03-23T13:23:26Z"},"finalized":true,"is_return":false,"public_url":"https://track.easypost.com/djE6dHJrXzhkYTIyOTI2MzhhMjRhY2M4YzVkZjdmYTZmZmYzZWQ2","fees":null},"to_address":{"id":"adr_e0cae06bb610446a803315994c7756fe","object":"Address","created_at":"2020-04-20T23:29:24Z","updated_at":"2020-04-20T23:29:24Z","name":"Sawyer
         Bateman","company":null,"street1":"58 Larkspur Cres.","street2":null,"city":"St.
         Albert","state":"AB","zip":"T8N2M4","country":"CA","phone":"7801234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"usps_zone":null,"return_address":{"id":"adr_f969c6dad4d241a0bd962f189891bf85","object":"Address","created_at":"2020-04-20T23:29:24Z","updated_at":"2020-04-20T23:29:24Z","name":null,"company":"EasyPost","street1":"164
         Townsend Street","street2":"Unit 1","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"buyer_address":{"id":"adr_e0cae06bb610446a803315994c7756fe","object":"Address","created_at":"2020-04-20T23:29:24Z","updated_at":"2020-04-20T23:29:24Z","name":"Sawyer
         Bateman","company":null,"street1":"58 Larkspur Cres.","street2":null,"city":"St.
         Albert","state":"AB","zip":"T8N2M4","country":"CA","phone":"7801234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"forms":[{"object":"Form","id":"form_f920c213c429480e8c8ba4b61454de1d","created_at":"2020-04-20T23:29:26Z","updated_at":"2020-04-20T23:29:26Z","mode":"test","form_type":"commercial_invoice","form_url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/form/20200420/f08d1c2372bc4ddebd3433e6a38fc927.pdf","submitted_electronically":true}],"fees":[{"object":"Fee","type":"LabelFee","amount":"0.01000","charged":true,"refunded":false},{"object":"Fee","type":"PostageFee","amount":"40.09000","charged":true,"refunded":false}],"id":"shp_e6e91160fc194bbcbf04bb94e3e01529","object":"Shipment"}'
     http_version: null
-  recorded_at: Fri, 24 Apr 2020 16:05:17 GMT
+  recorded_at: Tue, 12 May 2020 18:56:19 GMT
 recorded_with: VCR 5.1.0

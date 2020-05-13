@@ -2,7 +2,7 @@ module EasyPost
   class Printer < Resource
 
     def job
-      response, api_key = EasyPost.request(
+      response = EasyPost.make_request(
         :get, url + '/jobs', @api_key
       )
       return EasyPost::Util::convert_to_easypost_object(response, api_key)
@@ -15,7 +15,7 @@ module EasyPost
         params[:postage_label] = temp
       end
 
-      response, api_key = EasyPost.request(
+      response = EasyPost.make_request(
         :post, url + '/print_postage_label', @api_key, params
       )
       return true

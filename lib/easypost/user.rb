@@ -1,9 +1,7 @@
 module EasyPost
   class User < Resource
     def self.create(params={}, api_key=nil)
-      wrapped_params = {}
-      wrapped_params[self.class_name().to_sym] = params
-      response, api_key = EasyPost.request(:post, self.url, api_key, wrapped_params, {}, false)
+      response = EasyPost.make_request(:post, self.url, api_key, {self.class_name.to_sym => params})
       return Util.convert_to_easypost_object(response, api_key)
     end
 
@@ -14,7 +12,7 @@ module EasyPost
 
         wrapped_params = {user: values}
 
-        response, api_key = EasyPost.request(:put, url, @api_key, wrapped_params)
+        response = EasyPost.make_request(:put, url, @api_key, wrapped_params)
         refresh_from(response, api_key)
       end
       return self
@@ -25,7 +23,7 @@ module EasyPost
     end
 
     def self.all_api_keys
-      response, api_key = EasyPost.request(:get, "/api_keys", @api_key)
+      response = EasyPost.make_request(:get, "/api_keys", @api_key)
       return Util.convert_to_easypost_object(response, api_key)
     end
 

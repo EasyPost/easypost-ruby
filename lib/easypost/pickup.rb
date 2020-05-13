@@ -9,14 +9,14 @@ module EasyPost
         params[:service] = temp.service
       end
 
-      response, api_key = EasyPost.request(:post, url + '/buy', @api_key, params)
+      response = EasyPost.make_request(:post, url + '/buy', @api_key, params)
       self.refresh_from(response, @api_key, true)
 
       return self
     end
 
     def cancel(params={})
-      response, api_key = EasyPost.request(:post, url + '/cancel', @api_key, params)
+      response = EasyPost.make_request(:post, url + '/cancel', @api_key, params)
       self.refresh_from(response, @api_key, true)
 
       return self
