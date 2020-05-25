@@ -39,8 +39,6 @@ module EasyPost
   @@api_key = nil
   @@api_base = 'https://api.easypost.com/v2'
   @@api_version = nil
-  @@open_timeout = 30
-  @@timeout = 60
 
   def self.api_url(url='')
     @@api_base + url
