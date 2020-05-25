@@ -27,6 +27,12 @@ Example
 require 'easypost'
 EasyPost.api_key = 'cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi'
 
+# you can configure alternate API timeouts if you want.
+EasyPost.http_config({
+  open_timeout: 15,
+  timeout: 30
+})
+
 to_address = EasyPost::Address.create(
   :name => 'Dr. Steve Brule',
   :street1 => '179 N Harbor Dr',
