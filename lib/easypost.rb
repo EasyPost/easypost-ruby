@@ -58,8 +58,14 @@ module EasyPost
       timeout: 60,
       open_timeout: 30,
       verify_ssl: OpenSSL::SSL::VERIFY_PEER,
-      ssl_version: :TLSv1_2,
     }
+
+    ruby_version = Gem::Version.new(RUBY_VERSION)
+    if ruby_version >= Gem::Version.new("2.5.0")
+      @http_config[:min_version] = OpenSSL::SSL::TLS1_2_VERSION
+    else
+      @http_config[:ssl_version] = :TLSv1_2
+    end
   end
 
   def self.http_config
@@ -133,7 +139,7 @@ module EasyPost
     end
   rescue JSON::ParserError
     raise RuntimeError.new(
-      "Invalid resopnse object from API, unable to decode.\n#{response.body}"
+      "Invalid response object from API, unable to decode.\n#{response.body}"
     )
   end
 end

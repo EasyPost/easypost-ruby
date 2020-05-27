@@ -21,9 +21,15 @@ describe EasyPost do
       expect(client).to be_a Net::HTTP
       expect(client.use_ssl?).to be true
       expect(client.verify_mode).to eq OpenSSL::SSL::VERIFY_PEER
-      expect(client.ssl_version).to eq :TLSv1_2
       expect(client.read_timeout).to eq 60
       expect(client.open_timeout).to eq 30
+
+      ruby_version = Gem::Version.new(RUBY_VERSION)
+      if ruby_version >= Gem::Version.new("2.5.0")
+        expect(client.min_version).to eq OpenSSL::SSL::TLS1_2_VERSION
+      else
+        expect(client.ssl_version).to eq :TLSv1_2
+      end
     end
   end
 
