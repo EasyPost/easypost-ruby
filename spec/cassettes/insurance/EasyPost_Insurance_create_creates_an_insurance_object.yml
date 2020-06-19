@@ -5,21 +5,20 @@ http_interactions:
     uri: https://api.easypost.com/v2/insurances
     body:
       encoding: UTF-8
-      string: insurance[to_address][company]=EasyPost&insurance[to_address][street1]=164%20Townsend%20Street&insurance[to_address][street2]=Unit%201&insurance[to_address][city]=San%20Francisco&insurance[to_address][state]=CA&insurance[to_address][zip]=94107&insurance[to_address][phone]=415-123-4567&insurance[from_address][company]=Airport%20Shipping&insurance[from_address][street1]=601%20Brasilia%20Avenue&insurance[from_address][city]=Kansas%20City&insurance[from_address][state]=MO&insurance[from_address][zip]=64153&insurance[from_address][phone]=314-924-0383&insurance[from_address][email]=kansas_shipping%40example.com&insurance[amount]=101.0&insurance[tracking_code]=EZ2000000002&insurance[carrier]=usps
+      string: '{"insurance":{"to_address":{"company":"EasyPost","street1":"164 Townsend
+        Street","street2":"Unit 1","city":"San Francisco","state":"CA","zip":"94107","phone":"415-123-4567"},"from_address":{"company":"Airport
+        Shipping","street1":"601 Brasilia Avenue","city":"Kansas City","state":"MO","zip":"64153","phone":"314-924-0383","email":"kansas_shipping@example.com"},"amount":101.0,"tracking_code":"EZ2000000002","carrier":"usps"}}'
     headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
       User-Agent:
-      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
-      Authorization: "<AUTHORIZATION>"
+      - Basic Qm12YVdoZzhtUDI2UVhXZFRwbFlXQTo=
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
       Content-Type:
-      - application/x-www-form-urlencoded
-      Content-Length:
-      - '698'
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Host:
-      - api.easypost.com
+      - application/json
+      Authorization: "<AUTHORIZATION>"
   response:
     status:
       code: 201
@@ -32,7 +31,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Ep-Request-Uuid:
-      - cc18d73c5ea30d10fc9be8cd000dd743
+      - 7567ecc75ebaf10ffb428560000b7571
       Cache-Control:
       - no-cache, no-store, must-revalidate, private
       Pragma:
@@ -40,17 +39,17 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/insurances/ins_369b1305ce274a9c9e80cbeef0b41aae"
+      - "/api/v2/insurances/ins_08316f83ec66453e8521e63f679046da"
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.295416'
+      - '0.418894'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9sj
+      - bigweb2sj
       X-Version-Label:
-      - easypost-202004232052-2747d42303-master
+      - easypost-202005112229-ce23998a81-master
       X-Backend:
       - easypost
       X-Proxied:
@@ -60,9 +59,9 @@ http_interactions:
       - max-age=15768000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"ins_369b1305ce274a9c9e80cbeef0b41aae","object":"Insurance","mode":"test","reference":null,"status":"pending","amount":"101.00000","provider":"easypost","provider_id":null,"to_address":{"id":"adr_c2f5c9995e944baebbc29657e0090ad4","object":"Address","created_at":"2020-04-24T16:00:16Z","updated_at":"2020-04-24T16:00:16Z","name":null,"company":"EASYPOST","street1":"164
-        TOWNSEND ST UNIT 1","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1990","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":37.77893,"longitude":-122.39279,"time_zone":"America/Los_Angeles"}}}},"from_address":{"id":"adr_97fe7755d09f48118985acf2f4207a8b","object":"Address","created_at":"2020-04-24T16:00:16Z","updated_at":"2020-04-24T16:00:16Z","name":null,"company":"AIRPORT
-        SHIPPING","street1":"601 BRASILIA AVE","street2":"","city":"KANSAS CITY","state":"MO","zip":"64153-2054","country":"US","phone":"3149240383","email":"KANSAS_SHIPPING@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":39.29598,"longitude":-94.75217,"time_zone":"America/Chicago"}}}},"shipment_id":null,"tracker":{"id":"trk_7f0a2b5bcef548619952765bf1996c2c","object":"Tracker","mode":null,"tracking_code":null,"status":"unknown","status_detail":"unknown","created_at":"2020-04-24T16:00:16Z","updated_at":"2020-04-24T16:00:16Z","signed_by":null,"weight":null,"est_delivery_date":null,"shipment_id":null,"carrier":null,"tracking_details":[],"fees":[],"carrier_detail":null,"public_url":"https://track.easypost.com/djE6dHJrXzdmMGEyYjViY2VmNTQ4NjE5OTUyNzY1YmYxOTk2YzJj"},"tracking_code":"EZ2000000002","fee":{"object":"Fee","type":"InsuranceFee","amount":"1.01000","charged":true,"refunded":false},"messages":[],"created_at":"2020-04-24T16:00:16Z","updated_at":"2020-04-24T16:00:16Z"}'
+      string: '{"id":"ins_08316f83ec66453e8521e63f679046da","object":"Insurance","mode":"test","reference":null,"status":"pending","amount":"101.00000","provider":"easypost","provider_id":null,"to_address":{"id":"adr_2de405aa0c4e4083a0320febe4a40355","object":"Address","created_at":"2020-05-12T18:55:11Z","updated_at":"2020-05-12T18:55:11Z","name":null,"company":"EASYPOST","street1":"164
+        TOWNSEND ST UNIT 1","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1990","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":37.77893,"longitude":-122.39279,"time_zone":"America/Los_Angeles"}}}},"from_address":{"id":"adr_bd3aea203ee1423c943d0fac13fa80e3","object":"Address","created_at":"2020-05-12T18:55:12Z","updated_at":"2020-05-12T18:55:12Z","name":null,"company":"AIRPORT
+        SHIPPING","street1":"601 BRASILIA AVE","street2":"","city":"KANSAS CITY","state":"MO","zip":"64153-2054","country":"US","phone":"3149240383","email":"KANSAS_SHIPPING@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":39.29598,"longitude":-94.75217,"time_zone":"America/Chicago"}}}},"shipment_id":null,"tracker":{"id":"trk_4d2df3b790d6473daedc6c6ba27d12d4","object":"Tracker","mode":null,"tracking_code":null,"status":"unknown","status_detail":"unknown","created_at":"2020-05-12T18:55:12Z","updated_at":"2020-05-12T18:55:12Z","signed_by":null,"weight":null,"est_delivery_date":null,"shipment_id":null,"carrier":null,"tracking_details":[],"fees":[],"carrier_detail":null,"public_url":"https://track.easypost.com/djE6dHJrXzRkMmRmM2I3OTBkNjQ3M2RhZWRjNmM2YmEyN2QxMmQ0"},"tracking_code":"EZ2000000002","fee":{"object":"Fee","type":"InsuranceFee","amount":"1.01000","charged":true,"refunded":false},"messages":[],"created_at":"2020-05-12T18:55:12Z","updated_at":"2020-05-12T18:55:12Z"}'
     http_version: null
-  recorded_at: Fri, 24 Apr 2020 16:00:16 GMT
+  recorded_at: Tue, 12 May 2020 18:55:12 GMT
 recorded_with: VCR 5.1.0

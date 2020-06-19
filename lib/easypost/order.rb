@@ -2,7 +2,7 @@ module EasyPost
   class Order < Resource
 
     def get_rates(params={})
-      response, api_key = EasyPost.request(:get, url + '/rates', @api_key, params)
+      response = EasyPost.make_request(:get, url + '/rates', @api_key, params)
       self.refresh_from(response, @api_key, true)
 
       return self
@@ -16,7 +16,7 @@ module EasyPost
         params[:service] = temp.service
       end
 
-      response, api_key = EasyPost.request(:post, url + '/buy', @api_key, params)
+      response = EasyPost.make_request(:post, url + '/buy', @api_key, params)
       self.refresh_from(response, @api_key, true)
 
       return self

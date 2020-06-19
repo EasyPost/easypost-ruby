@@ -2,7 +2,7 @@ module EasyPost
   class Shipment < Resource
 
     def get_rates(params={})
-      response, api_key = EasyPost.request(:get, url + '/rates', @api_key, params)
+      response = EasyPost.make_request(:get, url + '/rates', @api_key, params)
       self.refresh_from(response, @api_key, true)
 
       return self
@@ -15,7 +15,7 @@ module EasyPost
         params[:rate] = temp
       end
 
-      response, api_key = EasyPost.request(:post, url + '/buy', @api_key, params)
+      response = EasyPost.make_request(:post, url + '/buy', @api_key, params)
       self.refresh_from(response, @api_key, true)
 
       return self
@@ -28,14 +28,14 @@ module EasyPost
         params[:amount] = temp
       end
 
-      response, api_key = EasyPost.request(:post, url + '/insure', @api_key, params)
+      response = EasyPost.make_request(:post, url + '/insure', @api_key, params)
       self.refresh_from(response, @api_key, true)
 
       return self
     end
 
     def refund(params={})
-      response, api_key = EasyPost.request(:get, url + '/refund', @api_key, params)
+      response = EasyPost.make_request(:get, url + '/refund', @api_key, params)
       self.refresh_from(response, @api_key, true)
 
       return self
@@ -55,7 +55,7 @@ module EasyPost
         params[:file_format] = temp
       end
 
-      response, api_key = EasyPost.request(:get, url + '/label', @api_key, params)
+      response = EasyPost.make_request(:get, url + '/label', @api_key, params)
       self.refresh_from(response, @api_key, true)
 
       return self

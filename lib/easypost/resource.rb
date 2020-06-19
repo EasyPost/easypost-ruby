@@ -11,9 +11,9 @@ module EasyPost
         raise NotImplementedError.new('Resource is an abstract class.  You should perform actions on its subclasses (Address, Shipment, etc.)')
       end
       if(self.class_name[-1..-1] == 's' || self.class_name[-1..-1] == 'h')
-        return "/#{CGI.escape(self.class_name.downcase)}es"
+        return "/v2/#{CGI.escape(self.class_name.downcase)}es"
       else
-        return "/#{CGI.escape(class_name.downcase)}s"
+        return "/v2/#{CGI.escape(class_name.downcase)}s"
       end
     end
 
@@ -25,13 +25,13 @@ module EasyPost
     end
 
     def refresh
-      response, api_key = EasyPost.request(:get, url, @api_key, @retrieve_options)
+      response = EasyPost.make_request(:get, url, @api_key, @retrieve_options)
       refresh_from(response, api_key)
       return self
     end
 
     def self.all(filters={}, api_key=nil)
-      response, api_key = EasyPost.request(:get, url, api_key, filters)
+      response = EasyPost.make_request(:get, url, api_key, filters)
       return Util.convert_to_easypost_object(response, api_key)
     end
 
@@ -44,12 +44,12 @@ module EasyPost
     def self.create(params={}, api_key=nil)
       wrapped_params = {}
       wrapped_params[self.class_name().to_sym] = params
-      response, api_key = EasyPost.request(:post, self.url, api_key, wrapped_params)
+      response = EasyPost.make_request(:post, self.url, api_key, wrapped_params)
       return Util.convert_to_easypost_object(response, api_key)
     end
 
     def delete
-      response, api_key = EasyPost.request(:delete, url, @api_key)
+      response = EasyPost.make_request(:delete, url, @api_key)
       refresh_from(response, api_key)
       return self
     end
@@ -68,7 +68,7 @@ module EasyPost
 
         wrapped_params = {self.class.class_name => values}
 
-        response, api_key = EasyPost.request(:put, url, @api_key, wrapped_params)
+        response = EasyPost.make_request(:put, url, @api_key, wrapped_params)
         refresh_from(response, api_key)
       end
       return self

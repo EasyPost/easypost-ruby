@@ -4,7 +4,7 @@ describe EasyPost::Address do
   describe ".create_and_verify" do
     context "for a successful response without an address" do
       it "should raise an error" do
-        expect(EasyPost).to receive(:request).and_return([{}, ""])
+        expect(EasyPost).to receive(:make_request).and_return({})
         expect {
           EasyPost::Address.create_and_verify(ADDRESS[:california])
         }.to raise_error EasyPost::Error, /Unable to verify addres/

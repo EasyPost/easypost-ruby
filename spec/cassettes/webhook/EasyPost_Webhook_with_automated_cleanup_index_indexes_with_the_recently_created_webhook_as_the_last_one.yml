@@ -5,21 +5,18 @@ http_interactions:
     uri: https://api.easypost.com/v2/webhooks
     body:
       encoding: UTF-8
-      string: webhook[url]=http%3A%2F%2Fexample.com
+      string: '{"webhook":{"url":"http://example.com"}}'
     headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
       User-Agent:
-      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
-      Authorization: "<AUTHORIZATION>"
+      - Basic Qm12YVdoZzhtUDI2UVhXZFRwbFlXQTo=
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
       Content-Type:
-      - application/x-www-form-urlencoded
-      Content-Length:
-      - '37'
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Host:
-      - api.easypost.com
+      - application/json
+      Authorization: "<AUTHORIZATION>"
   response:
     status:
       code: 201
@@ -32,7 +29,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Ep-Request-Uuid:
-      - a893930a5eb9e855eefedec7000ff428
+      - b34287105ebaf15ffb65a6a4000f4ff3
       Cache-Control:
       - no-cache, no-store, must-revalidate, private
       Pragma:
@@ -42,43 +39,43 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.039842'
+      - '0.040495'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb6sj
+      - bigweb8sj
       X-Version-Label:
       - easypost-202005112229-ce23998a81-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2sj 5834894b53
-      - intlb2sj 5834894b53
+      - extlb2wdc 5834894b53
+      - intlb1sj 5834894b53
+      - intlb2wdc 5834894b53
       Strict-Transport-Security:
       - max-age=15768000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"hook_917415ff67274dc7af3df4b5dfcd84fa","object":"Webhook","mode":"test","url":"http://example.com","disabled_at":null}'
+      string: '{"id":"hook_1670539212844c069b912f93e749cd2b","object":"Webhook","mode":"test","url":"http://example.com","disabled_at":null}'
     http_version: null
-  recorded_at: Tue, 12 May 2020 00:05:41 GMT
+  recorded_at: Tue, 12 May 2020 18:56:31 GMT
 - request:
     method: get
     uri: https://api.easypost.com/v2/webhooks
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: "{}"
     headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
       User-Agent:
-      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
-      Authorization: "<AUTHORIZATION>"
+      - Basic Qm12YVdoZzhtUDI2UVhXZFRwbFlXQTo=
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
       Content-Type:
-      - application/x-www-form-urlencoded
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Host:
-      - api.easypost.com
+      - application/json
+      Authorization: "<AUTHORIZATION>"
   response:
     status:
       code: 200
@@ -91,7 +88,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Ep-Request-Uuid:
-      - a893930a5eb9e855e8a1fd86000ff436
+      - fca702d85ebaf15ffb1e69e8000adbdc
       Cache-Control:
       - no-cache, no-store, must-revalidate, private
       Pragma:
@@ -101,17 +98,15 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.045528'
+      - '0.043897'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7sj
+      - bigweb3sj
       X-Version-Label:
       - easypost-202005112229-ce23998a81-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
       - extlb2sj 5834894b53
       - intlb2sj 5834894b53
@@ -119,27 +114,26 @@ http_interactions:
       - max-age=15768000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"webhooks":[{"id":"hook_917415ff67274dc7af3df4b5dfcd84fa","object":"Webhook","mode":"test","url":"http://example.com","disabled_at":null}]}'
+      string: '{"webhooks":[{"id":"hook_1670539212844c069b912f93e749cd2b","object":"Webhook","mode":"test","url":"http://example.com","disabled_at":null}]}'
     http_version: null
-  recorded_at: Tue, 12 May 2020 00:05:41 GMT
+  recorded_at: Tue, 12 May 2020 18:56:31 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/webhooks/hook_917415ff67274dc7af3df4b5dfcd84fa
+    uri: https://api.easypost.com/v2/webhooks/hook_1670539212844c069b912f93e749cd2b
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
       User-Agent:
-      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
-      Authorization: "<AUTHORIZATION>"
+      - Basic Qm12YVdoZzhtUDI2UVhXZFRwbFlXQTo=
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
       Content-Type:
-      - application/x-www-form-urlencoded
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Host:
-      - api.easypost.com
+      - application/json
+      Authorization: "<AUTHORIZATION>"
   response:
     status:
       code: 200
@@ -152,7 +146,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Ep-Request-Uuid:
-      - a893930b5eb9e855e8a1fd87000ff443
+      - 7567ecc45ebaf15ffb3113ef000b8cf3
       Cache-Control:
       - no-cache, no-store, must-revalidate, private
       Pragma:
@@ -162,25 +156,23 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.036844'
+      - '0.034105'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7sj
+      - bigweb8sj
       X-Version-Label:
       - easypost-202005112229-ce23998a81-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb2sj 5834894b53
-      - intlb1sj 5834894b53
+      - extlb1sj 5834894b53
+      - intlb2sj 5834894b53
       Strict-Transport-Security:
       - max-age=15768000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
       string: "{}"
     http_version: null
-  recorded_at: Tue, 12 May 2020 00:05:41 GMT
+  recorded_at: Tue, 12 May 2020 18:56:31 GMT
 recorded_with: VCR 5.1.0

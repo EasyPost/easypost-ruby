@@ -5,21 +5,18 @@ http_interactions:
     uri: https://api.easypost.com/v2/reports/shipment
     body:
       encoding: UTF-8
-      string: start_date=2020-04-12&end_date=2020-05-12&type=shipment
+      string: '{"start_date":"2020-04-12","end_date":"2020-05-12","type":"shipment"}'
     headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
       User-Agent:
+      - Basic Qm12YVdoZzhtUDI2UVhXZFRwbFlXQTo=
       - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
-      Authorization: "<AUTHORIZATION>"
       Content-Type:
-      - application/x-www-form-urlencoded
-      Content-Length:
-      - '55'
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Host:
-      - api.easypost.com
+      - application/json
+      Authorization: "<AUTHORIZATION>"
   response:
     status:
       code: 201
@@ -32,7 +29,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Ep-Request-Uuid:
-      - 87a3a75e5eb9f3c1fb210ee800000b9e
+      - 7567ecc15ebaf12ffb0cd5a2000b7f1e
       Cache-Control:
       - no-cache, no-store, must-revalidate, private
       Pragma:
@@ -42,11 +39,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.039124'
+      - '0.049806'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb11sj
+      - bigweb2sj
       X-Version-Label:
       - easypost-202005112229-ce23998a81-master
       X-Backend:
@@ -58,9 +55,9 @@ http_interactions:
       - max-age=15768000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"shprep_8a445753a8924b9ea8a00f463111b80d","object":"ShipmentReport","created_at":"2020-05-12T00:42:12Z","updated_at":"2020-05-12T00:42:24Z","start_date":"2020-04-12","end_date":"2020-05-12","mode":"test","status":"available","url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/shipment_report/20200512/shprep_8a445753a8924b9ea8a00f463111b80d.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIOR7PKFCRZS3YA6Q%2F20200512%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200512T005425Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=1c8024e7038b14158acb03b769961f5842e7847eefca78826420fe877b48a545","url_expires_at":"2020-05-12T00:54:55+00:00","include_children":false}'
+      string: '{"id":"shprep_8a445753a8924b9ea8a00f463111b80d","object":"ShipmentReport","created_at":"2020-05-12T00:42:12Z","updated_at":"2020-05-12T00:42:24Z","start_date":"2020-04-12","end_date":"2020-05-12","mode":"test","status":"available","url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/shipment_report/20200512/shprep_8a445753a8924b9ea8a00f463111b80d.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIOR7PKFCRZS3YA6Q%2F20200512%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200512T185543Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=4b822533dfe69685407215f2b54d92761811360ceb574accee21053ac7fa2150","url_expires_at":"2020-05-12T18:56:13+00:00","include_children":false}'
     http_version: null
-  recorded_at: Tue, 12 May 2020 00:54:25 GMT
+  recorded_at: Tue, 12 May 2020 18:55:43 GMT
 - request:
     method: get
     uri: https://api.easypost.com/v2/reports/shprep_8a445753a8924b9ea8a00f463111b80d
@@ -68,17 +65,16 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
       User-Agent:
+      - Basic Qm12YVdoZzhtUDI2UVhXZFRwbFlXQTo=
       - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
-      Authorization: "<AUTHORIZATION>"
       Content-Type:
-      - application/x-www-form-urlencoded
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Host:
-      - api.easypost.com
+      - application/json
+      Authorization: "<AUTHORIZATION>"
   response:
     status:
       code: 200
@@ -91,7 +87,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Ep-Request-Uuid:
-      - a15afe7c5eb9f3c1fb6625e00001f0f0
+      - 217dab545ebaf12ffb4312ec000d47ca
       Cache-Control:
       - no-cache, no-store, must-revalidate, private
       Pragma:
@@ -101,24 +97,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.046656'
+      - '0.136938'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb6sj
+      - bigweb4sj
       X-Version-Label:
       - easypost-202005112229-ce23998a81-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2wdc 5834894b53
+      - extlb1wdc 5834894b53
       - intlb1sj 5834894b53
-      - intlb2wdc 5834894b53
+      - intlb1wdc 5834894b53
       Strict-Transport-Security:
       - max-age=15768000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"shprep_8a445753a8924b9ea8a00f463111b80d","object":"ShipmentReport","created_at":"2020-05-12T00:42:12Z","updated_at":"2020-05-12T00:42:24Z","start_date":"2020-04-12","end_date":"2020-05-12","mode":"test","status":"available","url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/shipment_report/20200512/shprep_8a445753a8924b9ea8a00f463111b80d.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIOR7PKFCRZS3YA6Q%2F20200512%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200512T005425Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=1c8024e7038b14158acb03b769961f5842e7847eefca78826420fe877b48a545","url_expires_at":"2020-05-12T00:54:55+00:00","include_children":false}'
+      string: '{"id":"shprep_8a445753a8924b9ea8a00f463111b80d","object":"ShipmentReport","created_at":"2020-05-12T00:42:12Z","updated_at":"2020-05-12T00:42:24Z","start_date":"2020-04-12","end_date":"2020-05-12","mode":"test","status":"available","url":"https://easypost-files.s3-us-west-2.amazonaws.com/files/shipment_report/20200512/shprep_8a445753a8924b9ea8a00f463111b80d.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIOR7PKFCRZS3YA6Q%2F20200512%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200512T185544Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=538fcb0c504289daa4be0f5d31f78ab263656fc67cc9207372aeff9fef2ebd02","url_expires_at":"2020-05-12T18:56:14+00:00","include_children":false}'
     http_version: null
-  recorded_at: Tue, 12 May 2020 00:54:26 GMT
+  recorded_at: Tue, 12 May 2020 18:55:44 GMT
 recorded_with: VCR 5.1.0

@@ -5,21 +5,18 @@ http_interactions:
     uri: https://api.easypost.com/v2/webhooks
     body:
       encoding: UTF-8
-      string: webhook[url]=http%3A%2F%2Fexample.com
+      string: '{"webhook":{"url":"http://example.com"}}'
     headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
       User-Agent:
-      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
-      Authorization: "<AUTHORIZATION>"
+      - Basic Qm12YVdoZzhtUDI2UVhXZFRwbFlXQTo=
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
       Content-Type:
-      - application/x-www-form-urlencoded
-      Content-Length:
-      - '37'
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Host:
-      - api.easypost.com
+      - application/json
+      Authorization: "<AUTHORIZATION>"
   response:
     status:
       code: 201
@@ -32,7 +29,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Ep-Request-Uuid:
-      - a893930b5eb9e854eefedeab000ff3ec
+      - 217dab525ebaf15dfb429228000d5501
       Cache-Control:
       - no-cache, no-store, must-revalidate, private
       Pragma:
@@ -42,43 +39,43 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.036817'
+      - '0.043762'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9sj
+      - bigweb8sj
       X-Version-Label:
       - easypost-202005112229-ce23998a81-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2sj 5834894b53
-      - intlb2sj 5834894b53
+      - extlb1wdc 5834894b53
+      - intlb1sj 5834894b53
+      - intlb2wdc 5834894b53
       Strict-Transport-Security:
       - max-age=15768000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"hook_ab6e7fe56d224419b8dc5ffcd2cd346d","object":"Webhook","mode":"test","url":"http://example.com","disabled_at":null}'
+      string: '{"id":"hook_26ebd3c1bf394a7785f5b1b3d6b03a5b","object":"Webhook","mode":"test","url":"http://example.com","disabled_at":null}'
     http_version: null
-  recorded_at: Tue, 12 May 2020 00:05:40 GMT
+  recorded_at: Tue, 12 May 2020 18:56:29 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/webhooks/hook_ab6e7fe56d224419b8dc5ffcd2cd346d
+    uri: https://api.easypost.com/v2/webhooks/hook_26ebd3c1bf394a7785f5b1b3d6b03a5b
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
       User-Agent:
-      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.6.6-p146
-      Authorization: "<AUTHORIZATION>"
+      - Basic Qm12YVdoZzhtUDI2UVhXZFRwbFlXQTo=
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
       Content-Type:
-      - application/x-www-form-urlencoded
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Host:
-      - api.easypost.com
+      - application/json
+      Authorization: "<AUTHORIZATION>"
   response:
     status:
       code: 200
@@ -91,7 +88,7 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Ep-Request-Uuid:
-      - a893930c5eb9e854eefedeac000ff3f7
+      - b34287145ebaf15dfb0aac63000f4f71
       Cache-Control:
       - no-cache, no-store, must-revalidate, private
       Pragma:
@@ -101,23 +98,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.033819'
+      - '0.035471'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8sj
+      - bigweb9sj
       X-Version-Label:
       - easypost-202005112229-ce23998a81-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2sj 5834894b53
-      - intlb2sj 5834894b53
+      - extlb2wdc 5834894b53
+      - intlb1sj 5834894b53
+      - intlb2wdc 5834894b53
       Strict-Transport-Security:
       - max-age=15768000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
       string: "{}"
     http_version: null
-  recorded_at: Tue, 12 May 2020 00:05:40 GMT
+  recorded_at: Tue, 12 May 2020 18:56:30 GMT
 recorded_with: VCR 5.1.0

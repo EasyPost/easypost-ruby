@@ -103,49 +103,5 @@ module EasyPost
         return response
       end
     end
-
-    def self.symbolize_names(obj)
-      case obj
-      when Hash
-        result = {}
-        obj.each do |k, v|
-          k = (k.to_sym rescue k) || k
-          obj[k] = symbolize_names(v)
-        end
-        return result
-      when Array
-        return obj.map { |v| symbolize_names(v) }
-      else
-        return obj
-      end
-    end
-
-    def self.url_encode(key)
-      URI.escape(key.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
-    end
-
-    def self.flatten_params(params, parent_key=nil)
-      result = []
-      if params.is_a?(Hash)
-        params.each do |k, v|
-          calculated_key = parent_key ? "#{parent_key}[#{url_encode(k)}]" : url_encode(k)
-          if v.is_a?(Hash) or v.is_a?(Array)
-            result += flatten_params(v, calculated_key)
-          else
-            result << [calculated_key, v]
-          end
-        end
-      elsif params.is_a?(Array)
-        params.each_with_index do |v, i|
-          calculated_key = parent_key ? "#{parent_key}[#{i}]" : i
-          if v.is_a?(Hash) or v.is_a?(Array)
-            result += flatten_params(v, calculated_key)
-          else
-            result << [calculated_key, v]
-          end
-        end
-      end
-      return result
-    end
   end
 end
