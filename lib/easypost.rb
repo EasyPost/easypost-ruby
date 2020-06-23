@@ -66,6 +66,8 @@ module EasyPost
     else
       @http_config[:ssl_version] = :TLSv1_2
     end
+
+    @http_config
   end
 
   def self.http_config
