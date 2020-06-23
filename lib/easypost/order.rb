@@ -22,5 +22,9 @@ module EasyPost
       return self
     end
 
+    def self.all(filters={}, api_key=nil)
+      raise NotImplementedError.new('Order.all not implemented.')
+    end
+
   end
 end
