@@ -2,6 +2,10 @@ require "spec_helper"
 
 describe EasyPost do
   describe "#http_config=" do
+    it "defaults correctly" do
+      expect(described_class.http_config[:timeout]).to eq 60
+    end
+
     it "overrides existing without destorying others" do
       described_class.http_config = {timeout: 15}
       expect(described_class.http_config[:timeout]).to eq 15

@@ -1,3 +1,5 @@
+require "set"
+
 module EasyPost
   class EasyPostObject
     include Enumerable
