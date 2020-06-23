@@ -1,3 +1,9 @@
+=== 3.1.0 2020-06-23
+
+* Add Shipment Invoice and Refund Report
+* Remove dependencies on `RestClient` and `MultiJson`
+* Remove some deprecated endpoints
+
 === 3.0.1 2018-05-17
 
 * Enforce TLS certificate validity by default
