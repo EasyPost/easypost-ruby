@@ -1,3 +1,7 @@
+=== 3.1.2 2020-06-24
+
+* Bad gem push. New version required.
+
 === 3.1.1 2020-06-23
 
 * Fix bug where EasyPost.http_config was invalid when not explicitly initialized.
