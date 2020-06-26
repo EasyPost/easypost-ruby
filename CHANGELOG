@@ -1,3 +1,7 @@
+=== 3.1.3 2020-06-26
+
+* Fix bug causing Authorization header to be included in User-Agent header. All users must upgrade.
+
 === 3.1.2 2020-06-24
 
 * Bad gem push. New version required.
