@@ -122,7 +122,7 @@ module EasyPost
     end
 
     request["Content-Type"] = "application/json"
-    request["User-Agent"] = "EasyPost/v2 RubyClient/#{VERSION} Ruby/#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}",
+    request["User-Agent"] = "EasyPost/v2 RubyClient/#{VERSION} Ruby/#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
     if api_key = api_key || @api_key
       request["Authorization"] = "Basic #{Base64.strict_encode64("#{api_key}:")}"
     end
