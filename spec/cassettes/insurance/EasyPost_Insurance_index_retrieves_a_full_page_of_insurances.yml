@@ -1,0 +1,128 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/insurances
+    body:
+      encoding: UTF-8
+      string: '{"page_size":5}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Basic Qm12YVdoZzhtUDI2UVhXZFRwbFlXQTo=
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - fca702d45ebaf111fb3106eb000ac50a
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.297839'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb8sj
+      X-Version-Label:
+      - easypost-202005112229-ce23998a81-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2sj 5834894b53
+      - intlb1sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"insurances":[{"id":"ins_10ab86c44a84439698be6fd755ff545e","object":"Insurance","mode":"test","reference":null,"status":"pending","amount":"101.00000","provider":"easypost","provider_id":null,"to_address":{"id":"adr_f2783bc72e3447dab31cc0ae1339bd17","object":"Address","created_at":"2020-05-12T18:55:12Z","updated_at":"2020-05-12T18:55:12Z","name":null,"company":"EASYPOST","street1":"164
+        TOWNSEND ST UNIT 1","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1990","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":37.77893,"longitude":-122.39279,"time_zone":"America/Los_Angeles"}}}},"from_address":{"id":"adr_28b2bfc6307e40d4ae0e9022a94d2e49","object":"Address","created_at":"2020-05-12T18:55:12Z","updated_at":"2020-05-12T18:55:12Z","name":null,"company":"AIRPORT
+        SHIPPING","street1":"601 BRASILIA AVE","street2":"","city":"KANSAS CITY","state":"MO","zip":"64153-2054","country":"US","phone":"3149240383","email":"KANSAS_SHIPPING@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":39.29598,"longitude":-94.75217,"time_zone":"America/Chicago"}}}},"shipment_id":null,"tracker":{"id":"trk_9fe768665a9b420990dde1caebde76fd","user_id":47799,"object":"Tracker","mode":"test","tracking_code":"EZ2000000002","status":"in_transit","status_detail":"status_update","created_at":"2020-05-12T18:55:13Z","updated_at":"2020-05-12T18:55:13Z","signed_by":null,"weight":null,"est_delivery_date":"2020-05-12T18:55:13Z","shipment_id":null,"carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment
+        Info Sent to USPS","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-04-12T18:55:13Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping
+        Label Created","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-04-13T07:32:13Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"}},{"object":"TrackingDetail","message":"Arrived
+        at USPS Origin Facility","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-13T17:37:13Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"NORTH
+        HOUSTON","state":"TX","country":null,"zip":"77315"}},{"object":"TrackingDetail","message":"Arrived
+        at USPS Facility","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-14T19:13:13Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"COLUMBIA","state":"SC","country":null,"zip":"29201"}},{"object":"TrackingDetail","message":"Arrived
+        at Post Office","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-14T22:04:13Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"}},{"object":"TrackingDetail","message":"Sorting
+        Complete","description":null,"status":"in_transit","status_detail":"status_update","datetime":"2020-04-15T03:44:13Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"}}],"carrier_detail":{"object":"CarrierDetail","service":"First-Class
+        Package Service","container_type":null,"est_delivery_date_local":null,"est_delivery_time_local":null,"origin_location":"HOUSTON
+        TX, 77001","origin_tracking_location":{"object":"TrackingLocation","city":"NORTH
+        HOUSTON","state":"TX","country":null,"zip":"77315"},"destination_location":"CHARLESTON
+        SC, 29401","destination_tracking_location":null,"guaranteed_delivery_date":null,"alternate_identifier":null,"initial_delivery_attempt":null},"finalized":true,"is_return":false,"public_url":"https://track.easypost.com/djE6dHJrXzlmZTc2ODY2NWE5YjQyMDk5MGRkZTFjYWViZGU3NmZk","fees":[]},"tracking_code":"EZ2000000002","fee":{"object":"Fee","type":"InsuranceFee","amount":"1.01000","charged":true,"refunded":false},"messages":[],"created_at":"2020-05-12T18:55:12Z","updated_at":"2020-05-12T18:55:12Z"},{"id":"ins_08316f83ec66453e8521e63f679046da","object":"Insurance","mode":"test","reference":null,"status":"pending","amount":"101.00000","provider":"easypost","provider_id":null,"to_address":{"id":"adr_2de405aa0c4e4083a0320febe4a40355","object":"Address","created_at":"2020-05-12T18:55:11Z","updated_at":"2020-05-12T18:55:11Z","name":null,"company":"EASYPOST","street1":"164
+        TOWNSEND ST UNIT 1","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1990","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":37.77893,"longitude":-122.39279,"time_zone":"America/Los_Angeles"}}}},"from_address":{"id":"adr_bd3aea203ee1423c943d0fac13fa80e3","object":"Address","created_at":"2020-05-12T18:55:12Z","updated_at":"2020-05-12T18:55:12Z","name":null,"company":"AIRPORT
+        SHIPPING","street1":"601 BRASILIA AVE","street2":"","city":"KANSAS CITY","state":"MO","zip":"64153-2054","country":"US","phone":"3149240383","email":"KANSAS_SHIPPING@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":39.29598,"longitude":-94.75217,"time_zone":"America/Chicago"}}}},"shipment_id":null,"tracker":{"id":"trk_4d2df3b790d6473daedc6c6ba27d12d4","user_id":47799,"object":"Tracker","mode":"test","tracking_code":"EZ2000000002","status":"in_transit","status_detail":"status_update","created_at":"2020-05-12T18:55:12Z","updated_at":"2020-05-12T18:55:12Z","signed_by":null,"weight":null,"est_delivery_date":"2020-05-12T18:55:12Z","shipment_id":null,"carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment
+        Info Sent to USPS","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-04-12T18:55:12Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping
+        Label Created","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-04-13T07:32:12Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"}},{"object":"TrackingDetail","message":"Arrived
+        at USPS Origin Facility","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-13T17:37:12Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"NORTH
+        HOUSTON","state":"TX","country":null,"zip":"77315"}},{"object":"TrackingDetail","message":"Arrived
+        at USPS Facility","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-14T19:13:12Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"COLUMBIA","state":"SC","country":null,"zip":"29201"}},{"object":"TrackingDetail","message":"Arrived
+        at Post Office","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-14T22:04:12Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"}},{"object":"TrackingDetail","message":"Sorting
+        Complete","description":null,"status":"in_transit","status_detail":"status_update","datetime":"2020-04-15T03:44:12Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"}}],"carrier_detail":{"object":"CarrierDetail","service":"First-Class
+        Package Service","container_type":null,"est_delivery_date_local":null,"est_delivery_time_local":null,"origin_location":"HOUSTON
+        TX, 77001","origin_tracking_location":{"object":"TrackingLocation","city":"NORTH
+        HOUSTON","state":"TX","country":null,"zip":"77315"},"destination_location":"CHARLESTON
+        SC, 29401","destination_tracking_location":null,"guaranteed_delivery_date":null,"alternate_identifier":null,"initial_delivery_attempt":null},"finalized":true,"is_return":false,"public_url":"https://track.easypost.com/djE6dHJrXzRkMmRmM2I3OTBkNjQ3M2RhZWRjNmM2YmEyN2QxMmQ0","fees":[]},"tracking_code":"EZ2000000002","fee":{"object":"Fee","type":"InsuranceFee","amount":"1.01000","charged":true,"refunded":false},"messages":[],"created_at":"2020-05-12T18:55:12Z","updated_at":"2020-05-12T18:55:12Z"},{"id":"ins_0caa1e95d07c4d579e4b8d7dd86040cc","object":"Insurance","mode":"test","reference":null,"status":"purchased","amount":"100.00000","provider":"easypost","provider_id":null,"to_address":{"id":"adr_26fa1ad6db23411fa223327aa6c3df88","object":"Address","created_at":"2020-05-12T18:00:46Z","updated_at":"2020-05-12T18:00:48Z","name":null,"company":"Airport
+        Shipping","street1":"601 Brasilia Avenue","street2":null,"city":"Kansas City","state":"MO","zip":"64153-2054","country":"US","phone":"3149240383","email":"kansas_shipping@example.com","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null}}},"from_address":{"id":"adr_42edfa63b57e4cf5a706298969c8a0b6","object":"Address","created_at":"2020-05-12T18:00:46Z","updated_at":"2020-05-12T18:00:46Z","name":null,"company":"EasyPost","street1":"164
+        Townsend Street","street2":"Unit 1","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"shipment_id":"shp_6f5328c516fe4ed9a92ac47b731af860","tracker":{"id":"trk_f687ab6b955b47a6bfd0d7aa5cdeb9c9","user_id":47799,"object":"Tracker","mode":"test","tracking_code":"9461200897846038766066","status":"delivered","status_detail":"arrived_at_destination","created_at":"2020-05-12T18:00:49Z","updated_at":"2020-05-12T18:03:49Z","signed_by":"John
+        Tester","weight":null,"est_delivery_date":"2020-05-12T18:03:49Z","shipment_id":"shp_6f5328c516fe4ed9a92ac47b731af860","carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment
+        Info Sent to USPS","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-04-12T18:03:49Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping
+        Label Created","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-04-13T06:40:49Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"}},{"object":"TrackingDetail","message":"Arrived
+        at USPS Origin Facility","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-13T16:45:49Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"NORTH
+        HOUSTON","state":"TX","country":null,"zip":"77315"}},{"object":"TrackingDetail","message":"Arrived
+        at USPS Facility","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-14T18:21:49Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"COLUMBIA","state":"SC","country":null,"zip":"29201"}},{"object":"TrackingDetail","message":"Arrived
+        at Post Office","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-14T21:12:49Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"}},{"object":"TrackingDetail","message":"Sorting
+        Complete","description":null,"status":"in_transit","status_detail":"status_update","datetime":"2020-04-15T02:52:49Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"}},{"object":"TrackingDetail","message":"Out
+        for Delivery","description":null,"status":"out_for_delivery","status_detail":"out_for_delivery","datetime":"2020-04-15T03:02:49Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"}},{"object":"TrackingDetail","message":"Delivered","description":null,"status":"delivered","status_detail":"arrived_at_destination","datetime":"2020-04-15T07:54:49Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"}}],"carrier_detail":{"object":"CarrierDetail","service":"First-Class
+        Package Service","container_type":null,"est_delivery_date_local":null,"est_delivery_time_local":null,"origin_location":"HOUSTON
+        TX, 77001","origin_tracking_location":{"object":"TrackingLocation","city":"NORTH
+        HOUSTON","state":"TX","country":null,"zip":"77315"},"destination_location":"CHARLESTON
+        SC, 29401","destination_tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"},"guaranteed_delivery_date":null,"alternate_identifier":null,"initial_delivery_attempt":"2020-04-15T07:54:49Z"},"finalized":true,"is_return":false,"public_url":"https://track.easypost.com/djE6dHJrX2Y2ODdhYjZiOTU1YjQ3YTZiZmQwZDdhYTVjZGViOWM5","fees":[]},"tracking_code":"9461200897846038766066","fee":{"object":"Fee","type":"InsuranceFee","amount":"1.00000","charged":true,"refunded":false},"messages":[],"created_at":"2020-05-12T18:00:49Z","updated_at":"2020-05-12T18:00:49Z"},{"id":"ins_0efe1735f7fa4c05a592702e2adf5f39","object":"Insurance","mode":"test","reference":null,"status":"pending","amount":"101.00000","provider":"easypost","provider_id":null,"to_address":{"id":"adr_25972b0583024656a7c8721b7e956261","object":"Address","created_at":"2020-05-12T17:59:45Z","updated_at":"2020-05-12T17:59:45Z","name":null,"company":"EASYPOST","street1":"164
+        TOWNSEND ST UNIT 1","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1990","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":37.77893,"longitude":-122.39279,"time_zone":"America/Los_Angeles"}}}},"from_address":{"id":"adr_5cd137582cc94f4082f3b9dfdd2522fa","object":"Address","created_at":"2020-05-12T17:59:45Z","updated_at":"2020-05-12T17:59:45Z","name":null,"company":"AIRPORT
+        SHIPPING","street1":"601 BRASILIA AVE","street2":"","city":"KANSAS CITY","state":"MO","zip":"64153-2054","country":"US","phone":"3149240383","email":"KANSAS_SHIPPING@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":39.29598,"longitude":-94.75217,"time_zone":"America/Chicago"}}}},"shipment_id":null,"tracker":{"id":"trk_91f794c0d2b3414c943d456b10b25c48","user_id":47799,"object":"Tracker","mode":"test","tracking_code":"EZ2000000002","status":"in_transit","status_detail":"status_update","created_at":"2020-05-12T17:59:45Z","updated_at":"2020-05-12T17:59:45Z","signed_by":null,"weight":null,"est_delivery_date":"2020-05-12T17:59:45Z","shipment_id":null,"carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment
+        Info Sent to USPS","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-04-12T17:59:45Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping
+        Label Created","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-04-13T06:36:45Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"}},{"object":"TrackingDetail","message":"Arrived
+        at USPS Origin Facility","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-13T16:41:45Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"NORTH
+        HOUSTON","state":"TX","country":null,"zip":"77315"}},{"object":"TrackingDetail","message":"Arrived
+        at USPS Facility","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-14T18:17:45Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"COLUMBIA","state":"SC","country":null,"zip":"29201"}},{"object":"TrackingDetail","message":"Arrived
+        at Post Office","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-14T21:08:45Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"}},{"object":"TrackingDetail","message":"Sorting
+        Complete","description":null,"status":"in_transit","status_detail":"status_update","datetime":"2020-04-15T02:48:45Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"}}],"carrier_detail":{"object":"CarrierDetail","service":"First-Class
+        Package Service","container_type":null,"est_delivery_date_local":null,"est_delivery_time_local":null,"origin_location":"HOUSTON
+        TX, 77001","origin_tracking_location":{"object":"TrackingLocation","city":"NORTH
+        HOUSTON","state":"TX","country":null,"zip":"77315"},"destination_location":"CHARLESTON
+        SC, 29401","destination_tracking_location":null,"guaranteed_delivery_date":null,"alternate_identifier":null,"initial_delivery_attempt":null},"finalized":true,"is_return":false,"public_url":"https://track.easypost.com/djE6dHJrXzkxZjc5NGMwZDJiMzQxNGM5NDNkNDU2YjEwYjI1YzQ4","fees":[]},"tracking_code":"EZ2000000002","fee":{"object":"Fee","type":"InsuranceFee","amount":"1.01000","charged":true,"refunded":false},"messages":[],"created_at":"2020-05-12T17:59:45Z","updated_at":"2020-05-12T17:59:45Z"},{"id":"ins_5199bd292c9345d5918ea3a6243807b2","object":"Insurance","mode":"test","reference":null,"status":"pending","amount":"101.00000","provider":"easypost","provider_id":null,"to_address":{"id":"adr_5731e2c86325431ebc1b8952e77c7a5f","object":"Address","created_at":"2020-05-12T17:59:44Z","updated_at":"2020-05-12T17:59:44Z","name":null,"company":"EASYPOST","street1":"164
+        TOWNSEND ST UNIT 1","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1990","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":37.77893,"longitude":-122.39279,"time_zone":"America/Los_Angeles"}}}},"from_address":{"id":"adr_99f0d418788b41bcad74b3862bd623ab","object":"Address","created_at":"2020-05-12T17:59:44Z","updated_at":"2020-05-12T17:59:44Z","name":null,"company":"AIRPORT
+        SHIPPING","street1":"601 BRASILIA AVE","street2":"","city":"KANSAS CITY","state":"MO","zip":"64153-2054","country":"US","phone":"3149240383","email":"KANSAS_SHIPPING@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":39.29598,"longitude":-94.75217,"time_zone":"America/Chicago"}}}},"shipment_id":null,"tracker":{"id":"trk_19fd016ba80a48c5afd39bb3ea74d2ac","user_id":47799,"object":"Tracker","mode":"test","tracking_code":"EZ2000000002","status":"in_transit","status_detail":"status_update","created_at":"2020-05-12T17:59:45Z","updated_at":"2020-05-12T17:59:45Z","signed_by":null,"weight":null,"est_delivery_date":"2020-05-12T17:59:45Z","shipment_id":null,"carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment
+        Info Sent to USPS","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-04-12T17:59:45Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping
+        Label Created","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2020-04-13T06:36:45Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"}},{"object":"TrackingDetail","message":"Arrived
+        at USPS Origin Facility","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-13T16:41:45Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"NORTH
+        HOUSTON","state":"TX","country":null,"zip":"77315"}},{"object":"TrackingDetail","message":"Arrived
+        at USPS Facility","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-14T18:17:45Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"COLUMBIA","state":"SC","country":null,"zip":"29201"}},{"object":"TrackingDetail","message":"Arrived
+        at Post Office","description":null,"status":"in_transit","status_detail":"arrived_at_facility","datetime":"2020-04-14T21:08:45Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"}},{"object":"TrackingDetail","message":"Sorting
+        Complete","description":null,"status":"in_transit","status_detail":"status_update","datetime":"2020-04-15T02:48:45Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"CHARLESTON","state":"SC","country":null,"zip":"29407"}}],"carrier_detail":{"object":"CarrierDetail","service":"First-Class
+        Package Service","container_type":null,"est_delivery_date_local":null,"est_delivery_time_local":null,"origin_location":"HOUSTON
+        TX, 77001","origin_tracking_location":{"object":"TrackingLocation","city":"NORTH
+        HOUSTON","state":"TX","country":null,"zip":"77315"},"destination_location":"CHARLESTON
+        SC, 29401","destination_tracking_location":null,"guaranteed_delivery_date":null,"alternate_identifier":null,"initial_delivery_attempt":null},"finalized":true,"is_return":false,"public_url":"https://track.easypost.com/djE6dHJrXzE5ZmQwMTZiYTgwYTQ4YzVhZmQzOWJiM2VhNzRkMmFj","fees":[]},"tracking_code":"EZ2000000002","fee":{"object":"Fee","type":"InsuranceFee","amount":"1.01000","charged":true,"refunded":false},"messages":[],"created_at":"2020-05-12T17:59:44Z","updated_at":"2020-05-12T17:59:44Z"}],"has_more":true}'
+    http_version: null
+  recorded_at: Tue, 12 May 2020 18:55:14 GMT
+recorded_with: VCR 5.1.0

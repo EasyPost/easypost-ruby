@@ -1,10 +1,9 @@
 require 'spec_helper'
 
 describe EasyPost::Pickup do
-  before { EasyPost.api_key = "cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi" }
-
-  let(:shipment) do
-    shipment = EasyPost::Shipment.create(
+  let(:noon_tomorrow) { (Date.today + 1).to_datetime + Rational(12, 24) }
+  let!(:shipment) do
+    EasyPost::Shipment.create(
       to_address: ADDRESS[:california],
       from_address: ADDRESS[:missouri],
       parcel: PARCEL[:dimensions]
@@ -13,14 +12,14 @@ describe EasyPost::Pickup do
 
   describe '#create' do
     it 'creates a pickup and returns rates' do
-      shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
+      shipment.buy(rate: shipment.lowest_rate("UPS", "NextDayAirEarlyAM"))
       pickup = EasyPost::Pickup.create(
         address: ADDRESS[:missouri],
         reference: "12345678",
-        min_datetime: DateTime.now(),
-        max_datetime: DateTime.now() + 14400,
+        min_datetime: noon_tomorrow,
+        max_datetime: noon_tomorrow,
         is_account_address: false,
-        instructions: "",
+        instructions: "At the front door.",
         shipment: shipment
       )
 
@@ -29,28 +28,30 @@ describe EasyPost::Pickup do
     end
 
     it 'fails to create a pickup' do
-      shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
-      expect { pickup = EasyPost::Pickup.create(
-        address: ADDRESS[:california],
-        reference: "12345678",
-        max_datetime: DateTime.now() + 14400,
-        is_account_address: false,
-        instructions: "",
-        shipment: shipment
-      ) }.to raise_exception(EasyPost::Error, /Invalid request, 'min_datetime' is required./)
+      shipment.buy(rate: shipment.lowest_rate("UPS", "NextDayAirEarlyAM"))
+      expect {
+        EasyPost::Pickup.create(
+          address: ADDRESS[:california],
+          reference: "12345678",
+          max_datetime: noon_tomorrow,
+          is_account_address: false,
+          instructions: "At the front door.",
+          shipment: shipment
+        )
+      } .to raise_exception(EasyPost::Error, /Invalid request, 'min_datetime' is required./)
     end
   end
 
   describe '#buy' do
     it 'buys a pickup rate' do
-      shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
+      shipment.buy(rate: shipment.lowest_rate("UPS", "NextDayAirEarlyAM"))
       pickup = EasyPost::Pickup.create(
         address: ADDRESS[:california],
         reference: "buy12345678",
-        min_datetime: DateTime.now(),
-        max_datetime: DateTime.now() + 14400,
+        min_datetime: noon_tomorrow,
+        max_datetime: noon_tomorrow,
         is_account_address: false,
-        instructions: "",
+        instructions: "At the front door.",
         shipment: shipment
       )
       pickup.buy(pickup.pickup_rates.first)
@@ -61,14 +62,14 @@ describe EasyPost::Pickup do
 
   describe '#cancel' do
     it 'cancels a pickup' do
-      shipment.buy(rate: shipment.lowest_rate("ups", "NextDayAirEarlyAM"))
+      shipment.buy(rate: shipment.lowest_rate("UPS", "NextDayAirEarlyAM"))
       pickup = EasyPost::Pickup.create(
         address: ADDRESS[:california],
         reference: "buy12345678",
-        min_datetime: DateTime.now(),
-        max_datetime: DateTime.now() + 14400,
+        min_datetime: noon_tomorrow,
+        max_datetime: noon_tomorrow,
         is_account_address: false,
-        instructions: "",
+        instructions: "At the front door.",
         shipment: shipment
       )
       pickup.buy(pickup.pickup_rates.first)

@@ -5,7 +5,7 @@ module EasyPost
       wrapped_params = {}
       wrapped_params[class_name.to_sym] = params
 
-      response, api_key = EasyPost.request(:post, url, api_key, params)
+      response = EasyPost.make_request(:post, url, api_key, params)
       return Util.convert_to_easypost_object(response, api_key)
     end
 
@@ -24,7 +24,7 @@ module EasyPost
     def self.all(filters={}, api_key=nil)
       url = "#{self.url}/#{filters[:type]}"
 
-      response, api_key = EasyPost.request(:get, url, api_key, filters)
+      response = EasyPost.make_request(:get, url, api_key, filters)
       return EasyPost::Util::convert_to_easypost_object(response, api_key) if response
     end
   end
