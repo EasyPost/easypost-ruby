@@ -131,7 +131,7 @@ module EasyPost
 
     if (400..599).include? response.code.to_i
       error = JSON.parse(response.body)["error"]
-      raise Error.new(error["message"], response.code.to_i, error["code"], error["errors"])
+      raise Error.new(error["message"], response.code.to_i, error["code"], error["errors"], response.body)
     end
 
     if response["Content-Type"].include? "application/json"
