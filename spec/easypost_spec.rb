@@ -43,12 +43,21 @@ describe EasyPost do
       expect(response).to eq "UP"
     end
 
+    it 'stores the http_body on the error' do
+      expect { described_class.make_request("get", "/health/boom", nil) }.to raise_error(EasyPost::Error) { |error|
+        expect(error.http_body).to eq(
+          '{"error":{"code":"INTERNAL_SERVER_ERROR","message":"We\'re sorry, something went wrong. If the problem persists please contact Support.","errors":[]}}',
+        )
+      }
+    end
+
     it "raises errors for 400s" do
       expect { described_class.make_request("get", "/asdf") }.to raise_error EasyPost::Error.new(
         "The requested resource could not be found.",
         404,
         "NOT_FOUND",
-        []
+        [],
+        anything,
       )
     end
 
@@ -57,7 +66,8 @@ describe EasyPost do
         "We're sorry, something went wrong. If the problem persists please contact Support.",
         500,
         "INTERNAL_SERVER_ERROR",
-        []
+        [],
+        anything,
       )
     end
   end
