@@ -42,7 +42,7 @@ module EasyPost
       end
 
       values.each do |k, v|
-        @values[k] = Util.convert_to_easypost_object(v, api_key, self, k)
+        @values[k.to_s] = Util.convert_to_easypost_object(v, api_key, self, k)
         @transient_values.delete(k)
         @unsaved_values.delete(k)
       end

@@ -599,6 +599,37 @@ describe EasyPost::EasyPostObject do
       expect(shipment).to be_a EasyPost::Shipment
       expect(shipment.rates).to all be_a EasyPost::Rate
     end
+
+    context 'when the keys are symbols' do
+      let(:rate) {
+        EasyPost::Rate.construct_from(
+          id: "rate_1234",
+          object: "Rate",
+          created_at: "2019-06-03T13:24:06Z",
+          updated_at: "2019-06-03T13:24:06Z",
+          mode: "test",
+          service: "SMART_POST",
+          carrier: "FedExSmartPost",
+          rate: "687.23",
+          currency: "USD",
+          retail_rate: nil,
+          retail_currency: nil,
+          list_rate: "687.23",
+          list_currency: "USD",
+          delivery_days: 1,
+          delivery_date: "2019-06-04T08:00:00Z",
+          delivery_date_guaranteed: true,
+          est_delivery_days: 1,
+          shipment_id: "shp_1234",
+          carrier_account_id: "ca_1234",
+        )
+      }
+
+      it 'constructs the object and allows you to lookup the values' do
+        expect(rate).to be_a EasyPost::Rate
+        expect(rate['carrier_account_id']).to eq('ca_1234')
+      end
+    end
   end
 
   describe "#inspect" do
