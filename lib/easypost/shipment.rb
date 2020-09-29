@@ -66,9 +66,7 @@ module EasyPost
 
       self.get_rates unless self.rates
 
-      carriers = carriers.is_a?(String) ? carriers.split(',') : Array(carriers)
-      carriers.map!(&:downcase)
-      carriers.map!(&:strip)
+      carriers = EasyPost::Util.normalize_string_list(carriers)
 
       negative_carriers = []
       carriers_copy = carriers.clone
@@ -79,9 +77,7 @@ module EasyPost
         end
       end
 
-      services = services.is_a?(String) ? services.split(',') : Array(services)
-      services.map!(&:downcase)
-      services.map!(&:strip)
+      services = EasyPost::Util.normalize_string_list(services)
 
       negative_services = []
       services_copy = services.clone
