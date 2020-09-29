@@ -15,6 +15,11 @@ module EasyPost
       end
     end
 
+    def self.normalize_string_list(lst)
+      lst = lst.is_a?(String) ? lst.split(',') : Array(lst)
+      lst.map(&:to_s).map(&:downcase).map(&:strip)
+    end
+
     def self.convert_to_easypost_object(response, api_key, parent=nil, name=nil)
       types = {
         'Address' => Address,

@@ -115,26 +115,28 @@ describe EasyPost::Shipment do
 
   describe '#lowest_rate' do
     context 'domestic shipment' do
-      it 'filters negative services' do
-        shipment = EasyPost::Shipment.create(
+      let (:shipment) {
+        EasyPost::Shipment.create(
           to_address: EasyPost::Address.create(ADDRESS[:missouri]),
           from_address: ADDRESS[:california],
           parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
         )
+      }
 
+      it 'filters negative services' do
         rate = shipment.lowest_rate('USPS', '!MediaMail, !LibraryMail')
         expect(rate.service).to eql('ParcelSelect')
       end
 
       it 'doesn\'t modify carriers array' do
         carriers = %w(USPS)
-        @shipment.lowest_rate(carriers)
+        shipment.lowest_rate(carriers)
         expect(carriers).to eq(%w(USPS))
       end
 
       it 'doesn\'t modify services array' do
         services = %w(ParcelSelect)
-        @shipment.lowest_rate('USPS', services)
+        shipment.lowest_rate('USPS', services)
         expect(services).to eq(%w(ParcelSelect))
       end
     end
