@@ -1,6 +1,2 @@
-module EasyPost
-  class PrintJob < Resource
-  end
+class EasyPost::PrintJob < EasyPost::Resource
 end
-
-

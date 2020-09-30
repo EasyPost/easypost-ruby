@@ -118,7 +118,7 @@ module EasyPost
 
     request = Net::HTTP.const_get(method.capitalize).new(path)
     if body
-      request.body = JSON.dump(Util.objects_to_ids(body))
+      request.body = JSON.dump(EasyPost::Util.objects_to_ids(body))
     end
 
     request["Content-Type"] = "application/json"
@@ -131,7 +131,7 @@ module EasyPost
 
     if (400..599).include? response.code.to_i
       error = JSON.parse(response.body)["error"]
-      raise Error.new(error["message"], response.code.to_i, error["code"], error["errors"], response.body)
+      raise EasyPost::Error.new(error["message"], response.code.to_i, error["code"], error["errors"], response.body)
     end
 
     if response["Content-Type"].include? "application/json"

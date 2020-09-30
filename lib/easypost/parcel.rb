@@ -1,4 +1,2 @@
-module EasyPost
-  class Parcel < Resource
-  end
+class EasyPost::Parcel < EasyPost::Resource
 end
