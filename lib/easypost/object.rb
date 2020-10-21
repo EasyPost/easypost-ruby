@@ -123,6 +123,7 @@ module EasyPost
     def add_accessors(keys)
       metaclass.instance_eval do
         keys.each do |k|
+          k = k.to_s
           next if @@immutable_values.include?(k)
           k_eq = :"#{k}="
           define_method(k) { @values[k] }
@@ -132,7 +133,7 @@ module EasyPost
 
             cur = self
             cur_parent = self.parent
-            param = {}
+
             while cur_parent
               if cur.name
                 cur_parent.unsaved_values.add(cur.name)

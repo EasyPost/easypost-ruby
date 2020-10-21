@@ -629,6 +629,10 @@ describe EasyPost::EasyPostObject do
         expect(rate).to be_a EasyPost::Rate
         expect(rate['carrier_account_id']).to eq('ca_1234')
       end
+
+      it 'constructs the object and allows you to look up the value by method' do
+        expect(rate.carrier_account_id).to eq('ca_1234')
+      end
     end
   end
 
