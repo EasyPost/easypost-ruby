@@ -1,4 +1,2 @@
-module EasyPost
-  class Rate < Resource
-  end
+class EasyPost::Rate < EasyPost::Resource
 end

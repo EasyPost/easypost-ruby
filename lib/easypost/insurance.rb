@@ -1,4 +1,2 @@
-module EasyPost
-  class Insurance < Resource
-  end
+class EasyPost::Insurance < EasyPost::Resource
 end

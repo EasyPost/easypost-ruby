@@ -1,5 +1,3 @@
-module EasyPost
-  class PickupRate < Resource
+class EasyPost::PickupRate < EasyPost::Resource
 
-  end
 end

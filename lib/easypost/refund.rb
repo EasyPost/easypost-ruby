@@ -1,4 +1,2 @@
-module EasyPost
-  class Refund < Resource
-  end
+class EasyPost::Refund < EasyPost::Resource
 end
