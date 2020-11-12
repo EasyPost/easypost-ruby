@@ -649,4 +649,27 @@ describe EasyPost::EasyPostObject do
       expect(described_class.construct_from({}).to_s).to eq "{}"
     end
   end
+
+  if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.7")
+    describe "#deconstruct_keys" do
+      it "should allow pattern matching" do
+       pattern_matching = <<-RUBY
+          subject = described_class.construct_from({
+            "type" => "rate_error",
+            "carrier" => "GSO",
+            "message" => "Failure: Ship date must be within 5 days in future from current date & exclude weekend/GLS service holiday."
+          })
+
+          case subject
+          in { type: "rate_error", carrier: /gso/i, message: /ship date/i }
+            true
+          else
+            false
+          end
+        RUBY
+
+        expect { instance_eval(pattern_matching) }.to_not raise_error
+      end
+    end
+  end
 end
