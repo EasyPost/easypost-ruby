@@ -33,6 +33,10 @@ require "easypost/tracker"
 require "easypost/user"
 require "easypost/webhook"
 
+require "easypost/error"
+
+require "easypost/persistent_http_client"
+
 module EasyPost
   @api_key = nil
   @api_base = "https://api.easypost.com"
@@ -54,63 +58,19 @@ module EasyPost
   end
 
   def self.reset_http_config
-    @http_config = {
-      timeout: 60,
-      open_timeout: 30,
-      verify_ssl: OpenSSL::SSL::VERIFY_PEER,
-    }
-
-    ruby_version = Gem::Version.new(RUBY_VERSION)
-    if ruby_version >= Gem::Version.new("2.5.0")
-      @http_config[:min_version] = OpenSSL::SSL::TLS1_2_VERSION
-    else
-      @http_config[:ssl_version] = :TLSv1_2
-    end
-
-    @http_config
+    EasyPost::PersistentHttpClient::HttpConfig.reset_config
   end
 
   def self.http_config
-    @http_config ||= reset_http_config
+    EasyPost::PersistentHttpClient::HttpConfig.config
   end
 
   def self.http_config=(http_config_params)
-    http_config.merge!(http_config_params)
+    EasyPost::PersistentHttpClient::HttpConfig.config = http_config_params
   end
 
   def self.make_client(uri)
-    client = if http_config[:proxy]
-               proxy_uri = URI(http_config[:proxy])
-               Net::HTTP.new(
-                 uri.host,
-                 uri.port,
-                 proxy_uri.host,
-                 proxy_uri.port,
-                 proxy_uri.user,
-                 proxy_uri.password
-               )
-             else
-               Net::HTTP.new(uri.host, uri.port)
-             end
-    client.use_ssl = true
-
-    http_config.each do |name, value|
-      # Discrepancies between RestClient and Net::HTTP.
-      if name == :verify_ssl
-        name = :verify_mode
-      elsif name == :timeout
-        name = :read_timeout
-      end
-
-      # Handled in the creation of the client.
-      if name == :proxy
-        next
-      end
-
-      client.send("#{name}=", value)
-    end
-
-    client
+    EasyPost::PersistentHttpClient.get(uri)
   end
 
   def self.make_request(method, path, api_key=nil, body=nil)

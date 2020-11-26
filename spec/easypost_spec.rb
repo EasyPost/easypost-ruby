@@ -70,5 +70,11 @@ describe EasyPost do
         anything,
       )
     end
+
+    it "reuses http client" do
+      client_1 = described_class.make_client("/health/ok")
+      client_2 = described_class.make_client("/health/ok")
+      expect(client_1.equal?(client_2)).to be_truthy
+    end
   end
 end
