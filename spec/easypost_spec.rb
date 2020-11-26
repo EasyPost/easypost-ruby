@@ -76,5 +76,17 @@ describe EasyPost do
       client_2 = described_class.make_client("/health/ok")
       expect(client_1.equal?(client_2)).to be_truthy
     end
+
+    context 'when persistence is disabled' do
+      before do
+        EasyPost::PersistentHttpClient::HttpConfig.persistent_connection = false
+      end
+
+      it "uses a new http client for each request" do
+        client_1 = described_class.make_client("/health/ok")
+        client_2 = described_class.make_client("/health/ok")
+        expect(client_1.equal?(client_2)).to be_falsey
+      end
+    end
   end
 end

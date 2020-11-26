@@ -37,6 +37,17 @@ class EasyPost::PersistentHttpClient
   end
 
   class HttpConfig
+    def self.persistent_connection=(enabled)
+      @persistence = enabled
+    end
+
+    def self.persistent_connection?
+      if @persistence.nil?
+        @persistence = true
+      end
+      @persistence
+    end
+
     def self.reset_config
       @http_config = {
         timeout: 60,
@@ -56,7 +67,7 @@ class EasyPost::PersistentHttpClient
     end
 
     def self.config
-      @http_config ||= reset_http_config
+      @http_config ||= reset_config
     end
 
     def self.config=(http_config_params)
@@ -73,29 +84,21 @@ class EasyPost::PersistentHttpClient
     end
 
     def get_connection(uri)
+      unless HttpConfig.persistent_connection?
+        return create_connection(uri)
+      end
+
       mutex.synchronize do
         self.last_used = Time.now
 
         params = [uri.host, uri.port]
+
         connection = connections[params]
         if connection
           return connection
         end
-        connection = if HttpConfig.config[:proxy]
-                   proxy_uri = URI(HttpConfig.config[:proxy])
-                   Net::HTTP.new(
-                     uri.host,
-                     uri.port,
-                     proxy_uri.host,
-                     proxy_uri.port,
-                     proxy_uri.user,
-                     proxy_uri.password
-                   )
-                 else
-                   Net::HTTP.new(uri.host, uri.port)
-                 end
 
-        configure_connection(connection)
+        connection = create_connection(uri)
 
         connection.start
 
@@ -103,6 +106,26 @@ class EasyPost::PersistentHttpClient
 
         connection
       end
+    end
+
+    def create_connection(uri)
+      connection = if HttpConfig.config[:proxy]
+                     proxy_uri = URI(HttpConfig.config[:proxy])
+                     Net::HTTP.new(
+                       uri.host,
+                       uri.port,
+                       proxy_uri.host,
+                       proxy_uri.port,
+                       proxy_uri.user,
+                       proxy_uri.password
+                     )
+                   else
+                     Net::HTTP.new(uri.host, uri.port)
+                   end
+
+      configure_connection(connection)
+
+      connection
     end
 
     def configure_connection(connection)
