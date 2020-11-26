@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/health/boom
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.1.3 Ruby/2.4.4-p296
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - '08ad24875f36b933e2002ad1000a0a2e'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.253278'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb12sj
+      X-Version-Label:
+      - easypost-202008122048-6cdf416db1-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 59038857a6
+      - intlb1nuq 0ab7988560
+      - intlb1sj 0ab7988560
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"code":"INTERNAL_SERVER_ERROR","message":"We''re sorry, something
+        went wrong. If the problem persists please contact Support.","errors":[]}}'
+    http_version:
+  recorded_at: Fri, 14 Aug 2020 16:17:55 GMT
+recorded_with: VCR 5.1.0

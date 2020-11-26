@@ -1,0 +1,126 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses
+    body:
+      encoding: UTF-8
+      string: '{"address":{"company":"EasyPost","street1":"164 Townsend Street","street2":"Unit
+        1","city":"San Francisco","state":"CA","zip":"94107","phone":"415-123-4567"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Basic Qm12YVdoZzhtUDI2UVhXZFRwbFlXQTo=
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - fca702d45ebaf109fb43a2ea000ac2ca
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_9ee4bbfd1a8b4e68ad4ef3958b60fa0a"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.034823'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb10sj
+      X-Version-Label:
+      - easypost-202005112229-ce23998a81-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2sj 5834894b53
+      - intlb2sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"adr_9ee4bbfd1a8b4e68ad4ef3958b60fa0a","object":"Address","created_at":"2020-05-12T18:55:05Z","updated_at":"2020-05-12T18:55:05Z","name":null,"company":"EasyPost","street1":"164
+        Townsend Street","street2":"Unit 1","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+    http_version: null
+  recorded_at: Tue, 12 May 2020 18:55:05 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/addresses/adr_9ee4bbfd1a8b4e68ad4ef3958b60fa0a/verify?carrier=
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Basic Qm12YVdoZzhtUDI2UVhXZFRwbFlXQTo=
+      - EasyPost/v2 RubyClient/3.0.1 Ruby/2.5.7-p206
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ep-Request-Uuid:
+      - 7567ecc85ebaf109fb4396c5000b73db
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_935db68f01084b4187bf00572465f703"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.147079'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb3sj
+      X-Version-Label:
+      - easypost-202005112229-ce23998a81-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1sj 5834894b53
+      - intlb1sj 5834894b53
+      Strict-Transport-Security:
+      - max-age=15768000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"address":{"id":"adr_935db68f01084b4187bf00572465f703","object":"Address","created_at":"2020-05-12T18:55:05Z","updated_at":"2020-05-12T18:55:05Z","name":null,"company":"EASYPOST","street1":"164
+        TOWNSEND ST UNIT 1","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1990","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"delivery":{"success":true,"errors":[],"details":{"latitude":37.77893,"longitude":-122.39279,"time_zone":"America/Los_Angeles"}}}}}'
+    http_version: null
+  recorded_at: Tue, 12 May 2020 18:55:05 GMT
+recorded_with: VCR 5.1.0

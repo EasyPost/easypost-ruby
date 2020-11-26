@@ -1,4 +1,2 @@
-module EasyPost
-  class PostageLabel < Resource
-  end
+class EasyPost::PostageLabel < EasyPost::Resource
 end
