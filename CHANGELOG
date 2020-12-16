@@ -1,3 +1,9 @@
+=== 3.1.5 2020-12-16
+
+* Fix attribute lookup when manually constructing objects (#105; thanks @drewtempelmeyer)
+* Flatten class names and clean up some other style issues
+* Fix `EasyPost::Address.create_and_verify`, broken since 3.1.0 (#108; thanks @rajbirverma)
+
 === 3.1.4 2020-09-29
 
 * Don't modify params passed into Address#create (#78; thanks @TheRusskiy)
