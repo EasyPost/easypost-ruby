@@ -29,11 +29,11 @@ class EasyPost::Address < EasyPost::Resource
     wrapped_params[:carrier] = carrier
     response = EasyPost.make_request(:post, url + '/create_and_verify', api_key, wrapped_params)
 
-    if response.has_key?(:address)
-      if response.has_key?(:message)
-        response[:address][:message] = response[:message]
+    if response.has_key?("address")
+      if response.has_key?("message")
+        response["address"]["message"] = response["message"]
       end
-      verified_address = EasyPost::Util::convert_to_easypost_object(response[:address], api_key)
+      verified_address = EasyPost::Util::convert_to_easypost_object(response["address"], api_key)
       return verified_address
     else
       raise EasyPost::Error.new("Unable to verify address.")
