@@ -1,6 +1,6 @@
 # EasyPost Ruby Client Library
 
-[![Build Status](https://travis-ci.com/EasyPost/easypost-ruby.svg?branch=master)](https://travis-ci.com/EasyPost/easypost-ruby)
+[![Build Status](https://github.com/EasyPost/easypost-ruby/workflows/CI/badge.svg)](https://github.com/EasyPost/easypost-ruby/actions?query=workflow%3ACI)
 [![Gem Version](https://badge.fury.io/rb/easypost.svg)](https://badge.fury.io/rb/easypost)
 
 
