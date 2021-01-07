@@ -1,0 +1,32 @@
+name: 'CI'
+
+on:
+  push:
+    branches: [ master ]
+  pull_request: ~
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rubyversion: ['2.4', '2.5', '2.6', '2.7']
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.rubyversion }}
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-${{ matrix.rubyversion }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.rubyversion }}-gems-
+      - name: install dependencies
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4
+      - name: run tests
+        run: bundle exec rspec
