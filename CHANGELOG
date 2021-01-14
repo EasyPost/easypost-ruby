@@ -1,3 +1,8 @@
+=== 3.2.0 2021-01-14
+
+* Replace Travis CI with Github Actions
+* Add Ruby 3.0 to supported platforms (#110; thanks @maxwell)
+
 === 3.1.5 2020-12-16
 
 * Fix attribute lookup when manually constructing objects (#105; thanks @drewtempelmeyer)
