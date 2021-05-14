@@ -163,13 +163,13 @@ describe EasyPost::Shipment do
 
       smartrates = shipment.get_smartrates
       expect(shipment.rates[0]['id']).to eq(smartrates['result'][0]['id'])
-      expect(smartrates['result'][0]['time_in_transit']['percentile_50']).to eq(1)
-      expect(smartrates['result'][0]['time_in_transit']['percentile_75']).to eq(2)
+      expect(smartrates['result'][0]['time_in_transit']['percentile_50']).to eq(2)
+      expect(smartrates['result'][0]['time_in_transit']['percentile_75']).to eq(3)
       expect(smartrates['result'][0]['time_in_transit']['percentile_85']).to eq(3)
-      expect(smartrates['result'][0]['time_in_transit']['percentile_90']).to eq(3)
-      expect(smartrates['result'][0]['time_in_transit']['percentile_95']).to eq(3)
-      expect(smartrates['result'][0]['time_in_transit']['percentile_97']).to eq(4)
-      expect(smartrates['result'][0]['time_in_transit']['percentile_99']).to eq(4)
+      expect(smartrates['result'][0]['time_in_transit']['percentile_90']).to eq(4)
+      expect(smartrates['result'][0]['time_in_transit']['percentile_95']).to eq(4)
+      expect(smartrates['result'][0]['time_in_transit']['percentile_97']).to eq(5)
+      expect(smartrates['result'][0]['time_in_transit']['percentile_99']).to eq(7)
     end
   end
 end
