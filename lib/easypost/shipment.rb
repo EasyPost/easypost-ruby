@@ -6,6 +6,13 @@ class EasyPost::Shipment < EasyPost::Resource
     return self
   end
 
+  def get_smartrates
+    response = EasyPost.make_request(:get, url + '/smartrate', @api_key)
+    self.refresh_from(response, @api_key, true)
+
+    return self
+  end
+
   def buy(params={})
     if params.instance_of?(EasyPost::Rate)
       temp = params.clone

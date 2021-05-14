@@ -151,4 +151,24 @@ describe EasyPost::Shipment do
       expect(shipment.id).not_to eq(tracking_code)
     end
   end
+
+  describe '#smartrate' do
+    it 'retrieves the smartrates for a shipment' do
+      shipment = EasyPost::Shipment.create(
+        :to_address => ADDRESS[:missouri],
+        :from_address => ADDRESS[:california],
+        :parcel => PARCEL[:dimensions]
+      )
+      expect(shipment).not_to be nil
+
+      smartrates = shipment.get_smartrates
+      expect(smartrates['result'][0]['time_in_transit']['percentile_50']).to eq(1)
+      expect(smartrates['result'][0]['time_in_transit']['percentile_75']).to eq(2)
+      expect(smartrates['result'][0]['time_in_transit']['percentile_85']).to eq(3)
+      expect(smartrates['result'][0]['time_in_transit']['percentile_90']).to eq(3)
+      expect(smartrates['result'][0]['time_in_transit']['percentile_95']).to eq(3)
+      expect(smartrates['result'][0]['time_in_transit']['percentile_97']).to eq(4)
+      expect(smartrates['result'][0]['time_in_transit']['percentile_99']).to eq(4)
+    end
+  end
 end
