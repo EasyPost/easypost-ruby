@@ -159,9 +159,10 @@ describe EasyPost::Shipment do
         :from_address => ADDRESS[:california],
         :parcel => PARCEL[:dimensions]
       )
-      expect(shipment).not_to be nil
+      expect(shipment.rates).not_to be nil
 
       smartrates = shipment.get_smartrates
+      expect(shipment.rates[0]['id']).to eq(smartrates['result'][0]['id'])
       expect(smartrates['result'][0]['time_in_transit']['percentile_50']).to eq(1)
       expect(smartrates['result'][0]['time_in_transit']['percentile_75']).to eq(2)
       expect(smartrates['result'][0]['time_in_transit']['percentile_85']).to eq(3)
