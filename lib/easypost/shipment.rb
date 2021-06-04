@@ -9,7 +9,7 @@ class EasyPost::Shipment < EasyPost::Resource
   def get_smartrates
     response = EasyPost.make_request(:get, url + '/smartrate', @api_key)
 
-    return response['result']
+    return response.dig('result')
   end
 
   def buy(params={})
