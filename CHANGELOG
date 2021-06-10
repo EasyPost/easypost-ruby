@@ -1,3 +1,8 @@
+=== 3.3.0 2021-06-10
+
+* Adds `SmartRate` functionality to the `Shipments` object (available by calling `get_smartrates` on a shipment)
+* Fix bug where `EasyPost::CarrierAccount.types` was hitting the wrong endpoint
+
 === 3.2.0 2021-01-14
 
 * Replace Travis CI with Github Actions
