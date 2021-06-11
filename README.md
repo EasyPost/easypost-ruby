@@ -16,7 +16,7 @@ gem install easypost
 
 Import the EasyPost client in your application:
 
-```bash
+```ruby
 require 'easypost'
 ```
 
