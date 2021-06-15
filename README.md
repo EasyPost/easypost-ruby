@@ -4,29 +4,27 @@
 [![Gem Version](https://badge.fury.io/rb/easypost.svg)](https://badge.fury.io/rb/easypost)
 
 
-EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com
+EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com.
 
-Installation
----------------
+## Installation
 
 Install the gem:
 
-```
+```bash
 gem install easypost
 ```
 
 Import the EasyPost client in your application:
 
-```
+```ruby
 require 'easypost'
 ```
 
-Example
-------------------
+## Example
 
 ```ruby
 require 'easypost'
-EasyPost.api_key = 'cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi'
+EasyPost.api_key = 'API_KEY'
 
 to_address = EasyPost::Address.create(
   :name => 'Dr. Steve Brule',
@@ -37,6 +35,7 @@ to_address = EasyPost::Address.create(
   :country => 'US',
   :phone => '310-808-5243'
 )
+
 from_address = EasyPost::Address.create(
   :company => 'EasyPost',
   :street1 => '118 2nd Street',
@@ -62,6 +61,7 @@ customs_item = EasyPost::CustomsItem.create(
   :origin_country => 'us',
   :hs_tariff_number => 123456
 )
+
 customs_info = EasyPost::CustomsInfo.create(
   :integrated_form_type => 'form_2976',
   :customs_certify => true,
@@ -91,17 +91,23 @@ shipment.insure(amount: 100)
 puts shipment.insurance
 
 puts shipment.postage_label.label_url
-
 ```
 
-Documentation
---------------------
+## Documentation
 
 Up-to-date documentation at: https://easypost.com/docs
 
-Tests
---------------------
+## Development
 
+```bash
+# Run tests
+bundle exec rspec
 ```
-rspec spec
-```
+
+## Releasing
+
+1. Update the version in `VERSION`
+1. Update the `CHANGELOG`
+1. Tag a release on GitHub
+1. Build the Gem `gem build easypost.gemspec`
+1. Publish the Gem `gem push easypost-X.X.X.gem` (replace `X.X.X` with the version being released)
