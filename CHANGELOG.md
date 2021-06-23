@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## NEXT RELEASE
+
+* Removed deprecated `Item` object
+* Sorted EasyPost Resources list
+
+
 ## 3.3.0 2021-06-10
 
 * Adds `SmartRate` functionality to the `Shipments` object (available by calling `get_smartrates` on a shipment)
