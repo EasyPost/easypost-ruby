@@ -22,8 +22,7 @@ class EasyPost::User < EasyPost::Resource
   end
 
   def self.all_api_keys
-    response = EasyPost::ApiKey.all
-    return EasyPost::Util.convert_to_easypost_object(response, @api_key)
+    EasyPost::ApiKey.all
   end
 
   def api_keys
