@@ -26,6 +26,15 @@ class EasyPost::User < EasyPost::Resource
     return EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
+  def update_brand(**attrs)
+    brand = EasyPost::Brand.construct_from(
+      object: "Brand",
+      user_id: self.id,
+      **attrs,
+      )
+    brand.save
+  end
+
   def api_keys
     api_keys = EasyPost::User.all_api_keys
 

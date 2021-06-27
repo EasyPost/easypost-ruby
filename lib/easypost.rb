@@ -11,6 +11,7 @@ require "easypost/error"
 # Resources
 require "easypost/address"
 require "easypost/batch"
+require "easypost/brand"
 require "easypost/carrier_account"
 require "easypost/carrier_type"
 require "easypost/customs_info"
