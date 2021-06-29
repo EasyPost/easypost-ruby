@@ -2,6 +2,15 @@ require 'spec_helper'
 
 describe EasyPost::Address do
   describe ".create_and_verify" do
+    context "for a valid address" do
+      it "should work correctly" do
+        address = EasyPost::Address.create_and_verify(ADDRESS[:california])
+        expect(address.street1).to eq "164 TOWNSEND ST UNIT 1"
+        expect(address.verifications.zip4.success).to be true
+        expect(address.verifications.delivery.success).to be true
+      end
+    end
+
     context "for a successful response without an address" do
       it "should raise an error" do
         expect(EasyPost).to receive(:make_request).and_return({})
