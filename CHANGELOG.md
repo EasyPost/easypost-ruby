@@ -5,6 +5,7 @@
 
 * Removed deprecated `Item` object
 * Sorted EasyPost Resources list
+* Remove 2015-vintage experimental `all_updated` method on Tracker
 
 
 ## 3.3.0 2021-06-10
