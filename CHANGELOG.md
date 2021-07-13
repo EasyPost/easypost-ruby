@@ -1,11 +1,13 @@
 # CHANGELOG
 
 
-## NEXT RELEASE
+## 3.4.0 2021-07-13
 
 * Removed deprecated `Item` object
 * Sorted EasyPost Resources list
 * Remove 2015-vintage experimental `all_updated` method on Tracker
+* Fixes API key retrieval (#120, thanks @andychongyz)
+* Adds `regenerate_rates` method for new rerate API
 
 
 ## 3.3.0 2021-06-10
