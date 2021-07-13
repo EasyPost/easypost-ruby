@@ -75,6 +75,10 @@ class EasyPost::EasyPostObject
     @values
   end
 
+  def deconstruct_keys(_keys)
+    @values.transform_keys(&:to_sym)
+  end
+
   def each(&blk)
     @values.each(&blk)
   end
