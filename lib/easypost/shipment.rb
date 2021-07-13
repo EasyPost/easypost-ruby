@@ -11,6 +11,7 @@ class EasyPost::Shipment < EasyPost::Resource
     self.refresh_from(response, @api_key, true)
 
     return self
+  end
 
   def get_smartrates
     response = EasyPost.make_request(:get, url + '/smartrate', @api_key)
