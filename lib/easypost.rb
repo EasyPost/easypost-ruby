@@ -10,6 +10,7 @@ require "easypost/error"
 
 # Resources
 require "easypost/address"
+require "easypost/api_key"
 require "easypost/batch"
 require "easypost/carrier_account"
 require "easypost/carrier_type"
