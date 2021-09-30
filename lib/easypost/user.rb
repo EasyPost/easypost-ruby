@@ -1,7 +1,7 @@
 class EasyPost::User < EasyPost::Resource
-  def self.create(params={}, api_key=nil)
-    response = EasyPost.make_request(:post, self.url, api_key, {self.class_name.to_sym => params})
-    return EasyPost::Util.convert_to_easypost_object(response, api_key)
+  def self.create(params = {}, api_key = nil)
+    response = EasyPost.make_request(:post, url, api_key, {class_name.to_sym => params})
+    EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
   def save
@@ -14,35 +14,38 @@ class EasyPost::User < EasyPost::Resource
       response = EasyPost.make_request(:put, url, @api_key, wrapped_params)
       refresh_from(response, api_key)
     end
-    return self
+    self
   end
 
   def self.retrieve_me
-    self.all
+    all
   end
 
   def self.all_api_keys
     response = EasyPost.make_request(:get, "/api_keys", @api_key)
-    return EasyPost::Util.convert_to_easypost_object(response, api_key)
+    EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
   def update_brand(**attrs)
-    brand = EasyPost::Brand.construct_from(
-      object: "Brand",
-      user_id: self.id,
-      **attrs,
-      )
+    brand = EasyPost::Brand.new
+    data = {object: "Brand", user_id: id, **attrs}
+    # Add accessors manually because there's no API to retrieve a brand
+    brand.add_accessors(data.keys)
+    # Assigning values with accessors defined above
+    data.each do |key, val|
+      brand.send("#{key}=", val)
+    end
     brand.save
   end
 
   def api_keys
     api_keys = EasyPost::User.all_api_keys
 
-    if api_keys.id == self.id
+    if api_keys.id == id
       my_api_keys = api_keys.keys
     else
-      for child in api_keys.children
-        if child.id == self.id
+      api_keys.children.each do |child|
+        if child.id == id
           my_api_keys = child.keys
           break
         end
