@@ -142,6 +142,23 @@ describe EasyPost::Shipment do
     end
   end
 
+  describe '#rerate' do
+    let(:shipment) {
+        EasyPost::Shipment.create(
+          to_address: EasyPost::Address.create(ADDRESS[:missouri]),
+          from_address: ADDRESS[:california],
+          parcel: EasyPost::Parcel.create(PARCEL[:dimensions])
+        )
+    }
+
+    it 'fetches new rates' do
+      existing_rate_ids = shipment.rates.map(&:id)
+      shipment.regenerate_rates
+      new_rate_ids = shipment.rates.map(&:id)
+      expect(new_rate_ids).not_to eq(existing_rate_ids)
+    end
+  end
+
   describe '#retrieve' do
     # This was a bug in python.
     it 'retrieves shipment by tracking_code and correctly sets ID field' do

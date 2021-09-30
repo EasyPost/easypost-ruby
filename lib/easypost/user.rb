@@ -22,20 +22,7 @@ class EasyPost::User < EasyPost::Resource
   end
 
   def self.all_api_keys
-    response = EasyPost.make_request(:get, "/api_keys", @api_key)
-    EasyPost::Util.convert_to_easypost_object(response, api_key)
-  end
-
-  def update_brand(**attrs)
-    brand = EasyPost::Brand.new
-    data = {object: "Brand", user_id: id, **attrs}
-    # Add accessors manually because there's no API to retrieve a brand
-    brand.add_accessors(data.keys)
-    # Assigning values with accessors defined above
-    data.each do |key, val|
-      brand.send("#{key}=", val)
-    end
-    brand.save
+    EasyPost::ApiKey.all
   end
 
   def api_keys
@@ -53,5 +40,17 @@ class EasyPost::User < EasyPost::Resource
     end
 
     my_api_keys
+  end
+  
+  def update_brand(**attrs)
+    brand = EasyPost::Brand.new
+    data = {object: "Brand", user_id: id, **attrs}
+    # Add accessors manually because there's no API to retrieve a brand
+    brand.add_accessors(data.keys)
+    # Assigning values with accessors defined above
+    data.each do |key, val|
+      brand.send("#{key}=", val)
+    end
+    brand.save
   end
 end
