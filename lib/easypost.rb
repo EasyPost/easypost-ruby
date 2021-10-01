@@ -121,7 +121,6 @@ module EasyPost
     request = Net::HTTP.const_get(method.capitalize).new(path)
     if body
       request.body = JSON.dump(EasyPost::Util.objects_to_ids(body))
-      puts request.body
     end
 
     request["Content-Type"] = "application/json"
