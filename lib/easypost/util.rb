@@ -42,6 +42,7 @@ module EasyPost::Util
       'Report' => EasyPost::Report,
       'ScanForm' => EasyPost::ScanForm,
       'Shipment' => EasyPost::Shipment,
+      'TaxIdentifier' => EasyPost::TaxIdentifier,
       'ShipmentInvoiceReport' => EasyPost::Report,
       'ShipmentReport' => EasyPost::Report,
       'Tracker' => EasyPost::Tracker,

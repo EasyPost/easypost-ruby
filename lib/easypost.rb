@@ -30,6 +30,7 @@ require "easypost/refund"
 require "easypost/report"
 require "easypost/scan_form"
 require "easypost/shipment"
+require "easypost/tax_identifier"
 require "easypost/tracker"
 require "easypost/user"
 require "easypost/webhook"
@@ -120,6 +121,7 @@ module EasyPost
     request = Net::HTTP.const_get(method.capitalize).new(path)
     if body
       request.body = JSON.dump(EasyPost::Util.objects_to_ids(body))
+      puts request.body
     end
 
     request["Content-Type"] = "application/json"
