@@ -101,7 +101,7 @@ Up-to-date documentation at: https://easypost.com/docs
 
 ```bash
 # Run tests
-bundle exec rspec
+API_KEY=123... bundle exec rspec
 ```
 
 ## Releasing
