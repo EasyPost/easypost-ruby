@@ -5,7 +5,7 @@ Dir["./spec/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
   config.before(:each) do
-    EasyPost.api_key = 'BmvaWhg8mP26QXWdTplYWA'
+    EasyPost.api_key = ENV['API_KEY']
   end
 
   config.around(:each) do |example|
