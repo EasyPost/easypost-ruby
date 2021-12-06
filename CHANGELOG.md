@@ -1,6 +1,11 @@
 # CHANGELOG
 
 
+## 3.5.0 2021-12-06
+
+* Adds the `update_brand` method to the user object (closes #122)
+
+
 ## 3.4.0 2021-07-13
 
 * Removed deprecated `Item` object
