@@ -1,12 +1,15 @@
-require "set"
+# frozen_string_literal: true
+
+require 'set'
 
 class EasyPost::EasyPostObject
   include Enumerable
 
   attr_accessor :parent, :name, :api_key, :unsaved_values
-  @@immutable_values = Set.new([:api_key, :id])
 
-  def initialize(id=nil, api_key=nil, parent=nil, name=nil)
+  @@immutable_values = Set.new([:api_key, :id]) # rubocop:disable Style/ClassVars
+
+  def initialize(id = nil, api_key = nil, parent = nil, name = nil)
     @api_key = api_key
     @values = {}
     @unsaved_values = Set.new
@@ -16,22 +19,22 @@ class EasyPost::EasyPostObject
     self.id = id if id
   end
 
-  def self.construct_from(values, api_key=nil, parent=nil, name=nil)
-    obj = self.new(values[:id], api_key, parent, name)
+  def self.construct_from(values, api_key = nil, parent = nil, name = nil)
+    obj = new(values[:id], api_key, parent, name)
     obj.refresh_from(values, api_key)
     obj
   end
 
-  def to_s(*args)
+  def to_s(*_args)
     JSON.dump(@values)
   end
 
   def inspect
-    id_string = (self.respond_to?(:id) && !self.id.nil?) ? " id=#{self.id}" : ""
+    id_string = respond_to?(:id) && !id.nil? ? " id=#{id}" : ''
     "#<#{self.class}:#{id_string}> JSON: " + to_json
   end
 
-  def refresh_from(values, api_key, partial=false)
+  def refresh_from(values, api_key, _partial = false) # rubocop:disable Style/OptionalBooleanParameter
     @api_key = api_key
 
     added = Set.new(values.keys - @values.keys)
@@ -47,12 +50,12 @@ class EasyPost::EasyPostObject
     end
   end
 
-  def [](k)
-    @values[k.to_s]
+  def [](key)
+    @values[key.to_s]
   end
 
-  def []=(k, v)
-    send(:"#{k}=", v)
+  def []=(key, value)
+    send(:"#{key}=", value)
   end
 
   def keys
@@ -63,11 +66,11 @@ class EasyPost::EasyPostObject
     @values.values
   end
 
-  def to_json(options = {})
+  def to_json(_options = {})
     JSON.dump(@values)
   end
 
-  def as_json(options = {})
+  def as_json(_options = {})
     @values.as_json
   end
 
@@ -95,7 +98,7 @@ class EasyPost::EasyPostObject
 
   def flatten_unsaved
     values = {}
-    for key in @unsaved_values
+    @unsaved_values.each do |key|
       value = @values[key]
 
       values[key] = value
@@ -105,7 +108,7 @@ class EasyPost::EasyPostObject
       end
     end
 
-    return values
+    values
   end
 
   def metaclass
@@ -116,6 +119,7 @@ class EasyPost::EasyPostObject
     metaclass.instance_eval do
       keys.each do |k|
         next if @@immutable_values.include?(k)
+
         k_eq = :"#{k}="
         remove_method(k) if method_defined?(k)
         remove_method(k_eq) if method_defined?(k_eq)
@@ -127,6 +131,7 @@ class EasyPost::EasyPostObject
     metaclass.instance_eval do
       keys.each do |k|
         next if @@immutable_values.include?(k)
+
         k = k.to_s
         k_eq = :"#{k}="
         define_method(k) { @values[k] }
@@ -135,7 +140,7 @@ class EasyPost::EasyPostObject
           @unsaved_values.add(k)
 
           cur = self
-          cur_parent = self.parent
+          cur_parent = parent
           while cur_parent
             if cur.name
               cur_parent.unsaved_values.add(cur.name)

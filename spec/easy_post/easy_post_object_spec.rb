@@ -1,7 +1,9 @@
-require "spec_helper"
+# frozen_string_literal: true
+
+require 'spec_helper'
 
 describe EasyPost::EasyPostObject do
-  describe "#construct_from" do
+  describe '#construct_from' do
     let(:shipment_json) do
       '{
         "batch_id": null,
@@ -594,36 +596,36 @@ describe EasyPost::EasyPostObject do
       }'
     end
 
-    it "constructs actual objects from json string" do
+    it 'constructs actual objects from json string' do
       shipment = EasyPost::Shipment.construct_from(JSON.parse(shipment_json))
       expect(shipment).to be_a EasyPost::Shipment
       expect(shipment.rates).to all be_a EasyPost::Rate
     end
 
     context 'when the keys are symbols' do
-      let(:rate) {
+      let(:rate) do
         EasyPost::Rate.construct_from(
-          id: "rate_1234",
-          object: "Rate",
-          created_at: "2019-06-03T13:24:06Z",
-          updated_at: "2019-06-03T13:24:06Z",
-          mode: "test",
-          service: "SMART_POST",
-          carrier: "FedExSmartPost",
-          rate: "687.23",
-          currency: "USD",
+          id: 'rate_1234',
+          object: 'Rate',
+          created_at: '2019-06-03T13:24:06Z',
+          updated_at: '2019-06-03T13:24:06Z',
+          mode: 'test',
+          service: 'SMART_POST',
+          carrier: 'FedExSmartPost',
+          rate: '687.23',
+          currency: 'USD',
           retail_rate: nil,
           retail_currency: nil,
-          list_rate: "687.23",
-          list_currency: "USD",
+          list_rate: '687.23',
+          list_currency: 'USD',
           delivery_days: 1,
-          delivery_date: "2019-06-04T08:00:00Z",
+          delivery_date: '2019-06-04T08:00:00Z',
           delivery_date_guaranteed: true,
           est_delivery_days: 1,
-          shipment_id: "shp_1234",
-          carrier_account_id: "ca_1234",
+          shipment_id: 'shp_1234',
+          carrier_account_id: 'ca_1234',
         )
-      }
+      end
 
       it 'constructs the object and allows you to lookup the values' do
         expect(rate).to be_a EasyPost::Rate
@@ -636,24 +638,24 @@ describe EasyPost::EasyPostObject do
     end
   end
 
-  describe "#inspect" do
+  describe '#inspect' do
     specify do
       expect(
-        described_class.construct_from({}).inspect
-      ).to eq "#<EasyPost::EasyPostObject:> JSON: {}"
+        described_class.construct_from({}).inspect,
+      ).to eq '#<EasyPost::EasyPostObject:> JSON: {}'
     end
   end
 
-  describe "#to_s" do
+  describe '#to_s' do
     specify do
-      expect(described_class.construct_from({}).to_s).to eq "{}"
+      expect(described_class.construct_from({}).to_s).to eq '{}'
     end
   end
 
-  if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("2.7")
-    describe "#deconstruct_keys" do
-      it "should allow pattern matching" do
-       pattern_matching = <<-RUBY
+  if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new('2.7')
+    describe '#deconstruct_keys' do
+      it 'allows pattern matching' do
+        pattern_matching = <<-RUBY
           subject = described_class.construct_from({
             "type" => "rate_error",
             "carrier" => "GSO",
@@ -668,7 +670,7 @@ describe EasyPost::EasyPostObject do
           end
         RUBY
 
-        expect { instance_eval(pattern_matching) }.to_not raise_error
+        expect { instance_eval(pattern_matching) }.not_to raise_error
       end
     end
   end

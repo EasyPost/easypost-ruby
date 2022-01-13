@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ADDRESS = {
   california: {
     company: 'EasyPost',
@@ -6,7 +8,7 @@ ADDRESS = {
     city: 'San Francisco',
     state: 'CA',
     zip: '94107',
-    phone: '415-123-4567'
+    phone: '415-123-4567',
   },
   california_no_phone: {
     company: 'EasyPost',
@@ -14,7 +16,7 @@ ADDRESS = {
     street2: 'Unit 1',
     city: 'San Francisco',
     state: 'CA',
-    zip: '94107'
+    zip: '94107',
   },
   missouri: {
     company: 'Airport Shipping',
@@ -23,7 +25,7 @@ ADDRESS = {
     state: 'MO',
     zip: '64153',
     phone: '314-924-0383',
-    email: 'kansas_shipping@example.com'
+    email: 'kansas_shipping@example.com',
   },
   canada: {
     name: 'Sawyer Bateman',
@@ -32,7 +34,7 @@ ADDRESS = {
     state: 'AB',
     zip: 'T8N2M4',
     country: 'CA',
-    phone: '780-123-4567'
+    phone: '780-123-4567',
   },
   canada_no_phone: {
     name: 'Sawyer Bateman',
@@ -41,28 +43,28 @@ ADDRESS = {
     state: 'AB',
     zip: 't8n2m4',
     country: 'CA',
-    phone: '780-273-8374'
-  }
-}
+    phone: '780-273-8374',
+  },
+}.freeze
 
 PARCEL = {
   dimensions: {
     width: 12,
     length: 16.5,
     height: 9.5,
-    weight: 40.1
+    weight: 40.1,
   },
   dimensions_light: {
     width: 15.2,
     length: 18,
     height: 9.5,
-    weight: 3
+    weight: 3,
   },
   predefined_medium_flat_rate_box: {
     predefined_package: 'MediumFlatRateBox',
-    weight: 17
-  }
-}
+    weight: 17,
+  },
+}.freeze
 
 CUSTOMS_INFO = {
   shirt: {
@@ -75,14 +77,16 @@ CUSTOMS_INFO = {
     non_delivery_option: 'abandon',
     restriction_type: 'none',
     restriction_comments: '',
-    customs_items: [{
-      description: 'EasyPost T-shirts',
-      quantity: 2,
-      value: 23.56,
-      weight: 20,
-      origin_country: 'us',
-      hs_tariff_number: 123456
-    }]
+    customs_items: [
+      {
+        description: 'EasyPost T-shirts',
+        quantity: 2,
+        value: 23.56,
+        weight: 20,
+        origin_country: 'us',
+        hs_tariff_number: 123_456,
+      },
+    ],
   },
   merchandise: {
     customs_certify: true,
@@ -92,15 +96,17 @@ CUSTOMS_INFO = {
     eel_pfc: 'NOEEI 30.37(a)',
     non_delivery_option: 'abandon',
     restriction_type: 'none',
-    restriction_comments: ''
-  }
-}
+    restriction_comments: '',
+  },
+}.freeze
 
 OPTIONS = {
   mws: {
-    fulfiller_order_items: [{
-      id: '12345678901234',
-      quantity: 1
-    }]
-  }
-}
+    fulfiller_order_items: [
+      {
+        id: '12345678901234',
+        quantity: 1,
+      },
+    ],
+  },
+}.freeze

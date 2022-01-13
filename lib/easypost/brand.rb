@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EasyPost::Brand < EasyPost::Resource
   def url
     if user_id.nil? || user_id.empty?

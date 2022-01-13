@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
+# rubocop:disable RSpec/EmptyExampleGroup
 describe EasyPost::User do
   before do
-    EasyPost.api_key = "PRODUCTION API KEY"
+    EasyPost.api_key = 'PRODUCTION API KEY'
   end
 
   # This test requires APIKEY to be nil
@@ -20,8 +23,7 @@ describe EasyPost::User do
   #   expect(user.id).not_to be_nil
   # end
 
-
-  # Uncomment these tests to test CRUD operations on the User model
+  # TODO: Uncomment these tests to test CRUD operations on the User model
   # Note: You must provide a Production Api Key in order to run these tests
 
   # it 'performs all basic CRUD actions on a User' do
@@ -86,3 +88,4 @@ describe EasyPost::User do
   #   end
   # end
 end
+# rubocop:enable RSpec/EmptyExampleGroup

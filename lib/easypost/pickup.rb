@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class EasyPost::Pickup < EasyPost::Resource
-  def buy(params={})
+  def buy(params = {})
     if params.instance_of?(EasyPost::PickupRate)
       temp = params.clone
       params = {}
@@ -7,20 +9,20 @@ class EasyPost::Pickup < EasyPost::Resource
       params[:service] = temp.service
     end
 
-    response = EasyPost.make_request(:post, url + '/buy', @api_key, params)
-    self.refresh_from(response, @api_key, true)
+    response = EasyPost.make_request(:post, "#{url}/buy", @api_key, params)
+    refresh_from(response, @api_key, true)
 
-    return self
+    self
   end
 
-  def cancel(params={})
-    response = EasyPost.make_request(:post, url + '/cancel', @api_key, params)
-    self.refresh_from(response, @api_key, true)
+  def cancel(params = {})
+    response = EasyPost.make_request(:post, "#{url}/cancel", @api_key, params)
+    refresh_from(response, @api_key, true)
 
-    return self
+    self
   end
 
-  def self.all(filters={}, api_key=nil)
+  def self.all(_filters = {}, _api_key = nil)
     raise NotImplementedError.new('Pickup.all not implemented.')
   end
 end
