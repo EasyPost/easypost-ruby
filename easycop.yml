@@ -6,6 +6,7 @@ require:
   - rubocop-rspec
 AllCops:
   TargetRubyVersion: 2.5
+  NewCops: disable
 Layout/BlockAlignment:
   Enabled: true
   EnforcedStyleAlignWith: start_of_block
