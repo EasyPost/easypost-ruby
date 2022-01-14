@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 module EasyPost::Util
   def self.objects_to_ids(obj)
     case obj
     when EasyPost::Resource
-      return {:id => obj.id}
+      { id: obj.id }
     when Hash
       result = {}
       obj.each { |k, v| result[k] = objects_to_ids(v) unless v.nil? }
-      return result
+      result
     when Array
-      return obj.map { |v| objects_to_ids(v) }
+      obj.map { |v| objects_to_ids(v) }
     else
-      return obj
+      obj
     end
   end
 
@@ -19,7 +21,7 @@ module EasyPost::Util
     lst.map(&:to_s).map(&:downcase).map(&:strip)
   end
 
-  def self.convert_to_easypost_object(response, api_key, parent=nil, name=nil)
+  def self.convert_to_easypost_object(response, api_key, parent = nil, name = nil)
     types = {
       'Address' => EasyPost::Address,
       'Batch' => EasyPost::Batch,
@@ -48,7 +50,7 @@ module EasyPost::Util
       'Tracker' => EasyPost::Tracker,
       'TrackerReport' => EasyPost::Report,
       'User' => EasyPost::User,
-      'Webhook' => EasyPost::Webhook
+      'Webhook' => EasyPost::Webhook,
     }
 
     prefixes = {
@@ -77,33 +79,33 @@ module EasyPost::Util
       'shprep' => EasyPost::Report,
       'trk' => EasyPost::Tracker,
       'trkrep' => EasyPost::Report,
-      'user' => EasyPost::User
+      'user' => EasyPost::User,
     }
 
     case response
     when Array
-      return response.map { |i| convert_to_easypost_object(i, api_key, parent) }
+      response.map { |i| convert_to_easypost_object(i, api_key, parent) }
     when Hash
-      if cls_name = response[:object]
+      if (cls_name = response[:object])
         cls = types[cls_name]
       elsif response[:id]
         if response[:id].index('_').nil?
           cls = EasyPost::EasyPostObject
-        elsif cls_prefix = response[:id][0..response[:id].index('_')]
+        elsif (cls_prefix = response[:id][0..response[:id].index('_')])
           cls = prefixes[cls_prefix[0..-2]]
         end
       elsif response['id']
         if response['id'].index('_').nil?
           cls = EasyPost::EasyPostObject
-        elsif cls_prefix = response['id'][0..response['id'].index('_')]
+        elsif (cls_prefix = response['id'][0..response['id'].index('_')])
           cls = prefixes[cls_prefix[0..-2]]
         end
       end
 
       cls ||= EasyPost::EasyPostObject
-      return cls.construct_from(response, api_key, parent, name)
+      cls.construct_from(response, api_key, parent, name)
     else
-      return response
+      response
     end
   end
 end

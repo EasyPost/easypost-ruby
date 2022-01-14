@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 class EasyPost::User < EasyPost::Resource
   def self.create(params = {}, api_key = nil)
-    response = EasyPost.make_request(:post, url, api_key, {class_name.to_sym => params})
+    response = EasyPost.make_request(:post, url, api_key, { class_name.to_sym => params })
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
   def save
-    if @unsaved_values.length > 0
+    if @unsaved_values.length.positive?
       values = {}
       @unsaved_values.each { |k| values[k] = @values[k] }
 
-      wrapped_params = {user: values}
+      wrapped_params = { user: values }
 
       response = EasyPost.make_request(:put, url, @api_key, wrapped_params)
       refresh_from(response, api_key)
@@ -41,10 +43,10 @@ class EasyPost::User < EasyPost::Resource
 
     my_api_keys
   end
-  
+
   def update_brand(**attrs)
     brand = EasyPost::Brand.new
-    data = {object: "Brand", user_id: id, **attrs}
+    data = { object: 'Brand', user_id: id, **attrs }
     # Add accessors manually because there's no API to retrieve a brand
     brand.add_accessors(data.keys)
     # Assigning values with accessors defined above

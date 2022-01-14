@@ -1,10 +1,7 @@
+# frozen_string_literal: true
+
 class EasyPost::Error < StandardError
-  attr_reader :message
-  attr_reader :status
-  attr_reader :http_status # deprecated
-  attr_reader :http_body
-  attr_reader :code
-  attr_reader :errors
+  attr_reader :message, :status, :http_status, :http_body, :code, :errors
 
   def initialize(message = nil, status = nil, code = nil, errors = nil, http_body = nil)
     @message = message

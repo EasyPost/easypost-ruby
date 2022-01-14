@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## NEXT RELEASE
+
+* Bumps minimum Ruby version from `2.2` to `2.5`
+* Introduces `Rubocop` and lints the entire project
+
+
 ## 3.5.0 2021-12-06
 
 * Adds the `update_brand` method to the user object (closes #122)
