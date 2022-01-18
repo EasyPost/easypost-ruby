@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.licenses = ['MIT']
   spec.summary = 'EasyPost Ruby Client Library'
   spec.description = 'Client library for accessing the EasyPost shipping API via Ruby.'
-  spec.authors = ['Jake Epstein', 'Andrew Tribone', 'James Brown']
+  spec.authors = 'EasyPost Developers'
   spec.email = 'support@easypost.com'
   spec.homepage = 'https://www.easypost.com/docs'
 
@@ -22,11 +22,11 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.5'
 
-  spec.add_development_dependency 'pry', '~> 0.13'
+  spec.add_development_dependency 'pry', '~> 0.14'
   spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'rspec', '~> 3.9'
+  spec.add_development_dependency 'rspec', '~> 3.10'
   spec.add_development_dependency 'rubocop', '~> 1.24'
   spec.add_development_dependency 'rubocop-rspec', '~> 2.7'
-  spec.add_development_dependency 'vcr', '~> 5.1'
-  spec.add_development_dependency 'webmock', '~> 3.8'
+  spec.add_development_dependency 'vcr', '~> 6.0'
+  spec.add_development_dependency 'webmock', '~> 3.14'
 end
