@@ -5,6 +5,7 @@
 
 * Bumps minimum Ruby version from `2.2` to `2.5`
 * Introduces `Rubocop` and lints the entire project
+* Removes deprecated and unusable `stamp_and_barcode_by_reference` method on the Batch object
 
 
 ## 3.5.0 2021-12-06

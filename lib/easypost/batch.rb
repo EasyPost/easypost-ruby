@@ -37,10 +37,6 @@ class EasyPost::Batch < EasyPost::Resource
     self
   end
 
-  def stamp_and_barcode_by_reference(params = {})
-    EasyPost.make_request(:get, "#{url}/stamp_and_barcode_by_reference", @api_key, params)
-  end
-
   def create_scan_form(params = {})
     EasyPost.make_request(:post, "#{url}/scan_form", @api_key, params)
   end
