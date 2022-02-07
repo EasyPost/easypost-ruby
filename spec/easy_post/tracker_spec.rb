@@ -104,12 +104,10 @@ describe EasyPost::Tracker do
       expect {
         described_class.create_list(
           {
-            trackers: {
-              '0' => { tracking_code: 'EZ1000000001' },
-              '1' => { tracking_code: 'EZ1000000002' },
-              '2' => { tracking_code: 'EZ1000000003' },
-              '3' => { tracking_code: 'EZ1000000004' },
-            },
+            '0' => { tracking_code: 'EZ1000000001' },
+            '1' => { tracking_code: 'EZ1000000002' },
+            '2' => { tracking_code: 'EZ1000000003' },
+            '3' => { tracking_code: 'EZ1000000004' },
           },
         )
       }.not_to raise_error
