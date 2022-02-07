@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.0.2-p107
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
       Content-Type:
       - application/json
       Authorization: "<AUTHORIZATION>"
@@ -34,7 +34,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - ca80fd0361e701aee7874dc6002f7655
+      - 80af159f61fede11ff149509002ab3e1
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -46,25 +46,26 @@ http_interactions:
       Etag:
       - W/"44136fa355b3678a1146ad16f7e8649e"
       X-Request-Id:
-      - e211c6f0-ddb4-450a-bfd5-ad0fa91b75b8
+      - 3498fed6-5e67-406f-b50e-28aa385b2b5a
       X-Runtime:
-      - '0.041064'
+      - '0.050839'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb7nuq
       X-Version-Label:
-      - easypost-202201180133-229292efe9-master
+      - easypost-202202042220-76f9648007-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb1nuq ffc213653a
-      - intlb2nuq ffc213653a
+      - extlb1nuq 88c34981dc
+      - intlb2nuq 88c34981dc
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
       string: "{}"
-    http_version:
-  recorded_at: Tue, 18 Jan 2022 18:06:38 GMT
-recorded_with: VCR 5.1.0
+  recorded_at: Sat, 05 Feb 2022 20:29:05 GMT
+recorded_with: VCR 6.0.0
