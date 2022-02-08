@@ -1,13 +1,6 @@
 # frozen_string_literal: true
 
 class EasyPost::Shipment < EasyPost::Resource
-  def get_rates(params = {})
-    response = EasyPost.make_request(:get, "#{url}/rates", @api_key, params)
-    refresh_from(response, @api_key, true)
-
-    self
-  end
-
   def regenerate_rates(params = {})
     response = EasyPost.make_request(:post, "#{url}/rerate", @api_key, params)
     refresh_from(response, @api_key, true)
