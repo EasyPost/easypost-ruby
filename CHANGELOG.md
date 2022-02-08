@@ -6,6 +6,8 @@
 * Bumps minimum Ruby version from `2.2` to `2.5`
 * Introduces `Rubocop` and lints the entire project
 * Removes deprecated and unusable `stamp_and_barcode_by_reference` method on the Batch object
+* Explicitly returns an error of "not implemented" for `Rate.all` and `Parcel.all`
+* Removes the `Shipment.get_rates` function as shipments already contain rates. If you need to get new rates for a shipment, use the `Shipment.regenerate_rates` function instead
 
 
 ## 3.5.0 2021-12-06
