@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+# Internal utilities helpful for this libraries operation.
 module EasyPost::Util
+  # Converts an object to an object ID.
   def self.objects_to_ids(obj)
     case obj
     when EasyPost::Resource
@@ -16,11 +18,13 @@ module EasyPost::Util
     end
   end
 
+  # Normalizes a list of strings.
   def self.normalize_string_list(lst)
     lst = lst.is_a?(String) ? lst.split(',') : Array(lst)
     lst.map(&:to_s).map(&:downcase).map(&:strip)
   end
 
+  # Convert data to an EasyPost Object.
   def self.convert_to_easypost_object(response, api_key, parent = nil, name = nil)
     types = {
       'Address' => EasyPost::Address,
@@ -36,8 +40,6 @@ module EasyPost::Util
       'Pickup' => EasyPost::Pickup,
       'PickupRate' => EasyPost::PickupRate,
       'PostageLabel' => EasyPost::PostageLabel,
-      'Printer' => EasyPost::Printer,
-      'PrintJob' => EasyPost::PrintJob,
       'Rate' => EasyPost::Rate,
       'Refund' => EasyPost::Refund,
       'RefundReport' => EasyPost::Report,
@@ -68,8 +70,6 @@ module EasyPost::Util
       'pl' => EasyPost::PostageLabel,
       'plrep' => EasyPost::Report,
       'prcl' => EasyPost::Parcel,
-      'printer' => EasyPost::Printer,
-      'printjob' => EasyPost::PrintJob,
       'rate' => EasyPost::Rate,
       'refrep' => EasyPost::Report,
       'rfnd' => EasyPost::Refund,

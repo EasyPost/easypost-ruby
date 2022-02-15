@@ -26,8 +26,6 @@ require 'easypost/parcel'
 require 'easypost/pickup_rate'
 require 'easypost/pickup'
 require 'easypost/postage_label'
-require 'easypost/print_job'
-require 'easypost/printer'
 require 'easypost/rate'
 require 'easypost/refund'
 require 'easypost/report'
@@ -42,22 +40,27 @@ module EasyPost
   @api_key = nil
   @api_base = 'https://api.easypost.com'
 
+  # Set the ApiKey.
   def self.api_key=(api_key)
     @api_key = api_key
   end
 
+  # Get the ApiKey.
   def self.api_key
     @api_key
   end
 
+  # Set the API base.
   def self.api_base=(api_base)
     @api_base = api_base
   end
 
+  # Get the API base.
   def self.api_base
     @api_base
   end
 
+  # Reset the HTTP config.
   def self.reset_http_config
     @http_config = {
       timeout: 60,
@@ -75,14 +78,17 @@ module EasyPost
     @http_config
   end
 
+  # Get the HTTP config.
   def self.http_config
     @http_config ||= reset_http_config
   end
 
+  # Set the HTTP config.
   def self.http_config=(http_config_params)
     http_config.merge!(http_config_params)
   end
 
+  # Create an EasyPost Client.
   def self.make_client(uri)
     client = if http_config[:proxy]
                proxy_uri = URI(http_config[:proxy])
@@ -119,6 +125,7 @@ module EasyPost
     client
   end
 
+  # Make an HTTP request.
   def self.make_request(method, path, api_key = nil, body = nil)
     client = make_client(URI(@api_base))
 

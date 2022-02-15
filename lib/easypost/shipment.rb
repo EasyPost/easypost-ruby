@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
+# The workhorse of the EasyPost API, a Shipment is made up of a "to" and "from" Address, the Parcel
+# being shipped, and any customs forms required for international deliveries.
 class EasyPost::Shipment < EasyPost::Resource
+  # Regenerate the rates of a Shipment.
   def regenerate_rates(params = {})
     response = EasyPost.make_request(:post, "#{url}/rerate", @api_key, params)
     refresh_from(response, @api_key, true)
@@ -8,12 +11,14 @@ class EasyPost::Shipment < EasyPost::Resource
     self
   end
 
+  # Get the SmartRates of a Shipment.
   def get_smartrates # rubocop:disable Naming/AccessorMethodName
     response = EasyPost.make_request(:get, "#{url}/smartrate", @api_key)
 
     response.fetch('result', [])
   end
 
+  # Buy a Shipment.
   def buy(params = {})
     if params.instance_of?(EasyPost::Rate)
       temp = params.clone
@@ -27,6 +32,7 @@ class EasyPost::Shipment < EasyPost::Resource
     self
   end
 
+  # Insure a Shipment.
   def insure(params = {})
     if params.is_a?(Integer) || params.is_a?(Float)
       temp = params.clone
@@ -40,6 +46,7 @@ class EasyPost::Shipment < EasyPost::Resource
     self
   end
 
+  # Refund a Shipment.
   def refund(params = {})
     response = EasyPost.make_request(:get, "#{url}/refund", @api_key, params)
     refresh_from(response, @api_key, true)
@@ -47,14 +54,7 @@ class EasyPost::Shipment < EasyPost::Resource
     self
   end
 
-  def print(params = {})
-    if params.instance_of?(EasyPost::Printer)
-      return params.print(postage_label)
-    end
-
-    false
-  end
-
+  # Conver the label format of a Shipment.
   def label(params = {})
     if params.is_a?(String)
       temp = params.clone
@@ -68,6 +68,7 @@ class EasyPost::Shipment < EasyPost::Resource
     self
   end
 
+  # Get the lowest rate of a Shipment.
   def lowest_rate(carriers = [], services = [])
     lowest = nil
 
