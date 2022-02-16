@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+# Address objects are used to represent people, places, and organizations in a number of contexts.
 class EasyPost::Address < EasyPost::Resource
   attr_accessor :message # Backwards compatibility
 
+  # Create an Address.
   def self.create(params = {}, api_key = nil)
     url = self.url
 
@@ -25,6 +27,7 @@ class EasyPost::Address < EasyPost::Resource
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
+  # Create and verify an Address in one call.
   def self.create_and_verify(params = {}, carrier = nil, api_key = nil)
     wrapped_params = {}
     wrapped_params[class_name.to_sym] = params
@@ -40,6 +43,7 @@ class EasyPost::Address < EasyPost::Resource
     EasyPost::Util.convert_to_easypost_object(response['address'], api_key)
   end
 
+  # Verify an Address.
   def verify(params = {}, carrier = nil)
     begin
       response = EasyPost.make_request(:get, "#{url}/verify?carrier=#{String(carrier)}", @api_key, params)

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+# A Tracker object contains all of the tracking information for a package.
 class EasyPost::Tracker < EasyPost::Resource
+  # Create multiple Tracker objects in bulk.
   def self.create_list(params = {}, api_key = nil)
     url = "#{self.url}/create_list"
     new_params = { 'trackers' => params }

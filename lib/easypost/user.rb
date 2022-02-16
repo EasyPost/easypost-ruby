@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
+# The User object can be used to manage your own account and to create child accounts.
 class EasyPost::User < EasyPost::Resource
+  # Create a child User.
   def self.create(params = {}, api_key = nil)
     response = EasyPost.make_request(:post, url, api_key, { class_name.to_sym => params })
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
+  # Save (update) a User.
   def save
     if @unsaved_values.length.positive?
       values = {}
@@ -19,14 +22,17 @@ class EasyPost::User < EasyPost::Resource
     self
   end
 
+  # Retrieve the authenticated User.
   def self.retrieve_me
     all
   end
 
+  # Retrieve a list of ApiKey objects.
   def self.all_api_keys
     EasyPost::ApiKey.all
   end
 
+  # Retrieve a list of ApiKey objects of a child User.
   def api_keys
     api_keys = EasyPost::User.all_api_keys
 
@@ -44,6 +50,7 @@ class EasyPost::User < EasyPost::Resource
     my_api_keys
   end
 
+  # Update the Brand of a User.
   def update_brand(**attrs)
     brand = EasyPost::Brand.new
     data = { object: 'Brand', user_id: id, **attrs }

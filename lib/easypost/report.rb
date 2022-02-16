@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+# A Report contains a csv that is a log of all the objects created within a certain time frame.
 class EasyPost::Report < EasyPost::Resource
+  # Create a Report.
   def self.create(params = {}, api_key = nil)
     url = "#{self.url}/#{params[:type]}"
     wrapped_params = {}
@@ -10,6 +12,7 @@ class EasyPost::Report < EasyPost::Resource
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
+  # Retrieve a Report.
   def self.retrieve(params, api_key = nil)
     id = if params.is_a?(String)
            params
@@ -22,6 +25,7 @@ class EasyPost::Report < EasyPost::Resource
     instance
   end
 
+  # Retrieve a list of Report objects.
   def self.all(filters = {}, api_key = nil)
     url = "#{self.url}/#{filters[:type]}"
 
