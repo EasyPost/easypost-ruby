@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/reports/shipment
+    body:
+      encoding: UTF-8
+      string: '{"start_date":"2022-02-21","end_date":"2022-02-23","type":"shipment"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 704d1f6b6218138be78bacb000530e69
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"71fea9efdc468c893f2606889202dd09"
+      X-Request-Id:
+      - 15c462bb-c3ee-4d83-95ba-ad93a493f3bd
+      X-Runtime:
+      - '0.039483'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb1nuq
+      X-Version-Label:
+      - easypost-202202242013-00973e8608-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 88c34981dc
+      - intlb2nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"shprep_4fa47ca0ecbd4322be81975f2b9bfea2","object":"ShipmentReport","created_at":"2022-02-24T23:23:55Z","updated_at":"2022-02-24T23:23:55Z","start_date":"2022-02-21","end_date":"2022-02-23","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+  recorded_at: Thu, 24 Feb 2022 23:23:55 GMT
+recorded_with: VCR 6.0.0

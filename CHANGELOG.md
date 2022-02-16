@@ -5,11 +5,15 @@
 
 * Bumps minimum Ruby version from `2.2` to `2.5`
 * Documents each interface of the project
+* Overhauls the test suite with full coverage
 * Introduces `Rubocop` and lints the entire project
 * Removes the unusable `Print` and `PrintJob` objects
 * Removes deprecated and unusable `stamp_and_barcode_by_reference` method on the Batch object
 * Explicitly returns an error of "not implemented" for `Rate.all` and `Parcel.all`
 * Removes the `Shipment.get_rates` function as shipments already contain rates. If you need to get new rates for a shipment, use the `Shipment.regenerate_rates` function instead
+* Removes the parameters from `Address.verify` as they are unusable
+* Removes the deprecated `http_status` property of the `EasyPost::Error` object as it was replaced with `status`
+* Various other small improvements and bug fixes
 
 
 ## 3.5.0 2021-12-06

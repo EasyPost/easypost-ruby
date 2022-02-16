@@ -1,5 +1,27 @@
 # frozen_string_literal: true
 
+# Simplecov must be loaded before everything else to work properly
+require 'simplecov'
+require 'simplecov-lcov'
+
+SimpleCov::Formatter::LcovFormatter.config do |config|
+  config.report_with_single_file = true
+end
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [
+    SimpleCov::Formatter::HTMLFormatter,
+    SimpleCov::Formatter::LcovFormatter,
+  ],
+)
+
+SimpleCov.start do
+  track_files 'lib/**/*.rb'
+  add_filter '/spec/'
+  add_filter 'lib/easypost/version.rb'
+  enable_coverage :branch
+end
+
 require 'open-uri'
 require 'easypost'
 
@@ -7,16 +29,16 @@ Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
 RSpec.configure do |config|
   config.before do
-    EasyPost.api_key = ENV['API_KEY']
+    EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
   end
 
   config.around do |example|
     # Automaticlaly wrap the test in VCR to avoid forgetting it.
-    path = example.file_path.gsub('_spec.rb', '').gsub('./spec/easy_post/', '')
+    path = example.file_path.gsub('_spec.rb', '').gsub('./spec/', '')
     description = example.full_description
     VCR.use_cassette(
       "#{path}/#{description}",
-      example.metadata.fetch(:vcr, {}),
+      allow_unused_http_interactions: true,
     ) do
       example.call
     end

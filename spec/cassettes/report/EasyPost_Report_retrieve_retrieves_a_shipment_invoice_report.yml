@@ -1,0 +1,135 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/reports/shipment_invoice
+    body:
+      encoding: UTF-8
+      string: '{"start_date":"2022-02-21","end_date":"2022-02-23","type":"shipment_invoice"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 704d1f6d6218138de78bafc700530ef5
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"cd405c724e68087f28574446caa63aa4"
+      X-Request-Id:
+      - e70b2e39-3d00-40e1-b32b-758c060cf6ff
+      X-Runtime:
+      - '0.043316'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb5nuq
+      X-Version-Label:
+      - easypost-202202242013-00973e8608-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 88c34981dc
+      - intlb1nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"shpinvrep_d5ae26056c41485aa8ac4de44bd504d8","object":"ShipmentInvoiceReport","created_at":"2022-02-24T23:23:57Z","updated_at":"2022-02-24T23:23:57Z","start_date":"2022-02-21","end_date":"2022-02-23","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+  recorded_at: Thu, 24 Feb 2022 23:23:57 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/reports/shpinvrep_d5ae26056c41485aa8ac4de44bd504d8
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 704d1f6d6218138de78bafc800530f03
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"2d36218b727e2eb66790c8e1cc2e26b0"
+      X-Request-Id:
+      - ca291085-fdf4-4366-a2a3-63e563a8ad13
+      X-Runtime:
+      - '0.028358'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb9nuq
+      X-Version-Label:
+      - easypost-202202242013-00973e8608-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 88c34981dc
+      - intlb2nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"shpinvrep_d5ae26056c41485aa8ac4de44bd504d8","object":"ShipmentInvoiceReport","created_at":"2022-02-24T23:23:57Z","updated_at":"2022-02-24T23:23:57Z","start_date":"2022-02-21","end_date":"2022-02-23","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false}'
+  recorded_at: Thu, 24 Feb 2022 23:23:57 GMT
+recorded_with: VCR 6.0.0

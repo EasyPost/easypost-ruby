@@ -1,0 +1,137 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/reports/tracker
+    body:
+      encoding: UTF-8
+      string: '{"start_date":"2022-02-21","end_date":"2022-02-23","type":"tracker"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 704d1f706218138de78bafc900530f10
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"fb26ac1487fb9270195f54cb93c37f09"
+      X-Request-Id:
+      - '080ffd5e-fd67-4305-9c32-2e1d81f2af37'
+      X-Runtime:
+      - '0.047681'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb3nuq
+      X-Version-Label:
+      - easypost-202202242013-00973e8608-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 88c34981dc
+      - intlb1nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"trkrep_4c0453b218394ec6875cb07ba2eeb83f","object":"TrackerReport","created_at":"2022-02-24T23:23:55Z","updated_at":"2022-02-24T23:23:56Z","start_date":"2022-02-21","end_date":"2022-02-23","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false}'
+  recorded_at: Thu, 24 Feb 2022 23:23:57 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/reports/trkrep_4c0453b218394ec6875cb07ba2eeb83f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 704d1f6c6218138ee78bafca00530f1b
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"fb26ac1487fb9270195f54cb93c37f09"
+      X-Request-Id:
+      - 80ddbb14-3faf-48db-91c8-202501ea7a98
+      X-Runtime:
+      - '0.091556'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb7nuq
+      X-Version-Label:
+      - easypost-202202242013-00973e8608-master
+      X-Backend:
+      - easypost
+      X-Canary:
+      - direct
+      X-Proxied:
+      - extlb2nuq 88c34981dc
+      - intlb2nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"trkrep_4c0453b218394ec6875cb07ba2eeb83f","object":"TrackerReport","created_at":"2022-02-24T23:23:55Z","updated_at":"2022-02-24T23:23:56Z","start_date":"2022-02-21","end_date":"2022-02-23","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false}'
+  recorded_at: Thu, 24 Feb 2022 23:23:58 GMT
+recorded_with: VCR 6.0.0

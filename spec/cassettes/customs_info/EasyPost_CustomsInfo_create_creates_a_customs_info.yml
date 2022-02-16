@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/customs_infos
+    body:
+      encoding: UTF-8
+      string: '{"customs_info":{"eel_pfc":"NOEEI 30.37(a)","customs_certify":true,"customs_signer":"Steve
+        Brule","contents_type":"merchandise","contents_explanation":"","restriction_type":"none","non_delivery_option":"return","customs_items":[{"description":"Sweet
+        shirts","quantity":2,"weight":11,"value":23,"hs_tariff_number":"654321","origin_country":"US"}]}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 89bd310462168acce787d564003ac5a9
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/customs_infos/cstinfo_61b6c219e1734684bb9b75e7cc7697b9"
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"dac13f27bedb24fd2b2105d4244914d8"
+      X-Request-Id:
+      - c96da1bd-d5de-447f-89bf-eb3f851c9d87
+      X-Runtime:
+      - '0.122793'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb1nuq
+      X-Version-Label:
+      - easypost-202202231719-cc169b5e93-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 88c34981dc
+      - intlb1nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"cstinfo_61b6c219e1734684bb9b75e7cc7697b9","object":"CustomsInfo","created_at":"2022-02-23T19:28:12Z","updated_at":"2022-02-23T19:28:12Z","contents_explanation":"","contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve
+        Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_73eaedcb5fc4499b9a11e4c94697b864","object":"CustomsItem","created_at":"2022-02-23T19:28:12Z","updated_at":"2022-02-23T19:28:12Z","description":"Sweet
+        shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.0","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}]}'
+  recorded_at: Wed, 23 Feb 2022 19:28:12 GMT
+recorded_with: VCR 6.0.0

@@ -29,6 +29,7 @@ module EasyPost::Util
     types = {
       'Address' => EasyPost::Address,
       'Batch' => EasyPost::Batch,
+      'Brand' => EasyPost::Brand,
       'CarrierAccount' => EasyPost::CarrierAccount,
       'CustomsInfo' => EasyPost::CustomsInfo,
       'CustomsItem' => EasyPost::CustomsItem,
@@ -58,6 +59,7 @@ module EasyPost::Util
     prefixes = {
       'adr' => EasyPost::Address,
       'batch' => EasyPost::Batch,
+      'brd' => EasyPost::Brand,
       'ca' => EasyPost::CarrierAccount,
       'cstinfo' => EasyPost::CustomsInfo,
       'cstitem' => EasyPost::CustomsItem,

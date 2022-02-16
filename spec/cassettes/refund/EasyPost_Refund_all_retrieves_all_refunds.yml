@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/refunds
+    body:
+      encoding: UTF-8
+      string: '{"page_size":5}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 7b40663b6216b98be78a02630046ff72
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"b762df37b537c34f72911f20c39b14fb"
+      X-Request-Id:
+      - a2bfd9c6-dd58-44ec-8aae-7af92cabe3d2
+      X-Runtime:
+      - '0.038430'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb5nuq
+      X-Version-Label:
+      - easypost-202202232205-2f689abe9b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 88c34981dc
+      - intlb2nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"refunds":[{"id":"rfnd_2fe4316a1bdd4bdaad99caf025f95bcc","object":"Refund","created_at":"2022-02-23T22:47:39Z","updated_at":"2022-02-23T22:47:39Z","tracking_code":"9400100895232108760869","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_1d5313662cef4201834a2b04801ae8a2"},{"id":"rfnd_dd89ac258c7e47218cfa8f2b39ec7960","object":"Refund","created_at":"2022-02-23T22:46:17Z","updated_at":"2022-02-23T22:46:17Z","tracking_code":"9400100895232108760814","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_fcbf84bb706c4d6d998cf102663cc65b"}],"has_more":false}'
+  recorded_at: Wed, 23 Feb 2022 22:47:39 GMT
+recorded_with: VCR 6.0.0

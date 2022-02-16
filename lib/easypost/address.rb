@@ -44,9 +44,9 @@ class EasyPost::Address < EasyPost::Resource
   end
 
   # Verify an Address.
-  def verify(params = {}, carrier = nil)
+  def verify
     begin
-      response = EasyPost.make_request(:get, "#{url}/verify?carrier=#{String(carrier)}", @api_key, params)
+      response = EasyPost.make_request(:get, "#{url}/verify", @api_key)
     rescue StandardError
       raise EasyPost::Error.new('Unable to verify address.')
     end

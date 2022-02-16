@@ -5,7 +5,7 @@ class EasyPost::Order < EasyPost::Resource
   # Get the rates of an Order.
   def get_rates(params = {})
     response = EasyPost.make_request(:get, "#{url}/rates", @api_key, params)
-    refresh_from(response, @api_key, true)
+    refresh_from(response, @api_key)
 
     self
   end
@@ -20,13 +20,13 @@ class EasyPost::Order < EasyPost::Resource
     end
 
     response = EasyPost.make_request(:post, "#{url}/buy", @api_key, params)
-    refresh_from(response, @api_key, true)
+    refresh_from(response, @api_key)
 
     self
   end
 
   # Retrieve a list of Order objects.
-  def self.all(_filters = {}, _api_key = nil)
+  def self.all
     raise NotImplementedError.new('Order.all not implemented.')
   end
 end

@@ -14,7 +14,7 @@ class EasyPost::Batch < EasyPost::Resource
   # Buy a Batch.
   def buy(params = {})
     response = EasyPost.make_request(:post, "#{url}/buy", @api_key, params)
-    refresh_from(response, @api_key, true)
+    refresh_from(response, @api_key)
 
     self
   end
@@ -22,7 +22,7 @@ class EasyPost::Batch < EasyPost::Resource
   # Convert the label format of a Batch.
   def label(params = {})
     response = EasyPost.make_request(:post, "#{url}/label", @api_key, params)
-    refresh_from(response, @api_key, true)
+    refresh_from(response, @api_key)
 
     self
   end
@@ -30,7 +30,7 @@ class EasyPost::Batch < EasyPost::Resource
   # Remove Shipments from a Batch.
   def remove_shipments(params = {})
     response = EasyPost.make_request(:post, "#{url}/remove_shipments", @api_key, params)
-    refresh_from(response, @api_key, true)
+    refresh_from(response, @api_key)
 
     self
   end
@@ -38,7 +38,7 @@ class EasyPost::Batch < EasyPost::Resource
   # Add Shipments to a Batch.
   def add_shipments(params = {})
     response = EasyPost.make_request(:post, "#{url}/add_shipments", @api_key, params)
-    refresh_from(response, @api_key, true)
+    refresh_from(response, @api_key)
 
     self
   end
