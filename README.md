@@ -100,8 +100,8 @@ Up-to-date documentation at: https://easypost.com/docs
 ## Development
 
 ```bash
-# Run tests
-API_KEY=123... bundle exec rspec
+# Run tests (coverage is generated on a successful test suite run)
+EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... bundle exec rspec
 ```
 
 ## Releasing

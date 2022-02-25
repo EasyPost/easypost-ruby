@@ -6,7 +6,7 @@ class EasyPost::Shipment < EasyPost::Resource
   # Regenerate the rates of a Shipment.
   def regenerate_rates(params = {})
     response = EasyPost.make_request(:post, "#{url}/rerate", @api_key, params)
-    refresh_from(response, @api_key, true)
+    refresh_from(response, @api_key)
 
     self
   end
@@ -27,7 +27,7 @@ class EasyPost::Shipment < EasyPost::Resource
     end
 
     response = EasyPost.make_request(:post, "#{url}/buy", @api_key, params)
-    refresh_from(response, @api_key, true)
+    refresh_from(response, @api_key)
 
     self
   end
@@ -41,7 +41,7 @@ class EasyPost::Shipment < EasyPost::Resource
     end
 
     response = EasyPost.make_request(:post, "#{url}/insure", @api_key, params)
-    refresh_from(response, @api_key, true)
+    refresh_from(response, @api_key)
 
     self
   end
@@ -49,12 +49,12 @@ class EasyPost::Shipment < EasyPost::Resource
   # Refund a Shipment.
   def refund(params = {})
     response = EasyPost.make_request(:get, "#{url}/refund", @api_key, params)
-    refresh_from(response, @api_key, true)
+    refresh_from(response, @api_key)
 
     self
   end
 
-  # Conver the label format of a Shipment.
+  # Convert the label format of a Shipment.
   def label(params = {})
     if params.is_a?(String)
       temp = params.clone
@@ -63,7 +63,7 @@ class EasyPost::Shipment < EasyPost::Resource
     end
 
     response = EasyPost.make_request(:get, "#{url}/label", @api_key, params)
-    refresh_from(response, @api_key, true)
+    refresh_from(response, @api_key)
 
     self
   end

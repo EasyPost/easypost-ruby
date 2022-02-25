@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/batches/create_and_buy
+    body:
+      encoding: UTF-8
+      string: '{"batch":{"shipments":[{"to_address":{"name":"Jack Sparrow","company":"EasyPost","street1":"388
+        Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","phone":"5555555555"},"from_address":{"name":"Jack
+        Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","phone":"5555555555"},"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"},"service":"First","carrier_accounts":["ca_716f33fd9fd348238b85c2922237f98b"],"carrier":"USPS"},{"to_address":{"name":"Jack
+        Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","phone":"5555555555"},"from_address":{"name":"Jack
+        Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","phone":"5555555555"},"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"},"service":"First","carrier_accounts":["ca_716f33fd9fd348238b85c2922237f98b"],"carrier":"USPS"}]}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 15c6b80b62166e86e786a7fc00276511
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"4583330257eae151d83412e4d119d5bc"
+      X-Request-Id:
+      - 01c23feb-0661-4d43-bd77-172073e73c13
+      X-Runtime:
+      - '0.051715'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb3nuq
+      X-Version-Label:
+      - easypost-202202230129-176eb4912d-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb3wdc 88c34981dc
+      - intlb1nuq 88c34981dc
+      - intlb1wdc 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"batch_0246daa719c84c64942f009e53a10df0","object":"Batch","mode":"test","state":"creating","num_shipments":2,"reference":null,"created_at":"2022-02-23T17:27:35Z","updated_at":"2022-02-23T17:27:35Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+  recorded_at: Wed, 23 Feb 2022 17:27:35 GMT
+recorded_with: VCR 6.0.0

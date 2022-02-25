@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/shipments
+    body:
+      encoding: UTF-8
+      string: '{"shipment":{}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - d544d2f36217c46de787405a003dbba1
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Request-Id:
+      - 760b155b-b6f0-437e-9fdf-3666a20fad69
+      X-Runtime:
+      - '0.018773'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4nuq
+      X-Version-Label:
+      - easypost-202202240420-6e47ec067a-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 88c34981dc
+      - intlb1nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error":{"code":"SHIPMENT.INVALID_PARAMS","message":"Unable to create
+        shipment, one or more parameters were invalid.","errors":[{"to_address":"Required
+        and missing."},{"from_address":"Required and missing."}]}}'
+  recorded_at: Thu, 24 Feb 2022 17:46:21 GMT
+recorded_with: VCR 6.0.0

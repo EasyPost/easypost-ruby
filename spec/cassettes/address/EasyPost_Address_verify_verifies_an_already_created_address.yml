@@ -1,0 +1,144 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses?verify%5B%5D=true
+    body:
+      encoding: UTF-8
+      string: '{"address":{"street1":"417 montgomery streat","street2":"FL 5","city":"San
+        Francisco","state":"CA","zip":"94104","country":"US","company":"EasyPost","phone":"415-123-4567"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 15c6b80d62166e83e786a7df00276409
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_e1cae5fb94cd11ecab95ac1f6b0a0d1e"
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"5e2bfebe3716f4c661ab122b8fe9287d"
+      X-Request-Id:
+      - bf830e28-0995-4ae5-a78b-cd795630c6a0
+      X-Runtime:
+      - '0.047791'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb5nuq
+      X-Version-Label:
+      - easypost-202202230129-176eb4912d-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb3wdc 88c34981dc
+      - intlb1nuq 88c34981dc
+      - intlb2wdc 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"adr_e1cae5fb94cd11ecab95ac1f6b0a0d1e","object":"Address","created_at":"2022-02-23T17:27:31+00:00","updated_at":"2022-02-23T17:27:31+00:00","name":null,"company":"EASYPOST","street1":"417
+        MONTGOMERY ST STE 500","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94104-1100","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}}'
+  recorded_at: Wed, 23 Feb 2022 17:27:31 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/addresses/adr_e1cae5fb94cd11ecab95ac1f6b0a0d1e/verify
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 15c6b80962166e84e786a7e00027642a
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_e21bdb1f94cd11ecb368ac1f6bc7b362"
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"e58134bb96f6d355bb3045b99443de3c"
+      X-Request-Id:
+      - e12728a2-1cef-47e7-b5ea-7084a9ac4e25
+      X-Runtime:
+      - '0.052668'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb2nuq
+      X-Version-Label:
+      - easypost-202202230129-176eb4912d-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb3wdc 88c34981dc
+      - intlb1nuq 88c34981dc
+      - intlb1wdc 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"address":{"id":"adr_e21bdb1f94cd11ecb368ac1f6bc7b362","object":"Address","created_at":"2022-02-23T17:27:32+00:00","updated_at":"2022-02-23T17:27:32+00:00","name":null,"company":"EASYPOST","street1":"417
+        MONTGOMERY ST STE 500","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94104-1100","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}}}'
+  recorded_at: Wed, 23 Feb 2022 17:27:32 GMT
+recorded_with: VCR 6.0.0

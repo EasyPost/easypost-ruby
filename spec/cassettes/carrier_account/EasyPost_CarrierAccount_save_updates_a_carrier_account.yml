@@ -1,0 +1,205 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/carrier_accounts
+    body:
+      encoding: UTF-8
+      string: '{"carrier_account":{"type":"UpsAccount","credentials":{"account_number":"A1A1A1","user_id":"USERID","password":"PASSWORD","access_license_number":"ALN"}}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 89bd310662167f21e78744c500365ae4
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"92c23373b60e859c2812e827f1fc59a7"
+      X-Request-Id:
+      - 6103a7f9-2b06-42fb-9c40-893c1c8ee042
+      X-Runtime:
+      - '0.133105'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb2nuq
+      X-Version-Label:
+      - easypost-202202231719-cc169b5e93-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 88c34981dc
+      - intlb2nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"ca_ae28f750a8e44fefa4ae7d05ae4b33a1","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-02-23T18:38:25Z","updated_at":"2022-02-23T18:38:25Z","description":"UPS
+        Account","reference":null,"readable":"UPS","logo":null,"fields":{"credentials":{"account_number":{"visibility":"readonly","label":"UPS
+        Account Number","value":"A1A1A1"}}},"credentials":{"account_number":"A1A1A1"},"test_credentials":null}'
+  recorded_at: Wed, 23 Feb 2022 18:38:25 GMT
+- request:
+    method: put
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_ae28f750a8e44fefa4ae7d05ae4b33a1
+    body:
+      encoding: UTF-8
+      string: '{"carrier_account":{"description":"My custom description"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 89bd310662167f22e78744dd00365b07
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"5f8ee5bd5e677794fa6e92e38664dffb"
+      X-Request-Id:
+      - 83a26438-83af-466f-9db9-7a9b6ccca2e3
+      X-Runtime:
+      - '0.149416'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb9nuq
+      X-Version-Label:
+      - easypost-202202231719-cc169b5e93-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 88c34981dc
+      - intlb1nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"ca_ae28f750a8e44fefa4ae7d05ae4b33a1","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-02-23T18:38:25Z","updated_at":"2022-02-23T18:38:26Z","description":"My
+        custom description","reference":null,"readable":"UPS","logo":null,"fields":{"credentials":{"account_number":{"visibility":"readonly","label":"UPS
+        Account Number","value":"A1A1A1"}}},"credentials":{"account_number":"A1A1A1"},"test_credentials":null}'
+  recorded_at: Wed, 23 Feb 2022 18:38:26 GMT
+- request:
+    method: delete
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_ae28f750a8e44fefa4ae7d05ae4b33a1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 89bd310662167f22e78744de00365b28
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"44136fa355b3678a1146ad16f7e8649e"
+      X-Request-Id:
+      - 4d07ca57-1514-4ba4-ae52-72b46c333edd
+      X-Runtime:
+      - '0.137553'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb2nuq
+      X-Version-Label:
+      - easypost-202202231719-cc169b5e93-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 88c34981dc
+      - intlb2nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: "{}"
+  recorded_at: Wed, 23 Feb 2022 18:38:26 GMT
+recorded_with: VCR 6.0.0

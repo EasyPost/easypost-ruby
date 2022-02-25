@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/events
+    body:
+      encoding: UTF-8
+      string: '{"page_size":5}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 7b40663962168d21e787dda700383af2
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"f8dbc237c544e56eadc092e1d8b0aca0"
+      X-Request-Id:
+      - 0f0aeb99-d8af-49f4-a9a6-4d2153134ab5
+      X-Runtime:
+      - '0.219792'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb7nuq
+      X-Version-Label:
+      - easypost-202202231719-cc169b5e93-master
+      X-Backend:
+      - easypost
+      X-Canary:
+      - direct
+      X-Proxied:
+      - extlb2nuq 88c34981dc
+      - intlb2nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"events":[{"description":"tracker.updated","id":"evt_97ccfae094ce11ec87db7b9f65e335f5","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-02-23T17:32:37.260Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_7930e8da94ce11ec97853b8a05bbc299","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-02-23T17:31:45.906Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_764188e694ce11ecab561f956dd0863e","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-02-23T17:31:40.982Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_74feed5294ce11ec8cbf13a1f03362bb","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-02-23T17:31:38.868Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_7465889c94ce11eca9fb6502898d6435","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-02-23T17:31:37.862Z","mode":"test","object":"Event"}],"has_more":true}'
+  recorded_at: Wed, 23 Feb 2022 19:38:10 GMT
+recorded_with: VCR 6.0.0

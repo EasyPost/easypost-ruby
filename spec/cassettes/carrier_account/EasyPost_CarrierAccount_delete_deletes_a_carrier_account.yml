@@ -1,0 +1,137 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/carrier_accounts
+    body:
+      encoding: UTF-8
+      string: '{"carrier_account":{"type":"UpsAccount","credentials":{"account_number":"A1A1A1","user_id":"USERID","password":"PASSWORD","access_license_number":"ALN"}}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 89bd310262167f22e78744df00365b5a
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"85332907f00e2a175a0dc79ebe5273ae"
+      X-Request-Id:
+      - e8836b0e-5fb8-4592-a589-e6f9f43bbdce
+      X-Runtime:
+      - '0.127743'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb6nuq
+      X-Version-Label:
+      - easypost-202202231719-cc169b5e93-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 88c34981dc
+      - intlb2nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"ca_41f06384c83b4dc0825ef77f3344b164","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-02-23T18:38:26Z","updated_at":"2022-02-23T18:38:26Z","description":"UPS
+        Account","reference":null,"readable":"UPS","logo":null,"fields":{"credentials":{"account_number":{"visibility":"readonly","label":"UPS
+        Account Number","value":"A1A1A1"}}},"credentials":{"account_number":"A1A1A1"},"test_credentials":null}'
+  recorded_at: Wed, 23 Feb 2022 18:38:26 GMT
+- request:
+    method: delete
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_41f06384c83b4dc0825ef77f3344b164
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 89bd310362167f23e78744e000365b7b
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"44136fa355b3678a1146ad16f7e8649e"
+      X-Request-Id:
+      - '065508ca-fd9f-4fcf-b6a7-ce6d334a8bdd'
+      X-Runtime:
+      - '0.133397'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb6nuq
+      X-Version-Label:
+      - easypost-202202231719-cc169b5e93-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 88c34981dc
+      - intlb2nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: "{}"
+  recorded_at: Wed, 23 Feb 2022 18:38:27 GMT
+recorded_with: VCR 6.0.0

@@ -40,7 +40,7 @@ class EasyPost::EasyPostObject
   end
 
   # Refresh an object from the API.
-  def refresh_from(values, api_key, _partial = false) # rubocop:disable Style/OptionalBooleanParameter
+  def refresh_from(values, api_key)
     @api_key = api_key
 
     added = Set.new(values.keys - @values.keys)
@@ -48,6 +48,9 @@ class EasyPost::EasyPostObject
     instance_eval do
       add_accessors(added)
     end
+
+    # IDs don't change, do not update it
+    @values.delete(:id)
 
     values.each do |k, v|
       @values[k.to_s] = EasyPost::Util.convert_to_easypost_object(v, api_key, self, k)
@@ -132,19 +135,6 @@ class EasyPost::EasyPostObject
   # The metaclass of an object.
   def metaclass
     class << self; self; end
-  end
-
-  # Remove the accessors of an object.
-  def remove_accessors(keys)
-    metaclass.instance_eval do
-      keys.each do |k|
-        next if @@immutable_values.include?(k)
-
-        k_eq = :"#{k}="
-        remove_method(k) if method_defined?(k)
-        remove_method(k_eq) if method_defined?(k_eq)
-      end
-    end
   end
 
   # Add accessors of an object.

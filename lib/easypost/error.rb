@@ -2,13 +2,12 @@
 
 # EasyPost Error object.
 class EasyPost::Error < StandardError
-  attr_reader :message, :status, :http_status, :http_body, :code, :errors
+  attr_reader :message, :status, :http_body, :code, :errors
 
   # Initialize a new EasyPost Error
   def initialize(message = nil, status = nil, code = nil, errors = nil, http_body = nil)
     @message = message
     @status = status
-    @http_status = status # deprecated
     @code = code
     @errors = errors
     @http_body = http_body

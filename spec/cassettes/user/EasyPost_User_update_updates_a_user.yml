@@ -1,0 +1,141 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/users
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 704d1f6d6217c1d5e787333b003a31e9
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"c90e918c2a00c8d2b2bf3215a7ff6e9b"
+      X-Request-Id:
+      - 80df1e13-aa97-4d18-958b-c9c45db38215
+      X-Runtime:
+      - '0.050239'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb7nuq
+      X-Version-Label:
+      - easypost-202202240420-6e47ec067a-master
+      X-Backend:
+      - easypost
+      X-Canary:
+      - direct
+      X-Proxied:
+      - extlb2nuq 88c34981dc
+      - intlb1nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"EasyPost
+        Ruby Client Library Tests","phone_number":"5555555555","verified":true,"created_at":"2017-03-01T22:57:19Z","balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"dev+easypost-ruby@easypost.com","children":[{"id":"user_9d4d2aba00d44f1db487583c3967764f","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2022-02-24T17:23:16Z","children":[]}]}'
+  recorded_at: Thu, 24 Feb 2022 17:35:17 GMT
+- request:
+    method: put
+    uri: https://api.easypost.com/v2/users/user_0f6b83e3530b401cb1e8aeaa6a250d4d
+    body:
+      encoding: UTF-8
+      string: '{"user":{"phone_number":"5555555555"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 704d1f6e6217c1d5e787333c003a3202
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"c90e918c2a00c8d2b2bf3215a7ff6e9b"
+      X-Request-Id:
+      - 1aaf66f1-eab9-4a88-9cbd-3e52560fd162
+      X-Runtime:
+      - '0.076986'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb1nuq
+      X-Version-Label:
+      - easypost-202202240420-6e47ec067a-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 88c34981dc
+      - intlb1nuq 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"EasyPost
+        Ruby Client Library Tests","phone_number":"5555555555","verified":true,"created_at":"2017-03-01T22:57:19Z","balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"dev+easypost-ruby@easypost.com","children":[{"id":"user_9d4d2aba00d44f1db487583c3967764f","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2022-02-24T17:23:16Z","children":[]}]}'
+  recorded_at: Thu, 24 Feb 2022 17:35:17 GMT
+recorded_with: VCR 6.0.0

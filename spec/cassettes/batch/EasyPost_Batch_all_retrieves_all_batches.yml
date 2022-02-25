@@ -1,0 +1,70 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/batches
+    body:
+      encoding: UTF-8
+      string: '{"page_size":5}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 15c6b80f62166e86e786a7e4002764db
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"49d234bfc3892f4d252f56246b8134c1"
+      X-Request-Id:
+      - 7abffe8c-5189-45f2-b8fd-5b99dd1cb5ee
+      X-Runtime:
+      - '0.066062'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb9nuq
+      X-Version-Label:
+      - easypost-202202230129-176eb4912d-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb3wdc 88c34981dc
+      - intlb1nuq 88c34981dc
+      - intlb2wdc 88c34981dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"batches":[{"id":"batch_d26fff269d7245f9950732381bfc3748","object":"Batch","mode":"test","state":"creation_failed","num_shipments":1,"reference":null,"created_at":"2022-02-22T18:10:16Z","updated_at":"2022-02-22T18:10:16Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":1,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null},{"id":"batch_2e566808077242a4b06e21812a642b59","object":"Batch","mode":"test","state":"created","num_shipments":0,"reference":null,"created_at":"2022-02-22T18:10:16Z","updated_at":"2022-02-22T18:10:16Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null},{"id":"batch_30ee761d26d240ad82057e3133fb9ae2","object":"Batch","mode":"test","state":"purchased","num_shipments":1,"reference":null,"created_at":"2022-02-22T18:10:17Z","updated_at":"2022-02-22T18:10:20Z","scan_form":null,"shipments":[{"batch_status":"postage_purchased","batch_message":null,"reference":null,"tracking_code":"9400100895232108543608","id":"shp_5339eea1824e45f88870722a78a74c5c"}],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":1,"postage_purchase_failed":0},"pickup":null,"label_url":null},{"id":"batch_4c157d9042ec488da87c2382e866cf1b","object":"Batch","mode":"test","state":"purchased","num_shipments":1,"reference":null,"created_at":"2022-02-22T18:10:18Z","updated_at":"2022-02-22T18:10:21Z","scan_form":null,"shipments":[{"batch_status":"postage_purchased","batch_message":null,"reference":null,"tracking_code":"9400100895232108543615","id":"shp_4b384c3a20db428c8bf285b4f960ad84"}],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":1,"postage_purchase_failed":0},"pickup":null,"label_url":null},{"id":"batch_566be8342b7c44758f05fa1cd85ad738","object":"Batch","mode":"test","state":"purchased","num_shipments":1,"reference":null,"created_at":"2022-02-22T18:10:19Z","updated_at":"2022-02-22T18:10:21Z","scan_form":null,"shipments":[{"batch_status":"postage_purchased","batch_message":null,"reference":null,"tracking_code":"9400100895232108543622","id":"shp_6b571415657f4f87b25af1f2d94f86c5"}],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":1,"postage_purchase_failed":0},"pickup":null,"label_url":null}],"has_more":true}'
+  recorded_at: Wed, 23 Feb 2022 17:27:34 GMT
+recorded_with: VCR 6.0.0

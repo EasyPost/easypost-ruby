@@ -20,8 +20,7 @@ class EasyPost::Webhook < EasyPost::Resource
 
   # Delete a Webhook.
   def delete
-    # NOTE: This method is redefined here since the "url" method conflicts
-    # with the objects field
+    # NOTE: This method is redefined here since the "url" method conflicts with the objects field
     unless id
       raise EasyPost::Error.new("Could not determine which URL to request: #{self.class} instance has invalid ID: #{id.inspect}")
     end
