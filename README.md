@@ -103,11 +103,3 @@ Up-to-date documentation at: https://easypost.com/docs
 # Run tests (coverage is generated on a successful test suite run)
 EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... bundle exec rspec
 ```
-
-## Releasing
-
-1. Update the version in `VERSION`
-1. Update the `CHANGELOG`
-1. Tag a release on GitHub
-1. Build the Gem `gem build easypost.gemspec`
-1. Publish the Gem `gem push easypost-X.X.X.gem` (replace `X.X.X` with the version being released)
