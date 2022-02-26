@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class EasyPost
+module EasyPost
   VERSION = File.open(File.expand_path('../../VERSION', __dir__)).read.strip
 end

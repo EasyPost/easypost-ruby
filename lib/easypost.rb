@@ -37,7 +37,7 @@ require_relative 'easypost/tracker'
 require_relative 'easypost/user'
 require_relative 'easypost/webhook'
 
-class EasyPost
+module EasyPost
   DEFAULT_API_BASE = 'https://api.easypost.com'
   DEFAULT_USER_AGENT = "EasyPost/v2 RubyClient/#{EasyPost::VERSION} Ruby/#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
 
@@ -53,12 +53,6 @@ class EasyPost
       'Content-Type' => 'application/json',
       'User-Agent' => EasyPost::DEFAULT_USER_AGENT,
     }
-  end
-
-  attr_reader :connection
-
-  def initialize(connection)
-    @connection = connection
   end
 
   def self.default_connection
@@ -113,8 +107,6 @@ class EasyPost
   end
 
   # Make an HTTP request.
-  #
-  # @deprecated Use {default_connection#call}
   def self.make_request(method, path, requested_api_key = api_key, body = nil)
     default_connection.call(method, path, requested_api_key, body)
   end
