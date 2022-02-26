@@ -109,8 +109,6 @@ class EasyPost
   #
   # @deprecated Use {default_connection#call}
   def self.make_request(method, path, requested_api_key = api_key, body = nil)
-    EasyPost::Connection
-      .new(uri: URI(api_base), config: http_config)
-      .call(method, path, requested_api_key, body)
+    default_connection.call(method, path, requested_api_key, body)
   end
 end
