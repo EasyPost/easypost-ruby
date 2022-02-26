@@ -41,20 +41,20 @@ class EasyPost::Resource < EasyPost::EasyPostObject
   end
 
   # Retrieve a list of EasyPost objects.
-  def self.all(filters = {}, api_key = nil)
+  def self.all(filters = {}, api_key = EasyPost.api_key)
     response = EasyPost.default_connection.call(:get, url, api_key, filters)
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
   # Retrieve an EasyPost object.
-  def self.retrieve(id, api_key = nil)
+  def self.retrieve(id, api_key = EasyPost.api_key)
     instance = new(id, api_key)
     instance.refresh
     instance
   end
 
   # Create an EasyPost object.
-  def self.create(params = {}, api_key = nil)
+  def self.create(params = {}, api_key = EasyPost.api_key)
     wrapped_params = {}
     wrapped_params[class_name.to_sym] = params
     response = EasyPost.default_connection.call(:post, url, api_key, wrapped_params)

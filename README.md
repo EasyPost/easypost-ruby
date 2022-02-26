@@ -103,3 +103,34 @@ Up-to-date documentation at: https://easypost.com/docs
 # Run tests (coverage is generated on a successful test suite run)
 EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... bundle exec rspec
 ```
+
+## Custom connections
+
+Set `EasyPost.default_connection` to an object that responds to `call(method, path, api_key = nil, body = nil)`
+
+### Faraday
+
+```ruby
+require 'faraday'
+require 'faraday/response/logger'
+require 'logger'
+
+EasyPost.default_connection = lambda do |method, path, api_key = nil, body = nil|
+  response =
+    Faraday
+      .new(url: EasyPost.api_base, headers: EasyPost.default_headers) do |builder|
+        builder.use Faraday::Response::Logger, Logger.new(STDOUT), {bodies: true, headers: true}
+        builder.adapter :net_http
+      end
+      .public_send(method, path) do |req|
+        req.headers['Authorization'] = EasyPost.authorization(api_key)
+        req.body = JSON.dump(EasyPost::Util.objects_to_ids(body)) if body
+      end
+
+  EasyPost.parse_response(
+    status: response.status,
+    body: response.body,
+    json: response.headers['Content-Type'].start_with?('application/json'),
+  )
+end
+```

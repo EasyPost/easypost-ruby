@@ -4,38 +4,38 @@ require 'base64'
 require 'cgi'
 require 'net/http'
 
-require 'easypost/version'
-require 'easypost/util'
-require 'easypost/object'
-require 'easypost/resource'
-require 'easypost/error'
-require 'easypost/connection'
+require_relative 'easypost/version'
+require_relative 'easypost/util'
+require_relative 'easypost/object'
+require_relative 'easypost/resource'
+require_relative 'easypost/error'
+require_relative 'easypost/connection'
 
 # Resources
-require 'easypost/address'
-require 'easypost/api_key'
-require 'easypost/batch'
-require 'easypost/brand'
-require 'easypost/carrier_account'
-require 'easypost/carrier_type'
-require 'easypost/customs_info'
-require 'easypost/customs_item'
-require 'easypost/event'
-require 'easypost/insurance'
-require 'easypost/order'
-require 'easypost/parcel'
-require 'easypost/pickup_rate'
-require 'easypost/pickup'
-require 'easypost/postage_label'
-require 'easypost/rate'
-require 'easypost/refund'
-require 'easypost/report'
-require 'easypost/scan_form'
-require 'easypost/shipment'
-require 'easypost/tax_identifier'
-require 'easypost/tracker'
-require 'easypost/user'
-require 'easypost/webhook'
+require_relative 'easypost/address'
+require_relative 'easypost/api_key'
+require_relative 'easypost/batch'
+require_relative 'easypost/brand'
+require_relative 'easypost/carrier_account'
+require_relative 'easypost/carrier_type'
+require_relative 'easypost/customs_info'
+require_relative 'easypost/customs_item'
+require_relative 'easypost/event'
+require_relative 'easypost/insurance'
+require_relative 'easypost/order'
+require_relative 'easypost/parcel'
+require_relative 'easypost/pickup_rate'
+require_relative 'easypost/pickup'
+require_relative 'easypost/postage_label'
+require_relative 'easypost/rate'
+require_relative 'easypost/refund'
+require_relative 'easypost/report'
+require_relative 'easypost/scan_form'
+require_relative 'easypost/shipment'
+require_relative 'easypost/tax_identifier'
+require_relative 'easypost/tracker'
+require_relative 'easypost/user'
+require_relative 'easypost/webhook'
 
 class EasyPost
   DEFAULT_API_BASE = 'https://api.easypost.com'
@@ -47,6 +47,13 @@ class EasyPost
   end
 
   self.api_base = DEFAULT_API_BASE
+
+  def self.default_headers
+    @default_headers ||= {
+      'Content-Type' => 'application/json',
+      'User-Agent' => EasyPost::DEFAULT_USER_AGENT,
+    }
+  end
 
   attr_reader :connection
 
@@ -110,5 +117,23 @@ class EasyPost
   # @deprecated Use {default_connection#call}
   def self.make_request(method, path, requested_api_key = api_key, body = nil)
     default_connection.call(method, path, requested_api_key, body)
+  end
+
+  def self.parse_response(status:, body:, json:)
+    if status >= 400
+      error = JSON.parse(body)['error']
+
+      raise EasyPost::Error.new(
+        error['message'],
+        status,
+        error['code'],
+        error['errors'],
+        body,
+      )
+    end
+
+    json ? JSON.parse(body) : body
+  rescue JSON::ParserError
+    raise "Invalid response object from API, unable to decode.\n#{body}"
   end
 end
