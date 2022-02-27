@@ -116,21 +116,41 @@ require 'faraday/response/logger'
 require 'logger'
 
 EasyPost.default_connection = lambda do |method, path, api_key = nil, body = nil|
-  response =
-    Faraday
-      .new(url: EasyPost.api_base, headers: EasyPost.default_headers) do |builder|
-        builder.use Faraday::Response::Logger, Logger.new(STDOUT), {bodies: true, headers: true}
-        builder.adapter :net_http
-      end
-      .public_send(method, path) do |req|
-        req.headers['Authorization'] = EasyPost.authorization(api_key)
-        req.body = JSON.dump(EasyPost::Util.objects_to_ids(body)) if body
-      end
+  Faraday
+    .new(url: EasyPost.api_base, headers: EasyPost.default_headers) { |builder|
+      builder.use Faraday::Response::Logger, Logger.new(STDOUT), {bodies: true, headers: true}
+      builder.adapter :net_http
+    }
+    .public_send(method, path) { |request|
+      request.headers['Authorization'] = EasyPost.authorization(api_key)
+      request.body = JSON.dump(EasyPost::Util.objects_to_ids(body)) if body
+    }.yield_self { |response|
+      EasyPost.parse_response(
+        status: response.status,
+        body: response.body,
+        json: response.headers['Content-Type'].start_with?('application/json'),
+      )
+    }
+end
+```
 
-  EasyPost.parse_response(
-    status: response.status,
-    body: response.body,
-    json: response.headers['Content-Type'].start_with?('application/json'),
-  )
+### Typhoeus
+
+```ruby
+require 'typhoeus'
+
+EasyPost.default_connection = lambda do |method, path, api_key = nil, body = nil|
+  Typhoeus.public_send(
+    method,
+    File.join(EasyPost.api_base, path),
+    headers: EasyPost.default_headers.merge('Authorization' => EasyPost.authorization(api_key)),
+    body: body.nil? ? nil : JSON.dump(EasyPost::Util.objects_to_ids(body)),
+  ).yield_self { |response|
+    EasyPost.parse_response(
+      status: response.code,
+      body: response.body,
+      json: response.headers['Content-Type'].start_with?('application/json'),
+    )
+  }
 end
 ```
