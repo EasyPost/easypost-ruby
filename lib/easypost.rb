@@ -97,6 +97,8 @@ module EasyPost
   # Set the HTTP config.
   def self.http_config=(http_config_params)
     http_config.merge!(http_config_params)
+
+    self.default_connection = nil
   end
 
   # Create an EasyPost Client.

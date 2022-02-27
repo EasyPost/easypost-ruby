@@ -1,27 +1,12 @@
 # frozen_string_literal: true
 
 EasyPost::Connection = Struct.new(:uri, :config, keyword_init: true) do
-  # Make an HTTP request.
-  def call(method, path, api_key = nil, body = nil)
-    connection = create
+  attr_reader :connection
 
-    request = Net::HTTP.const_get(method.capitalize).new(path)
-    request.body = JSON.dump(EasyPost::Util.objects_to_ids(body)) if body
+  def initialize(uri:, config:)
+    super
 
-    EasyPost.default_headers.each_pair { |h, v| request[h] = v }
-    request['Authorization'] = EasyPost.authorization(api_key) if api_key
-
-    response = connection.request(request)
-
-    EasyPost.parse_response(
-      status: response.code.to_i,
-      body: response.body,
-      json: response['Content-Type'].start_with?('application/json'),
-    )
-  end
-
-  def create
-    connection =
+    @connection =
       if config[:proxy]
         proxy_uri = URI(config[:proxy])
         Net::HTTP.new(
@@ -54,7 +39,22 @@ EasyPost::Connection = Struct.new(:uri, :config, keyword_init: true) do
 
       connection.public_send("#{name}=", value)
     end
+  end
 
-    connection
+  # Make an HTTP request.
+  def call(method, path, api_key = nil, body = nil)
+    request = Net::HTTP.const_get(method.capitalize).new(path)
+    request.body = JSON.dump(EasyPost::Util.objects_to_ids(body)) if body
+
+    EasyPost.default_headers.each_pair { |h, v| request[h] = v }
+    request['Authorization'] = EasyPost.authorization(api_key) if api_key
+
+    response = connection.request(request)
+
+    EasyPost.parse_response(
+      status: response.code.to_i,
+      body: response.body,
+      json: response['Content-Type'].start_with?('application/json'),
+    )
   end
 end
