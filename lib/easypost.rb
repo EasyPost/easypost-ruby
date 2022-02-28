@@ -116,8 +116,8 @@ module EasyPost
   # @param body [Object] (nil) object to be dumped to JSON
   # @raise [EasyPost::Error] if the response has a non-2xx status code
   # @return [Hash] JSON object parsed from the response body
-  def self.make_request(method, path, requested_api_key = api_key, body = nil)
-    default_connection.call(method, path, requested_api_key, body)
+  def self.make_request(method, path, api_key = nil, body = nil)
+    default_connection.call(method, path, api_key || EasyPost.api_key, body)
   end
 
   def self.parse_response(status:, body:, json:)

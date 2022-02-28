@@ -35,26 +35,26 @@ class EasyPost::Resource < EasyPost::EasyPostObject
 
   # Refresh an object from the API response.
   def refresh
-    response = EasyPost.make_request(:get, url, api_key, @retrieve_options)
+    response = EasyPost.make_request(:get, url, @api_key, @retrieve_options)
     refresh_from(response, api_key)
     self
   end
 
   # Retrieve a list of EasyPost objects.
-  def self.all(filters = {}, api_key = EasyPost.api_key)
+  def self.all(filters = {}, api_key = nil)
     response = EasyPost.make_request(:get, url, api_key, filters)
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
   # Retrieve an EasyPost object.
-  def self.retrieve(id, api_key = EasyPost.api_key)
+  def self.retrieve(id, api_key = nil)
     instance = new(id, api_key)
     instance.refresh
     instance
   end
 
   # Create an EasyPost object.
-  def self.create(params = {}, api_key = EasyPost.api_key)
+  def self.create(params = {}, api_key = nil)
     wrapped_params = {}
     wrapped_params[class_name.to_sym] = params
     response = EasyPost.make_request(:post, url, api_key, wrapped_params)
@@ -63,7 +63,7 @@ class EasyPost::Resource < EasyPost::EasyPostObject
 
   # Delete an EasyPost object.
   def delete
-    response = EasyPost.make_request(:delete, url, api_key)
+    response = EasyPost.make_request(:delete, url, @api_key)
     refresh_from(response, api_key)
     self
   end
@@ -83,7 +83,7 @@ class EasyPost::Resource < EasyPost::EasyPostObject
 
       wrapped_params = { self.class.class_name => values }
 
-      response = EasyPost.make_request(:put, url, api_key, wrapped_params)
+      response = EasyPost.make_request(:put, url, @api_key, wrapped_params)
       refresh_from(response, api_key)
     end
     self
