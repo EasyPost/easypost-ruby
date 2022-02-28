@@ -108,7 +108,14 @@ module EasyPost
     EasyPost::Connection.new(uri: URI(url), config: http_config).create
   end
 
-  # Make an HTTP request.
+  # Make an HTTP request against the {default_connection}
+  #
+  # @param method [Symbol] the HTTP Verb (get, method, put, post, etc.)
+  # @param path [String] URI path of the resource
+  # @param requested_api_key [String] ({EasyPost.api_key}) key set Authorization header.
+  # @param body [Object] (nil) object to be dumped to JSON
+  # @raise [EasyPost::Error] if the response has a non-2xx status code
+  # @return [Hash] JSON object parsed from the response body
   def self.make_request(method, path, requested_api_key = api_key, body = nil)
     default_connection.call(method, path, requested_api_key, body)
   end

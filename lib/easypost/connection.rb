@@ -41,7 +41,14 @@ EasyPost::Connection = Struct.new(:uri, :config, keyword_init: true) do
     end
   end
 
-  # Make an HTTP request.
+  # Make an HTTP request with Ruby's {Net::HTTP}
+  #
+  # @param method [Symbol] the HTTP Verb (get, method, put, post, etc.)
+  # @param path [String] URI path of the resource
+  # @param requested_api_key [String] ({EasyPost.api_key}) key set Authorization header.
+  # @param body [String] (nil) body of the request
+  # @raise [EasyPost::Error] if the response has a non-2xx status code
+  # @return [Hash] JSON object parsed from the response body
   def call(method, path, api_key = nil, body = nil)
     request = Net::HTTP.const_get(method.capitalize).new(path)
     request.body = JSON.dump(EasyPost::Util.objects_to_ids(body)) if body
