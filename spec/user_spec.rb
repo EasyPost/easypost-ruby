@@ -2,11 +2,7 @@
 
 require 'spec_helper'
 
-describe EasyPost::User do
-  before do
-    EasyPost.api_key = ENV['EASYPOST_PROD_API_KEY']
-  end
-
+describe EasyPost::User, :authenticate_prod do
   describe '.create' do
     xit 'creates a child user' do
       # This endpoint returns the child user keys in plain text, do not run this test.
