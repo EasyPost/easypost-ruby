@@ -28,10 +28,6 @@ require 'easypost'
 Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
 RSpec.configure do |config|
-  config.before do
-    EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
-  end
-
   config.around do |example|
     # Automaticlaly wrap the test in VCR to avoid forgetting it.
     path = example.file_path.gsub('_spec.rb', '').gsub('./spec/', '')

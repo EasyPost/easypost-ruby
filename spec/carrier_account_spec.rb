@@ -2,11 +2,7 @@
 
 require 'spec_helper'
 
-describe EasyPost::CarrierAccount do
-  before do
-    EasyPost.api_key = ENV['EASYPOST_PROD_API_KEY']
-  end
-
+describe EasyPost::CarrierAccount, :authenticate_prod do
   describe '.create' do
     it 'creates a carrier account' do
       carrier_account = described_class.create(Fixture.basic_carrier_account)
