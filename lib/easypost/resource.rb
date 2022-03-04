@@ -2,6 +2,8 @@
 
 # The Resource object is extended by each EasyPost object.
 class EasyPost::Resource < EasyPost::EasyPostObject
+  extend Enumerable
+
   # The class name of an EasyPost object.
   def self.class_name
     camel = name.split('::')[-1]
@@ -44,6 +46,18 @@ class EasyPost::Resource < EasyPost::EasyPostObject
   def self.all(filters = {}, api_key = nil)
     response = EasyPost.make_request(:get, url, api_key, filters)
     EasyPost::Util.convert_to_easypost_object(response, api_key)
+  end
+
+  def self.each(filters = {}, api_key = EasyPost.api_key, &block)
+    return to_enum(:each, filters, api_key) unless block_given?
+
+    loop do
+      page, has_more = all(filters, api_key).values
+      last = page.each(&block).last
+      break if page.empty? || !has_more
+
+      filters[:before_id] = last.id
+    end
   end
 
   # Retrieve an EasyPost object.
