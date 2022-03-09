@@ -6,7 +6,7 @@ describe EasyPost::Batch do
   describe '.create' do
     it 'creates a batch' do
       batch = described_class.create(
-        shipments: [Fixture.basic_address],
+        shipments: [Fixture.one_call_buy_shipment],
       )
 
       expect(batch).to be_an_instance_of(described_class)
@@ -17,7 +17,9 @@ describe EasyPost::Batch do
 
   describe '.retrieve' do
     it 'retrieves a batch' do
-      batch = described_class.create(Fixture.basic_address)
+      batch = described_class.create(
+        shipments: [Fixture.one_call_buy_shipment],
+      )
       retrieved_batch = described_class.retrieve(batch.id)
 
       expect(retrieved_batch).to be_an_instance_of(described_class)
