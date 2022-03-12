@@ -41,6 +41,27 @@ describe EasyPost::Shipment do
       expect(shipment.id).to match('shp_')
       expect(shipment.tax_identifiers[0].tax_id_type).to eq('IOSS')
     end
+
+    it 'creates a shipment when only IDs are used' do
+      from_address = EasyPost::Address.create(Fixture.basic_address)
+      to_address = EasyPost::Address.create(Fixture.basic_address)
+      parcel = EasyPost::Parcel.create(Fixture.basic_parcel)
+
+      shipment = described_class.create(
+        {
+          from_address: { id: from_address.id },
+          to_address: { id: to_address.id },
+          parcel: { id: parcel.id },
+        },
+      )
+
+      expect(shipment).to be_an_instance_of(described_class)
+      expect(shipment.id).to match('shp_')
+      expect(shipment.from_address.id).to match('adr_')
+      expect(shipment.to_address.id).to match('adr_')
+      expect(shipment.parcel.id).to match('prcl_')
+      expect(shipment.from_address.street1).to eq('388 Townsend St')
+    end
   end
 
   describe '.retrieve' do
