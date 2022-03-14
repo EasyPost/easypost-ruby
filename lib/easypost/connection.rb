@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 EasyPost::Connection = Struct.new(:uri, :config, keyword_init: true) do
-  attr_reader :connection
+  attr_reader :connection, :mutex
 
   def initialize(uri:, config:)
     super
 
+    @mutex = Mutex.new
     @connection =
       if config[:proxy]
         proxy_uri = URI(config[:proxy])
@@ -56,7 +57,7 @@ EasyPost::Connection = Struct.new(:uri, :config, keyword_init: true) do
     EasyPost.default_headers.each_pair { |h, v| request[h] = v }
     request['Authorization'] = EasyPost.authorization(api_key) if api_key
 
-    response = connection.request(request)
+    response = mutex.synchronize { connection.request(request) }
 
     EasyPost.parse_response(
       status: response.code.to_i,
