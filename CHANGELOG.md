@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v4.1.1 (2022-03-14)
+
+- Fixes a bug that prematurely closed connections when using multithreading by wrapping requests in a mutex (closes #148)
+
 ## v4.1.0 (2022-03-09)
 
 - Adds support for custom client connections (#142)
