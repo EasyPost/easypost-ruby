@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 EasyPost::Connection = Struct.new(:uri, :config, keyword_init: true) do
-  attr_reader :connection, :mutex
-
-  def initialize(uri:, config:)
-    super
-
-    @mutex = Mutex.new
-    @connection =
+  # Make an HTTP request with Ruby's {Net::HTTP}
+  #
+  # @param method [Symbol] the HTTP Verb (get, method, put, post, etc.)
+  # @param path [String] URI path of the resource
+  # @param requested_api_key [String] ({EasyPost.api_key}) key set Authorization header.
+  # @param body [String] (nil) body of the request
+  # @raise [EasyPost::Error] if the response has a non-2xx status code
+  # @return [Hash] JSON object parsed from the response body
+  def call(method, path, api_key = nil, body = nil)
+    connection =
       if config[:proxy]
         proxy_uri = URI(config[:proxy])
         Net::HTTP.new(
@@ -40,24 +43,14 @@ EasyPost::Connection = Struct.new(:uri, :config, keyword_init: true) do
 
       connection.public_send("#{name}=", value)
     end
-  end
 
-  # Make an HTTP request with Ruby's {Net::HTTP}
-  #
-  # @param method [Symbol] the HTTP Verb (get, method, put, post, etc.)
-  # @param path [String] URI path of the resource
-  # @param requested_api_key [String] ({EasyPost.api_key}) key set Authorization header.
-  # @param body [String] (nil) body of the request
-  # @raise [EasyPost::Error] if the response has a non-2xx status code
-  # @return [Hash] JSON object parsed from the response body
-  def call(method, path, api_key = nil, body = nil)
     request = Net::HTTP.const_get(method.capitalize).new(path)
     request.body = JSON.dump(EasyPost::Util.objects_to_ids(body)) if body
 
     EasyPost.default_headers.each_pair { |h, v| request[h] = v }
     request['Authorization'] = EasyPost.authorization(api_key) if api_key
 
-    response = mutex.synchronize { connection.request(request) }
+    response = connection.request(request)
 
     EasyPost.parse_response(
       status: response.code.to_i,
