@@ -42,7 +42,7 @@ module EasyPost
   DEFAULT_USER_AGENT = "EasyPost/v2 RubyClient/#{EasyPost::VERSION} Ruby/#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
 
   class << self
-    attr_accessor :api_key, :api_base
+    attr_accessor :api_key, :api_base, :use_threaded_connection
     attr_writer :default_connection
   end
 
@@ -56,10 +56,17 @@ module EasyPost
   end
 
   def self.default_connection
-    @default_connection ||= EasyPost::Connection.new(
-      uri: URI(api_base),
-      config: http_config,
-    )
+    if use_threaded_connection
+      EasyPost::Connection.new(
+        uri: URI(api_base),
+        config: http_config,
+        )
+    else
+      @default_connection ||= EasyPost::Connection.new(
+        uri: URI(api_base),
+        config: http_config,
+        )
+    end
   end
 
   def self.authorization(key)
