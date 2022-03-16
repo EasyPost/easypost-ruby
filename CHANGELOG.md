@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v4.1.2 (2022-03-16)
+
+- Rolls back the original connection behavior of establishing a new connection for every request (restores previous expectations for multithreaded implementations)
+
 ## v4.1.1 (2022-03-14)
 
 - Fixes a bug that prematurely closed connections when using multithreading by wrapping requests in a mutex (closes #148)
