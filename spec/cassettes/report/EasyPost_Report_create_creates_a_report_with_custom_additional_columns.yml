@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/reports/shipment?additional_columns%5B%5D=from_company&additional_columns%5B%5D=from_name
+    body:
+      encoding: UTF-8
+      string: '{"start_date":"2022-02-21","end_date":"2022-02-23","type":"shipment"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - EasyPost/v2 RubyClient/4.1.2 Ruby/3.0.3-p157
+      Content-Type:
+      - application/json
+      Authorization: "<AUTHORIZATION>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 6628d8c56238effef1fda3bd003e25aa
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"43449e77576a44228520bb6007460884"
+      X-Runtime:
+      - '0.040208'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb1nuq
+      X-Version-Label:
+      - easypost-202203182244-fb6aae87d1-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb3wdc 3e97db20d4
+      - intlb1wdc 3e97db20d4
+      - intlb2nuq 3e97db20d4
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"shprep_11e9ac08c99d4805926cd0d77262d19d","object":"ShipmentReport","created_at":"2022-03-21T21:37:03Z","updated_at":"2022-03-21T21:37:03Z","start_date":"2022-02-21","end_date":"2022-02-23","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+  recorded_at: Mon, 21 Mar 2022 21:37:03 GMT
+recorded_with: VCR 6.0.0

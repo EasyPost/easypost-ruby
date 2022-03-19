@@ -58,6 +58,33 @@ describe EasyPost::Report do
       expect(report).to be_an_instance_of(described_class)
       expect(report.id).to match('trkrep')
     end
+
+    it 'creates a report with custom columns' do
+      report = described_class.create(
+        start_date: Fixture.report_start_date,
+        end_date: Fixture.report_end_date,
+        type: 'shipment',
+        columns: ['usps_zone'],
+      )
+
+      expect(report).to be_an_instance_of(described_class)
+      # verify params by checking URL in cassette
+      # can't do any more verification without downloading CSV
+    end
+
+    it 'creates a report with custom additional columns' do
+      report = described_class.create(
+        start_date: Fixture.report_start_date,
+        end_date: Fixture.report_end_date,
+        type: 'shipment',
+        additional_columns: %w[from_name from_company],
+      )
+
+      expect(report).to be_an_instance_of(described_class)
+      # verify params by checking URL in cassette
+      # can't do any more verification without downloading CSV
+    end
+
   end
 
   describe '.retrieve' do

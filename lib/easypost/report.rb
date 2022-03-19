@@ -5,6 +5,21 @@ class EasyPost::Report < EasyPost::Resource
   # Create a Report.
   def self.create(params = {}, api_key = nil)
     url = "#{self.url}/#{params[:type]}"
+
+    columns = params[:columns] || []
+    additional_columns = params[:additional_columns] || []
+
+    url += '?'
+    columns.each do |column|
+      url += "columns[]=#{column}&"
+    end
+    additional_columns.each do |additional_column|
+      url += "additional_columns[]=#{additional_column}&"
+    end
+
+    # remove params already included in the query string
+    params = params.reject { |k, _| [:columns, :additional_columns].include?(k) }
+
     wrapped_params = {}
     wrapped_params[class_name.to_sym] = params
 
