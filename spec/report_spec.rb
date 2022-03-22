@@ -84,7 +84,6 @@ describe EasyPost::Report do
       # verify params by checking URL in cassette
       # can't do any more verification without downloading CSV
     end
-
   end
 
   describe '.retrieve' do

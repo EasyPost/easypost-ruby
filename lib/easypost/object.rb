@@ -134,7 +134,9 @@ class EasyPost::EasyPostObject
 
   # The metaclass of an object.
   def metaclass
-    class << self; self; end
+    class << self
+      self;
+    end
   end
 
   # Add accessors of an object.
