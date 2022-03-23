@@ -67,9 +67,9 @@ describe EasyPost::Report do
         columns: ['usps_zone'],
       )
 
-      expect(report).to be_an_instance_of(described_class)
       # verify params by checking URL in cassette
       # can't do any more verification without downloading CSV
+      expect(report).to be_an_instance_of(described_class)
     end
 
     it 'creates a report with custom additional columns' do
@@ -80,9 +80,9 @@ describe EasyPost::Report do
         additional_columns: %w[from_name from_company],
       )
 
-      expect(report).to be_an_instance_of(described_class)
       # verify params by checking URL in cassette
       # can't do any more verification without downloading CSV
+      expect(report).to be_an_instance_of(described_class)
     end
   end
 
