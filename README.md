@@ -3,112 +3,65 @@
 [![Build Status](https://github.com/EasyPost/easypost-ruby/workflows/CI/badge.svg)](https://github.com/EasyPost/easypost-ruby/actions?query=workflow%3ACI)
 [![Gem Version](https://badge.fury.io/rb/easypost.svg)](https://badge.fury.io/rb/easypost)
 
+EasyPost, the simple shipping solution. You can sign up for an account at https://easypost.com.
 
-EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com.
-
-## Installation
-
-Install the gem:
+## Install
 
 ```bash
 gem install easypost
 ```
 
-Import the EasyPost client in your application:
-
 ```ruby
+# Require the library in your project:
 require 'easypost'
 ```
 
-## Example
+## Usage
+
+A simple create & buy shipment example:
 
 ```ruby
 require 'easypost'
-EasyPost.api_key = 'API_KEY'
 
-to_address = EasyPost::Address.create(
-  :name => 'Dr. Steve Brule',
-  :street1 => '179 N Harbor Dr',
-  :city => 'Redondo Beach',
-  :state => 'CA',
-  :zip => '90277',
-  :country => 'US',
-  :phone => '310-808-5243'
-)
-
-from_address = EasyPost::Address.create(
-  :company => 'EasyPost',
-  :street1 => '118 2nd Street',
-  :street2 => '4th Floor',
-  :city => 'San Francisco',
-  :state => 'CA',
-  :zip => '94105',
-  :phone => '415-456-7890'
-)
-
-parcel = EasyPost::Parcel.create(
-  :width => 15.2,
-  :length => 18,
-  :height => 9.5,
-  :weight => 35.1
-)
-
-customs_item = EasyPost::CustomsItem.create(
-  :description => 'EasyPost T-shirts',
-  :quantity => 2,
-  :value => 23.56,
-  :weight => 33,
-  :origin_country => 'us',
-  :hs_tariff_number => 123456
-)
-
-customs_info = EasyPost::CustomsInfo.create(
-  :integrated_form_type => 'form_2976',
-  :customs_certify => true,
-  :customs_signer => 'Dr. Pepper',
-  :contents_type => 'gift',
-  :contents_explanation => '', # only required when contents_type => 'other'
-  :eel_pfc => 'NOEEI 30.37(a)',
-  :non_delivery_option => 'abandon',
-  :restriction_type => 'none',
-  :restriction_comments => '',
-  :customs_items => [customs_item]
-)
+EasyPost.api_key = ENV['EASYPOST_API_KEY']
 
 shipment = EasyPost::Shipment.create(
-  :to_address => to_address,
-  :from_address => from_address,
-  :parcel => parcel,
-  :customs_info => customs_info
+  :from_address => [
+    :company => 'EasyPost',
+    :street1 => '118 2nd Street',
+    :street2 => '4th Floor',
+    :city => 'San Francisco',
+    :state => 'CA',
+    :zip => '94105',
+    :phone => '415-456-7890',
+  ],
+  :to_address => [
+    :name => 'Dr. Steve Brule',
+    :street1 => '179 N Harbor Dr',
+    :city => 'Redondo Beach',
+    :state => 'CA',
+    :zip => '90277',
+    :country => 'US',
+    :phone => '310-808-5243',
+  ],
+  :parcel => [
+    :width => 15.2,
+    :length => 18,
+    :height => 9.5,
+    :weight => 35.1,
+  ],
 )
 
-shipment.buy(
-  :rate => shipment.lowest_rate
-)
+shipment.buy(:rate => shipment.lowest_rate)
 
-shipment.insure(amount: 100)
-
-puts shipment.insurance
-
-puts shipment.postage_label.label_url
+puts shipment
 ```
 
-## Documentation
-
-Up-to-date documentation at: https://easypost.com/docs
-
-## Development
-
-```bash
-# Run tests (coverage is generated on a successful test suite run)
-EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... bundle exec rspec
-```
-
-## Custom connections
+### Custom Connections
 
 Set `EasyPost.default_connection` to an object that responds to `call(method, path, api_key = nil, body = nil)`
 
-### Faraday
+#### Faraday
 
 ```ruby
 require 'faraday'
@@ -134,7 +87,7 @@ EasyPost.default_connection = lambda do |method, path, api_key = nil, body = nil
 end
 ```
 
-### Typhoeus
+#### Typhoeus
 
 ```ruby
 require 'typhoeus'
@@ -153,4 +106,18 @@ EasyPost.default_connection = lambda do |method, path, api_key = nil, body = nil
     )
   }
 end
+```
+
+## Documentation
+
+API Documentation can be found at: https://easypost.com/docs/api.
+
+## Development
+
+```bash
+# Install dependencies
+bundle install
+
+# Run tests (coverage is generated on a successful test suite run)
+EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... bundle exec rspec
 ```
