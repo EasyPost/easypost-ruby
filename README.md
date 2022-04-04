@@ -26,33 +26,33 @@ require 'easypost'
 EasyPost.api_key = ENV['EASYPOST_API_KEY']
 
 shipment = EasyPost::Shipment.create(
-  :from_address => [
-    :company => 'EasyPost',
-    :street1 => '118 2nd Street',
-    :street2 => '4th Floor',
-    :city => 'San Francisco',
-    :state => 'CA',
-    :zip => '94105',
-    :phone => '415-456-7890',
-  ],
-  :to_address => [
-    :name => 'Dr. Steve Brule',
-    :street1 => '179 N Harbor Dr',
-    :city => 'Redondo Beach',
-    :state => 'CA',
-    :zip => '90277',
-    :country => 'US',
-    :phone => '310-808-5243',
-  ],
-  :parcel => [
-    :width => 15.2,
-    :length => 18,
-    :height => 9.5,
-    :weight => 35.1,
-  ],
+  from_address: {
+    company: 'EasyPost',
+    street1: '118 2nd Street',
+    street2: '4th Floor',
+    city: 'San Francisco',
+    state: 'CA',
+    zip: '94105',
+    phone: '415-456-7890',
+  },
+  to_address: {
+    name: 'Dr. Steve Brule',
+    street1: '179 N Harbor Dr',
+    city: 'Redondo Beach',
+    state: 'CA',
+    zip: '90277',
+    country: 'US',
+    phone: '310-808-5243',
+  },
+  parcel: {
+    width: 15.2,
+    length: 18,
+    height: 9.5,
+    weight: 35.1,
+  },
 )
 
-shipment.buy(:rate => shipment.lowest_rate)
+shipment.buy(rate: shipment.lowest_rate)
 
 puts shipment
 ```
