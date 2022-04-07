@@ -28,6 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-rspec', '~> 2.7'
   spec.add_development_dependency 'simplecov', '~> 0.21'
   spec.add_development_dependency 'simplecov-lcov', '~> 0.8'
-  spec.add_development_dependency 'vcr', '= 6.0' # VCR 6.1 requires Ruby 2.6+
+  spec.add_development_dependency 'vcr', '~> 6.0' # VCR 6.1 requires Ruby 2.6+
   spec.add_development_dependency 'webmock', '~> 3.14'
 end
