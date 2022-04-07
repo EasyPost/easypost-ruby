@@ -5,14 +5,14 @@ http_interactions:
     uri: https://api.easypost.com/v2/reports/shipment
     body:
       encoding: UTF-8
-      string: '{"start_date":"2022-02-21","end_date":"2022-02-23","type":"shipment","additional_columns":["from_name","from_company"]}'
+      string: '{"start_date":"2022-04-05","end_date":"2022-04-07","type":"shipment","additional_columns":["from_name","from_company"]}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
       User-Agent:
-      - EasyPost/v2 RubyClient/4.1.2 Ruby/3.0.3-p157
+      - EasyPost/v2 RubyClient/4.1.2 Ruby/3.1.1-p18
       Content-Type:
       - application/json
       Authorization: "<AUTHORIZATION>"
@@ -34,7 +34,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 4aee9dd3623b9900f1fec14a00106e89
+      - 44f9e904624f5699e787bffd000f1e8a
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -44,24 +44,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"28cb1b7850c7e763cafacdeecee45ca5"
+      - W/"35e4073c86b1da29479ebe1da8ef4237"
       X-Runtime:
-      - '0.035080'
+      - '0.035944'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb6nuq
+      - bigweb4nuq
       X-Version-Label:
-      - easypost-202203231943-61a988cd70-master
+      - easypost-202204071939-d894f5743c-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 3e97db20d4
-      - intlb1nuq 3e97db20d4
+      - extlb1nuq fde591f008
+      - intlb2nuq fde591f008
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"shprep_ef43c376d8554c69876c09800d13492c","object":"ShipmentReport","created_at":"2022-03-23T22:02:40Z","updated_at":"2022-03-23T22:02:40Z","start_date":"2022-02-21","end_date":"2022-02-23","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
-  recorded_at: Wed, 23 Mar 2022 22:02:40 GMT
+      string: '{"id":"shprep_b5444a78e9ac4edba7ff19b95bc40eee","object":"ShipmentReport","created_at":"2022-04-07T21:24:41Z","updated_at":"2022-04-07T21:24:41Z","start_date":"2022-04-05","end_date":"2022-04-07","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+  recorded_at: Thu, 07 Apr 2022 21:24:41 GMT
 recorded_with: VCR 6.0.0

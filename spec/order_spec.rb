@@ -5,11 +5,7 @@ require 'spec_helper'
 describe EasyPost::Order do
   describe '.create' do
     it 'creates an order' do
-      order = described_class.create(
-        to_address: Fixture.basic_address,
-        from_address: Fixture.basic_address,
-        shipments: [Fixture.basic_shipment],
-      )
+      order = described_class.create(Fixture.basic_order)
 
       expect(order).to be_an_instance_of(described_class)
       expect(order.id).to match('order_')
@@ -19,11 +15,7 @@ describe EasyPost::Order do
 
   describe '.retrieve' do
     it 'retrieves an order' do
-      order = described_class.create(
-        to_address: Fixture.basic_address,
-        from_address: Fixture.basic_address,
-        shipments: [Fixture.basic_shipment],
-      )
+      order = described_class.create(Fixture.basic_order)
       retrieved_order = described_class.retrieve(order.id)
 
       expect(retrieved_order).to be_an_instance_of(described_class)
@@ -39,11 +31,7 @@ describe EasyPost::Order do
 
   describe '.get_rates' do
     it 'retrieves rates for an order' do
-      order = described_class.create(
-        to_address: Fixture.basic_address,
-        from_address: Fixture.basic_address,
-        shipments: [Fixture.basic_shipment],
-      )
+      order = described_class.create(Fixture.basic_order)
       rates = order.get_rates
 
       rates_array = rates.rates
@@ -55,11 +43,7 @@ describe EasyPost::Order do
 
   describe '.buy' do
     it 'buys an order' do
-      order = described_class.create(
-        to_address: Fixture.basic_address,
-        from_address: Fixture.basic_address,
-        shipments: [Fixture.basic_shipment],
-      )
+      order = described_class.create(Fixture.basic_order)
 
       order.buy(
         carrier: Fixture.usps,

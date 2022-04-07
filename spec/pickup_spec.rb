@@ -51,7 +51,7 @@ describe EasyPost::Pickup do
 
       bought_pickup = pickup.buy(
         carrier: Fixture.usps,
-        service: 'NextDay',
+        service: Fixture.pickup_service,
       )
 
       expect(bought_pickup).to be_an_instance_of(described_class)
@@ -71,7 +71,7 @@ describe EasyPost::Pickup do
       pickup = described_class.create(pickup_data)
       bought_pickup = pickup.buy(
         carrier: Fixture.usps,
-        service: 'NextDay',
+        service: Fixture.pickup_service,
       )
 
       cancelled_pickup = bought_pickup.cancel

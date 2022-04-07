@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'date'
 require 'json'
 
 class Fixture
@@ -8,13 +9,9 @@ class Fixture
     5
   end
 
-  # This is the carrier account ID for the default USPS account that comes by default. All tests should use this carrier account
+  # This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
   def self.usps_carrier_account_id
-    'ca_716f33fd9fd348238b85c2922237f98b'
-  end
-
-  def self.child_user_id
-    'user_9d4d2aba00d44f1db487583c3967764f'
+    ENV['USPS_CARRIER_ACCOUNT_ID'] || 'ca_716f33fd9fd348238b85c2922237f98b' # Fallback to the EasyPost Ruby Client Library Test User USPS carrier account
   end
 
   def self.usps
@@ -25,14 +22,20 @@ class Fixture
     'First'
   end
 
-  # If ever these need to change due to re-recording cassettes, simply increment this date by 1
-  def self.report_start_date
-    '2022-02-21'
+  def self.pickup_service
+    'NextDay'
   end
 
-  # If ever these need to change due to re-recording cassettes, simply increment this date by 1
+  def self.report_type
+    'shipment'
+  end
+
+  def self.report_start_date
+    (Date.today - 2).to_s
+  end
+
   def self.report_end_date
-    '2022-02-23'
+    Date.today.to_s
   end
 
   def self.basic_address
@@ -152,13 +155,16 @@ class Fixture
   end
 
   # This fixture will require you to add a `shipment` key with a Shipment object from a test.
-  # If you need to re-record cassettes, simply iterate the dates below and ensure they're one day in the future,
   # USPS only does "next-day" pickups including Saturday but not Sunday or Holidays.
   def self.basic_pickup
+    weekday_num = Date.today.wday
+    weekday_offset = weekday_num == 5 ? 3 : 2 # Push our pickup date to the "next day" based on the day of the week
+    pickup_date = (Date.today + weekday_offset).to_s
+
     {
       address: basic_address,
-      min_datetime: '2022-02-24',
-      max_datetime: '2022-02-25',
+      min_datetime: pickup_date,
+      max_datetime: pickup_date,
       instructions: 'Pickup at front door',
     }
   end
@@ -172,6 +178,23 @@ class Fixture
         password: 'PASSWORD',
         access_license_number: 'ALN',
       },
+    }
+  end
+
+  def self.basic_insurance
+    {
+      from_address: basic_address,
+      to_address: basic_address,
+      carrier: usps,
+      amount: '100',
+    }
+  end
+
+  def self.basic_order
+    {
+      from_address: basic_address,
+      to_address: basic_address,
+      shipments: [basic_shipment],
     }
   end
 

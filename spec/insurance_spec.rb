@@ -7,15 +7,10 @@ describe EasyPost::Insurance do
     it 'creates an insurance object' do
       shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
 
-      insurance = described_class.create(
-        {
-          to_address: Fixture.basic_address,
-          from_address: Fixture.basic_address,
-          tracking_code: shipment.tracking_code,
-          carrier: Fixture.usps,
-          amount: '100',
-        },
-      )
+      insurance_data = Fixture.basic_insurance
+      insurance_data[:tracking_code] = shipment.tracking_code
+
+      insurance = described_class.create(insurance_data)
 
       expect(insurance).to be_an_instance_of(described_class)
       expect(insurance.id).to match('ins_')
@@ -26,15 +21,10 @@ describe EasyPost::Insurance do
     it 'retrieves an insurance object' do
       shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
 
-      insurance = described_class.create(
-        {
-          to_address: Fixture.basic_address,
-          from_address: Fixture.basic_address,
-          tracking_code: shipment.tracking_code,
-          carrier: Fixture.usps,
-          amount: '100',
-        },
-      )
+      insurance_data = Fixture.basic_insurance
+      insurance_data[:tracking_code] = shipment.tracking_code
+
+      insurance = described_class.create(insurance_data)
 
       retrieved_insurance = described_class.retrieve(insurance.id)
 
