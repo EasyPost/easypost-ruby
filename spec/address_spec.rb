@@ -32,7 +32,7 @@ describe EasyPost::Address do
 
       expect(address).to be_an_instance_of(described_class)
       expect(address.id).to match('adr_')
-      expect(address.street1).to eq('417 MONTGOMERY ST STE 500')
+      expect(address.street1).to eq('417 MONTGOMERY ST FL 5')
     end
   end
 
@@ -67,7 +67,7 @@ describe EasyPost::Address do
 
       expect(address).to be_an_instance_of(described_class)
       expect(address.id).to match('adr_')
-      expect(address.street1).to eq('417 MONTGOMERY ST STE 500')
+      expect(address.street1).to eq('417 MONTGOMERY ST FL 5')
     end
   end
 
@@ -79,7 +79,7 @@ describe EasyPost::Address do
 
       expect(verified_address).to be_an_instance_of(described_class)
       expect(verified_address.id).to match('adr_')
-      expect(verified_address.street1).to eq('417 MONTGOMERY ST STE 500')
+      expect(verified_address.street1).to eq('417 MONTGOMERY ST FL 5')
     end
   end
 end
