@@ -18,7 +18,8 @@ describe EasyPost::User, :authenticate_prod do
 
   describe '.retrieve' do
     it 'retrieves a child user' do
-      user = described_class.retrieve(Fixture.child_user_id)
+      authenticated_user = described_class.retrieve_me
+      user = described_class.retrieve(authenticated_user.children[0].id)
 
       expect(user).to be_an_instance_of(described_class)
       expect(user.id).to match('user_')
