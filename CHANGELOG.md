@@ -1,7 +1,9 @@
 # CHANGELOG
 
-## Next release
-* Add support for `columns` and `additional_columns` on Report creation
+## NEXT RELEASE
+
+- Add support for `columns` and `additional_columns` on Report creation
+- Removes the unusable `carrier` param from `Address.create_and_verify` along with the dead `message` conditional check
 
 ## v4.1.2 (2022-03-16)
 

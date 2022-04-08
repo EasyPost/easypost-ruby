@@ -35,7 +35,7 @@ describe EasyPost::Refund do
   describe '.retrieve' do
     it 'retrieves a refund' do
       shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
-      retrieved_shipment = EasyPost::Shipment.retrieve(shipment.id) # We need to retrieve the shipment so that the tracking_code has time to populat
+      retrieved_shipment = EasyPost::Shipment.retrieve(shipment.id) # We need to retrieve the shipment so that the tracking_code has time to populate
 
       refund = described_class.create(
         carrier: Fixture.usps,

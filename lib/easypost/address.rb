@@ -28,17 +28,12 @@ class EasyPost::Address < EasyPost::Resource
   end
 
   # Create and verify an Address in one call.
-  def self.create_and_verify(params = {}, carrier = nil, api_key = nil)
+  def self.create_and_verify(params = {}, api_key = nil)
     wrapped_params = {}
     wrapped_params[class_name.to_sym] = params
-    wrapped_params[:carrier] = carrier
     response = EasyPost.make_request(:post, "#{url}/create_and_verify", api_key, wrapped_params)
 
     raise EasyPost::Error.new('Unable to verify address.') unless response.key?('address')
-
-    if response.key?('message')
-      response['address']['message'] = response['message']
-    end
 
     EasyPost::Util.convert_to_easypost_object(response['address'], api_key)
   end
