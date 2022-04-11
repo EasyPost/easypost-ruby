@@ -11,7 +11,8 @@ class Fixture
 
   # This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
   def self.usps_carrier_account_id
-    ENV['USPS_CARRIER_ACCOUNT_ID'] || 'ca_716f33fd9fd348238b85c2922237f98b' # Fallback to the EasyPost Ruby Client Library Test User USPS carrier account
+    # Fallback to the EasyPost Ruby Client Library Test User USPS carrier account ID
+    ENV['USPS_CARRIER_ACCOUNT_ID'] || 'ca_716f33fd9fd348238b85c2922237f98b'
   end
 
   def self.usps
@@ -30,12 +31,13 @@ class Fixture
     'shipment'
   end
 
-  def self.report_start_date
-    (Date.today - 2).to_s
+  # If you need to re-record cassettes, increment this date by 1
+  def self.report_date
+    '2022-04-11'
   end
 
-  def self.report_end_date
-    Date.today.to_s
+  def self.webhook_url
+    'http://example.com'
   end
 
   def self.basic_address
@@ -155,11 +157,10 @@ class Fixture
   end
 
   # This fixture will require you to add a `shipment` key with a Shipment object from a test.
+  # If you need to re-record cassettes, increment the date below and ensure it is one day in the future,
   # USPS only does "next-day" pickups including Saturday but not Sunday or Holidays.
   def self.basic_pickup
-    weekday_num = Date.today.wday
-    weekday_offset = weekday_num == 5 ? 3 : 2 # Push our pickup date to the "next day" based on the day of the week
-    pickup_date = (Date.today + weekday_offset).to_s
+    pickup_date = '2022-04-12'
 
     {
       address: basic_address,
