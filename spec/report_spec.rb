@@ -6,8 +6,8 @@ describe EasyPost::Report do
   describe '.create' do
     it 'creates a report' do
       report = described_class.create(
-        start_date: Fixture.report_start_date,
-        end_date: Fixture.report_end_date,
+        start_date: Fixture.report_date,
+        end_date: Fixture.report_date,
         type: Fixture.report_type,
       )
 
@@ -17,8 +17,8 @@ describe EasyPost::Report do
 
     it 'creates a report with custom columns' do
       report = described_class.create(
-        start_date: Fixture.report_start_date,
-        end_date: Fixture.report_end_date,
+        start_date: Fixture.report_date,
+        end_date: Fixture.report_date,
         type: Fixture.report_type,
         columns: ['usps_zone'],
       )
@@ -30,8 +30,8 @@ describe EasyPost::Report do
 
     it 'creates a report with custom additional columns' do
       report = described_class.create(
-        start_date: Fixture.report_start_date,
-        end_date: Fixture.report_end_date,
+        start_date: Fixture.report_date,
+        end_date: Fixture.report_date,
         type: Fixture.report_type,
         additional_columns: %w[from_name from_company],
       )
@@ -45,9 +45,9 @@ describe EasyPost::Report do
   describe '.retrieve' do
     it 'retrieves a report' do
       report = described_class.create(
-        start_date: Fixture.report_start_date,
-        end_date: Fixture.report_end_date,
-        type: 'shipment',
+        start_date: Fixture.report_date,
+        end_date: Fixture.report_date,
+        type: Fixture.report_type,
       )
 
       retrieved_report = described_class.retrieve(report.id)
@@ -61,7 +61,7 @@ describe EasyPost::Report do
   describe '.all' do
     it 'retrieves all reports' do
       reports = described_class.all(
-        type: 'shipment',
+        type: Fixture.report_type,
         page_size: Fixture.page_size,
       )
 

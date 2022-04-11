@@ -6,12 +6,12 @@ describe EasyPost::Webhook do
   describe '.create' do
     it 'creates a webhook' do
       webhook = described_class.create(
-        url: 'http://example.com',
+        url: Fixture.webhook_url,
       )
 
       expect(webhook).to be_an_instance_of(described_class)
       expect(webhook.id).to match('hook_')
-      expect(webhook.url).to eq('http://example.com')
+      expect(webhook.url).to eq(Fixture.webhook_url)
 
       # Remove the webhook once we have tested it so we don't pollute the account with test webhooks
       webhook.delete
@@ -21,7 +21,7 @@ describe EasyPost::Webhook do
   describe '.retrieve' do
     it 'retrieves a webhook' do
       webhook = described_class.create(
-        url: 'http://example.com',
+        url: Fixture.webhook_url,
       )
 
       retrieved_webhook = described_class.retrieve(webhook.id)
