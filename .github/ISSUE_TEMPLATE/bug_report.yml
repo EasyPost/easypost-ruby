@@ -14,7 +14,7 @@ body:
       # change this description for the specific repo
       description: |
         What version of our software are you running?
-        TIP: [Available versions](https://github.com/EasyPost/easypost-php/releases)
+        TIP: [Available versions](https://github.com/EasyPost/easypost-ruby/releases)
     validations:
       required: true
   - type: input
@@ -24,7 +24,7 @@ body:
       # change this description for the specific language of the repo
       description: |
         What language version and/or framework are you using?
-        TIP: [How to find your PHP version](https://www.php.net/manual/en/function.phpversion.php)
+        TIP: [How to find your Ruby version](https://blog.arkency.com/which-ruby-version-am-i-using-how-to-check/)
     validations:
       required: true
   - type: input
@@ -64,7 +64,7 @@ body:
         This will be automatically formatted into the appropriate language, so no need for backticks.
         **Do not include any private information such as API keys or passwords.**
       # change this render to the appropriate language: https://github.com/github/linguist/blob/master/lib/linguist/languages.yml
-      render: inc
+      render: rb
     validations:
       required: false
   - type: textarea

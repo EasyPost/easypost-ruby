@@ -18,7 +18,7 @@ body:
       label: Feature Request Is New
       # change issue link below for the specific repo
       description: |
-        Before we begin, please confirm that the requested feature does not already exist or has not [already been requested](https://github.com/EasyPost/easypost-php/issues).
+        Before we begin, please confirm that the requested feature does not already exist or has not [already been requested](https://github.com/EasyPost/easypost-ruby/issues).
       options:
         - label: I have verified that the requested feature does not already exist or has not already been requested.
           required: true
