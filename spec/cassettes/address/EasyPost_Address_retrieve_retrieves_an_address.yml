@@ -13,7 +13,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      - EasyPost/v2 RubyClient/4.1.2 Ruby/3.1.0-p0
       Content-Type:
       - application/json
       Authorization: "<AUTHORIZATION>"
@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 15c6b80a62166e81e786a7db0027633f
+      - 5c61554862598d0bff02f008000d463e
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -43,38 +43,36 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_e06888fd94cd11ecb58dac1f6bc7bdc6"
+      - "/api/v2/addresses/adr_77b37ab2bccf11ecb8c6ac1f6bc7b362"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"06abe41c8f15be758f1e7076539b8ab0"
-      X-Request-Id:
-      - bb5a9d20-7836-4afd-83ae-df90f6794af7
+      - W/"1da829e6de79779e0a51fd5e77ba39fa"
       X-Runtime:
-      - '0.034929'
+      - '0.028732'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb9nuq
       X-Version-Label:
-      - easypost-202202230129-176eb4912d-master
+      - easypost-202204142338-1cd6ded3ab-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb3wdc 88c34981dc
-      - intlb1wdc 88c34981dc
-      - intlb2nuq 88c34981dc
+      - extlb1wdc fde591f008
+      - intlb2nuq fde591f008
+      - intlb2wdc fde591f008
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"adr_e06888fd94cd11ecb58dac1f6bc7bdc6","object":"Address","created_at":"2022-02-23T17:27:29+00:00","updated_at":"2022-02-23T17:27:29+00:00","name":"Jack
+      string: '{"id":"adr_77b37ab2bccf11ecb8c6ac1f6bc7b362","object":"Address","created_at":"2022-04-15T15:19:39+00:00","updated_at":"2022-04-15T15:19:39+00:00","name":"Jack
         Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
         Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
-  recorded_at: Wed, 23 Feb 2022 17:27:29 GMT
+  recorded_at: Fri, 15 Apr 2022 15:19:39 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/addresses/adr_e06888fd94cd11ecb58dac1f6bc7bdc6
+    uri: https://api.easypost.com/v2/addresses/adr_77b37ab2bccf11ecb8c6ac1f6bc7b362
     body:
       encoding: US-ASCII
       string: ''
@@ -84,7 +82,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      - EasyPost/v2 RubyClient/4.1.2 Ruby/3.1.0-p0
       Content-Type:
       - application/json
       Authorization: "<AUTHORIZATION>"
@@ -106,7 +104,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 15c6b80f62166e82e786a7dc00276390
+      - 5c61554562598d0bff02f009000d4649
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -116,31 +114,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"06abe41c8f15be758f1e7076539b8ab0"
-      X-Request-Id:
-      - f71a9b1d-dc3f-49ac-9d3a-53f7cde9bfde
+      - W/"1da829e6de79779e0a51fd5e77ba39fa"
       X-Runtime:
-      - '0.027194'
+      - '0.026279'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7nuq
+      - bigweb1nuq
       X-Version-Label:
-      - easypost-202202231719-cc169b5e93-master
+      - easypost-202204142338-1cd6ded3ab-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb3wdc 88c34981dc
-      - intlb1nuq 88c34981dc
-      - intlb2wdc 88c34981dc
+      - extlb1wdc fde591f008
+      - intlb1nuq fde591f008
+      - intlb2wdc fde591f008
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"adr_e06888fd94cd11ecb58dac1f6bc7bdc6","object":"Address","created_at":"2022-02-23T17:27:29+00:00","updated_at":"2022-02-23T17:27:29+00:00","name":"Jack
+      string: '{"id":"adr_77b37ab2bccf11ecb8c6ac1f6bc7b362","object":"Address","created_at":"2022-04-15T15:19:39+00:00","updated_at":"2022-04-15T15:19:39+00:00","name":"Jack
         Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
         Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
-  recorded_at: Wed, 23 Feb 2022 17:27:30 GMT
+  recorded_at: Fri, 15 Apr 2022 15:19:39 GMT
 recorded_with: VCR 6.0.0

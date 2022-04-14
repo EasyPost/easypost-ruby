@@ -55,7 +55,6 @@ class Fixture
 
   def self.incorrect_address_to_verify
     {
-      verify: [true],
       street1: '417 montgomery street',
       street2: 'FL 5',
       city: 'San Francisco',

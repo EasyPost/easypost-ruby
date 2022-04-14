@@ -33,6 +33,7 @@ describe EasyPost::Address do
       expect(address).to be_an_instance_of(described_class)
       expect(address.id).to match('adr_')
       expect(address.street1).to eq('417 MONTGOMERY ST FL 5')
+      expect(address.verifications.zip4.errors[0].message).to eq('Invalid secondary information(Apt/Suite#)')
     end
   end
 
