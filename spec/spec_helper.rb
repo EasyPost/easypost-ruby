@@ -29,7 +29,7 @@ Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
 RSpec.configure do |config|
   config.around do |example|
-    # Automaticlaly wrap the test in VCR to avoid forgetting it.
+    # Automatically wrap the test in VCR to avoid forgetting it.
     path = example.file_path.gsub('_spec.rb', '').gsub('./spec/', '')
     description = example.full_description
     VCR.use_cassette(

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.easypost.com/v2/addresses?verify%5B%5D=true
+    uri: https://api.easypost.com/v2/addresses
     body:
       encoding: UTF-8
       string: '{"address":{"street1":"417 montgomery street","street2":"FL 5","city":"San
@@ -13,7 +13,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - EasyPost/v2 RubyClient/4.1.2 Ruby/3.1.1-p18
+      - EasyPost/v2 RubyClient/4.1.2 Ruby/3.1.0-p0
       Content-Type:
       - application/json
       Authorization: "<AUTHORIZATION>"
@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 949d8849624f19e9e2b7d5f100169a03
+      - 5c61554862598d0cff02f31a000d467d
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -43,37 +43,35 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_f6e63bdeb69411ec9fbfac1f6bc7b362"
+      - "/api/v2/addresses/adr_783a31f7bccf11ecb38cac1f6bc7bdc6"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"8bfc62c2ea230c5d49fb3f2964d59bde"
+      - W/"0ee19d4dd79be8f7bbb622d29a1041ae"
       X-Runtime:
-      - '0.044115'
+      - '0.027621'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb6nuq
       X-Version-Label:
-      - easypost-202204061951-19f0d1d0cc-master
+      - easypost-202204142338-1cd6ded3ab-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb3wdc fde591f008
+      - extlb1wdc fde591f008
       - intlb2nuq fde591f008
       - intlb2wdc fde591f008
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"adr_f6e63bdeb69411ec9fbfac1f6bc7b362","object":"Address","created_at":"2022-04-07T17:05:45+00:00","updated_at":"2022-04-07T17:05:45+00:00","name":null,"company":"EASYPOST","street1":"417
-        MONTGOMERY ST FL 5","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94104-1129","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid
-        secondary information(Apt/Suite#)","suggestion":null}],"details":null},"delivery":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid
-        secondary information(Apt/Suite#)","suggestion":null}],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}}'
-  recorded_at: Thu, 07 Apr 2022 17:05:45 GMT
+      string: '{"id":"adr_783a31f7bccf11ecb38cac1f6bc7bdc6","object":"Address","created_at":"2022-04-15T15:19:40+00:00","updated_at":"2022-04-15T15:19:40+00:00","name":null,"company":"EasyPost","street1":"417
+        montgomery street","street2":"FL 5","city":"San Francisco","state":"CA","zip":"94104","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+  recorded_at: Fri, 15 Apr 2022 15:19:40 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/addresses/adr_f6e63bdeb69411ec9fbfac1f6bc7b362/verify
+    uri: https://api.easypost.com/v2/addresses/adr_783a31f7bccf11ecb38cac1f6bc7bdc6/verify
     body:
       encoding: US-ASCII
       string: ''
@@ -83,7 +81,7 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent:
-      - EasyPost/v2 RubyClient/4.1.2 Ruby/3.1.1-p18
+      - EasyPost/v2 RubyClient/4.1.2 Ruby/3.1.0-p0
       Content-Type:
       - application/json
       Authorization: "<AUTHORIZATION>"
@@ -105,7 +103,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 949d8849624f19e9e2b7d5f200169a28
+      - 5c61554862598d0cff02f31b000d46a5
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -113,32 +111,32 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_f71a3987b69411ec9fcdac1f6bc7b362"
+      - "/api/v2/addresses/adr_788453b0bccf11ecbe15ac1f6b0a0d1e"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"bf8f2ab01d0352aebc55ff4a11a02a02"
+      - W/"1c3eb9d45b29f4dc75dd55c9402130cd"
       X-Runtime:
-      - '0.053337'
+      - '0.050479'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb1nuq
       X-Version-Label:
-      - easypost-202204061951-19f0d1d0cc-master
+      - easypost-202204142338-1cd6ded3ab-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb3wdc fde591f008
-      - intlb1nuq fde591f008
+      - extlb1wdc fde591f008
+      - intlb2nuq fde591f008
       - intlb2wdc fde591f008
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"address":{"id":"adr_f71a3987b69411ec9fcdac1f6bc7b362","object":"Address","created_at":"2022-04-07T17:05:45+00:00","updated_at":"2022-04-07T17:05:45+00:00","name":null,"company":"EASYPOST","street1":"417
+      string: '{"address":{"id":"adr_788453b0bccf11ecbe15ac1f6b0a0d1e","object":"Address","created_at":"2022-04-15T15:19:40+00:00","updated_at":"2022-04-15T15:19:40+00:00","name":null,"company":"EASYPOST","street1":"417
         MONTGOMERY ST FL 5","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94104-1129","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid
         secondary information(Apt/Suite#)","suggestion":null}],"details":null},"delivery":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid
         secondary information(Apt/Suite#)","suggestion":null}],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}}}'
-  recorded_at: Thu, 07 Apr 2022 17:05:45 GMT
+  recorded_at: Fri, 15 Apr 2022 15:19:40 GMT
 recorded_with: VCR 6.0.0

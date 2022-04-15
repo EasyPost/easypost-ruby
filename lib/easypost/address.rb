@@ -6,24 +6,19 @@ class EasyPost::Address < EasyPost::Resource
 
   # Create an Address.
   def self.create(params = {}, api_key = nil)
-    url = self.url
-
     address = params.reject { |k, _| [:verify, :verify_strict].include?(k) }
 
-    if params[:verify] || params[:verify_strict]
-      verify = params[:verify] || []
-      verify_strict = params[:verify_strict] || []
+    wrapped_params = { address: address }
 
-      url += '?'
-      verify.each do |verification|
-        url += "verify[]=#{verification}&"
-      end
-      verify_strict.each do |verification|
-        url += "verify_strict[]=#{verification}&"
-      end
+    if params[:verify]
+      wrapped_params[:verify] = params[:verify]
     end
 
-    response = EasyPost.make_request(:post, url, api_key, { address: address })
+    if params[:verify_strict]
+      wrapped_params[:verify_strict] = params[:verify_strict]
+    end
+
+    response = EasyPost.make_request(:post, url, api_key, wrapped_params)
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
