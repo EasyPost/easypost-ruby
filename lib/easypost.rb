@@ -36,6 +36,7 @@ require 'easypost/tax_identifier'
 require 'easypost/tracker'
 require 'easypost/user'
 require 'easypost/webhook'
+require 'easypost/beta/beta'
 
 module EasyPost
   DEFAULT_API_BASE = 'https://api.easypost.com'
