@@ -57,4 +57,27 @@ describe EasyPost::Order do
       end
     end
   end
+
+  describe '.lowest_rate' do
+    it 'tests various usage alterations of the lowest_rate method' do
+      shipment = described_class.create(Fixture.basic_order)
+
+      # Test lowest rate with no filters
+      lowest_rate = shipment.lowest_rate
+      expect(lowest_rate.service).to eq('First')
+      expect(lowest_rate.rate).to eq('5.49')
+      expect(lowest_rate.carrier).to eq('USPS')
+
+      # Test lowest rate with service filter (this rate is higher than the lowest but should filter)
+      lowest_rate = shipment.lowest_rate([], ['Priority'])
+      expect(lowest_rate.service).to eq('Priority')
+      expect(lowest_rate.rate).to eq('7.37')
+      expect(lowest_rate.carrier).to eq('USPS')
+
+      # Test lowest rate with carrier filter (should error due to bad carrier)
+      expect {
+        shipment.lowest_rate(['BAD CARRIER'], [])
+      }.to raise_error(EasyPost::Error, 'No rates found.')
+    end
+  end
 end

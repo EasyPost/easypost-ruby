@@ -81,4 +81,31 @@ describe EasyPost::Pickup do
       expect(cancelled_pickup.status).to eq('canceled')
     end
   end
+
+  describe '.lowest_rate' do
+    it 'tests various usage alterations of the lowest_rate method' do
+      shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
+
+      pickup_data = Fixture.basic_pickup
+      pickup_data[:shipment] = shipment
+
+      pickup = described_class.create(pickup_data)
+
+      # Test lowest rate with no filters
+      lowest_rate = pickup.lowest_rate
+      expect(lowest_rate.service).to eq('NextDay')
+      expect(lowest_rate.rate).to eq('0.00')
+      expect(lowest_rate.carrier).to eq('USPS')
+
+      # Test lowest rate with service filter (should error due to bad service)
+      expect {
+        pickup.lowest_rate([], ['BAD SERVICE'])
+      }.to raise_error(EasyPost::Error, 'No rates found.')
+
+      # Test lowest rate with carrier filter (should error due to bad carrier)
+      expect {
+        pickup.lowest_rate(['BAD CARRIER'], [])
+      }.to raise_error(EasyPost::Error, 'No rates found.')
+    end
+  end
 end

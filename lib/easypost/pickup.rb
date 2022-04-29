@@ -29,4 +29,9 @@ class EasyPost::Pickup < EasyPost::Resource
   def self.all
     raise NotImplementedError.new('Pickup.all not implemented.')
   end
+
+  # Get the lowest rate of a Pickup (can exclude by having `'!'` as the first element of your optional filter lists).
+  def lowest_rate(carriers = [], services = [])
+    EasyPost::Util.get_lowest_object_rate(self, carriers, services, 'pickup_rates')
+  end
 end

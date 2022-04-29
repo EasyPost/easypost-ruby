@@ -176,4 +176,90 @@ describe EasyPost::Shipment do
       expect(smartrates[0]['time_in_transit']['percentile_99']).not_to be_nil
     end
   end
+
+  describe '.lowest_rate' do
+    it 'tests various usage alterations of the lowest_rate method' do
+      shipment = described_class.create(Fixture.full_shipment)
+
+      # Test lowest rate with no filters
+      lowest_rate = shipment.lowest_rate
+      expect(lowest_rate.service).to eq('First')
+      expect(lowest_rate.rate).to eq('5.49')
+      expect(lowest_rate.carrier).to eq('USPS')
+
+      # Test lowest rate with service filter (this rate is higher than the lowest but should filter)
+      lowest_rate = shipment.lowest_rate([], ['Priority'])
+      expect(lowest_rate.service).to eq('Priority')
+      expect(lowest_rate.rate).to eq('7.37')
+      expect(lowest_rate.carrier).to eq('USPS')
+
+      # Test lowest rate with carrier filter (should error due to bad carrier)
+      expect {
+        shipment.lowest_rate(['BAD CARRIER'], [])
+      }.to raise_error(EasyPost::Error, 'No rates found.')
+    end
+  end
+
+  describe '.lowest_smartrate' do
+    it 'gets the lowest smartrate of a shipment' do
+      shipment = described_class.create(Fixture.basic_shipment)
+
+      # Test lowest smartrate with valid filters
+      lowest_smartrate = shipment.lowest_smartrate(1, 'percentile_90')
+      expect(lowest_smartrate['service']).to eq('Priority')
+      expect(lowest_smartrate['rate']).to eq(7.37)
+      expect(lowest_smartrate['carrier']).to eq('USPS')
+    end
+
+    it 'raises an error when no rates are found due to delivery_days' do
+      shipment = described_class.create(Fixture.basic_shipment)
+
+      # Test lowest smartrate with invalid filters (should error due to strict delivery_days)
+      expect {
+        shipment.lowest_smartrate(0, 'percentile_90')
+      }.to raise_error(EasyPost::Error, 'No rates found.')
+    end
+
+    it 'raises an error when no rates are found due to delivery_accuracy' do
+      shipment = described_class.create(Fixture.basic_shipment)
+
+      # Test lowest smartrate with invalid filters (should error due to invalid delivery_accuracy)
+      expect {
+        shipment.lowest_smartrate(3, 'BAD_ACCURACY')
+      }.to raise_error(EasyPost::Error)
+    end
+  end
+
+  describe '.get_lowest_smartrate' do
+    it 'gets the lowest smartrate from a list of smartrates' do
+      shipment = described_class.create(Fixture.basic_shipment)
+      smartrates = shipment.get_smartrates
+
+      # Test lowest smartrate with valid filters
+      lowest_smartrate = described_class.get_lowest_smartrate(smartrates, 1, 'percentile_90')
+      expect(lowest_smartrate['service']).to eq('Priority')
+      expect(lowest_smartrate['rate']).to eq(7.37)
+      expect(lowest_smartrate['carrier']).to eq('USPS')
+    end
+
+    it 'raises an error when no rates are found due to delivery_days' do
+      shipment = described_class.create(Fixture.basic_shipment)
+      smartrates = shipment.get_smartrates
+
+      # Test lowest smartrate with invalid filters (should error due to strict delivery_days)
+      expect {
+        described_class.get_lowest_smartrate(smartrates, 0, 'percentile_90')
+      }.to raise_error(EasyPost::Error, 'No rates found.')
+    end
+
+    it 'raises an error when no rates are found due to delivery_accuracy' do
+      shipment = described_class.create(Fixture.basic_shipment)
+      smartrates = shipment.get_smartrates
+
+      # Test lowest smartrate with invalid filters (should error due to invalid delivery_accuracy)
+      expect {
+        described_class.get_lowest_smartrate(smartrates, 3, 'BAD_ACCURACY')
+      }.to raise_error(EasyPost::Error)
+    end
+  end
 end

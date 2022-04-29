@@ -2,7 +2,8 @@
 
 ## NEXT RELEASE
 
-- Add support for `columns` and `additional_columns` on Report creation
+- Adds a `lowest_rate` function to Orders and Pickups
+- Adds a `Shipment.get_lowest_smartrate` function and a `shipment.lowest_smartrate` function
 - Removes the unusable `carrier` param from `Address.create_and_verify` along with the dead `message` conditional check
 
 ## v4.1.2 (2022-03-16)
