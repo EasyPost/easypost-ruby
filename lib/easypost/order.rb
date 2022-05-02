@@ -29,4 +29,9 @@ class EasyPost::Order < EasyPost::Resource
   def self.all
     raise NotImplementedError.new('Order.all not implemented.')
   end
+
+  # Get the lowest rate of an Order (can exclude by having `'!'` as the first element of your optional filter lists).
+  def lowest_rate(carriers = [], services = [])
+    EasyPost::Util.get_lowest_object_rate(self, carriers, services)
+  end
 end

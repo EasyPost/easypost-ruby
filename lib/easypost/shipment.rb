@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'set'
+
 # The workhorse of the EasyPost API, a Shipment is made up of a "to" and "from" Address, the Parcel
 # being shipped, and any customs forms required for international deliveries.
 class EasyPost::Shipment < EasyPost::Resource
@@ -68,58 +70,46 @@ class EasyPost::Shipment < EasyPost::Resource
     self
   end
 
-  # Get the lowest rate of a Shipment.
+  # Get the lowest rate of a Shipment (can exclude by having `'!'` as the first element of your optional filter lists).
   def lowest_rate(carriers = [], services = [])
-    lowest = nil
+    EasyPost::Util.get_lowest_object_rate(self, carriers, services)
+  end
 
-    get_rates unless rates
+  # Get the lowest smartrate of a Shipment.
+  def lowest_smartrate(delivery_days, delivery_accuracy)
+    smartrates = get_smartrates
+    EasyPost::Shipment.get_lowest_smartrate(smartrates, delivery_days, delivery_accuracy)
+  end
 
-    carriers = EasyPost::Util.normalize_string_list(carriers)
+  # Get the lowest smartrate from a list of smartrates.
+  def self.get_lowest_smartrate(smartrates, delivery_days, delivery_accuracy)
+    valid_delivery_accuracy_values = Set[
+      'percentile_50',
+      'percentile_75',
+      'percentile_85',
+      'percentile_90',
+      'percentile_95',
+      'percentile_97',
+      'percentile_99',
+    ]
+    lowest_smartrate = nil
 
-    negative_carriers = []
-    carriers_copy = carriers.clone
-    carriers_copy.each do |carrier|
-      if carrier[0, 1] == '!'
-        negative_carriers << carrier[1..-1]
-        carriers.delete(carrier)
+    unless valid_delivery_accuracy_values.include?(delivery_accuracy.downcase)
+      raise EasyPost::Error.new("Invalid delivery accuracy value, must be one of: #{valid_delivery_accuracy_values}")
+    end
+
+    smartrates.each do |rate|
+      next if rate['time_in_transit'][delivery_accuracy] > delivery_days.to_i
+
+      if lowest_smartrate.nil? || rate['rate'].to_f < lowest_smartrate['rate'].to_f
+        lowest_smartrate = rate
       end
     end
 
-    services = EasyPost::Util.normalize_string_list(services)
-
-    negative_services = []
-    services_copy = services.clone
-    services_copy.each do |service|
-      if service[0, 1] == '!'
-        negative_services << service[1..-1]
-        services.delete(service)
-      end
+    if lowest_smartrate.nil?
+      raise EasyPost::Error.new('No rates found.')
     end
 
-    rates.each do |k|
-      rate_carrier = k.carrier.downcase
-      if carriers.size.positive? && !carriers.include?(rate_carrier)
-        next
-      end
-      if negative_carriers.size.positive? && negative_carriers.include?(rate_carrier)
-        next
-      end
-
-      rate_service = k.service.downcase
-      if services.size.positive? && !services.include?(rate_service)
-        next
-      end
-      if negative_services.size.positive? && negative_services.include?(rate_service)
-        next
-      end
-
-      if lowest.nil? || k.rate.to_f < lowest.rate.to_f
-        lowest = k
-      end
-    end
-
-    raise EasyPost::Error.new('No rates found.') if lowest.nil?
-
-    lowest
+    lowest_smartrate
   end
 end
