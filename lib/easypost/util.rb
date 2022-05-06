@@ -2,6 +2,35 @@
 
 # Internal utilities helpful for this libraries operation.
 module EasyPost::Util
+  # Form-encode a multi-layer dictionary to a one-layer dictionary.
+  def self.form_encode_params(hash, parent_keys = [], parent_dict = {})
+    result = parent_dict or {}
+    keys = parent_keys or []
+
+    hash.each do |key, value|
+      if value.instance_of?(Hash)
+        keys << key
+        result = form_encode_params(value, keys, result)
+      else
+        dict_key = build_dict_key(keys + [key])
+        result[dict_key] = value
+      end
+    end
+    result
+  end
+
+  # Build a dict key from a list of keys.
+  # Example: [code, number] -> code[number]
+  def self.build_dict_key(keys)
+    result = keys[0].to_s
+
+    keys[1..-1].each do |key|
+      result += "[#{key}]"
+    end
+
+    result
+  end
+
   # Converts an object to an object ID.
   def self.objects_to_ids(obj)
     case obj
