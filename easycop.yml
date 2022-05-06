@@ -41,7 +41,7 @@ Layout/FirstMethodArgumentLineBreak:
   Enabled: true
 Layout/LineLength:
   Max: 120
-  IgnoredPatterns:
+  IgnoredPatterns: # deprecated in 1.28
     - "(\\A|\\s)#"
 Layout/LineEndStringConcatenationIndentation: # new in 1.18
   Enabled: true
