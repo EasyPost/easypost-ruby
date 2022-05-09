@@ -1,9 +1,9 @@
 # CHANGELOG
 
-## NEXT RELEASE
+## v4.2.0 (2022-05-09)
 
-- Adds a `lowest_rate` function to Orders and Pickups
-- Adds a `Shipment.get_lowest_smartrate` function and a `shipment.lowest_smartrate` function
+- Adds a `lowest_rate()` function to Orders and Pickups
+- Adds a `Shipment.get_lowest_smartrate()` function and a `shipment.lowest_smartrate()` function
 - Removes the unusable `carrier` param from `Address.create_and_verify` along with the dead `message` conditional check
 - Add beta Referral class for White Label API with these new functions: `create()`, `update_email()`, `all()`, and `add_credit_card()`
 
