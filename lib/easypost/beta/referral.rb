@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class EasyPost::BetaReferral < EasyPost::Resource
+class EasyPost::Beta::Referral < EasyPost::Resource
   # Create a referral user. This function requires the Partner User's API key.
   def self.create(params = {}, api_key = nil)
     response = EasyPost.make_request(:post, '/beta/referral_customers', api_key, { user: params })

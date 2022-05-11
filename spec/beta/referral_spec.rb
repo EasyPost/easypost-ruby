@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe EasyPost::BetaReferral, :authenticate_prod do
+describe EasyPost::Beta::Referral, :authenticate_prod do
   describe '.create' do
     xit 'creates a referral user' do
       # Do not record this test in cassette because there is sensitive info
