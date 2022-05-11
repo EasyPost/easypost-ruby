@@ -252,4 +252,19 @@ class Fixture
       cvc: '778',
     }
   end
+
+  def self.end_shipper_address
+    {
+      name: 'Jack Sparrow',
+      company: 'EasyPost',
+      street1: '388 Townsend St',
+      street2: 'Apt 20',
+      city: 'San Francisco',
+      state: 'CA',
+      zip: '94107',
+      country: 'US',
+      phone: '5555555555',
+      email: 'test@example.com',
+    }
+  end
 end
