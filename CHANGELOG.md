@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v4.2.1 (2022-05-11)
+
+- Corrects the `Beta` namespace for the new Referral class
+
 ## v4.2.0 (2022-05-09)
 
 - Adds a `lowest_rate()` function to Orders and Pickups
