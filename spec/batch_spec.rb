@@ -70,18 +70,14 @@ describe EasyPost::Batch do
   end
 
   describe '.create_scan_form' do
-    it 'creates a scanform for a batch' do |test|
+    it 'creates a scanform for a batch', :vcr do
       batch = described_class.create(
         shipments: [Fixture.one_call_buy_shipment],
       )
 
       batch.buy
 
-      unless File.file?(
-        "./spec/cassettes/batch/#{test.metadata[:full_description].gsub(' ', '_').gsub('::', '_').gsub(
-          '.', '_',
-        ).downcase}.yml",
-      )
+      unless File.file?(VCR.current_cassette.file)
         sleep(5) # Wait enough time for the batch to process buying the shipment
       end
 
@@ -111,18 +107,14 @@ describe EasyPost::Batch do
   end
 
   describe '.label' do
-    it 'generates a label for a batch' do |test|
+    it 'generates a label for a batch', :vcr do
       batch = described_class.create(
         shipments: [Fixture.one_call_buy_shipment],
       )
 
       batch.buy
 
-      unless File.file?(
-        "./spec/cassettes/batch/#{test.metadata[:full_description].gsub(' ', '_').gsub('::', '_').gsub(
-          '.', '_',
-        ).downcase}.yml",
-      )
+      unless File.file?(VCR.current_cassette.file)
         sleep(5) # Wait enough time for the batch to process buying the shipment
       end
 

@@ -240,4 +240,16 @@ class Fixture
       },
     )
   end
+
+  # The credit card details below are for a valid proxy card usable
+  # for tests only and cannot be used for real transactions.
+  # DO NOT alter these details with real credit card information.
+  def self.credit_card_details
+    {
+      number: '4536410136126170',
+      expiration_month: '05',
+      expiration_year: '2028',
+      cvc: '778',
+    }
+  end
 end

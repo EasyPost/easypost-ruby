@@ -30,6 +30,9 @@ VCR.configure do |config|
     allow_unused_http_interactions: false,
   }
 
+  config.filter_sensitive_data(REPLACEMENT_VALUE) { Fixture.credit_card_details[:number] }
+  config.filter_sensitive_data(REPLACEMENT_VALUE) { Fixture.credit_card_details[:cvc] }
+
   config.before_record do |interaction|
     scrub_request_headers(interaction)
     scrub_response_bodies(interaction)
