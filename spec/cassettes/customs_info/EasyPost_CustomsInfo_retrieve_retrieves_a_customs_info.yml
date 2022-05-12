@@ -13,11 +13,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 201
@@ -36,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 89bd310262168acde787d565003ac5c1
+      - 3450b471627d40a9e78738610031101b
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -44,37 +43,35 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/customs_infos/cstinfo_82af076273ce4139b9f27185c71323e0"
+      - "/api/v2/customs_infos/cstinfo_6d04ecc8457f418ea058167c573829b3"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"84f94101ac865db7fa13e7b9fa5cc628"
-      X-Request-Id:
-      - 8a40e43d-7712-49f7-90a8-d9c17e13eb62
+      - W/"5dce394aef970c97306ef67f69e707c3"
       X-Runtime:
-      - '0.035607'
+      - '0.032216'
       Transfer-Encoding:
       - chunked
       X-Node:
       - bigweb3nuq
       X-Version-Label:
-      - easypost-202202231719-cc169b5e93-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 88c34981dc
-      - intlb2nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"cstinfo_82af076273ce4139b9f27185c71323e0","object":"CustomsInfo","created_at":"2022-02-23T19:28:13Z","updated_at":"2022-02-23T19:28:13Z","contents_explanation":"","contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve
-        Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_779bb0de3153467882df88a763e64c7b","object":"CustomsItem","created_at":"2022-02-23T19:28:13Z","updated_at":"2022-02-23T19:28:13Z","description":"Sweet
+      encoding: UTF-8
+      string: '{"id":"cstinfo_6d04ecc8457f418ea058167c573829b3","object":"CustomsInfo","created_at":"2022-05-12T17:15:21Z","updated_at":"2022-05-12T17:15:21Z","contents_explanation":"","contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve
+        Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_bcf5c528978d4576b13269251be58b6e","object":"CustomsItem","created_at":"2022-05-12T17:15:21Z","updated_at":"2022-05-12T17:15:21Z","description":"Sweet
         shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.0","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}]}'
-  recorded_at: Wed, 23 Feb 2022 19:28:13 GMT
+  recorded_at: Thu, 12 May 2022 17:15:21 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/customs_infos/cstinfo_82af076273ce4139b9f27185c71323e0
+    uri: https://api.easypost.com/v2/customs_infos/cstinfo_6d04ecc8457f418ea058167c573829b3
     body:
       encoding: US-ASCII
       string: ''
@@ -83,11 +80,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -106,7 +102,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 89bd310262168acde787d566003ac5d8
+      - 3450b472627d40aae787386200311031
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -116,28 +112,26 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"84f94101ac865db7fa13e7b9fa5cc628"
-      X-Request-Id:
-      - a1889ab1-051b-4826-99f1-491dba41e823
+      - W/"5dce394aef970c97306ef67f69e707c3"
       X-Runtime:
-      - '0.027343'
+      - '0.019918'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb4nuq
+      - bigweb6nuq
       X-Version-Label:
-      - easypost-202202231719-cc169b5e93-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 88c34981dc
-      - intlb1nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"cstinfo_82af076273ce4139b9f27185c71323e0","object":"CustomsInfo","created_at":"2022-02-23T19:28:13Z","updated_at":"2022-02-23T19:28:13Z","contents_explanation":"","contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve
-        Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_779bb0de3153467882df88a763e64c7b","object":"CustomsItem","created_at":"2022-02-23T19:28:13Z","updated_at":"2022-02-23T19:28:13Z","description":"Sweet
+      encoding: UTF-8
+      string: '{"id":"cstinfo_6d04ecc8457f418ea058167c573829b3","object":"CustomsInfo","created_at":"2022-05-12T17:15:21Z","updated_at":"2022-05-12T17:15:21Z","contents_explanation":"","contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve
+        Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_bcf5c528978d4576b13269251be58b6e","object":"CustomsItem","created_at":"2022-05-12T17:15:21Z","updated_at":"2022-05-12T17:15:21Z","description":"Sweet
         shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.0","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}]}'
-  recorded_at: Wed, 23 Feb 2022 19:28:13 GMT
+  recorded_at: Thu, 12 May 2022 17:15:22 GMT
 recorded_with: VCR 6.0.0

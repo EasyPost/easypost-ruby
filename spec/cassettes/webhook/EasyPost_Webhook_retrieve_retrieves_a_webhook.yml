@@ -11,11 +11,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 201
@@ -34,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 704d1f706217c311e787389e003ab29c
+      - 3450b471627d40ece7873ce5003125b8
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -44,33 +43,29 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"dd3aa58086c7de670aabfd1eb1f10509"
-      X-Request-Id:
-      - 41f4b500-bba5-40f1-ad81-1a52793fa45d
+      - W/"cc3a06bcca33fb0b7d9e9d35b75598e6"
       X-Runtime:
-      - '0.158039'
+      - '0.099262'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7nuq
+      - bigweb6nuq
       X-Version-Label:
-      - easypost-202202240420-6e47ec067a-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb2nuq 88c34981dc
-      - intlb2nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"hook_de548080959811ec894d4fe4500e5276","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2022-02-24T17:40:34Z","disabled_at":null}'
-  recorded_at: Thu, 24 Feb 2022 17:40:34 GMT
+      encoding: UTF-8
+      string: '{"id":"hook_42bc056ad21711ec9604299319a23d32","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2022-05-12T17:16:29Z","disabled_at":null}'
+  recorded_at: Thu, 12 May 2022 17:16:28 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/webhooks/hook_de548080959811ec894d4fe4500e5276
+    uri: https://api.easypost.com/v2/webhooks/hook_42bc056ad21711ec9604299319a23d32
     body:
       encoding: US-ASCII
       string: ''
@@ -79,11 +74,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -102,7 +96,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 704d1f6c6217c312e787389f003ab2bd
+      - 3450b471627d40ece7873ce6003125cd
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -112,31 +106,29 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"dd3aa58086c7de670aabfd1eb1f10509"
-      X-Request-Id:
-      - 04fc989f-b78a-48df-960e-cfc700d7cfb6
+      - W/"cc3a06bcca33fb0b7d9e9d35b75598e6"
       X-Runtime:
-      - '0.029455'
+      - '0.026494'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9nuq
+      - bigweb3nuq
       X-Version-Label:
-      - easypost-202202240420-6e47ec067a-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 88c34981dc
-      - intlb1nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"hook_de548080959811ec894d4fe4500e5276","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2022-02-24T17:40:34Z","disabled_at":null}'
-  recorded_at: Thu, 24 Feb 2022 17:40:34 GMT
+      encoding: UTF-8
+      string: '{"id":"hook_42bc056ad21711ec9604299319a23d32","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2022-05-12T17:16:29Z","disabled_at":null}'
+  recorded_at: Thu, 12 May 2022 17:16:29 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/webhooks/hook_de548080959811ec894d4fe4500e5276
+    uri: https://api.easypost.com/v2/webhooks/hook_42bc056ad21711ec9604299319a23d32
     body:
       encoding: US-ASCII
       string: ''
@@ -145,11 +137,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -168,7 +159,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 704d1f6d6217c312e78738a0003ab2c8
+      - 3450b46f627d40ede7873ce7003125da
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -179,25 +170,23 @@ http_interactions:
       - application/json; charset=utf-8
       Etag:
       - W/"44136fa355b3678a1146ad16f7e8649e"
-      X-Request-Id:
-      - ff2a3e99-359e-428c-b559-3aa9da8ea78a
       X-Runtime:
-      - '0.419268'
+      - '0.326354'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb1nuq
+      - bigweb3nuq
       X-Version-Label:
-      - easypost-202202240420-6e47ec067a-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 88c34981dc
-      - intlb2nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: "{}"
-  recorded_at: Thu, 24 Feb 2022 17:40:34 GMT
+  recorded_at: Thu, 12 May 2022 17:16:29 GMT
 recorded_with: VCR 6.0.0

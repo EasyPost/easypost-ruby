@@ -4,8 +4,7 @@ require 'spec_helper'
 
 describe EasyPost::User, :authenticate_prod do
   describe '.create' do
-    xit 'creates a child user' do
-      # This endpoint returns the child user keys in plain text, do not run this test.
+    it 'creates a child user' do
       user = described_class.create(
         name: 'Test User',
       )
@@ -13,13 +12,15 @@ describe EasyPost::User, :authenticate_prod do
       expect(user).to be_an_instance_of(described_class)
       expect(user.id).to match('user_')
       expect(user.name).to eq('Test User')
+
+      user.delete # delete the user so we don't clutter the test environment
     end
   end
 
   describe '.retrieve' do
-    it 'retrieves a child user' do
+    it 'retrieves a user' do
       authenticated_user = described_class.retrieve_me
-      user = described_class.retrieve(authenticated_user.children[0].id)
+      user = described_class.retrieve(authenticated_user.id)
 
       expect(user).to be_an_instance_of(described_class)
       expect(user.id).to match('user_')
@@ -39,41 +40,48 @@ describe EasyPost::User, :authenticate_prod do
     it 'updates a user' do
       user = described_class.retrieve_me
 
-      test_phone = '5555555555'
+      test_name = 'New Test Name'
 
-      user.phone_number = test_phone
+      user.name = test_name
       user.save
 
       expect(user).to be_an_instance_of(described_class)
       expect(user.id).to match('user_')
-      expect(user.phone_number).to eq(test_phone)
+      expect(user.name).to eq(test_name)
     end
   end
 
   describe '.delete' do
-    xit 'deletes a user' do
-      # Due to our inability to create child users securely, we must also skip deleting them as we cannot replace the deleted ones easily.
+    it 'deletes a user' do
+      user = described_class.create(
+        name: 'Test User',
+      )
+
+      # Nothing gets returned here, simply ensure no error gets raised
       user.delete
     end
   end
 
   describe '.all_api_keys' do
-    xit 'retrieves all API keys' do
-      # API keys are returned as plaintext, do not run this test.
-      user.all_api_keys
+    it 'retrieves all API keys' do
+      api_keys = described_class.all_api_keys
+
+      expect(api_keys.keys).not_to be_nil
+      expect(api_keys.children).not_to be_nil
     end
   end
 
   describe '.api_keys' do
-    xit "retrieves the authenticated user's API keys" do
-      # API keys are returned as plaintext, do not run this test.
-      user.api_keys
+    it "retrieves the authenticated user's API keys" do
+      user = described_class.retrieve_me
+      api_keys = user.api_keys
+
+      expect(api_keys).not_to be_nil
     end
   end
 
   describe '.update_brand' do
     it "updates the authenticated user's brand" do
-      # API keys are returned as plaintext, do not run this test.
       user = described_class.retrieve_me
 
       color = '#123456'

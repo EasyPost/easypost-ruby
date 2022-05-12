@@ -11,11 +11,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 201
@@ -34,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 7b4066396216a55be788ee640040cd68
+      - 3450b470627d40b4e7873bb6003113a6
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -42,30 +41,28 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/parcels.prcl_b6e27bd33e8444d1bdb5eb33039ae142"
+      - "/api/v2/parcels.prcl_d7c62fa20ad84a3c9c1c4a63da33f9b7"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"234b825ed6cc56496bf42075d2dd6dd5"
-      X-Request-Id:
-      - 5ac74bf1-1d4f-4c56-bde3-17f154995194
+      - W/"4bf8aed751f33d7cae12283bb37823f3"
       X-Runtime:
-      - '0.025477'
+      - '0.022898'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb1nuq
+      - bigweb8nuq
       X-Version-Label:
-      - easypost-202202232103-87ed4a9d34-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 88c34981dc
-      - intlb2nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"prcl_b6e27bd33e8444d1bdb5eb33039ae142","object":"Parcel","created_at":"2022-02-23T21:21:31Z","updated_at":"2022-02-23T21:21:31Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
-  recorded_at: Wed, 23 Feb 2022 21:21:31 GMT
+      encoding: UTF-8
+      string: '{"id":"prcl_d7c62fa20ad84a3c9c1c4a63da33f9b7","object":"Parcel","created_at":"2022-05-12T17:15:32Z","updated_at":"2022-05-12T17:15:32Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
+  recorded_at: Thu, 12 May 2022 17:15:32 GMT
 recorded_with: VCR 6.0.0

@@ -11,11 +11,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/4.1.2 Ruby/3.1.1-p18
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 201
@@ -34,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - '0991fb54625474cee786b41f002330a7'
+      - 3450b476627d40cbe7873c1900311ba7
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -44,29 +43,29 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"0b3d4aae0f4caee935ffb4177d31faef"
+      - W/"d6bc5602a8560bbbacf7493ba3be26e3"
       X-Runtime:
-      - '0.038811'
+      - '0.046050'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb4nuq
+      - bigweb1nuq
       X-Version-Label:
-      - easypost-202204082123-da17cc1ac2-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq fde591f008
-      - intlb2nuq fde591f008
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"shprep_4b4e0861f4f244f4b9ffa21f7c329a2e","object":"ShipmentReport","created_at":"2022-04-11T18:34:54Z","updated_at":"2022-04-11T18:34:54Z","start_date":"2022-04-11","end_date":"2022-04-11","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
-  recorded_at: Mon, 11 Apr 2022 18:34:54 GMT
+      encoding: UTF-8
+      string: '{"id":"shprep_1357e716af324546b7b5f3ddfbad4fd6","object":"ShipmentReport","created_at":"2022-05-12T17:15:55Z","updated_at":"2022-05-12T17:15:55Z","start_date":"2022-04-11","end_date":"2022-04-11","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+  recorded_at: Thu, 12 May 2022 17:15:55 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/reports/shprep_4b4e0861f4f244f4b9ffa21f7c329a2e
+    uri: https://api.easypost.com/v2/reports/shprep_1357e716af324546b7b5f3ddfbad4fd6
     body:
       encoding: US-ASCII
       string: ''
@@ -75,11 +74,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/4.1.2 Ruby/3.1.1-p18
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -98,7 +96,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - '0991fb53625474cee786b420002330b4'
+      - 3450b470627d40cce7873c1a00311bdb
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -108,24 +106,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"0b3d4aae0f4caee935ffb4177d31faef"
+      - W/"ba6924119945270ff7707adf85398770"
       X-Runtime:
-      - '0.094894'
+      - '0.040563'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb4nuq
+      - bigweb8nuq
       X-Version-Label:
-      - easypost-202204082123-da17cc1ac2-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq fde591f008
-      - intlb1nuq fde591f008
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"shprep_4b4e0861f4f244f4b9ffa21f7c329a2e","object":"ShipmentReport","created_at":"2022-04-11T18:34:54Z","updated_at":"2022-04-11T18:34:54Z","start_date":"2022-04-11","end_date":"2022-04-11","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
-  recorded_at: Mon, 11 Apr 2022 18:34:54 GMT
+      encoding: UTF-8
+      string: '{"id":"shprep_1357e716af324546b7b5f3ddfbad4fd6","object":"ShipmentReport","created_at":"2022-05-12T17:15:55Z","updated_at":"2022-05-12T17:15:55Z","start_date":"2022-04-11","end_date":"2022-04-11","mode":"test","status":"available","url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/shipment_report/20220512/548678ee5be44422b5c6e36f4ecdc444.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQS5SPYTWI%2F20220512%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220512T171556Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=f417fe46a415eb8ce7494c561bffa48d216b1828fc4861b32d543a40e9be4491","url_expires_at":"2022-05-12T17:16:26Z","include_children":false}'
+  recorded_at: Thu, 12 May 2022 17:15:56 GMT
 recorded_with: VCR 6.0.0

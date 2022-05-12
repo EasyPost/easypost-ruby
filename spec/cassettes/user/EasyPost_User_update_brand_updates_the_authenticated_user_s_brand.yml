@@ -11,11 +11,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -34,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 704d1f6e6217c101e7872f590039d88f
+      - 3450b475627d40ebe7873ce100312563
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -44,30 +43,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"c90e918c2a00c8d2b2bf3215a7ff6e9b"
-      X-Request-Id:
-      - 452b2bdf-e2b4-4b1d-8f95-3ad22b8ecee5
+      - W/"bd67f45514244af4b86ac77898372f15"
       X-Runtime:
-      - '0.097785'
+      - '0.119173'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9nuq
+      - bigweb8nuq
       X-Version-Label:
-      - easypost-202202240420-6e47ec067a-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 88c34981dc
-      - intlb2nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"EasyPost
-        Ruby Client Library Tests","phone_number":"5555555555","verified":true,"created_at":"2017-03-01T22:57:19Z","balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"dev+easypost-ruby@easypost.com","children":[{"id":"user_9d4d2aba00d44f1db487583c3967764f","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
-        User","phone_number":"8005550100","verified":true,"created_at":"2022-02-24T17:23:16Z","children":[]}]}'
-  recorded_at: Thu, 24 Feb 2022 17:31:45 GMT
+      encoding: UTF-8
+      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"New
+        Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":"<REDACTED>"}'
+  recorded_at: Thu, 12 May 2022 17:16:27 GMT
 - request:
     method: put
     uri: https://api.easypost.com/v2/users/user_0f6b83e3530b401cb1e8aeaa6a250d4d/brand
@@ -79,11 +75,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -102,7 +97,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 704d1f706217c101e7872f5a0039d8a9
+      - 3450b476627d40ebe7873ce200312571
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -113,25 +108,23 @@ http_interactions:
       - application/json; charset=utf-8
       Etag:
       - W/"6529bff738bff0355916a0ddbf360417"
-      X-Request-Id:
-      - 24db1ea7-cac4-4c8b-8592-0006a67180ae
       X-Runtime:
-      - '0.029210'
+      - '0.020954'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb6nuq
       X-Version-Label:
-      - easypost-202202240420-6e47ec067a-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 88c34981dc
-      - intlb2nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"id":"brd_136abcc3c9de49fcb1a0e963f26fdcac","color":"#123456","logo":"https://assets.easypost.com/assets/images/branding/easypost-primary-logo-7a2cf535f2.svg","logo_href":"https://www.easypost.com","name":"EasyPost","ad":null,"ad_href":null,"object":"Brand","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","background_color":null,"theme":"theme1"}'
-  recorded_at: Thu, 24 Feb 2022 17:31:45 GMT
+  recorded_at: Thu, 12 May 2022 17:16:27 GMT
 recorded_with: VCR 6.0.0

@@ -11,11 +11,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 201
@@ -34,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 89bd310662167f20e78744bf00365a08
+      - 3450b470627d40a5e787383d00310e8f
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -44,33 +43,31 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"6f3d7df58cce07cc584da948bfcb5d27"
-      X-Request-Id:
-      - e4660f3c-cebb-4c7c-8be3-d0571ec2ad82
+      - W/"22367b5214e35410679ef7b8847b041b"
       X-Runtime:
-      - '0.123238'
+      - '0.121829'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9nuq
+      - bigweb4nuq
       X-Version-Label:
-      - easypost-202202231719-cc169b5e93-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 88c34981dc
-      - intlb1nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"ca_a0569dc4009744c980b8bb67c26a273c","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-02-23T18:38:24Z","updated_at":"2022-02-23T18:38:24Z","description":"UPS
-        Account","reference":null,"readable":"UPS","logo":null,"fields":{"credentials":{"account_number":{"visibility":"readonly","label":"UPS
-        Account Number","value":"A1A1A1"}}},"credentials":{"account_number":"A1A1A1"},"test_credentials":null}'
-  recorded_at: Wed, 23 Feb 2022 18:38:24 GMT
+      encoding: UTF-8
+      string: '{"id":"ca_b9d553f2296e42279e657664f8ceb4b1","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-05-12T17:15:17Z","updated_at":"2022-05-12T17:15:17Z","description":"UPS
+        Account","reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":{"credentials":{"account_number":{"visibility":"readonly","label":"UPS
+        Account Number","value":"A1A1A1"}}},"credentials":"<REDACTED>","test_credentials":null}'
+  recorded_at: Thu, 12 May 2022 17:15:17 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_a0569dc4009744c980b8bb67c26a273c
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_b9d553f2296e42279e657664f8ceb4b1
     body:
       encoding: US-ASCII
       string: ''
@@ -79,11 +76,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -102,7 +98,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 89bd310662167f20e78744c000365a33
+      - 3450b476627d40a6e787383e00310ead
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -113,25 +109,23 @@ http_interactions:
       - application/json; charset=utf-8
       Etag:
       - W/"44136fa355b3678a1146ad16f7e8649e"
-      X-Request-Id:
-      - 3e936b49-a492-4000-bae3-153f679a8a95
       X-Runtime:
-      - '0.133754'
+      - '0.187474'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb2nuq
+      - bigweb8nuq
       X-Version-Label:
-      - easypost-202202231719-cc169b5e93-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 88c34981dc
-      - intlb1nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: "{}"
-  recorded_at: Wed, 23 Feb 2022 18:38:24 GMT
+  recorded_at: Thu, 12 May 2022 17:15:18 GMT
 recorded_with: VCR 6.0.0

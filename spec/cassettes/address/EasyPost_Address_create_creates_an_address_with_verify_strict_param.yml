@@ -12,11 +12,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/4.1.2 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 201
@@ -35,7 +34,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 5c61554962598d0aff02f006000d460e
+      - 3450b472627d409de78737dc00310b98
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -43,31 +42,30 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_774ebb44bccf11ecb8aeac1f6bc7b362"
+      - "/api/v2/addresses/adr_13adb3dbd21711eca471ac1f6bc7bdc6"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"2c76e3f5cdc5cb09be4368c95413b1f5"
+      - W/"2ac7842a7001a7c0711d25af112e0f50"
       X-Runtime:
-      - '0.050642'
+      - '0.043721'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9nuq
+      - bigweb8nuq
       X-Version-Label:
-      - easypost-202204142338-1cd6ded3ab-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1wdc fde591f008
-      - intlb1nuq fde591f008
-      - intlb1wdc fde591f008
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"adr_774ebb44bccf11ecb8aeac1f6bc7b362","object":"Address","created_at":"2022-04-15T15:19:38+00:00","updated_at":"2022-04-15T15:19:38+00:00","name":"JACK
+      encoding: UTF-8
+      string: '{"id":"adr_13adb3dbd21711eca471ac1f6bc7bdc6","object":"Address","created_at":"2022-05-12T17:15:09+00:00","updated_at":"2022-05-12T17:15:09+00:00","name":"JACK
         SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
-        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}}'
-  recorded_at: Fri, 15 Apr 2022 15:19:38 GMT
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":null,"mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}}'
+  recorded_at: Thu, 12 May 2022 17:15:09 GMT
 recorded_with: VCR 6.0.0

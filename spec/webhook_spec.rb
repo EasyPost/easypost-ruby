@@ -48,14 +48,28 @@ describe EasyPost::Webhook do
   end
 
   describe '.update' do
-    xit 'updates a webhook' do
-      # Cannot be easily tested - requires a disabled webhook.
+    it 'updates a webhook' do
+      webhook = described_class.create(
+        url: Fixture.webhook_url,
+      )
+
+      updated_webhook = webhook.update
+
+      expect(updated_webhook).to be_an_instance_of(described_class)
+
+      webhook.delete # Remove the webhook once we have tested it so we don't pollute the account with test webhooks
     end
   end
 
   describe '.delete' do
-    xit 'deletes a webhook' do
-      # No need to re-test this here since we delete each webhook after each test right now
+    it 'deletes a webhook' do
+      webhook = described_class.create(
+        url: Fixture.webhook_url,
+      )
+
+      response = webhook.delete
+
+      expect(response).to be_an_instance_of(described_class)
     end
   end
 end

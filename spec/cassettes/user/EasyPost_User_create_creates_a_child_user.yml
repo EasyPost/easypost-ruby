@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.easypost.com/v2/customs_items
+    uri: https://api.easypost.com/v2/users
     body:
       encoding: UTF-8
-      string: '{"customs_item":{"description":"Sweet shirts","quantity":2,"weight":11,"value":23,"hs_tariff_number":"654321","origin_country":"US"}}'
+      string: '{"user":{"name":"Test User"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -33,25 +33,23 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b470627d40aae787386400311054
+      - 3450b475627d40e6e7873cbe00312409
       Cache-Control:
       - no-cache, no-store
       Pragma:
       - no-cache
       Expires:
       - '0'
-      Location:
-      - "/api/v2/customs_items/cstitem_e60482586f89482fba82fb05aa9ddf99"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"16a27b98cd2b62884c6b232c937617cd"
+      - W/"ac2a18dbf94a9cd4875a98bc13b87ab6"
       X-Runtime:
-      - '0.024170'
+      - '0.511262'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb6nuq
+      - bigweb3nuq
       X-Version-Label:
       - easypost-202205110022-b4df6b5700-master
       X-Backend:
@@ -63,12 +61,12 @@ http_interactions:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"cstitem_e60482586f89482fba82fb05aa9ddf99","object":"CustomsItem","created_at":"2022-05-12T17:15:22Z","updated_at":"2022-05-12T17:15:22Z","description":"Sweet
-        shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.0","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
-  recorded_at: Thu, 12 May 2022 17:15:22 GMT
+      string: '{"id":"user_6086bb59bde747a38cc3088d0b452696","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-05-12T17:16:22Z","children":"<REDACTED>","api_keys":"<REDACTED>"}'
+  recorded_at: Thu, 12 May 2022 17:16:22 GMT
 - request:
-    method: get
-    uri: https://api.easypost.com/v2/customs_items/cstitem_e60482586f89482fba82fb05aa9ddf99
+    method: delete
+    uri: https://api.easypost.com/v2/users/user_6086bb59bde747a38cc3088d0b452696
     body:
       encoding: US-ASCII
       string: ''
@@ -83,8 +81,8 @@ http_interactions:
       Authorization: "<REDACTED>"
   response:
     status:
-      code: 200
-      message: OK
+      code: 204
+      message: No Content
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -99,35 +97,28 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b46f627d40aae78738650031106d
+      - 3450b475627d40e7e7873cbf00312431
       Cache-Control:
       - no-cache, no-store
       Pragma:
       - no-cache
       Expires:
       - '0'
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"16a27b98cd2b62884c6b232c937617cd"
       X-Runtime:
-      - '0.022004'
-      Transfer-Encoding:
-      - chunked
+      - '0.174376'
       X-Node:
-      - bigweb9nuq
+      - bigweb1nuq
       X-Version-Label:
       - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
       - extlb2nuq c51cdb8bf2
-      - intlb1nuq 570dfcbc0a
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"cstitem_e60482586f89482fba82fb05aa9ddf99","object":"CustomsItem","created_at":"2022-05-12T17:15:22Z","updated_at":"2022-05-12T17:15:22Z","description":"Sweet
-        shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.0","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
-  recorded_at: Thu, 12 May 2022 17:15:22 GMT
+      string: ''
+  recorded_at: Thu, 12 May 2022 17:16:23 GMT
 recorded_with: VCR 6.0.0

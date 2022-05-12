@@ -134,7 +134,7 @@ module EasyPost
       )
     end
 
-    json ? JSON.parse(body) : body
+    json || status != 204 ? JSON.parse(body) : body
   rescue JSON::ParserError
     raise "Invalid response object from API, unable to decode.\n#{body}"
   end

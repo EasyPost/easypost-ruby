@@ -11,11 +11,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -34,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 89bd31016216807ee78749870036e6ba
+      - 3450b471627d40a7e787384200310f26
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -44,34 +43,30 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"ab3fdc196f66d317e89f8ed4568a0f55"
-      X-Request-Id:
-      - c5cd752a-9bdf-4661-a878-d36b3e28fc2f
+      - W/"09db5ef672744787b0b3a77925c294b6"
       X-Runtime:
-      - '0.055112'
+      - '0.037909'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7nuq
+      - bigweb9nuq
       X-Version-Label:
-      - easypost-202202231719-cc169b5e93-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb1nuq 88c34981dc
-      - intlb2nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '[{"id":"ca_716f33fd9fd348238b85c2922237f98b","object":"CarrierAccount","type":"UspsAccount","clone":false,"created_at":"2017-03-01T22:57:19Z","updated_at":"2018-08-09T02:45:42Z","description":"USPS
-        Account","reference":null,"readable":"USPS","logo":null,"fields":{"credentials":{"company_name":{"visibility":"visible","label":"Account
+        Account","reference":null,"billing_type":"easypost","readable":"USPS","logo":null,"fields":{"credentials":{"company_name":{"visibility":"visible","label":"Account
         Holder Name","value":""},"address_street":{"visibility":"visible","label":"Street
         Address","value":""},"address_city":{"visibility":"visible","label":"City","value":""},"address_state":{"visibility":"visible","label":"State","value":""},"address_zip":{"visibility":"visible","label":"ZIP
         Code","value":""},"phone":{"visibility":"visible","label":"Phone Number","value":""},"email":{"visibility":"visible","label":"Email
         Address","value":null},"shipper_id":{"visibility":"visible","label":"Shipper
-        Identifier (Optional)","value":""}}},"credentials":{"company_name":"","address_street":"","address_city":"","address_state":"","address_zip":"","phone":"","email":null,"shipper_id":""},"test_credentials":null}]'
-  recorded_at: Wed, 23 Feb 2022 18:44:14 GMT
+        Identifier (Optional)","value":""}}},"credentials":"<REDACTED>","test_credentials":"<REDACTED>"}]'
+  recorded_at: Thu, 12 May 2022 17:15:19 GMT
 recorded_with: VCR 6.0.0

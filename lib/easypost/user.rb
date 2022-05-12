@@ -22,6 +22,12 @@ class EasyPost::User < EasyPost::Resource
     self
   end
 
+  # Delete a User.
+  def delete
+    EasyPost.make_request(:delete, url, @api_key)
+    self
+  end
+
   # Retrieve the authenticated User.
   def self.retrieve_me
     all

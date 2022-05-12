@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.easypost.com/v2/carrier_accounts
+    uri: https://api.easypost.com/v2/webhooks
     body:
       encoding: UTF-8
-      string: '{"carrier_account":{"type":"UpsAccount","credentials":{"account_number":"A1A1A1","user_id":"USERID","password":"PASSWORD","access_license_number":"ALN"}}}'
+      string: '{"webhook":{"url":"http://example.com"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b471627d40a6e787383f00310ecd
+      - 3450b474627d40eee7873ff700312617
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -43,9 +43,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"8d7dc81a36aeb122a018a258db21c105"
+      - W/"9fe5ea6a6f21b4b751fcbc3a6765dc7b"
       X-Runtime:
-      - '0.186346'
+      - '0.142921'
       Transfer-Encoding:
       - chunked
       X-Node:
@@ -61,16 +61,14 @@ http_interactions:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"ca_51b5db93521a4918938883f466eac52c","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-05-12T17:15:18Z","updated_at":"2022-05-12T17:15:18Z","description":"UPS
-        Account","reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":{"credentials":{"account_number":{"visibility":"readonly","label":"UPS
-        Account Number","value":"A1A1A1"}}},"credentials":"<REDACTED>","test_credentials":null}'
-  recorded_at: Thu, 12 May 2022 17:15:18 GMT
+      string: '{"id":"hook_438e1d02d21711ec9f811702175c6fdb","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2022-05-12T17:16:30Z","disabled_at":null}'
+  recorded_at: Thu, 12 May 2022 17:16:30 GMT
 - request:
-    method: get
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_51b5db93521a4918938883f466eac52c
+    method: put
+    uri: https://api.easypost.com/v2/webhooks/hook_438e1d02d21711ec9f811702175c6fdb
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: "{}"
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -82,8 +80,8 @@ http_interactions:
       Authorization: "<REDACTED>"
   response:
     status:
-      code: 200
-      message: OK
+      code: 201
+      message: Created
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -98,7 +96,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b473627d40a6e787384000310ef0
+      - 3450b46f627d40eee7873ff800312635
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -108,13 +106,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"8d7dc81a36aeb122a018a258db21c105"
+      - W/"9fe5ea6a6f21b4b751fcbc3a6765dc7b"
       X-Runtime:
-      - '0.086734'
+      - '0.508562'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb3nuq
+      - bigweb8nuq
       X-Version-Label:
       - easypost-202205110022-b4df6b5700-master
       X-Backend:
@@ -126,13 +124,11 @@ http_interactions:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"ca_51b5db93521a4918938883f466eac52c","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-05-12T17:15:18Z","updated_at":"2022-05-12T17:15:18Z","description":"UPS
-        Account","reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":{"credentials":{"account_number":{"visibility":"readonly","label":"UPS
-        Account Number","value":"A1A1A1"}}},"credentials":"<REDACTED>","test_credentials":null}'
-  recorded_at: Thu, 12 May 2022 17:15:19 GMT
+      string: '{"id":"hook_438e1d02d21711ec9f811702175c6fdb","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2022-05-12T17:16:30Z","disabled_at":null}'
+  recorded_at: Thu, 12 May 2022 17:16:30 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_51b5db93521a4918938883f466eac52c
+    uri: https://api.easypost.com/v2/webhooks/hook_438e1d02d21711ec9f811702175c6fdb
     body:
       encoding: US-ASCII
       string: ''
@@ -163,7 +159,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b471627d40a7e787384100310f07
+      - 3450b475627d40efe7873ff90031266d
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -175,7 +171,7 @@ http_interactions:
       Etag:
       - W/"44136fa355b3678a1146ad16f7e8649e"
       X-Runtime:
-      - '0.204965'
+      - '0.359183'
       Transfer-Encoding:
       - chunked
       X-Node:
@@ -194,5 +190,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "{}"
-  recorded_at: Thu, 12 May 2022 17:15:19 GMT
+  recorded_at: Thu, 12 May 2022 17:16:31 GMT
 recorded_with: VCR 6.0.0

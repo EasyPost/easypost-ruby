@@ -14,11 +14,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/4.0.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -37,7 +36,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - aa457d2d6228fd84e788d43d0073f521
+      - ce1b2abf627d43ede78749600030741e
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -47,26 +46,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"86289dd4801b32d01f40125e601a6d40"
-      X-Request-Id:
-      - 5bda232b-3435-4b26-b2db-7938bd1dbfae
+      - W/"f8d4f1979bb4958eea1b1329ac1fc5a8"
       X-Runtime:
-      - '0.066901'
+      - '0.035442'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb1nuq
+      - bigweb3nuq
       X-Version-Label:
-      - easypost-202203091837-b9ce1b6b0d-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 88c34981dc
-      - intlb1nuq 88c34981dc
+      - extlb1nuq c51cdb8bf2
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"batch_78fefe78c34e42d39777aceffc22246e","object":"Batch","mode":"test","state":"creating","num_shipments":1,"reference":null,"created_at":"2022-03-09T19:18:28Z","updated_at":"2022-03-09T19:18:28Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
-  recorded_at: Wed, 09 Mar 2022 19:18:28 GMT
+      encoding: UTF-8
+      string: '{"id":"batch_d817acd4ce0a4c09acfeccd2ceb2f6fd","object":"Batch","mode":"test","state":"creating","num_shipments":1,"reference":null,"created_at":"2022-05-12T17:29:17Z","updated_at":"2022-05-12T17:29:17Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+  recorded_at: Thu, 12 May 2022 17:29:17 GMT
 recorded_with: VCR 6.0.0
