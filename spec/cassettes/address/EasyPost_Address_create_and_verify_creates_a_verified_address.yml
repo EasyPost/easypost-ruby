@@ -12,11 +12,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/4.1.2 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -35,7 +34,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 5c61554862598d0bff02f319000d466b
+      - 3450b473627d409ee78737f900310c04
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -43,32 +42,31 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_7819ef71bccf11ecb8ddac1f6bc7b362"
+      - "/api/v2/addresses/adr_1462efdfd21711ecacccac1f6bc7b362"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"a9b0b0d8b787be06ee46ccec1a43bb0e"
+      - W/"ff022f30df55da86f35133bf857ce36b"
       X-Runtime:
-      - '0.043005'
+      - '0.040034'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb9nuq
       X-Version-Label:
-      - easypost-202204142338-1cd6ded3ab-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1wdc fde591f008
-      - intlb1wdc fde591f008
-      - intlb2nuq fde591f008
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"address":{"id":"adr_7819ef71bccf11ecb8ddac1f6bc7b362","object":"Address","created_at":"2022-04-15T15:19:40+00:00","updated_at":"2022-04-15T15:19:40+00:00","name":null,"company":"EASYPOST","street1":"417
+      encoding: UTF-8
+      string: '{"address":{"id":"adr_1462efdfd21711ecacccac1f6bc7b362","object":"Address","created_at":"2022-05-12T17:15:10+00:00","updated_at":"2022-05-12T17:15:10+00:00","name":null,"company":"EASYPOST","street1":"417
         MONTGOMERY ST FL 5","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94104-1129","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid
         secondary information(Apt/Suite#)","suggestion":null}],"details":null},"delivery":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid
         secondary information(Apt/Suite#)","suggestion":null}],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}}}'
-  recorded_at: Fri, 15 Apr 2022 15:19:40 GMT
+  recorded_at: Thu, 12 May 2022 17:15:10 GMT
 recorded_with: VCR 6.0.0

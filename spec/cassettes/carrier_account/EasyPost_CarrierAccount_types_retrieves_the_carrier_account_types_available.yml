@@ -11,11 +11,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -34,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 89bd3101621680dae7874cfc00370d68
+      - 3450b472627d40a9e787385f00310ff4
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -44,26 +43,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"249279100011627f6d71dc2d1536ffcb"
-      X-Request-Id:
-      - ddcb7c82-0d5b-456f-9120-2964c4ab2724
+      - W/"9f3a5d56ccb4183f80d82dd4769ddf9e"
       X-Runtime:
-      - '0.073294'
+      - '0.027972'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb3nuq
+      - bigweb6nuq
       X-Version-Label:
-      - easypost-202202231719-cc169b5e93-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 88c34981dc
-      - intlb1nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '[{"object":"CarrierType","type":"AmazonMwsAccount","readable":"Amazon
         MWS","logo":null,"fields":{"credentials":{"access_key_id":{"visibility":"visible","label":"AWS
         Access Key ID"},"secret_key":{"visibility":"password","label":"Secret Key"},"merchant_id":{"visibility":"visible","label":"Seller
@@ -79,11 +76,13 @@ http_interactions:
         Account Number"},"sub_account_number":{"visibility":"visible","label":"AsendiaUsa
         Sub Account Number"},"username":{"visibility":"visible","label":"AsendiaUsa
         Username"},"password":{"visibility":"password","label":"AsendiaUsa Password"},"api_key":{"visibility":"masked","label":"AsendiaUsa
-        API key"}},"test_credentials":{"account_number":{"visibility":"visible","label":"Test
+        API key"},"carrier_facility":{"visibility":"select","label":"AsendiaUsa Carrier
+        Facility / Processing Location (Optional)"}},"test_credentials":{"account_number":{"visibility":"visible","label":"Test
         AsendiaUsa Account Number"},"sub_account_number":{"visibility":"visible","label":"Test
         AsendiaUsa Sub Account Number"},"username":{"visibility":"visible","label":"Test
         AsendiaUsa Username"},"password":{"visibility":"password","label":"Test AsendiaUsa
-        Password"},"api_key":{"visibility":"masked","label":"Test AsendiaUsa API key"}}}},{"object":"CarrierType","type":"AustraliaPostAccount","readable":"Australia
+        Password"},"api_key":{"visibility":"masked","label":"Test AsendiaUsa API key"},"carrier_facility":{"visibility":"select","label":"Test
+        AsendiaUsa Carrier Facility / Processing Location (Optional)"}}}},{"object":"CarrierType","type":"AustraliaPostAccount","readable":"Australia
         Post","logo":null,"fields":{"credentials":{"account_number":{"visibility":"visible","label":"Australia
         Post Account Number"},"api_key":{"visibility":"masked","label":"Australia
         Post API Key"},"api_secret":{"visibility":"password","label":"Australia Post
@@ -232,11 +231,10 @@ http_interactions:
         Country Code","visibility":"visible"}}},"custom_workflow":true}},{"object":"CarrierType","type":"GlobegisticsAccount","readable":"Globegistics","logo":null,"fields":{"credentials":{"account_number":{"visibility":"visible","label":"Globegistics
         Account Number"},"facility":{"visibility":"visible","label":"Globegistics
         Facility"}}}},{"object":"CarrierType","type":"GsoAccount","readable":"GSO","logo":null,"fields":{"credentials":{"account_number":{"visibility":"visible","label":"GSO
-        Account Number"},"username":{"visibility":"visible","label":"Username"},"password":{"visibility":"password","label":"Password"}}}},{"object":"CarrierType","type":"HermesAccount","readable":"Hermes","logo":null,"fields":{"credentials":{"username":{"visibility":"visible","label":"Hermes
-        Username"},"password":{"visibility":"password","label":"Hermes Password"},"client_id":{"visibility":"visible","label":"Hermes
-        Client ID"},"client_name":{"visibility":"visible","label":"Hermes Client name"},"group_id":{"visibility":"visible","label":"Hermes
-        Group ID"},"client_licence":{"visibility":"masked","label":"Hermes Client
-        License"}}}},{"object":"CarrierType","type":"InterlinkExpressAccount","readable":"Interlink
+        Account Number"},"username":{"visibility":"visible","label":"Username"},"password":{"visibility":"password","label":"Password"}}}},{"object":"CarrierType","type":"HermesAccount","readable":"Evri","logo":null,"fields":{"credentials":{"username":{"visibility":"visible","label":"Evri
+        Username"},"password":{"visibility":"password","label":"Evri Password"},"client_id":{"visibility":"visible","label":"Evri
+        Client ID"},"client_name":{"visibility":"visible","label":"Evri Client name"},"group_id":{"visibility":"visible","label":"Evri
+        Group ID"},"client_licence":{"visibility":"masked","label":"Evri Client License"}}}},{"object":"CarrierType","type":"InterlinkExpressAccount","readable":"Interlink
         Express","logo":null,"fields":{"credentials":{"account_number":{"visibility":"visible","label":"Interlink
         Express Account Number"},"username":{"visibility":"visible","label":"Interlink
         Express Username"},"password":{"visibility":"password","label":"Interlink
@@ -298,7 +296,11 @@ http_interactions:
         Test Contract Number"},"username":{"visibility":"visible","label":"Test expressLink
         API Username"},"password":{"visibility":"password","label":"Test expressLink
         API Password"},"department_id":{"visibility":"visible","label":"Test Department
-        ID - not required"}}}},{"object":"CarrierType","type":"PassportGlobalAccount","readable":"Passport
+        ID - not required"}}}},{"object":"CarrierType","type":"ParcllAccount","readable":"Parcll","logo":null,"fields":{"credentials":{"api_key":{"visibility":"masked","label":"Parcll
+        API key"},"user_id":{"visibility":"visible","label":"Parcll User Id"},"origin_hub":{"visibility":"select","label":"Parcll
+        Origin Hub"}},"test_credentials":{"api_key":{"visibility":"masked","label":"Test
+        Parcll API key"},"user_id":{"visibility":"visible","label":"Test Parcll User
+        Id"},"origin_hub":{"visibility":"select","label":"Test Parcll Origin Hub"}}}},{"object":"CarrierType","type":"PassportGlobalAccount","readable":"Passport
         Global","logo":null,"fields":{"credentials":{"api_key":{"visibility":"masked","label":"Passport
         Global API key"},"email":{"visibility":"visible","label":"Customer email address
         registered with Passport Global"},"name":{"visibility":"visible","label":"Customer
@@ -309,10 +311,7 @@ http_interactions:
         address registered with Passport Global"},"name":{"visibility":"visible","label":"Customer
         name registered with Passport Global"},"company_name":{"visibility":"visible","label":"Customer
         company name registered with Passport Global"},"phone":{"visibility":"visible","label":"Customer
-        phone number registered with Passport Global (optional)"}}}},{"object":"CarrierType","type":"PcfFinalMileAccount","readable":"PCF
-        Final Mile","logo":null,"fields":{"credentials":{"client_id":{"visibility":"visible","label":"PCF
-        client ID"},"key":{"visibility":"masked","label":"PCF API key"}},"test_credentials":{"client_id":{"visibility":"visible","label":"PCF
-        test client ID"},"key":{"visibility":"masked","label":"PCF test API key"}}}},{"object":"CarrierType","type":"PurolatorAccount","readable":"Purolator","logo":null,"fields":{"credentials":{"account_number":{"visibility":"visible","label":"Purolator
+        phone number registered with Passport Global (optional)"}}}},{"object":"CarrierType","type":"PurolatorAccount","readable":"Purolator","logo":null,"fields":{"credentials":{"account_number":{"visibility":"visible","label":"Purolator
         Account Number"},"api_key":{"visibility":"masked","label":"Production API
         Key"},"password":{"visibility":"password","label":"Production API Key Password"}}}},{"object":"CarrierType","type":"RoyalMailAccount","readable":"Royal
         Mail","logo":null,"fields":{"credentials":{"account_number":{"visibility":"visible","label":"Royal
@@ -320,7 +319,10 @@ http_interactions:
         Address"},"posting_location_number":{"visibility":"visible","label":"Posting
         Location Number"}}}},{"object":"CarrierType","type":"RRDonnelleyAccount","readable":"ePost
         Global","logo":null,"fields":{"credentials":{"account_number":{"visibility":"visible","label":"ePostGlobal
-        Account Number"}}}},{"object":"CarrierType","type":"SfExpressAccount","readable":"SF
+        Account Number"}}}},{"object":"CarrierType","type":"SendleAccount","readable":"Sendle","logo":null,"fields":{"credentials":{"api_key":{"visibility":"masked","label":"Sendle
+        API Key"},"user_id":{"visibility":"visible","label":"Sendle User ID"}},"test_credentials":{"api_key":{"visibility":"masked","label":"Sendle
+        Sandbox API Key"},"user_id":{"visibility":"visible","label":"Sendle Sandbox
+        User ID"}}}},{"object":"CarrierType","type":"SfExpressAccount","readable":"SF
         Express","logo":null,"fields":{"credentials":{"checkword":{"visibility":"visible","label":"SF
         Express checkword"},"customer_code":{"visibility":"visible","label":"SF Express
         customer code"},"customer_id":{"visibility":"visible","label":"SF Express
@@ -351,5 +353,5 @@ http_interactions:
         (Optional)"}}}},{"object":"CarrierType","type":"VehoAccount","readable":"Veho","logo":null,"fields":{"credentials":{"api_key":{"visibility":"masked","label":"Veho
         Production API Key"}},"test_credentials":{"api_key":{"visibility":"masked","label":"Veho
         Test API Key"}}}}]'
-  recorded_at: Wed, 23 Feb 2022 18:45:46 GMT
+  recorded_at: Thu, 12 May 2022 17:15:21 GMT
 recorded_with: VCR 6.0.0

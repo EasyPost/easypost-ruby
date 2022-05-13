@@ -11,11 +11,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 201
@@ -34,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 89bd310562168b05e787d567003ad996
+      - 3450b472627d40aae787386300311049
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -42,31 +41,29 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/customs_items/cstitem_12b75e5b67dc46ca99b064917e9ea189"
+      - "/api/v2/customs_items/cstitem_4ca771cad83e4f0295c157c76d92e6ee"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"918e8881d11a11ffe422715e22429362"
-      X-Request-Id:
-      - aeebe969-4cd0-4112-9887-7659d556b650
+      - W/"2ad1abf2ecf2b35536e1f956953cf354"
       X-Runtime:
-      - '0.029876'
+      - '0.028865'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb1nuq
+      - bigweb5nuq
       X-Version-Label:
-      - easypost-202202231719-cc169b5e93-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 88c34981dc
-      - intlb2nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"cstitem_12b75e5b67dc46ca99b064917e9ea189","object":"CustomsItem","created_at":"2022-02-23T19:29:09Z","updated_at":"2022-02-23T19:29:09Z","description":"Sweet
+      encoding: UTF-8
+      string: '{"id":"cstitem_4ca771cad83e4f0295c157c76d92e6ee","object":"CustomsItem","created_at":"2022-05-12T17:15:22Z","updated_at":"2022-05-12T17:15:22Z","description":"Sweet
         shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.0","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
-  recorded_at: Wed, 23 Feb 2022 19:29:09 GMT
+  recorded_at: Thu, 12 May 2022 17:15:22 GMT
 recorded_with: VCR 6.0.0

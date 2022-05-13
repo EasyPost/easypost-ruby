@@ -1,11 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.easypost.com/v2/users
+    method: post
+    uri: https://api.easypost.com/beta/referral_customers
     body:
       encoding: UTF-8
-      string: "{}"
+      string: '{"user":{"name":"test user","email":"email@example.com","phone":"8888888888"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -17,8 +17,8 @@ http_interactions:
       Authorization: "<REDACTED>"
   response:
     status:
-      code: 200
-      message: OK
+      code: 201
+      message: Created
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b470627d40e8e7873cc20031247e
+      - ce1b2abd627d4672e7874d6700316d8d
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -43,9 +43,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"bd67f45514244af4b86ac77898372f15"
+      - W/"829982f80ac303072baa972bbc750afa"
       X-Runtime:
-      - '0.135299'
+      - '0.747160'
       Transfer-Encoding:
       - chunked
       X-Node:
@@ -55,13 +55,13 @@ http_interactions:
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb1nuq 570dfcbc0a
+      - extlb1nuq c51cdb8bf2
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"New
-        Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":"<REDACTED>"}'
-  recorded_at: Thu, 12 May 2022 17:16:24 GMT
+      string: '{"id":"user_f86eb313643147a18cd2ff332173ce4e","object":"User","parent_id":null,"name":"test
+        user","phone_number":"<REDACTED>","verified":true,"created_at":"2022-05-12T17:40:02Z","balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":"<REDACTED>","api_keys":"<REDACTED>"}'
+  recorded_at: Thu, 12 May 2022 17:40:03 GMT
 recorded_with: VCR 6.0.0

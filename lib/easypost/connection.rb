@@ -51,11 +51,12 @@ EasyPost::Connection = Struct.new(:uri, :config, keyword_init: true) do
     request['Authorization'] = EasyPost.authorization(api_key) if api_key
 
     response = connection.request(request)
+    response_is_json = response['Content-Type'] ? response['Content-Type'].start_with?('application/json') : false
 
     EasyPost.parse_response(
       status: response.code.to_i,
       body: response.body,
-      json: response['Content-Type'].start_with?('application/json'),
+      json: response_is_json,
     )
   end
 end

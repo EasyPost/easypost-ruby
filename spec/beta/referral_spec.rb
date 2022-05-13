@@ -2,25 +2,27 @@
 
 require 'spec_helper'
 
+REFERRAL_USER_PROD_API_KEY = ENV['REFERRAL_USER_PROD_API_KEY'] || '123'
+
 describe EasyPost::Beta::Referral, :authenticate_prod do
   describe '.create' do
-    xit 'creates a referral user' do
-      # Do not record this test in cassette because there is sensitive info
-      params = {
-        name: 'test test',
+    it 'creates a referral user' do
+      # This test requires a partner user's production API key via EASYPOST_PROD_API_KEY.
+      created_referral_user = described_class.create(
+        name: 'test user',
         email: 'email@example.com',
         phone: '8888888888',
-      }
-      created_referral_user = described_class.create(params)
+      )
 
       expect(created_referral_user).to be_an_instance_of(EasyPost::User)
       expect(created_referral_user.id).to match('user_')
-      expect(created_referral_user.phone_number).to eq('8888888888')
+      expect(created_referral_user.name).to eq('test user')
     end
   end
 
   describe '.update_email' do
     it 'updates a referral user' do
+      # This test requires a partner user's production API key via EASYPOST_PROD_API_KEY.
       referral_users = described_class.all(
         page_size: Fixture.page_size,
       )
@@ -35,6 +37,7 @@ describe EasyPost::Beta::Referral, :authenticate_prod do
   end
 
   describe '.all' do
+    # This test requires a partner user's production API key via EASYPOST_PROD_API_KEY.
     it 'retrieve all referral users' do
       referral_users = described_class.all(
         page_size: Fixture.page_size,
@@ -45,19 +48,30 @@ describe EasyPost::Beta::Referral, :authenticate_prod do
     end
   end
 
-  describe '.add_credit_card' do
-    xit 'adds a credit card to a referral user account' do
-      # Do not record this test in cassette because there is sensitive info
-      credit_card = described_class.add_credit_card(
-        'your_referral_user_api_key',
-        '1234567890123',
-        '00',
-        '0000',
-        '000',
-      )
+  describe '.add_credit_card', :vcr do
+    it 'adds a credit card to a referral user account' do
+      # This test requires a partner user's production API key via EASYPOST_PROD_API_KEY
+      # as well as one of that user's referral's production API keys via REFERRAL_USER_PROD_API_KEY.
+      #
+      # VCR has trouble matching the body of the form-encoded data here, override the default VCR
+      # rubocop:disable Metrics/LineLength
+      VCR.use_cassette(
+        'beta/referral/EasyPost_Beta_Referral_add_credit_card_adds_a_credit_card_to_a_referral_user_account', match_requests_on: [
+          :uri, :method,
+        ],
+      ) do
+        # rubocop:enable Metrics/LineLength
+        credit_card = described_class.add_credit_card(
+          REFERRAL_USER_PROD_API_KEY,
+          Fixture.credit_card_details[:number],
+          Fixture.credit_card_details[:expiration_month],
+          Fixture.credit_card_details[:expiration_year],
+          Fixture.credit_card_details[:cvc],
+        )
 
-      expect(credit_card.id).to match('card_')
-      expect(credit_card.last4).to match('0123')
+        expect(credit_card.id).to match('card_')
+        expect(credit_card.last4).to match('6170')
+      end
     end
   end
 end

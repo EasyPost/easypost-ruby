@@ -56,13 +56,12 @@ describe EasyPost::CarrierAccount, :authenticate_prod do
   end
 
   describe '.delete' do
-    xit 'deletes a carrier account' do
-      # No need to re-test this here since we delete each carrier account after each test right now
+    it 'deletes a carrier account' do
       carrier_account = described_class.create(Fixture.basic_carrier_account)
 
       response = carrier_account.delete
 
-      expect(response).to eq({})
+      expect(response).to be_an_instance_of(described_class)
     end
   end
 

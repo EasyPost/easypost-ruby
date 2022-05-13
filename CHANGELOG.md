@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## NEXT RELEASE
+
+- Fixes a bug where the library could not properly parse the response of deleting a child user
+- Fixes a bug where you could not update a webhook due to a `wrong number of arguments` error
+
 ## v4.2.1 (2022-05-11)
 
 - Corrects the `Beta` namespace for the new Referral class

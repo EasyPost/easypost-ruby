@@ -11,11 +11,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 201
@@ -34,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 7b4066346216a55be788ee650040cd78
+      - 3450b474627d40b4e7873bb7003113b4
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -42,35 +41,33 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/parcels.prcl_a3d7bc42c0894a649fbaf90ae020b76b"
+      - "/api/v2/parcels.prcl_e64fd3bea58e4664b413e1ed7e09ca48"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"7d56209a2460d7bbc2b3d17a83f1a762"
-      X-Request-Id:
-      - c0a67e94-43f6-4ebd-b85a-ee70426bc5fb
+      - W/"a2e9c23f8ec1251b405ca41ef99c150a"
       X-Runtime:
-      - '0.025121'
+      - '0.024941'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb6nuq
       X-Version-Label:
-      - easypost-202202232103-87ed4a9d34-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 88c34981dc
-      - intlb2nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"prcl_a3d7bc42c0894a649fbaf90ae020b76b","object":"Parcel","created_at":"2022-02-23T21:21:31Z","updated_at":"2022-02-23T21:21:31Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
-  recorded_at: Wed, 23 Feb 2022 21:21:31 GMT
+      encoding: UTF-8
+      string: '{"id":"prcl_e64fd3bea58e4664b413e1ed7e09ca48","object":"Parcel","created_at":"2022-05-12T17:15:32Z","updated_at":"2022-05-12T17:15:32Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
+  recorded_at: Thu, 12 May 2022 17:15:32 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/parcels/prcl_a3d7bc42c0894a649fbaf90ae020b76b
+    uri: https://api.easypost.com/v2/parcels/prcl_e64fd3bea58e4664b413e1ed7e09ca48
     body:
       encoding: US-ASCII
       string: ''
@@ -79,11 +76,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -102,7 +98,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 7b4066376216a55be788ee660040cd82
+      - 3450b474627d40b4e7873bb8003113c5
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -112,26 +108,26 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"7d56209a2460d7bbc2b3d17a83f1a762"
-      X-Request-Id:
-      - cab4bf23-ce0c-4ffe-a429-9eabf910cfac
+      - W/"a2e9c23f8ec1251b405ca41ef99c150a"
       X-Runtime:
-      - '0.020865'
+      - '0.020189'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb7nuq
       X-Version-Label:
-      - easypost-202202232103-87ed4a9d34-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb2nuq 88c34981dc
-      - intlb1nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"prcl_a3d7bc42c0894a649fbaf90ae020b76b","object":"Parcel","created_at":"2022-02-23T21:21:31Z","updated_at":"2022-02-23T21:21:31Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
-  recorded_at: Wed, 23 Feb 2022 21:21:31 GMT
+      encoding: UTF-8
+      string: '{"id":"prcl_e64fd3bea58e4664b413e1ed7e09ca48","object":"Parcel","created_at":"2022-05-12T17:15:32Z","updated_at":"2022-05-12T17:15:32Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
+  recorded_at: Thu, 12 May 2022 17:15:32 GMT
 recorded_with: VCR 6.0.0

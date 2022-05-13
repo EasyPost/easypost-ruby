@@ -11,11 +11,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -34,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 89bd310362169032e7884842003cdbf8
+      - 3450b476627d40abe787387f003110ab
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -44,31 +43,29 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"f8dbc237c544e56eadc092e1d8b0aca0"
-      X-Request-Id:
-      - d95a5a9c-c5df-44fb-b397-8dc6a1dd72d7
+      - W/"e2145eb7f8e15ec9e84a74f743baa530"
       X-Runtime:
-      - '0.202307'
+      - '0.189211'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb9nuq
       X-Version-Label:
-      - easypost-202202231719-cc169b5e93-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 88c34981dc
-      - intlb1nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"events":[{"description":"tracker.updated","id":"evt_97ccfae094ce11ec87db7b9f65e335f5","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-02-23T17:32:37.260Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_7930e8da94ce11ec97853b8a05bbc299","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-02-23T17:31:45.906Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_764188e694ce11ecab561f956dd0863e","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-02-23T17:31:40.982Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_74feed5294ce11ec8cbf13a1f03362bb","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-02-23T17:31:38.868Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_7465889c94ce11eca9fb6502898d6435","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-02-23T17:31:37.862Z","mode":"test","object":"Event"}],"has_more":true}'
-  recorded_at: Wed, 23 Feb 2022 19:51:14 GMT
+      encoding: UTF-8
+      string: '{"events":[{"description":"batch.updated","id":"evt_18553e04d21711ec963d2754109c51b1","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-05-12T17:15:17.596Z","mode":"test","object":"Event"},{"description":"batch.updated","id":"evt_179e7a98d21711ec9ce05d4fe13dba06","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-05-12T17:15:16.398Z","mode":"test","object":"Event"},{"description":"batch.created","id":"evt_178b443cd21711eca8c84b774bc7277b","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-05-12T17:15:16.272Z","mode":"test","object":"Event"},{"description":"batch.updated","id":"evt_175a2956d21711ec81ec191d81cff411","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-05-12T17:15:15.950Z","mode":"test","object":"Event"},{"description":"batch.updated","id":"evt_173a2584d21711ecaeb60d5a184126ab","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2022-05-12T17:15:15.741Z","mode":"test","object":"Event"}],"has_more":true}'
+  recorded_at: Thu, 12 May 2022 17:15:23 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/events/evt_97ccfae094ce11ec87db7b9f65e335f5
+    uri: https://api.easypost.com/v2/events/evt_18553e04d21711ec963d2754109c51b1
     body:
       encoding: US-ASCII
       string: ''
@@ -77,11 +74,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/3.5.0 Ruby/3.1.0-p0
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -100,7 +96,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 89bd310562169032e788485a003cdc1c
+      - 3450b475627d40abe7873880003110c3
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -110,26 +106,26 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"2c7fc1eadca23f399091ff63740d45a3"
-      X-Request-Id:
-      - d5a16057-6b72-4da8-bd6d-be03337b1e4d
+      - W/"6abea7769732107061a5f78b8079b676"
       X-Runtime:
-      - '0.026380'
+      - '0.023508'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb1nuq
+      - bigweb7nuq
       X-Version-Label:
-      - easypost-202202231719-cc169b5e93-master
+      - easypost-202205110022-b4df6b5700-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb1nuq 88c34981dc
-      - intlb2nuq 88c34981dc
+      - extlb2nuq c51cdb8bf2
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"description":"tracker.updated","mode":"test","previous_attributes":{"status":"out_for_delivery"},"created_at":"2022-02-23T17:32:37.000Z","pending_urls":[],"completed_urls":[],"updated_at":"2022-02-23T17:32:37.000Z","id":"evt_97ccfae094ce11ec87db7b9f65e335f5","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","object":"Event"}'
-  recorded_at: Wed, 23 Feb 2022 19:51:14 GMT
+      encoding: UTF-8
+      string: '{"description":"batch.updated","mode":"test","previous_attributes":{"state":"created"},"created_at":"2022-05-12T17:15:18.000Z","pending_urls":[],"completed_urls":[],"updated_at":"2022-05-12T17:15:18.000Z","id":"evt_18553e04d21711ec963d2754109c51b1","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","object":"Event"}'
+  recorded_at: Thu, 12 May 2022 17:15:23 GMT
 recorded_with: VCR 6.0.0
