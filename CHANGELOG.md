@@ -4,6 +4,7 @@
 
 - Fixes a bug where the library could not properly parse the response of deleting a child user
 - Fixes a bug where you could not update a webhook due to a `wrong number of arguments` error
+- Requests will now fail fast with an error if an API key is not provided instead of making a live API call with no key
 
 ## v4.2.1 (2022-05-11)
 

@@ -20,7 +20,7 @@ jobs:
           ruby-version: ${{ matrix.rubyversion }}
           bundler-cache: true
       - name: run tests
-        run: bundle exec rspec
+        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 bundle exec rspec
   lint:
     runs-on: ubuntu-latest
     steps:
