@@ -10,6 +10,10 @@ EasyPost::Connection = Struct.new(:uri, :config, keyword_init: true) do
   # @raise [EasyPost::Error] if the response has a non-2xx status code
   # @return [Hash] JSON object parsed from the response body
   def call(method, path, api_key = nil, body = nil)
+    if api_key.nil?
+      raise EasyPost::Error, 'No API key provided.'
+    end
+
     connection =
       if config[:proxy]
         proxy_uri = URI(config[:proxy])
