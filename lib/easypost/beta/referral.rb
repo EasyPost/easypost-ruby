@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Referral objects are User objects created from a Partner user.
 class EasyPost::Beta::Referral < EasyPost::Resource
   # Create a referral user. This function requires the Partner User's API key.
   def self.create(params = {}, api_key = nil)
@@ -14,7 +15,7 @@ class EasyPost::Beta::Referral < EasyPost::Resource
         email: email,
       },
     }
-    _ = EasyPost.make_request(:put, "/beta/referral_customers/#{user_id}", api_key, wrapped_params)
+    EasyPost.make_request(:put, "/beta/referral_customers/#{user_id}", api_key, wrapped_params)
 
     # return true if API succeeds, else an error is throw if it fails.
     true
