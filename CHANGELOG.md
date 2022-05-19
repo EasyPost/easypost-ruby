@@ -1,11 +1,11 @@
 # CHANGELOG
 
-## NEXT RELEASE
+## v4.3.0 (2022-05-19)
 
+- Adds the `EndShipper` Beta class with `create`, `retrieve`, `all`, and `save` functions
+- Requests will now fail fast with an error if an API key is not provided instead of making a live API call with no key
 - Fixes a bug where the library could not properly parse the response of deleting a child user
 - Fixes a bug where you could not update a webhook due to a `wrong number of arguments` error
-- Requests will now fail fast with an error if an API key is not provided instead of making a live API call with no key
-- Adds the `EndShipper` Beta class with `create`, `retrieve`, `all`, and `save` functions
 
 ## v4.2.1 (2022-05-11)
 
