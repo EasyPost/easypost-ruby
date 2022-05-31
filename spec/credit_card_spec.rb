@@ -6,7 +6,7 @@ describe EasyPost::CreditCard, :authenticate_prod do
   describe '.fund' do
     xit 'fund a credit card' do
       # Skipping due to the lack of an available real credit card in tests
-      credit_card = described_class.fund('100', 'primary')
+      credit_card = described_class.fund('20', 'primary')
 
       expect(credit_card).not_to be_nil
     end
