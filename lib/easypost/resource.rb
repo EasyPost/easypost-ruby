@@ -97,7 +97,7 @@ class EasyPost::Resource < EasyPost::EasyPostObject
 
       wrapped_params = { self.class.class_name => values }
 
-      response = EasyPost.make_request(:put, url, @api_key, wrapped_params)
+      response = EasyPost.make_request(:patch, url, @api_key, wrapped_params)
       refresh_from(response, api_key)
     end
     self

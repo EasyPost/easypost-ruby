@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b470627d40a7e787384300310f3c
+      - cf92a6486298f91eea43ebb00078cdab
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -43,31 +43,32 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"5b5fb584ac2ec26bbc2e1fe2c9667407"
+      - W/"c469caf16d552c2ab8e5a84b710eae2d"
       X-Runtime:
-      - '0.123477'
+      - '0.122402'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb4nuq
+      - bigweb2nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202206020045-73e51fcbbc-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb1nuq 570dfcbc0a
+      - extlb3wdc 0910011e7e
+      - intlb1wdc 570dfcbc0a
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"ca_20dc2fbc45a64ee3bcd5a25360a83928","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-05-12T17:15:19Z","updated_at":"2022-05-12T17:15:19Z","description":"UPS
+      string: '{"id":"ca_b18bc852340a44f88fe23525aa5cb6c4","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-06-02T17:53:34Z","updated_at":"2022-06-02T17:53:34Z","description":"UPS
         Account","reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":{"credentials":{"account_number":{"visibility":"readonly","label":"UPS
         Account Number","value":"A1A1A1"}}},"credentials":"<REDACTED>","test_credentials":null}'
-  recorded_at: Thu, 12 May 2022 17:15:19 GMT
+  recorded_at: Thu, 02 Jun 2022 17:53:35 GMT
 - request:
-    method: put
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_20dc2fbc45a64ee3bcd5a25360a83928
+    method: patch
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_b18bc852340a44f88fe23525aa5cb6c4
     body:
       encoding: UTF-8
       string: '{"carrier_account":{"description":"My custom description"}}'
@@ -98,7 +99,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b471627d40a8e787384400310f5c
+      - f83f337f6298f91fea43ebb1007c3120
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -108,31 +109,32 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"48dbc5fe71413dc8679d41e3d344cc82"
+      - W/"e4116e38493ab0d64f5117ee260a7a37"
       X-Runtime:
-      - '0.200897'
+      - '0.233159'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9nuq
+      - bigweb6nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202206020045-73e51fcbbc-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
+      - extlb1wdc 0910011e7e
       - intlb1nuq 570dfcbc0a
+      - intlb1wdc 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"ca_20dc2fbc45a64ee3bcd5a25360a83928","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-05-12T17:15:19Z","updated_at":"2022-05-12T17:15:20Z","description":"My
+      string: '{"id":"ca_b18bc852340a44f88fe23525aa5cb6c4","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-06-02T17:53:34Z","updated_at":"2022-06-02T17:53:35Z","description":"My
         custom description","reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":{"credentials":{"account_number":{"visibility":"readonly","label":"UPS
         Account Number","value":"A1A1A1"}}},"credentials":"<REDACTED>","test_credentials":null}'
-  recorded_at: Thu, 12 May 2022 17:15:20 GMT
+  recorded_at: Thu, 02 Jun 2022 17:53:35 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_20dc2fbc45a64ee3bcd5a25360a83928
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_b18bc852340a44f88fe23525aa5cb6c4
     body:
       encoding: US-ASCII
       string: ''
@@ -163,7 +165,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b473627d40a8e787385c00310f76
+      - f5a1f0496298f91fea43ebb200db9743
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -175,22 +177,22 @@ http_interactions:
       Etag:
       - W/"44136fa355b3678a1146ad16f7e8649e"
       X-Runtime:
-      - '0.123489'
+      - '0.115775'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb8nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202206020045-73e51fcbbc-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb1nuq 570dfcbc0a
+      - extlb2nuq 0910011e7e
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: "{}"
-  recorded_at: Thu, 12 May 2022 17:15:20 GMT
+  recorded_at: Thu, 02 Jun 2022 17:53:35 GMT
 recorded_with: VCR 6.0.0

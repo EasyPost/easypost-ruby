@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b474627d40eee7873ff700312617
+      - 77ca7e816298f921ea43ebb700c49a59
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -43,29 +43,29 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"9fe5ea6a6f21b4b751fcbc3a6765dc7b"
+      - W/"5975a313bb123a8d9be853279542196d"
       X-Runtime:
-      - '0.142921'
+      - '0.145067'
       Transfer-Encoding:
       - chunked
       X-Node:
       - bigweb9nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202206020045-73e51fcbbc-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
+      - extlb1nuq 0910011e7e
       - intlb1nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"hook_438e1d02d21711ec9f811702175c6fdb","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2022-05-12T17:16:30Z","disabled_at":null}'
-  recorded_at: Thu, 12 May 2022 17:16:30 GMT
+      string: '{"id":"hook_edde2118e29c11ec9cd6051f7b826650","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2022-06-02T17:53:38Z","disabled_at":null}'
+  recorded_at: Thu, 02 Jun 2022 17:53:37 GMT
 - request:
-    method: put
-    uri: https://api.easypost.com/v2/webhooks/hook_438e1d02d21711ec9f811702175c6fdb
+    method: patch
+    uri: https://api.easypost.com/v2/webhooks/hook_edde2118e29c11ec9cd6051f7b826650
     body:
       encoding: UTF-8
       string: "{}"
@@ -96,7 +96,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b46f627d40eee7873ff800312635
+      - 77ca7e7e6298f921ea43ebb800c49a72
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -106,29 +106,29 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"9fe5ea6a6f21b4b751fcbc3a6765dc7b"
+      - W/"5975a313bb123a8d9be853279542196d"
       X-Runtime:
-      - '0.508562'
+      - '0.463821'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb1nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202206020045-73e51fcbbc-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb1nuq 570dfcbc0a
+      - extlb1nuq 0910011e7e
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"hook_438e1d02d21711ec9f811702175c6fdb","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2022-05-12T17:16:30Z","disabled_at":null}'
-  recorded_at: Thu, 12 May 2022 17:16:30 GMT
+      string: '{"id":"hook_edde2118e29c11ec9cd6051f7b826650","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2022-06-02T17:53:38Z","disabled_at":null}'
+  recorded_at: Thu, 02 Jun 2022 17:53:38 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/webhooks/hook_438e1d02d21711ec9f811702175c6fdb
+    uri: https://api.easypost.com/v2/webhooks/hook_edde2118e29c11ec9cd6051f7b826650
     body:
       encoding: US-ASCII
       string: ''
@@ -159,7 +159,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b475627d40efe7873ff90031266d
+      - f5a1f0456298f922ea43ebd000db97f9
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -171,24 +171,22 @@ http_interactions:
       Etag:
       - W/"44136fa355b3678a1146ad16f7e8649e"
       X-Runtime:
-      - '0.359183'
+      - '0.344548'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7nuq
+      - bigweb6nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202206020045-73e51fcbbc-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
+      - extlb2nuq 0910011e7e
       - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: "{}"
-  recorded_at: Thu, 12 May 2022 17:16:31 GMT
+  recorded_at: Thu, 02 Jun 2022 17:53:38 GMT
 recorded_with: VCR 6.0.0

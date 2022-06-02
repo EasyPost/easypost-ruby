@@ -12,7 +12,7 @@ class EasyPost::Webhook < EasyPost::Resource
 
     instance_url = "#{self.class.url}/#{CGI.escape(id)}"
 
-    response = EasyPost.make_request(:put, instance_url, @api_key, params)
+    response = EasyPost.make_request(:patch, instance_url, @api_key, params)
     refresh_from(response, api_key)
 
     self
