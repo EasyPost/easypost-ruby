@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b474627d40e8e7873cc300312495
+      - f5a1f0456298f920ea43ebb300db9777
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -43,30 +43,30 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"bd67f45514244af4b86ac77898372f15"
+      - W/"18024e4cde702fde15dcd1444d4c7ab3"
       X-Runtime:
-      - '0.134139'
+      - '0.034207'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb3nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202206020045-73e51fcbbc-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
+      - extlb2nuq 0910011e7e
       - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"New
-        Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":"<REDACTED>"}'
-  recorded_at: Thu, 12 May 2022 17:16:24 GMT
+      string: '{"id":"user_2cfd34d1261a4a9b93d56c313a9a824b","object":"User","parent_id":null,"name":"Ryan
+        Nguyen","phone_number":"<REDACTED>","verified":true,"created_at":"2022-05-23T17:43:47Z","balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":"<REDACTED>"}'
+  recorded_at: Thu, 02 Jun 2022 17:53:36 GMT
 - request:
-    method: put
-    uri: https://api.easypost.com/v2/users/user_0f6b83e3530b401cb1e8aeaa6a250d4d
+    method: patch
+    uri: https://api.easypost.com/v2/users/user_2cfd34d1261a4a9b93d56c313a9a824b
     body:
       encoding: UTF-8
       string: '{"user":{"name":"New Test Name"}}'
@@ -97,7 +97,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b474627d40e9e7873cc4003124ae
+      - f5a1f0486298f920ea43ebb400db9783
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -107,25 +107,25 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"bd67f45514244af4b86ac77898372f15"
+      - W/"6ca1c40e13b7949115a4e2c9a519268b"
       X-Runtime:
-      - '0.255811'
+      - '0.120214'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb4nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202206020045-73e51fcbbc-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb1nuq 570dfcbc0a
+      - extlb2nuq 0910011e7e
+      - intlb2nuq 570dfcbc0a
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"New
-        Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":"<REDACTED>"}'
-  recorded_at: Thu, 12 May 2022 17:16:25 GMT
+      string: '{"id":"user_2cfd34d1261a4a9b93d56c313a9a824b","object":"User","parent_id":null,"name":"New
+        Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2022-05-23T17:43:47Z","balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":"<REDACTED>"}'
+  recorded_at: Thu, 02 Jun 2022 17:53:36 GMT
 recorded_with: VCR 6.0.0
