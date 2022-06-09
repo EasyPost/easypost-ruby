@@ -5,7 +5,6 @@ require 'cgi'
 require 'net/http'
 
 require 'easypost/version'
-require 'easypost/util'
 require 'easypost/object'
 require 'easypost/resource'
 require 'easypost/error'
@@ -39,6 +38,8 @@ require 'easypost/tracker'
 require 'easypost/user'
 require 'easypost/webhook'
 require 'easypost/beta'
+
+require 'easypost/util'
 
 module EasyPost
   DEFAULT_API_BASE = 'https://api.easypost.com'
