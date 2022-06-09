@@ -61,7 +61,7 @@ module EasyPost::Util
     'TrackerReport' => EasyPost::Report,
     'User' => EasyPost::User,
     'Webhook' => EasyPost::Webhook,
-  }
+  }.freeze
 
   # Form-encode a multi-layer dictionary to a one-layer dictionary.
   def self.form_encode_params(hash, parent_keys = [], parent_dict = {})
