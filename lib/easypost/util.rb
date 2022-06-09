@@ -2,6 +2,67 @@
 
 # Internal utilities helpful for this libraries operation.
 module EasyPost::Util
+  BY_PREFIX = {
+    'adr' => EasyPost::Address,
+    'batch' => EasyPost::Batch,
+    'brd' => EasyPost::Brand,
+    'ca' => EasyPost::CarrierAccount,
+    'cstinfo' => EasyPost::CustomsInfo,
+    'cstitem' => EasyPost::CustomsItem,
+    'es' => EasyPost::Beta::EndShipper,
+    'evt' => EasyPost::Event,
+    'hook' => EasyPost::Webhook,
+    'ins' => EasyPost::Insurance,
+    'order' => EasyPost::Order,
+    'pickup' => EasyPost::Pickup,
+    'pickuprate' => EasyPost::PickupRate,
+    'pl' => EasyPost::PostageLabel,
+    'plrep' => EasyPost::Report,
+    'prcl' => EasyPost::Parcel,
+    'rate' => EasyPost::Rate,
+    'refrep' => EasyPost::Report,
+    'rfnd' => EasyPost::Refund,
+    'sf' => EasyPost::ScanForm,
+    'shp' => EasyPost::Shipment,
+    'shpinvrep' => EasyPost::Report,
+    'shprep' => EasyPost::Report,
+    'trk' => EasyPost::Tracker,
+    'trkrep' => EasyPost::Report,
+    'user' => EasyPost::User,
+  }.freeze
+
+  BY_TYPE = {
+    'Address' => EasyPost::Address,
+    'Batch' => EasyPost::Batch,
+    'Brand' => EasyPost::Brand,
+    'CarrierAccount' => EasyPost::CarrierAccount,
+    'CustomsInfo' => EasyPost::CustomsInfo,
+    'CustomsItem' => EasyPost::CustomsItem,
+    'EndShipper' => EasyPost::Beta::EndShipper,
+    'Event' => EasyPost::Event,
+    'Insurance' => EasyPost::Insurance,
+    'Order' => EasyPost::Order,
+    'Parcel' => EasyPost::Parcel,
+    'PaymentLogReport' => EasyPost::Report,
+    'Pickup' => EasyPost::Pickup,
+    'PickupRate' => EasyPost::PickupRate,
+    'PostageLabel' => EasyPost::PostageLabel,
+    'Rate' => EasyPost::Rate,
+    'Referral' => EasyPost::Beta::Referral,
+    'Refund' => EasyPost::Refund,
+    'RefundReport' => EasyPost::Report,
+    'Report' => EasyPost::Report,
+    'ScanForm' => EasyPost::ScanForm,
+    'Shipment' => EasyPost::Shipment,
+    'ShipmentInvoiceReport' => EasyPost::Report,
+    'ShipmentReport' => EasyPost::Report,
+    'TaxIdentifier' => EasyPost::TaxIdentifier,
+    'Tracker' => EasyPost::Tracker,
+    'TrackerReport' => EasyPost::Report,
+    'User' => EasyPost::User,
+    'Webhook' => EasyPost::Webhook,
+  }.freeze
+
   # Form-encode a multi-layer dictionary to a one-layer dictionary.
   def self.form_encode_params(hash, parent_keys = [], parent_dict = {})
     result = parent_dict or {}
@@ -55,84 +116,23 @@ module EasyPost::Util
 
   # Convert data to an EasyPost Object.
   def self.convert_to_easypost_object(response, api_key, parent = nil, name = nil)
-    types = {
-      'Address' => EasyPost::Address,
-      'Batch' => EasyPost::Batch,
-      'Brand' => EasyPost::Brand,
-      'CarrierAccount' => EasyPost::CarrierAccount,
-      'CustomsInfo' => EasyPost::CustomsInfo,
-      'CustomsItem' => EasyPost::CustomsItem,
-      'EndShipper' => EasyPost::Beta::EndShipper,
-      'Event' => EasyPost::Event,
-      'Insurance' => EasyPost::Insurance,
-      'Order' => EasyPost::Order,
-      'Parcel' => EasyPost::Parcel,
-      'PaymentLogReport' => EasyPost::Report,
-      'Pickup' => EasyPost::Pickup,
-      'PickupRate' => EasyPost::PickupRate,
-      'PostageLabel' => EasyPost::PostageLabel,
-      'Rate' => EasyPost::Rate,
-      'Referral' => EasyPost::Beta::Referral,
-      'Refund' => EasyPost::Refund,
-      'RefundReport' => EasyPost::Report,
-      'Report' => EasyPost::Report,
-      'ScanForm' => EasyPost::ScanForm,
-      'Shipment' => EasyPost::Shipment,
-      'ShipmentInvoiceReport' => EasyPost::Report,
-      'ShipmentReport' => EasyPost::Report,
-      'TaxIdentifier' => EasyPost::TaxIdentifier,
-      'Tracker' => EasyPost::Tracker,
-      'TrackerReport' => EasyPost::Report,
-      'User' => EasyPost::User,
-      'Webhook' => EasyPost::Webhook,
-    }
-
-    prefixes = {
-      'adr' => EasyPost::Address,
-      'batch' => EasyPost::Batch,
-      'brd' => EasyPost::Brand,
-      'ca' => EasyPost::CarrierAccount,
-      'cstinfo' => EasyPost::CustomsInfo,
-      'cstitem' => EasyPost::CustomsItem,
-      'es' => EasyPost::Beta::EndShipper,
-      'evt' => EasyPost::Event,
-      'hook' => EasyPost::Webhook,
-      'ins' => EasyPost::Insurance,
-      'order' => EasyPost::Order,
-      'pickup' => EasyPost::Pickup,
-      'pickuprate' => EasyPost::PickupRate,
-      'pl' => EasyPost::PostageLabel,
-      'plrep' => EasyPost::Report,
-      'prcl' => EasyPost::Parcel,
-      'rate' => EasyPost::Rate,
-      'refrep' => EasyPost::Report,
-      'rfnd' => EasyPost::Refund,
-      'sf' => EasyPost::ScanForm,
-      'shp' => EasyPost::Shipment,
-      'shpinvrep' => EasyPost::Report,
-      'shprep' => EasyPost::Report,
-      'trk' => EasyPost::Tracker,
-      'trkrep' => EasyPost::Report,
-      'user' => EasyPost::User,
-    }
-
     case response
     when Array
       response.map { |i| convert_to_easypost_object(i, api_key, parent) }
     when Hash
       if (cls_name = response[:object])
-        cls = types[cls_name]
+        cls = BY_TYPE[cls_name]
       elsif response[:id]
         if response[:id].index('_').nil?
           cls = EasyPost::EasyPostObject
         elsif (cls_prefix = response[:id][0..response[:id].index('_')])
-          cls = prefixes[cls_prefix[0..-2]]
+          cls = BY_PREFIX[cls_prefix[0..-2]]
         end
       elsif response['id']
         if response['id'].index('_').nil?
           cls = EasyPost::EasyPostObject
         elsif (cls_prefix = response['id'][0..response['id'].index('_')])
-          cls = prefixes[cls_prefix[0..-2]]
+          cls = BY_PREFIX[cls_prefix[0..-2]]
         end
       end
 
