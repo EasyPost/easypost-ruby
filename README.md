@@ -116,10 +116,13 @@ API Documentation can be found at: <https://easypost.com/docs/api>.
 
 ```bash
 # Install dependencies
-bundle install
+make install
+
+# Lint project
+make lint
 
 # Run tests (coverage is generated on a successful test suite run)
-EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... bundle exec rspec
+EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make test
 ```
 
 ### Testing

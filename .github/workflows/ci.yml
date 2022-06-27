@@ -20,7 +20,7 @@ jobs:
           ruby-version: ${{ matrix.rubyversion }}
           bundler-cache: true
       - name: run tests
-        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 bundle exec rspec
+        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 make test
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -31,6 +31,8 @@ jobs:
         with:
           ruby-version: "3.1"
       - name: Install Dependencies
-        run: bundle install
+        run: make install
       - name: Lint Project
-        run: rubocop
+        run: make lint
+      - name: Run security analysis
+        run: make brakeman
