@@ -1,0 +1,4 @@
+* text=auto
+
+spec/cassettes/**/* -diff
+spec/cassettes/**/* linguist-generated
