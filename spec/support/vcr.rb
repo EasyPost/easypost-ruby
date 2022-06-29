@@ -46,9 +46,6 @@ VCR.configure do |config|
     unless interaction.request.headers['User-Agent'].nil?
       interaction.request.headers['User-Agent'] = REPLACEMENT_VALUE
     end
-    unless interaction.request.headers['X-Client-User-Agent'].nil?
-      interaction.request.headers['X-Client-User-Agent'] = REPLACEMENT_VALUE
-    end
     # rubocop:enable Style/GuardClause
   end
 
