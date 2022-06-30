@@ -2,6 +2,8 @@
 
 # Internal utilities helpful for this libraries operation.
 module EasyPost::Util
+  attr_accessor :os_name, :os_version, :os_arch
+
   BY_PREFIX = {
     'adr' => EasyPost::Address,
     'batch' => EasyPost::Batch,
@@ -62,6 +64,27 @@ module EasyPost::Util
     'User' => EasyPost::User,
     'Webhook' => EasyPost::Webhook,
   }.freeze
+
+  def self.os_name
+    case RUBY_PLATFORM
+    when /linux/i
+      'Linux'
+    when /darwin/i
+      'Darwin'
+    when /cygwin|mswin|mingw|bccwin|wince|emx/i
+      'Windows'
+    else
+      'Unknown'
+    end
+  end
+
+  def self.os_version
+    Gem::Platform.local.version
+  end
+
+  def self.os_arch
+    Gem::Platform.local.cpu
+  end
 
   # Form-encode a multi-layer dictionary to a one-layer dictionary.
   def self.form_encode_params(hash, parent_keys = [], parent_dict = {})

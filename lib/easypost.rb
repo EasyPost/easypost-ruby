@@ -40,7 +40,6 @@ require 'easypost/webhook'
 require 'easypost/beta'
 
 require 'easypost/util'
-require 'easypost/version_info'
 
 module EasyPost
   DEFAULT_API_BASE = 'https://api.easypost.com'
@@ -55,8 +54,8 @@ module EasyPost
   def self.user_agent
     @user_agent ||=
       "EasyPost/v2 RubyClient/#{EasyPost::VERSION} Ruby/#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} " \
-      "OS/#{EasyPost::VersionInfo.os_name} OSVersion/#{EasyPost::VersionInfo.os_version} " \
-      "OSArch/#{EasyPost::VersionInfo.os_arch}"
+      "OS/#{EasyPost::Util.os_name} OSVersion/#{EasyPost::Util.os_version} " \
+      "OSArch/#{EasyPost::Util.os_arch}"
   end
 
   def self.default_headers
