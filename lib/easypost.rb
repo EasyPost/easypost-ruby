@@ -36,6 +36,8 @@ require "easypost/tracker"
 require "easypost/user"
 require "easypost/webhook"
 
+require 'easypost/util'
+
 module EasyPost
   @api_key = nil
   @api_base = "https://api.easypost.com"
@@ -125,7 +127,9 @@ module EasyPost
     end
 
     request["Content-Type"] = "application/json"
-    request["User-Agent"] = "EasyPost/v2 RubyClient/#{VERSION} Ruby/#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
+    request["User-Agent"] = "EasyPost/v2 RubyClient/#{EasyPost::VERSION} Ruby/#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} " \
+      "OS/#{EasyPost::Util.os_name} OSVersion/#{EasyPost::Util.os_version} " \
+      "OSArch/#{EasyPost::Util.os_arch}"
     if api_key = api_key || @api_key
       request["Authorization"] = "Basic #{Base64.strict_encode64("#{api_key}:")}"
     end
