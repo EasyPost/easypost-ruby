@@ -43,7 +43,6 @@ require 'easypost/util'
 
 module EasyPost
   DEFAULT_API_BASE = 'https://api.easypost.com'
-  DEFAULT_USER_AGENT = "EasyPost/v2 RubyClient/#{EasyPost::VERSION} Ruby/#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
 
   class << self
     attr_accessor :api_key, :api_base
@@ -52,10 +51,17 @@ module EasyPost
 
   self.api_base = DEFAULT_API_BASE
 
+  def self.user_agent
+    @user_agent ||=
+      "EasyPost/v2 RubyClient/#{EasyPost::VERSION} Ruby/#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} " \
+      "OS/#{EasyPost::Util.os_name} OSVersion/#{EasyPost::Util.os_version} " \
+      "OSArch/#{EasyPost::Util.os_arch}"
+  end
+
   def self.default_headers
     @default_headers ||= {
       'Content-Type' => 'application/json',
-      'User-Agent' => EasyPost::DEFAULT_USER_AGENT,
+      'User-Agent' => user_agent,
     }
   end
 
