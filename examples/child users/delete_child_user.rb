@@ -4,8 +4,8 @@ require 'easypost'
 
 EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
 
-shipment = EasyPost::Shipment.retrieve('shp_...')
+user = EasyPost::User.retrieve('user_...')
 
-shipment.label(file_format: 'ZPL')
+user.delete
 
-puts shipment
+puts user

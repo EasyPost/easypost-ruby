@@ -4,8 +4,10 @@ require 'easypost'
 
 EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
 
-shipment = EasyPost::Shipment.retrieve('shp_...')
+me = EasyPost::User.retrieve_me
 
-shipment.label(file_format: 'ZPL')
+me.recharge_threshold = '50.00'
 
-puts shipment
+me.save
+
+puts me

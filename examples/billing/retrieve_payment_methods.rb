@@ -4,8 +4,6 @@ require 'easypost'
 
 EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
 
-shipment = EasyPost::Shipment.retrieve('shp_...')
+payment_methods = EasyPost::PaymentMethod.all
 
-shipment.label(file_format: 'ZPL')
-
-puts shipment
+puts payment_methods

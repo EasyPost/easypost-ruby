@@ -4,8 +4,6 @@ require 'easypost'
 
 EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
 
-shipment = EasyPost::Shipment.retrieve('shp_...')
+deleted_credit_card = EasyPost::CreditCard.delete('card_...')
 
-shipment.label(file_format: 'ZPL')
-
-puts shipment
+puts deleted_credit_card
