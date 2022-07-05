@@ -4,8 +4,8 @@ require 'easypost'
 
 EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
 
-shipment = EasyPost::Shipment.retrieve('shp_...')
+batch = EasyPost::Batch.retrieve('batch_...')
 
-shipment.label(file_format: 'ZPL')
+batch.label({ file_format: 'epl2' })
 
-puts shipment
+puts batch

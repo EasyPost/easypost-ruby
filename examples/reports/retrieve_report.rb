@@ -4,8 +4,6 @@ require 'easypost'
 
 EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
 
-shipment = EasyPost::Shipment.retrieve('shp_...')
+report = EasyPost::Report.retrieve('<REPORT_ID>')
 
-shipment.label(file_format: 'ZPL')
-
-puts shipment
+puts report

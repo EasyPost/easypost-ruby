@@ -4,8 +4,6 @@ require 'easypost'
 
 EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
 
-shipment = EasyPost::Shipment.retrieve('shp_...')
+carrier_accounts = EasyPost::CarrierAccount.all
 
-shipment.label(file_format: 'ZPL')
-
-puts shipment
+puts carrier_accounts

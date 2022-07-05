@@ -4,8 +4,6 @@ require 'easypost'
 
 EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
 
-shipment = EasyPost::Shipment.retrieve('shp_...')
+webhooks = EasyPost::Webhook.all
 
-shipment.label(file_format: 'ZPL')
-
-puts shipment
+puts webhooks
