@@ -14,6 +14,10 @@ build:
 clean:
 	rm -rf coverage doc *.gem
 
+## fix - Fix Rubocop errors
+fix:
+	rubocop -A
+
 ## install - Install globally from source
 install:
 	bundle install
@@ -30,4 +34,4 @@ push:
 test:
 	bundle exec rspec
 
-.PHONY: help build clean install lint push test
+.PHONY: help build clean fix install lint push test

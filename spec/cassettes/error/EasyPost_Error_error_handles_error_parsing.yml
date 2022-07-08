@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b472627d40abe787387e00311096
+      - 0cdd6eea62c49c16efb3f654000b6fe8
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -43,18 +43,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.021024'
+      - '0.018863'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb1nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202207051744-6385ac2987-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb2nuq 570dfcbc0a
+      - extlb2nuq 403f17ff97
+      - intlb1nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -62,5 +62,5 @@ http_interactions:
       string: '{"error":{"code":"SHIPMENT.INVALID_PARAMS","message":"Unable to create
         shipment, one or more parameters were invalid.","errors":[{"to_address":"Required
         and missing."},{"from_address":"Required and missing."}]}}'
-  recorded_at: Thu, 12 May 2022 17:15:23 GMT
+  recorded_at: Tue, 05 Jul 2022 20:16:22 GMT
 recorded_with: VCR 6.0.0
