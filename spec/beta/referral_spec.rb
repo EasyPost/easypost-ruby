@@ -43,8 +43,11 @@ describe EasyPost::Beta::Referral, :authenticate_prod do
         page_size: Fixture.page_size,
       )
 
-      expect(referral_users.count).to be <= Fixture.page_size
-      expect(referral_users).to all(be_an_instance_of(EasyPost::User))
+      referral_users_array = referral_users.referral_customers
+
+      expect(referral_users_array.count).to be <= Fixture.page_size
+      expect(referral_users.has_more).not_to be_nil
+      expect(referral_users_array).to all(be_an_instance_of(EasyPost::User))
     end
   end
 
