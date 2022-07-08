@@ -39,7 +39,7 @@ class EasyPost::Billing < EasyPost::Resource
   end
 
   # Get payment method info (type of the payment method and ID of the payment method)
-  def self.get_payment_method_info(primary_or_secondary)
+  private_class_method def self.get_payment_method_info(primary_or_secondary)
     payment_methods = EasyPost::Billing.retrieve_payment_methods
     payment_method_map = {
       'primary' => 'primary_payment_method',
