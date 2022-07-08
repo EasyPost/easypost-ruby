@@ -4,7 +4,7 @@
 class EasyPost::Billing < EasyPost::Resource
   # Fund your EasyPost wallet by charging your primary or secondary card on file.
   def self.fund_wallet(amount, primary_or_secondary = 'primary', api_key = nil)
-    payment_info = EasyPost::Billing.get_payment_info(primary_or_secondary.downcase)
+    payment_info = EasyPost::Billing.get_payment_method_info(primary_or_secondary.downcase)
     endpoint = payment_info[0]
     payment_id = payment_info[1]
 
@@ -17,7 +17,7 @@ class EasyPost::Billing < EasyPost::Resource
 
   # Delete a payment method.
   def self.delete_payment_method(primary_or_secondary, api_key = nil)
-    payment_info = EasyPost::Billing.get_payment_info(primary_or_secondary.downcase)
+    payment_info = EasyPost::Billing.get_payment_method_info(primary_or_secondary.downcase)
     endpoint = payment_info[0]
     payment_id = payment_info[1]
 
@@ -38,8 +38,8 @@ class EasyPost::Billing < EasyPost::Resource
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
-  # Get payment info (type of the payment method and ID of the payment method)
-  def self.get_payment_info(primary_or_secondary)
+  # Get payment method info (type of the payment method and ID of the payment method)
+  def self.get_payment_method_info(primary_or_secondary)
     payment_methods = EasyPost::Billing.retrieve_payment_methods
     payment_method_map = {
       'primary' => 'primary_payment_method',
@@ -62,6 +62,7 @@ class EasyPost::Billing < EasyPost::Resource
         raise EasyPost::Error.new(error_string)
       end
     end
+
     [endpoint, payment_method_id]
   end
 end
