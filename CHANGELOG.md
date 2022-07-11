@@ -1,8 +1,10 @@
 # CHANGELOG
 
-## Next Release
+## v4.4.0 (2022-07-11)
 
 - Adds `Billing.retrieve_payment_methods()`, `Billing.fund_wallet()`, and `Billing.delete_payment_method()` functions
+- Captures OS information in the user-agent header for easier debugging
+- Update functions now use `patch` instead of `put` under the hood to better match API behavior and documentation. The behavior of these functions should remain the same
 
 ## v4.3.0 (2022-05-19)
 
