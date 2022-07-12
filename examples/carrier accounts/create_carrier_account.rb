@@ -2,9 +2,9 @@
 
 require 'easypost'
 
-EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
+EasyPost.api_key = ENV['EASYPOST_API_KEY']
 
-ca = EasyPost::CarrierAccount.create(
+carrier_account = EasyPost::CarrierAccount.create(
   type: 'UpsAccount',
   description: 'NY Location UPS Account',
   reference: 'my-reference',
@@ -16,4 +16,4 @@ ca = EasyPost::CarrierAccount.create(
   },
 )
 
-puts ca
+puts carrier_account

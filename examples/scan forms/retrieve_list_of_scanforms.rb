@@ -2,8 +2,10 @@
 
 require 'easypost'
 
-EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
+EasyPost.api_key = ENV['EASYPOST_API_KEY']
 
-scan_forms = EasyPost::ScanForm.all({ page_size: 2 })
+scan_forms = EasyPost::ScanForm.all(
+  { page_size: 2 },
+)
 
 puts scan_forms

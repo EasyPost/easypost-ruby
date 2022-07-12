@@ -2,14 +2,12 @@
 
 require 'easypost'
 
-EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
+EasyPost.api_key = ENV['EASYPOST_API_KEY']
 
-ca = EasyPost::CarrierAccount.retrieve('ca_...')
+carrier_account = EasyPost::CarrierAccount.retrieve('ca_...')
+carrier_account.description = 'FL Location UPS Account'
 
-ca.description = 'FL Location UPS Account'
+carrier_account.credentials['account_number'] = 'B2B2B2'
+carrier_account.save
 
-ca.credentials['account_number'] = 'B2B2B2'
-
-ca.save
-
-puts ca
+puts carrier_account

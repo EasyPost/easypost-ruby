@@ -2,8 +2,8 @@
 
 require 'easypost'
 
-EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
+EasyPost.api_key = ENV['EASYPOST_API_KEY']
 
-EasyPost::Insurance.retrieve('ins_...')
+insurance = EasyPost::Insurance.retrieve('ins_...')
 
 puts insurance

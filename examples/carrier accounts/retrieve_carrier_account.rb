@@ -2,8 +2,8 @@
 
 require 'easypost'
 
-EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
+EasyPost.api_key = ENV['EASYPOST_API_KEY']
 
-ca = EasyPost::CarrierAccount.retrieve('ca_...')
+carrier_account = EasyPost::CarrierAccount.retrieve('ca_...')
 
-puts ca
+puts carrier_account
