@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## NEXT RELEASE
+
+- Adds `generate_form` function to the Shipment object
+
 ## v4.4.0 (2022-07-11)
 
 - Adds `Billing.retrieve_payment_methods()`, `Billing.fund_wallet()`, and `Billing.delete_payment_method()` functions

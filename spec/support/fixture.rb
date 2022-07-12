@@ -267,4 +267,19 @@ class Fixture
       email: 'test@example.com',
     }
   end
+
+  def self.rma_form_options
+    {
+      barcode: 'RMA12345678900',
+      line_items: [
+        {
+          product: {
+            title: 'Square Reader',
+            barcode: '855658003251',
+          },
+          units: 8,
+        },
+      ],
+    }
+  end
 end

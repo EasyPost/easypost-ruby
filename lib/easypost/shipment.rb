@@ -112,4 +112,19 @@ class EasyPost::Shipment < EasyPost::Resource
 
     lowest_smartrate
   end
+
+  # Generate a form for a Shipment.
+  def generate_form(form_type, form_options = {})
+    params = {}
+    params[:type] = form_type
+    merged_params = params.merge(form_options)
+    wrapped_params = {
+      form: merged_params,
+    }
+
+    response = EasyPost.make_request(:post, "#{url}/forms", @api_key, wrapped_params)
+    refresh_from(response, @api_key)
+
+    self
+  end
 end

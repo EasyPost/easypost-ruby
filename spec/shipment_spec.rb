@@ -262,4 +262,23 @@ describe EasyPost::Shipment do
       }.to raise_error(EasyPost::Error)
     end
   end
+
+  describe '.generate_form' do
+    it 'generates a form for a shipment' do
+      shipment = described_class.create(Fixture.one_call_buy_shipment)
+      form_type = 'return_packing_slip'
+
+      shipment.generate_form(
+        form_type,
+        Fixture.rma_form_options,
+      )
+
+      expect(shipment.forms.count).to be > 0
+
+      form = shipment.forms[0]
+
+      expect(form.form_type).to eq(form_type)
+      expect(form.form_url).not_to be_nil
+    end
+  end
 end
