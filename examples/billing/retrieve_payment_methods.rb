@@ -2,7 +2,7 @@
 
 require 'easypost'
 
-EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
+EasyPost.api_key = ENV['EASYPOST_API_KEY']
 
 payment_methods = EasyPost::PaymentMethod.all
 

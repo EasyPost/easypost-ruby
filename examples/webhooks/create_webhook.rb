@@ -2,8 +2,10 @@
 
 require 'easypost'
 
-EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
+EasyPost.api_key = ENV['EASYPOST_API_KEY']
 
-webhook = EasyPost::Webhook.create({ url: 'http://example.com' })
+webhook = EasyPost::Webhook.create(
+  { url: 'http://example.com' },
+)
 
 puts webhook

@@ -4,8 +4,6 @@ require 'easypost'
 
 EasyPost.api_key = ENV['EASYPOST_API_KEY']
 
-addresses = EasyPost::Address.all(
-  page_size: 5,
-)
+customs_item = EasyPost::CustomsItem.retrieve('cstitem_...')
 
-puts addresses
+puts customs_item
