@@ -27,9 +27,7 @@ describe EasyPost::Error do
       )
 
       # Compare an error and its properties to another error
-      # rubocop:disable Lint/BinaryOperatorWithIdenticalOperands
-      expect(e == e).to be true
-      # rubocop:enable Lint/BinaryOperatorWithIdenticalOperands
+      expect(e).to eq(e.clone)
     end
   end
 end
