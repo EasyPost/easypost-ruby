@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## NEXT RELEASE
+## v4.5.0 (2022-07-18)
 
-- Adds `generate_form` function to the Shipment object
+- Adds ability to generate shipment forms via `generate_form` function
 
 ## v4.4.0 (2022-07-11)
 
