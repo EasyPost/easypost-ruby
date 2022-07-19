@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Deprecated PaymentMethod class, please use Billing class for retrieve all payment method function
+
 ## v4.5.0 (2022-07-18)
 
 - Adds ability to generate shipment forms via `generate_form` function
