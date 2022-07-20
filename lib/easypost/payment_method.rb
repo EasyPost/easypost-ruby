@@ -2,14 +2,10 @@
 
 # PaymentMethod objects represent a payment method of a user.
 class EasyPost::PaymentMethod < EasyPost::Resource
-  # Retrieve all payment methods.
+  # <b>DEPRECATED:</b> Please use <tt>Billing class</tt> instead.
+  # Last working version v4.5.0. Removal v6.0.0.
   def self.all(api_key = nil)
-    response = EasyPost.make_request(:get, url, api_key)
-
-    if response['id'].nil?
-      raise EasyPost::Error.new('Billing has not been setup for this user. Please add a payment method.')
-    end
-
-    EasyPost::Util.convert_to_easypost_object(response, api_key)
+    warn '[DEPRECATION] `all` is deprecated.  Please use `Billing.retrieve_payment_methods` instead.'
+    EasyPost::Billing.retrieve_payment_methods(api_key)
   end
 end
