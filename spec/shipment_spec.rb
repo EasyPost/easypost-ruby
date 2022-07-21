@@ -62,6 +62,36 @@ describe EasyPost::Shipment do
       expect(shipment.parcel.id).to match('prcl_')
       expect(shipment.from_address.street1).to eq('388 Townsend St')
     end
+
+    it 'creates a shipment with carbon_offset' do
+      shipment_data = Fixture.basic_carbon_offset_shipment
+      shipment_data[:carbon_offset] = true # set carbon_offset to true
+
+      shipment = described_class.create(shipment_data)
+
+      expect(shipment).to be_an_instance_of(described_class)
+      expect(shipment.rates).not_to be_nil
+
+      rate = shipment.rates.first
+      expect(rate.carbon_offset).not_to be_nil
+    end
+
+    xit 'creates a one-call-buy shipment with carbon_offset' do
+      # Skipping until feature goes live
+      shipment_data = Fixture.one_call_buy_carbon_offset_shipment
+      shipment_data[:carbon_offset] = true # set carbon_offset to true
+
+      shipment = described_class.create(shipment_data)
+
+      expect(shipment.fees).not_to be_nil
+      carbon_offset_found = false
+      shipment.fees.each do |fee|
+        if fee.type == 'CarbonOffsetFee'
+          carbon_offset_found = true
+        end
+      end
+      expect(carbon_offset_found).to be_truthy
+    end
   end
 
   describe '.retrieve' do
@@ -97,6 +127,27 @@ describe EasyPost::Shipment do
       )
 
       expect(shipment.postage_label).not_to be_nil
+    end
+
+    xit 'buys a shipment with carbon offset' do
+      # Skipping until feature goes live
+      shipment = described_class.create(Fixture.full_carbon_offset_shipment)
+
+      shipment.buy(
+        shipment.lowest_rate,
+        true,
+      )
+
+      expect(shipment.postage_label).not_to be_nil
+
+      expect(shipment.fees).not_to be_nil
+      carbon_offset_found = false
+      shipment.fees.each do |fee|
+        if fee.type == 'CarbonOffsetFee'
+          carbon_offset_found = true
+        end
+      end
+      expect(carbon_offset_found).to be_truthy
     end
   end
 
@@ -279,21 +330,6 @@ describe EasyPost::Shipment do
 
       expect(form.form_type).to eq(form_type)
       expect(form.form_url).not_to be_nil
-    end
-  end
-
-  describe '.carbon_offset' do
-    xit 'creates a shipment with carbon_offset' do
-      # Skipping until carbon offset goes live
-      shipment_data = Fixture.basic_shipment
-      shipment_data[:carbon_offset] = true # set carbon_offset to true
-
-      shipment = described_class.create(shipment_data)
-
-      expect(shipment).to be_an_instance_of(described_class)
-
-      rate = shipment.lowest_smartrate(1, 'percentile_90')
-      expect(rate.carbon_offset).not_to be_nil
     end
   end
 end
