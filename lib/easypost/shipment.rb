@@ -35,11 +35,15 @@ class EasyPost::Shipment < EasyPost::Resource
   end
 
   # Buy a Shipment.
-  def buy(params = {})
+  def buy(params = {}, carbon_offset: false)
     if params.instance_of?(EasyPost::Rate)
       temp = params.clone
       params = {}
       params[:rate] = temp
+    end
+
+    if carbon_offset
+      params[:carbon_offset] = true
     end
 
     response = EasyPost.make_request(:post, "#{url}/buy", @api_key, params)

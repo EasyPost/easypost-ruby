@@ -93,7 +93,7 @@ describe EasyPost::Shipment do
       shipment = described_class.create(Fixture.full_shipment)
 
       shipment.buy(
-        rate: shipment.lowest_rate,
+        shipment.lowest_rate,
       )
 
       expect(shipment.postage_label).not_to be_nil
@@ -118,7 +118,7 @@ describe EasyPost::Shipment do
       shipment = described_class.create(Fixture.full_shipment)
 
       shipment.buy(
-        rate: shipment.lowest_rate,
+        shipment.lowest_rate,
       )
 
       shipment.label(
