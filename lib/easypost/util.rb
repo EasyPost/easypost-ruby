@@ -37,6 +37,7 @@ module EasyPost::Util
     'Address' => EasyPost::Address,
     'Batch' => EasyPost::Batch,
     'Brand' => EasyPost::Brand,
+    'CarbonOffset' => EasyPost::CarbonOffset,
     'CarrierAccount' => EasyPost::CarrierAccount,
     'CustomsInfo' => EasyPost::CustomsInfo,
     'CustomsItem' => EasyPost::CustomsItem,

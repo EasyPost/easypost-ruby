@@ -13,6 +13,20 @@ class EasyPost::Shipment < EasyPost::Resource
     self
   end
 
+  # Create a Shipment.
+  def self.create(params = {}, api_key = nil)
+    shipment = params.reject { |k, _| [:carbon_offset].include?(k) }
+
+    wrapped_params = { shipment: shipment }
+
+    if params[:carbon_offset]
+      wrapped_params[:carbon_offset] = params[:carbon_offset]
+    end
+
+    response = EasyPost.make_request(:post, url, api_key, wrapped_params)
+    EasyPost::Util.convert_to_easypost_object(response, api_key)
+  end
+
   # Get the SmartRates of a Shipment.
   def get_smartrates # rubocop:disable Naming/AccessorMethodName
     response = EasyPost.make_request(:get, "#{url}/smartrate", @api_key)

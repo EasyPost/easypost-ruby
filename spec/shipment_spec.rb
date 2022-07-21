@@ -281,4 +281,19 @@ describe EasyPost::Shipment do
       expect(form.form_url).not_to be_nil
     end
   end
+
+  describe '.carbon_offset' do
+    xit 'creates a shipment with carbon_offset' do
+      # Skipping until carbon offset goes live
+      shipment_data = Fixture.basic_shipment
+      shipment_data[:carbon_offset] = true # set carbon_offset to true
+
+      shipment = described_class.create(shipment_data)
+
+      expect(shipment).to be_an_instance_of(described_class)
+
+      rate = shipment.lowest_smartrate(1, 'percentile_90')
+      expect(rate.carbon_offset).not_to be_nil
+    end
+  end
 end
