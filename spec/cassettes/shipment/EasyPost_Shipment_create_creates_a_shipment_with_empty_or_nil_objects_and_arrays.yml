@@ -36,7 +36,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b474627d40d1e7873c3a00311d53
+      - 4f7b62f562d994c5ec627ca3001c4fff
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -44,36 +44,36 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/shipments/shp_16b4f742ede94ccdb15c858029468564"
+      - "/api/v2/shipments/shp_bfaeb53565c14dfba583fbde1359d54a"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"6dbbfdb87630f1415ad149c9effc3821"
+      - W/"9d0d2c5c6d6f614d25896d78eee0386c"
       X-Runtime:
-      - '0.206279'
+      - '0.208448'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb4nuq
+      - bigweb2nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202207211654-3ddfa3bafe-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb2nuq 570dfcbc0a
+      - extlb2nuq 403f17ff97
+      - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"created_at":"2022-05-12T17:16:01Z","is_return":false,"messages":[],"mode":"test","options":{"currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"reference":null,"status":"unknown","tracking_code":null,"updated_at":"2022-05-12T17:16:01Z","batch_id":null,"batch_status":null,"batch_message":null,"customs_info":null,"from_address":{"id":"adr_32711d01d21711ec9ebeac1f6bc72124","object":"Address","created_at":"2022-05-12T17:16:01+00:00","updated_at":"2022-05-12T17:16:01+00:00","name":"Jack
+      string: '{"created_at":"2022-07-21T18:02:45Z","is_return":false,"messages":[],"mode":"test","options":{"currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"reference":null,"status":"unknown","tracking_code":null,"updated_at":"2022-07-21T18:02:45Z","batch_id":null,"batch_status":null,"batch_message":null,"customs_info":null,"from_address":{"id":"adr_52b03dce091f11eda2f0ac1f6b0a0d1e","object":"Address","created_at":"2022-07-21T18:02:45+00:00","updated_at":"2022-07-21T18:02:45+00:00","name":"Jack
         Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"insurance":null,"order_id":null,"parcel":{"id":"prcl_ad769747534f4d9c9030782f983363fc","object":"Parcel","created_at":"2022-05-12T17:16:01Z","updated_at":"2022-05-12T17:16:01Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"},"postage_label":null,"rates":[{"id":"rate_f107d737f7484b759deb2b984ae9348b","object":"Rate","created_at":"2022-05-12T17:16:01Z","updated_at":"2022-05-12T17:16:01Z","mode":"test","service":"Priority","carrier":"USPS","rate":"7.37","currency":"USD","retail_rate":"8.70","retail_currency":"USD","list_rate":"7.37","list_currency":"USD","billing_type":"easypost","delivery_days":1,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":1,"shipment_id":"shp_16b4f742ede94ccdb15c858029468564","carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"id":"rate_d553424c3ecf4865943ab8149a7948af","object":"Rate","created_at":"2022-05-12T17:16:01Z","updated_at":"2022-05-12T17:16:01Z","mode":"test","service":"First","carrier":"USPS","rate":"5.49","currency":"USD","retail_rate":"5.49","retail_currency":"USD","list_rate":"5.49","list_currency":"USD","billing_type":"easypost","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_16b4f742ede94ccdb15c858029468564","carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"id":"rate_a7fc2d6743614ebb8fe88ea3d0cc6ce8","object":"Rate","created_at":"2022-05-12T17:16:01Z","updated_at":"2022-05-12T17:16:01Z","mode":"test","service":"Express","carrier":"USPS","rate":"23.75","currency":"USD","retail_rate":"27.40","retail_currency":"USD","list_rate":"23.75","list_currency":"USD","billing_type":"easypost","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_16b4f742ede94ccdb15c858029468564","carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"id":"rate_661b08a9fc9a4aaeb93f44f8a8568b1e","object":"Rate","created_at":"2022-05-12T17:16:01Z","updated_at":"2022-05-12T17:16:01Z","mode":"test","service":"ParcelSelect","carrier":"USPS","rate":"7.22","currency":"USD","retail_rate":"7.22","retail_currency":"USD","list_rate":"7.22","list_currency":"USD","billing_type":"easypost","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_16b4f742ede94ccdb15c858029468564","carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"}],"refund_status":null,"scan_form":null,"selected_rate":null,"tracker":null,"to_address":{"id":"adr_326f7df8d21711ec9704ac1f6b0a0d1e","object":"Address","created_at":"2022-05-12T17:16:01+00:00","updated_at":"2022-05-12T17:16:01+00:00","name":"Jack
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"insurance":null,"order_id":null,"parcel":{"id":"prcl_5d74a1fd56ec469b8f39c0e231dc5d7b","object":"Parcel","created_at":"2022-07-21T18:02:45Z","updated_at":"2022-07-21T18:02:45Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"},"postage_label":null,"rates":[{"id":"rate_61394493fece4ab6a1fd57f97cb09d21","object":"Rate","created_at":"2022-07-21T18:02:45Z","updated_at":"2022-07-21T18:02:45Z","mode":"test","service":"First","carrier":"USPS","rate":"5.49","currency":"USD","retail_rate":"5.49","retail_currency":"USD","list_rate":"5.49","list_currency":"USD","billing_type":"easypost","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_bfaeb53565c14dfba583fbde1359d54a","carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"id":"rate_ed716c285b9646e3be08e958472da8ca","object":"Rate","created_at":"2022-07-21T18:02:45Z","updated_at":"2022-07-21T18:02:45Z","mode":"test","service":"Priority","carrier":"USPS","rate":"7.37","currency":"USD","retail_rate":"8.70","retail_currency":"USD","list_rate":"7.37","list_currency":"USD","billing_type":"easypost","delivery_days":1,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":1,"shipment_id":"shp_bfaeb53565c14dfba583fbde1359d54a","carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"id":"rate_669ee65020254d869a5777f4969d0f60","object":"Rate","created_at":"2022-07-21T18:02:45Z","updated_at":"2022-07-21T18:02:45Z","mode":"test","service":"Express","carrier":"USPS","rate":"23.75","currency":"USD","retail_rate":"27.40","retail_currency":"USD","list_rate":"23.75","list_currency":"USD","billing_type":"easypost","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_bfaeb53565c14dfba583fbde1359d54a","carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"id":"rate_2ca5486366ed44aeae6cd68159fcafda","object":"Rate","created_at":"2022-07-21T18:02:45Z","updated_at":"2022-07-21T18:02:45Z","mode":"test","service":"ParcelSelect","carrier":"USPS","rate":"7.22","currency":"USD","retail_rate":"7.22","retail_currency":"USD","list_rate":"7.22","list_currency":"USD","billing_type":"easypost","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_bfaeb53565c14dfba583fbde1359d54a","carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"}],"refund_status":null,"scan_form":null,"selected_rate":null,"tracker":null,"to_address":{"id":"adr_52ae2722091f11ed981aac1f6bc72124","object":"Address","created_at":"2022-07-21T18:02:45+00:00","updated_at":"2022-07-21T18:02:45+00:00","name":"Jack
         Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"usps_zone":1,"return_address":{"id":"adr_32711d01d21711ec9ebeac1f6bc72124","object":"Address","created_at":"2022-05-12T17:16:01+00:00","updated_at":"2022-05-12T17:16:01+00:00","name":"Jack
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"usps_zone":1,"return_address":{"id":"adr_52b03dce091f11eda2f0ac1f6b0a0d1e","object":"Address","created_at":"2022-07-21T18:02:45+00:00","updated_at":"2022-07-21T18:02:45+00:00","name":"Jack
         Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"buyer_address":{"id":"adr_326f7df8d21711ec9704ac1f6b0a0d1e","object":"Address","created_at":"2022-05-12T17:16:01+00:00","updated_at":"2022-05-12T17:16:01+00:00","name":"Jack
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"buyer_address":{"id":"adr_52ae2722091f11ed981aac1f6bc72124","object":"Address","created_at":"2022-07-21T18:02:45+00:00","updated_at":"2022-07-21T18:02:45+00:00","name":"Jack
         Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"forms":[],"fees":[],"id":"shp_16b4f742ede94ccdb15c858029468564","object":"Shipment"}'
-  recorded_at: Thu, 12 May 2022 17:16:01 GMT
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"forms":[],"fees":[],"id":"shp_bfaeb53565c14dfba583fbde1359d54a","object":"Shipment"}'
+  recorded_at: Thu, 21 Jul 2022 18:02:45 GMT
 recorded_with: VCR 6.0.0

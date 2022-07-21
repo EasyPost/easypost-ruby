@@ -206,8 +206,8 @@ describe EasyPost::Shipment do
 
       # Test lowest smartrate with valid filters
       lowest_smartrate = shipment.lowest_smartrate(1, 'percentile_90')
-      expect(lowest_smartrate['service']).to eq('Priority')
-      expect(lowest_smartrate['rate']).to eq(7.37)
+      expect(lowest_smartrate['service']).to eq('Express')
+      expect(lowest_smartrate['rate']).to eq(23.75)
       expect(lowest_smartrate['carrier']).to eq('USPS')
     end
 
@@ -237,8 +237,8 @@ describe EasyPost::Shipment do
 
       # Test lowest smartrate with valid filters
       lowest_smartrate = described_class.get_lowest_smartrate(smartrates, 1, 'percentile_90')
-      expect(lowest_smartrate['service']).to eq('Priority')
-      expect(lowest_smartrate['rate']).to eq(7.37)
+      expect(lowest_smartrate['service']).to eq('Express')
+      expect(lowest_smartrate['rate']).to eq(23.75)
       expect(lowest_smartrate['carrier']).to eq('USPS')
     end
 
