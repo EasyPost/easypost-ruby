@@ -282,4 +282,40 @@ class Fixture
       ],
     }
   end
+
+  def self.webhook_body
+    data = {
+      'result' => {
+        'id' => 'batch_123...',
+        'object' => 'Batch',
+        'mode' => 'test',
+        'state' => 'created',
+        'num_shipments' => 0,
+        'reference' => nil,
+        'created_at' => '2022-07-26T17:22:32Z',
+        'updated_at' => '2022-07-26T17:22:32Z',
+        'scan_form' => nil,
+        'shipments' => [],
+        'status' => {
+          'created' => 0,
+          'queued_for_purchase' => 0,
+          'creation_failed' => 0,
+          'postage_purchased' => 0,
+          'postage_purchase_failed' => 0,
+        },
+        'pickup' => nil,
+        'label_url' => nil,
+      },
+      'description' => 'batch.created',
+      'mode' => 'test',
+      'previous_attributes' => nil,
+      'completed_urls' => nil,
+      'user_id' => 'user_123...',
+      'status' => 'pending',
+      'object' => 'Event',
+      'id' => 'evt_123...',
+    }
+
+    data.to_json.encode('UTF-8')
+  end
 end
