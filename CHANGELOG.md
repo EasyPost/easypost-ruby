@@ -3,6 +3,7 @@
 ## Next Release
 
 - Deprecated PaymentMethod class, please use Billing class for retrieve all payment method function
+- Adds `validate_webhook` function that returns your webhook or raises an error if there is a `webhook_secret` mismatch
 
 ## v4.5.0 (2022-07-18)
 

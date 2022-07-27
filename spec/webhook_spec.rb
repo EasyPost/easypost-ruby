@@ -72,4 +72,42 @@ describe EasyPost::Webhook do
       expect(response).to be_an_instance_of(described_class)
     end
   end
+
+  describe '.validate_webhook' do
+    it 'validate a webhook' do
+      webhook_secret = 'sécret'
+      expected_hmac_signature = 'hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b'
+      headers = {
+        'X-Hmac-Signature' => expected_hmac_signature,
+      }
+
+      webhook_body = described_class.validate_webhook(Fixture.webhook_body, headers, webhook_secret)
+      expect(webhook_body['description']).to eq('batch.created')
+    end
+
+    it 'validate a webhook with invalid secret' do
+      webhook_secret = 'invalid_secret'
+      headers = {
+        'X-Hmac-Signature' => 'some-signature',
+      }
+
+      expect {
+        described_class.validate_webhook(Fixture.webhook_body, headers, webhook_secret)
+      }.to raise_error(
+        EasyPost::Error,
+        'Webhook received did not originate from EasyPost or had a webhook secret mismatch.',
+      )
+    end
+
+    it 'validate a webhook with missing secret' do
+      webhook_secret = '123'
+      headers = {
+        'some-header' => 'some-signature',
+      }
+
+      expect {
+        described_class.validate_webhook(Fixture.webhook_body, headers, webhook_secret)
+      }.to raise_error(EasyPost::Error, 'Webhook received does not contain an HMAC signature.')
+    end
+  end
 end
