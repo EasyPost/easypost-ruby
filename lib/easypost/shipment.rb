@@ -6,7 +6,9 @@ require 'set'
 # being shipped, and any customs forms required for international deliveries.
 class EasyPost::Shipment < EasyPost::Resource
   # Regenerate the rates of a Shipment.
-  def regenerate_rates(params = {})
+  def regenerate_rates(params = {}, with_carbon_offset: false)
+    params[:carbon_offset] = with_carbon_offset
+
     response = EasyPost.make_request(:post, "#{url}/rerate", @api_key, params)
     refresh_from(response, @api_key)
 
@@ -14,14 +16,8 @@ class EasyPost::Shipment < EasyPost::Resource
   end
 
   # Create a Shipment.
-  def self.create(params = {}, api_key = nil)
-    shipment = params.reject { |k, _| [:carbon_offset].include?(k) }
-
-    wrapped_params = { shipment: shipment }
-
-    if params[:carbon_offset]
-      wrapped_params[:carbon_offset] = params[:carbon_offset]
-    end
+  def self.create(params = {}, api_key = nil, with_carbon_offset: false)
+    wrapped_params = { shipment: params, carbon_offset: with_carbon_offset }
 
     response = EasyPost.make_request(:post, url, api_key, wrapped_params)
     EasyPost::Util.convert_to_easypost_object(response, api_key)
@@ -35,16 +31,14 @@ class EasyPost::Shipment < EasyPost::Resource
   end
 
   # Buy a Shipment.
-  def buy(params = {}, carbon_offset: false)
+  def buy(params = {}, with_carbon_offset: false)
     if params.instance_of?(EasyPost::Rate)
       temp = params.clone
       params = {}
       params[:rate] = temp
     end
 
-    if carbon_offset
-      params[:carbon_offset] = true
-    end
+    params[:carbon_offset] = with_carbon_offset
 
     response = EasyPost.make_request(:post, "#{url}/buy", @api_key, params)
     refresh_from(response, @api_key)
