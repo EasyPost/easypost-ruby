@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"address":{"name":"Jack Sparrow","company":"EasyPost","street1":"388
-        Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","phone":"5555555555"},"verify_strict":[true]}'
+        Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","phone":"5555555555"},"verify_strict":true}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -34,7 +34,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b472627d409de78737dc00310b98
+      - 2415914062e4175ee786ac410004c8af
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -42,30 +42,30 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_13adb3dbd21711eca471ac1f6bc7bdc6"
+      - "/api/v2/addresses/adr_0b9e797b0f6311ed828dac1f6bc7bdc6"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"2ac7842a7001a7c0711d25af112e0f50"
+      - W/"d7ef06977d451630395f41143ea24ca2"
       X-Runtime:
-      - '0.043721'
+      - '0.041418'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb6nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202207282305-ef64fb0c25-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb1nuq 570dfcbc0a
+      - extlb2nuq 403f17ff97
+      - intlb1nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"adr_13adb3dbd21711eca471ac1f6bc7bdc6","object":"Address","created_at":"2022-05-12T17:15:09+00:00","updated_at":"2022-05-12T17:15:09+00:00","name":"JACK
+      string: '{"id":"adr_0b9e797b0f6311ed828dac1f6bc7bdc6","object":"Address","created_at":"2022-07-29T17:22:38+00:00","updated_at":"2022-07-29T17:22:38+00:00","name":"JACK
         SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
         FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":null,"mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}}'
-  recorded_at: Thu, 12 May 2022 17:15:09 GMT
+  recorded_at: Fri, 29 Jul 2022 17:22:39 GMT
 recorded_with: VCR 6.0.0

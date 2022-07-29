@@ -12,9 +12,22 @@ describe EasyPost::Address do
       expect(address.street1).to eq('388 Townsend St')
     end
 
+    it 'creates an address with verify param' do
+      # We purposefully pass in slightly incorrect data to get the corrected address back once verified.
+      address_data = Fixture.incorrect_address_to_verify
+      address_data[:verify] = true
+
+      address = described_class.create(address_data)
+
+      expect(address).to be_an_instance_of(described_class)
+      expect(address.id).to match('adr_')
+      expect(address.street1).to eq('417 MONTGOMERY ST FL 5')
+      expect(address.verifications.zip4.errors[0].message).to eq('Invalid secondary information(Apt/Suite#)')
+    end
+
     it 'creates an address with verify_strict param' do
       address_data = Fixture.basic_address
-      address_data[:verify_strict] = [true]
+      address_data[:verify_strict] = true
 
       address = described_class.create(address_data)
 
@@ -23,7 +36,7 @@ describe EasyPost::Address do
       expect(address.street1).to eq('388 TOWNSEND ST APT 20')
     end
 
-    it 'creates an address with verify param' do
+    it 'creates an address with an array verify param' do
       # We purposefully pass in slightly incorrect data to get the corrected address back once verified.
       address_data = Fixture.incorrect_address_to_verify
       address_data[:verify] = [true]
