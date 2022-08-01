@@ -159,7 +159,7 @@ class Fixture
   # If you need to re-record cassettes, increment the date below and ensure it is one day in the future,
   # USPS only does "next-day" pickups including Saturday but not Sunday or Holidays.
   def self.basic_pickup
-    pickup_date = '2022-05-13'
+    pickup_date = '2022-08-03'
 
     {
       address: basic_address,
@@ -317,5 +317,38 @@ class Fixture
     }
 
     data.to_json.encode('UTF-8')
+  end
+
+  def self.basic_carbon_offset_shipment
+    {
+      to_address: pickup_address,
+      from_address: basic_address,
+      parcel: basic_parcel,
+    }
+  end
+
+  def self.full_carbon_offset_shipment
+    {
+      to_address: pickup_address,
+      from_address: basic_address,
+      parcel: basic_parcel,
+      customs_info: basic_customs_info,
+      options: {
+        label_format: 'PNG', # Must be PNG so we can convert to ZPL later
+        invoice_number: '123',
+      },
+      reference: '123',
+    }
+  end
+
+  def self.one_call_buy_carbon_offset_shipment
+    {
+      to_address: pickup_address,
+      from_address: basic_address,
+      parcel: basic_parcel,
+      service: usps_service,
+      carrier_accounts: [usps_carrier_account_id],
+      carrier: usps,
+    }
   end
 end

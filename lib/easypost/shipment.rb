@@ -5,8 +5,22 @@ require 'set'
 # The workhorse of the EasyPost API, a Shipment is made up of a "to" and "from" Address, the Parcel
 # being shipped, and any customs forms required for international deliveries.
 class EasyPost::Shipment < EasyPost::Resource
+  # Create a Shipment.
+  def self.create(params = {}, api_key = nil, with_carbon_offset = false)
+    wrapped_params = {
+      shipment: params,
+      carbon_offset: with_carbon_offset,
+    }
+
+    response = EasyPost.make_request(:post, url, api_key, wrapped_params)
+    EasyPost::Util.convert_to_easypost_object(response, api_key)
+  end
+
   # Regenerate the rates of a Shipment.
-  def regenerate_rates(params = {})
+  def regenerate_rates(with_carbon_offset = false)
+    params = {}
+    params[:carbon_offset] = with_carbon_offset
+
     response = EasyPost.make_request(:post, "#{url}/rerate", @api_key, params)
     refresh_from(response, @api_key)
 
@@ -21,12 +35,14 @@ class EasyPost::Shipment < EasyPost::Resource
   end
 
   # Buy a Shipment.
-  def buy(params = {})
+  def buy(params = {}, with_carbon_offset = false)
     if params.instance_of?(EasyPost::Rate)
       temp = params.clone
       params = {}
       params[:rate] = temp
     end
+
+    params[:carbon_offset] = with_carbon_offset
 
     response = EasyPost.make_request(:post, "#{url}/buy", @api_key, params)
     refresh_from(response, @api_key)

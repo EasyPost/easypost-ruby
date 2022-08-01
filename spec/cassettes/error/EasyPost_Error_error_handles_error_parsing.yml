@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.easypost.com/v2/shipments
     body:
       encoding: UTF-8
-      string: '{"shipment":{}}'
+      string: '{"shipment":{},"carbon_offset":false}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 0cdd6eea62c49c16efb3f654000b6fe8
+      - 3843703c62e2e484ec61dedb00329545
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -43,18 +43,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.018863'
+      - '0.017327'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb1nuq
+      - bigweb8nuq
       X-Version-Label:
-      - easypost-202207051744-6385ac2987-master
+      - easypost-202207272329-7f74c9e58c-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 403f17ff97
-      - intlb1nuq 403f17ff97
+      - extlb4wdc 403f17ff97
+      - intlb2nuq 403f17ff97
+      - intlb2wdc 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -62,5 +63,5 @@ http_interactions:
       string: '{"error":{"code":"SHIPMENT.INVALID_PARAMS","message":"Unable to create
         shipment, one or more parameters were invalid.","errors":[{"to_address":"Required
         and missing."},{"from_address":"Required and missing."}]}}'
-  recorded_at: Tue, 05 Jul 2022 20:16:22 GMT
+  recorded_at: Thu, 28 Jul 2022 19:33:24 GMT
 recorded_with: VCR 6.0.0

@@ -3,3 +3,7 @@ inherit_from: easycop.yml
 # We are ignoring RSpec/FilePath because Simplecov doesn't play nice with nested spec files
 RSpec/FilePath:
   Enabled: false
+# TODO: Remove this once we start using keyword arguments
+Style/OptionalBooleanParameter:
+  Exclude:
+    - 'lib/easypost/shipment.rb'
