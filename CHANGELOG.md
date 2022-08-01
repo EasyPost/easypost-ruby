@@ -1,9 +1,14 @@
 # CHANGELOG
 
-## Next Release
+## v4.6.0 (2022-08-02)
 
-- Deprecated PaymentMethod class, please use Billing class for retrieve all payment method function
+- Adds Carbon Offset support
+  - Adds ability to create a shipment with carbon_offset
+  - Adds ability to buy a shipment with carbon_offset
+  - Adds ability to one-call-buy a shipment with carbon_offset
+  - Adds ability to rerate a shipment with carbon_offset
 - Adds `validate_webhook` function that returns your webhook or raises an error if there is a `webhook_secret` mismatch
+- Deprecated `PaymentMethod` class, please use `Billing` class for retrieve all payment method function
 
 ## v4.5.0 (2022-07-18)
 
