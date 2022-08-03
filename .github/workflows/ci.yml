@@ -35,4 +35,4 @@ jobs:
       - name: Lint Project
         run: make lint
       - name: Run security analysis
-        run: make brakeman
+        run: make scan
