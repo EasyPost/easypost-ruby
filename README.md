@@ -121,8 +121,14 @@ make install
 # Lint project
 make lint
 
+# Fix linting errors
+make fix
+
 # Run tests (coverage is generated on a successful test suite run)
 EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make test
+
+# Run security analysis
+make scan
 ```
 
 ### Testing
