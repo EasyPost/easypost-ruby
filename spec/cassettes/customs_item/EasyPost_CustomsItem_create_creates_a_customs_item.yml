@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.easypost.com/v2/customs_items
     body:
       encoding: UTF-8
-      string: '{"customs_item":{"description":"Sweet shirts","quantity":2,"weight":11,"value":23,"hs_tariff_number":"654321","origin_country":"US"}}'
+      string: '{"customs_item":{"description":"Sweet shirts","quantity":2,"weight":11,"value":23.25,"hs_tariff_number":"654321","origin_country":"US"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b472627d40aae787386300311049
+      - 134f506f62f2ba3ae7897e4400089f38
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -41,29 +41,31 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/customs_items/cstitem_4ca771cad83e4f0295c157c76d92e6ee"
+      - "/api/v2/customs_items/cstitem_3f4c14f4420d42d086c66f59bd912d97"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"2ad1abf2ecf2b35536e1f956953cf354"
+      - W/"a1a33ff4515a93663f30d54077992f9f"
       X-Runtime:
-      - '0.028865'
+      - '0.025890'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb7nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202208091852-65266f4601-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb1nuq 570dfcbc0a
+      - extlb2nuq 9ce216bfac
+      - intlb1nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"cstitem_4ca771cad83e4f0295c157c76d92e6ee","object":"CustomsItem","created_at":"2022-05-12T17:15:22Z","updated_at":"2022-05-12T17:15:22Z","description":"Sweet
-        shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.0","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
-  recorded_at: Thu, 12 May 2022 17:15:22 GMT
+      string: '{"id":"cstitem_3f4c14f4420d42d086c66f59bd912d97","object":"CustomsItem","created_at":"2022-08-09T19:49:14Z","updated_at":"2022-08-09T19:49:14Z","description":"Sweet
+        shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
+  recorded_at: Tue, 09 Aug 2022 19:49:14 GMT
 recorded_with: VCR 6.0.0

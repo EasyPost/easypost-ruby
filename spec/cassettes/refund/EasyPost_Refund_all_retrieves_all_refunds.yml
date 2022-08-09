@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b473627d40c8e7873bfa00311a78
+      - 1090a5ba62f2ba5ae7897ecb00087497
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -43,24 +43,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"60a5f3bf87e9fba1f1bd059a09a5c5e8"
+      - W/"a578ff04794829db88e9a5979ff716ba"
       X-Runtime:
-      - '0.060018'
+      - '0.041897'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb5nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202208091852-65266f4601-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb2nuq 570dfcbc0a
+      - extlb1nuq 9ce216bfac
+      - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"refunds":[{"id":"rfnd_b889da2a2f91465c8dd14d58d77b3efe","object":"Refund","created_at":"2022-05-12T17:15:52Z","updated_at":"2022-05-12T17:15:52Z","tracking_code":"9400100109361118873846","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_3e79a7c738d54da89e4912ac453a2971"},{"id":"rfnd_947820c7207e4928b4eeed56cd4d2345","object":"Refund","created_at":"2022-05-11T23:02:51Z","updated_at":"2022-05-11T23:02:51Z","tracking_code":"9400100109361118761242","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_ab4055e1f8384e2ca0c508cbf5b4eb85"},{"id":"rfnd_4107326332f24d57aa8f7e0ee8adf99a","object":"Refund","created_at":"2022-05-11T23:02:32Z","updated_at":"2022-05-11T23:02:32Z","tracking_code":"9400100109361118761174","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_956a3f831d4a4611bddc658be288298e"},{"id":"rfnd_be29f450d6ee47458f04662d9a356800","object":"Refund","created_at":"2022-05-11T23:02:30Z","updated_at":"2022-05-11T23:02:30Z","tracking_code":"9400100109361118761167","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_9b80f34b94b5430a8e2638c3a72cea3c"},{"id":"rfnd_86d8d668aba84b88b40aa7503a076222","object":"Refund","created_at":"2022-04-14T20:41:53Z","updated_at":"2022-04-15T20:41:53Z","tracking_code":"9400100109361115069440","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_7cb79513361e438893ecf3087dad12d4"}],"has_more":true}'
-  recorded_at: Thu, 12 May 2022 17:15:52 GMT
+      string: '{"refunds":[{"id":"rfnd_71105e529a374e1c91092df7830e6751","object":"Refund","created_at":"2022-08-09T19:49:46Z","updated_at":"2022-08-09T19:49:46Z","tracking_code":"9400100109361132422785","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_e789196319104c56a3e113c4939d9714"},{"id":"rfnd_70057e25b57447aaaad0449070dd0718","object":"Refund","created_at":"2022-08-01T19:34:52Z","updated_at":"2022-08-02T19:34:52Z","tracking_code":"9400100109361131077498","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_c969744c383b4d4e8a089c158e7aa0ba"},{"id":"rfnd_747bb42eb25743348bde6f6d2a09d8d7","object":"Refund","created_at":"2022-07-28T19:34:04Z","updated_at":"2022-07-29T19:34:04Z","tracking_code":"9400100109361130479040","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_b60544ecbc764ef78817c098bae668bd"},{"id":"rfnd_7e02e46e42b2427f80a4ac613271bca7","object":"Refund","created_at":"2022-07-28T19:33:47Z","updated_at":"2022-07-29T19:33:47Z","tracking_code":"9400100109361130478944","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_40dac21c8eaf453f886bb125e3af5bca"},{"id":"rfnd_3582b7d453c9447fa0aed3e74568d4e5","object":"Refund","created_at":"2022-07-28T19:33:46Z","updated_at":"2022-07-29T19:33:46Z","tracking_code":"9400100109361130478920","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_6a6bce1d0cf1473ca100f411e8d04d8b"}],"has_more":true}'
+  recorded_at: Tue, 09 Aug 2022 19:49:47 GMT
 recorded_with: VCR 6.0.0

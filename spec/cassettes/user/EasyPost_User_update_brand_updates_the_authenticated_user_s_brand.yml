@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 77ca7e826298f921ea43ebb500c49a39
+      - 1090a5ba62f2ba87e789830c00088695
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -43,33 +43,33 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"6ca1c40e13b7949115a4e2c9a519268b"
+      - W/"ae61debc31755327d5e98a44a1f72948"
       X-Runtime:
-      - '0.039770'
+      - '0.131910'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb2nuq
+      - bigweb9nuq
       X-Version-Label:
-      - easypost-202206020045-73e51fcbbc-master
+      - easypost-202208091852-65266f4601-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 0910011e7e
-      - intlb1nuq 570dfcbc0a
+      - extlb1nuq 9ce216bfac
+      - intlb1nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"user_2cfd34d1261a4a9b93d56c313a9a824b","object":"User","parent_id":null,"name":"New
-        Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2022-05-23T17:43:47Z","balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":"<REDACTED>"}'
-  recorded_at: Thu, 02 Jun 2022 17:53:37 GMT
+      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"New
+        Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":"<REDACTED>"}'
+  recorded_at: Tue, 09 Aug 2022 19:50:31 GMT
 - request:
     method: patch
-    uri: https://api.easypost.com/v2/users/user_2cfd34d1261a4a9b93d56c313a9a824b/brand
+    uri: https://api.easypost.com/v2/users/user_0f6b83e3530b401cb1e8aeaa6a250d4d/brand
     body:
       encoding: UTF-8
-      string: '{"brand":{"object":"Brand","user_id":"user_2cfd34d1261a4a9b93d56c313a9a824b","color":"#123456"}}'
+      string: '{"brand":{"object":"Brand","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","color":"#123456"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -97,7 +97,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 77ca7e846298f921ea43ebb600c49a46
+      - 1090a5be62f2ba87e7898324000886b9
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -107,26 +107,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"1db759217d34f1d4558f723082035904"
+      - W/"6529bff738bff0355916a0ddbf360417"
       X-Runtime:
-      - '0.030696'
+      - '0.030836'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7nuq
+      - bigweb2nuq
       X-Version-Label:
-      - easypost-202206020045-73e51fcbbc-master
+      - easypost-202208091852-65266f4601-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb1nuq 0910011e7e
-      - intlb2nuq 570dfcbc0a
+      - extlb1nuq 9ce216bfac
+      - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"brd_0e606e55ac73483b9ef26ba2e7dcfec5","color":"#123456","logo":"https://assets.easypost.com/assets/images/branding/easypost-primary-logo-7a2cf535f2.svg","logo_href":"https://www.easypost.com","name":"EasyPost","ad":null,"ad_href":null,"object":"Brand","user_id":"user_2cfd34d1261a4a9b93d56c313a9a824b","background_color":null,"theme":"theme1"}'
-  recorded_at: Thu, 02 Jun 2022 17:53:37 GMT
+      string: '{"id":"brd_136abcc3c9de49fcb1a0e963f26fdcac","color":"#123456","logo":"https://assets.easypost.com/assets/images/branding/easypost-primary-logo-7a2cf535f2.svg","logo_href":"https://www.easypost.com","name":"EasyPost","ad":null,"ad_href":null,"object":"Brand","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","background_color":null,"theme":"theme1"}'
+  recorded_at: Tue, 09 Aug 2022 19:50:32 GMT
 recorded_with: VCR 6.0.0

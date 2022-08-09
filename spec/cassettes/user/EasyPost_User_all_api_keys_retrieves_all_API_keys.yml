@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b470627d40eae7873cc700312523
+      - 1090a5bb62f2ba86e78983090008861e
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -45,22 +45,24 @@ http_interactions:
       Etag:
       - W/"9457ae6dfbf010d120246b1b03c68603"
       X-Runtime:
-      - '0.035791'
+      - '0.040097'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb6nuq
+      - bigweb7nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202208091946-186d7bfdc5-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb2nuq 570dfcbc0a
+      - extlb1nuq 9ce216bfac
+      - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","keys":"<REDACTED>","children":"<REDACTED>"}'
-  recorded_at: Thu, 12 May 2022 17:16:26 GMT
+  recorded_at: Tue, 09 Aug 2022 19:50:30 GMT
 recorded_with: VCR 6.0.0

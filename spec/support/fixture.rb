@@ -4,150 +4,86 @@ require 'date'
 require 'json'
 
 class Fixture
+  # Read ficture data from the fixtures JSON file
+  def self.read_fixture_data
+    JSON.parse(File.read("./examples/official/fixtures/client-library-fixtures.json"))
+  end
+
   # We keep the page_size of retrieving `all` records small so cassettes stay small
   def self.page_size
-    5
+    self.read_fixture_data['page_sizes']['five_results']
   end
 
   # This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
   def self.usps_carrier_account_id
-    # Fallback to the EasyPost Ruby Client Library Test User USPS carrier account ID
+    # Fallback to the EasyPost Ruby Client Library Test User USPS carrier account ID due to strict matching
     ENV['USPS_CARRIER_ACCOUNT_ID'] || 'ca_716f33fd9fd348238b85c2922237f98b'
   end
 
   def self.usps
-    'USPS'
+    self.read_fixture_data['carrier_strings']['usps']
   end
 
   def self.usps_service
-    'First'
+    self.read_fixture_data['service_names']['usps']['first_service']
   end
 
   def self.pickup_service
-    'NextDay'
+    self.read_fixture_data['service_names']['usps']['pickup_service']
   end
 
   def self.report_type
-    'shipment'
+    self.read_fixture_data['report_types']['shipment']
   end
 
-  # If you need to re-record cassettes, increment this date by 1
   def self.report_date
     '2022-04-11'
   end
 
   def self.webhook_url
-    'http://example.com'
+    self.read_fixture_data['webhook_url']
   end
 
-  def self.basic_address
-    {
-      name: 'Jack Sparrow',
-      company: 'EasyPost',
-      street1: '388 Townsend St',
-      street2: 'Apt 20',
-      city: 'San Francisco',
-      state: 'CA',
-      zip: '94107',
-      phone: '5555555555',
-    }
+  def self.ca_address_1
+    self.read_fixture_data['addresses']['ca_address_1']
   end
 
-  def self.incorrect_address_to_verify
-    {
-      street1: '417 montgomery street',
-      street2: 'FL 5',
-      city: 'San Francisco',
-      state: 'CA',
-      zip: '94104',
-      country: 'US',
-      company: 'EasyPost',
-      phone: '415-123-4567',
-    }
+  def self.ca_address_2
+    self.read_fixture_data['addresses']['ca_address_2']
   end
 
-  def self.pickup_address
-    {
-      name: 'Dr. Steve Brule',
-      street1: '179 N Harbor Dr',
-      city: 'Redondo Beach',
-      state: 'CA',
-      zip: '90277',
-      country: 'US',
-      phone: '3331114444',
-    }
+  def self.incorrect_address
+    self.read_fixture_data['addresses']['incorrect']
   end
 
   def self.basic_parcel
-    {
-      length: '10',
-      width: '8',
-      height: '4',
-      weight: '15.4',
-    }
+    self.read_fixture_data['parcels']['basic']
   end
 
   def self.basic_customs_item
-    {
-      description: 'Sweet shirts',
-      quantity: 2,
-      weight: 11,
-      value: 23,
-      hs_tariff_number: '654321',
-      origin_country: 'US',
-    }
+    self.read_fixture_data['customs_items']['basic']
   end
 
   def self.basic_customs_info
-    {
-      eel_pfc: 'NOEEI 30.37(a)',
-      customs_certify: true,
-      customs_signer: 'Steve Brule',
-      contents_type: 'merchandise',
-      contents_explanation: '',
-      restriction_type: 'none',
-      non_delivery_option: 'return',
-      customs_items: [
-        basic_customs_item,
-      ],
-    }
+    self.read_fixture_data['customs_infos']['basic']
   end
 
   def self.tax_identifier
-    {
-      entity: 'SENDER',
-      tax_id_type: 'IOSS',
-      tax_id: '12345',
-      issuing_country: 'GB',
-    }
+    self.read_fixture_data['tax_identifiers']['basic']
   end
 
   def self.basic_shipment
-    {
-      to_address: basic_address,
-      from_address: basic_address,
-      parcel: basic_parcel,
-    }
+    self.read_fixture_data['shipments']['basic_domestic']
   end
 
   def self.full_shipment
-    {
-      to_address: basic_address,
-      from_address: basic_address,
-      parcel: basic_parcel,
-      customs_info: basic_customs_info,
-      options: {
-        label_format: 'PNG', # Must be PNG so we can convert to ZPL later
-        invoice_number: '123',
-      },
-      reference: '123',
-    }
+    self.read_fixture_data['shipments']['full']
   end
 
   def self.one_call_buy_shipment
     {
-      to_address: basic_address,
-      from_address: basic_address,
+      to_address: ca_address_1,
+      from_address: ca_address_1,
       parcel: basic_parcel,
       service: usps_service,
       carrier_accounts: [usps_carrier_account_id],
@@ -159,196 +95,39 @@ class Fixture
   # If you need to re-record cassettes, increment the date below and ensure it is one day in the future,
   # USPS only does "next-day" pickups including Saturday but not Sunday or Holidays.
   def self.basic_pickup
-    pickup_date = '2022-08-03'
+    pickup_date = '2022-08-11'
 
-    {
-      address: basic_address,
-      min_datetime: pickup_date,
-      max_datetime: pickup_date,
-      instructions: 'Pickup at front door',
-    }
+    pickup_data = self.read_fixture_data['pickups']['basic']
+    pickup_data['min_datetime'] = pickup_date
+    pickup_data['max_datetime'] = pickup_date
+
+    return pickup_data
   end
 
   def self.basic_carrier_account
-    {
-      type: 'UpsAccount',
-      credentials: {
-        account_number: 'A1A1A1',
-        user_id: 'USERID',
-        password: 'PASSWORD',
-        access_license_number: 'ALN',
-      },
-    }
+    self.read_fixture_data['carrier_accounts']['basic']
   end
 
   def self.basic_insurance
-    {
-      from_address: basic_address,
-      to_address: basic_address,
-      carrier: usps,
-      amount: '100',
-    }
+    self.read_fixture_data['insurances']['basic']
   end
 
   def self.basic_order
-    {
-      from_address: basic_address,
-      to_address: basic_address,
-      shipments: [basic_shipment],
-    }
+    self.read_fixture_data['orders']['basic']
   end
 
   def self.event
-    JSON.generate(
-      {
-        mode: 'production',
-        description: 'batch.created',
-        previous_attributes: { state: 'purchasing' },
-        pending_urls: ['example.com/easypost-webhook'],
-        completed_urls: [],
-        created_at: '2015-12-03T19:09:19Z',
-        updated_at: '2015-12-03T19:09:19Z',
-        result: {
-          id: 'batch_...',
-          object: 'Batch',
-          mode: 'production',
-          state: 'purchased',
-          num_shipments: 1,
-          reference: nil,
-          created_at: '2015-12-03T19:09:19Z',
-          updated_at: '2015-12-03T19:09:19Z',
-          scan_form: nil,
-          shipments: [
-            {
-              batch_status: 'postage_purchased',
-              batch_message: nil,
-              id: 'shp_123...',
-            },
-          ],
-          status: {
-            created: 0,
-            queued_for_purchase: 0,
-            creation_failed: 0,
-            postage_purchased: 1,
-            postage_purchase_failed: 0,
-          },
-          pickup: nil,
-          label_url: nil,
-        },
-        id: 'evt_...',
-        object: 'Event',
-      },
-    )
+    self.read_fixture_data['event_body']
   end
 
   # The credit card details below are for a valid proxy card usable
   # for tests only and cannot be used for real transactions.
   # DO NOT alter these details with real credit card information.
   def self.credit_card_details
-    {
-      number: '4536410136126170',
-      expiration_month: '05',
-      expiration_year: '2028',
-      cvc: '778',
-    }
-  end
-
-  def self.end_shipper_address
-    {
-      name: 'Jack Sparrow',
-      company: 'EasyPost',
-      street1: '388 Townsend St',
-      street2: 'Apt 20',
-      city: 'San Francisco',
-      state: 'CA',
-      zip: '94107',
-      country: 'US',
-      phone: '5555555555',
-      email: 'test@example.com',
-    }
+    self.read_fixture_data['credit_cards']['test']
   end
 
   def self.rma_form_options
-    {
-      barcode: 'RMA12345678900',
-      line_items: [
-        {
-          product: {
-            title: 'Square Reader',
-            barcode: '855658003251',
-          },
-          units: 8,
-        },
-      ],
-    }
-  end
-
-  def self.webhook_body
-    data = {
-      'result' => {
-        'id' => 'batch_123...',
-        'object' => 'Batch',
-        'mode' => 'test',
-        'state' => 'created',
-        'num_shipments' => 0,
-        'reference' => nil,
-        'created_at' => '2022-07-26T17:22:32Z',
-        'updated_at' => '2022-07-26T17:22:32Z',
-        'scan_form' => nil,
-        'shipments' => [],
-        'status' => {
-          'created' => 0,
-          'queued_for_purchase' => 0,
-          'creation_failed' => 0,
-          'postage_purchased' => 0,
-          'postage_purchase_failed' => 0,
-        },
-        'pickup' => nil,
-        'label_url' => nil,
-      },
-      'description' => 'batch.created',
-      'mode' => 'test',
-      'previous_attributes' => nil,
-      'completed_urls' => nil,
-      'user_id' => 'user_123...',
-      'status' => 'pending',
-      'object' => 'Event',
-      'id' => 'evt_123...',
-    }
-
-    data.to_json.encode('UTF-8')
-  end
-
-  def self.basic_carbon_offset_shipment
-    {
-      to_address: pickup_address,
-      from_address: basic_address,
-      parcel: basic_parcel,
-    }
-  end
-
-  def self.full_carbon_offset_shipment
-    {
-      to_address: pickup_address,
-      from_address: basic_address,
-      parcel: basic_parcel,
-      customs_info: basic_customs_info,
-      options: {
-        label_format: 'PNG', # Must be PNG so we can convert to ZPL later
-        invoice_number: '123',
-      },
-      reference: '123',
-    }
-  end
-
-  def self.one_call_buy_carbon_offset_shipment
-    {
-      to_address: pickup_address,
-      from_address: basic_address,
-      parcel: basic_parcel,
-      service: usps_service,
-      carrier_accounts: [usps_carrier_account_id],
-      carrier: usps,
-    }
+    self.read_fixture_data['form_options']['rma']
   end
 end

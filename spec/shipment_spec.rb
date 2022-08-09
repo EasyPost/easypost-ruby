@@ -43,8 +43,8 @@ describe EasyPost::Shipment do
     end
 
     it 'creates a shipment when only IDs are used' do
-      from_address = EasyPost::Address.create(Fixture.basic_address)
-      to_address = EasyPost::Address.create(Fixture.basic_address)
+      from_address = EasyPost::Address.create(Fixture.ca_address_1)
+      to_address = EasyPost::Address.create(Fixture.ca_address_1)
       parcel = EasyPost::Parcel.create(Fixture.basic_parcel)
 
       shipment = described_class.create(
@@ -234,7 +234,7 @@ describe EasyPost::Shipment do
       # Test lowest rate with no filters
       lowest_rate = shipment.lowest_rate
       expect(lowest_rate.service).to eq('First')
-      expect(lowest_rate.rate).to eq('5.49')
+      expect(lowest_rate.rate).to eq('5.57')
       expect(lowest_rate.carrier).to eq('USPS')
 
       # Test lowest rate with service filter (this rate is higher than the lowest but should filter)
@@ -257,7 +257,7 @@ describe EasyPost::Shipment do
       # Test lowest smartrate with valid filters
       lowest_smartrate = shipment.lowest_smartrate(2, 'percentile_90')
       expect(lowest_smartrate['service']).to eq('First')
-      expect(lowest_smartrate['rate']).to eq(5.49)
+      expect(lowest_smartrate['rate']).to eq(5.57)
       expect(lowest_smartrate['carrier']).to eq('USPS')
     end
 
@@ -288,7 +288,7 @@ describe EasyPost::Shipment do
       # Test lowest smartrate with valid filters
       lowest_smartrate = described_class.get_lowest_smartrate(smartrates, 2, 'percentile_90')
       expect(lowest_smartrate['service']).to eq('First')
-      expect(lowest_smartrate['rate']).to eq(5.49)
+      expect(lowest_smartrate['rate']).to eq(5.57)
       expect(lowest_smartrate['carrier']).to eq('USPS')
     end
 

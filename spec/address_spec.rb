@@ -5,7 +5,7 @@ require 'spec_helper'
 describe EasyPost::Address do
   describe '.create' do
     it 'creates an address' do
-      address = described_class.create(Fixture.basic_address)
+      address = described_class.create(Fixture.ca_address_1)
 
       expect(address).to be_an_instance_of(described_class)
       expect(address.id).to match('adr_')
@@ -14,7 +14,7 @@ describe EasyPost::Address do
 
     it 'creates an address with verify param' do
       # We purposefully pass in slightly incorrect data to get the corrected address back once verified.
-      address_data = Fixture.incorrect_address_to_verify
+      address_data = Fixture.incorrect_address
       address_data[:verify] = true
 
       address = described_class.create(address_data)
@@ -26,7 +26,7 @@ describe EasyPost::Address do
     end
 
     it 'creates an address with verify_strict param' do
-      address_data = Fixture.basic_address
+      address_data = Fixture.ca_address_1
       address_data[:verify_strict] = true
 
       address = described_class.create(address_data)
@@ -38,7 +38,7 @@ describe EasyPost::Address do
 
     it 'creates an address with an array verify param' do
       # We purposefully pass in slightly incorrect data to get the corrected address back once verified.
-      address_data = Fixture.incorrect_address_to_verify
+      address_data = Fixture.incorrect_address
       address_data[:verify] = [true]
 
       address = described_class.create(address_data)
@@ -52,7 +52,7 @@ describe EasyPost::Address do
 
   describe '.retrieve' do
     it 'retrieves an address' do
-      address = described_class.create(Fixture.basic_address)
+      address = described_class.create(Fixture.ca_address_1)
       retrieved_address = described_class.retrieve(address.id)
 
       expect(retrieved_address).to be_an_instance_of(described_class)
@@ -77,7 +77,7 @@ describe EasyPost::Address do
   describe '.create_and_verify' do
     it 'creates a verified address' do
       # We purposefully pass in slightly incorrect data to get the corrected address back once verified.
-      address = described_class.create_and_verify(Fixture.incorrect_address_to_verify)
+      address = described_class.create_and_verify(Fixture.incorrect_address)
 
       expect(address).to be_an_instance_of(described_class)
       expect(address.id).to match('adr_')
@@ -88,7 +88,7 @@ describe EasyPost::Address do
   describe '.verify' do
     it 'verifies an already created address' do
       # We purposefully pass in slightly incorrect data to get the corrected address back once verified.
-      address = described_class.create(Fixture.incorrect_address_to_verify)
+      address = described_class.create(Fixture.incorrect_address)
       verified_address = address.verify
 
       expect(verified_address).to be_an_instance_of(described_class)

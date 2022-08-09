@@ -17,8 +17,8 @@ http_interactions:
       Authorization: "<REDACTED>"
   response:
     status:
-      code: 201
-      message: Created
+      code: 401
+      message: Unauthorized
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - ce1b2abd627d4672e7874d6700316d8d
+      - 134f507262f2ba33e7897b0700089ce7
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -42,26 +42,24 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"829982f80ac303072baa972bbc750afa"
       X-Runtime:
-      - '0.747160'
+      - '0.047893'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9nuq
+      - bigweb1nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202208091852-65266f4601-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq c51cdb8bf2
-      - intlb2nuq 570dfcbc0a
+      - extlb2nuq 9ce216bfac
+      - intlb1nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"user_f86eb313643147a18cd2ff332173ce4e","object":"User","parent_id":null,"name":"test
-        user","phone_number":"<REDACTED>","verified":true,"created_at":"2022-05-12T17:40:02Z","balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":"<REDACTED>","api_keys":"<REDACTED>"}'
-  recorded_at: Thu, 12 May 2022 17:40:03 GMT
+      string: '{"error":{"code":"UNAUTHORIZED","message":"Your account is not enabled
+        to access the Partner White Label API. Contact EasyPost to request access.","errors":[]}}'
+  recorded_at: Tue, 09 Aug 2022 19:49:08 GMT
 recorded_with: VCR 6.0.0

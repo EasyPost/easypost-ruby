@@ -18,6 +18,8 @@ fix:
 
 ## install - Install globally from source
 install:
+	git submodule init
+	git submodule update
 	bundle install
 
 ## lint - Lint the project
@@ -41,4 +43,9 @@ scan:
 test:
 	bundle exec rspec
 
-.PHONY: help build clean fix install lint publish release scan test
+## update - Updates dependencies
+update:
+	git submodule init
+	git submodule update --remote
+
+.PHONY: help build clean fix install lint publish release scan test update

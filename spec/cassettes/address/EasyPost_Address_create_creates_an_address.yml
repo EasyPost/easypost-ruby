@@ -5,8 +5,8 @@ http_interactions:
     uri: https://api.easypost.com/v2/addresses
     body:
       encoding: UTF-8
-      string: '{"address":{"name":"Jack Sparrow","company":"EasyPost","street1":"388
-        Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","phone":"5555555555"}}'
+      string: '{"address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt
+        20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -34,7 +34,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b474627d409de78737db00310b8b
+      - 134f506d62f2ba20e7897aa60008959b
       Cache-Control:
       - no-cache, no-store
       Pragma:
@@ -42,32 +42,30 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_13893b4cd21711ec94a7ac1f6bc72124"
+      - "/api/v2/addresses/adr_494cd0ef181c11ed9754ac1f6bc72124"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"5598b1fdd13ce93724c1b9bf6fff573e"
+      - W/"aa973150a0430cb25a4576e287e6153f"
       X-Runtime:
-      - '0.029217'
+      - '0.030117'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7nuq
+      - bigweb8nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202208091852-65266f4601-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb2nuq 570dfcbc0a
+      - extlb2nuq 9ce216bfac
+      - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"adr_13893b4cd21711ec94a7ac1f6bc72124","object":"Address","created_at":"2022-05-12T17:15:09+00:00","updated_at":"2022-05-12T17:15:09+00:00","name":"Jack
-        Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
-  recorded_at: Thu, 12 May 2022 17:15:09 GMT
+      string: '{"id":"adr_494cd0ef181c11ed9754ac1f6bc72124","object":"Address","created_at":"2022-08-09T19:48:48+00:00","updated_at":"2022-08-09T19:48:48+00:00","name":"Jack
+        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+  recorded_at: Tue, 09 Aug 2022 19:48:48 GMT
 recorded_with: VCR 6.0.0
