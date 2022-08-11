@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.easypost.com/v2/parcels
     body:
       encoding: UTF-8
-      string: '{"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"}}'
+      string: '{"parcel":{"length":10,"width":8,"height":4,"weight":15.4}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -33,41 +33,41 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b474627d40b4e7873bb7003113b4
+      - ca7a1a3b62f52627e786c5cb0027fb5b
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
       - '0'
       Location:
-      - "/api/v2/parcels.prcl_e64fd3bea58e4664b413e1ed7e09ca48"
+      - "/api/v2/parcels.prcl_b288759c4d0f496896fea952b54f2c66"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"a2e9c23f8ec1251b405ca41ef99c150a"
+      - W/"50eba20f85b8970413c3f3d4f268c533"
       X-Runtime:
-      - '0.024941'
+      - '0.022920'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb6nuq
+      - bigweb5nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb1nuq 570dfcbc0a
+      - extlb1nuq 9ce216bfac
+      - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"prcl_e64fd3bea58e4664b413e1ed7e09ca48","object":"Parcel","created_at":"2022-05-12T17:15:32Z","updated_at":"2022-05-12T17:15:32Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
-  recorded_at: Thu, 12 May 2022 17:15:32 GMT
+      string: '{"id":"prcl_b288759c4d0f496896fea952b54f2c66","object":"Parcel","created_at":"2022-08-11T15:54:15Z","updated_at":"2022-08-11T15:54:15Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
+  recorded_at: Thu, 11 Aug 2022 15:54:15 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/parcels/prcl_e64fd3bea58e4664b413e1ed7e09ca48
+    uri: https://api.easypost.com/v2/parcels/prcl_b288759c4d0f496896fea952b54f2c66
     body:
       encoding: US-ASCII
       string: ''
@@ -98,9 +98,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b474627d40b4e7873bb8003113c5
+      - ca7a1a3c62f52627e786c5cc0027fb70
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -108,26 +108,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"a2e9c23f8ec1251b405ca41ef99c150a"
+      - W/"50eba20f85b8970413c3f3d4f268c533"
       X-Runtime:
-      - '0.020189'
+      - '0.016335'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7nuq
+      - bigweb4nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb1nuq 570dfcbc0a
+      - extlb1nuq 9ce216bfac
+      - intlb1nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"prcl_e64fd3bea58e4664b413e1ed7e09ca48","object":"Parcel","created_at":"2022-05-12T17:15:32Z","updated_at":"2022-05-12T17:15:32Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
-  recorded_at: Thu, 12 May 2022 17:15:32 GMT
+      string: '{"id":"prcl_b288759c4d0f496896fea952b54f2c66","object":"Parcel","created_at":"2022-08-11T15:54:15Z","updated_at":"2022-08-11T15:54:15Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
+  recorded_at: Thu, 11 Aug 2022 15:54:16 GMT
 recorded_with: VCR 6.0.0

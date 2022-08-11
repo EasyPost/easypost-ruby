@@ -9,7 +9,7 @@ describe EasyPost::CustomsItem do
 
       expect(customs_item).to be_an_instance_of(described_class)
       expect(customs_item.id).to match('cstitem_')
-      expect(customs_item.value).to eq('23.0')
+      expect(customs_item.value).to eq('23.25')
     end
   end
 

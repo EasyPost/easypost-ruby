@@ -33,9 +33,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b476627d40d0e7873c2100311d29
+      - ca7a1a3b62f52646e786c983002804ea
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -43,34 +43,34 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"718e03d984e97a9611201af5184251d5"
+      - W/"4a203d7de9b2c6a34d18121ef076c1a0"
       X-Runtime:
-      - '0.071176'
+      - '0.102344'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb9nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb2nuq 570dfcbc0a
+      - extlb1nuq 9ce216bfac
+      - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"scan_forms":[{"id":"sf_29c779908b214344ac4dc46504d78212","object":"ScanForm","created_at":"2022-05-12T17:16:00Z","updated_at":"2022-05-12T17:16:00Z","tracking_codes":["9400100109361118873877"],"address":{"id":"adr_30bbb5fcd21711ec9686ac1f6b0a0d1e","object":"Address","created_at":"2022-05-12T17:15:58+00:00","updated_at":"2022-05-12T17:15:58+00:00","name":"Jack
-        Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20220512/177e33cb26724820a4ba4c8154bc5961.pdf","form_file_type":null,"batch_id":"batch_e64808c4f7df4e15831c17cc8e163d59","confirmation":null},{"id":"sf_96012d315a104698852b2fafeb2f26a6","object":"ScanForm","created_at":"2022-05-12T17:15:58Z","updated_at":"2022-05-12T17:15:58Z","tracking_codes":["9400100109361118873860"],"address":{"id":"adr_2fba993cd21711ecb62bac1f6bc7b362","object":"Address","created_at":"2022-05-12T17:15:56+00:00","updated_at":"2022-05-12T17:15:56+00:00","name":"Jack
-        Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20220512/d7ad06fdc17744f1b5c46c5818c2b276.pdf","form_file_type":null,"batch_id":"batch_0291e32fd2aa451287150a585be94191","confirmation":null},{"id":"sf_484f7714802048fd941255256e9bd7e4","object":"ScanForm","created_at":"2022-05-11T23:02:37Z","updated_at":"2022-05-11T23:02:37Z","tracking_codes":["9400100109361118761204"],"address":{"id":"adr_72a7c89bd17e11ecb260ac1f6bc72124","object":"Address","created_at":"2022-05-11T23:02:36+00:00","updated_at":"2022-05-11T23:02:36+00:00","name":"Jack
-        Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20220511/573f3a0d96944115a9298c4d5a9893ad.pdf","form_file_type":null,"batch_id":"batch_357a2f3c98484aed9f62e6298f4ac478","confirmation":null},{"id":"sf_c415277b79a34e049893250cb35d40ee","object":"ScanForm","created_at":"2022-05-11T23:02:35Z","updated_at":"2022-05-11T23:02:35Z","tracking_codes":["9400100109361118761198"],"address":{"id":"adr_71c1d393d17e11ec83f2ac1f6bc7b362","object":"Address","created_at":"2022-05-11T23:02:34+00:00","updated_at":"2022-05-11T23:02:34+00:00","name":"Jack
-        Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20220511/e82ad579b7dd44a6ba201ca64e6353d3.pdf","form_file_type":null,"batch_id":"batch_e56a2005adf6427db62683aa24b53260","confirmation":null},{"id":"sf_358c836a75b44c7ebb6b9f2e33806f39","object":"ScanForm","created_at":"2022-05-11T22:55:57Z","updated_at":"2022-05-11T22:55:57Z","tracking_codes":["9400100109361118760863"],"address":{"id":"adr_819f246dd17d11eca23dac1f6bc7b362","object":"Address","created_at":"2022-05-11T22:55:51+00:00","updated_at":"2022-05-11T22:55:51+00:00","name":"Jack
-        Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20220511/57554f224072404791b9819e83bf35e1.pdf","form_file_type":null,"batch_id":"batch_d9a546088de7431184cc2ecd6ca44395","confirmation":null}],"has_more":true}'
-  recorded_at: Thu, 12 May 2022 17:16:00 GMT
+      string: '{"scan_forms":[{"id":"sf_76d2d1473c78475fb76f99d123effb16","object":"ScanForm","created_at":"2022-08-11T15:54:45Z","updated_at":"2022-08-11T15:54:45Z","tracking_codes":["9400100109361132686064"],"address":{"id":"adr_eae438ca198d11ed90c6ac1f6bc7b362","object":"Address","created_at":"2022-08-11T15:54:44+00:00","updated_at":"2022-08-11T15:54:44+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20220811/c6f01fa2e9c14050a99a60aaba87a7f7.pdf","form_file_type":null,"batch_id":"batch_97b80262748c451e9f8544c87cc8b406","confirmation":null},{"id":"sf_f507a91688194cf281830c9d60adf545","object":"ScanForm","created_at":"2022-08-11T15:54:43Z","updated_at":"2022-08-11T15:54:43Z","tracking_codes":["9400100109361132686057"],"address":{"id":"adr_e9dba71d198d11ed8f79ac1f6bc7b362","object":"Address","created_at":"2022-08-11T15:54:42+00:00","updated_at":"2022-08-11T15:54:42+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20220811/ecbc354b1cc045d59597752e54b71e8c.pdf","form_file_type":null,"batch_id":"batch_f5b22f8c0b274ce389eeda971fcd7ef2","confirmation":null},{"id":"sf_184924b8e6124f7ea40ca0779e586cbf","object":"ScanForm","created_at":"2022-08-11T15:53:43Z","updated_at":"2022-08-11T15:53:43Z","tracking_codes":["9400100109361132685838"],"address":{"id":"adr_c339c529198d11ed9087ac1f6bc7bdc6","object":"Address","created_at":"2022-08-11T15:53:37+00:00","updated_at":"2022-08-11T15:53:37+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20220811/f26a73e9e0f8418987b3ce06c1410804.pdf","form_file_type":null,"batch_id":"batch_f654347424ca4ac8a528225b3d314ab5","confirmation":null},{"id":"sf_fe9fdf5e49a6426683de4a31fcd216f3","object":"ScanForm","created_at":"2022-08-10T16:45:16Z","updated_at":"2022-08-10T16:45:16Z","tracking_codes":["9400100109361132539711"],"address":{"id":"adr_cf2c4f6218cb11ed8f10ac1f6bc7bdc6","object":"Address","created_at":"2022-08-10T16:45:15+00:00","updated_at":"2022-08-10T16:45:15+00:00","name":"Jack
+        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20220810/0e11f1f41c1e41af8bc944d8d4b182b4.pdf","form_file_type":null,"batch_id":"batch_37e8b49787b549c5b1b856809c408d32","confirmation":null},{"id":"sf_a8d50b66a4c04626a0d90be46a5a9ec4","object":"ScanForm","created_at":"2022-08-10T16:45:14Z","updated_at":"2022-08-10T16:45:14Z","tracking_codes":["9400100109361132539704"],"address":{"id":"adr_cdfa357f18cb11edbb1fac1f6bc72124","object":"Address","created_at":"2022-08-10T16:45:13+00:00","updated_at":"2022-08-10T16:45:13+00:00","name":"Jack
+        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20220810/29582823633e4dfe8e2b0b56186d9305.pdf","form_file_type":null,"batch_id":"batch_46095266abbb426192968db5de8e5cc0","confirmation":null}],"has_more":true}'
+  recorded_at: Thu, 11 Aug 2022 15:54:46 GMT
 recorded_with: VCR 6.0.0

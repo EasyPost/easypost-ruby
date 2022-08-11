@@ -9,7 +9,7 @@ describe EasyPost::CarrierAccount, :authenticate_prod do
 
       expect(carrier_account).to be_an_instance_of(described_class)
       expect(carrier_account.id).to match('ca_')
-      expect(carrier_account.type).to eq('UpsAccount')
+      expect(carrier_account.type).to eq('DhlEcsAccount')
 
       # Remove the carrier account once we have tested it so we don't pollute the account with test accounts
       carrier_account.delete

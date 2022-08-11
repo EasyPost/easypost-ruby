@@ -32,7 +32,7 @@ describe EasyPost::Event do
 
   describe '.receive' do
     it 'receives (converts) an event' do
-      event = described_class.receive(Fixture.event)
+      event = described_class.receive(Fixture.event_json)
 
       expect(event).to be_an_instance_of(described_class)
       expect(event.id).to match('evt_')

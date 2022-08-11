@@ -5,18 +5,17 @@ http_interactions:
     uri: https://api.easypost.com/beta/end_shippers
     body:
       encoding: UTF-8
-      string: '{"address":{"name":"Jack Sparrow","company":"EasyPost","street1":"388
-        Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":"test@example.com"}}'
+      string: '{"address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt
+        20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/4.2.1 Ruby/3.1.1-p18
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 201
@@ -35,9 +34,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - efec6381627e8854e7873358003b8704
+      - ca7a1a3a62f5260fe786c4df0027f1e5
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -45,31 +44,31 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"c9619d7cff76c64fe08dc4f321236460"
+      - W/"52462be371b08af518c94e70aeee1b8b"
       X-Runtime:
-      - '0.039142'
+      - '0.041536'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9nuq
+      - bigweb2nuq
       X-Version-Label:
-      - easypost-202205131541-a5925c1031-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb1nuq 570dfcbc0a
+      - extlb1nuq 9ce216bfac
+      - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"es_db0f08c1a5b9415c91d9f40d8371c48c","object":"EndShipper","created_at":"2022-05-13T16:33:24+00:00","updated_at":"2022-05-13T16:33:24+00:00","name":"JACK
-        SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
-        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":"TEST@EXAMPLE.COM"}'
-  recorded_at: Fri, 13 May 2022 16:33:24 GMT
+      encoding: UTF-8
+      string: '{"id":"es_17afbea174ec44d79551865615189d2f","object":"EndShipper","created_at":"2022-08-11T15:53:51+00:00","updated_at":"2022-08-11T15:53:51+00:00","name":"JACK
+        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
+  recorded_at: Thu, 11 Aug 2022 15:53:51 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/beta/end_shippers/es_db0f08c1a5b9415c91d9f40d8371c48c
+    uri: https://api.easypost.com/beta/end_shippers/es_17afbea174ec44d79551865615189d2f
     body:
       encoding: UTF-8
       string: "{}"
@@ -78,11 +77,10 @@ http_interactions:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      User-Agent:
-      - EasyPost/v2 RubyClient/4.2.1 Ruby/3.1.1-p18
+      User-Agent: "<REDACTED>"
       Content-Type:
       - application/json
-      Authorization: "<AUTHORIZATION>"
+      Authorization: "<REDACTED>"
   response:
     status:
       code: 200
@@ -101,9 +99,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - efec6383627e8854e7873359003b871e
+      - ca7a1a3c62f52610e786c4e00027f207
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -111,26 +109,26 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"66ea815aa765c1d39cf67dd2edcb6cee"
+      - W/"4ac4046e80b16a2c7ed9025f8faf1292"
       X-Runtime:
-      - '0.035788'
+      - '0.036365'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb2nuq
       X-Version-Label:
-      - easypost-202205131541-a5925c1031-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb1nuq 570dfcbc0a
+      - extlb1nuq 9ce216bfac
+      - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"es_db0f08c1a5b9415c91d9f40d8371c48c","object":"EndShipper","created_at":"2022-05-13T16:33:24+00:00","updated_at":"2022-05-13T16:33:24+00:00","name":"JACK
-        SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
-        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":"TEST@EXAMPLE.COM"}'
-  recorded_at: Fri, 13 May 2022 16:33:24 GMT
+      encoding: UTF-8
+      string: '{"id":"es_17afbea174ec44d79551865615189d2f","object":"EndShipper","created_at":"2022-08-11T15:53:51+00:00","updated_at":"2022-08-11T15:53:51+00:00","name":"JACK
+        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
+  recorded_at: Thu, 11 Aug 2022 15:53:52 GMT
 recorded_with: VCR 6.0.0

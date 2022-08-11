@@ -33,9 +33,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3843703c62e2e484ec61dedb00329545
+      - ca7a1a3962f5261ae786c5400027f5ab
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -43,25 +43,25 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.017327'
+      - '0.082944'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb7nuq
       X-Version-Label:
-      - easypost-202207272329-7f74c9e58c-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb4wdc 403f17ff97
+      - extlb1nuq 9ce216bfac
       - intlb2nuq 403f17ff97
-      - intlb2wdc 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"error":{"code":"SHIPMENT.INVALID_PARAMS","message":"Unable to create
-        shipment, one or more parameters were invalid.","errors":[{"to_address":"Required
-        and missing."},{"from_address":"Required and missing."}]}}'
-  recorded_at: Thu, 28 Jul 2022 19:33:24 GMT
+      string: '{"error":{"code":"PARAMETER.REQUIRED","message":"Missing required parameter.","errors":[{"field":"shipment","message":"cannot
+        be blank"}]}}'
+  recorded_at: Thu, 11 Aug 2022 15:54:02 GMT
 recorded_with: VCR 6.0.0

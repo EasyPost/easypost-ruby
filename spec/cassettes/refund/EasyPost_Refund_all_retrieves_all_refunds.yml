@@ -33,9 +33,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b473627d40c8e7873bfa00311a78
+      - ca7a1a3b62f5263de786c941002801e2
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -43,24 +43,26 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"60a5f3bf87e9fba1f1bd059a09a5c5e8"
+      - W/"ff39e0d49b31631a25f8a941bf0a4b48"
       X-Runtime:
-      - '0.060018'
+      - '0.041842'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb7nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb2nuq 570dfcbc0a
+      - extlb1nuq 9ce216bfac
+      - intlb1nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"refunds":[{"id":"rfnd_b889da2a2f91465c8dd14d58d77b3efe","object":"Refund","created_at":"2022-05-12T17:15:52Z","updated_at":"2022-05-12T17:15:52Z","tracking_code":"9400100109361118873846","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_3e79a7c738d54da89e4912ac453a2971"},{"id":"rfnd_947820c7207e4928b4eeed56cd4d2345","object":"Refund","created_at":"2022-05-11T23:02:51Z","updated_at":"2022-05-11T23:02:51Z","tracking_code":"9400100109361118761242","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_ab4055e1f8384e2ca0c508cbf5b4eb85"},{"id":"rfnd_4107326332f24d57aa8f7e0ee8adf99a","object":"Refund","created_at":"2022-05-11T23:02:32Z","updated_at":"2022-05-11T23:02:32Z","tracking_code":"9400100109361118761174","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_956a3f831d4a4611bddc658be288298e"},{"id":"rfnd_be29f450d6ee47458f04662d9a356800","object":"Refund","created_at":"2022-05-11T23:02:30Z","updated_at":"2022-05-11T23:02:30Z","tracking_code":"9400100109361118761167","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_9b80f34b94b5430a8e2638c3a72cea3c"},{"id":"rfnd_86d8d668aba84b88b40aa7503a076222","object":"Refund","created_at":"2022-04-14T20:41:53Z","updated_at":"2022-04-15T20:41:53Z","tracking_code":"9400100109361115069440","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_7cb79513361e438893ecf3087dad12d4"}],"has_more":true}'
-  recorded_at: Thu, 12 May 2022 17:15:52 GMT
+      string: '{"refunds":[{"id":"rfnd_3deff4bd94594053a953ef0a7817c2fd","object":"Refund","created_at":"2022-08-11T15:54:36Z","updated_at":"2022-08-11T15:54:36Z","tracking_code":"9400100109361132686026","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_03f7620a6ac847b2b301039efd161f9f"},{"id":"rfnd_c9c21fc65cf949bbbe509c2846aa4f90","object":"Refund","created_at":"2022-08-10T16:45:37Z","updated_at":"2022-08-10T16:45:37Z","tracking_code":"9400100109361132539834","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_46a8d7490d2347c4ad712b42d1794ffb"},{"id":"rfnd_84209ea6a5d243df9afb18222efc9ddd","object":"Refund","created_at":"2022-08-10T16:45:10Z","updated_at":"2022-08-10T16:45:10Z","tracking_code":"9400100109361132539667","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_f22f511839b947b7a1355ae0cf9b4aab"},{"id":"rfnd_f6422d7bd0c64f7ba2e1548168f899b8","object":"Refund","created_at":"2022-08-10T16:45:08Z","updated_at":"2022-08-10T16:45:08Z","tracking_code":"9400100109361132539643","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_600325bfe74e4fc89ab956a96f5ca843"},{"id":"rfnd_80793bc2c37649f784e81b83bf098091","object":"Refund","created_at":"2022-08-09T19:50:12Z","updated_at":"2022-08-10T19:50:12Z","tracking_code":"9400100109361132422860","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_d8f045e9e64f4c2dbe693029dbfa933d"}],"has_more":true}'
+  recorded_at: Thu, 11 Aug 2022 15:54:37 GMT
 recorded_with: VCR 6.0.0

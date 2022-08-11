@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.easypost.com/v2/parcels
     body:
       encoding: UTF-8
-      string: '{"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"}}'
+      string: '{"parcel":{"length":10,"width":8,"height":4,"weight":15.4}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -33,36 +33,36 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3450b470627d40b4e7873bb6003113a6
+      - ca7a1a3b62f52627e786c5ca0027fb41
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
       - '0'
       Location:
-      - "/api/v2/parcels.prcl_d7c62fa20ad84a3c9c1c4a63da33f9b7"
+      - "/api/v2/parcels.prcl_dfa9f61bae9441848b10195726c7d16c"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"4bf8aed751f33d7cae12283bb37823f3"
+      - W/"6f244b65531189388a9b46e22c092299"
       X-Runtime:
-      - '0.022898'
+      - '0.022141'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb3nuq
       X-Version-Label:
-      - easypost-202205110022-b4df6b5700-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq c51cdb8bf2
-      - intlb1nuq 570dfcbc0a
+      - extlb1nuq 9ce216bfac
+      - intlb1nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"prcl_d7c62fa20ad84a3c9c1c4a63da33f9b7","object":"Parcel","created_at":"2022-05-12T17:15:32Z","updated_at":"2022-05-12T17:15:32Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
-  recorded_at: Thu, 12 May 2022 17:15:32 GMT
+      string: '{"id":"prcl_dfa9f61bae9441848b10195726c7d16c","object":"Parcel","created_at":"2022-08-11T15:54:15Z","updated_at":"2022-08-11T15:54:15Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
+  recorded_at: Thu, 11 Aug 2022 15:54:15 GMT
 recorded_with: VCR 6.0.0
