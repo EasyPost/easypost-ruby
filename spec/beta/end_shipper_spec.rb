@@ -5,7 +5,7 @@ require 'spec_helper'
 describe EasyPost::Beta::EndShipper, :authenticate_prod do
   describe '.create' do
     it 'creates an EndShipper object' do
-      end_shipper_address = described_class.create(Fixture.end_shipper_address)
+      end_shipper_address = described_class.create(Fixture.ca_address1)
 
       expect(end_shipper_address).to be_an_instance_of(described_class)
       expect(end_shipper_address.id).to match('es_')
@@ -15,7 +15,7 @@ describe EasyPost::Beta::EndShipper, :authenticate_prod do
 
   describe '.retrieve' do
     it 'retrieves an EndShipper object' do
-      end_shipper_address = described_class.create(Fixture.end_shipper_address)
+      end_shipper_address = described_class.create(Fixture.ca_address1)
       retrieved_end_shipper_address = described_class.retrieve(end_shipper_address.id)
 
       expect(retrieved_end_shipper_address).to be_an_instance_of(described_class)
@@ -36,9 +36,9 @@ describe EasyPost::Beta::EndShipper, :authenticate_prod do
 
   describe '.save' do
     it 'updates the EndShipper object' do
-      end_shipper_address = described_class.create(Fixture.end_shipper_address)
+      end_shipper_address = described_class.create(Fixture.ca_address1)
 
-      end_shipper_address.name = 'Jack Sparrow'
+      end_shipper_address.name = 'Captain Sparrow'
       end_shipper_address.company = 'EasyPost'
       end_shipper_address.street1 = '388 Townsend St'
       end_shipper_address.street2 = 'Apt 20'
@@ -52,7 +52,7 @@ describe EasyPost::Beta::EndShipper, :authenticate_prod do
 
       expect(saved_address).to be_an_instance_of(described_class)
       expect(saved_address.id).to match('es_')
-      expect(saved_address.phone).to eq('9999999999')
+      expect(saved_address.name).to eq('CAPTAIN SPARROW')
     end
   end
 end

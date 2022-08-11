@@ -34,38 +34,38 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 134f507062f2ba21e7897aa8000895cd
+      - ca7a1a3a62f525fce786c1490027ea7f
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_499f8312181c11ed976eac1f6bc72124"
+      - "/api/v2/addresses/adr_c07911fc198d11eda349ac1f6b0a0d1e"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"180a819412e92b5bf3178f526881602c"
+      - W/"f48fa8a8eb50f063f9524685c377d407"
       X-Runtime:
-      - '0.040645'
+      - '0.045051'
       Transfer-Encoding:
       - chunked
       X-Node:
       - bigweb1nuq
       X-Version-Label:
-      - easypost-202208091852-65266f4601-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 9ce216bfac
+      - extlb1nuq 9ce216bfac
       - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"adr_499f8312181c11ed976eac1f6bc72124","object":"Address","created_at":"2022-08-09T19:48:49+00:00","updated_at":"2022-08-09T19:48:49+00:00","name":"JACK
+      string: '{"id":"adr_c07911fc198d11eda349ac1f6b0a0d1e","object":"Address","created_at":"2022-08-11T15:53:32+00:00","updated_at":"2022-08-11T15:53:32+00:00","name":"JACK
         SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
         FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}}'
-  recorded_at: Tue, 09 Aug 2022 19:48:49 GMT
+  recorded_at: Thu, 11 Aug 2022 15:53:33 GMT
 recorded_with: VCR 6.0.0

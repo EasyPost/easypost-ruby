@@ -2,10 +2,11 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.easypost.com/v2/users
+    uri: https://api.easypost.com/beta/end_shippers
     body:
       encoding: UTF-8
-      string: '{"user":{"name":"Test User"}}'
+      string: '{"address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt
+        20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -33,7 +34,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - ca7a1a3f62f5266ce7872ef900281172
+      - ca7a1a3a62f5260fe786c4df0027f1e5
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -43,13 +44,13 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"bec178247a09cb4b887faa0aa411e73b"
+      - W/"52462be371b08af518c94e70aeee1b8b"
       X-Runtime:
-      - '0.698506'
+      - '0.041536'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9nuq
+      - bigweb2nuq
       X-Version-Label:
       - easypost-202208102159-4e6760c1b7-master
       X-Backend:
@@ -61,15 +62,16 @@ http_interactions:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"user_2326108861984b19b05f19a862a24d0e","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
-        User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-08-11T15:55:24Z","children":"<REDACTED>","api_keys":"<REDACTED>"}'
-  recorded_at: Thu, 11 Aug 2022 15:55:24 GMT
+      string: '{"id":"es_17afbea174ec44d79551865615189d2f","object":"EndShipper","created_at":"2022-08-11T15:53:51+00:00","updated_at":"2022-08-11T15:53:51+00:00","name":"JACK
+        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
+  recorded_at: Thu, 11 Aug 2022 15:53:51 GMT
 - request:
-    method: delete
-    uri: https://api.easypost.com/v2/users/user_2326108861984b19b05f19a862a24d0e
+    method: get
+    uri: https://api.easypost.com/beta/end_shippers/es_17afbea174ec44d79551865615189d2f
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: "{}"
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -81,8 +83,8 @@ http_interactions:
       Authorization: "<REDACTED>"
   response:
     status:
-      code: 204
-      message: No Content
+      code: 200
+      message: OK
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -97,17 +99,23 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - ca7a1a3f62f5266de7872f18002811bc
+      - ca7a1a3c62f52610e786c4e00027f207
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
       - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"4ac4046e80b16a2c7ed9025f8faf1292"
       X-Runtime:
-      - '0.123199'
+      - '0.036365'
+      Transfer-Encoding:
+      - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb2nuq
       X-Version-Label:
       - easypost-202208102159-4e6760c1b7-master
       X-Backend:
@@ -119,6 +127,8 @@ http_interactions:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: ''
-  recorded_at: Thu, 11 Aug 2022 15:55:25 GMT
+      string: '{"id":"es_17afbea174ec44d79551865615189d2f","object":"EndShipper","created_at":"2022-08-11T15:53:51+00:00","updated_at":"2022-08-11T15:53:51+00:00","name":"JACK
+        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
+  recorded_at: Thu, 11 Aug 2022 15:53:52 GMT
 recorded_with: VCR 6.0.0

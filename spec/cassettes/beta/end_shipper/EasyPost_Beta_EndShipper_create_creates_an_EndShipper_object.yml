@@ -2,10 +2,11 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.easypost.com/v2/customs_items
+    uri: https://api.easypost.com/beta/end_shippers
     body:
       encoding: UTF-8
-      string: '{"customs_item":{"description":"Sweet shirts","quantity":2,"weight":11,"value":23.25,"hs_tariff_number":"654321","origin_country":"US"}}'
+      string: '{"address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt
+        20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -33,29 +34,29 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - ca7a1a3c62f52619e786c5260027f556
+      - ca7a1a3862f5260fe786c4de0027f1d1
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
       - '0'
-      Location:
-      - "/api/v2/customs_items/cstitem_af30ff9e8a064125bb879f0c4759b66c"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"4d70ecce70c7d90d4abdf2a4d455d4b2"
+      - W/"b7bc61a913ee967c48e949a2ac2e726d"
       X-Runtime:
-      - '0.025785'
+      - '0.041821'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb2nuq
+      - bigweb7nuq
       X-Version-Label:
       - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
       - extlb1nuq 9ce216bfac
       - intlb1nuq 403f17ff97
@@ -63,7 +64,8 @@ http_interactions:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"cstitem_af30ff9e8a064125bb879f0c4759b66c","object":"CustomsItem","created_at":"2022-08-11T15:54:01Z","updated_at":"2022-08-11T15:54:01Z","description":"Sweet
-        shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
-  recorded_at: Thu, 11 Aug 2022 15:54:01 GMT
+      string: '{"id":"es_d027943ed652441c916eb9421341866c","object":"EndShipper","created_at":"2022-08-11T15:53:51+00:00","updated_at":"2022-08-11T15:53:51+00:00","name":"JACK
+        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
+  recorded_at: Thu, 11 Aug 2022 15:53:51 GMT
 recorded_with: VCR 6.0.0

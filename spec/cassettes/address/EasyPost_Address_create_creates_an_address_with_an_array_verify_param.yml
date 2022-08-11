@@ -34,39 +34,39 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 134f506f62f2ba21e7897aa9000895e5
+      - ca7a1a3b62f525fde786c1610027eabf
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_49cbb0bc181c11edabdfac1f6bc7bdc6"
+      - "/api/v2/addresses/adr_c0bf4752198d11ed98bdac1f6bc72124"
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"5b00cbf3568270d810b7b570f097a93d"
+      - W/"5236d876b9767a5e5a3f231b48d7b191"
       X-Runtime:
-      - '0.057504'
+      - '0.043163'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb4nuq
+      - bigweb6nuq
       X-Version-Label:
-      - easypost-202208091852-65266f4601-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 9ce216bfac
+      - extlb1nuq 9ce216bfac
       - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"adr_49cbb0bc181c11edabdfac1f6bc7bdc6","object":"Address","created_at":"2022-08-09T19:48:49+00:00","updated_at":"2022-08-09T19:48:49+00:00","name":null,"company":"EASYPOST","street1":"417
+      string: '{"id":"adr_c0bf4752198d11ed98bdac1f6bc72124","object":"Address","created_at":"2022-08-11T15:53:33+00:00","updated_at":"2022-08-11T15:53:33+00:00","name":null,"company":"EASYPOST","street1":"417
         MONTGOMERY ST FL 5","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94104-1129","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid
         secondary information(Apt/Suite#)","suggestion":null}],"details":null},"delivery":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid
         secondary information(Apt/Suite#)","suggestion":null}],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}}'
-  recorded_at: Tue, 09 Aug 2022 19:48:49 GMT
+  recorded_at: Thu, 11 Aug 2022 15:53:33 GMT
 recorded_with: VCR 6.0.0

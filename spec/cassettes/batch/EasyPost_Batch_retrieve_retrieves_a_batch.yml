@@ -6,8 +6,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"batch":{"shipments":[{"to_address":{"name":"Jack Sparrow","street1":"388
-        Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"},"from_address":{"name":"Jack
-        Sparrow","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"},"parcel":{"length":10,"width":8,"height":4,"weight":15.4},"service":"First","carrier_accounts":["ca_716f33fd9fd348238b85c2922237f98b"],"carrier":"USPS"}]}}'
+        Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"},"from_address":{"name":"Elizabeth
+        Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","email":"test@example.com","phone":"5555555555"},"parcel":{"length":10,"width":8,"height":4,"weight":15.4},"service":"First","carrier_accounts":["ca_716f33fd9fd348238b85c2922237f98b"],"carrier":"USPS"}]}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -35,9 +35,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 134f507162f2ba23e7897ac8000896cd
+      - ca7a1a3c62f525ffe786c1690027eb97
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -45,29 +45,29 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"797f88c7769bc6a48d88af19ffc6df1a"
+      - W/"ad53fc63d5187a12e2c449c8eb1bca88"
       X-Runtime:
-      - '0.040242'
+      - '0.053556'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb6nuq
+      - bigweb4nuq
       X-Version-Label:
-      - easypost-202208091852-65266f4601-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 9ce216bfac
+      - extlb1nuq 9ce216bfac
       - intlb1nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"batch_0bf11c236ed047d79406c40546b52267","object":"Batch","mode":"test","state":"creating","num_shipments":1,"reference":null,"created_at":"2022-08-09T19:48:51Z","updated_at":"2022-08-09T19:48:51Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
-  recorded_at: Tue, 09 Aug 2022 19:48:51 GMT
+      string: '{"id":"batch_6a3677166dd04ce480a4428247d80463","object":"Batch","mode":"test","state":"creating","num_shipments":1,"reference":null,"created_at":"2022-08-11T15:53:35Z","updated_at":"2022-08-11T15:53:35Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+  recorded_at: Thu, 11 Aug 2022 15:53:35 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/batches/batch_0bf11c236ed047d79406c40546b52267
+    uri: https://api.easypost.com/v2/batches/batch_6a3677166dd04ce480a4428247d80463
     body:
       encoding: US-ASCII
       string: ''
@@ -98,9 +98,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 134f506c62f2ba23e7897ac9000896df
+      - ca7a1a3b62f525ffe786c16a0027ebad
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -108,24 +108,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"8e61fd0be05bc61da4301e844a825ccf"
+      - W/"cc1c507f2b67ed5ed01e839a7cfbf80a"
       X-Runtime:
-      - '0.022180'
+      - '0.023176'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb1nuq
+      - bigweb3nuq
       X-Version-Label:
-      - easypost-202208091852-65266f4601-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 9ce216bfac
+      - extlb1nuq 9ce216bfac
       - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"batch_0bf11c236ed047d79406c40546b52267","object":"Batch","mode":"test","state":"created","num_shipments":1,"reference":null,"created_at":"2022-08-09T19:48:51Z","updated_at":"2022-08-09T19:48:51Z","scan_form":null,"shipments":[{"batch_status":"created","batch_message":null,"reference":null,"tracking_code":null,"id":"shp_8517821eb43c4e2f863298857b63d5e8"}],"status":{"created":1,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
-  recorded_at: Tue, 09 Aug 2022 19:48:51 GMT
+      string: '{"id":"batch_6a3677166dd04ce480a4428247d80463","object":"Batch","mode":"test","state":"created","num_shipments":1,"reference":null,"created_at":"2022-08-11T15:53:35Z","updated_at":"2022-08-11T15:53:35Z","scan_form":null,"shipments":[{"batch_status":"created","batch_message":null,"reference":null,"tracking_code":null,"id":"shp_8ad46b0558864dc8894bce503fa4ea86"}],"status":{"created":1,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+  recorded_at: Thu, 11 Aug 2022 15:53:35 GMT
 recorded_with: VCR 6.0.0

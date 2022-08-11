@@ -33,9 +33,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 1090a5bd62f2ba5ee7897ee800087559
+      - ca7a1a3f62f52640e786c947002802ff
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -43,17 +43,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"175076ff833b0461fbaa8f9720760a34"
+      - W/"9bc4d82e57f5b5d591345c3e4d6f4f54"
       X-Runtime:
-      - '0.036886'
+      - '0.034993'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb4nuq
+      - bigweb7nuq
       X-Version-Label:
-      - easypost-202208091852-65266f4601-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
       - extlb1nuq 9ce216bfac
       - intlb1nuq 403f17ff97
@@ -61,6 +63,6 @@ http_interactions:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"shprep_4a39fe4748274ac99216e7ac16c0322e","object":"ShipmentReport","created_at":"2022-08-09T19:49:50Z","updated_at":"2022-08-09T19:49:50Z","start_date":"2022-04-11","end_date":"2022-04-11","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
-  recorded_at: Tue, 09 Aug 2022 19:49:50 GMT
+      string: '{"id":"shprep_38adf261d4534e8c825343a7d8aa5605","object":"ShipmentReport","created_at":"2022-08-11T15:54:40Z","updated_at":"2022-08-11T15:54:40Z","start_date":"2022-04-11","end_date":"2022-04-11","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+  recorded_at: Thu, 11 Aug 2022 15:54:40 GMT
 recorded_with: VCR 6.0.0

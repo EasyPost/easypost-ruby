@@ -33,9 +33,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 1090a5b962f2ba8ce78983450008888b
+      - ca7a1a3c62f52678e7872f79002815a6
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -43,29 +43,29 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"d08ea9932745aa7c416f8371c77f1025"
+      - W/"134fcaee66ce9aed694f26cce4341b7e"
       X-Runtime:
-      - '0.178942'
+      - '0.163213'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9nuq
+      - bigweb4nuq
       X-Version-Label:
-      - easypost-202208091852-65266f4601-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
       X-Proxied:
       - extlb1nuq 9ce216bfac
-      - intlb1nuq 403f17ff97
+      - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"hook_89a3bb8a181c11ed96cd11144bc7812c","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2022-08-09T19:50:37Z","disabled_at":null}'
-  recorded_at: Tue, 09 Aug 2022 19:50:36 GMT
+      string: '{"id":"hook_0a55be6e198e11ed9ea36bf0493fe3f4","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2022-08-11T15:55:37Z","disabled_at":null}'
+  recorded_at: Thu, 11 Aug 2022 15:55:36 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/webhooks/hook_89a3bb8a181c11ed96cd11144bc7812c
+    uri: https://api.easypost.com/v2/webhooks/hook_0a55be6e198e11ed9ea36bf0493fe3f4
     body:
       encoding: US-ASCII
       string: ''
@@ -96,9 +96,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 1090a5bc62f2ba8ce7898346000888ad
+      - ca7a1a3a62f52679e7872f7a002815c8
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -108,22 +108,22 @@ http_interactions:
       Etag:
       - W/"44136fa355b3678a1146ad16f7e8649e"
       X-Runtime:
-      - '0.373542'
+      - '0.457590'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb2nuq
+      - bigweb8nuq
       X-Version-Label:
-      - easypost-202208091852-65266f4601-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
       X-Proxied:
       - extlb1nuq 9ce216bfac
-      - intlb1nuq 403f17ff97
+      - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: "{}"
-  recorded_at: Tue, 09 Aug 2022 19:50:37 GMT
+  recorded_at: Thu, 11 Aug 2022 15:55:37 GMT
 recorded_with: VCR 6.0.0

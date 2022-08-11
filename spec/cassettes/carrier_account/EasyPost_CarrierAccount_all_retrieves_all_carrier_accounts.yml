@@ -33,9 +33,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 134f506e62f2ba37e7897b2c00089dfc
+      - ca7a1a3c62f52616e786c5040027f42a
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -45,20 +45,18 @@ http_interactions:
       Etag:
       - W/"f102460859c64a8a8e5658d41ef677df"
       X-Runtime:
-      - '0.046764'
+      - '0.041515'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7nuq
+      - bigweb1nuq
       X-Version-Label:
-      - easypost-202208091852-65266f4601-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb2nuq 9ce216bfac
-      - intlb2nuq 403f17ff97
+      - extlb1nuq 9ce216bfac
+      - intlb1nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -80,5 +78,5 @@ http_interactions:
         DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"Test
         DHL eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"Test
         DHL eCommerce Solutions distribution center","value":"USLAX1"}}},"credentials":"<REDACTED>","test_credentials":"<REDACTED>"}]'
-  recorded_at: Tue, 09 Aug 2022 19:49:11 GMT
+  recorded_at: Thu, 11 Aug 2022 15:53:58 GMT
 recorded_with: VCR 6.0.0

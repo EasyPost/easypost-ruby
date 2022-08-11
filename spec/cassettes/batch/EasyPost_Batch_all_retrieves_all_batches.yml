@@ -33,9 +33,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 134f507262f2ba24e7897aca000896fd
+      - ca7a1a3a62f52600e786c1820027ebc8
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -45,18 +45,20 @@ http_interactions:
       Etag:
       - W/"46128582928b47ae8f1e1b1d7cb193b3"
       X-Runtime:
-      - '0.174034'
+      - '0.173296'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb3nuq
+      - bigweb7nuq
       X-Version-Label:
-      - easypost-202208091852-65266f4601-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb2nuq 9ce216bfac
-      - intlb2nuq 403f17ff97
+      - extlb1nuq 9ce216bfac
+      - intlb1nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -77,5 +79,5 @@ http_interactions:
         at front door","messages":[],"confirmation":null,"address":{"id":"adr_30d02a4e0eac11ed95fcac1f6bc7b362","object":"Address","created_at":"2022-07-28T19:33:43+00:00","updated_at":"2022-07-28T19:33:43+00:00","name":"Jack
         Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San
         Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"carrier_accounts":[],"pickup_rates":[{"mode":"test","service":"NextDay","rate":"0.00","currency":"USD","created_at":"2022-07-28T19:33:44Z","updated_at":"2022-07-28T19:33:44Z","carrier":"USPS","pickup_id":"pickup_f9c380b0c0d244a79e4d593a3c066af8","id":"pickuprate_6d4b358896a14ab8baaec7dcd7632593","object":"PickupRate"}]},"label_url":null}],"has_more":true}'
-  recorded_at: Tue, 09 Aug 2022 19:48:52 GMT
+  recorded_at: Thu, 11 Aug 2022 15:53:36 GMT
 recorded_with: VCR 6.0.0

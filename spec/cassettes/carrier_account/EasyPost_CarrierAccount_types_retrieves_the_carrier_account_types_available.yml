@@ -33,9 +33,9 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 134f506d62f2ba39e7897e4000089ec9
+      - ca7a1a3a62f52618e786c5210027f4f2
       Cache-Control:
-      - no-cache, no-store
+      - private, no-cache, no-store
       Pragma:
       - no-cache
       Expires:
@@ -45,19 +45,19 @@ http_interactions:
       Etag:
       - W/"f9f7c974c65e710285fe3c38fe492e01"
       X-Runtime:
-      - '0.026374'
+      - '0.091363'
       Transfer-Encoding:
       - chunked
       X-Node:
       - bigweb7nuq
       X-Version-Label:
-      - easypost-202208091852-65266f4601-master
+      - easypost-202208102159-4e6760c1b7-master
       X-Backend:
       - easypost
       X-Canary:
       - direct
       X-Proxied:
-      - extlb2nuq 9ce216bfac
+      - extlb1nuq 9ce216bfac
       - intlb2nuq 403f17ff97
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -365,5 +365,5 @@ http_interactions:
         (Optional)"}}}},{"object":"CarrierType","type":"VehoAccount","readable":"Veho","logo":null,"fields":{"credentials":{"api_key":{"visibility":"masked","label":"Veho
         Production API Key"}},"test_credentials":{"api_key":{"visibility":"masked","label":"Veho
         Test API Key"}}}}]'
-  recorded_at: Tue, 09 Aug 2022 19:49:13 GMT
+  recorded_at: Thu, 11 Aug 2022 15:54:00 GMT
 recorded_with: VCR 6.0.0

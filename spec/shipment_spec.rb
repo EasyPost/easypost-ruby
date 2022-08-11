@@ -43,8 +43,8 @@ describe EasyPost::Shipment do
     end
 
     it 'creates a shipment when only IDs are used' do
-      from_address = EasyPost::Address.create(Fixture.ca_address_1)
-      to_address = EasyPost::Address.create(Fixture.ca_address_1)
+      from_address = EasyPost::Address.create(Fixture.ca_address1)
+      to_address = EasyPost::Address.create(Fixture.ca_address1)
       parcel = EasyPost::Parcel.create(Fixture.basic_parcel)
 
       shipment = described_class.create(
@@ -64,7 +64,7 @@ describe EasyPost::Shipment do
     end
 
     it 'creates a shipment with carbon_offset' do
-      shipment = described_class.create(Fixture.basic_carbon_offset_shipment, nil, true)
+      shipment = described_class.create(Fixture.basic_shipment, nil, true)
 
       expect(shipment).to be_an_instance_of(described_class)
       expect(shipment.rates).not_to be_nil
@@ -74,16 +74,15 @@ describe EasyPost::Shipment do
     end
 
     it 'creates a one-call-buy shipment with carbon_offset' do
-      shipment = described_class.create(Fixture.one_call_buy_carbon_offset_shipment, nil, true)
+      shipment = described_class.create(Fixture.one_call_buy_shipment, nil, true)
 
-      expect(shipment.fees).not_to be_nil
       carbon_offset_found = false
       shipment.fees.each do |fee|
         if fee.type == 'CarbonOffsetFee'
           carbon_offset_found = true
         end
       end
-      expect(carbon_offset_found).to be_truthy
+      expect(carbon_offset_found).to be true
     end
   end
 
@@ -123,20 +122,17 @@ describe EasyPost::Shipment do
     end
 
     it 'buys a shipment with carbon offset' do
-      shipment = described_class.create(Fixture.full_carbon_offset_shipment, nil)
+      shipment = described_class.create(Fixture.basic_shipment, nil)
 
       shipment.buy(shipment.lowest_rate, true)
 
-      expect(shipment.postage_label).not_to be_nil
-
-      expect(shipment.fees).not_to be_nil
       carbon_offset_found = false
       shipment.fees.each do |fee|
         if fee.type == 'CarbonOffsetFee'
           carbon_offset_found = true
         end
       end
-      expect(carbon_offset_found).to be_truthy
+      expect(carbon_offset_found).to be true
     end
   end
 
@@ -153,7 +149,7 @@ describe EasyPost::Shipment do
     end
 
     it 'regenerates rates for a shipment with carbon offset' do
-      shipment = described_class.create(Fixture.full_carbon_offset_shipment)
+      shipment = described_class.create(Fixture.basic_shipment)
 
       shipment_with_carbon_offset = shipment.regenerate_rates(true)
 
@@ -240,7 +236,7 @@ describe EasyPost::Shipment do
       # Test lowest rate with service filter (this rate is higher than the lowest but should filter)
       lowest_rate = shipment.lowest_rate([], ['Priority'])
       expect(lowest_rate.service).to eq('Priority')
-      expect(lowest_rate.rate).to eq('7.37')
+      expect(lowest_rate.rate).to eq('7.90')
       expect(lowest_rate.carrier).to eq('USPS')
 
       # Test lowest rate with carrier filter (should error due to bad carrier)
