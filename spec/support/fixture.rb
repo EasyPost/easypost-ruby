@@ -4,7 +4,7 @@ require 'date'
 require 'json'
 
 class Fixture
-  # Read ficture data from the fixtures JSON file
+  # Read fixture data from the fixtures JSON file
   def self.read_fixture_data
     current_dir = File.join(File.dirname(__FILE__), '../../')
     JSON.parse(File.read("#{current_dir}/examples/official/fixtures/client-library-fixtures.json"))
@@ -109,6 +109,7 @@ class Fixture
     read_fixture_data['carrier_accounts']['basic']
   end
 
+  # This fixture will require you to add a `tracking_code` key with a tracking code from a shipment
   def self.basic_insurance
     read_fixture_data['insurances']['basic']
   end
