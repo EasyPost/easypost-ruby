@@ -629,6 +629,10 @@ describe EasyPost::EasyPostObject do
         expect(rate).to be_a EasyPost::Rate
         expect(rate['carrier_account_id']).to eq('ca_1234')
       end
+
+      it 'returns the id of the object when accessed as a Hash' do
+        expect(rate['id']).not_to be_nil
+      end
     end
   end
 
