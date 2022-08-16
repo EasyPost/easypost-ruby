@@ -26,7 +26,7 @@ class EasyPost::Pickup < EasyPost::Resource
   end
 
   # Retrieve a list of all Pickup objects.
-  def self.all
+  def self.all(filters = {}, api_key = nil)
     raise NotImplementedError.new('Pickup.all not implemented.')
   end
 
