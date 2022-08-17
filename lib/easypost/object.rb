@@ -49,14 +49,18 @@ class EasyPost::EasyPostObject
       add_accessors(added)
     end
 
-    # IDs don't change, do not update it
-    @values.delete(:id)
+    # IDs should never change. But to be safe, only delete if they are different.
+    @values.delete(:id) if values[:id] != @values[:id]
 
     values.each do |k, v|
       @values[k.to_s] = EasyPost::Util.convert_to_easypost_object(v, api_key, self, k)
       @transient_values.delete(k)
       @unsaved_values.delete(k)
     end
+
+    return if @values[:id] || (values[:id].nil? && values['id'].nil?)
+
+    @values[:id] = values[:id] || values['id']
   end
 
   # Get element of an array.
