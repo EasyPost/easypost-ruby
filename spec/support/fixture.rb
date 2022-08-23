@@ -119,11 +119,17 @@ class Fixture
   end
 
   def self.event_json
-    JSON.generate(read_fixture_data['event_body'])
+    current_dir = File.join(File.dirname(__FILE__), '../../')
+    data = File.read("#{current_dir}/examples/official/fixtures/event-body.json")
+
+    JSON.parse(JSON.generate(data))
   end
 
   def self.event_bytes
-    read_fixture_data['event_body'].to_json.encode('UTF-8')
+    current_dir = File.join(File.dirname(__FILE__), '../../')
+    data = File.open("#{current_dir}/examples/official/fixtures/event-body.json", &:readline)
+
+    JSON.parse(data).to_json.encode('UTF-8')
   end
 
   # The credit card details below are for a valid proxy card usable
