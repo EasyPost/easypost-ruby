@@ -16,7 +16,7 @@ class EasyPost::EndShipper < EasyPost::Resource
 
       wrapped_params = { address: values }
 
-      response = EasyPost.make_request(:put, "#{url}/end_shippers/#{id}", @api_key, wrapped_params)
+      response = EasyPost.make_request(:put, url, @api_key, wrapped_params)
       refresh_from(response, api_key)
     end
     self

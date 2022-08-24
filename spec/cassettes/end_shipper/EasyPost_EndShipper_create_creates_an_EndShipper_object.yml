@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/end_shippers
+    body:
+      encoding: UTF-8
+      string: '{"address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt
+        20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 70da33d763069194f7c9d64b00864783
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"aa91b816ed0884eaed7a02840bc9fb15"
+      X-Runtime:
+      - '0.046312'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb7nuq
+      X-Version-Label:
+      - easypost-202208241853-b300c23ebd-master
+      X-Backend:
+      - easypost
+      X-Canary:
+      - direct
+      X-Proxied:
+      - extlb2nuq 9ce216bfac
+      - intlb1nuq 6aa9972c1e
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"es_347af67f7b0e44c3bc167feaf75291ea","object":"EndShipper","created_at":"2022-08-24T21:01:08+00:00","updated_at":"2022-08-24T21:01:08+00:00","name":"JACK
+        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
+  recorded_at: Wed, 24 Aug 2022 21:01:08 GMT
+recorded_with: VCR 6.0.0

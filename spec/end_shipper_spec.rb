@@ -25,12 +25,19 @@ describe EasyPost::EndShipper, :authenticate_prod do
 
   describe '.all' do
     it 'retrieves all EndShipper objects' do
+      end_shippers = described_class.all(
+        page_size: Fixture.page_size,
+        )
+
+      end_shippers_array = end_shippers.end_shippers
+
+      expect(end_shippers_array.count).to be <= Fixture.page_size
+      expect(end_shippers.has_more).not_to be_nil
+      expect(end_shippers_array).to all(be_an_instance_of(described_class))
+
       end_shipper_addresses = described_class.all(
         page_size: Fixture.page_size,
       )
-
-      expect(end_shipper_addresses.count).to be <= Fixture.page_size
-      expect(end_shipper_addresses).to all(be_an_instance_of(described_class))
     end
   end
 
