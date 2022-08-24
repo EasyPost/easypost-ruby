@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe EasyPost::Beta::EndShipper, :authenticate_prod do
+describe EasyPost::EndShipper, :authenticate_prod do
   describe '.create' do
     it 'creates an EndShipper object' do
       end_shipper_address = described_class.create(Fixture.ca_address1)
@@ -25,12 +25,13 @@ describe EasyPost::Beta::EndShipper, :authenticate_prod do
 
   describe '.all' do
     it 'retrieves all EndShipper objects' do
-      end_shipper_addresses = described_class.all(
-        page_size: Fixture.page_size,
-      )
+      end_shippers = described_class.all(page_size: Fixture.page_size)
 
-      expect(end_shipper_addresses.count).to be <= Fixture.page_size
-      expect(end_shipper_addresses).to all(be_an_instance_of(described_class))
+      end_shippers_array = end_shippers.end_shippers
+
+      expect(end_shippers_array.count).to be <= Fixture.page_size
+      expect(end_shippers.has_more).not_to be_nil
+      expect(end_shippers_array).to all(be_an_instance_of(described_class))
     end
   end
 

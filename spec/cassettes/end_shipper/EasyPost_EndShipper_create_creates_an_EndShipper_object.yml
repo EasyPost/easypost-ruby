@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.easypost.com/beta/end_shippers
+    uri: https://api.easypost.com/v2/end_shippers
     body:
       encoding: UTF-8
       string: '{"address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt
@@ -34,7 +34,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - ca7a1a3862f5260fe786c4de0027f1d1
+      - 70da33d763069194f7c9d64b00864783
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -44,28 +44,28 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"b7bc61a913ee967c48e949a2ac2e726d"
+      - W/"aa91b816ed0884eaed7a02840bc9fb15"
       X-Runtime:
-      - '0.041821'
+      - '0.046312'
       Transfer-Encoding:
       - chunked
       X-Node:
       - bigweb7nuq
       X-Version-Label:
-      - easypost-202208102159-4e6760c1b7-master
+      - easypost-202208241853-b300c23ebd-master
       X-Backend:
       - easypost
       X-Canary:
       - direct
       X-Proxied:
-      - extlb1nuq 9ce216bfac
-      - intlb1nuq 403f17ff97
+      - extlb2nuq 9ce216bfac
+      - intlb1nuq 6aa9972c1e
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"es_d027943ed652441c916eb9421341866c","object":"EndShipper","created_at":"2022-08-11T15:53:51+00:00","updated_at":"2022-08-11T15:53:51+00:00","name":"JACK
+      string: '{"id":"es_347af67f7b0e44c3bc167feaf75291ea","object":"EndShipper","created_at":"2022-08-24T21:01:08+00:00","updated_at":"2022-08-24T21:01:08+00:00","name":"JACK
         SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
         FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
-  recorded_at: Thu, 11 Aug 2022 15:53:51 GMT
+  recorded_at: Wed, 24 Aug 2022 21:01:08 GMT
 recorded_with: VCR 6.0.0
