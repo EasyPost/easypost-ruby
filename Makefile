@@ -28,7 +28,7 @@ lint:
 
 ## publish - Publishes the built gem to Rubygems
 publish:
-	gem push *.gem
+	gem push dist/*.gem
 
 ## release - Cuts a release for the project on GitHub (requires GitHub CLI)
 # tag = The associated tag title of the release
