@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v4.7.0 (2022-08-25)
+
+- Moves EndShipper out of beta to the general library namespace
+- Ensure the Easypost object will respond to `.id` when it has one in @values
+
 ## v4.6.0 (2022-08-02)
 
 - Adds Carbon Offset support
