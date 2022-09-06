@@ -26,7 +26,7 @@ class EasyPost::Order < EasyPost::Resource
   end
 
   # Retrieve a list of Order objects.
-  def self.all
+  def self.all(_filters = {}, _api_key = nil)
     raise NotImplementedError.new('Order.all not implemented.')
   end
 
