@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v4.7.1 (2022-09-06)
+
+- Makes not implemented `all` calls match the `EasyPost::Resource` interface so that one can call `.to_json` on them and receive the proper error
+
 ## v4.7.0 (2022-08-25)
 
 - Moves EndShipper out of beta to the general library namespace
