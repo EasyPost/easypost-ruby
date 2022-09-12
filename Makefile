@@ -14,7 +14,7 @@ clean:
 
 ## fix - Fix Rubocop errors
 fix:
-	rubocop -A
+	bundle exec rubocop -A
 
 ## install - Install globally from source
 install:
@@ -24,7 +24,7 @@ install:
 
 ## lint - Lint the project
 lint:
-	rubocop
+	bundle exec rubocop
 
 ## publish - Publishes the built gem to Rubygems
 publish:
@@ -37,7 +37,7 @@ release:
 
 ## scan - Runs security analysis on the project with Brakeman
 scan:
-	brakeman lib --force
+	bundle exec brakeman lib --force
 
 ## test - Test the project
 test:
