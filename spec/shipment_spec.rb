@@ -150,6 +150,9 @@ describe EasyPost::Shipment do
     end
 
     it 'buys a shipment with end_shipper_id' do
+      # Because this requires an API call in prod, we mock the request instead of using
+      # VCR to ensure test user accounts don't get charged for real postage since we can only
+      # guarantee a USPS carrier account will be configured for a user.
       allow(EasyPost).to receive(:make_request).with(
         :post, '/v2/shipments/shp_123/buy', nil,
         { carbon_offset: false, end_shipper_id: 'es_123', rate: { id: 'rate_123' } },
