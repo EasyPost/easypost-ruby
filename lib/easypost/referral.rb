@@ -54,7 +54,8 @@ class EasyPost::Referral < EasyPost::Resource
   end
 
   # Get credit card token from Stripe.
-  private_class_method def self.create_stripe_token(number, expiration_month, expiration_year, cvc, easypost_stripe_token)
+  private_class_method def self.create_stripe_token(number, expiration_month, expiration_year,
+                                                    cvc, easypost_stripe_token)
     headers = {
       # This Stripe endpoint only accepts URL form encoded bodies.
       Authorization: "Bearer #{easypost_stripe_token}",
