@@ -111,6 +111,8 @@ describe EasyPost::Shipment do
   end
 
   describe '.buy' do
+    let(:mock_shipment) {EasyPost::Shipment.new('shp_123')}
+
     it 'buys a shipment' do
       shipment = described_class.create(Fixture.full_shipment)
 
@@ -133,6 +135,24 @@ describe EasyPost::Shipment do
         end
       end
       expect(carbon_offset_found).to be true
+    end
+
+    it 'buys a shipment with carbon offset in params hash' do
+      shipment = described_class.create(Fixture.basic_shipment, nil)
+
+      shipment.buy({rate: shipment.lowest_rate, with_carbon_offset: true})
+
+      expect(shipment).to be_an_instance_of(described_class)
+      expect(shipment.rates).not_to be_nil
+
+      rate = shipment.rates.first
+      expect(rate.carbon_offset).not_to be_nil
+    end
+
+    it 'buys a shipment with end_shipper_id' do
+      allow(EasyPost).to receive(:make_request).with(:post, '/v2/shipments/shp_123/buy', nil, {:carbon_offset=>false, :end_shipper_id=>"es_123", :rate=>{:id=>"rate_123"}}).and_return({mock: 'response'}, 'mock-api-key')
+      
+      mock_shipment.buy({rate: {id: "rate_123"}}, false, 'es_123')
     end
   end
 
