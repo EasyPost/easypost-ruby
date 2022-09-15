@@ -2,6 +2,8 @@
 
 ## NEXT RELEASE
 
+- Adds support to buy a shipment by passing in `end_shipper_id`
+- `with_carbon_offset` can now alternatively be passed in the `params` parameter of the `shipment.buy` function
 - Migrates Partner White Label (Referrals) to general library namespace and deprecates beta functions
 
 ## v4.7.1 (2022-09-06)
