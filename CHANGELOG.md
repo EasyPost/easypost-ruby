@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## NEXT RELEASE
+
+- Migrates Partner White Label (Referrals) to general library namespace and deprecates beta functions
+
 ## v4.7.1 (2022-09-06)
 
 - Makes not implemented `all` calls match the `EasyPost::Resource` interface so that one can call `.to_json` on them and receive the proper error

@@ -1,42 +1,34 @@
 # frozen_string_literal: true
 
 # Referral objects are User objects created from a Partner user.
-class EasyPost::Beta::Referral < EasyPost::Resource
+class EasyPost::Referral < EasyPost::Resource
   # Create a referral user. This function requires the Partner User's API key.
-  # <b>DEPRECATED:</b> Please use <tt>Referral</tt> in the main namespace instead.
   def self.create(params = {}, api_key = nil)
-    warn '[DEPRECATION] Please use `EndShipper.create` in the main namespace instead.'
-    response = EasyPost.make_request(:post, '/beta/referral_customers', api_key, { user: params })
+    response = EasyPost.make_request(:post, '/v2/referral_customers', api_key, { user: params })
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
   # Update a referral user. This function requires the Partner User's API key.
-  # <b>DEPRECATED:</b> Please use <tt>Referral</tt> in the main namespace instead.
   def self.update_email(email, user_id, api_key = nil)
-    warn '[DEPRECATION] Please use `EndShipper.update_email` in the main namespace instead.'
     wrapped_params = {
       user: {
         email: email,
       },
     }
-    EasyPost.make_request(:put, "/beta/referral_customers/#{user_id}", api_key, wrapped_params)
+    EasyPost.make_request(:put, "/v2/referral_customers/#{user_id}", api_key, wrapped_params)
 
     # return true if API succeeds, else an error is throw if it fails.
     true
   end
 
   # Retrieve a list of referral users. This function requires the Partner User's API key.
-  # <b>DEPRECATED:</b> Please use <tt>Referral</tt> in the main namespace instead.
   def self.all(params = {}, api_key = nil)
-    warn '[DEPRECATION] Please use `EndShipper.all` in the main namespace instead.'
-    response = EasyPost.make_request(:get, '/beta/referral_customers', api_key, params)
+    response = EasyPost.make_request(:get, '/v2/referral_customers', api_key, params)
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
   # Add credit card to a referral user. This function requires the Referral User's API key.
-  # <b>DEPRECATED:</b> Please use <tt>Referral</tt> in the main namespace instead.
   def self.add_credit_card(referral_api_key, number, expiration_month, expiration_year, cvc, priority = 'primary')
-    warn '[DEPRECATION] Please use `EndShipper.add_credit_card` in the main namespace instead.'
     easypost_stripe_api_key = retrieve_easypost_stripe_api_key
 
     begin
