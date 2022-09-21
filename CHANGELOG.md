@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## NEXT RELEASE
+## v4.8.0 (2022-09-21)
 
 - Adds support to buy a shipment by passing in `end_shipper_id`
 - `with_carbon_offset` can now alternatively be passed in the `params` parameter of the `shipment.buy` function
