@@ -48,6 +48,7 @@ class EasyPost::Resource < EasyPost::EasyPostObject
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
+  # Filter all results based on criteria.
   def self.each(filters = {}, api_key = EasyPost.api_key, &block)
     return to_enum(:each, filters, api_key) unless block_given?
 

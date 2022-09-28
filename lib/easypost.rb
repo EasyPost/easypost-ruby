@@ -26,6 +26,7 @@ require 'easypost/event'
 require 'easypost/insurance'
 require 'easypost/order'
 require 'easypost/parcel'
+require 'easypost/payment_method' # deprecated
 require 'easypost/pickup_rate'
 require 'easypost/pickup'
 require 'easypost/postage_label'

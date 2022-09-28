@@ -56,6 +56,18 @@ describe EasyPost::Order do
         expect(shipment.postage_label).not_to be_nil
       end
     end
+
+    it 'buys an order with a rate object' do
+      order = described_class.create(Fixture.basic_order)
+
+      order.buy(order.lowest_rate)
+
+      shipments_array = order.shipments
+
+      shipments_array.each do |shipment|
+        expect(shipment.postage_label).not_to be_nil
+      end
+    end
   end
 
   describe '.lowest_rate' do

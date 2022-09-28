@@ -2,10 +2,11 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.easypost.com/beta/referral_customers
+    uri: https://api.easypost.com/beta/end_shippers
     body:
       encoding: UTF-8
-      string: '{"user":{"name":"test user","email":"email@example.com","phone":"8888888888"}}'
+      string: '{"address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt
+        20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -33,7 +34,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - acda27c76334b545f4e34358000bd01b
+      - acda27c76334b579f5175b5b000bdcce
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -43,17 +44,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"29d947a79ee5d949326fefcd803080cf"
+      - W/"8d1fb392cf3caee4d8a42f426902939a"
       X-Runtime:
-      - '0.983549'
+      - '0.040340'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb7nuq
       X-Version-Label:
       - easypost-202209281918-99c3cae0f0-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
       - extlb2nuq 29913d444b
       - intlb2nuq 29913d444b
@@ -61,7 +64,8 @@ http_interactions:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"user_ec9755cbad9d4485b3e182f46935cf97","object":"User","parent_id":null,"name":"test
-        user","phone_number":"<REDACTED>","verified":true,"created_at":"2022-09-28T20:57:41Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0375","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":"<REDACTED>","api_keys":"<REDACTED>"}'
-  recorded_at: Wed, 28 Sep 2022 20:57:42 GMT
+      string: '{"id":"es_d2223306ccee4400aa6d44aa0608ef50","object":"EndShipper","mode":"production","created_at":"2022-09-28T20:58:33+00:00","updated_at":"2022-09-28T20:58:33+00:00","name":"JACK
+        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
+  recorded_at: Wed, 28 Sep 2022 20:58:33 GMT
 recorded_with: VCR 6.0.0

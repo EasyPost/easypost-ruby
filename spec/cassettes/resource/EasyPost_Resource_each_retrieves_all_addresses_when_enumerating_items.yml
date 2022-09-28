@@ -1,0 +1,104 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/addresses
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - c4e4cd9863337491f4f5dc20001afe55
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"01177e0a10d38d5456763e3ada2da6f0"
+      X-Runtime:
+      - '0.125951'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb7nuq
+      X-Version-Label:
+      - easypost-202209272141-cd59ee3d58-master
+      X-Backend:
+      - easypost
+      X-Canary:
+      - direct
+      X-Proxied:
+      - extlb2nuq 29913d444b
+      - intlb1nuq 29913d444b
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"addresses":[{"id":"adr_435db3993e7811edacf5ac1f6bc7bdc6","object":"Address","created_at":"2022-09-27T15:22:56+00:00","updated_at":"2022-09-27T15:22:56+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_435b16293e7811edacf4ac1f6bc7bdc6","object":"Address","created_at":"2022-09-27T15:22:56+00:00","updated_at":"2022-09-27T15:22:56+00:00","name":"JACK
+        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":"TEST@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_40dcc2c73e7811ed8d23ac1f6bc7b362","object":"Address","created_at":"2022-09-27T15:22:52+00:00","updated_at":"2022-09-27T15:22:52+00:00","name":"Jack
+        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_40db37bf3e7811edab04ac1f6bc7bdc6","object":"Address","created_at":"2022-09-27T15:22:52+00:00","updated_at":"2022-09-27T15:22:53+00:00","name":"ELIZABETH
+        SWAN","company":null,"street1":"179 N HARBOR DR","street2":null,"city":"REDONDO
+        BEACH","state":"CA","zip":"90277-2506","country":"US","phone":"5555555555","email":"TEST@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":33.8436,"longitude":-118.39177,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_7a145dc23de211eda7c0ac1f6bc7b362","object":"Address","created_at":"2022-09-26T21:30:43+00:00","updated_at":"2022-09-26T21:30:43+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_7a122b083de211ed88b1ac1f6b0a0d1e","object":"Address","created_at":"2022-09-26T21:30:43+00:00","updated_at":"2022-09-26T21:30:44+00:00","name":"JACK
+        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":"TEST@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_a082dcfd3de111ed964fac1f6b0a0d1e","object":"Address","created_at":"2022-09-26T21:24:38+00:00","updated_at":"2022-09-26T21:24:38+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_a081647f3de111ed9646ac1f6b0a0d1e","object":"Address","created_at":"2022-09-26T21:24:38+00:00","updated_at":"2022-09-26T21:24:39+00:00","name":"JACK
+        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":"TEST@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_b7ad66b33ddf11eda8baac1f6bc7b362","object":"Address","created_at":"2022-09-26T21:10:58+00:00","updated_at":"2022-09-26T21:10:58+00:00","name":null,"company":null,"street1":"invalid","street2":null,"city":null,"state":null,"zip":null,"country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_4fa71eec3ddf11ed805dac1f6b0a0d1e","object":"Address","created_at":"2022-09-26T21:08:04+00:00","updated_at":"2022-09-26T21:08:04+00:00","name":null,"company":null,"street1":"invalid","street2":null,"city":null,"state":null,"zip":null,"country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_233a17c4352f11eda48eac1f6b0a0d1e","object":"Address","created_at":"2022-09-15T19:46:48+00:00","updated_at":"2022-09-15T19:46:48+00:00","name":"Jack
+        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_2337d3e0352f11ed8309ac1f6bc7bdc6","object":"Address","created_at":"2022-09-15T19:46:48+00:00","updated_at":"2022-09-15T19:46:50+00:00","name":"ELIZABETH
+        SWAN","company":null,"street1":"179 N HARBOR DR","street2":null,"city":"REDONDO
+        BEACH","state":"CA","zip":"90277-2506","country":"US","phone":"5555555555","email":"TEST@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":33.8436,"longitude":-118.39177,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_14c5318e352f11ed8da6ac1f6bc72124","object":"Address","created_at":"2022-09-15T19:46:24+00:00","updated_at":"2022-09-15T19:46:24+00:00","name":"Jack
+        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_14c3675a352f11eda3afac1f6bc7b362","object":"Address","created_at":"2022-09-15T19:46:24+00:00","updated_at":"2022-09-15T19:46:24+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_cc01138d352d11edbcf3ac1f6b0a0d1e","object":"Address","created_at":"2022-09-15T19:37:13+00:00","updated_at":"2022-09-15T19:37:13+00:00","name":"Jack
+        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_cbff00fd352d11edaaf1ac1f6bc72124","object":"Address","created_at":"2022-09-15T19:37:13+00:00","updated_at":"2022-09-15T19:37:13+00:00","name":"ELIZABETH
+        SWAN","company":null,"street1":"179 N HARBOR DR","street2":null,"city":"REDONDO
+        BEACH","state":"CA","zip":"90277-2506","country":"US","phone":"5555555555","email":"TEST@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":33.8436,"longitude":-118.39177,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_00600635198e11edb72eac1f6bc7bdc6","object":"Address","created_at":"2022-08-11T15:55:20+00:00","updated_at":"2022-08-11T15:55:20+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_005e30a7198e11eda722ac1f6bc7b362","object":"Address","created_at":"2022-08-11T15:55:20+00:00","updated_at":"2022-08-11T15:55:20+00:00","name":"JACK
+        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":"TEST@EXAMPLE.COM","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_ff959df9198d11ed9b80ac1f6bc72124","object":"Address","created_at":"2022-08-11T15:55:18+00:00","updated_at":"2022-08-11T15:55:18+00:00","name":"Jack
+        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_ff93ee31198d11ed9b7bac1f6bc72124","object":"Address","created_at":"2022-08-11T15:55:18+00:00","updated_at":"2022-08-11T15:55:18+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"5555555555","email":"test@example.com","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}],"has_more":true}'
+  recorded_at: Tue, 27 Sep 2022 22:09:22 GMT
+recorded_with: VCR 6.0.0
