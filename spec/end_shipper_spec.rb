@@ -53,7 +53,7 @@ describe EasyPost::EndShipper, :authenticate_prod do
 
       expect(saved_address).to be_an_instance_of(described_class)
       expect(saved_address.id).to match('es_')
-      expect(saved_address.name).to eq('CAPTAIN SPARROW')
+      expect(saved_address.name).to eq('CAPTAIN SPARROW') # Address verification will capitalize the name
     end
   end
 end
