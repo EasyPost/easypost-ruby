@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - ca7a1a3c62f52616e786c5040027f42a
+      - 6f2c283a63365e8ee2bc2bcf001e3b08
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,38 +45,26 @@ http_interactions:
       Etag:
       - W/"f102460859c64a8a8e5658d41ef677df"
       X-Runtime:
-      - '0.041515'
+      - '0.043572'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb1nuq
+      - bigweb5nuq
       X-Version-Label:
-      - easypost-202208102159-4e6760c1b7-master
+      - easypost-202209292008-82708ffb20-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 9ce216bfac
-      - intlb1nuq 403f17ff97
+      - extlb4wdc 29913d444b
+      - intlb1nuq 29913d444b
+      - intlb2wdc 29913d444b
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: '[{"id":"ca_716f33fd9fd348238b85c2922237f98b","object":"CarrierAccount","type":"UspsAccount","clone":false,"created_at":"2017-03-01T22:57:19Z","updated_at":"2018-08-09T02:45:42Z","description":"USPS
-        Account","reference":null,"billing_type":"easypost","readable":"USPS","logo":null,"fields":{"credentials":{"company_name":{"visibility":"visible","label":"Account
-        Holder Name","value":""},"address_street":{"visibility":"visible","label":"Street
-        Address","value":""},"address_city":{"visibility":"visible","label":"City","value":""},"address_state":{"visibility":"visible","label":"State","value":""},"address_zip":{"visibility":"visible","label":"ZIP
-        Code","value":""},"phone":{"visibility":"visible","label":"Phone Number","value":""},"email":{"visibility":"visible","label":"Email
-        Address","value":null},"shipper_id":{"visibility":"visible","label":"Shipper
-        Identifier (Optional)","value":""}}},"credentials":"<REDACTED>","test_credentials":"<REDACTED>"},{"id":"ca_e94e4fa45aba4058809c9246a48712b3","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2022-08-09T19:49:09Z","updated_at":"2022-08-09T19:49:09Z","description":"DHL
+        Account","reference":null,"billing_type":"easypost","readable":"USPS","logo":null,"fields":[],"credentials":{},"test_credentials":{}},{"id":"ca_e94e4fa45aba4058809c9246a48712b3","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2022-08-09T19:49:09Z","updated_at":"2022-08-09T19:49:09Z","description":"DHL
         eCommerce Solutions Account","reference":null,"billing_type":"carrier","readable":"DHL
-        eCommerce Solutions","logo":null,"fields":{"credentials":{"client_id":{"visibility":"visible","label":"DHL
-        eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"DHL
-        eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"DHL
-        eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"DHL
-        eCommerce Solutions distribution center","value":"USLAX1"}},"test_credentials":{"client_id":{"visibility":"visible","label":"Test
-        DHL eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"Test
-        DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"Test
-        DHL eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"Test
-        DHL eCommerce Solutions distribution center","value":"USLAX1"}}},"credentials":"<REDACTED>","test_credentials":"<REDACTED>"}]'
-  recorded_at: Thu, 11 Aug 2022 15:53:58 GMT
+        eCommerce Solutions","logo":null,"fields":[],"credentials":{},"test_credentials":{}}]'
+  recorded_at: Fri, 30 Sep 2022 03:12:14 GMT
 recorded_with: VCR 6.0.0

@@ -2,12 +2,11 @@
 
 require 'spec_helper'
 
-describe EasyPost::EndShipper, :authenticate_prod do
+describe EasyPost::Beta::EndShipper, :authenticate_prod do
   describe '.create' do
     it 'creates an EndShipper object' do
       end_shipper_address = described_class.create(Fixture.ca_address1)
 
-      expect(end_shipper_address).to be_an_instance_of(described_class)
       expect(end_shipper_address.id).to match('es_')
       expect(end_shipper_address.street1).to eq('388 TOWNSEND ST APT 20')
     end
@@ -18,7 +17,6 @@ describe EasyPost::EndShipper, :authenticate_prod do
       end_shipper_address = described_class.create(Fixture.ca_address1)
       retrieved_end_shipper_address = described_class.retrieve(end_shipper_address.id)
 
-      expect(retrieved_end_shipper_address).to be_an_instance_of(described_class)
       expect(retrieved_end_shipper_address.street1).to eq(end_shipper_address.street1)
     end
   end
@@ -27,11 +25,7 @@ describe EasyPost::EndShipper, :authenticate_prod do
     it 'retrieves all EndShipper objects' do
       end_shippers = described_class.all(page_size: Fixture.page_size)
 
-      end_shippers_array = end_shippers.end_shippers
-
-      expect(end_shippers_array.count).to be <= Fixture.page_size
-      expect(end_shippers.has_more).not_to be_nil
-      expect(end_shippers_array).to all(be_an_instance_of(described_class))
+      expect(end_shippers.count).to be <= Fixture.page_size
     end
   end
 
@@ -51,7 +45,6 @@ describe EasyPost::EndShipper, :authenticate_prod do
       end_shipper_address.email = 'test@example.com'
       saved_address = end_shipper_address.save
 
-      expect(saved_address).to be_an_instance_of(described_class)
       expect(saved_address.id).to match('es_')
       expect(saved_address.name).to eq('CAPTAIN SPARROW') # Address verification will capitalize the name
     end

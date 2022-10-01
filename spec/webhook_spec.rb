@@ -3,6 +3,8 @@
 require 'spec_helper'
 
 describe EasyPost::Webhook do
+  let(:mock_webhook_no_id) { described_class.new }
+
   describe '.create' do
     it 'creates a webhook' do
       webhook = described_class.create(
@@ -59,6 +61,13 @@ describe EasyPost::Webhook do
 
       webhook.delete # Remove the webhook once we have tested it so we don't pollute the account with test webhooks
     end
+
+    it 'throws error for missing id' do
+      expect {
+        mock_webhook_no_id.update
+      }.to raise_error(EasyPost::Error)
+        .with_message('Could not determine which URL to request: EasyPost::Webhook instance has invalid ID: nil')
+    end
   end
 
   describe '.delete' do
@@ -70,6 +79,13 @@ describe EasyPost::Webhook do
       response = webhook.delete
 
       expect(response).to be_an_instance_of(described_class)
+    end
+
+    it 'throws error for missing id' do
+      expect {
+        mock_webhook_no_id.delete
+      }.to raise_error(EasyPost::Error)
+        .with_message('Could not determine which URL to request: EasyPost::Webhook instance has invalid ID: nil')
     end
   end
 

@@ -39,9 +39,9 @@ release:
 scan:
 	bundle exec brakeman lib --force
 
-## test - Test the project
+## test - Test the project (and ignore warnings for test output)
 test:
-	bundle exec rspec
+	RUBYOPT="-W0" bundle exec rspec
 
 ## update - Updates dependencies
 update:

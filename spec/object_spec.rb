@@ -655,4 +655,22 @@ describe EasyPost::EasyPostObject do
       expect(described_class.construct_from({}).to_s).to eq '{}'
     end
   end
+
+  describe '#keys' do
+    specify do
+      expect(described_class.construct_from({ id: '123' }).keys).to eq [:id, 'id']
+    end
+  end
+
+  describe '#each' do
+    specify do
+      expect(described_class.construct_from({ id: '123' }).each).to be_an Enumerator
+    end
+  end
+
+  describe '#to_hash' do
+    specify do
+      expect(described_class.construct_from({ id: '123' }).to_hash).to eq({ :id => '123', 'id' => '123' })
+    end
+  end
 end

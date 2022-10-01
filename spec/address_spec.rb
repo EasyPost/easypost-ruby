@@ -95,5 +95,14 @@ describe EasyPost::Address do
       expect(verified_address.id).to match('adr_')
       expect(verified_address.street1).to eq('417 MONTGOMERY ST FL 5')
     end
+
+    it 'throws an error for invalid address verification' do
+      address = described_class.create(street1: 'invalid')
+      address.verify
+    rescue EasyPost::Error => e
+      aggregate_failures 'test we throw an error for invalid address verification' do
+        expect(e.message).to eq('Unable to verify address.')
+      end
+    end
   end
 end

@@ -51,22 +51,35 @@ describe EasyPost::Beta::Referral, :authenticate_partner do
     end
   end
 
-  describe '.add_credit_card', :vcr do
-    xit 'adds a credit card to a referral user account' do
+  describe '.add_credit_card' do
+    it 'adds a credit card to a referral user account' do
       # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY
       # as well as one of that user's referral's production API keys via REFERRAL_USER_PROD_API_KEY.
-      #
-      # TODO: VCR has trouble matching the body of the form-encoded data here, skipping
       credit_card = described_class.add_credit_card(
         REFERRAL_USER_PROD_API_KEY,
-        Fixture.credit_card_details[:number],
-        Fixture.credit_card_details[:expiration_month],
-        Fixture.credit_card_details[:expiration_year],
-        Fixture.credit_card_details[:cvc],
+        Fixture.credit_card_details['number'],
+        Fixture.credit_card_details['expiration_month'],
+        Fixture.credit_card_details['expiration_year'],
+        Fixture.credit_card_details['cvc'],
       )
 
       expect(credit_card.id).to match('card_')
       expect(credit_card.last4).to match('6170')
+    end
+
+    it 'raises an error when we cannot send details to Stripe' do
+      allow(described_class).to receive(:create_stripe_token).and_raise(StandardError)
+      allow(described_class).to receive(:retrieve_easypost_stripe_api_key)
+
+      expect {
+        described_class.add_credit_card(
+          REFERRAL_USER_PROD_API_KEY,
+          Fixture.credit_card_details['number'],
+          Fixture.credit_card_details['expiration_month'],
+          Fixture.credit_card_details['expiration_year'],
+          Fixture.credit_card_details['cvc'],
+        )
+      }.to raise_error(StandardError).with_message('Could not send card details to Stripe, please try again later.')
     end
   end
 end

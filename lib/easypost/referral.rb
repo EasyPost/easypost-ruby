@@ -2,6 +2,59 @@
 
 # Referral objects are User objects created from a Partner user.
 class EasyPost::Referral < EasyPost::Resource
+  class << self
+    protected
+
+    # Retrieve EasyPost's Stripe public API key.
+    def retrieve_easypost_stripe_api_key
+      response = EasyPost.make_request(:get, '/beta/partners/stripe_public_key', @api_key)
+      response['public_key']
+    end
+
+    # Get credit card token from Stripe.
+    def create_stripe_token(number, expiration_month, expiration_year,
+                            cvc, easypost_stripe_token)
+      headers = {
+        # This Stripe endpoint only accepts URL form encoded bodies.
+        Authorization: "Bearer #{easypost_stripe_token}",
+        'Content-type': 'application/x-www-form-urlencoded',
+      }
+
+      credit_card_hash = {
+        card: {
+          number: number,
+          exp_month: expiration_month,
+          exp_year: expiration_year,
+          cvc: cvc,
+        },
+      }
+
+      form_encoded_params = EasyPost::Util.form_encode_params(credit_card_hash)
+
+      uri = URI.parse('https://api.stripe.com/v1/tokens')
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      request = Net::HTTP::Post.new(uri.request_uri, headers)
+      query = URI.encode_www_form(form_encoded_params)
+
+      response = http.request(request, query)
+      response_json = JSON.parse(response.body)
+      response_json['id']
+    end
+
+    # Submit Stripe credit card token to EasyPost.
+    def create_easypost_credit_card(referral_api_key, stripe_object_id, priority = 'primary')
+      wrapped_params = {
+        credit_card: {
+          stripe_object_id: stripe_object_id,
+          priority: priority,
+        },
+      }
+      response = EasyPost.make_request(:post, '/beta/credit_cards', referral_api_key, wrapped_params)
+      EasyPost::Util.convert_to_easypost_object(response, referral_api_key)
+    end
+  end
+
   # Create a referral user. This function requires the Partner User's API key.
   def self.create(params = {}, api_key = nil)
     response = EasyPost.make_request(:post, '/v2/referral_customers', api_key, { user: params })
@@ -44,55 +97,6 @@ class EasyPost::Referral < EasyPost::Resource
     end
 
     response = create_easypost_credit_card(referral_api_key, stripe_credit_card_token, priority)
-    EasyPost::Util.convert_to_easypost_object(response, referral_api_key)
-  end
-
-  # Retrieve EasyPost's Stripe public API key.
-  private_class_method def self.retrieve_easypost_stripe_api_key
-    response = EasyPost.make_request(:get, '/beta/partners/stripe_public_key', @api_key)
-    response['public_key']
-  end
-
-  # Get credit card token from Stripe.
-  private_class_method def self.create_stripe_token(number, expiration_month, expiration_year,
-                                                    cvc, easypost_stripe_token)
-    headers = {
-      # This Stripe endpoint only accepts URL form encoded bodies.
-      Authorization: "Bearer #{easypost_stripe_token}",
-      'Content-type': 'application/x-www-form-urlencoded',
-    }
-
-    credit_card_hash = {
-      card: {
-        number: number,
-        exp_month: expiration_month,
-        exp_year: expiration_year,
-        cvc: cvc,
-      },
-    }
-
-    form_encoded_params = EasyPost::Util.form_encode_params(credit_card_hash)
-
-    uri = URI.parse('https://api.stripe.com/v1/tokens')
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    request = Net::HTTP::Post.new(uri.request_uri, headers)
-    query = URI.encode_www_form(form_encoded_params)
-
-    response = http.request(request, query)
-    response_json = JSON.parse(response.body)
-    response_json['id']
-  end
-
-  # Submit Stripe credit card token to EasyPost.
-  private_class_method def self.create_easypost_credit_card(referral_api_key, stripe_object_id, priority = 'primary')
-    wrapped_params = {
-      credit_card: {
-        stripe_object_id: stripe_object_id,
-        priority: priority,
-      },
-    }
-    response = EasyPost.make_request(:post, '/beta/credit_cards', referral_api_key, wrapped_params)
     EasyPost::Util.convert_to_easypost_object(response, referral_api_key)
   end
 end

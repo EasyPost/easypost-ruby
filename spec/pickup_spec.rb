@@ -59,6 +59,22 @@ describe EasyPost::Pickup do
       expect(bought_pickup.confirmation).not_to be_nil
       expect(bought_pickup.status).to eq('scheduled')
     end
+
+    it 'buys a pickup with a pickup_rate object' do
+      shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
+
+      pickup_data = Fixture.basic_pickup
+      pickup_data[:shipment] = shipment
+
+      pickup = described_class.create(pickup_data)
+
+      bought_pickup = pickup.buy(pickup.lowest_rate)
+
+      expect(bought_pickup).to be_an_instance_of(described_class)
+      expect(bought_pickup.id).to match('pickup_')
+      expect(bought_pickup.confirmation).not_to be_nil
+      expect(bought_pickup.status).to eq('scheduled')
+    end
   end
 
   describe '.cancel' do

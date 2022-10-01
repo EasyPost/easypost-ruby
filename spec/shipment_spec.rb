@@ -3,6 +3,8 @@
 require 'spec_helper'
 
 describe EasyPost::Shipment do
+  let(:mock_shipment) { described_class.new('shp_123') }
+
   describe '.create' do
     it 'creates a shipment' do
       shipment = described_class.create(Fixture.full_shipment)
@@ -111,8 +113,6 @@ describe EasyPost::Shipment do
   end
 
   describe '.buy' do
-    let(:mock_shipment) { described_class.new('shp_123') }
-
     it 'buys a shipment' do
       shipment = described_class.create(Fixture.full_shipment)
 
@@ -201,6 +201,18 @@ describe EasyPost::Shipment do
 
       expect(shipment.postage_label.label_zpl_url).not_to be_nil
     end
+
+    it 'converts the label format of a shipment with unwrapped params' do
+      shipment = described_class.create(Fixture.full_shipment)
+
+      shipment.buy(
+        shipment.lowest_rate,
+      )
+
+      shipment.label('ZPL')
+
+      expect(shipment.postage_label.label_zpl_url).not_to be_nil
+    end
   end
 
   describe '.insure' do
@@ -215,6 +227,19 @@ describe EasyPost::Shipment do
       shipment.insure(
         amount: '100',
       )
+
+      expect(shipment.insurance).to eq('100.00')
+    end
+
+    it 'insures a shipment with unwrapped params' do
+      # If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
+      # so that USPS doesn't automatically insure it so we could manually insure it here.
+      shipment_data = Fixture.one_call_buy_shipment
+      shipment_data[:insurance] = 0
+
+      shipment = described_class.create(shipment_data)
+
+      shipment.insure(100)
 
       expect(shipment.insurance).to eq('100.00')
     end
@@ -271,6 +296,22 @@ describe EasyPost::Shipment do
       expect {
         shipment.lowest_rate(['BAD CARRIER'], [])
       }.to raise_error(EasyPost::Error, 'No rates found.')
+    end
+
+    it 'tests various usage alterations of the lowest_rate method when excluding params' do
+      shipment = described_class.create(Fixture.full_shipment)
+
+      # Test lowest rate by excluding a carrier (this is a weak test but we cannot assume existence of a non-USPS carrier)
+      lowest_rate = shipment.lowest_rate(['!RandomCarrier'])
+      expect(lowest_rate.service).to eq('First')
+      expect(lowest_rate.rate).to eq('5.57')
+      expect(lowest_rate.carrier).to eq('USPS')
+
+      # Test lowest rate by excluding the `Priority` service
+      lowest_rate = shipment.lowest_rate([], ['!Priority'])
+      expect(lowest_rate.service).to eq('First')
+      expect(lowest_rate.rate).to eq('5.57')
+      expect(lowest_rate.carrier).to eq('USPS')
     end
   end
 

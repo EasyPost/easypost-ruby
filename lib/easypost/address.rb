@@ -28,20 +28,12 @@ class EasyPost::Address < EasyPost::Resource
     wrapped_params[class_name.to_sym] = params
     response = EasyPost.make_request(:post, "#{url}/create_and_verify", api_key, wrapped_params)
 
-    raise EasyPost::Error.new('Unable to verify address.') unless response.key?('address')
-
     EasyPost::Util.convert_to_easypost_object(response['address'], api_key)
   end
 
   # Verify an Address.
   def verify
-    begin
-      response = EasyPost.make_request(:get, "#{url}/verify", @api_key)
-    rescue StandardError
-      raise EasyPost::Error.new('Unable to verify address.')
-    end
-
-    raise EasyPost::Error.new('Unable to verify address.') unless response.key?('address')
+    response = EasyPost.make_request(:get, "#{url}/verify", @api_key)
 
     EasyPost::Util.convert_to_easypost_object(response['address'], api_key)
   end
