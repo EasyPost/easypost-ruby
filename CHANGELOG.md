@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## NEXT RELEASE
+
+- Treats any HTTP status outside the `2xx` range as an error. Impact expected is minimal as this change only affects `1xx` and `3xx` HTTP status codes
+
 ## v4.8.0 (2022-09-21)
 
 - Adds support to buy a shipment by passing in `end_shipper_id`
