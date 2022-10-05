@@ -34,7 +34,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - acda27c76334b579ee379783000bdce3
+      - 81ebaef8633ddc87e2ba1d3f000634c0
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -44,31 +44,32 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"17aa46c53054f04fb77328264b2cc839"
+      - W/"ef884c1954f47af0b4cb2789591da9f7"
       X-Runtime:
-      - '0.058799'
+      - '0.044215'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb6nuq
       X-Version-Label:
-      - easypost-202209281918-99c3cae0f0-master
+      - easypost-202210051807-174cd29491-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 29913d444b
+      - extlb4wdc 29913d444b
       - intlb2nuq 29913d444b
+      - intlb2wdc 29913d444b
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"es_930b11a7898c4c919e283eab0c8e8540","object":"EndShipper","mode":"production","created_at":"2022-09-28T20:58:33+00:00","updated_at":"2022-09-28T20:58:33+00:00","name":"JACK
+      string: '{"id":"es_00d47a475b094953a186f0bde85389d1","object":"EndShipper","mode":"test","created_at":"2022-10-05T19:35:35+00:00","updated_at":"2022-10-05T19:35:35+00:00","name":"JACK
         SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
         FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
-  recorded_at: Wed, 28 Sep 2022 20:58:34 GMT
+  recorded_at: Wed, 05 Oct 2022 19:35:35 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/beta/end_shippers/es_930b11a7898c4c919e283eab0c8e8540
+    uri: https://api.easypost.com/beta/end_shippers/es_00d47a475b094953a186f0bde85389d1
     body:
       encoding: UTF-8
       string: "{}"
@@ -99,7 +100,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - acda27ce6334b57aee34d102000bdd05
+      - 81ebaef4633ddc87e2ba1d40000634f4
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -109,26 +110,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"91c4e33abeed2bc5ce38fa1e1643e80c"
+      - W/"b08c98379e351666ff85eb110550e17e"
       X-Runtime:
-      - '0.039631'
+      - '0.046324'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb2nuq
       X-Version-Label:
-      - easypost-202209281918-99c3cae0f0-master
+      - easypost-202210051807-174cd29491-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 29913d444b
+      - extlb4wdc 29913d444b
       - intlb2nuq 29913d444b
+      - intlb2wdc 29913d444b
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"es_930b11a7898c4c919e283eab0c8e8540","object":"EndShipper","mode":"production","created_at":"2022-09-28T20:58:33+00:00","updated_at":"2022-09-28T20:58:33+00:00","name":"JACK
+      string: '{"id":"es_00d47a475b094953a186f0bde85389d1","object":"EndShipper","mode":"test","created_at":"2022-10-05T19:35:35+00:00","updated_at":"2022-10-05T19:35:35+00:00","name":"JACK
         SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
         FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
-  recorded_at: Wed, 28 Sep 2022 20:58:34 GMT
+  recorded_at: Wed, 05 Oct 2022 19:35:35 GMT
 recorded_with: VCR 6.0.0
