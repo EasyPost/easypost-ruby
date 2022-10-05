@@ -134,7 +134,7 @@ module EasyPost
   end
 
   def self.parse_response(status:, body:, json:)
-    if status >= 400
+    if status < 200 || status >= 300
       error = JSON.parse(body)['error']
 
       raise EasyPost::Error.new(
