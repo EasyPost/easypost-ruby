@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe EasyPost::EndShipper, :authenticate_prod do
+describe EasyPost::EndShipper do
   describe '.create' do
     it 'creates an EndShipper object' do
       end_shipper_address = described_class.create(Fixture.ca_address1)
