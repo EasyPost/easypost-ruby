@@ -27,5 +27,11 @@ describe EasyPost::Error do
       # Compare an error and its properties to another error
       expect(e).to eq(e.clone)
     end
+
+    it 'concatenates error.message when it comes back incorrectly as an array from the API' do
+      error = described_class.new(%w[Error1 Error2])
+
+      expect(error.message).to eq('Error1, Error2')
+    end
   end
 end

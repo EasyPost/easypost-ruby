@@ -2,6 +2,7 @@
 
 ## NEXT RELEASE
 
+- Concatenates `error.message` if it incorrectly comes back from the API as an array
 - Treats any HTTP status outside the `2xx` range as an error. Impact expected is minimal as this change only affects `1xx` and `3xx` HTTP status codes
 
 ## v4.8.0 (2022-09-21)
