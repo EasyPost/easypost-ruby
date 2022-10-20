@@ -6,7 +6,8 @@ class EasyPost::Error < StandardError
 
   # Initialize a new EasyPost Error
   def initialize(message = nil, status = nil, code = nil, errors = nil, http_body = nil)
-    @message = message
+    # message should be a string but can sometimes incorrectly come back as an array
+    @message = message.is_a?(Array) ? message.join(', ') : message
     @status = status
     @code = code
     @errors = errors
