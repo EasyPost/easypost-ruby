@@ -24,6 +24,12 @@ jobs:
         run: make install
       - name: run tests
         run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 make test
+      - name: Coveralls
+        if: github.ref == 'refs/heads/master'
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: "./coverage/lcov/easypost-ruby.lcov"
   lint:
     runs-on: ubuntu-latest
     steps:
