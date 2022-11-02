@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'brakeman', '~> 5.2'
   spec.add_development_dependency 'pry', '~> 0.14'
   spec.add_development_dependency 'rake', '~> 13.0'
+  spec.add_development_dependency 'rdoc', '~> 6.4'
   spec.add_development_dependency 'rspec', '~> 3.10'
   spec.add_development_dependency 'rubocop', '= 1.27' # rubocop 1.28 requires Ruby 2.6+
   spec.add_development_dependency 'rubocop-rspec', '~> 2.7'

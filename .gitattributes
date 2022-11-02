@@ -1,4 +1,9 @@
 * text=auto
 
+# Cassettes
 spec/cassettes/**/* -diff
 spec/cassettes/**/* linguist-generated
+
+# Docs
+docs/**/* -diff
+docs/**/* linguist-generated

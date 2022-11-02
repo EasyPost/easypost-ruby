@@ -1,9 +1,11 @@
-*.gem
-*.rbc
 .bundle
 .config
-Gemfile.lock
+.idea/
+*.gem
+*.rbc
 coverage
+dist
+Gemfile.lock
 InstalledFiles
 lib/bundler/man
 pkg
@@ -12,21 +14,15 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
-.idea/
-dist
 
-# YARD artifacts
-.yardoc
-_yardoc
-doc/
 
-# iOS
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
+# macOS
 ._*
+.AppleDouble
+.DS_Store
+.env
+.LSOverride
 .Spotlight-V100
 .Trashes
+Icon
 vendor/
-.env

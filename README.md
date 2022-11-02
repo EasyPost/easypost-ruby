@@ -130,6 +130,9 @@ EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make test
 # Run security analysis
 make scan
 
+# Generate library documentation
+make docs
+
 # Update submodules
 git submodule init
 git submodule update --remote
