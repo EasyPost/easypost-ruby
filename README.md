@@ -1,6 +1,7 @@
 # EasyPost Ruby Client Library
 
 [![Build Status](https://github.com/EasyPost/easypost-ruby/workflows/CI/badge.svg)](https://github.com/EasyPost/easypost-ruby/actions?query=workflow%3ACI)
+[![Coverage Status](https://coveralls.io/repos/github/EasyPost/easypost-ruby/badge.svg?branch=master)](https://coveralls.io/github/EasyPost/easypost-ruby?branch=master)
 [![Gem Version](https://badge.fury.io/rb/easypost.svg)](https://badge.fury.io/rb/easypost)
 
 EasyPost, the simple shipping solution. You can sign up for an account at <https://easypost.com>.
