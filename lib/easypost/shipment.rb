@@ -75,7 +75,7 @@ class EasyPost::Shipment < EasyPost::Resource
 
   # Refund a Shipment.
   def refund(params = {})
-    response = EasyPost.make_request(:get, "#{url}/refund", @api_key, params)
+    response = EasyPost.make_request(:post, "#{url}/refund", @api_key, params)
     refresh_from(response, @api_key)
 
     self
