@@ -13,9 +13,9 @@ class EasyPost::CarrierAccount < EasyPost::Resource
 
     # For Ups and Fedex the endpoint is different
     if params[:type] == 'UpsAccount' || params[:type] == 'FedexAccount'
-      create_url = "#{self.url}/register"
+      create_url = "#{url}/register"
     else
-      create_url = self.url
+      create_url = url
     end
 
     response = EasyPost.make_request(:post, create_url, api_key, wrapped_params)
