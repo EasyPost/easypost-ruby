@@ -78,6 +78,19 @@ describe EasyPost::User, :authenticate_prod do
 
       expect(api_keys).not_to be_nil
     end
+
+    it "retrieves child user's API keys as a parent" do
+      user = described_class.create(
+        name: 'Test User',
+      )
+
+      child_user = described_class.retrieve(user.id)
+
+      api_keys = child_user.api_keys
+      expect(api_keys).not_to be_nil
+
+      user.delete # delete the user so we don't clutter the test environment
+    end
   end
 
   describe '.update_brand' do
