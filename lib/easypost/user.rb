@@ -52,7 +52,7 @@ class EasyPost::User < EasyPost::Resource
           my_api_keys = child.keys
           break
         else
-          my_api_keys = {}
+          my_api_keys = []
         end
       end
     end
