@@ -5,6 +5,7 @@ module EasyPost::Util
   attr_accessor :os_name, :os_version, :os_arch
 
   BY_PREFIX = {
+    'ak' => EasyPost::ApiKey,
     'adr' => EasyPost::Address,
     'batch' => EasyPost::Batch,
     'brd' => EasyPost::Brand,
@@ -35,6 +36,7 @@ module EasyPost::Util
 
   BY_TYPE = {
     'Address' => EasyPost::Address,
+    'ApiKey' => EasyPost::ApiKey,
     'Batch' => EasyPost::Batch,
     'Brand' => EasyPost::Brand,
     'CarbonOffset' => EasyPost::CarbonOffset,

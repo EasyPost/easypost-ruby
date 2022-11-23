@@ -12,6 +12,10 @@ build:
 clean:
 	rm -rf coverage doc *.gem dist
 
+## coverage - Generate a test coverage report
+coverage:
+	make test
+
 ## docs - Generate documentation for the library
 docs:
 	bundle exec rdoc lib -o docs --title "EasyPost Ruby Docs"
@@ -52,4 +56,4 @@ update:
 	git submodule init
 	git submodule update --remote
 
-.PHONY: help build clean docs fix install lint publish release scan test update
+.PHONY: help build clean coverage docs fix install lint publish release scan test update

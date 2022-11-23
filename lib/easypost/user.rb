@@ -47,12 +47,11 @@ class EasyPost::User < EasyPost::Resource
       my_api_keys = api_keys.keys
     else
       # This function was called on a child user (authenticated as parent, only return this child user's details).
+      my_api_keys = []
       api_keys.children.each do |child|
         if child.id == id
           my_api_keys = child.keys
           break
-        else
-          my_api_keys = []
         end
       end
     end

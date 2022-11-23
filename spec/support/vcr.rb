@@ -8,13 +8,11 @@ REPLACEMENT_ARRAY = [].freeze
 REPLACEMENT_HASH = {}.freeze
 
 SCRUBBERS = [
-  ['api_keys', REPLACEMENT_ARRAY],
   ['client_ip', REPLACEMENT_STRING],
   ['credentials', REPLACEMENT_HASH],
   ['email', REPLACEMENT_STRING],
   ['fields', REPLACEMENT_ARRAY],
   ['key', REPLACEMENT_STRING],
-  ['keys', REPLACEMENT_ARRAY],
   ['phone', REPLACEMENT_STRING],
   ['phone_number', REPLACEMENT_STRING],
   ['test_credentials', REPLACEMENT_HASH],
