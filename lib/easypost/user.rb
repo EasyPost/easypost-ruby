@@ -33,18 +33,21 @@ class EasyPost::User < EasyPost::Resource
     all
   end
 
-  # Retrieve a list of ApiKey objects.
+  # Retrieve a list of all ApiKey objects.
   def self.all_api_keys
     EasyPost::ApiKey.all
   end
 
-  # Retrieve a list of ApiKey objects of a child User.
+  # Retrieve a list of ApiKey objects (works for the authenticated user or a child user).
   def api_keys
     api_keys = EasyPost::User.all_api_keys
 
     if api_keys.id == id
+      # This function was called on the authenticated user
       my_api_keys = api_keys.keys
     else
+      # This function was called on a child user (authenticated as parent, only return this child user's details).
+      my_api_keys = []
       api_keys.children.each do |child|
         if child.id == id
           my_api_keys = child.keys

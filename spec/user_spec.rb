@@ -66,8 +66,10 @@ describe EasyPost::User, :authenticate_prod do
     it 'retrieves all API keys' do
       api_keys = described_class.all_api_keys
 
-      expect(api_keys.keys).not_to be_nil
-      expect(api_keys.children).not_to be_nil
+      expect(api_keys.keys).to all(be_an_instance_of(EasyPost::ApiKey))
+      api_keys.children.each do |child|
+        expect(child.keys).to all(be_an_instance_of(EasyPost::ApiKey))
+      end
     end
   end
 
@@ -76,7 +78,20 @@ describe EasyPost::User, :authenticate_prod do
       user = described_class.retrieve_me
       api_keys = user.api_keys
 
-      expect(api_keys).not_to be_nil
+      expect(api_keys).to all(be_an_instance_of(EasyPost::ApiKey))
+    end
+
+    it "retrieves child user's API keys as a parent" do
+      user = described_class.create(
+        name: 'Test User',
+      )
+      child_user = described_class.retrieve(user.id)
+
+      api_keys = child_user.api_keys
+
+      expect(api_keys).to all(be_an_instance_of(EasyPost::ApiKey))
+
+      user.delete # delete the user so we don't clutter the test environment
     end
   end
 

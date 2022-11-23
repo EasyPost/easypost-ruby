@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - ca7a1a3f62f52672e7872f3e0028139f
+      - fa9a2bdc637e8133e78755c7000da032
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -43,27 +43,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"ae61debc31755327d5e98a44a1f72948"
+      - W/"82b05ac42d46808da5183618970e3f49"
       X-Runtime:
-      - '0.145717'
+      - '0.134720'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb1nuq
+      - bigweb8nuq
       X-Version-Label:
-      - easypost-202208102159-4e6760c1b7-master
+      - easypost-202211231902-b75422a88e-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 9ce216bfac
-      - intlb2nuq 403f17ff97
+      - extlb1nuq 29913d444b
+      - intlb1nuq 29913d444b
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"New
-        Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":"<REDACTED>"}'
-  recorded_at: Thu, 11 Aug 2022 15:55:30 GMT
+        Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":[]}'
+  recorded_at: Wed, 23 Nov 2022 20:23:15 GMT
 - request:
     method: get
     uri: https://api.easypost.com/v2/api_keys
@@ -97,7 +97,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - ca7a1a3f62f52672e7872f56002813c8
+      - fa9a2bda637e8133e78755c8000da05d
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -107,24 +107,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"9457ae6dfbf010d120246b1b03c68603"
+      - W/"9842fcc93752a399463148d2a94fc535"
       X-Runtime:
-      - '0.045905'
+      - '0.028328'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb2nuq
       X-Version-Label:
-      - easypost-202208102159-4e6760c1b7-master
+      - easypost-202211231902-b75422a88e-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 9ce216bfac
-      - intlb2nuq 403f17ff97
+      - extlb1nuq 29913d444b
+      - intlb2nuq 29913d444b
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","keys":"<REDACTED>","children":"<REDACTED>"}'
-  recorded_at: Thu, 11 Aug 2022 15:55:30 GMT
+      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2022-02-16T22:18:19Z","id":"ak_8ba3529286794a64b1792f2c9456ff06"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2022-02-16T22:18:43Z","id":"ak_558c24dec0284506bd9bb754c1db764d"}],"children":[]}'
+  recorded_at: Wed, 23 Nov 2022 20:23:15 GMT
 recorded_with: VCR 6.0.0
