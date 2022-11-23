@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Internal utilities helpful for this libraries operation.
+# Internal utilities helpful for this library's operation.
 module EasyPost::Util
   attr_accessor :os_name, :os_version, :os_arch
 

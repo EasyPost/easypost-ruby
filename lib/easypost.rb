@@ -43,6 +43,7 @@ require 'easypost/webhook'
 require 'easypost/beta'
 
 require 'easypost/util'
+require 'constants'
 
 module EasyPost
   DEFAULT_API_BASE = 'https://api.easypost.com'
