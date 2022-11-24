@@ -2,6 +2,8 @@
 
 # A CarrierAccount encapsulates your credentials with the carrier.
 class EasyPost::CarrierAccount < EasyPost::Resource
+  CUSTOM_WORKFLOW_CARRIER_TYPES = %w[UpsAccount FedexAccount].freeze
+
   # Retrieve a list of available CarrierAccount types for the authenticated User.
   def self.types
     EasyPost::CarrierType.all
@@ -12,7 +14,7 @@ class EasyPost::CarrierAccount < EasyPost::Resource
     wrapped_params[class_name.to_sym] = params
 
     # For Ups and Fedex the endpoint is different
-    create_url = if params[:type] == 'UpsAccount' || params[:type] == 'FedexAccount'
+    create_url = if CUSTOM_WORKFLOW_CARRIER_TYPES.include?(params[:type])
                    "#{url}/register"
                  else
                    url
