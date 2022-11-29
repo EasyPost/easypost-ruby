@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rdoc', '~> 6.4'
   spec.add_development_dependency 'rspec', '~> 3.10'
   spec.add_development_dependency 'rubocop', '= 1.27' # rubocop 1.28 requires Ruby 2.6+
-  spec.add_development_dependency 'rubocop-rspec', '~> 2.7'
+  spec.add_development_dependency 'rubocop-rspec', '= 2.10' # rubocop-rspec 2.11 requires Ruby 2.6+
   spec.add_development_dependency 'simplecov', '~> 0.21'
   spec.add_development_dependency 'simplecov-lcov', '~> 0.8'
   spec.add_development_dependency 'vcr', '= 6.0' # VCR 6.1 requires Ruby 2.6+
