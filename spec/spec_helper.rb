@@ -53,7 +53,7 @@ def check_expired_cassette(cassette_path)
   full_cassette_path = "#{"spec/cassettes/#{cassette_path}".gsub('::', '_').gsub(' ', '_').gsub('.', '_')}.yml"
   seconds_in_day = 86_400
   expiration_days = 180
-  expiration_seconds = (seconds_in_day * expiration_days)
+  expiration_seconds = seconds_in_day * expiration_days
 
   return unless File.exist?(full_cassette_path)
 
