@@ -49,7 +49,7 @@ scan:
 
 ## test - Test the project (and ignore warnings for test output)
 test:
-	RUBYOPT="-W0" bundle exec rspec
+	bundle exec rspec
 
 ## update - Updates dependencies
 update:

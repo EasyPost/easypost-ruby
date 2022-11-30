@@ -19,6 +19,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.rubyversion }}
+          rubygems: "3.0.0"
           bundler-cache: true
       - name: Install Dependencies
         run: make install
@@ -39,6 +40,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.1"
+          rubygems: "3.0.0"
           bundler-cache: true
       - name: Install Dependencies
         run: make install
