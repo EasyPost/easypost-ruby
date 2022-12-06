@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'brakeman', '~> 5.2'
   spec.add_development_dependency 'pry', '~> 0.14'
+  spec.add_development_dependency 'psych', '~> 4.0' # TODO: pinned because rdoc has an optimistic pin of this dep and 5.0 breaks on CI
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rdoc', '~> 6.4'
   spec.add_development_dependency 'rspec', '~> 3.10'

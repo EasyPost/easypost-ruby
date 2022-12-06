@@ -14,6 +14,16 @@ describe EasyPost::CarrierAccount, :authenticate_prod do
       # Remove the carrier account once we have tested it so we don't pollute the account with test accounts
       carrier_account.delete
     end
+
+    it 'sends FedexAccount to the correct endpoint' do
+      allow(EasyPost).to receive(:make_request).with(
+        :post, '/v2/carrier_accounts/register', nil, { carrier_account: { type: 'FedexAccount' } },
+      ).and_return({ 'id' => 'ca_123' })
+
+      response = described_class.create(type: 'FedexAccount')
+
+      expect(response).to be_an_instance_of(described_class)
+    end
   end
 
   describe '.retrieve' do
