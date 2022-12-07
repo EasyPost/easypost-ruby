@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v4.9.0 (2022-12-07)
+
+- Routes requests for creating a carrier account with a custom workflow (eg: FedEx, UPS) to the correct endpoint when using the `create` function
+
 ## v4.8.1 (2022-10-24)
 
 - Concatenates `error.message` if it incorrectly comes back from the API as an array
