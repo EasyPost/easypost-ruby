@@ -9,6 +9,10 @@ module SupportAuthenticate
     EasyPost.api_key = ENV['PARTNER_USER_PROD_API_KEY'] || '123'
   end
 
+  def authenticate_referral_key
+    EasyPost.api_key = ENV['REFERRAL_CUSTOMER_PROD_API_KEY'] || '123'
+  end
+
   def authenticate_test_key
     EasyPost.api_key = ENV['EASYPOST_TEST_API_KEY']
   end
@@ -22,6 +26,8 @@ RSpec.configure do |config|
       authenticate_prod_key
     elsif e.metadata[:authenticate_partner]
       authenticate_partner_key
+    elsif e.metadata[:authenticate_referral]
+      authenticate_referral_key
     else
       authenticate_test_key
     end

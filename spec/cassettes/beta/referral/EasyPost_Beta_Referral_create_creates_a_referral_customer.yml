@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/beta/referral_customers
+    body:
+      encoding: UTF-8
+      string: '{"user":{"name":"test user","email":"email@example.com","phone":"8888888888"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 6baa8e7a63bc9038ecb242470015e5fe
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"c0182a8b51f97303801e02dea295f623"
+      X-Runtime:
+      - '1.046958'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb2nuq
+      X-Version-Label:
+      - easypost-202301092005-3309c91c2c-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 29913d444b
+      - intlb1nuq 29913d444b
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"user_d322456326d245ada66b04d8d5a1463d","object":"User","parent_id":null,"name":"test
+        user","phone_number":"<REDACTED>","verified":true,"created_at":"2023-01-09T22:07:52Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0375","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[],"api_keys":[{"object":"ApiKey","key":"<REDACTED>","mode":"test","created_at":"2023-01-09T22:07:53Z","active":true,"id":"ak_f41e430cc032416187f5bed79c512ba1"},{"object":"ApiKey","key":"<REDACTED>","mode":"production","created_at":"2023-01-09T22:07:53Z","active":true,"id":"ak_b3ba0b4f75d943edba5b8ba2ae2378f6"}]}'
+  recorded_at: Mon, 09 Jan 2023 22:07:53 GMT
+recorded_with: VCR 6.0.0

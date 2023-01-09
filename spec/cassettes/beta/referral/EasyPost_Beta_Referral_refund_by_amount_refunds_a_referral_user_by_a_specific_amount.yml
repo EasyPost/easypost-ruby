@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.easypost.com/beta/referral_customers
+    uri: https://api.easypost.com/beta/referral_customers/refunds
     body:
       encoding: UTF-8
-      string: '{"user":{"name":"test user","email":"email@example.com","phone":"8888888888"}}'
+      string: '{"refund_amount":2000}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -17,8 +17,8 @@ http_interactions:
       Authorization: "<REDACTED>"
   response:
     status:
-      code: 201
-      message: Created
+      code: 422
+      message: Unprocessable Entity
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - acda27c76334b545f4e34358000bd01b
+      - 9c1a00d263bc9040ecc3308000056976
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -42,26 +42,25 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"29d947a79ee5d949326fefcd803080cf"
       X-Runtime:
-      - '0.983549'
+      - '0.524147'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb1nuq
       X-Version-Label:
-      - easypost-202209281918-99c3cae0f0-master
+      - easypost-202301092005-3309c91c2c-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 29913d444b
-      - intlb2nuq 29913d444b
+      - extlb3wdc 29913d444b
+      - intlb1nuq 29913d444b
+      - intlb2wdc 29913d444b
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"user_ec9755cbad9d4485b3e182f46935cf97","object":"User","parent_id":null,"name":"test
-        user","phone_number":"<REDACTED>","verified":true,"created_at":"2022-09-28T20:57:41Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0375","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":"<REDACTED>","api_keys":"<REDACTED>"}'
-  recorded_at: Wed, 28 Sep 2022 20:57:42 GMT
+      string: '{"error":{"code":"TRANSACTION.AMOUNT_INVALID","message":"Refund amount
+        is invalid. Please use a valid amount or escalate to finance.","errors":[]}}'
+  recorded_at: Mon, 09 Jan 2023 22:08:01 GMT
 recorded_with: VCR 6.0.0
