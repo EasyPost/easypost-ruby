@@ -151,6 +151,7 @@ module EasyPost::Util
       response.map { |i| convert_to_easypost_object(i, api_key, parent) }
     when Hash
       if (cls_name = response[:object])
+        # TODO: This line was never hit when debugging all unit tests, suggesting it's broken
         cls = BY_TYPE[cls_name]
       elsif response[:id]
         if response[:id].index('_').nil?
