@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 8bfbdf7b63bc903aecd5c0c8001594a1
+      - acda27c86334b547f509155e000bd084
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,17 +45,15 @@ http_interactions:
       Etag:
       - W/"d04bbfbac47f97e60168515b71395cdf"
       X-Runtime:
-      - '0.176017'
+      - '0.270033'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7nuq
+      - bigweb4nuq
       X-Version-Label:
-      - easypost-202301092005-3309c91c2c-master
+      - easypost-202209281918-99c3cae0f0-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
       - extlb2nuq 29913d444b
       - intlb2nuq 29913d444b
@@ -64,10 +62,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"has_more":true,"referral_customers":[{"id":"user_634b6daa05744bfaa205058f06864363","object":"User","parent_id":null,"name":"Firstname
-        Lastname","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-26T15:50:28Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]},{"id":"user_35cb81fb8af1454dabf1f6afa7330634","object":"User","parent_id":null,"name":"Firstname
-        Lastname","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-27T20:20:52Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":true,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]},{"id":"user_fa93cc16bcc24c078ee057ce82f38eed","object":"User","parent_id":null,"name":"test
-        test","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-28T22:34:38Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]},{"id":"user_4a22730cdc844ce1bc2efbed999c869f","object":"User","parent_id":null,"name":"test
-        test","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-29T19:35:33Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]},{"id":"user_488e391395f4416196a31965fecac409","object":"User","parent_id":null,"name":"Firstname
-        Lastname","phone_number":"<REDACTED>","verified":true,"created_at":"2022-05-02T18:48:22Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":true,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]}]}'
-  recorded_at: Mon, 09 Jan 2023 22:07:54 GMT
+        Lastname","phone_number":"8888888888","verified":true,"created_at":"2022-04-26T15:50:28Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"email2@example.com","children":[]},{"id":"user_35cb81fb8af1454dabf1f6afa7330634","object":"User","parent_id":null,"name":"Firstname
+        Lastname","phone_number":"8888888888","verified":true,"created_at":"2022-04-27T20:20:52Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":true,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"email@example.com","children":[]},{"id":"user_fa93cc16bcc24c078ee057ce82f38eed","object":"User","parent_id":null,"name":"test
+        test","phone_number":"8888888888","verified":true,"created_at":"2022-04-28T22:34:38Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"email@example.com","children":[]},{"id":"user_4a22730cdc844ce1bc2efbed999c869f","object":"User","parent_id":null,"name":"test
+        test","phone_number":"8888888888","verified":true,"created_at":"2022-04-29T19:35:33Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"test@test.com","children":[]},{"id":"user_488e391395f4416196a31965fecac409","object":"User","parent_id":null,"name":"Firstname
+        Lastname","phone_number":"8888888888","verified":true,"created_at":"2022-05-02T18:48:22Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":true,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"email@example.com","children":[]}]}'
+  recorded_at: Wed, 28 Sep 2022 20:57:43 GMT
 recorded_with: VCR 6.0.0
