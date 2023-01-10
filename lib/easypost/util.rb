@@ -150,25 +150,28 @@ module EasyPost::Util
     when Array
       response.map { |i| convert_to_easypost_object(i, api_key, parent) }
     when Hash
-      if (cls_name = response.fetch('object', nil))
+      # Determine class based on the "object" key in the JSON response
+      cls_name = response[:object] || response['object']
+      if cls_name
+        # Use the "object" key value to look up the class
         cls = BY_TYPE[cls_name]
-      elsif response[:id]
-        if response[:id].index('_').nil?
+      else
+        # Fallback to determining class based on the "id" prefix in the JSON response
+        id = response[:id] || response['id']
+        if id.nil? || id.index('_').nil?
+          # ID not present or prefix not present (ID malformed)
           cls = EasyPost::EasyPostObject
-        elsif (cls_prefix = response[:id][0..response[:id].index('_')])
-          cls = BY_PREFIX[cls_prefix[0..-2]]
-        end
-      elsif response['id']
-        if response['id'].index('_').nil?
-          cls = EasyPost::EasyPostObject
-        elsif (cls_prefix = response['id'][0..response['id'].index('_')])
-          cls = BY_PREFIX[cls_prefix[0..-2]]
+        else
+          # Parse the prefix from the ID and use it to look up the class
+          cls_prefix = id[0..id.index('_')][0..-2]
+          cls = BY_PREFIX[cls_prefix]
         end
       end
-
+      # Fallback to using the generic class if other determination methods fail (or class lookup produced no results)
       cls ||= EasyPost::EasyPostObject
       cls.construct_from(response, api_key, parent, name)
     else
+      # response is neither a Hash nor Array (used mostly when dealing with final values like strings, booleans, etc.)
       response
     end
   end
