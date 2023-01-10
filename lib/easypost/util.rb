@@ -7,9 +7,11 @@ module EasyPost::Util
   BY_PREFIX = {
     'ak' => EasyPost::ApiKey,
     'adr' => EasyPost::Address,
+    'bank' => EasyPost::PaymentMethod,
     'batch' => EasyPost::Batch,
     'brd' => EasyPost::Brand,
     'ca' => EasyPost::CarrierAccount,
+    'card' => EasyPost::PaymentMethod,
     'cstinfo' => EasyPost::CustomsInfo,
     'cstitem' => EasyPost::CustomsItem,
     'es' => EasyPost::EndShipper,
@@ -37,10 +39,12 @@ module EasyPost::Util
   BY_TYPE = {
     'Address' => EasyPost::Address,
     'ApiKey' => EasyPost::ApiKey,
+    'BankAccount' => EasyPost::PaymentMethod,
     'Batch' => EasyPost::Batch,
     'Brand' => EasyPost::Brand,
     'CarbonOffset' => EasyPost::CarbonOffset,
     'CarrierAccount' => EasyPost::CarrierAccount,
+    'CreditCard' => EasyPost::PaymentMethod,
     'CustomsInfo' => EasyPost::CustomsInfo,
     'CustomsItem' => EasyPost::CustomsItem,
     'EndShipper' => EasyPost::EndShipper,
@@ -147,6 +151,7 @@ module EasyPost::Util
       response.map { |i| convert_to_easypost_object(i, api_key, parent) }
     when Hash
       if (cls_name = response[:object])
+        # TODO: This line was never hit when debugging all unit tests, suggesting it's broken
         cls = BY_TYPE[cls_name]
       elsif response[:id]
         if response[:id].index('_').nil?

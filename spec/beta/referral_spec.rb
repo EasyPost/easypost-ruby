@@ -2,34 +2,34 @@
 
 require 'spec_helper'
 
-REFERRAL_USER_PROD_API_KEY = ENV['REFERRAL_USER_PROD_API_KEY'] || '123'
+REFERRAL_CUSTOMER_PROD_API_KEY = ENV['REFERRAL_CUSTOMER_PROD_API_KEY'] || '123'
 
 describe EasyPost::Beta::Referral, :authenticate_partner do
   describe '.create' do
-    it 'creates a referral user' do
+    it 'creates a referral customer' do
       # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY.
-      created_referral_user = described_class.create(
+      created_referral_customer = described_class.create(
         name: 'test user',
         email: 'email@example.com',
         phone: '8888888888',
       )
 
-      expect(created_referral_user).to be_an_instance_of(EasyPost::User)
-      expect(created_referral_user.id).to match('user_')
-      expect(created_referral_user.name).to eq('test user')
+      expect(created_referral_customer).to be_an_instance_of(EasyPost::User)
+      expect(created_referral_customer.id).to match('user_')
+      expect(created_referral_customer.name).to eq('test user')
     end
   end
 
   describe '.update_email' do
-    it 'updates a referral user' do
+    it 'updates a referral customer' do
       # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY.
-      referral_users = described_class.all(
+      referral_customers = described_class.all(
         page_size: Fixture.page_size,
       )
 
       updated_user = described_class.update_email(
         'email2@example.com',
-        referral_users.referral_customers[0].id,
+        referral_customers.referral_customers[0].id,
       )
 
       expect(updated_user).to eq(true)
@@ -38,25 +38,25 @@ describe EasyPost::Beta::Referral, :authenticate_partner do
 
   describe '.all' do
     # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY.
-    it 'retrieve all referral users' do
-      referral_users = described_class.all(
+    it 'retrieve all referral customers' do
+      referral_customers = described_class.all(
         page_size: Fixture.page_size,
       )
 
-      referral_users_array = referral_users.referral_customers
+      referral_customers_array = referral_customers.referral_customers
 
-      expect(referral_users_array.count).to be <= Fixture.page_size
-      expect(referral_users.has_more).not_to be_nil
-      expect(referral_users_array).to all(be_an_instance_of(EasyPost::User))
+      expect(referral_customers_array.count).to be <= Fixture.page_size
+      expect(referral_customers.has_more).not_to be_nil
+      expect(referral_customers_array).to all(be_an_instance_of(EasyPost::User))
     end
   end
 
   describe '.add_credit_card' do
-    it 'adds a credit card to a referral user account' do
+    it 'adds a credit card to a referral customer account' do
       # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY
-      # as well as one of that user's referral's production API keys via REFERRAL_USER_PROD_API_KEY.
+      # as well as one of that user's referral's production API keys via REFERRAL_CUSTOMER_PROD_API_KEY.
       credit_card = described_class.add_credit_card(
-        REFERRAL_USER_PROD_API_KEY,
+        REFERRAL_CUSTOMER_PROD_API_KEY,
         Fixture.credit_card_details['number'],
         Fixture.credit_card_details['expiration_month'],
         Fixture.credit_card_details['expiration_year'],
@@ -73,13 +73,51 @@ describe EasyPost::Beta::Referral, :authenticate_partner do
 
       expect {
         described_class.add_credit_card(
-          REFERRAL_USER_PROD_API_KEY,
+          REFERRAL_CUSTOMER_PROD_API_KEY,
           Fixture.credit_card_details['number'],
           Fixture.credit_card_details['expiration_month'],
           Fixture.credit_card_details['expiration_year'],
           Fixture.credit_card_details['cvc'],
         )
       }.to raise_error(StandardError).with_message('Could not send card details to Stripe, please try again later.')
+    end
+  end
+
+  describe '.add_payment_method', :authenticate_referral do
+    it 'adds a Stripe card or bank account to a referral customer account' do
+      # This test requires a referral customer's production API key via REFERRAL_CUSTOMER_PROD_API_KEY.
+      expect {
+        described_class.add_payment_method(
+          'cus_123',
+          'ba_123',
+        )
+      }.to raise_error(EasyPost::Error).with_message('Invalid Payment Gateway Reference.')
+    end
+  end
+
+  describe '.refund_by_amount', :authenticate_referral do
+    it 'refunds a referral user by a specific amount' do
+      # This test requires a referral customer's production API key via REFERRAL_CUSTOMER_PROD_API_KEY.
+      expect {
+        described_class.refund_by_amount(
+          2000,
+        )
+      }.to raise_error(EasyPost::Error).with_message(
+        'Refund amount is invalid. Please use a valid amount or escalate to finance.',
+      )
+    end
+  end
+
+  describe '.refund_by_payment_log', :authenticate_referral do
+    it 'refunds a referral user by a specific payment log entry' do
+      # This test requires a referral customer's production API key via REFERRAL_CUSTOMER_PROD_API_KEY.
+      expect {
+        described_class.refund_by_payment_log(
+          'paylog_123',
+        )
+      }.to raise_error(EasyPost::Error).with_message(
+        'We could not find a transaction with that id.',
+      )
     end
   end
 end

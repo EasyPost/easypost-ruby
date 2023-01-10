@@ -55,13 +55,13 @@ class EasyPost::Referral < EasyPost::Resource
     end
   end
 
-  # Create a referral user. This function requires the Partner User's API key.
+  # Create a referral customer. This function requires the Partner User's API key.
   def self.create(params = {}, api_key = nil)
     response = EasyPost.make_request(:post, '/v2/referral_customers', api_key, { user: params })
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
-  # Update a referral user. This function requires the Partner User's API key.
+  # Update a referral customer. This function requires the Partner User's API key.
   def self.update_email(email, user_id, api_key = nil)
     wrapped_params = {
       user: {
@@ -74,13 +74,13 @@ class EasyPost::Referral < EasyPost::Resource
     true
   end
 
-  # Retrieve a list of referral users. This function requires the Partner User's API key.
+  # Retrieve a list of referral customers. This function requires the Partner User's API key.
   def self.all(params = {}, api_key = nil)
     response = EasyPost.make_request(:get, '/v2/referral_customers', api_key, params)
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
-  # Add credit card to a referral user. This function requires the Referral User's API key.
+  # Add credit card to a referral customer. This function requires the Referral Customer's API key.
   def self.add_credit_card(referral_api_key, number, expiration_month, expiration_year, cvc, priority = 'primary')
     easypost_stripe_api_key = retrieve_easypost_stripe_api_key
 

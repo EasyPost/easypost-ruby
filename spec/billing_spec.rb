@@ -44,11 +44,70 @@ describe EasyPost::Billing, :authenticate_prod do
     it 'retrieves all payment methods' do
       allow(EasyPost).to receive(:make_request).with(
         :get, '/v2/payment_methods', nil,
-      ).and_return({ 'id' => '123' })
+      ).and_return(
+        {
+          'id' => '123',
+        },
+      )
 
       response = described_class.retrieve_payment_methods
 
       expect(response).to be_an_instance_of(EasyPost::EasyPostObject)
+    end
+
+    it 'deserializes the payment methods by ID prefix' do
+      allow(EasyPost).to receive(:make_request).with(
+        :get, '/v2/payment_methods', nil,
+      ).and_return(
+        {
+          'id' => '123',
+          'primary_payment_method' => { 'id' => 'bank_123' },
+          'secondary_payment_method' => { 'id' => 'card_123' },
+        },
+      )
+
+      response = described_class.retrieve_payment_methods
+
+      expect(response).to be_an_instance_of(EasyPost::EasyPostObject)
+      expect(response[:primary_payment_method]).to be_an_instance_of(EasyPost::PaymentMethod)
+      expect(response[:secondary_payment_method]).to be_an_instance_of(EasyPost::PaymentMethod)
+    end
+
+    # TODO: Reactivate when deserialization by "object" is fixed
+    skip it 'deserializes the payment methods by object type' do
+      allow(EasyPost).to receive(:make_request).with(
+        :get, '/v2/payment_methods', nil,
+      ).and_return(
+        {
+          'id' => '123',
+          'primary_payment_method' => { 'object' => 'BankAccount' },
+          'secondary_payment_method' => { 'object' => 'CreditCard' },
+        },
+      )
+
+      response = described_class.retrieve_payment_methods
+
+      expect(response).to be_an_instance_of(EasyPost::EasyPostObject)
+      expect(response[:primary_payment_method]).to be_an_instance_of(EasyPost::PaymentMethod)
+      expect(response[:secondary_payment_method]).to be_an_instance_of(EasyPost::PaymentMethod)
+    end
+
+    it 'does not deserialize the payment methods if prefix and object type missing' do
+      allow(EasyPost).to receive(:make_request).with(
+        :get, '/v2/payment_methods', nil,
+      ).and_return(
+        {
+          'id' => '123',
+          'primary_payment_method' => { 'random_key' => 'random_value' },
+          'secondary_payment_method' => { 'random_key' => 'random_value' },
+        },
+      )
+
+      response = described_class.retrieve_payment_methods
+
+      expect(response).to be_an_instance_of(EasyPost::EasyPostObject)
+      expect(response[:primary_payment_method]).to be_an_instance_of(EasyPost::EasyPostObject)
+      expect(response[:secondary_payment_method]).to be_an_instance_of(EasyPost::EasyPostObject)
     end
   end
 

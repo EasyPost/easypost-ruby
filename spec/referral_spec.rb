@@ -2,34 +2,34 @@
 
 require 'spec_helper'
 
-REFERRAL_USER_PROD_API_KEY = ENV['REFERRAL_USER_PROD_API_KEY'] || '123'
+REFERRAL_CUSTOMER_PROD_API_KEY = ENV['REFERRAL_CUSTOMER_PROD_API_KEY'] || '123'
 
 describe EasyPost::Referral, :authenticate_partner do
   describe '.create' do
-    it 'creates a referral user' do
+    it 'creates a referral customer' do
       # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY.
-      created_referral_user = described_class.create(
+      created_referral_customer = described_class.create(
         name: 'test user',
         email: 'email@example.com',
         phone: '8888888888',
       )
 
-      expect(created_referral_user).to be_an_instance_of(EasyPost::User)
-      expect(created_referral_user.id).to match('user_')
-      expect(created_referral_user.name).to eq('test user')
+      expect(created_referral_customer).to be_an_instance_of(EasyPost::User)
+      expect(created_referral_customer.id).to match('user_')
+      expect(created_referral_customer.name).to eq('test user')
     end
   end
 
   describe '.update_email' do
-    it 'updates a referral user' do
+    it 'updates a referral customer' do
       # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY.
-      referral_users = described_class.all(
+      referral_customers = described_class.all(
         page_size: Fixture.page_size,
       )
 
       updated_user = described_class.update_email(
         'email2@example.com',
-        referral_users.referral_customers[0].id,
+        referral_customers.referral_customers[0].id,
       )
 
       expect(updated_user).to eq(true)
@@ -38,30 +38,30 @@ describe EasyPost::Referral, :authenticate_partner do
 
   describe '.all' do
     # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY.
-    it 'retrieve all referral users' do
-      referral_users = described_class.all(
+    it 'retrieve all referral customers' do
+      referral_customers = described_class.all(
         page_size: Fixture.page_size,
       )
 
-      referral_users_array = referral_users.referral_customers
+      referral_customers_array = referral_customers.referral_customers
 
-      expect(referral_users_array.count).to be <= Fixture.page_size
-      expect(referral_users.has_more).not_to be_nil
-      expect(referral_users_array).to all(be_an_instance_of(EasyPost::User))
+      expect(referral_customers_array.count).to be <= Fixture.page_size
+      expect(referral_customers.has_more).not_to be_nil
+      expect(referral_customers_array).to all(be_an_instance_of(EasyPost::User))
     end
   end
 
   describe '.add_credit_card' do
-    it 'adds a credit card to a referral user account' do
+    it 'adds a credit card to a referral customer account' do
       # We override the VCR config here since it cannot match the URL due to data scrubbing
       VCR.use_cassette(
-        'referral/EasyPost_Referral_add_credit_card_adds_a_credit_card_to_a_referral_user_account',
+        'referral/EasyPost_Referral_add_credit_card_adds_a_credit_card_to_a_referral_customer_account',
         match_requests_on: [:method, :uri],
       ) do
         # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY
-        # as well as one of that user's referral's production API keys via REFERRAL_USER_PROD_API_KEY.
+        # as well as one of that user's referral's production API keys via REFERRAL_CUSTOMER_PROD_API_KEY.
         credit_card = described_class.add_credit_card(
-          REFERRAL_USER_PROD_API_KEY,
+          REFERRAL_CUSTOMER_PROD_API_KEY,
           Fixture.credit_card_details['number'],
           Fixture.credit_card_details['expiration_month'],
           Fixture.credit_card_details['expiration_year'],
@@ -79,7 +79,7 @@ describe EasyPost::Referral, :authenticate_partner do
 
       expect {
         described_class.add_credit_card(
-          REFERRAL_USER_PROD_API_KEY,
+          REFERRAL_CUSTOMER_PROD_API_KEY,
           Fixture.credit_card_details['number'],
           Fixture.credit_card_details['expiration_month'],
           Fixture.credit_card_details['expiration_year'],
