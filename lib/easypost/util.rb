@@ -19,6 +19,7 @@ module EasyPost::Util
     'hook' => EasyPost::Webhook,
     'ins' => EasyPost::Insurance,
     'order' => EasyPost::Order,
+    'payload' => EasyPost::Payload,
     'pickup' => EasyPost::Pickup,
     'pickuprate' => EasyPost::PickupRate,
     'pl' => EasyPost::PostageLabel,

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [Unreleased]
+
+- Added payload functions `retrieve_all_payloads` and `retrieve_payload` to retrieve all payloads or a specific payload for an event.
+
 ## v4.10.0 (2023-01-11)
 
 - Added new beta billing functionality for referral customer users, accessible via `EasyPost::Beta::Referral`
