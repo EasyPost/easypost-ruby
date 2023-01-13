@@ -35,8 +35,16 @@ describe EasyPost::Pickup do
   end
 
   describe '.all' do
-    it 'raises not implemented error' do
-      expect { described_class.all }.to raise_error(NotImplementedError)
+    it 'retrieves all pickups' do
+      pickups = described_class.all(
+        page_size: Fixture.page_size,
+        )
+
+      pickups_array = pickups.pickups
+
+      expect(pickups_array.count).to be <= Fixture.page_size
+      expect(pickups.has_more).not_to be_nil
+      expect(pickups_array).to all(be_an_instance_of(described_class))
     end
   end
 

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [Unreleased]
+
+- Added function to retrieve all pickups, accessible via `EasyPost::Pickup.all`
+
 ## v4.10.0 (2023-01-11)
 
 - Added new beta billing functionality for referral customer users, accessible via `EasyPost::Beta::Referral`
