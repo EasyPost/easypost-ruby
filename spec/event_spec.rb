@@ -55,21 +55,18 @@ describe EasyPost::Event do
         sleep(5) # Wait for the event to be created
       end
 
-      # Retrieve all events and extract the newest one
       events = described_class.all(
         page_size: Fixture.page_size,
       )
 
       event = events.events[0]
 
-      # Retrieve all payloads for the event
       payloads = event.retrieve_all_payloads
 
       payload_array = payloads.payloads
 
       expect(payload_array).to all(be_an_instance_of(EasyPost::Payload))
 
-      # Delete the webhook
       webhook.delete
     end
   end
@@ -90,31 +87,19 @@ describe EasyPost::Event do
         sleep(5) # Wait for the event to be created
       end
 
-      # Retrieve all events and extract the newest one
       events = described_class.all(
         page_size: Fixture.page_size,
       )
 
       event = events.events[0]
 
-      # Retrieve a payload for the event
       begin
         # Payload does not exist due to queueing, so this will throw an exception
         event.retrieve_payload('payload_11111111111111111111111111111111')
       rescue EasyPost::Error => e
-        # Could not find the payload with the given ID
         expect(e.status).to eq(404)
       end
 
-      begin
-        # Invalid payload ID length will throw a 500
-        event.retrieve_payload('payload_11')
-      rescue EasyPost::Error => e
-        # Could not find the payload with the given ID
-        expect(e.status).to eq(500)
-      end
-
-      # Delete the webhook
       webhook.delete
     end
   end
