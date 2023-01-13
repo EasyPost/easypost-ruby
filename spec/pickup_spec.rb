@@ -38,7 +38,7 @@ describe EasyPost::Pickup do
     it 'retrieves all pickups' do
       pickups = described_class.all(
         page_size: Fixture.page_size,
-        )
+      )
 
       pickups_array = pickups.pickups
 
