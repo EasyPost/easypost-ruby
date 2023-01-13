@@ -51,8 +51,9 @@ describe EasyPost::Event do
         shipments: [Fixture.one_call_buy_shipment],
       )
 
-      # Wait for the event to be created
-      sleep 5
+      unless File.file?(VCR.current_cassette.file)
+        sleep(5) # Wait for the event to be created
+      end
 
       # Retrieve all events and extract the newest one
       events = described_class.all(
@@ -85,8 +86,9 @@ describe EasyPost::Event do
         shipments: [Fixture.one_call_buy_shipment],
       )
 
-      # Wait for the event to be created
-      sleep 5
+      unless File.file?(VCR.current_cassette.file)
+        sleep(5) # Wait for the event to be created
+      end
 
       # Retrieve all events and extract the newest one
       events = described_class.all(
