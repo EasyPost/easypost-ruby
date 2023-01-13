@@ -105,11 +105,11 @@ describe EasyPost::Event do
       end
 
       begin
-        # Invalid payload ID length will throw a 500, library will translate to 422
+        # Invalid payload ID length will throw a 500
         event.retrieve_payload('payload_11')
       rescue EasyPost::Error => e
         # Could not find the payload with the given ID
-        expect(e.status).to eq(422)
+        expect(e.status).to eq(500)
       end
 
       # Delete the webhook
