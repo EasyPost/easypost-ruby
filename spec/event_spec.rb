@@ -38,4 +38,69 @@ describe EasyPost::Event do
       expect(event.id).to match('evt_')
     end
   end
+
+  describe '.retrieve_all_payloads' do
+    it 'retrieve all payloads' do
+      # Create a webhook to receive the event
+      webhook = EasyPost::Webhook.create(
+        url: Fixture.webhook_url,
+      )
+
+      # Create a batch to trigger an event
+      _ = EasyPost::Batch.create(
+        shipments: [Fixture.one_call_buy_shipment],
+      )
+
+      unless File.file?(VCR.current_cassette.file)
+        sleep(5) # Wait for the event to be created
+      end
+
+      events = described_class.all(
+        page_size: Fixture.page_size,
+      )
+
+      event = events.events[0]
+
+      payloads = event.retrieve_all_payloads
+
+      payload_array = payloads.payloads
+
+      expect(payload_array).to all(be_an_instance_of(EasyPost::Payload))
+
+      webhook.delete
+    end
+  end
+
+  describe '.retrieve_a_payload' do
+    it 'retrieve a payload' do
+      # Create a webhook to receive the event
+      webhook = EasyPost::Webhook.create(
+        url: Fixture.webhook_url,
+      )
+
+      # Create a batch to trigger an event
+      _ = EasyPost::Batch.create(
+        shipments: [Fixture.one_call_buy_shipment],
+      )
+
+      unless File.file?(VCR.current_cassette.file)
+        sleep(5) # Wait for the event to be created
+      end
+
+      events = described_class.all(
+        page_size: Fixture.page_size,
+      )
+
+      event = events.events[0]
+
+      begin
+        # Payload does not exist due to queueing, so this will throw an exception
+        event.retrieve_payload('payload_11111111111111111111111111111111')
+      rescue EasyPost::Error => e
+        expect(e.status).to eq(404)
+      end
+
+      webhook.delete
+    end
+  end
 end
