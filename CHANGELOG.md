@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## [Unreleased]
+## v4.11.0 (2023-01-18)
 
 - Added function to retrieve all pickups, accessible via `EasyPost::Pickup.all`
 - Added payload functions `retrieve_all_payloads` and `retrieve_payload` to retrieve all payloads or a specific payload for an event.
