@@ -108,14 +108,16 @@
        </header>
 
       <div id="method-c-all_api_keys" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">all_api_keys</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">all_api_keys</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
-          <p>Retrieve a list of ApiKey objects.</p>
+          <p>Retrieve a list of all ApiKey objects.</p>
 
           <div class="method-source-code" id="all_api_keys-source">
             <pre><span class="ruby-comment"># File lib/easypost/user.rb, line 37</span>
@@ -129,10 +131,12 @@
       </div>
 
       <div id="method-c-create" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">create</span><span
-            class="method-args">(params = {}, api_key = nil)</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">create</span><span
+              class="method-args">(params = {}, api_key = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
@@ -151,10 +155,12 @@
       </div>
 
       <div id="method-c-retrieve_me" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">retrieve_me</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">retrieve_me</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
@@ -179,14 +185,16 @@
        </header>
 
       <div id="method-i-api_keys" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">api_keys</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">api_keys</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
-          <p>Retrieve a list of ApiKey objects of a child <a href="User.html"><code>User</code></a>.</p>
+          <p>Retrieve a list of ApiKey objects (works for the authenticated user or a child user).</p>
 
           <div class="method-source-code" id="api_keys-source">
             <pre><span class="ruby-comment"># File lib/easypost/user.rb, line 42</span>
@@ -194,8 +202,11 @@
   <span class="ruby-identifier">api_keys</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">User</span>.<span class="ruby-identifier">all_api_keys</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span>
+    <span class="ruby-comment"># This function was called on the authenticated user</span>
     <span class="ruby-identifier">my_api_keys</span> = <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">keys</span>
   <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># This function was called on a child user (authenticated as parent, only return this child user&#39;s details).</span>
+    <span class="ruby-identifier">my_api_keys</span> = []
     <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span>
         <span class="ruby-identifier">my_api_keys</span> = <span class="ruby-identifier">child</span>.<span class="ruby-identifier">keys</span>
@@ -213,10 +224,12 @@
       </div>
 
       <div id="method-i-delete" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">delete</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">delete</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
@@ -235,10 +248,12 @@
       </div>
 
       <div id="method-i-save" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">save</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">save</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
@@ -265,17 +280,19 @@
       </div>
 
       <div id="method-i-update_brand" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">update_brand</span><span
-            class="method-args">(**attrs)</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">update_brand</span><span
+              class="method-args">(**attrs)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
           <p>Update the Brand of a <a href="User.html"><code>User</code></a>.</p>
 
           <div class="method-source-code" id="update_brand-source">
-            <pre><span class="ruby-comment"># File lib/easypost/user.rb, line 60</span>
+            <pre><span class="ruby-comment"># File lib/easypost/user.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update_brand</span>(<span class="ruby-operator">**</span><span class="ruby-identifier">attrs</span>)
   <span class="ruby-identifier">brand</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Brand</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-identifier">data</span> = { <span class="ruby-value">object:</span> <span class="ruby-string">&#39;Brand&#39;</span>, <span class="ruby-value">user_id:</span> <span class="ruby-identifier">id</span>, <span class="ruby-operator">**</span><span class="ruby-identifier">attrs</span> }
@@ -301,7 +318,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.4.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.5.0.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

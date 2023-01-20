@@ -73,10 +73,13 @@
 
   <ul class="link-list" role="directory">
     <li ><a href="#method-c-add_credit_card">::add_credit_card</a>
+    <li ><a href="#method-c-add_payment_method">::add_payment_method</a>
     <li ><a href="#method-c-all">::all</a>
     <li ><a href="#method-c-create">::create</a>
     <li ><a href="#method-c-create_easypost_credit_card">::create_easypost_credit_card</a>
     <li ><a href="#method-c-create_stripe_token">::create_stripe_token</a>
+    <li ><a href="#method-c-refund_by_amount">::refund_by_amount</a>
+    <li ><a href="#method-c-refund_by_payment_log">::refund_by_payment_log</a>
     <li ><a href="#method-c-retrieve_easypost_stripe_api_key">::retrieve_easypost_stripe_api_key</a>
     <li ><a href="#method-c-update_email">::update_email</a>
   </ul>
@@ -108,14 +111,16 @@
        </header>
 
       <div id="method-c-add_credit_card" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">add_credit_card</span><span
-            class="method-args">(referral_api_key, number, expiration_month, expiration_year, cvc, priority = &#39;primary&#39;)</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">add_credit_card</span><span
+              class="method-args">(referral_api_key, number, expiration_month, expiration_year, cvc, priority = &#39;primary&#39;)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
-          <p>Add credit card to a referral customer. This function requires the <a href="Referral.html"><code>Referral</code></a> User’s API key. <strong>DEPRECATED:</strong> Please use <code>Referral</code> in the main namespace instead.</p>
+          <p>Add credit card to a referral customer. This function requires the <a href="Referral.html"><code>Referral</code></a> Customer’s API key. <strong>DEPRECATED:</strong> Please use <code>Referral</code> in the main namespace instead.</p>
 
           <div class="method-source-code" id="add_credit_card-source">
             <pre><span class="ruby-comment"># File lib/easypost/beta/referral.rb, line 91</span>
@@ -144,11 +149,45 @@
 
       </div>
 
+      <div id="method-c-add_payment_method" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">add_payment_method</span><span
+              class="method-args">(stripe_customer_id, payment_method_reference, priority = &#39;primary&#39;, api_key = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Add a Stripe payment method to a <a href="Referral.html"><code>Referral</code></a> Customer. This function requires the <a href="Referral.html"><code>Referral</code></a> Customer’s API key. @param [String] stripe_customer_id Unique customer ID provided by Stripe. @param [String] payment_method_reference ID of the card or bank account provided by Stripe. @param [String] payment_method_type Which priority to save this payment method as on <a href="../../EasyPost.html"><code>EasyPost</code></a>, either ‘primary’ or ‘secondary’. @param [String] api_key Override the API key used for this request. @return [EasyPost::PaymentMethod] The newly-added payment method. noinspection RubyParameterNamingConvention</p>
+
+          <div class="method-source-code" id="add_payment_method-source">
+            <pre><span class="ruby-comment"># File lib/easypost/beta/referral.rb, line 118</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">add_payment_method</span>(<span class="ruby-identifier">stripe_customer_id</span>, <span class="ruby-identifier">payment_method_reference</span>, <span class="ruby-identifier">priority</span> = <span class="ruby-string">&#39;primary&#39;</span>, <span class="ruby-identifier">api_key</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">wrapped_params</span> = {
+    <span class="ruby-value">payment_method:</span> {
+      <span class="ruby-value">stripe_customer_id:</span> <span class="ruby-identifier">stripe_customer_id</span>,
+      <span class="ruby-value">payment_method_reference:</span> <span class="ruby-identifier">payment_method_reference</span>,
+      <span class="ruby-value">priority:</span> <span class="ruby-identifier">priority</span>.<span class="ruby-identifier">downcase</span>,
+    },
+  }
+  <span class="ruby-identifier">response</span> = <span class="ruby-constant">EasyPost</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;/beta/referral_customers/payment_method&#39;</span>, <span class="ruby-identifier">api_key</span>, <span class="ruby-identifier">wrapped_params</span>)
+  <span class="ruby-comment"># noinspection RubyMismatchedReturnType</span>
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">convert_to_easypost_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-identifier">api_key</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
       <div id="method-c-all" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">all</span><span
-            class="method-args">(params = {}, api_key = nil)</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">all</span><span
+              class="method-args">(params = {}, api_key = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
@@ -168,10 +207,12 @@
       </div>
 
       <div id="method-c-create" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">create</span><span
-            class="method-args">(params = {}, api_key = nil)</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">create</span><span
+              class="method-args">(params = {}, api_key = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
@@ -190,11 +231,69 @@
 
       </div>
 
+      <div id="method-c-refund_by_amount" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">refund_by_amount</span><span
+              class="method-args">(amount, api_key = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Refund a <a href="Referral.html"><code>Referral</code></a> Customer’s wallet by a specified amount. Refund will be issued to the user’s original payment method. This function requires the <a href="Referral.html"><code>Referral</code></a> Customer’s API key. @param [Integer] amount The amount to refund, in cents. @param [String] api_key Override the API key used for this request. @return [EasyPost::Beta::PaymentRefund] The newly-created refund.</p>
+
+          <div class="method-source-code" id="refund_by_amount-source">
+            <pre><span class="ruby-comment"># File lib/easypost/beta/referral.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">refund_by_amount</span>(<span class="ruby-identifier">amount</span>, <span class="ruby-identifier">api_key</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">params</span> = {
+    <span class="ruby-value">refund_amount:</span> <span class="ruby-identifier">amount</span>,
+  }
+  <span class="ruby-identifier">response</span> = <span class="ruby-constant">EasyPost</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;/beta/referral_customers/refunds&#39;</span>, <span class="ruby-identifier">api_key</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-comment"># noinspection RubyMismatchedReturnType</span>
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">convert_to_easypost_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-identifier">api_key</span>) <span class="ruby-comment"># TODO: Needs &quot;object&quot; or ID prefix to determine object class.</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-refund_by_payment_log" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">refund_by_payment_log</span><span
+              class="method-args">(payment_log_id, api_key = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Refund a <a href="Referral.html"><code>Referral</code></a> Customer’s wallet for a specified payment log entry. Refund will be issued to the user’s original payment method. This function requires the <a href="Referral.html"><code>Referral</code></a> Customer’s API key. @param [String] payment_log_id Payment log ID to refund. @param [String] api_key Override the API key used for this request. @return [EasyPost::Beta::PaymentRefund] The newly-created refund.</p>
+
+          <div class="method-source-code" id="refund_by_payment_log-source">
+            <pre><span class="ruby-comment"># File lib/easypost/beta/referral.rb, line 150</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">refund_by_payment_log</span>(<span class="ruby-identifier">payment_log_id</span>, <span class="ruby-identifier">api_key</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">params</span> = {
+    <span class="ruby-value">payment_log_id:</span> <span class="ruby-identifier">payment_log_id</span>,
+  }
+  <span class="ruby-identifier">response</span> = <span class="ruby-constant">EasyPost</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;/beta/referral_customers/refunds&#39;</span>, <span class="ruby-identifier">api_key</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-comment"># noinspection RubyMismatchedReturnType</span>
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">convert_to_easypost_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-identifier">api_key</span>) <span class="ruby-comment"># TODO: Needs &quot;object&quot; or ID prefix to determine object class.</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
       <div id="method-c-update_email" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">update_email</span><span
-            class="method-args">(email, user_id, api_key = nil)</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">update_email</span><span
+              class="method-args">(email, user_id, api_key = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
@@ -228,10 +327,12 @@
        </header>
 
       <div id="method-c-create_easypost_credit_card" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">create_easypost_credit_card</span><span
-            class="method-args">(referral_api_key, stripe_object_id, priority = &#39;primary&#39;)</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">create_easypost_credit_card</span><span
+              class="method-args">(referral_api_key, stripe_object_id, priority = &#39;primary&#39;)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
@@ -256,10 +357,12 @@
       </div>
 
       <div id="method-c-create_stripe_token" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">create_stripe_token</span><span
-            class="method-args">(number, expiration_month, expiration_year, cvc, easypost_stripe_token)</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">create_stripe_token</span><span
+              class="method-args">(number, expiration_month, expiration_year, cvc, easypost_stripe_token)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
@@ -303,10 +406,12 @@
       </div>
 
       <div id="method-c-retrieve_easypost_stripe_api_key" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">retrieve_easypost_stripe_api_key</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">retrieve_easypost_stripe_api_key</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
@@ -332,7 +437,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.4.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.5.0.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

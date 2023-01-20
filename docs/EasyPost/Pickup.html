@@ -72,7 +72,6 @@
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    <li ><a href="#method-c-all">::all</a>
     <li ><a href="#method-i-buy">#buy</a>
     <li ><a href="#method-i-cancel">#cancel</a>
     <li ><a href="#method-i-lowest_rate">#lowest_rate</a>
@@ -99,44 +98,18 @@
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Public Class Methods</h3>
-       </header>
-
-      <div id="method-c-all" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">all</span><span
-            class="method-args">(_filters = {}, _api_key = nil)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-
-        <div class="method-description">
-          <p>Retrieve a list of all <a href="Pickup.html"><code>Pickup</code></a> objects.</p>
-
-          <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/pickup.rb, line 29</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">_filters</span> = {}, <span class="ruby-identifier">_api_key</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotImplementedError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Pickup.all not implemented.&#39;</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-    </section>
-
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
       <div id="method-i-buy" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">buy</span><span
-            class="method-args">(params = {})</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">buy</span><span
+              class="method-args">(params = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
@@ -164,10 +137,12 @@
       </div>
 
       <div id="method-i-cancel" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">cancel</span><span
-            class="method-args">(params = {})</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">cancel</span><span
+              class="method-args">(params = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
@@ -188,17 +163,19 @@
       </div>
 
       <div id="method-i-lowest_rate" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">lowest_rate</span><span
-            class="method-args">(carriers = [], services = [])</span>
-          <span class="method-click-advice">click to toggle source</span>
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">lowest_rate</span><span
+              class="method-args">(carriers = [], services = [])</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
         </div>
 
         <div class="method-description">
           <p>Get the lowest rate of a <a href="Pickup.html"><code>Pickup</code></a> (can exclude by having ‘’!‘` as the first element of your optional filter lists).</p>
 
           <div class="method-source-code" id="lowest_rate-source">
-            <pre><span class="ruby-comment"># File lib/easypost/pickup.rb, line 34</span>
+            <pre><span class="ruby-comment"># File lib/easypost/pickup.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lowest_rate</span>(<span class="ruby-identifier">carriers</span> = [], <span class="ruby-identifier">services</span> = [])
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">get_lowest_object_rate</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">carriers</span>, <span class="ruby-identifier">services</span>, <span class="ruby-string">&#39;pickup_rates&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -216,7 +193,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.4.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.5.0.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
