@@ -6,14 +6,14 @@ class EasyPost::Billing < EasyPost::Resource
     protected
 
     # Get payment method info (type of the payment method and ID of the payment method)
-    def get_payment_method_info(primary_or_secondary)
+    def get_payment_method_info(priority)
       payment_methods = EasyPost::Billing.retrieve_payment_methods
       payment_method_map = {
         'primary' => 'primary_payment_method',
         'secondary' => 'secondary_payment_method',
       }
 
-      payment_method_to_use = payment_method_map[primary_or_secondary]
+      payment_method_to_use = payment_method_map[priority]
 
       error_string = 'The chosen payment method is not valid. Please try again.'
       raise EasyPost::Error.new(error_string) if payment_methods[payment_method_to_use].nil?
@@ -35,8 +35,8 @@ class EasyPost::Billing < EasyPost::Resource
   end
 
   # Fund your EasyPost wallet by charging your primary or secondary card on file.
-  def self.fund_wallet(amount, primary_or_secondary = 'primary', api_key = nil)
-    payment_info = get_payment_method_info(primary_or_secondary.downcase)
+  def self.fund_wallet(amount, priority = 'primary', api_key = nil)
+    payment_info = get_payment_method_info(priority.downcase)
     endpoint = payment_info[0]
     payment_id = payment_info[1]
 
@@ -48,8 +48,8 @@ class EasyPost::Billing < EasyPost::Resource
   end
 
   # Delete a payment method.
-  def self.delete_payment_method(primary_or_secondary, api_key = nil)
-    payment_info = get_payment_method_info(primary_or_secondary.downcase)
+  def self.delete_payment_method(priority, api_key = nil)
+    payment_info = get_payment_method_info(priority.downcase)
     endpoint = payment_info[0]
     payment_id = payment_info[1]
 
