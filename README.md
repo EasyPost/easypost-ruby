@@ -111,7 +111,11 @@ end
 
 ## Documentation
 
-API Documentation can be found at: <https://easypost.com/docs/api>.
+API documentation can be found at: <https://easypost.com/docs/api>.
+
+Library documentation can be found on the web at: <https://easypost.github.io/easypost-ruby/> or locally in the `docs` directory.
+
+Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
 
 ## Development
 
