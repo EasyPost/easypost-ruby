@@ -10,7 +10,7 @@ describe EasyPost::Refund do
 
       refund = described_class.create(
         carrier: Fixture.usps,
-        tracking_codes: retrieved_shipment.tracking_code,
+        tracking_codes: [retrieved_shipment.tracking_code],
       )
 
       expect(refund[0].id).to match('rfnd')
@@ -34,18 +34,16 @@ describe EasyPost::Refund do
 
   describe '.retrieve' do
     it 'retrieves a refund' do
-      shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
-      retrieved_shipment = EasyPost::Shipment.retrieve(shipment.id) # We need to retrieve the shipment so that the tracking_code has time to populate
-
-      refund = described_class.create(
-        carrier: Fixture.usps,
-        tracking_codes: retrieved_shipment.tracking_code,
+      refunds = described_class.all(
+        page_size: Fixture.page_size,
       )
 
-      retrieved_refund = described_class.retrieve(refund[0].id)
+      refunds_array = refunds.refunds
+
+      retrieved_refund = described_class.retrieve(refunds_array[0].id)
 
       expect(retrieved_refund).to be_an_instance_of(described_class)
-      expect(retrieved_refund.id).to eq(refund[0].id)
+      expect(retrieved_refund.id).to eq(refunds_array[0].id)
     end
   end
 end
