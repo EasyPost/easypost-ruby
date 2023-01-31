@@ -10,7 +10,7 @@ describe EasyPost::Refund do
 
       refund = described_class.create(
         carrier: Fixture.usps,
-        tracking_codes: retrieved_shipment.tracking_code,
+        tracking_codes: [retrieved_shipment.tracking_code],
       )
 
       expect(refund[0].id).to match('rfnd')
