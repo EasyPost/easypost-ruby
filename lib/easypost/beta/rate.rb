@@ -2,6 +2,7 @@
 
 # Stateless that uses Rate as the object.
 class EasyPost::Beta::Rate < EasyPost::Resource
+  # Retrieve a list of stateless rates.
   def self.retrieve_stateless_rate(params = {}, api_key = nil)
     wrapped_params = {
       shipment: params,
