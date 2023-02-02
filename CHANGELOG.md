@@ -2,7 +2,7 @@
 
 ## Next Release
 
-- Add `retrieve_stateless_rate` and `get_lowest_stateless_rate` functions
+- Add `retrieve_stateless_rates` and `get_lowest_stateless_rate` functions
 
 ## v4.11.0 (2023-01-18)
 

@@ -3,16 +3,16 @@
 require 'spec_helper'
 
 describe EasyPost::Beta::Rate do
-  describe '.list' do
+  describe '.retrieve_stateless_rate' do
     it 'retrieve all stateless rates' do
-      stateless_rates = described_class.retrieve_stateless_rate(Fixture.basic_shipment)
+      stateless_rates = described_class.retrieve_stateless_rates(Fixture.basic_shipment)
 
       expect(stateless_rates).to all(be_an_instance_of(EasyPost::Rate))
     end
 
-    describe '.lowest rate' do
-      it 'retrieve lowest stateless rate' do
-        stateless_rates = described_class.retrieve_stateless_rate(Fixture.basic_shipment)
+    describe '.get_lowest_stateless_rate' do
+      it 'get the lowest stateless rate' do
+        stateless_rates = described_class.retrieve_stateless_rates(Fixture.basic_shipment)
 
         lowest_stateless_rate = EasyPost::Util.get_lowest_stateless_rate(stateless_rates)
 

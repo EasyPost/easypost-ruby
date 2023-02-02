@@ -229,7 +229,7 @@ module EasyPost::Util
     lowest_rate
   end
 
-  # Gets the lowest rate of an EasyPost object such as a Shipment, Order, or Pickup.
+  # Gets the lowest stateless rate.
   # You can exclude by having `'!'` as the first element of your optional filter lists
   def self.get_lowest_stateless_rate(stateless_rates, carriers = [], services = [])
     lowest_rate = nil

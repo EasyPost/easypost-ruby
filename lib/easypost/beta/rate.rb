@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-# Stateless that uses Rate as the object.
+# A Rate object contains all the details about the rate of a Shipment.
 class EasyPost::Beta::Rate < EasyPost::Resource
   # Retrieve a list of stateless rates.
-  def self.retrieve_stateless_rate(params = {}, api_key = nil)
+  def self.retrieve_stateless_rates(params = {}, api_key = nil)
     wrapped_params = {
       shipment: params,
     }
