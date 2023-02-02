@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe EasyPost::Beta::Rate do
-  describe '.retrieve_stateless_rate' do
+  describe '.retrieve_stateless_rates' do
     it 'retrieve all stateless rates' do
       stateless_rates = described_class.retrieve_stateless_rates(Fixture.basic_shipment)
 
