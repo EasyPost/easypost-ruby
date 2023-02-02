@@ -5,3 +5,4 @@ end
 
 require_relative 'beta/end_shipper'
 require_relative 'beta/referral'
+require_relative 'beta/rate'

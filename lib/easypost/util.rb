@@ -228,4 +228,56 @@ module EasyPost::Util
 
     lowest_rate
   end
+
+  # Gets the lowest stateless rate.
+  # You can exclude by having `'!'` as the first element of your optional filter lists
+  def self.get_lowest_stateless_rate(stateless_rates, carriers = [], services = [])
+    lowest_rate = nil
+
+    carriers = EasyPost::Util.normalize_string_list(carriers)
+    negative_carriers = []
+    carriers_copy = carriers.clone
+    carriers_copy.each do |carrier|
+      if carrier[0, 1] == '!'
+        negative_carriers << carrier[1..-1]
+        carriers.delete(carrier)
+      end
+    end
+
+    services = EasyPost::Util.normalize_string_list(services)
+    negative_services = []
+    services_copy = services.clone
+    services_copy.each do |service|
+      if service[0, 1] == '!'
+        negative_services << service[1..-1]
+        services.delete(service)
+      end
+    end
+
+    stateless_rates.each do |rate|
+      rate_carrier = rate.carrier.downcase
+      if carriers.size.positive? && !carriers.include?(rate_carrier)
+        next
+      end
+      if negative_carriers.size.positive? && negative_carriers.include?(rate_carrier)
+        next
+      end
+
+      rate_service = rate.service.downcase
+      if services.size.positive? && !services.include?(rate_service)
+        next
+      end
+      if negative_services.size.positive? && negative_services.include?(rate_service)
+        next
+      end
+
+      if lowest_rate.nil? || rate.rate.to_f < lowest_rate.rate.to_f
+        lowest_rate = rate
+      end
+    end
+
+    raise EasyPost::Error.new('No rates found.') if lowest_rate.nil?
+
+    lowest_rate
+  end
 end
