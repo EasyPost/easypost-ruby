@@ -11,7 +11,7 @@ describe EasyPost::Beta::Rate do
     end
 
     describe '.get_lowest_stateless_rate' do
-      it 'get the lowest stateless rate' do
+      it 'gets the lowest stateless rate for various combinations of filters' do
         stateless_rates = described_class.retrieve_stateless_rates(Fixture.basic_shipment)
 
         lowest_stateless_rate = EasyPost::Util.get_lowest_stateless_rate(stateless_rates)
