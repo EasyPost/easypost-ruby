@@ -7,7 +7,7 @@ require 'easypost/version'
 Gem::Specification.new do |spec|
   spec.name = 'easypost'
   spec.version = EasyPost::VERSION
-  spec.licenses = ['MIT']
+  spec.license = 'MIT'
   spec.summary = 'EasyPost Ruby Client Library'
   spec.description = 'Client library for accessing the EasyPost shipping API via Ruby.'
   spec.authors = 'EasyPost Developers'
@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.homepage = 'https://www.easypost.com/docs'
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
+    f.match(%r{^(docs|examples|spec)/})
   end
   spec.executables = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
