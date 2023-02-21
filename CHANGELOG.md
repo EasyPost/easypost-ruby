@@ -1,8 +1,9 @@
 # CHANGELOG
 
-## Next Release
+## v4.12.0 (2023-02-21)
 
-- Add `retrieve_stateless_rates` and `get_lowest_stateless_rate` functions
+- Adds beta `retrieve_stateless_rates` function
+- Adds `get_lowest_stateless_rate` utility
 
 ## v4.11.0 (2023-01-18)
 
