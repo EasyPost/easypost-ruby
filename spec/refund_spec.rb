@@ -32,6 +32,27 @@ describe EasyPost::Refund do
     end
   end
 
+  describe '.get_next_page' do
+    it 'retrieves the next page of a collection' do
+      first_page = described_class.all(
+        page_size: Fixture.page_size,
+      )
+
+      begin
+        next_page = described_class.get_next_page(first_page)
+
+        first_page_first_id = first_page.refunds.first.id
+        next_page_first_id = next_page.refunds.first.id
+
+        # Did we actually get a new page?
+        expect(first_page_first_id).not_to eq(next_page_first_id)
+      rescue EasyPost::Error => e
+        # If we get an error, make sure it's because there are no more pages.
+        expect(e.message).to eq('There are no more pages to retrieve.')
+      end
+    end
+  end
+
   describe '.retrieve' do
     it 'retrieves a refund' do
       refunds = described_class.all(

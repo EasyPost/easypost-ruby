@@ -34,6 +34,37 @@ class EasyPost::Shipment < EasyPost::Resource
     response.fetch('result', [])
   end
 
+  # Retrieve a list of Shipment objects.
+  def self.all(filters = {}, api_key = nil)
+    collection = super(filters, api_key)
+
+    # Store the filters used to retrieve the collection.
+    collection.refresh_from({ include_children: filters[:include_children], purchased: filters[:purchased] }, api_key)
+
+    collection
+  end
+
+  # Get the next page of shipments.
+  def self.get_next_page(collection, page_size = nil)
+    get_next_page_exec(method(:all), collection, collection.shipments, page_size)
+  end
+
+  # Build the next page parameters.
+  def self.build_next_page_params(collection, current_page_items, page_size = nil)
+    params = {}
+    params[:before_id] = current_page_items.last.id
+    unless page_size.nil?
+      params[:page_size] = page_size
+    end
+    unless collection.include_children.nil?
+      params[:include_children] = collection.include_children
+    end
+    unless collection.purchased.nil?
+      params[:purchased] = collection.purchased
+    end
+    params
+  end
+
   # Buy a Shipment.
   def buy(params = {}, with_carbon_offset = false, end_shipper_id = nil)
     if params.instance_of?(EasyPost::Rate)

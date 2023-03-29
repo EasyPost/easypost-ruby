@@ -104,11 +104,11 @@ class EasyPost::Resource < EasyPost::EasyPostObject
     self
   end
 
-  def self.get_next_page_exec(api_func, collection, current_page_items, page_size = 0)
+  def self.get_next_page_exec(api_func, collection, current_page_items, page_size = nil)
     has_more = collection.has_more || false
     unless !has_more || current_page_items.nil? || current_page_items.empty?
       # if no issues, then we can get the next page
-      params = build_next_page_params(current_page_items, page_size)
+      params = build_next_page_params(collection, current_page_items, page_size)
       return api_func.call(params)
     end
 
@@ -116,7 +116,7 @@ class EasyPost::Resource < EasyPost::EasyPostObject
     raise EasyPost::Error.new('There are no more pages to retrieve.')
   end
 
-  def self.build_next_page_params(_current_page_items, _page_size = 0)
+  def self.build_next_page_params(_collection, _current_page_items, _page_size = nil)
     {}
   end
 end
