@@ -37,4 +37,17 @@ class EasyPost::Address < EasyPost::Resource
 
     EasyPost::Util.convert_to_easypost_object(response['address'], api_key)
   end
+
+  def self.get_next_page(collection, page_size = 0)
+    get_next_page_exec(method(:all), collection, collection.addresses, page_size)
+  end
+
+  protected
+
+  def self.build_next_page_params(current_page_items, page_size = 0)
+    params = {}
+    params[:before_id] = current_page_items.last.id
+    params[:page_size] = page_size if page_size.positive?
+    params
+  end
 end
