@@ -1,0 +1,138 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/referral_customers
+    body:
+      encoding: UTF-8
+      string: '{"page_size":5}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 70d4b6386424ba92e6982ecf0012c105
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"e148ffc888cce2ccece1dafa047b32c2"
+      X-Runtime:
+      - '0.151576'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb6nuq
+      X-Version-Label:
+      - easypost-202303292153-e<REDACTED>646023-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq a29e4ad05c
+      - intlb2nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"has_more":true,"referral_customers":[{"id":"user_634b6daa05744bfaa205058f06864363","object":"User","parent_id":null,"name":"Firstname
+        Lastname","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-26T15:50:28Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]},{"id":"user_35cb81fb8af1454dabf1f6afa7330634","object":"User","parent_id":null,"name":"Firstname
+        Lastname","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-27T20:20:52Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":true,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]},{"id":"user_fa93cc16bcc24c078ee057ce82f38eed","object":"User","parent_id":null,"name":"test
+        test","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-28T22:34:38Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]},{"id":"user_4a22730cdc844ce1bc2efbed999c869f","object":"User","parent_id":null,"name":"test
+        test","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-29T19:35:33Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]},{"id":"user_488e391395f4416196a31965fecac409","object":"User","parent_id":null,"name":"Firstname
+        Lastname","phone_number":"<REDACTED>","verified":true,"created_at":"2022-05-02T18:48:22Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":true,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]}]}'
+  recorded_at: Wed, 29 Mar 2023 22:24:18 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/referral_customers
+    body:
+      encoding: UTF-8
+      string: '{"before_id":"user_488e391395f4416196a31965fecac409"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 70d4b6396424ba93f48e0db00012c117
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"7a5537af58f760d0f790dbacca99ba99"
+      X-Runtime:
+      - '0.152084'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb2nuq
+      X-Version-Label:
+      - easypost-202303292153-e<REDACTED>646023-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq a29e4ad05c
+      - intlb2nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"has_more":false,"referral_customers":[{"id":"user_4a22730cdc844ce1bc2efbed999c869f","object":"User","parent_id":null,"name":"test
+        test","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-29T19:35:33Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]},{"id":"user_fa93cc16bcc24c078ee057ce82f38eed","object":"User","parent_id":null,"name":"test
+        test","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-28T22:34:38Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]},{"id":"user_35cb81fb8af1454dabf1f6afa7330634","object":"User","parent_id":null,"name":"Firstname
+        Lastname","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-27T20:20:52Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":true,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]},{"id":"user_634b6daa05744bfaa205058f06864363","object":"User","parent_id":null,"name":"Firstname
+        Lastname","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-26T15:50:28Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]}]}'
+  recorded_at: Wed, 29 Mar 2023 22:24:19 GMT
+recorded_with: VCR 6.0.0
