@@ -42,8 +42,6 @@ class EasyPost::Address < EasyPost::Resource
     get_next_page_exec(method(:all), collection, collection.addresses, page_size)
   end
 
-  protected
-
   def self.build_next_page_params(current_page_items, page_size = 0)
     params = {}
     params[:before_id] = current_page_items.last.id
