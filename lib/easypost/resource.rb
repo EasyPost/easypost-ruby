@@ -104,6 +104,7 @@ class EasyPost::Resource < EasyPost::EasyPostObject
     self
   end
 
+  # Build the next page parameters and call the next page function.
   def self.get_next_page_exec(api_func, collection, current_page_items, page_size = nil)
     has_more = collection.has_more || false
     unless !has_more || current_page_items.nil? || current_page_items.empty?
@@ -116,6 +117,7 @@ class EasyPost::Resource < EasyPost::EasyPostObject
     raise EasyPost::Error.new('There are no more pages to retrieve.')
   end
 
+  # Build the next page parameters. This is a stub method that should be overridden by the child class.
   def self.build_next_page_params(_collection, _current_page_items, _page_size = nil)
     {}
   end
