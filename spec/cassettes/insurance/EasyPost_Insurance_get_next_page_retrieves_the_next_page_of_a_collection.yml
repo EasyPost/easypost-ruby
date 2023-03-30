@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/insurances
+    body:
+      encoding: UTF-8
+      string: '{"page_size":5}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - c617988d6424ba91e66526d100117752
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"5f1a59bebcbbd5ae61942f9e2d9fb8d8"
+      X-Runtime:
+      - '0.027959'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb3nuq
+      X-Version-Label:
+      - easypost-202303292153-e<REDACTED>646023-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc a29e4ad05c
+      - intlb2nuq a29e4ad05c
+      - intlb2wdc a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"insurances":[],"has_more":false}'
+  recorded_at: Wed, 29 Mar 2023 22:24:17 GMT
+recorded_with: VCR 6.0.0

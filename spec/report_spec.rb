@@ -72,4 +72,39 @@ describe EasyPost::Report do
       expect(reports_array).to all(be_an_instance_of(described_class))
     end
   end
+
+  describe '.get_next_page' do
+    it 'retrieves the next page of a collection' do
+      first_page = described_class.all(
+        type: Fixture.report_type,
+        page_size: Fixture.page_size,
+      )
+
+      begin
+        next_page = described_class.get_next_page(first_page)
+
+        first_page_first_id = first_page.reports.first.id
+        next_page_first_id = next_page.reports.first.id
+
+        # Did we actually get a new page?
+        expect(first_page_first_id).not_to eq(next_page_first_id)
+      rescue EasyPost::Error => e
+        # If we get an error, make sure it's because there are no more pages.
+        expect(e.message).to eq('There are no more pages to retrieve.')
+      end
+    end
+
+    it 'reuses the params used to retrieve the first page' do
+      type = Fixture.report_type
+
+      first_page = described_class.all(
+        page_size: Fixture.page_size,
+        type: type,
+      )
+
+      next_page_params = described_class.build_next_page_params(first_page, first_page.reports, 0)
+
+      expect(next_page_params[:type]).to eq(type)
+    end
+  end
 end

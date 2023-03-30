@@ -51,6 +51,27 @@ describe EasyPost::Referral, :authenticate_partner do
     end
   end
 
+  describe '.get_next_page' do
+    it 'retrieves the next page of a collection' do
+      first_page = described_class.all(
+        page_size: Fixture.page_size,
+      )
+
+      begin
+        next_page = described_class.get_next_page(first_page)
+
+        first_page_first_id = first_page.referral_customers.first.id
+        next_page_first_id = next_page.referral_customers.first.id
+
+        # Did we actually get a new page?
+        expect(first_page_first_id).not_to eq(next_page_first_id)
+      rescue EasyPost::Error => e
+        # If we get an error, make sure it's because there are no more pages.
+        expect(e.message).to eq('There are no more pages to retrieve.')
+      end
+    end
+  end
+
   describe '.add_credit_card' do
     it 'adds a credit card to a referral customer account' do
       # We override the VCR config here since it cannot match the URL due to data scrubbing

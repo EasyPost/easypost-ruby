@@ -21,4 +21,6 @@ class EasyPost::EndShipper < EasyPost::Resource
     end
     self
   end
+
+  # TODO: Add support for getting the next page of end shippers when the API supports it.
 end

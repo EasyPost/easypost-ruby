@@ -80,6 +80,21 @@ class EasyPost::Referral < EasyPost::Resource
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
+  # Get the next page of referral customers.
+  def self.get_next_page(collection, page_size = nil)
+    get_next_page_exec(method(:all), collection, collection.referral_customers, page_size)
+  end
+
+  # Build the next page parameters.
+  def self.build_next_page_params(_collection, current_page_items, page_size = nil)
+    params = {}
+    params[:before_id] = current_page_items.last.id
+    unless page_size.nil?
+      params[:page_size] = page_size
+    end
+    params
+  end
+
   # Add credit card to a referral customer. This function requires the Referral Customer's API key.
   def self.add_credit_card(referral_api_key, number, expiration_month, expiration_year, cvc, priority = 'primary')
     easypost_stripe_api_key = retrieve_easypost_stripe_api_key

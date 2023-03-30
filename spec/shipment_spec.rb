@@ -110,6 +110,57 @@ describe EasyPost::Shipment do
       expect(shipments.has_more).not_to be_nil
       expect(shipments_array).to all(be_an_instance_of(described_class))
     end
+
+    it 'stores the params used to retrieve the shipments' do
+      shipments = described_class.all(
+        page_size: Fixture.page_size,
+        include_children: true,
+        purchased: false,
+      )
+
+      expect(shipments.include_children).to be true
+      expect(shipments.purchased).to be false
+    end
+  end
+
+  describe '.get_next_page' do
+    it 'retrieves the next page of a collection' do
+      first_page = described_class.all(
+        page_size: Fixture.page_size,
+      )
+
+      begin
+        next_page = described_class.get_next_page(first_page)
+
+        first_page_first_id = first_page.shipments.first.id
+        next_page_first_id = next_page.shipments.first.id
+
+        # Did we actually get a new page?
+        expect(first_page_first_id).not_to eq(next_page_first_id)
+      rescue EasyPost::Error => e
+        # If we get an error, make sure it's because there are no more pages.
+        expect(e.message).to eq('There are no more pages to retrieve.')
+      end
+    end
+
+    it 'reuses the params used to retrieve the first page' do
+      include_children = true
+      purchased = false
+
+      first_page = described_class.all(
+        page_size: Fixture.page_size,
+        include_children: include_children,
+        purchased: purchased,
+      )
+
+      # No shipments match the above filters, so we need to mock up some fake results
+      shipments = [described_class.new(id: 'shp_123')]
+
+      next_page_params = described_class.build_next_page_params(first_page, shipments, 0)
+
+      expect(next_page_params[:include_children]).to eq(include_children)
+      expect(next_page_params[:purchased]).to eq(purchased)
+    end
   end
 
   describe '.buy' do

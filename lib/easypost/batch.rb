@@ -47,4 +47,6 @@ class EasyPost::Batch < EasyPost::Resource
   def create_scan_form(params = {})
     EasyPost.make_request(:post, "#{url}/scan_form", @api_key, params)
   end
+
+  # TODO: Add support getting the next page of batches when the API supports it.
 end
