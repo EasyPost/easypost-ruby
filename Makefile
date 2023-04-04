@@ -22,7 +22,7 @@ docs:
 
 ## fix - Fix Rubocop errors
 fix:
-	bundle exec rubocop -A
+	bundle exec rubocop -a
 
 ## install - Install globally from source
 install:

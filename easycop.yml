@@ -5,7 +5,7 @@
 require:
   - rubocop-rspec
 AllCops:
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.6
   NewCops: disable
 Layout/BlockAlignment:
   Enabled: true
@@ -41,7 +41,7 @@ Layout/FirstMethodArgumentLineBreak:
   Enabled: true
 Layout/LineLength:
   Max: 120
-  IgnoredPatterns: # deprecated in 1.28
+  AllowedPatterns:
     - "(\\A|\\s)#"
 Layout/LineEndStringConcatenationIndentation: # new in 1.18
   Enabled: true
@@ -104,7 +104,7 @@ Metrics/ParameterLists:
   Enabled: false
 Metrics/AbcSize:
   Enabled: false
-Gemspec/DateAssignment: # new in 1.10
+Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
 Lint/AmbiguousAssignment: # new in 1.7
   Enabled: true

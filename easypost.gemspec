@@ -19,18 +19,18 @@ Gem::Specification.new do |spec|
   end
   spec.executables = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
-  spec.required_ruby_version = '>= 2.5'
+  spec.required_ruby_version = '>= 2.6'
 
-  spec.add_development_dependency 'brakeman', '~> 5.2'
+  spec.add_development_dependency 'brakeman', '~> 5.4'
   spec.add_development_dependency 'pry', '~> 0.14'
-  spec.add_development_dependency 'psych', '~> 4.0' # TODO: pinned because rdoc has an optimistic pin of this dep and 5.0 breaks on CI
+  spec.add_development_dependency 'psych', '~> 5.1'
   spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'rdoc', '~> 6.4'
-  spec.add_development_dependency 'rspec', '~> 3.10'
-  spec.add_development_dependency 'rubocop', '= 1.27' # rubocop 1.28 requires Ruby 2.6+
-  spec.add_development_dependency 'rubocop-rspec', '= 2.10' # rubocop-rspec 2.11 requires Ruby 2.6+
-  spec.add_development_dependency 'simplecov', '~> 0.21'
+  spec.add_development_dependency 'rdoc', '~> 6.5'
+  spec.add_development_dependency 'rspec', '~> 3.12'
+  spec.add_development_dependency 'rubocop', '~> 1.49'
+  spec.add_development_dependency 'rubocop-rspec', '~> 2.19'
+  spec.add_development_dependency 'simplecov', '~> 0.22'
   spec.add_development_dependency 'simplecov-lcov', '~> 0.8'
-  spec.add_development_dependency 'vcr', '= 6.0' # VCR 6.1 requires Ruby 2.6+
-  spec.add_development_dependency 'webmock', '~> 3.14'
+  spec.add_development_dependency 'vcr', '~> 6.1'
+  spec.add_development_dependency 'webmock', '~> 3.18'
 end

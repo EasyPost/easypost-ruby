@@ -7,7 +7,7 @@ class EasyPost::Resource < EasyPost::EasyPostObject
   # The class name of an EasyPost object.
   def self.class_name
     camel = name.split('::')[-1]
-    snake = camel[0..0] + camel[1..-1].gsub(/([A-Z])/, '_\1')
+    snake = camel[0..0] + camel[1..].gsub(/([A-Z])/, '_\1')
     snake.downcase
   end
 
@@ -19,7 +19,7 @@ class EasyPost::Resource < EasyPost::EasyPostObject
       )
     end
 
-    if class_name[-1..-1] == 's' || class_name[-1..-1] == 'h'
+    if class_name[-1..] == 's' || class_name[-1..] == 'h'
       "/v2/#{CGI.escape(class_name.downcase)}es"
     else
       "/v2/#{CGI.escape(class_name.downcase)}s"

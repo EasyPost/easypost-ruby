@@ -116,7 +116,7 @@ module EasyPost::Util
   def self.build_dict_key(keys)
     result = keys[0].to_s
 
-    keys[1..-1].each do |key|
+    keys[1..].each do |key|
       result += "[#{key}]"
     end
 
@@ -187,7 +187,7 @@ module EasyPost::Util
     carriers_copy = carriers.clone
     carriers_copy.each do |carrier|
       if carrier[0, 1] == '!'
-        negative_carriers << carrier[1..-1]
+        negative_carriers << carrier[1..]
         carriers.delete(carrier)
       end
     end
@@ -197,7 +197,7 @@ module EasyPost::Util
     services_copy = services.clone
     services_copy.each do |service|
       if service[0, 1] == '!'
-        negative_services << service[1..-1]
+        negative_services << service[1..]
         services.delete(service)
       end
     end
@@ -239,7 +239,7 @@ module EasyPost::Util
     carriers_copy = carriers.clone
     carriers_copy.each do |carrier|
       if carrier[0, 1] == '!'
-        negative_carriers << carrier[1..-1]
+        negative_carriers << carrier[1..]
         carriers.delete(carrier)
       end
     end
@@ -249,7 +249,7 @@ module EasyPost::Util
     services_copy = services.clone
     services_copy.each do |service|
       if service[0, 1] == '!'
-        negative_services << service[1..-1]
+        negative_services << service[1..]
         services.delete(service)
       end
     end
