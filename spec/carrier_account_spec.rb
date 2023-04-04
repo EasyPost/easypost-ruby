@@ -77,7 +77,7 @@ describe EasyPost::CarrierAccount, :authenticate_prod do
 
   describe '.types' do
     it 'retrieves the carrier account types available' do
-      types = described_class.types()
+      types = described_class.types
 
       expect(types).to be_an_instance_of(Array)
     end

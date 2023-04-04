@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Next Release (Major)
+
+- Drops support for Ruby 2.5
+- Bumps all dev dependencies
+
 ## v4.13.0 (2023-04-04)
 
 - Adds `get_next_page` function to each object which retrieves the next page of a collection when the `has_more` key is present in the response
