@@ -45,6 +45,20 @@ require 'easypost/beta'
 
 require 'easypost/util'
 
+# Client
+require 'easypost/client'
+require 'easypost/client_configuration'
+require 'easypost/http_client'
+
+# Services
+require 'easypost/services'
+
+# Models
+require 'easypost/models'
+
+# Internal Utilities
+require 'easypost/internal_utilities'
+
 module EasyPost
   DEFAULT_API_BASE = 'https://api.easypost.com'
 

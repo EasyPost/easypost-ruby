@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.6'
 
+  spec.add_development_dependency 'activesupport', '~> 6.1.7.3'
   spec.add_development_dependency 'brakeman', '~> 5.4'
   spec.add_development_dependency 'pry', '~> 0.14'
   spec.add_development_dependency 'psych', '~> 5.1'

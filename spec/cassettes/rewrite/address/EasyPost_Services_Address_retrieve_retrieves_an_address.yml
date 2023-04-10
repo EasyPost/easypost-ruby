@@ -1,0 +1,140 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses
+    body:
+      encoding: UTF-8
+      string: '{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - bf50b5496454320be78a9b470014cbfa
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_49f6bad4eacb11ed9c49ac1f6b0a0d1e"
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"fa34b88c81884a6416d2bffae3451969"
+      X-Runtime:
+      - '0.073479'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4nuq
+      X-Version-Label:
+      - easypost-202305041707-49a800d6d3-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq a29e4ad05c
+      - intlb1nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"adr_49f6bad4eacb11ed9c49ac1f6b0a0d1e","object":"Address","created_at":"2023-05-04T22:30:35+00:00","updated_at":"2023-05-04T22:30:35+00:00","name":"Jack
+        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"\u003cREDACTED\u003e","email":"\u003cREDACTED\u003e","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+  recorded_at: Thu, 04 May 2023 22:30:35 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/addresses/adr_49f6bad4eacb11ed9c49ac1f6b0a0d1e
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - bf50b5476454320ce78a9b480014cc27
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"fa34b88c81884a6416d2bffae3451969"
+      X-Runtime:
+      - '0.026655'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb8nuq
+      X-Version-Label:
+      - easypost-202305041707-49a800d6d3-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq a29e4ad05c
+      - intlb2nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"adr_49f6bad4eacb11ed9c49ac1f6b0a0d1e","object":"Address","created_at":"2023-05-04T22:30:35+00:00","updated_at":"2023-05-04T22:30:35+00:00","name":"Jack
+        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"\u003cREDACTED\u003e","email":"\u003cREDACTED\u003e","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+  recorded_at: Thu, 04 May 2023 22:30:36 GMT
+recorded_with: VCR 6.1.0
