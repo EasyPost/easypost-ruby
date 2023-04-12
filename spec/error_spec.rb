@@ -33,5 +33,34 @@ describe EasyPost::Error do
 
       expect(error.message).to eq('Error1, Error2')
     end
+
+    it 'concatenates error.message when it comes back incorrectly as an hash from the API' do
+      error_message = {
+        errors: ['bad error.', 'second bad error.'],
+      }
+
+      error = described_class.new(error_message)
+
+      expect(error.message).to eq('bad error., second bad error.')
+    end
+
+    it 'concatenates error.message when it comes back incorrectly as an bad format from the API' do
+      error_message = {
+        message: {
+          errors: ['Bad format 1', 'Bad format 2'],
+          bad_data: [
+            {
+              first_message: 'Bad format 3',
+              second_message: 'Bad format 4',
+              thrid_message: 'Bad format 5',
+            },
+          ],
+        },
+      }
+
+      error = described_class.new(error_message)
+
+      expect(error.message).to eq('Bad format 1, Bad format 2, Bad format 3, Bad format 4, Bad format 5')
+    end
   end
 end
