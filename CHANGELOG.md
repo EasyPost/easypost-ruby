@@ -4,6 +4,7 @@
 
 - Drops support for Ruby 2.5
 - Bumps all dev dependencies
+- Improves Error Deserialization to dynamically handle edge cases that have a bad format
 
 ## v4.13.0 (2023-04-04)
 
