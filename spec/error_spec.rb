@@ -34,14 +34,14 @@ describe EasyPost::Error do
       expect(error.message).to eq('Error1, Error2')
     end
 
-    it 'concatenates error.message when it comes back incorrectly as an hash from the API' do
+    it 'concatenates error.message when it comes back incorrectly as a hash from the API' do
       error_message = {
-        errors: ['bad error.', 'second bad error.'],
+        errors: ['bad error', 'second bad error'],
       }
 
       error = described_class.new(error_message)
 
-      expect(error.message).to eq('bad error., second bad error.')
+      expect(error.message).to eq('bad error, second bad error')
     end
 
     it 'concatenates error.message when it comes back incorrectly as an bad format from the API' do
