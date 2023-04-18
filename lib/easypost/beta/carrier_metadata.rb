@@ -20,6 +20,6 @@ class EasyPost::Beta::CarrierMetadata < EasyPost::Resource
     path += URI.encode_www_form(params)
 
     response = EasyPost.make_request(:get, path, api_key, params)
-    EasyPost::Util.convert_to_easypost_object(response['carriers'], api_key)
+    EasyPost::Util.convert_to_easypost_object(response['carriers'] || [], api_key)
   end
 end
