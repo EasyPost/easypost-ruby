@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v4.13.1 (2023-04-18)
 
 - Improves Error Deserialization to dynamically handle edge cases that have a bad format
 
