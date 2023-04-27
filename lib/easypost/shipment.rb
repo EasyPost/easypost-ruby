@@ -190,6 +190,6 @@ class EasyPost::Shipment < EasyPost::Resource
     params = { planned_ship_date: planned_ship_date }
 
     response = EasyPost.make_request(:get, url, @api_key, params)
-    EasyPost::Util.convert_to_easypost_object(response['rates'] || [], api_key)
+    EasyPost::Util.convert_to_easypost_object(response['rates'] || [], @api_key)
   end
 end
