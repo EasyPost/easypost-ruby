@@ -187,8 +187,7 @@ class EasyPost::Shipment < EasyPost::Resource
   # Retrieves the estimated delivery date of each Rate via SmartRate.
   def retrieve_estimated_delivery_date(planned_ship_date)
     url = "#{self.url}/smartrate/delivery_date"
-    params = {}
-    params[:planned_ship_date] = planned_ship_date
+    params = { planned_ship_date: planned_ship_date }
 
     response = EasyPost.make_request(:get, url, @api_key, params)
     EasyPost::Util.convert_to_easypost_object(response['rates'] || [], api_key)
