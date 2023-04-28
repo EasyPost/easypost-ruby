@@ -442,4 +442,13 @@ describe EasyPost::Shipment do
       expect(form.form_url).not_to be_nil
     end
   end
+
+  describe '.retrieve_estimated_delivery_date' do
+    it 'retrieve time-in-transit data for each of the Rates of a shipment' do
+      shipment = described_class.create(Fixture.full_shipment)
+      estimated_delivery_dates = shipment.retrieve_estimated_delivery_date(Fixture.planned_ship_date)
+
+      expect(estimated_delivery_dates.all? { |entry| entry['easypost_time_in_transit_data'] }).not_to be_nil
+    end
+  end
 end

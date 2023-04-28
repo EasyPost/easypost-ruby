@@ -142,4 +142,8 @@ class Fixture
   def self.rma_form_options
     read_fixture_data['form_options']['rma']
   end
+
+  def self.planned_ship_date
+    '2023-04-28'
+  end
 end
