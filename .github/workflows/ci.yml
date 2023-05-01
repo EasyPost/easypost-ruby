@@ -48,3 +48,24 @@ jobs:
         run: make lint
       - name: Run security analysis
         run: make scan
+  docs:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          rubygems: '3.0.0'
+          bundler-cache: true
+      - name: Install Dependencies
+        run: make install
+      - name: Generate Docs
+        run: make docs
+      - name: Deploy docs
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs
