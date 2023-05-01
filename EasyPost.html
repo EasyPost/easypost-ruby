@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module EasyPost - EasyPost Ruby Docs</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    
+<!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    <li ><a href="#method-c-authorization">::authorization</a>
+    <li ><a href="#method-c-default_connection">::default_connection</a>
+    <li ><a href="#method-c-default_headers">::default_headers</a>
+    <li ><a href="#method-c-default_http_config">::default_http_config</a>
+    <li ><a href="#method-c-http_config">::http_config</a>
+    <li ><a href="#method-c-http_config-3D">::http_config=</a>
+    <li ><a href="#method-c-make_client">::make_client</a>
+    <li ><a href="#method-c-make_request">::make_request</a>
+    <li ><a href="#method-c-parse_response">::parse_response</a>
+    <li ><a href="#method-c-reset_http_config">::reset_http_config</a>
+    <li ><a href="#method-c-user_agent">::user_agent</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-EasyPost">
+  <h1 id="module-EasyPost" class="module">
+    module EasyPost
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  <section id="5Buntitled-5D" class="documentation-section">
+
+
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+        <dt id="Connection">Connection
+        <dd>
+        <dt id="DEFAULT_API_BASE">DEFAULT_API_BASE
+        <dd>
+        <dt id="VERSION">VERSION
+        <dd>
+      </dl>
+    </section>
+
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      <div id="attribute-c-api_base" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">api_base</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+      <div id="attribute-c-api_key" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">api_key</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+      <div id="attribute-c-default_connection" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">default_connection</span><span
+            class="attribute-access-type">[W]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+    </section>
+
+
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+      <div id="method-c-authorization" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">authorization</span><span
+              class="method-args">(key)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="authorization-source">
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">authorization</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-node">&quot;Basic #{Base64.strict_encode64(&quot;#{key}:&quot;)}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-default_connection" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">default_connection</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="default_connection-source">
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">default_connection</span>
+  <span class="ruby-ivar">@default_connection</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(
+    <span class="ruby-value">uri:</span> <span class="ruby-constant">URI</span>(<span class="ruby-identifier">api_base</span>),
+    <span class="ruby-value">config:</span> <span class="ruby-identifier">http_config</span>,
+  )
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-default_headers" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">default_headers</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="default_headers-source">
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">default_headers</span>
+  <span class="ruby-ivar">@default_headers</span> <span class="ruby-operator">||=</span> {
+    <span class="ruby-string">&#39;Content-Type&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;application/json&#39;</span>,
+    <span class="ruby-string">&#39;User-Agent&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">user_agent</span>,
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-default_http_config" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">default_http_config</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="default_http_config-source">
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">default_http_config</span>
+  <span class="ruby-identifier">http_config</span> = {
+    <span class="ruby-value">timeout:</span> <span class="ruby-value">60</span>,
+    <span class="ruby-value">open_timeout:</span> <span class="ruby-value">30</span>,
+    <span class="ruby-value">verify_ssl:</span> <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">SSL</span><span class="ruby-operator">::</span><span class="ruby-constant">VERIFY_PEER</span>,
+  }
+
+  <span class="ruby-identifier">ruby_version</span> = <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Version</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">RUBY_VERSION</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">ruby_version</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Version</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;2.5.0&#39;</span>)
+    <span class="ruby-identifier">http_config</span>[<span class="ruby-value">:min_version</span>] = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">SSL</span><span class="ruby-operator">::</span><span class="ruby-constant">TLS1_2_VERSION</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">http_config</span>[<span class="ruby-value">:ssl_version</span>] = <span class="ruby-value">:TLSv1_2</span> <span class="ruby-comment"># rubocop:disable Naming/VariableNumber</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">http_config</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-http_config" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">http_config</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Get the HTTP config.</p>
+
+          <div class="method-source-code" id="http_config-source">
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">http_config</span>
+  <span class="ruby-ivar">@http_config</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">default_http_config</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-http_config-3D" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">http_config=</span><span
+              class="method-args">(http_config_params)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Set the HTTP config.</p>
+
+          <div class="method-source-code" id="http_config-3D-source">
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">http_config=</span>(<span class="ruby-identifier">http_config_params</span>)
+  <span class="ruby-identifier">http_config</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">http_config_params</span>)
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">default_connection</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-make_client" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">make_client</span><span
+              class="method-args">(url)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Create an <a href="EasyPost.html"><code>EasyPost</code></a> Client.</p>
+
+<p>@deprecated</p>
+
+          <div class="method-source-code" id="make_client-source">
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">make_client</span>(<span class="ruby-identifier">url</span>)
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">uri:</span> <span class="ruby-constant">URI</span>(<span class="ruby-identifier">url</span>), <span class="ruby-value">config:</span> <span class="ruby-identifier">http_config</span>).<span class="ruby-identifier">create</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-make_request" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">make_request</span><span
+              class="method-args">(method, path, api_key = nil, body = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Make an HTTP request against the {default_connection}</p>
+
+<p>@param method [Symbol] the HTTP Verb (get, method, put, post, etc.) @param path [String] URI path of the resource @param requested_api_key [String] ({EasyPost.api_key}) key set Authorization header. @param body [Object] (nil) object to be dumped to JSON @raise [EasyPost::Error] if the response has a non-2xx status code @return [Hash] JSON object parsed from the response body</p>
+
+          <div class="method-source-code" id="make_request-source">
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">make_request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">api_key</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">body</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">default_connection</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">api_key</span> <span class="ruby-operator">||</span> <span class="ruby-constant">EasyPost</span>.<span class="ruby-identifier">api_key</span>, <span class="ruby-identifier">body</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-parse_response" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">parse_response</span><span
+              class="method-args">(status:, body:, json:)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="parse_response-source">
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 137</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">parse_response</span>(<span class="ruby-value">status:</span>, <span class="ruby-value">body:</span>, <span class="ruby-value">json:</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">status</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">200</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">status</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">300</span>
+    <span class="ruby-identifier">error</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">body</span>)[<span class="ruby-string">&#39;error&#39;</span>]
+
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>.<span class="ruby-identifier">new</span>(
+      <span class="ruby-identifier">error</span>[<span class="ruby-string">&#39;message&#39;</span>],
+      <span class="ruby-identifier">status</span>,
+      <span class="ruby-identifier">error</span>[<span class="ruby-string">&#39;code&#39;</span>],
+      <span class="ruby-identifier">error</span>[<span class="ruby-string">&#39;errors&#39;</span>],
+      <span class="ruby-identifier">body</span>,
+    )
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">json</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">body</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">body</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp">/\A\s+\z/</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">body</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">body</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">JSON</span><span class="ruby-operator">::</span><span class="ruby-constant">ParserError</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Invalid response object from API, unable to decode.\n#{body}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-reset_http_config" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">reset_http_config</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Reset the HTTP config.</p>
+
+          <div class="method-source-code" id="reset_http_config-source">
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">reset_http_config</span>
+  <span class="ruby-identifier">http_config</span>.<span class="ruby-identifier">clear</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">default_connection</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-user_agent" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">user_agent</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="user_agent-source">
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">user_agent</span>
+  <span class="ruby-ivar">@user_agent</span> <span class="ruby-operator">||=</span>
+    <span class="ruby-node">&quot;EasyPost/v2 RubyClient/#{EasyPost::VERSION} Ruby/#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} &quot;</span> \
+    <span class="ruby-node">&quot;OS/#{EasyPost::Util.os_name} OSVersion/#{EasyPost::Util.os_version} &quot;</span> \
+    <span class="ruby-node">&quot;OSArch/#{EasyPost::Util.os_arch}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.5.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
