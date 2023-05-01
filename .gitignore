@@ -1,11 +1,20 @@
+._*
+.AppleDouble
 .bundle
 .config
+.DS_Store
+.env
 .idea/
+.LSOverride
+.Spotlight-V100
+.Trashes
 *.gem
 *.rbc
 coverage
 dist
+docs
 Gemfile.lock
+Icon
 InstalledFiles
 lib/bundler/man
 pkg
@@ -14,15 +23,4 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
-
-
-# macOS
-._*
-.AppleDouble
-.DS_Store
-.env
-.LSOverride
-.Spotlight-V100
-.Trashes
-Icon
 vendor/
