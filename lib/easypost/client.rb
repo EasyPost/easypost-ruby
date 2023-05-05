@@ -26,9 +26,11 @@ class EasyPost::Client
   # @param method [Symbol] the HTTP Verb (get, method, put, post, etc.)
   # @param endpoint [String] URI path of the resource
   # @param body [Object] (nil) object to be dumped to JSON
+  # @param cls [Class] (nil) class to deserialize the response body into
+  # @param sub_key [String] (nil) key to start at when deserializing the response body
   # @raise [EasyPost::Error] if the response has a non-2xx status code
   # @return [Hash] JSON object parsed from the response body
-  def make_request(method, endpoint, body = nil)
+  def make_request(method, endpoint, body = nil, cls = nil, sub_key = nil)
     response = @http_client.request(method, endpoint, nil, body)
 
     status_code = response.code.to_i
@@ -45,6 +47,6 @@ class EasyPost::Client
       )
     end
 
-    EasyPost::InternalUtilities::Json.convert_json_to_object(response.body, EasyPost::Models::Address)
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response.body, cls, sub_key)
   end
 end
