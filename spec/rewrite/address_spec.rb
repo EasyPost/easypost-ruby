@@ -3,7 +3,7 @@
 require_relative '../spec_helper'
 
 describe EasyPost::Services::Address do
-  let(:client) { EasyPost::Client.new(ENV['EASYPOST_TEST_API_KEY']) }
+  let(:client) { EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY']) }
 
   describe 'address service' do
     it 'creates an address' do

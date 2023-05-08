@@ -47,7 +47,6 @@ require 'easypost/util'
 
 # Client
 require 'easypost/client'
-require 'easypost/client_configuration'
 require 'easypost/http_client'
 
 # Services

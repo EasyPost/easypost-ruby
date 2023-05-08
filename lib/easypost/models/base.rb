@@ -22,11 +22,10 @@ class EasyPost::Models::Object
   def handle_value(val)
     case val
     when Hash
-      begin
-        "EasyPost::Models::#{val['object'].capitalize}".constantize.new(val)
-      rescue NameError
-        EasyPost::Models::EasyPostObject.new(val)
-      end
+      type = EasyPost::InternalUtilities::StaticMapper::BY_TYPE[val['object']] if val['object']
+      prefix = EasyPost::InternalUtilities::StaticMapper::BY_PREFIX[val['id'].split('_').first] if val['id']
+      cls = type || prefix || EasyPost::Models::EasyPostObject
+      cls.new(val)
     when Array
       val.map { |item| handle_value(item) }
     else
