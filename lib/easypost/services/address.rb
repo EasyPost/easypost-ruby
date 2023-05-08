@@ -16,7 +16,7 @@ class EasyPost::Services::Address < EasyPost::Services::Service
       wrapped_params[:verify_strict] = params[:verify_strict]
     end
 
-    @client.make_request(:post, 'addresses', params, EasyPost::Models::Address)
+    @client.make_request(:post, 'addresses', params)
   end
 
   # Create and verify an Address in one call.
@@ -24,22 +24,22 @@ class EasyPost::Services::Address < EasyPost::Services::Service
     wrapped_params = {}
     wrapped_params[:address] = params
 
-    @client.make_request(:post, 'addresses/create_and_verify', wrapped_params, EasyPost::Models::Address, 'address')
+    @client.make_request(:post, 'addresses/create_and_verify', wrapped_params).address
   end
 
   # Verify an Address.
   def verify(id)
-    @client.make_request(:get, "addresses/#{id}/verify", nil, EasyPost::Models::Address, 'address')
+    @client.make_request(:get, "addresses/#{id}/verify").address
   end
 
   # Retrieve an Address.
   def retrieve(id)
-    @client.make_request(:get, "addresses/#{id}", nil, EasyPost::Models::Address)
+    @client.make_request(:get, "addresses/#{id}")
   end
 
   # Retrieve all Addresses.
   def all(filters = {})
-    @client.make_request(:get, 'addresses', filters, EasyPost::Models::Address)
+    @client.make_request(:get, 'addresses', filters)
   end
 
   # Get the next page of addresses.
@@ -51,6 +51,6 @@ class EasyPost::Services::Address < EasyPost::Services::Service
       params[:page_size] = page_size
     end
 
-    @client.make_request(:get, 'addresses', params, EasyPost::Models::Address)
+    @client.make_request(:get, 'addresses', params)
   end
 end

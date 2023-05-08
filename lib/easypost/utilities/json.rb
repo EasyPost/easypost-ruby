@@ -1,15 +1,12 @@
 # frozen_string_literal: true
 
 module EasyPost::InternalUtilities::Json
-  def self.convert_json_to_object(data, cls, sub_key = nil)
+  def self.convert_json_to_object(data, cls)
     data = JSON.parse(data) if data.is_a?(String) # Parse JSON to a Hash or Array if it's a string
     if data.is_a?(Array)
       # Deserialize array data into an array of objects
-      data.map { |i| convert_json_to_object(i, cls, nil) } # we don't use sub_key on arrays
+      data.map { |i| convert_json_to_object(i, cls) }
     elsif data.is_a?(Hash)
-      if sub_key
-        data = data[sub_key] # If a sub_key is specified, use that key's value as the data
-      end
       # Deserialize hash data into a new object instance
       cls.new(data)
     else
