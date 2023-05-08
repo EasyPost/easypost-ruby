@@ -21,7 +21,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.6'
 
-  spec.add_development_dependency 'activesupport', '~> 6.1.7.3'
   spec.add_development_dependency 'brakeman', '~> 5.4'
   spec.add_development_dependency 'pry', '~> 0.14'
   spec.add_development_dependency 'psych', '~> 5.1'
@@ -29,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rdoc', '~> 6.5'
   spec.add_development_dependency 'rspec', '~> 3.12'
   spec.add_development_dependency 'rubocop', '~> 1.49'
-  spec.add_development_dependency 'rubocop-rspec', '~> 2.19'
+  spec.add_development_dependency 'rubocop-rspec', '2.19'
   spec.add_development_dependency 'simplecov', '~> 0.22'
   spec.add_development_dependency 'simplecov-lcov', '~> 0.8'
   spec.add_development_dependency 'vcr', '~> 6.1'
