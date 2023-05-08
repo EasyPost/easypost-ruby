@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'json'
-require 'active_support/all'
 
 # The base class for all JSON objects in the library.
 class EasyPost::Models::Object
