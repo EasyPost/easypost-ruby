@@ -3,10 +3,10 @@
 require_relative 'http_client'
 
 class EasyPost::ClientConfiguration
-  def initialize(api_key, api_base = nil, api_version = nil, read_timeout = 60, open_timeout = 30)
+  def initialize(api_key, read_timeout = 60, open_timeout = 30, api_base = nil)
     @api_key = api_key
     @api_base = api_base || 'https://api.easypost.com'
-    @api_version = api_version || 'v2'
+    @api_version = 'v2'
     @read_timeout = read_timeout
     @open_timeout = open_timeout
     @lib_version = File.open(File.expand_path('../../VERSION', __dir__)).read.strip

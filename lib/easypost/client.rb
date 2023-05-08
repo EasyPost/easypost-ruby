@@ -3,13 +3,16 @@
 require_relative 'services'
 require_relative 'client_configuration'
 require_relative 'http_client'
+require_relative 'utilities/static_mapper'
 require 'json'
 
 class EasyPost::Client
-  def initialize(api_key, api_base = nil, api_version = nil, read_timeout = 60, open_timeout = 30)
+  def initialize(api_key, read_timeout = 60, open_timeout = 30, api_base = nil)
     @configuration = EasyPost::ClientConfiguration.new(
-      api_key, api_base, api_version, read_timeout,
+      api_key,
+      read_timeout,
       open_timeout,
+      api_base,
     )
 
     # Make an HTTP client once, reuse it for all requests made by this client
@@ -28,7 +31,7 @@ class EasyPost::Client
   # @param body [Object] (nil) object to be dumped to JSON
   # @raise [EasyPost::Error] if the response has a non-2xx status code
   # @return [Hash] JSON object parsed from the response body
-  def make_request(method, endpoint, body = nil)
+  def make_request(method, endpoint, cls, body = nil)
     response = @http_client.request(method, endpoint, nil, body)
 
     status_code = response.code.to_i
@@ -45,6 +48,6 @@ class EasyPost::Client
       )
     end
 
-    EasyPost::InternalUtilities::Json.convert_json_to_object(response.body, EasyPost::Models::Address)
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response.body, cls)
   end
 end
