@@ -25,25 +25,17 @@ describe EasyPost::Client do
     it 'create a client with read timeout' do
       client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'], read_timeout: 0.001, open_timeout: 10)
 
-      begin
-        expect {
-          client.address.create(Fixture.ca_address1)
-        }.to raise_error(Net::ReadTimeout)
-      rescue Net::ReadTimeout => e
-        raise "An unexpected error occurred: #{e.message}"
-      end
+      expect {
+        client.address.create(Fixture.ca_address1)
+      }.to raise_error(Net::ReadTimeout)
     end
 
     it 'create a client with open timeout' do
       client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'], read_timeout: 10, open_timeout: 0.001)
 
-      begin
-        expect {
-          client.address.create(Fixture.ca_address1)
-        }.to raise_error(Errno::EHOSTUNREACH)
-      rescue Errno::EHOSTUNREACH => e
-        raise "An unexpected error occurred: #{e.message}"
-      end
+      expect {
+        client.address.create(Fixture.ca_address1)
+      }.to raise_error(Net::OpenTimeout)
     end
   end
 end
