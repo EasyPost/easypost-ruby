@@ -5,19 +5,21 @@ require_relative 'http_client'
 require 'json'
 
 class EasyPost::Client
+  attr_reader :open_timeout, :read_timeout, :api_base
+
   def initialize(api_key:, read_timeout: 60, open_timeout: 30, api_base: 'https://api.easypost.com')
     raise EasyPost::Error.new('API key is required.') if api_key.nil?
 
-    @configuration = EasyPost::ClientConfiguration.new(
-      api_key,
-      read_timeout,
-      open_timeout,
-      api_base,
-    )
+    @api_key = api_key
+    @api_base = api_base
+    @api_version = 'v2'
+    @read_timeout = read_timeout
+    @open_timeout = open_timeout
+    @lib_version = File.open(File.expand_path('../../VERSION', __dir__)).read.strip
 
     # Make an HTTP client once, reuse it for all requests made by this client
     # Configuration is immutable, so this is safe
-    @http_client = @configuration.new_http_client
+    @http_client = EasyPost::HttpClient.new(base_url, http_config)
   end
 
   def address
@@ -50,42 +52,17 @@ class EasyPost::Client
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response.body, cls)
   end
-end
 
-private
-
-class EasyPost::ClientConfiguration
-  def initialize(api_key, read_timeout = 60, open_timeout = 30, api_base = 'https://api.easypost.com')
-    @api_key = api_key
-    @api_base = api_base
-    @api_version = 'v2'
-    @read_timeout = read_timeout
-    @open_timeout = open_timeout
-    @lib_version = File.open(File.expand_path('../../VERSION', __dir__)).read.strip
-  end
-
-  # Make an HTTP client using the current state of the configuration
-  def new_http_client
-    EasyPost::HttpClient.new(base_url, http_config)
-  end
-
-  protected
+  private
 
   def http_config
     http_config = {
       read_timeout: @read_timeout,
       open_timeout: @open_timeout,
-      verify_mode: OpenSSL::SSL::VERIFY_PEER,
       headers: default_headers,
     }
 
-    ruby_version = Gem::Version.new(EasyPost::InternalUtilities::System.ruby_version)
-    if ruby_version >= Gem::Version.new('2.5.0')
-      http_config[:min_version] = OpenSSL::SSL::TLS1_2_VERSION
-    else
-      http_config[:ssl_version] = :TLSv1_2 # rubocop:disable Naming/VariableNumber
-    end
-
+    http_config[:min_version] = OpenSSL::SSL::TLS1_2_VERSION
     http_config
   end
 

@@ -21,7 +21,10 @@ class EasyPost::HttpClient
     request.body = JSON.dump(body) if body
 
     # Execute the request, return the response.
-    Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+    Net::HTTP.start(
+      uri.host,
+      uri.port, use_ssl: true, read_timeout: @config[:read_timeout], open_timeout: @config[:open_timeout],
+    ) do |http|
       http.request(request)
     end
   end
