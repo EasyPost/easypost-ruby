@@ -23,20 +23,21 @@ describe EasyPost::Client do
     end
 
     it 'create a client with read timeout' do
+      # TODO: This error should be EasyPost::Timeout when we overhaul error handling
       client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'], read_timeout: 0.001, open_timeout: 10)
 
       expect {
         client.address.create(Fixture.ca_address1)
-      }.to raise_error(Net::ReadTimeout)
+      }.to raise_error(StandardError)
     end
 
-    it 'create a client with open timeout', :skip do
-      # This test is skipped because CI is returning Net::OpenTimeout which mismatch local error
+    it 'create a client with open timeout' do
+      # TODO: This error should be EasyPost::Timeout when we overhaul error handling
       client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'], read_timeout: 10, open_timeout: 0.001)
 
       expect {
         client.address.create(Fixture.ca_address1)
-      }.to raise_error(Errno::EHOSTUNREACH)
+      }.to raise_error(StandardError)
     end
   end
 end

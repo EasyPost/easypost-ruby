@@ -2,6 +2,7 @@
 
 require_relative 'services'
 require_relative 'http_client'
+require_relative 'internal_utilities'
 require 'json'
 
 class EasyPost::Client
@@ -22,8 +23,21 @@ class EasyPost::Client
     @http_client = EasyPost::HttpClient.new(base_url, http_config)
   end
 
-  def address
-    @address ||= EasyPost::Services::Address.new(self)
+  SERVICE_CLASSES = [
+    EasyPost::Services::Address,
+    EasyPost::Services::ApiKey,
+    EasyPost::Services::Batch,
+    EasyPost::Services::Billing,
+    EasyPost::Services::CarrierAccount,
+    EasyPost::Services::CustomsInfo,
+    EasyPost::Services::CustomsItem,
+  ].freeze
+
+  # Loop over the SERVICE_CLASSES to automatically define the instance variable instead of manually define it
+  SERVICE_CLASSES.each do |cls|
+    define_method(EasyPost::InternalUtilities.to_snake_case(cls.name.split('::').last)) do
+      instance_variable_set("@#{EasyPost::InternalUtilities.to_snake_case(cls.name.split('::').last)}", cls.new(self))
+    end
   end
 
   # Make an HTTP request
@@ -33,7 +47,7 @@ class EasyPost::Client
   # @param body [Object] (nil) object to be dumped to JSON
   # @raise [EasyPost::Error] if the response has a non-2xx status code
   # @return [Hash] JSON object parsed from the response body
-  def make_request(method, endpoint, cls, body = nil)
+  def make_request(method, endpoint, cls = EasyPost::Models::EasyPostObject, body = nil)
     response = @http_client.request(method, endpoint, nil, body)
 
     status_code = response.code.to_i

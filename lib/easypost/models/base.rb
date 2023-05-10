@@ -9,6 +9,11 @@ class EasyPost::Models::Object
     add_properties(data)
   end
 
+  # Convert to a string.
+  def to_s(*_args)
+    JSON.dump(@values)
+  end
+
   private
 
   def add_properties(values)
