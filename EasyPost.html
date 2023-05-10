@@ -165,7 +165,7 @@
           
 
           <div class="method-source-code" id="authorization-source">
-            <pre><span class="ruby-comment"># File lib/easypost.rb, line 79</span>
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">authorization</span>(<span class="ruby-identifier">key</span>)
   <span class="ruby-node">&quot;Basic #{Base64.strict_encode64(&quot;#{key}:&quot;)}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -188,7 +188,7 @@
           
 
           <div class="method-source-code" id="default_connection-source">
-            <pre><span class="ruby-comment"># File lib/easypost.rb, line 72</span>
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 85</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">default_connection</span>
   <span class="ruby-ivar">@default_connection</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(
     <span class="ruby-value">uri:</span> <span class="ruby-constant">URI</span>(<span class="ruby-identifier">api_base</span>),
@@ -214,7 +214,7 @@
           
 
           <div class="method-source-code" id="default_headers-source">
-            <pre><span class="ruby-comment"># File lib/easypost.rb, line 65</span>
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">default_headers</span>
   <span class="ruby-ivar">@default_headers</span> <span class="ruby-operator">||=</span> {
     <span class="ruby-string">&#39;Content-Type&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;application/json&#39;</span>,
@@ -240,7 +240,7 @@
           
 
           <div class="method-source-code" id="default_http_config-source">
-            <pre><span class="ruby-comment"># File lib/easypost.rb, line 89</span>
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">default_http_config</span>
   <span class="ruby-identifier">http_config</span> = {
     <span class="ruby-value">timeout:</span> <span class="ruby-value">60</span>,
@@ -276,7 +276,7 @@
           <p>Get the HTTP config.</p>
 
           <div class="method-source-code" id="http_config-source">
-            <pre><span class="ruby-comment"># File lib/easypost.rb, line 107</span>
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 120</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">http_config</span>
   <span class="ruby-ivar">@http_config</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">default_http_config</span>
 <span class="ruby-keyword">end</span></pre>
@@ -299,7 +299,7 @@
           <p>Set the HTTP config.</p>
 
           <div class="method-source-code" id="http_config-3D-source">
-            <pre><span class="ruby-comment"># File lib/easypost.rb, line 112</span>
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 125</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">http_config=</span>(<span class="ruby-identifier">http_config_params</span>)
   <span class="ruby-identifier">http_config</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">http_config_params</span>)
 
@@ -321,12 +321,12 @@
         </div>
 
         <div class="method-description">
-          <p>Create an <a href="EasyPost.html"><code>EasyPost</code></a> Client.</p>
+          <p>Create an <a href="EasyPost.html"><code>EasyPost</code></a> <a href="EasyPost/Client.html"><code>Client</code></a>.</p>
 
 <p>@deprecated</p>
 
           <div class="method-source-code" id="make_client-source">
-            <pre><span class="ruby-comment"># File lib/easypost.rb, line 121</span>
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 134</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">make_client</span>(<span class="ruby-identifier">url</span>)
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">uri:</span> <span class="ruby-constant">URI</span>(<span class="ruby-identifier">url</span>), <span class="ruby-value">config:</span> <span class="ruby-identifier">http_config</span>).<span class="ruby-identifier">create</span>
 <span class="ruby-keyword">end</span></pre>
@@ -351,7 +351,7 @@
 <p>@param method [Symbol] the HTTP Verb (get, method, put, post, etc.) @param path [String] URI path of the resource @param requested_api_key [String] ({EasyPost.api_key}) key set Authorization header. @param body [Object] (nil) object to be dumped to JSON @raise [EasyPost::Error] if the response has a non-2xx status code @return [Hash] JSON object parsed from the response body</p>
 
           <div class="method-source-code" id="make_request-source">
-            <pre><span class="ruby-comment"># File lib/easypost.rb, line 133</span>
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 146</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">make_request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">api_key</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">body</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">default_connection</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">api_key</span> <span class="ruby-operator">||</span> <span class="ruby-constant">EasyPost</span>.<span class="ruby-identifier">api_key</span>, <span class="ruby-identifier">body</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -374,7 +374,7 @@
           
 
           <div class="method-source-code" id="parse_response-source">
-            <pre><span class="ruby-comment"># File lib/easypost.rb, line 137</span>
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 150</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">parse_response</span>(<span class="ruby-value">status:</span>, <span class="ruby-value">body:</span>, <span class="ruby-value">json:</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">status</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">200</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">status</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">300</span>
     <span class="ruby-identifier">error</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">body</span>)[<span class="ruby-string">&#39;error&#39;</span>]
@@ -411,7 +411,7 @@
           <p>Reset the HTTP config.</p>
 
           <div class="method-source-code" id="reset_http_config-source">
-            <pre><span class="ruby-comment"># File lib/easypost.rb, line 84</span>
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">reset_http_config</span>
   <span class="ruby-identifier">http_config</span>.<span class="ruby-identifier">clear</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">default_connection</span> = <span class="ruby-keyword">nil</span>
@@ -435,7 +435,7 @@
           
 
           <div class="method-source-code" id="user_agent-source">
-            <pre><span class="ruby-comment"># File lib/easypost.rb, line 58</span>
+            <pre><span class="ruby-comment"># File lib/easypost.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">user_agent</span>
   <span class="ruby-ivar">@user_agent</span> <span class="ruby-operator">||=</span>
     <span class="ruby-node">&quot;EasyPost/v2 RubyClient/#{EasyPost::VERSION} Ruby/#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} &quot;</span> \
