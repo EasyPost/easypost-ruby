@@ -73,7 +73,6 @@
 
   <ul class="link-list" role="directory">
     <li ><a href="#method-c-new">::new</a>
-    <li ><a href="#method-i-address">#address</a>
     <li ><a href="#method-i-make_request">#make_request</a>
   </ul>
 </div>
@@ -93,6 +92,15 @@
   <section id="5Buntitled-5D" class="documentation-section">
 
 
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+        <dt id="SERVICE_CLASSES">SERVICE_CLASSES
+        <dd>
+      </dl>
+    </section>
 
     <section class="attribute-method-details" class="method-section">
       <header>
@@ -150,7 +158,7 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 10</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-value">api_key:</span>, <span class="ruby-value">read_timeout:</span> <span class="ruby-value">60</span>, <span class="ruby-value">open_timeout:</span> <span class="ruby-value">30</span>, <span class="ruby-value">api_base:</span> <span class="ruby-string">&#39;https://api.easypost.com&#39;</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;API key is required.&#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">api_key</span>.<span class="ruby-identifier">nil?</span>
 
@@ -178,34 +186,11 @@
          <h3>Public Instance Methods</h3>
        </header>
 
-      <div id="method-i-address" class="method-detail ">
-        <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">address</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-        </div>
-
-        <div class="method-description">
-          
-
-          <div class="method-source-code" id="address-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 25</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">address</span>
-  <span class="ruby-ivar">@address</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Services</span><span class="ruby-operator">::</span><span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
       <div id="method-i-make_request" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
             <span class="method-name">make_request</span><span
-              class="method-args">(method, endpoint, cls, body = nil)</span>
+              class="method-args">(method, endpoint, cls = EasyPost::Models::EasyPostObject, body = nil)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
@@ -216,8 +201,8 @@
 <p>@param method [Symbol] the HTTP Verb (get, method, put, post, etc.) @param endpoint [String] URI path of the resource @param body [Object] (nil) object to be dumped to JSON @raise [EasyPost::Error] if the response has a non-2xx status code @return [Hash] JSON object parsed from the response body</p>
 
           <div class="method-source-code" id="make_request-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 36</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">make_request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">cls</span>, <span class="ruby-identifier">body</span> = <span class="ruby-keyword">nil</span>)
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">make_request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">cls</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>, <span class="ruby-identifier">body</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@http_client</span>.<span class="ruby-identifier">request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">endpoint</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">body</span>)
 
   <span class="ruby-identifier">status_code</span> = <span class="ruby-identifier">response</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span>

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class EasyPost::Models::Object - EasyPost Ruby Docs</title>
+<title>class EasyPost::Services::CustomsInfo - EasyPost Ruby Docs</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
@@ -61,7 +61,7 @@
 <div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  <p class="link">Object
+  <p class="link"><a href="Service.html">EasyPost::Services::Service</a>
 </div>
 
     
@@ -72,53 +72,61 @@
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    <li ><a href="#method-c-new">::new</a>
-    <li ><a href="#method-i-to_s">#to_s</a>
+    <li ><a href="#method-i-create">#create</a>
+    <li ><a href="#method-i-retrieve">#retrieve</a>
   </ul>
 </div>
 
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-EasyPost::Models::Object">
-  <h1 id="class-EasyPost::Models::Object" class="class">
-    class EasyPost::Models::Object
+<main role="main" aria-labelledby="class-EasyPost::Services::CustomsInfo">
+  <h1 id="class-EasyPost::Services::CustomsInfo" class="class">
+    class EasyPost::Services::CustomsInfo
   </h1>
 
   <section class="description">
     
-<p>The base class for all JSON objects in the library.</p>
+<p><a href="CustomsInfo.html"><code>CustomsInfo</code></a> service contains CustomsItem objects and all necessary information for the generation of customs forms required for international shipping.</p>
 
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
 
 
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+        <dt id="MODEL_CLASS">MODEL_CLASS
+        <dd>
+      </dl>
+    </section>
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
-         <h3>Public Class Methods</h3>
+         <h3>Public Instance Methods</h3>
        </header>
 
-      <div id="method-c-new" class="method-detail ">
+      <div id="method-i-create" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
-            <span class="method-name">new</span><span
-              class="method-args">(data)</span>
+            <span class="method-name">create</span><span
+              class="method-args">(params)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
 
         <div class="method-description">
-          
+          <p>Create a <a href="CustomsInfo.html"><code>CustomsInfo</code></a> object</p>
 
-          <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/easypost/models/base.rb, line 7</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">data</span>)
-  <span class="ruby-ivar">@values</span> = <span class="ruby-identifier">data</span>
-  <span class="ruby-identifier">add_properties</span>(<span class="ruby-identifier">data</span>)
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/customs_info.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span>)
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;customs_infos&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -126,29 +134,22 @@
 
       </div>
 
-    </section>
-
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Public Instance Methods</h3>
-       </header>
-
-      <div id="method-i-to_s" class="method-detail ">
+      <div id="method-i-retrieve" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
-            <span class="method-name">to_s</span><span
-              class="method-args">(*_args)</span>
+            <span class="method-name">retrieve</span><span
+              class="method-args">(id)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
 
         <div class="method-description">
-          <p>Convert to a string.</p>
+          <p>Retrieve a <a href="CustomsInfo.html"><code>CustomsInfo</code></a> object</p>
 
-          <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/easypost/models/base.rb, line 13</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">_args</span>)
-  <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@values</span>)
+          <div class="method-source-code" id="retrieve-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/customs_info.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;customs_infos/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
