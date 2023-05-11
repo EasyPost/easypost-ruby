@@ -2,7 +2,7 @@
 
 # Address objects are used to represent people, places, and organizations in a number of contexts.
 class EasyPost::Services::Address < EasyPost::Services::Service
-  CLASS = EasyPost::Models::Address
+  MODEL_CLASS = EasyPost::Models::Address
 
   # Create an address.
   def create(params = {})
@@ -18,7 +18,7 @@ class EasyPost::Services::Address < EasyPost::Services::Service
       wrapped_params[:verify_strict] = params[:verify_strict]
     end
 
-    @client.make_request(:post, 'addresses', CLASS, params)
+    @client.make_request(:post, 'addresses', MODEL_CLASS, params)
   end
 
   # Create and verify an Address in one call.
@@ -26,22 +26,22 @@ class EasyPost::Services::Address < EasyPost::Services::Service
     wrapped_params = {}
     wrapped_params[:address] = params
 
-    @client.make_request(:post, 'addresses/create_and_verify', CLASS, wrapped_params).address
+    @client.make_request(:post, 'addresses/create_and_verify', MODEL_CLASS, wrapped_params).address
   end
 
   # Verify an Address.
   def verify(id)
-    @client.make_request(:get, "addresses/#{id}/verify", CLASS).address
+    @client.make_request(:get, "addresses/#{id}/verify", MODEL_CLASS).address
   end
 
   # Retrieve an Address.
   def retrieve(id)
-    @client.make_request(:get, "addresses/#{id}", CLASS)
+    @client.make_request(:get, "addresses/#{id}", MODEL_CLASS)
   end
 
   # Retrieve all Addresses.
   def all(filters = {})
-    @client.make_request(:get, 'addresses', CLASS, filters)
+    @client.make_request(:get, 'addresses', MODEL_CLASS, filters)
   end
 
   # Get the next page of addresses.
@@ -53,6 +53,6 @@ class EasyPost::Services::Address < EasyPost::Services::Service
       params[:page_size] = page_size
     end
 
-    @client.make_request(:get, 'addresses', CLASS, params)
+    @client.make_request(:get, 'addresses', MODEL_CLASS, params)
   end
 end
