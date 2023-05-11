@@ -46,13 +46,6 @@ class EasyPost::Services::Address < EasyPost::Services::Service
 
   # Get the next page of addresses.
   def get_next_page(collection, page_size = nil)
-    # get_next_page_exec(method(:all), collection, collection.addresses, page_size)
-    params = {}
-    params[:before_id] = collection.addresses.last.id
-    unless page_size.nil?
-      params[:page_size] = page_size
-    end
-
-    @client.make_request(:get, 'addresses', MODEL_CLASS, params)
+    get_next_page_exec(collection, collection.addresses, 'addresses', MODEL_CLASS, page_size)
   end
 end

@@ -1,0 +1,133 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/events
+    body:
+      encoding: UTF-8
+      string: '{"page_size":5}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - db63f579645d5649e7995459000d555c
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"e21453ff347c026230ce372f8cbc486a"
+      X-Runtime:
+      - '0.177323'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb9nuq
+      X-Version-Label:
+      - easypost-202305112000-3954f6db5b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"events":[{"description":"tracker.updated","id":"evt_0ab25aceef6d11edaf056bc3acada6dc","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:58:32.828Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_e6dcf2c6ef6c11edb1d7291d76e9ba48","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:57:32.709Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_c30c5cecef6c11ed8a5563ec75b48bfb","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:56:32.622Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_b8138be4ef6c11eda54b5968676d389f","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:56:14.214Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_9f372f5eef6c11ed8a2e1fddd0096f2f","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:55:32.505Z","mode":"test","object":"Event"}],"has_more":true}'
+  recorded_at: Thu, 11 May 2023 20:55:37 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/events
+    body:
+      encoding: UTF-8
+      string: '{"before_id":"evt_9f372f5eef6c11ed8a2e1fddd0096f2f"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - db63f57c645d5649e799545a000d55a8
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"c5559f0bc395bcb995e7e7ad31b6e079"
+      X-Runtime:
+      - '0.234600'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb11nuq
+      X-Version-Label:
+      - easypost-202305112000-3954f6db5b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"events":[{"description":"tracker.updated","id":"evt_943b7d4eef6c11ed9c776537eb2930b0","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:55:14.078Z","mode":"test","object":"Event"},{"description":"tracker.created","id":"evt_8d552746ef6c11ed83f63dc3d7bc0d7c","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:55:02.502Z","mode":"test","object":"Event"},{"description":"batch.updated","id":"evt_7c7ca41cef6c11edac452306f0cfe595","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:54:34.240Z","mode":"test","object":"Event"},{"description":"batch.updated","id":"evt_7c3676feef6c11ed88250b3ca0eadfed","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:54:33.780Z","mode":"test","object":"Event"},{"description":"batch.created","id":"evt_7bd14a68ef6c11edb60f5f86e175527b","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:54:33.117Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_7069a774ef6c11edb7165bfa07d73bba","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:54:13.983Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_4c96112aef6c11ed97d7011b91a9d1dc","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:53:13.876Z","mode":"test","object":"Event"},{"description":"tracker.created","id":"evt_3ab3c43eef6c11ed90be21c75b05ace5","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:52:43.871Z","mode":"test","object":"Event"},{"description":"batch.updated","id":"evt_29a4366aef6c11ed9dba0940b3e0ab7b","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:52:15.248Z","mode":"test","object":"Event"},{"description":"batch.updated","id":"evt_295b4086ef6c11edb2185544e2dc7272","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:52:14.770Z","mode":"test","object":"Event"},{"description":"batch.created","id":"evt_2914fccaef6c11edb3f407573ce5aeb7","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:52:14.310Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_ef24c298ef6b11ed9dc71326b136cd97","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:50:37.105Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_cb4ec440ef6b11eda85659edc82b9dd6","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:49:36.982Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_a77d1904ef6b11edb79261e11d3cff18","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:48:36.888Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_83a9c2d4ef6b11edbd963b9927039f81","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:47:36.783Z","mode":"test","object":"Event"},{"description":"tracker.created","id":"evt_71c7e758ef6b11edb5106357dd6ac1c3","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:47:06.781Z","mode":"test","object":"Event"},{"description":"batch.created","id":"evt_603349b0ef6b11ed900453d1e974da88","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:46:37.286Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_80808310ef5f11ed82202fd775b48bc7","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T18:21:37.519Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_5c9fdf18ef5f11ed8ec27fca13dc3c64","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T18:20:37.326Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_3bb7b53cef5f11ed865a71374e296f58","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T18:19:42.118Z","mode":"test","object":"Event"}],"has_more":true}'
+  recorded_at: Thu, 11 May 2023 20:55:38 GMT
+recorded_with: VCR 6.1.0

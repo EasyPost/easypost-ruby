@@ -13,6 +13,8 @@ http_interactions:
       Accept:
       - "*/*"
       User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
       Content-Type:
       - application/json
       Authorization: "<REDACTED>"
@@ -34,7 +36,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 16580188633ddc89e2ba1d5f00074178
+      - f32dbb3d645d17e4e78b062700021fb6
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -44,50 +46,50 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"87de1f8f273b721f1fb73e8020924329"
+      - W/"18972cb4c6843d054b49e69a793459cc"
       X-Runtime:
-      - '0.047551'
+      - '0.044749'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7nuq
+      - bigweb2nuq
       X-Version-Label:
-      - easypost-202210051807-174cd29491-master
+      - easypost-202305111552-51d0140ffb-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb2nuq 29913d444b
-      - intlb2nuq 29913d444b
+      - extlb1nuq 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"es_23b064ab40934d3281317e3576c3f059","object":"EndShipper","mode":"test","created_at":"2022-10-05T19:35:37+00:00","updated_at":"2022-10-05T19:35:37+00:00","name":"JACK
+      string: '{"id":"es_7240f5fc7a724931ae96a437e8e70508","object":"EndShipper","mode":"test","created_at":"2023-05-11T16:29:24+00:00","updated_at":"2023-05-11T16:29:24+00:00","name":"JACK
         SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
         FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
-  recorded_at: Wed, 05 Oct 2022 19:35:37 GMT
+  recorded_at: Thu, 11 May 2023 16:29:24 GMT
 - request:
     method: put
-    uri: https://api.easypost.com/v2/end_shippers/es_23b064ab40934d3281317e3576c3f059
+    uri: https://api.easypost.com/v2/end_shippers/es_7240f5fc7a724931ae96a437e8e70508
     body:
       encoding: UTF-8
-      string: '{"address":{"name":"Captain Sparrow","company":"EasyPost","street1":"388
-        Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"9999999999","email":"test@example.com"}}'
+      string: '{"address":{"name":"CAPTAIN SPARROW","street1":"388 Townsend St","street2":"Apt
+        20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
       User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
       Content-Type:
       - application/json
       Authorization: "<REDACTED>"
   response:
     status:
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -102,7 +104,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 16580188633ddc8ae2ba1d6000074189
+      - f32dbb40645d17e5e78b063f00021fe5
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -111,27 +113,24 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"d7c9d254165fb657b5f6f47550660340"
       X-Runtime:
-      - '0.056690'
+      - '0.044819'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb11nuq
       X-Version-Label:
-      - easypost-202210051807-174cd29491-master
+      - easypost-202305111552-51d0140ffb-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 29913d444b
-      - intlb1nuq 29913d444b
+      - extlb1nuq 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"es_23b064ab40934d3281317e3576c3f059","object":"EndShipper","mode":"test","created_at":"2022-10-05T19:35:37+00:00","updated_at":"2022-10-05T19:35:38+00:00","name":"CAPTAIN
-        SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
-        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
-  recorded_at: Wed, 05 Oct 2022 19:35:38 GMT
-recorded_with: VCR 6.0.0
+      string: '{"error":{"code":"NOT_FOUND","message":"The requested resource could
+        not be found.","errors":[]}}'
+  recorded_at: Thu, 11 May 2023 16:29:25 GMT
+recorded_with: VCR 6.1.0

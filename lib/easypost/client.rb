@@ -31,9 +31,12 @@ class EasyPost::Client
     EasyPost::Services::CarrierAccount,
     EasyPost::Services::CustomsInfo,
     EasyPost::Services::CustomsItem,
+    EasyPost::Services::EndShipper,
+    EasyPost::Services::Event,
+    EasyPost::Services::Insurance,
   ].freeze
 
-  # Loop over the SERVICE_CLASSES to automatically define the instance variable instead of manually define it
+  # Loop over the SERVICE_CLASSES to automatically define the method and instance variable instead of manually define it
   SERVICE_CLASSES.each do |cls|
     define_method(EasyPost::InternalUtilities.to_snake_case(cls.name.split('::').last)) do
       instance_variable_set("@#{EasyPost::InternalUtilities.to_snake_case(cls.name.split('::').last)}", cls.new(self))
