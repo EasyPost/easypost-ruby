@@ -34,6 +34,9 @@ class EasyPost::Client
     EasyPost::Services::EndShipper,
     EasyPost::Services::Event,
     EasyPost::Services::Insurance,
+    EasyPost::Services::Order,
+    EasyPost::Services::Parcel,
+    EasyPost::Services::Pickup,
   ].freeze
 
   # Loop over the SERVICE_CLASSES to automatically define the method and instance variable instead of manually define it

@@ -202,7 +202,16 @@ module EasyPost::Util
       end
     end
 
-    easypost_object[rates_key].each do |rate|
+    # TODO: remove below guard clause and use method once the rewrite is done
+    rates = if easypost_object.respond_to?(:rates)
+              easypost_object.rates
+            elsif easypost_object.respond_to?(:pickup_rates)
+              easypost_object.pickup_rates
+            else
+              easypost_object[rates_key]
+            end
+
+    rates.each do |rate|
       rate_carrier = rate.carrier.downcase
       if carriers.size.positive? && !carriers.include?(rate_carrier)
         next

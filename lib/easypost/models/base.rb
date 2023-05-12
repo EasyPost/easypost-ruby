@@ -14,6 +14,16 @@ class EasyPost::Models::Object
     JSON.dump(@values)
   end
 
+  # Get element of an array.
+  def [](key)
+    @values[key.to_s]
+  end
+
+  # Set the element of an array.
+  def []=(key, value)
+    send(:"#{key}=", value)
+  end
+
   private
 
   def add_properties(values)

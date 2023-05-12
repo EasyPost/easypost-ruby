@@ -11,6 +11,9 @@ module EasyPost::InternalUtilities::StaticMapper
     'es' => EasyPost::Models::EndShipper,
     'evt' => EasyPost::Models::Event,
     'ins' => EasyPost::Models::Insurance,
+    'rate' => EasyPost::Models::Rate,
+    'pickup' => EasyPost::Models::Pickup,
+    'pickuprate' => EasyPost::Models::PickupRate,
   }.freeze
 
   BY_TYPE = {
@@ -22,5 +25,8 @@ module EasyPost::InternalUtilities::StaticMapper
     'Event' => EasyPost::Models::Event,
     'payload' => EasyPost::Models::Payload,
     'Insurance' => EasyPost::Models::Insurance,
+    'Rate' => EasyPost::Models::Rate,
+    'Pickup' => EasyPost::Models::Pickup,
+    'PickupRate' => EasyPost::Models::PickupRate,
   }.freeze
 end
