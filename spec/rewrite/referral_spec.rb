@@ -5,7 +5,7 @@ require_relative '../spec_helper'
 REFERRAL_CUSTOMER_PROD_API_KEY = ENV['REFERRAL_CUSTOMER_PROD_API_KEY'] || '123'
 
 describe EasyPost::Services::ReferralCustomer do
-  let(:client) { EasyPost::Client.new(api_key: ENV['PARTNER_USER_PROD_API_KEY']) }
+  let(:client) { EasyPost::Client.new(api_key: ENV['PARTNER_USER_PROD_API_KEY'] || '123') }
 
   describe '.create' do
     it 'creates a referral customer' do
