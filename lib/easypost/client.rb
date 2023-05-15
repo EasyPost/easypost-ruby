@@ -50,11 +50,6 @@ class EasyPost::Client
   end
 
   # Make an HTTP request
-  #
-  # @param method [Symbol] the HTTP Verb (get, method, put, post, etc.)
-  # @param endpoint [String] URI path of the resource
-  # @param body [Object] (nil) object to be dumped to JSON
-  # @raise [EasyPost::Error] if the response has a non-2xx status code
   # @return [Hash] JSON object parsed from the response body
   def make_request(method, endpoint, cls = EasyPost::Models::EasyPostObject, body = nil, beta: false)
     response = @http_client.request(method, endpoint, nil, body, beta: beta)
