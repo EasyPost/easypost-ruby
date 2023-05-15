@@ -54,7 +54,7 @@ describe EasyPost::Services::Event do
 
   describe '.receive' do
     it 'receives (converts) an event' do
-      event = client.event.receive(Fixture.event_json)
+      event = EasyPost::Util.receive_event(Fixture.event_json)
 
       expect(event).to be_an_instance_of(EasyPost::Models::EasyPostObject)
       expect(event.id).to match('evt_')

@@ -29,7 +29,7 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
 
   # Get the next page of referral customers.
   def get_next_page(collection, page_size = nil)
-    get_next_page_exec(collection, collection.referral_customers, 'referral_customers', MODEL_CLASS, page_size)
+    get_next_page_helper(collection, collection.referral_customers, 'referral_customers', MODEL_CLASS, page_size)
   end
 
   # Add credit card to a referral customer. This function requires the ReferralCustomer Customer's API key.

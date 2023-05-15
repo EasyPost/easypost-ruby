@@ -23,6 +23,6 @@ class EasyPost::Services::Insurance < EasyPost::Services::Service
 
   # Get the next page of insurances.
   def get_next_page(collection, page_size = nil)
-    get_next_page_exec(collection, collection.insurances, 'insurances', MODEL_CLASS, page_size)
+    get_next_page_helper(collection, collection.insurances, 'insurances', MODEL_CLASS, page_size)
   end
 end

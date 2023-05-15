@@ -50,8 +50,21 @@ class EasyPost::Client
   end
 
   # Make an HTTP request
+  #
+  # @param method [Symbol] the HTTP Verb (get, method, put, post, etc.)
+  # @param endpoint [String] URI path of the resource
+  # @param cls [Class] the class to deserialize to
+  # @param body [Object] (nil) object to be dumped to JSON
+  # @param api_version [String] the version of API to hit
+  # @raise [EasyPost::Error] if the response has a non-2xx status code
   # @return [Hash] JSON object parsed from the response body
-  def make_request(method, endpoint, cls = EasyPost::Models::EasyPostObject, body = nil, api_version = 'v2')
+  def make_request(
+    method,
+    endpoint,
+    cls = EasyPost::Models::EasyPostObject,
+    body = nil,
+    api_version = EasyPost::InternalUtilities::Constants::API_VERSION
+  )
     response = @http_client.request(method, endpoint, nil, body, api_version)
 
     status_code = response.code.to_i

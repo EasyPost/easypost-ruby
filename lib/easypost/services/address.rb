@@ -46,6 +46,6 @@ class EasyPost::Services::Address < EasyPost::Services::Service
 
   # Get the next page of addresses.
   def get_next_page(collection, page_size = nil)
-    get_next_page_exec(collection, collection.addresses, 'addresses', MODEL_CLASS, page_size)
+    get_next_page_helper(collection, collection.addresses, 'addresses', MODEL_CLASS, page_size)
   end
 end

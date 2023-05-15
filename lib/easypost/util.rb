@@ -58,7 +58,6 @@ module EasyPost::Util
     'PickupRate' => EasyPost::PickupRate,
     'PostageLabel' => EasyPost::PostageLabel,
     'Rate' => EasyPost::Rate,
-    'ReferralCustomer' => EasyPost::Beta::ReferralCustomer,
     'Refund' => EasyPost::Refund,
     'RefundReport' => EasyPost::Report,
     'Report' => EasyPost::Report,
@@ -288,5 +287,10 @@ module EasyPost::Util
     raise EasyPost::Error.new('No rates found.') if lowest_rate.nil?
 
     lowest_rate
+  end
+
+  # Converts a raw webhook event into an EasyPost object.
+  def self.receive_event(values)
+    EasyPost::InternalUtilities::Json.convert_json_to_object(JSON.parse(values), EasyPost::Models::EasyPostObject)
   end
 end

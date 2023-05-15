@@ -36,6 +36,6 @@ class EasyPost::Services::Pickup < EasyPost::Services::Service
 
   # Get next page of Pickups
   def get_next_page(collection, page_size = nil)
-    get_next_page_exec(collection, collection.pickups, 'pickups', MODEL_CLASS, page_size)
+    get_next_page_helper(collection, collection.pickups, 'pickups', MODEL_CLASS, page_size)
   end
 end

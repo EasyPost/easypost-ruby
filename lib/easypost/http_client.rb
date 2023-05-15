@@ -7,7 +7,13 @@ class EasyPost::HttpClient
   end
 
   # Execute an HTTP request to the API.
-  def request(method, path, headers = nil, body = nil, api_version = 'v2')
+  def request(
+    method,
+    path,
+    headers = nil,
+    body = nil,
+    api_version = EasyPost::InternalUtilities::Constants::API_VERSION
+  )
     # Remove leading slash from path.
     path = path[1..] if path[0] == '/'
 
