@@ -58,7 +58,7 @@ module EasyPost::Util
     'PickupRate' => EasyPost::PickupRate,
     'PostageLabel' => EasyPost::PostageLabel,
     'Rate' => EasyPost::Rate,
-    'Referral' => EasyPost::Beta::Referral,
+    'ReferralCustomer' => EasyPost::Beta::ReferralCustomer,
     'Refund' => EasyPost::Refund,
     'RefundReport' => EasyPost::Report,
     'Report' => EasyPost::Report,

@@ -27,6 +27,7 @@ class EasyPost::Client
     EasyPost::Services::Address,
     EasyPost::Services::ApiKey,
     EasyPost::Services::Batch,
+    EasyPost::Services::BetaReferralCustomer,
     EasyPost::Services::Billing,
     EasyPost::Services::CarrierAccount,
     EasyPost::Services::CustomsInfo,
@@ -37,6 +38,8 @@ class EasyPost::Client
     EasyPost::Services::Order,
     EasyPost::Services::Parcel,
     EasyPost::Services::Pickup,
+    EasyPost::Services::Rate,
+    EasyPost::Services::ReferralCustomer,
   ].freeze
 
   # Loop over the SERVICE_CLASSES to automatically define the method and instance variable instead of manually define it
@@ -53,8 +56,8 @@ class EasyPost::Client
   # @param body [Object] (nil) object to be dumped to JSON
   # @raise [EasyPost::Error] if the response has a non-2xx status code
   # @return [Hash] JSON object parsed from the response body
-  def make_request(method, endpoint, cls = EasyPost::Models::EasyPostObject, body = nil)
-    response = @http_client.request(method, endpoint, nil, body)
+  def make_request(method, endpoint, cls = EasyPost::Models::EasyPostObject, body = nil, beta: false)
+    response = @http_client.request(method, endpoint, nil, body, beta: beta)
 
     status_code = response.code.to_i
 

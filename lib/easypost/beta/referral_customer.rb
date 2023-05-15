@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Referral objects are User objects created from a Partner user.
-class EasyPost::Beta::Referral < EasyPost::Resource
+# ReferralCustomer objects are User objects created from a Partner user.
+class EasyPost::Beta::ReferralCustomer < EasyPost::Resource
   class << self
     protected
 
@@ -56,17 +56,17 @@ class EasyPost::Beta::Referral < EasyPost::Resource
   end
 
   # Create a referral customer. This function requires the Partner User's API key.
-  # <b>DEPRECATED:</b> Please use <tt>Referral</tt> in the main namespace instead.
+  # <b>DEPRECATED:</b> Please use <tt>ReferralCustomer</tt> in the main namespace instead.
   def self.create(params = {}, api_key = nil)
-    warn '[DEPRECATION] Please use `Referral.create` in the main namespace instead.'
+    warn '[DEPRECATION] Please use `ReferralCustomer.create` in the main namespace instead.'
     response = EasyPost.make_request(:post, '/beta/referral_customers', api_key, { user: params })
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
   # Update a referral customer. This function requires the Partner User's API key.
-  # <b>DEPRECATED:</b> Please use <tt>Referral</tt> in the main namespace instead.
+  # <b>DEPRECATED:</b> Please use <tt>ReferralCustomer</tt> in the main namespace instead.
   def self.update_email(email, user_id, api_key = nil)
-    warn '[DEPRECATION] Please use `Referral.update_email` in the main namespace instead.'
+    warn '[DEPRECATION] Please use `ReferralCustomer.update_email` in the main namespace instead.'
     wrapped_params = {
       user: {
         email: email,
@@ -79,17 +79,17 @@ class EasyPost::Beta::Referral < EasyPost::Resource
   end
 
   # Retrieve a list of referral customers. This function requires the Partner User's API key.
-  # <b>DEPRECATED:</b> Please use <tt>Referral</tt> in the main namespace instead.
+  # <b>DEPRECATED:</b> Please use <tt>ReferralCustomer</tt> in the main namespace instead.
   def self.all(params = {}, api_key = nil)
-    warn '[DEPRECATION] Please use `Referral.all` in the main namespace instead.'
+    warn '[DEPRECATION] Please use `ReferralCustomer.all` in the main namespace instead.'
     response = EasyPost.make_request(:get, '/beta/referral_customers', api_key, params)
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
-  # Add credit card to a referral customer. This function requires the Referral Customer's API key.
-  # <b>DEPRECATED:</b> Please use <tt>Referral</tt> in the main namespace instead.
+  # Add credit card to a referral customer. This function requires the ReferralCustomer Customer's API key.
+  # <b>DEPRECATED:</b> Please use <tt>ReferralCustomer</tt> in the main namespace instead.
   def self.add_credit_card(referral_api_key, number, expiration_month, expiration_year, cvc, priority = 'primary')
-    warn '[DEPRECATION] Please use `Referral.add_credit_card` in the main namespace instead.'
+    warn '[DEPRECATION] Please use `ReferralCustomer.add_credit_card` in the main namespace instead.'
     easypost_stripe_api_key = retrieve_easypost_stripe_api_key
 
     begin
@@ -108,7 +108,7 @@ class EasyPost::Beta::Referral < EasyPost::Resource
     EasyPost::Util.convert_to_easypost_object(response, referral_api_key)
   end
 
-  # Add a Stripe payment method to a Referral Customer. This function requires the Referral Customer's API key.
+  # Add a Stripe payment method to a ReferralCustomer Customer. This function requires the ReferralCustomer Customer's API key.
   # @param [String] stripe_customer_id Unique customer ID provided by Stripe.
   # @param [String] payment_method_reference ID of the card or bank account provided by Stripe.
   # @param [String] payment_method_type Which priority to save this payment method as on EasyPost, either 'primary' or 'secondary'.
@@ -128,8 +128,8 @@ class EasyPost::Beta::Referral < EasyPost::Resource
     EasyPost::Util.convert_to_easypost_object(response, api_key)
   end
 
-  # Refund a Referral Customer's wallet by a specified amount. Refund will be issued to the user's original payment method.
-  # This function requires the Referral Customer's API key.
+  # Refund a ReferralCustomer Customer's wallet by a specified amount. Refund will be issued to the user's original payment method.
+  # This function requires the ReferralCustomer Customer's API key.
   # @param [Integer] amount The amount to refund, in cents.
   # @param [String] api_key Override the API key used for this request.
   # @return [EasyPost::Beta::PaymentRefund] The newly-created refund.
@@ -142,8 +142,8 @@ class EasyPost::Beta::Referral < EasyPost::Resource
     EasyPost::Util.convert_to_easypost_object(response, api_key) # TODO: Needs "object" or ID prefix to determine object class.
   end
 
-  # Refund a Referral Customer's wallet for a specified payment log entry. Refund will be issued to the user's original payment method.
-  # This function requires the Referral Customer's API key.
+  # Refund a ReferralCustomer Customer's wallet for a specified payment log entry. Refund will be issued to the user's original payment method.
+  # This function requires the ReferralCustomer Customer's API key.
   # @param [String] payment_log_id Payment log ID to refund.
   # @param [String] api_key Override the API key used for this request.
   # @return [EasyPost::Beta::PaymentRefund] The newly-created refund.

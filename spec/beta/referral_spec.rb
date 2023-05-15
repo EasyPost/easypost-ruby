@@ -4,7 +4,7 @@ require 'spec_helper'
 
 REFERRAL_CUSTOMER_PROD_API_KEY = ENV['REFERRAL_CUSTOMER_PROD_API_KEY'] || '123'
 
-describe EasyPost::Beta::Referral, :authenticate_partner do
+describe EasyPost::Beta::ReferralCustomer, :authenticate_partner do
   describe '.create' do
     it 'creates a referral customer' do
       # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY.
@@ -51,7 +51,8 @@ describe EasyPost::Beta::Referral, :authenticate_partner do
     end
   end
 
-  describe '.add_credit_card' do
+  describe '.add_credit_card', :skip do
+    # Skip until the API key has the feature turned on
     it 'adds a credit card to a referral customer account' do
       # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY
       # as well as one of that user's referral's production API keys via REFERRAL_CUSTOMER_PROD_API_KEY.

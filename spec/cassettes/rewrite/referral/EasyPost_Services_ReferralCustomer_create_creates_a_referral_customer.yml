@@ -1,0 +1,70 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/referral_customers
+    body:
+      encoding: UTF-8
+      string: '{"user":{"name":"test user","email":"email@example.com","phone":"8888888888"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 36ec0a926462714fe0dd2828002241a6
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"6790301525be0173ac67208d87286330"
+      X-Runtime:
+      - '0.934424'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb6nuq
+      X-Version-Label:
+      - easypost-202305151637-e5ce91ee24-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      - intlb1wdc a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"user_4bec492c428846bf8983ae9c5245b196","object":"User","parent_id":null,"name":"test
+        user","phone_number":"<REDACTED>","verified":true,"created_at":"2023-05-15T17:52:15Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0375","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[],"api_keys":[{"object":"ApiKey","key":"<REDACTED>","mode":"test","created_at":"2023-05-15T17:52:15Z","active":true,"id":"ak_439754f8efa2421dbc0ab55da47d3fde"},{"object":"ApiKey","key":"<REDACTED>","mode":"production","created_at":"2023-05-15T17:52:15Z","active":true,"id":"ak_51d6883360c94c04977348ef89da4e83"}]}'
+  recorded_at: Mon, 15 May 2023 17:52:16 GMT
+recorded_with: VCR 6.1.0

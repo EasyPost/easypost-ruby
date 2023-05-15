@@ -14,6 +14,8 @@ module EasyPost::InternalUtilities::StaticMapper
     'rate' => EasyPost::Models::Rate,
     'pickup' => EasyPost::Models::Pickup,
     'pickuprate' => EasyPost::Models::PickupRate,
+    'pl' => EasyPost::Models::PostageLabel,
+    'user' => EasyPost::Models::User,
   }.freeze
 
   BY_TYPE = {
@@ -28,5 +30,7 @@ module EasyPost::InternalUtilities::StaticMapper
     'Rate' => EasyPost::Models::Rate,
     'Pickup' => EasyPost::Models::Pickup,
     'PickupRate' => EasyPost::Models::PickupRate,
+    'PostageLabel' => EasyPost::Models::PostageLabel,
+    'User' => EasyPost::Models::User,
   }.freeze
 end
