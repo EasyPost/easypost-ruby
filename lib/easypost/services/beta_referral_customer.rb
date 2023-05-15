@@ -16,7 +16,7 @@ class EasyPost::Services::BetaReferralCustomer < EasyPost::Services::Service
       'referral_customers/payment_method',
       EasyPost::Models::EasyPostObject,
       wrapped_params,
-      beta: true,
+      'beta',
     )
   end
 
@@ -26,7 +26,7 @@ class EasyPost::Services::BetaReferralCustomer < EasyPost::Services::Service
     params = {
       refund_amount: amount,
     }
-    @client.make_request(:post, 'referral_customers/refunds', EasyPost::Models::EasyPostObject, params, beta: true)
+    @client.make_request(:post, 'referral_customers/refunds', EasyPost::Models::EasyPostObject, params, 'beta')
     # noinspection RubyMismatchedReturnType
   end
 
@@ -36,6 +36,6 @@ class EasyPost::Services::BetaReferralCustomer < EasyPost::Services::Service
     params = {
       payment_log_id: payment_log_id,
     }
-    @client.make_request(:post, 'referral_customers/refunds', EasyPost::Models::EasyPostObject, params, beta: true)
+    @client.make_request(:post, 'referral_customers/refunds', EasyPost::Models::EasyPostObject, params, 'beta')
   end
 end

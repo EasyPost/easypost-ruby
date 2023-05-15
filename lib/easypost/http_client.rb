@@ -7,13 +7,12 @@ class EasyPost::HttpClient
   end
 
   # Execute an HTTP request to the API.
-  def request(method, path, headers = nil, body = nil, beta: false)
+  def request(method, path, headers = nil, body = nil, api_version = 'v2')
     # Remove leading slash from path.
     path = path[1..] if path[0] == '/'
 
     # Create the URI and headers hash.
-    url_to_use = beta ? 'https://api.easypost.com/beta' : @base_url
-    uri = URI.parse("#{url_to_use}/#{path}")
+    uri = URI.parse("#{@base_url}/#{api_version}/#{path}")
     headers = @config[:headers].merge(headers || {})
 
     # Create the request, set the headers and body if necessary.

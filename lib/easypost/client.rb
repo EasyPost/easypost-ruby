@@ -20,7 +20,7 @@ class EasyPost::Client
 
     # Make an HTTP client once, reuse it for all requests made by this client
     # Configuration is immutable, so this is safe
-    @http_client = EasyPost::HttpClient.new(base_url, http_config)
+    @http_client = EasyPost::HttpClient.new(api_base, http_config)
   end
 
   SERVICE_CLASSES = [
@@ -51,8 +51,8 @@ class EasyPost::Client
 
   # Make an HTTP request
   # @return [Hash] JSON object parsed from the response body
-  def make_request(method, endpoint, cls = EasyPost::Models::EasyPostObject, body = nil, beta: false)
-    response = @http_client.request(method, endpoint, nil, body, beta: beta)
+  def make_request(method, endpoint, cls = EasyPost::Models::EasyPostObject, body = nil, api_version = 'v2')
+    response = @http_client.request(method, endpoint, nil, body, api_version)
 
     status_code = response.code.to_i
 
@@ -106,9 +106,5 @@ class EasyPost::Client
 
   def authorization
     "Bearer #{@api_key}"
-  end
-
-  def base_url
-    "#{@api_base}/#{@api_version}"
   end
 end

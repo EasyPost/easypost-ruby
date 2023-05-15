@@ -55,7 +55,7 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
 
   # Retrieve EasyPost's Stripe public API key.
   def retrieve_easypost_stripe_api_key
-    response = @client.make_request(:get, 'partners/stripe_public_key', beta: true)
+    response = @client.make_request(:get, 'partners/stripe_public_key', EasyPost::Models::EasyPostObject, nil, 'beta')
     response['public_key']
   end
 
@@ -99,6 +99,6 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
       },
     }
     referral_client = EasyPost::Client.new(api_key: referral_api_key)
-    referral_client.make_request(:get, 'credit_cards', EasyPost::Models::EasyPostObject, wrapped_params, beta: true)
+    referral_client.make_request(:get, 'credit_cards', EasyPost::Models::EasyPostObject, wrapped_params, 'beta')
   end
 end
