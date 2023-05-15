@@ -51,9 +51,8 @@ describe EasyPost::Beta::ReferralCustomer, :authenticate_partner do
     end
   end
 
-  describe '.add_credit_card', :skip do
-    # Skip until the API key has the feature turned on
-    it 'adds a credit card to a referral customer account' do
+  describe '.add_credit_card' do
+    it 'adds a credit card to a referral customer account' do skip 'Skip until the API key has the feature turned on'
       # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY
       # as well as one of that user's referral's production API keys via REFERRAL_CUSTOMER_PROD_API_KEY.
       credit_card = described_class.add_credit_card(
@@ -68,7 +67,7 @@ describe EasyPost::Beta::ReferralCustomer, :authenticate_partner do
       expect(credit_card.last4).to match('6170')
     end
 
-    it 'raises an error when we cannot send details to Stripe' do
+    it 'raises an error when we cannot send details to Stripe' do  skip 'Skip until the API key has the feature turned on'
       allow(described_class).to receive(:create_stripe_token).and_raise(StandardError)
       allow(described_class).to receive(:retrieve_easypost_stripe_api_key)
 

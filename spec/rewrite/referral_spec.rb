@@ -74,9 +74,9 @@ describe EasyPost::Services::ReferralCustomer do
     end
   end
 
-  describe '.add_credit_card', :skip do
+  describe '.add_credit_card' do
     # Skip until the API key has the feature turned on
-    it 'adds a credit card to a referral customer account' do
+    it 'adds a credit card to a referral customer account' do skip 'Skip until the API key has the feature turned on'
       credit_card = client.referral_customer.add_credit_card(
         REFERRAL_CUSTOMER_PROD_API_KEY,
         Fixture.credit_card_details['number'],
@@ -90,7 +90,7 @@ describe EasyPost::Services::ReferralCustomer do
     end
   end
 
-  it 'raises an error when we cannot send details to Stripe', :skip do
+  it 'raises an error when we cannot send details to Stripe' do skip 'Skip until the API key has the feature turned on'
     # Skip until the API key has the feature turned on
     allow(client).to receive(:create_stripe_token).and_raise(StandardError)
     allow(client).to receive(:retrieve_easypost_stripe_api_key)
