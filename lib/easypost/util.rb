@@ -290,7 +290,7 @@ module EasyPost::Util
   end
 
   # Converts a raw webhook event into an EasyPost object.
-  def self.receive_event(values)
-    EasyPost::InternalUtilities::Json.convert_json_to_object(JSON.parse(values), EasyPost::Models::EasyPostObject)
+  def self.receive_event(raw_input)
+    EasyPost::InternalUtilities::Json.convert_json_to_object(JSON.parse(raw_input), EasyPost::Models::EasyPostObject)
   end
 end
