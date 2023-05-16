@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Referral objects are User objects created from a Partner user.
+# ReferralCustomer objects are User objects created from a Partner user.
 class EasyPost::Referral < EasyPost::Resource
   class << self
     protected
@@ -95,7 +95,7 @@ class EasyPost::Referral < EasyPost::Resource
     params
   end
 
-  # Add credit card to a referral customer. This function requires the Referral Customer's API key.
+  # Add credit card to a referral customer. This function requires the ReferralCustomer Customer's API key.
   def self.add_credit_card(referral_api_key, number, expiration_month, expiration_year, cvc, priority = 'primary')
     easypost_stripe_api_key = retrieve_easypost_stripe_api_key
 

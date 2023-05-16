@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/events
+    body:
+      encoding: UTF-8
+      string: '{"page_size":5}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - e4a331f6645d5591e79950df000cfa45
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"e21453ff347c026230ce372f8cbc486a"
+      X-Runtime:
+      - '0.233644'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb3nuq
+      X-Version-Label:
+      - easypost-202305112000-3954f6db5b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"events":[{"description":"tracker.updated","id":"evt_0ab25aceef6d11edaf056bc3acada6dc","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:58:32.828Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_e6dcf2c6ef6c11edb1d7291d76e9ba48","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:57:32.709Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_c30c5cecef6c11ed8a5563ec75b48bfb","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:56:32.622Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_b8138be4ef6c11eda54b5968676d389f","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:56:14.214Z","mode":"test","object":"Event"},{"description":"tracker.updated","id":"evt_9f372f5eef6c11ed8a2e1fddd0096f2f","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-10T19:55:32.505Z","mode":"test","object":"Event"}],"has_more":true}'
+  recorded_at: Thu, 11 May 2023 20:52:34 GMT
+recorded_with: VCR 6.1.0

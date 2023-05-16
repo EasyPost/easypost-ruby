@@ -58,7 +58,6 @@ module EasyPost::Util
     'PickupRate' => EasyPost::PickupRate,
     'PostageLabel' => EasyPost::PostageLabel,
     'Rate' => EasyPost::Rate,
-    'Referral' => EasyPost::Beta::Referral,
     'Refund' => EasyPost::Refund,
     'RefundReport' => EasyPost::Report,
     'Report' => EasyPost::Report,
@@ -202,7 +201,16 @@ module EasyPost::Util
       end
     end
 
-    easypost_object[rates_key].each do |rate|
+    # TODO: remove below guard clause and use method once the rewrite is done
+    rates = if easypost_object.respond_to?(:rates)
+              easypost_object.rates
+            elsif easypost_object.respond_to?(:pickup_rates)
+              easypost_object.pickup_rates
+            else
+              easypost_object[rates_key]
+            end
+
+    rates.each do |rate|
       rate_carrier = rate.carrier.downcase
       if carriers.size.positive? && !carriers.include?(rate_carrier)
         next
@@ -279,5 +287,10 @@ module EasyPost::Util
     raise EasyPost::Error.new('No rates found.') if lowest_rate.nil?
 
     lowest_rate
+  end
+
+  # Converts a raw webhook event into an EasyPost object.
+  def self.receive_event(raw_input)
+    EasyPost::InternalUtilities::Json.convert_json_to_object(JSON.parse(raw_input), EasyPost::Models::EasyPostObject)
   end
 end

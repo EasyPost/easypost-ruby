@@ -20,20 +20,29 @@ class EasyPost::Client
 
     # Make an HTTP client once, reuse it for all requests made by this client
     # Configuration is immutable, so this is safe
-    @http_client = EasyPost::HttpClient.new(base_url, http_config)
+    @http_client = EasyPost::HttpClient.new(api_base, http_config)
   end
 
   SERVICE_CLASSES = [
     EasyPost::Services::Address,
     EasyPost::Services::ApiKey,
     EasyPost::Services::Batch,
+    EasyPost::Services::BetaReferralCustomer,
     EasyPost::Services::Billing,
     EasyPost::Services::CarrierAccount,
     EasyPost::Services::CustomsInfo,
     EasyPost::Services::CustomsItem,
+    EasyPost::Services::EndShipper,
+    EasyPost::Services::Event,
+    EasyPost::Services::Insurance,
+    EasyPost::Services::Order,
+    EasyPost::Services::Parcel,
+    EasyPost::Services::Pickup,
+    EasyPost::Services::Rate,
+    EasyPost::Services::ReferralCustomer,
   ].freeze
 
-  # Loop over the SERVICE_CLASSES to automatically define the instance variable instead of manually define it
+  # Loop over the SERVICE_CLASSES to automatically define the method and instance variable instead of manually define it
   SERVICE_CLASSES.each do |cls|
     define_method(EasyPost::InternalUtilities.to_snake_case(cls.name.split('::').last)) do
       instance_variable_set("@#{EasyPost::InternalUtilities.to_snake_case(cls.name.split('::').last)}", cls.new(self))
@@ -44,11 +53,19 @@ class EasyPost::Client
   #
   # @param method [Symbol] the HTTP Verb (get, method, put, post, etc.)
   # @param endpoint [String] URI path of the resource
+  # @param cls [Class] the class to deserialize to
   # @param body [Object] (nil) object to be dumped to JSON
+  # @param api_version [String] the version of API to hit
   # @raise [EasyPost::Error] if the response has a non-2xx status code
   # @return [Hash] JSON object parsed from the response body
-  def make_request(method, endpoint, cls = EasyPost::Models::EasyPostObject, body = nil)
-    response = @http_client.request(method, endpoint, nil, body)
+  def make_request(
+    method,
+    endpoint,
+    cls = EasyPost::Models::EasyPostObject,
+    body = nil,
+    api_version = EasyPost::InternalUtilities::Constants::API_VERSION
+  )
+    response = @http_client.request(method, endpoint, nil, body, api_version)
 
     status_code = response.code.to_i
 
@@ -102,9 +119,5 @@ class EasyPost::Client
 
   def authorization
     "Bearer #{@api_key}"
-  end
-
-  def base_url
-    "#{@api_base}/#{@api_version}"
   end
 end
