@@ -2,6 +2,14 @@
 
 ## Next Release (Major)
 
+- Library is now thread-safe (yay, its finally here). Closes GitHub Issue (#183)
+  - Initialize an `Client` object with an API key. Optionally set open and read params
+  - Previous classes have been diverted into `Services` and `Models`
+    - All methods (i.e. `create`, `retrieve`, `all`) exist in services, accessed via property of the client (eg: `client.shipment.create()`)
+      - E.g. `bought_shipment = client.shipment.buy(shipment_id, rate)`
+- Beta namespace changed from `easypost.beta.x` to `client.beta_x`
+- References to `Referral` are now `ReferralCustomer` and `referral_customer` to match the API and docs
+- Empty API response functions return nothing now instead of `true`
 - Drops support for Ruby 2.5
 - Bumps all dev dependencies
 - Improves Error Deserialization to dynamically handle edge cases that have a bad format

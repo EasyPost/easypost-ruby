@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3f02a2cf64627154e0dd282900230732
+      - de846e086463d3e2e79afa4800396197
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,20 +45,20 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"5803c81d5175816c7db94fd3a6294730"
+      - W/"57b616a535a9df8008e17cdd2be65c48"
       X-Runtime:
-      - '0.169867'
+      - '0.148827'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb3nuq
       X-Version-Label:
-      - easypost-202305151637-e5ce91ee24-master
+      - easypost-202305161817-392deb98e4-master
       X-Backend:
       - easypost
       X-Proxied:
       - extlb1nuq 5ab12a3ed2
-      - intlb1nuq a29e4ad05c
+      - intlb2nuq a29e4ad05c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -69,7 +69,7 @@ http_interactions:
         test","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-28T22:34:38Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]},{"id":"user_4a22730cdc844ce1bc2efbed999c869f","object":"User","parent_id":null,"name":"test
         test","phone_number":"<REDACTED>","verified":true,"created_at":"2022-04-29T19:35:33Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]},{"id":"user_488e391395f4416196a31965fecac409","object":"User","parent_id":null,"name":"Firstname
         Lastname","phone_number":"<REDACTED>","verified":true,"created_at":"2022-05-02T18:48:22Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":true,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[]}]}'
-  recorded_at: Mon, 15 May 2023 17:52:21 GMT
+  recorded_at: Tue, 16 May 2023 19:05:06 GMT
 - request:
     method: put
     uri: https://api.easypost.com/v2/referral_customers/user_634b6daa05744bfaa205058f06864363
@@ -105,7 +105,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 3f02a2cf64627155e0dd28410023076f
+      - de846e026463d3e3e79afa49003961d4
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -117,22 +117,22 @@ http_interactions:
       Etag:
       - W/"7b30d603e3257aee787616dc99d6d4af"
       X-Runtime:
-      - '0.116401'
+      - '0.111496'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb3nuq
+      - bigweb1nuq
       X-Version-Label:
-      - easypost-202305151637-e5ce91ee24-master
+      - easypost-202305161817-392deb98e4-master
       X-Backend:
       - easypost
       X-Proxied:
       - extlb1nuq 5ab12a3ed2
-      - intlb1nuq a29e4ad05c
+      - intlb2nuq a29e4ad05c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: '{"message":"Referral Customer email updated successfully"}'
-  recorded_at: Mon, 15 May 2023 17:52:21 GMT
+  recorded_at: Tue, 16 May 2023 19:05:07 GMT
 recorded_with: VCR 6.1.0

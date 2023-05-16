@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.easypost.com/v2/reports/shipment
     body:
       encoding: UTF-8
-      string: '{"start_date":"2022-04-11","end_date":"2022-04-11","type":"shipment"}'
+      string: '{"start_date":"2022-06-11","end_date":"2022-06-11","type":"shipment"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -33,7 +33,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - ca7a1a3a62f52640e786c946002802e2
+      - 23bee7e564640b83e78733be00485036
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -43,24 +43,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"848dbdf29ff7e5ed1aaafb4e7849648f"
+      - W/"064005aedf8696a4a3744e2c9a93ac45"
       X-Runtime:
-      - '0.037659'
+      - '0.039405'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb1nuq
+      - bigweb8nuq
       X-Version-Label:
-      - easypost-202208102159-4e6760c1b7-master
+      - easypost-202305162013-ad43550112-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 9ce216bfac
-      - intlb2nuq 403f17ff97
+      - extlb2nuq 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"shprep_0f5d1583ed3c47739f4571361f56234a","object":"ShipmentReport","created_at":"2022-08-11T15:54:40Z","updated_at":"2022-08-11T15:54:40Z","start_date":"2022-04-11","end_date":"2022-04-11","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
-  recorded_at: Thu, 11 Aug 2022 15:54:40 GMT
-recorded_with: VCR 6.0.0
+      string: '{"id":"shprep_91ae18679abf4<REDACTED>bb735edbe5cc746e","object":"ShipmentReport","created_at":"2023-05-16T23:02:27Z","updated_at":"2023-05-16T23:02:27Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+  recorded_at: Tue, 16 May 2023 23:02:28 GMT
+recorded_with: VCR 6.1.0
