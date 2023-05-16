@@ -6,6 +6,7 @@ end
 require_relative 'exceptions/api_error'
 require_relative 'exceptions/connection_error'
 require_relative 'exceptions/easy_post_error'
+require_relative 'exceptions/external_api_error'
 require_relative 'exceptions/gateway_timeout_error'
 require_relative 'exceptions/internal_server_error'
 require_relative 'exceptions/invalid_request_error'
