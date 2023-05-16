@@ -214,14 +214,7 @@
           <div class="method-source-code" id="get_next_page-source">
             <pre><span class="ruby-comment"># File lib/easypost/services/address.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-comment"># get_next_page_exec(method(:all), collection, collection.addresses, page_size)</span>
-  <span class="ruby-identifier">params</span> = {}
-  <span class="ruby-identifier">params</span>[<span class="ruby-value">:before_id</span>] = <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">addresses</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">id</span>
-  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">page_size</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_size</span>] = <span class="ruby-identifier">page_size</span>
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;addresses&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">get_next_page_helper</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">addresses</span>, <span class="ruby-string">&#39;addresses&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">page_size</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

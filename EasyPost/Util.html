@@ -76,6 +76,7 @@
     <li ><a href="#method-c-os_arch">::os_arch</a>
     <li ><a href="#method-c-os_name">::os_name</a>
     <li ><a href="#method-c-os_version">::os_version</a>
+    <li ><a href="#method-c-receive_event">::receive_event</a>
   </ul>
 </div>
 
@@ -164,7 +165,7 @@
           <p>Build a dict key from a list of keys. Example: [code, number] -&gt; <a href="number">code</a></p>
 
           <div class="method-source-code" id="build_dict_key-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 116</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 115</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">build_dict_key</span>(<span class="ruby-identifier">keys</span>)
   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">keys</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_s</span>
 
@@ -193,7 +194,7 @@
           <p>Convert data to an <a href="../EasyPost.html"><code>EasyPost</code></a> Object.</p>
 
           <div class="method-source-code" id="convert_to_easypost_object-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 149</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 148</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_to_easypost_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-identifier">api_key</span>, <span class="ruby-identifier">parent</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">name</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">response</span>
   <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span>
@@ -243,7 +244,7 @@
           <p>Form-encode a multi-layer dictionary to a one-layer dictionary.</p>
 
           <div class="method-source-code" id="form_encode_params-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 98</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">form_encode_params</span>(<span class="ruby-identifier">hash</span>, <span class="ruby-identifier">parent_keys</span> = [], <span class="ruby-identifier">parent_dict</span> = {})
   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">parent_dict</span> <span class="ruby-keyword">or</span> {}
   <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">parent_keys</span> <span class="ruby-keyword">or</span> []
@@ -278,7 +279,7 @@
           <p>Gets the lowest rate of an <a href="../EasyPost.html"><code>EasyPost</code></a> object such as a <a href="Shipment.html"><code>Shipment</code></a>, <a href="Order.html"><code>Order</code></a>, or <a href="Pickup.html"><code>Pickup</code></a>. You can exclude by having ‘’!‘` as the first element of your optional filter lists</p>
 
           <div class="method-source-code" id="get_lowest_object_rate-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 182</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 181</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_lowest_object_rate</span>(<span class="ruby-identifier">easypost_object</span>, <span class="ruby-identifier">carriers</span> = [], <span class="ruby-identifier">services</span> = [], <span class="ruby-identifier">rates_key</span> = <span class="ruby-string">&#39;rates&#39;</span>)
   <span class="ruby-identifier">lowest_rate</span> = <span class="ruby-keyword">nil</span>
 
@@ -302,7 +303,16 @@
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">easypost_object</span>[<span class="ruby-identifier">rates_key</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">rate</span><span class="ruby-operator">|</span>
+  <span class="ruby-comment"># TODO: remove below guard clause and use method once the rewrite is done</span>
+  <span class="ruby-identifier">rates</span> = <span class="ruby-keyword">if</span> <span class="ruby-identifier">easypost_object</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:rates</span>)
+            <span class="ruby-identifier">easypost_object</span>.<span class="ruby-identifier">rates</span>
+          <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">easypost_object</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:pickup_rates</span>)
+            <span class="ruby-identifier">easypost_object</span>.<span class="ruby-identifier">pickup_rates</span>
+          <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">easypost_object</span>[<span class="ruby-identifier">rates_key</span>]
+          <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">rates</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">rate</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">rate_carrier</span> = <span class="ruby-identifier">rate</span>.<span class="ruby-identifier">carrier</span>.<span class="ruby-identifier">downcase</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">carriers</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">positive?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">carriers</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">rate_carrier</span>)
       <span class="ruby-keyword">next</span>
@@ -347,7 +357,7 @@
           <p>Gets the lowest stateless rate. You can exclude by having ‘’!‘` as the first element of your optional filter lists</p>
 
           <div class="method-source-code" id="get_lowest_stateless_rate-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 234</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 242</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_lowest_stateless_rate</span>(<span class="ruby-identifier">stateless_rates</span>, <span class="ruby-identifier">carriers</span> = [], <span class="ruby-identifier">services</span> = [])
   <span class="ruby-identifier">lowest_rate</span> = <span class="ruby-keyword">nil</span>
 
@@ -416,7 +426,7 @@
           <p>Normalizes a list of strings.</p>
 
           <div class="method-source-code" id="normalize_string_list-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 143</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 142</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">normalize_string_list</span>(<span class="ruby-identifier">lst</span>)
   <span class="ruby-identifier">lst</span> = <span class="ruby-identifier">lst</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">lst</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>) <span class="ruby-operator">:</span> <span class="ruby-constant">Array</span>(<span class="ruby-identifier">lst</span>)
   <span class="ruby-identifier">lst</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_s</span>).<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:downcase</span>).<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:strip</span>)
@@ -440,7 +450,7 @@
           <p>Converts an object to an object ID.</p>
 
           <div class="method-source-code" id="objects_to_ids-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 127</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 126</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">objects_to_ids</span>(<span class="ruby-identifier">obj</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">obj</span>
   <span class="ruby-keyword">when</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Resource</span>
@@ -474,7 +484,7 @@
           
 
           <div class="method-source-code" id="os_arch-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 93</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">os_arch</span>
   <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Platform</span>.<span class="ruby-identifier">local</span>.<span class="ruby-identifier">cpu</span>
 <span class="ruby-keyword">end</span></pre>
@@ -497,7 +507,7 @@
           
 
           <div class="method-source-code" id="os_name-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 76</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 75</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">os_name</span>
   <span class="ruby-keyword">case</span> <span class="ruby-constant">RUBY_PLATFORM</span>
   <span class="ruby-keyword">when</span> <span class="ruby-regexp">/linux/i</span>
@@ -529,9 +539,32 @@
           
 
           <div class="method-source-code" id="os_version-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 89</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 88</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">os_version</span>
   <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Platform</span>.<span class="ruby-identifier">local</span>.<span class="ruby-identifier">version</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-receive_event" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">receive_event</span><span
+              class="method-args">(raw_input)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Converts a raw webhook event into an <a href="../EasyPost.html"><code>EasyPost</code></a> object.</p>
+
+          <div class="method-source-code" id="receive_event-source">
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 293</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">receive_event</span>(<span class="ruby-identifier">raw_input</span>)
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">raw_input</span>), <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
