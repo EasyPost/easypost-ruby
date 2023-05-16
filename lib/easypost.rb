@@ -19,6 +19,9 @@ require 'easypost/services'
 # Models
 require 'easypost/models'
 
+# Exceptions
+require 'easypost/exceptions'
+
 # Internal Utilities
 require 'easypost/internal_utilities'
 

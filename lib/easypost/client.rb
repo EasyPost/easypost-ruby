@@ -76,19 +76,8 @@ class EasyPost::Client
   )
     response = @http_client.request(method, endpoint, nil, body, api_version)
 
-    status_code = response.code.to_i
-
-    if status_code < 200 || status_code >= 300
-      error = JSON.parse(response.body)['error']
-
-      raise EasyPost::Error.new(
-        error['message'],
-        status_code,
-        error['code'],
-        error['errors'],
-        response.body,
-      )
-    end
+    potential_error = EasyPost::Exceptions::ApiError.get_potential_error(response)
+    raise potential_error unless potential_error.nil?
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response.body, cls)
   end
