@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/beta/metadata?carriers=usps&types=service_levels,predefined_packages
+    body:
+      encoding: UTF-8
+      string: '{"carriers":"usps","types":"service_levels,predefined_packages"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - af430003646500bce0db725c00024956
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"a842c1378a5f4d5f9ad9956312671ebe"
+      X-Runtime:
+      - '0.028079'
+      Vary:
+      - Origin
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb9nuq
+      X-Version-Label:
+      - easypost-202305162013-ad43550112-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"carriers":[{"human_readable":"USPS","name":"usps","predefined_packages":[{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"Card"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"Letter"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"Flat"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatRateEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatRateLegalEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatRatePaddedEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatRateGiftCardEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatRateWindowEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatRateCardboardEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"SmallFlatRateEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"Parcel"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"SoftPack"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"SmallFlatRateBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"MediumFlatRateBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"LargeFlatRateBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"LargeFlatRateBoxAPOFPO"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatTubTrayBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"EMMTrayBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FullTrayBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"HalfTrayBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"PMODSack"}],"service_levels":[{"carrier":"usps","description":"1-3
+        days","dimensions":["22in x 18in x 15in"],"human_readable":null,"max_weight":15.99,"name":"First"},{"carrier":"usps","description":"2-3
+        days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120.0,"name":"Priority"},{"carrier":"usps","description":"1-2
+        days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120.0,"name":"Express"},{"carrier":"usps","description":"2-8
+        business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120.0,"name":"ParcelSelect"},{"carrier":"usps","description":"2-8
+        business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120.0,"name":"LibraryMail"},{"carrier":"usps","description":"2-8
+        business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120.0,"name":"MediaMail"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FirstClassMailInternational"},{"carrier":"usps","description":"7-21
+        days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":64.0,"name":"FirstClassPackageInternationalService"},{"carrier":"usps","description":"6-10
+        business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120.0,"name":"PriorityMailInternational"},{"carrier":"usps","description":"3-5
+        business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120.0,"name":"ExpressMailInternational"}]}]}'
+  recorded_at: Wed, 17 May 2023 16:28:44 GMT
+recorded_with: VCR 6.1.0

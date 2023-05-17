@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# The CarrierAccount encapsulates your credentials with the carrier.
 class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
   CUSTOM_WORKFLOW_CARRIER_TYPES = %w[UpsAccount FedexAccount].freeze
   MODEL_CLASS = EasyPost::Models::CarrierAccount
@@ -38,5 +37,8 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
   # Delete a carrier account
   def delete(id)
     @client.make_request(:delete, "carrier_accounts/#{id}")
+
+    # Return true if succeeds, an error will be thrown if it fails
+    true
   end
 end

@@ -1,0 +1,135 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/webhooks
+    body:
+      encoding: UTF-8
+      string: '{"webhook":{"url":"http://example.com"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 23bee7e364640b4ae7873379004839e0
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"fb884e3f840db15003bad1efda168a47"
+      X-Runtime:
+      - '0.141151'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb3nuq
+      X-Version-Label:
+      - easypost-202305162013-ad43550112-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 5ab12a3ed2
+      - intlb2nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"hook_9825edbaf43d11ed9bbf73944d399889","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2023-05-16T23:01:30Z","disabled_at":null}'
+  recorded_at: Tue, 16 May 2023 23:01:30 GMT
+- request:
+    method: delete
+    uri: https://api.easypost.com/v2/webhooks/hook_9825edbaf43d11ed9bbf73944d399889
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 23bee7e664640b4ae787337a00483a0a
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"44136fa355b3678a1146ad16f7e8649e"
+      X-Runtime:
+      - '0.385630'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb7nuq
+      X-Version-Label:
+      - easypost-202305162013-ad43550112-master
+      X-Backend:
+      - easypost
+      X-Canary:
+      - direct
+      X-Proxied:
+      - extlb2nuq 5ab12a3ed2
+      - intlb2nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: "{}"
+  recorded_at: Tue, 16 May 2023 23:01:31 GMT
+recorded_with: VCR 6.1.0

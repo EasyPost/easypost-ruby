@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# CustomsInfo service contains CustomsItem objects and all necessary information for the generation of customs forms required for international shipping.
 class EasyPost::Services::CustomsItem < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::CustomsItem
 

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# ReferralCustomer objects are User objects created from a Partner user.
 class EasyPost::Services::BetaReferralCustomer < EasyPost::Services::Service
   # Add a Stripe payment method to a ReferralCustomer Customer. This function requires the ReferralCustomer Customer's API key.
   def add_payment_method(stripe_customer_id, payment_method_reference, priority = 'primary')

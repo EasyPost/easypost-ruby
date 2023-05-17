@@ -75,27 +75,29 @@ describe EasyPost::Services::ReferralCustomer do
   end
 
   describe '.add_credit_card' do
-    # Skip until the API key has the feature turned on
     it 'adds a credit card to a referral customer account' do
-      skip 'Skip until the API key has the feature turned on'
-      credit_card = client.referral_customer.add_credit_card(
-        REFERRAL_CUSTOMER_PROD_API_KEY,
-        Fixture.credit_card_details['number'],
-        Fixture.credit_card_details['expiration_month'],
-        Fixture.credit_card_details['expiration_year'],
-        Fixture.credit_card_details['cvc'],
-      )
+      # We override the VCR config here since it cannot match the URL due to data scrubbing
+      VCR.use_cassette(
+        'rewrite/referral/EasyPost_Referral_add_credit_card_adds_a_credit_card_to_a_referral_customer_account',
+        match_requests_on: [:method, :uri],
+      ) do
+        credit_card = client.referral_customer.add_credit_card(
+          REFERRAL_CUSTOMER_PROD_API_KEY,
+          Fixture.credit_card_details['number'],
+          Fixture.credit_card_details['expiration_month'],
+          Fixture.credit_card_details['expiration_year'],
+          Fixture.credit_card_details['cvc'],
+        )
 
-      expect(credit_card.id).to match('card_')
-      expect(credit_card.last4).to match('6170')
+        expect(credit_card.id).to match('card_')
+        expect(credit_card.last4).to match('6170')
+      end
     end
   end
 
   it 'raises an error when we cannot send details to Stripe' do
-    skip 'Skip until the API key has the feature turned on'
-    # Skip until the API key has the feature turned on
-    allow(client).to receive(:create_stripe_token).and_raise(StandardError)
-    allow(client).to receive(:retrieve_easypost_stripe_api_key)
+    allow(client.referral_customer).to receive(:create_stripe_token).and_raise(StandardError)
+    allow(client.referral_customer).to receive(:retrieve_easypost_stripe_api_key)
 
     expect {
       client.referral_customer.add_credit_card(

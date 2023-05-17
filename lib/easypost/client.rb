@@ -27,6 +27,8 @@ class EasyPost::Client
     EasyPost::Services::Address,
     EasyPost::Services::ApiKey,
     EasyPost::Services::Batch,
+    EasyPost::Services::BetaCarrierMetadata,
+    EasyPost::Services::BetaRate,
     EasyPost::Services::BetaReferralCustomer,
     EasyPost::Services::Billing,
     EasyPost::Services::CarrierAccount,
@@ -40,6 +42,13 @@ class EasyPost::Client
     EasyPost::Services::Pickup,
     EasyPost::Services::Rate,
     EasyPost::Services::ReferralCustomer,
+    EasyPost::Services::Refund,
+    EasyPost::Services::Report,
+    EasyPost::Services::ScanForm,
+    EasyPost::Services::Shipment,
+    EasyPost::Services::Tracker,
+    EasyPost::Services::User,
+    EasyPost::Services::Webhook,
   ].freeze
 
   # Loop over the SERVICE_CLASSES to automatically define the method and instance variable instead of manually define it

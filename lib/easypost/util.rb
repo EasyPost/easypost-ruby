@@ -125,7 +125,7 @@ module EasyPost::Util
   # Converts an object to an object ID.
   def self.objects_to_ids(obj)
     case obj
-    when EasyPost::Resource
+    when EasyPost::Resource, EasyPost::Models::EasyPostObject # TODO: remove EasyPost::Resource once the thread-safe is done
       { id: obj.id }
     when Hash
       result = {}
@@ -292,5 +292,59 @@ module EasyPost::Util
   # Converts a raw webhook event into an EasyPost object.
   def self.receive_event(raw_input)
     EasyPost::InternalUtilities::Json.convert_json_to_object(JSON.parse(raw_input), EasyPost::Models::EasyPostObject)
+  end
+
+  # Get the lowest SmartRate from a list of SmartRate.
+  def self.get_lowest_smart_rate(smart_rates, delivery_days, delivery_accuracy)
+    valid_delivery_accuracy_values = Set[
+      'percentile_50',
+      'percentile_75',
+      'percentile_85',
+      'percentile_90',
+      'percentile_95',
+      'percentile_97',
+      'percentile_99',
+    ]
+    lowest_smart_rate = nil
+
+    unless valid_delivery_accuracy_values.include?(delivery_accuracy.downcase)
+      raise EasyPost::Error.new("Invalid delivery accuracy value, must be one of: #{valid_delivery_accuracy_values}")
+    end
+
+    smart_rates.each do |rate|
+      next if rate['time_in_transit'][delivery_accuracy] > delivery_days.to_i
+
+      if lowest_smart_rate.nil? || rate['rate'].to_f < lowest_smart_rate['rate'].to_f
+        lowest_smart_rate = rate
+      end
+    end
+
+    if lowest_smart_rate.nil?
+      raise EasyPost::Error.new('No rates found.')
+    end
+
+    lowest_smart_rate
+  end
+
+  # Validate a webhook by comparing the HMAC signature header sent from EasyPost to your shared secret.
+  # If the signatures do not match, an error will be raised signifying the webhook either did not originate
+  # from EasyPost or the secrets do not match. If the signatures do match, the `event_body` will be returned
+  # as JSON.
+  def self.validate_webhook(event_body, headers, webhook_secret)
+    easypost_hmac_signature = headers['X-Hmac-Signature']
+
+    if easypost_hmac_signature.nil?
+      raise EasyPost::Error.new('Webhook received does not contain an HMAC signature.')
+    end
+
+    encoded_webhook_secret = webhook_secret.unicode_normalize(:nfkd).encode('utf-8')
+
+    expected_signature = OpenSSL::HMAC.hexdigest('sha256', encoded_webhook_secret, event_body)
+    digest = "hmac-sha256-hex=#{expected_signature}"
+    unless digest == easypost_hmac_signature
+      raise EasyPost::Error.new('Webhook received did not originate from EasyPost or had a webhook secret mismatch.')
+    end
+
+    JSON.parse(event_body)
   end
 end

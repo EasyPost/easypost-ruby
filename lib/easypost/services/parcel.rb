@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Parcel service represents the physical container being shipped.
 class EasyPost::Services::Parcel < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::Parcel
 

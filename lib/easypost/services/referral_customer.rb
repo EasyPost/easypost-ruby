@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# ReferralCustomer objects are User objects created from a Partner user.
 class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::User
 
@@ -99,6 +98,6 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
       },
     }
     referral_client = EasyPost::Client.new(api_key: referral_api_key)
-    referral_client.make_request(:get, 'credit_cards', EasyPost::Models::EasyPostObject, wrapped_params, 'beta')
+    referral_client.make_request(:post, 'credit_cards', EasyPost::Models::EasyPostObject, wrapped_params, 'beta')
   end
 end
