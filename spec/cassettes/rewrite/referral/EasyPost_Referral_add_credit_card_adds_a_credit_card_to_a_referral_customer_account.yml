@@ -1,6 +1,74 @@
 ---
 http_interactions:
 - request:
+    method: get
+    uri: https://api.easypost.com/beta/partners/stripe_public_key
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - a4ae9a0464652dd2e0dc97440006f320
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"86cc970265a111486b443bf66ef85e91"
+      X-Runtime:
+      - '0.088288'
+      Vary:
+      - Origin
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb9nuq
+      X-Version-Label:
+      - easypost-202305171925-180fff930b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      - intlb2wdc a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"public_key":"pk_x3JSr5eOVWNTLRej8cZDde9VQ0AT5"}'
+  recorded_at: Wed, 17 May 2023 19:41:07 GMT
+- request:
     method: post
     uri: https://api.stripe.com/v1/tokens
     body:
@@ -23,7 +91,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 16 May 2023 23:12:41 GMT
+      - Wed, 17 May 2023 19:41:07 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -43,11 +111,11 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Idempotency-Key:
-      - b6285198-d2e6-4a01-8656-456d692d99c7
+      - e153abd2-2e57-4d06-8480-267ebd3df79f
       Original-Request:
-      - req_QVZ1ygDFZKMSee
+      - req_NJ5Vj9xelGbSNN
       Request-Id:
-      - req_QVZ1ygDFZKMSee
+      - req_NJ5Vj9xelGbSNN
       Stripe-Should-Retry:
       - 'false'
       Stripe-Version:
@@ -58,14 +126,14 @@ http_interactions:
       - max-age=63072000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"tok_0N8X2rDqT4huGUvdtAmSetdI","object":"token","card":{"id":"card_0N8X2qDqT4huGUvdaXQZxdpA","object":"card","address_city":null,"address_country":null,"address_line1":null,"address_line1_check":null,"address_line2":null,"address_state":null,"address_zip":null,"address_zip_check":null,"brand":"Visa","country":"US","cvc_check":"unchecked","dynamic_last4":null,"exp_month":5,"exp_year":2028,"funding":"credit","last4":"6170","name":null,"tokenization_method":null,"wallet":null},"client_ip":"<REDACTED>","created":1684278761,"livemode":true,"type":"card","used":false}'
-  recorded_at: Tue, 16 May 2023 23:12:41 GMT
+      string: '{"id":"tok_0N8qDfDqT4huGUvdERD2WHOv","object":"token","card":{"id":"card_0N8qDfDqT4huGUvdZwW6V2aj","object":"card","address_city":null,"address_country":null,"address_line1":null,"address_line1_check":null,"address_line2":null,"address_state":null,"address_zip":null,"address_zip_check":null,"brand":"Visa","country":"US","cvc_check":"unchecked","dynamic_last4":null,"exp_month":5,"exp_year":2028,"funding":"credit","last4":"6170","name":null,"tokenization_method":null,"wallet":null},"client_ip":"<REDACTED>","created":1684352467,"livemode":true,"type":"card","used":false}'
+  recorded_at: Wed, 17 May 2023 19:41:07 GMT
 - request:
     method: post
     uri: https://api.easypost.com/beta/credit_cards
     body:
       encoding: UTF-8
-      string: '{"credit_card":{"stripe_object_id":"tok_0N8X2rDqT4huGUvdtAmSetdI","priority":"primary"}}'
+      string: '{"credit_card":{"stripe_object_id":"tok_0N8qDfDqT4huGUvdERD2WHOv","priority":"primary"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -95,7 +163,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 23bee7e164640de9e7873cc200493d9b
+      - a4ae9a0364652dd3e0dc975d0006f375
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -105,28 +173,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"c11e531f22de8dcb02b9001817173be3"
+      - W/"5252c4194e3d4e22b3b0462a80794284"
       X-Runtime:
-      - '3.114134'
+      - '3.397594'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7nuq
+      - bigweb5nuq
       X-Version-Label:
-      - easypost-202305162013-ad43550112-master
+      - easypost-202305171805-88442329bc-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb2nuq 5ab12a3ed2
+      - extlb4wdc 5ab12a3ed2
       - intlb2nuq a29e4ad05c
+      - intlb2wdc a29e4ad05c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"card_7ab97c265d4b4b1aa30d7a1afaa3dd01","disabled_at":null,"object":"CreditCard","name":null,"last4":"6170","exp_month":5,"exp_year":2028,"brand":"Visa"}'
-  recorded_at: Tue, 16 May 2023 23:12:44 GMT
+      string: '{"id":"card_873397115<REDACTED>4f56b8a54fa8c8cb5343","disabled_at":null,"object":"CreditCard","name":null,"last4":"6170","exp_month":5,"exp_year":2028,"brand":"Visa"}'
+  recorded_at: Wed, 17 May 2023 19:41:11 GMT
 recorded_with: VCR 6.1.0

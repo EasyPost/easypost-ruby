@@ -1,0 +1,335 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/webhooks
+    body:
+      encoding: UTF-8
+      string: '{"webhook":{"url":"http://example.com"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - a4ae9a0764652d95e0dc93450006dae4
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"985b4b397d7053ae612375bba2db98d3"
+      X-Runtime:
+      - '0.114926'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4nuq
+      X-Version-Label:
+      - easypost-202305171925-180fff930b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb1wdc a29e4ad05c
+      - intlb2nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"hook_9f65f8b0f4ea11ed811a67fe8aedbffd","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2023-05-17T19:40:05Z","disabled_at":null}'
+  recorded_at: Wed, 17 May 2023 19:40:05 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/batches
+    body:
+      encoding: UTF-8
+      string: '{"batch":{"shipments":[{"to_address":{"name":"Jack Sparrow","street1":"388
+        Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"},"from_address":{"name":"Elizabeth
+        Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","email":"test@example.com","phone":"5555555555"},"parcel":{"length":10,"width":8,"height":4,"weight":15.4},"service":"First","carrier_accounts":["ca_716f33fd9fd348238b85c2922237f98b"],"carrier":"USPS"}]}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - a4ae9a0464652d95e0dc93460006db03
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"d13e020d63447f30ee0891d2931b8aa6"
+      X-Runtime:
+      - '0.034954'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4nuq
+      X-Version-Label:
+      - easypost-202305171925-180fff930b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      - intlb2wdc a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"batch_5cd1c390f7d4485b9db9f9fad1e16058","object":"Batch","mode":"test","state":"creating","num_shipments":1,"reference":null,"created_at":"2023-05-17T19:40:05Z","updated_at":"2023-05-17T19:40:05Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+  recorded_at: Wed, 17 May 2023 19:40:05 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/events
+    body:
+      encoding: UTF-8
+      string: '{"page_size":5}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - a4ae9a0464652d9ae0dc935e0006dced
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"82f8933e1133fabbc1ad7c725d0e74e8"
+      X-Runtime:
+      - '0.191508'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4nuq
+      X-Version-Label:
+      - easypost-202305171925-180fff930b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      - intlb2wdc a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"events":[{"description":"tracker.created","id":"evt_a178846af4ea11ed81b83bde192f2f9f","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-17T19:40:08.690Z","mode":"test","object":"Event"},{"description":"tracker.created","id":"evt_a167d548f4ea11eda61753dacdd12565","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-17T19:40:08.581Z","mode":"test","object":"Event"},{"description":"tracker.created","id":"evt_a13993a4f4ea11ed88eb63fe6674db92","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-17T19:40:08.278Z","mode":"test","object":"Event"},{"description":"tracker.created","id":"evt_a0fc661ef4ea11ed9bca797e5608951d","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-17T19:40:07.877Z","mode":"test","object":"Event"},{"description":"batch.updated","id":"evt_9fc68a72f4ea11edb2ab5f8a8f720409","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2023-05-17T19:40:05.846Z","mode":"test","object":"Event"}],"has_more":true}'
+  recorded_at: Wed, 17 May 2023 19:40:11 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/events/evt_a178846af4ea11ed81b83bde192f2f9f/payloads
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - a4ae9a0364652d9be0dc935f0006dd30
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"b5e6dd0a7b95afc23c69e9e95aa4ce47"
+      X-Runtime:
+      - '0.113608'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb2nuq
+      X-Version-Label:
+      - easypost-202305171805-88442329bc-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      - intlb2wdc a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"payloads":[]}'
+  recorded_at: Wed, 17 May 2023 19:40:11 GMT
+- request:
+    method: delete
+    uri: https://api.easypost.com/v2/webhooks/hook_9f65f8b0f4ea11ed811a67fe8aedbffd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - a4ae9a0864652d9be0dc93600006dd67
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"44136fa355b3678a1146ad16f7e8649e"
+      X-Runtime:
+      - '0.312714'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb1nuq
+      X-Version-Label:
+      - easypost-202305171925-180fff930b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      - intlb1wdc a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: "{}"
+  recorded_at: Wed, 17 May 2023 19:40:12 GMT
+recorded_with: VCR 6.1.0

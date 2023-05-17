@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module EasyPost::InternalUtilities::Json
-  def self.convert_json_to_object(data, cls)
+  def self.convert_json_to_object(data, cls = EasyPost::Models::EasyPostObject)
     data = JSON.parse(data) if data.is_a?(String) # Parse JSON to a Hash or Array if it's a string
     if data.is_a?(Array)
       # Deserialize array data into an array of objects

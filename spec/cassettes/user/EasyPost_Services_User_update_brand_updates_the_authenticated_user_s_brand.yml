@@ -1,0 +1,137 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/users
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - a4ae9a0664652e1fe0dc9c0300070fd0
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"b323cd47aad616c4c360d28086676214"
+      X-Runtime:
+      - '0.042078'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb3nuq
+      X-Version-Label:
+      - easypost-202305171925-180fff930b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      - intlb2wdc a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"New
+        Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2023-05-16T22:01:20Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
+  recorded_at: Wed, 17 May 2023 19:42:24 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/users/user_0f6b83e3530b401cb1e8aeaa6a250d4d/brand
+    body:
+      encoding: UTF-8
+      string: '{"brand":{"color":"#123456"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - a4ae9a0464652e20e0dc9c0700070fe8
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"35f038cbdb17bbe62d8db32cf7f92846"
+      X-Runtime:
+      - '0.018135'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb2nuq
+      X-Version-Label:
+      - easypost-202305171805-88442329bc-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb2nuq a29e4ad05c
+      - intlb2wdc a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"brd_136abcc3c9de49fcb1a0e963f26fdcac","color":"#123456","logo":"https://assets.easypost.com/assets/images/branding/easypost-primary-logo.7324aa54b64b34d6cd70ca5ba4d1842d.svg","logo_href":"https://www.easypost.com","name":"EasyPost","ad":null,"ad_href":null,"object":"Brand","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","background_color":null,"theme":"theme1"}'
+  recorded_at: Wed, 17 May 2023 19:42:24 GMT
+recorded_with: VCR 6.1.0

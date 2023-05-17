@@ -4,17 +4,19 @@ require 'spec_helper'
 
 REFERRAL_CUSTOMER_PROD_API_KEY = ENV['REFERRAL_CUSTOMER_PROD_API_KEY'] || '123'
 
-describe EasyPost::Referral, :authenticate_partner do
+describe EasyPost::Services::ReferralCustomer do
+  let(:client) { EasyPost::Client.new(api_key: ENV['PARTNER_USER_PROD_API_KEY'] || '123') }
+
   describe '.create' do
     it 'creates a referral customer' do
       # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY.
-      created_referral_customer = described_class.create(
+      created_referral_customer = client.referral_customer.create(
         name: 'test user',
         email: 'email@example.com',
         phone: '8888888888',
       )
 
-      expect(created_referral_customer).to be_an_instance_of(EasyPost::User)
+      expect(created_referral_customer).to be_an_instance_of(EasyPost::Models::User)
       expect(created_referral_customer.id).to match('user_')
       expect(created_referral_customer.name).to eq('test user')
     end
@@ -23,13 +25,13 @@ describe EasyPost::Referral, :authenticate_partner do
   describe '.update_email' do
     it 'updates a referral customer' do
       # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY.
-      referral_customers = described_class.all(
+      referral_customers = client.referral_customer.all(
         page_size: Fixture.page_size,
       )
 
-      updated_user = described_class.update_email(
-        'email2@example.com',
+      updated_user = client.referral_customer.update_email(
         referral_customers.referral_customers[0].id,
+        'email2@example.com',
       )
 
       expect(updated_user).to eq(true)
@@ -39,7 +41,7 @@ describe EasyPost::Referral, :authenticate_partner do
   describe '.all' do
     # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY.
     it 'retrieve all referral customers' do
-      referral_customers = described_class.all(
+      referral_customers = client.referral_customer.all(
         page_size: Fixture.page_size,
       )
 
@@ -47,18 +49,18 @@ describe EasyPost::Referral, :authenticate_partner do
 
       expect(referral_customers_array.count).to be <= Fixture.page_size
       expect(referral_customers.has_more).not_to be_nil
-      expect(referral_customers_array).to all(be_an_instance_of(EasyPost::User))
+      expect(referral_customers_array).to all(be_an_instance_of(EasyPost::Models::User))
     end
   end
 
   describe '.get_next_page' do
     it 'retrieves the next page of a collection' do
-      first_page = described_class.all(
+      first_page = client.referral_customer.all(
         page_size: Fixture.page_size,
       )
 
       begin
-        next_page = described_class.get_next_page(first_page)
+        next_page = client.referral_customer.get_next_page(first_page)
 
         first_page_first_id = first_page.referral_customers.first.id
         next_page_first_id = next_page.referral_customers.first.id
@@ -76,12 +78,10 @@ describe EasyPost::Referral, :authenticate_partner do
     it 'adds a credit card to a referral customer account' do
       # We override the VCR config here since it cannot match the URL due to data scrubbing
       VCR.use_cassette(
-        'referral/EasyPost_Referral_add_credit_card_adds_a_credit_card_to_a_referral_customer_account',
+        'rewrite/referral/EasyPost_Referral_add_credit_card_adds_a_credit_card_to_a_referral_customer_account',
         match_requests_on: [:method, :uri],
       ) do
-        # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY
-        # as well as one of that user's referral's production API keys via REFERRAL_CUSTOMER_PROD_API_KEY.
-        credit_card = described_class.add_credit_card(
+        credit_card = client.referral_customer.add_credit_card(
           REFERRAL_CUSTOMER_PROD_API_KEY,
           Fixture.credit_card_details['number'],
           Fixture.credit_card_details['expiration_month'],
@@ -93,20 +93,20 @@ describe EasyPost::Referral, :authenticate_partner do
         expect(credit_card.last4).to match('6170')
       end
     end
+  end
 
-    it 'raises an error when we cannot send details to Stripe' do
-      allow(described_class).to receive(:create_stripe_token).and_raise(StandardError)
-      allow(described_class).to receive(:retrieve_easypost_stripe_api_key)
+  it 'raises an error when we cannot send details to Stripe' do
+    allow(client.referral_customer).to receive(:create_stripe_token).and_raise(StandardError)
+    allow(client.referral_customer).to receive(:retrieve_easypost_stripe_api_key)
 
-      expect {
-        described_class.add_credit_card(
-          REFERRAL_CUSTOMER_PROD_API_KEY,
-          Fixture.credit_card_details['number'],
-          Fixture.credit_card_details['expiration_month'],
-          Fixture.credit_card_details['expiration_year'],
-          Fixture.credit_card_details['cvc'],
-        )
-      }.to raise_error(StandardError).with_message('Could not send card details to Stripe, please try again later.')
-    end
+    expect {
+      client.referral_customer.add_credit_card(
+        REFERRAL_CUSTOMER_PROD_API_KEY,
+        Fixture.credit_card_details['number'],
+        Fixture.credit_card_details['expiration_month'],
+        Fixture.credit_card_details['expiration_year'],
+        Fixture.credit_card_details['cvc'],
+      )
+    }.to raise_error(StandardError).with_message('Could not send card details to Stripe, please try again later.')
   end
 end

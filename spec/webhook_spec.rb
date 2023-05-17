@@ -2,90 +2,74 @@
 
 require 'spec_helper'
 
-describe EasyPost::Webhook do
-  let(:mock_webhook_no_id) { described_class.new }
+describe EasyPost::Services::Webhook do
+  let(:client) { EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY']) }
 
   describe '.create' do
     it 'creates a webhook' do
-      webhook = described_class.create(
+      webhook = client.webhook.create(
         url: Fixture.webhook_url,
       )
 
-      expect(webhook).to be_an_instance_of(described_class)
+      expect(webhook).to be_an_instance_of(EasyPost::Models::Webhook)
       expect(webhook.id).to match('hook_')
       expect(webhook.url).to eq(Fixture.webhook_url)
 
       # Remove the webhook once we have tested it so we don't pollute the account with test webhooks
-      webhook.delete
+      client.webhook.delete(webhook.id)
     end
   end
 
   describe '.retrieve' do
     it 'retrieves a webhook' do
-      webhook = described_class.create(
+      webhook = client.webhook.create(
         url: Fixture.webhook_url,
       )
 
-      retrieved_webhook = described_class.retrieve(webhook.id)
+      retrieved_webhook = client.webhook.retrieve(webhook.id)
 
-      expect(retrieved_webhook).to be_an_instance_of(described_class)
+      expect(retrieved_webhook).to be_an_instance_of(EasyPost::Models::Webhook)
       expect(retrieved_webhook.to_s).to eq(webhook.to_s)
 
       # Remove the webhook once we have tested it so we don't pollute the account with test webhooks
-      webhook.delete
+      client.webhook.delete(webhook.id)
     end
   end
 
   describe '.all' do
     it 'retrieves all webhooks' do
-      webhooks = described_class.all(
+      webhooks = client.webhook.all(
         page_size: Fixture.page_size,
       )
 
       webhooks_array = webhooks.webhooks
 
       expect(webhooks_array.count).to be <= Fixture.page_size
-      expect(webhooks_array).to all(be_an_instance_of(described_class))
+      expect(webhooks_array).to all(be_an_instance_of(EasyPost::Models::Webhook))
     end
   end
 
   describe '.update' do
     it 'updates a webhook' do
-      webhook = described_class.create(
+      webhook = client.webhook.create(
         url: Fixture.webhook_url,
       )
 
-      updated_webhook = webhook.update
+      updated_webhook = client.webhook.update(webhook.id)
 
-      expect(updated_webhook).to be_an_instance_of(described_class)
+      expect(updated_webhook).to be_an_instance_of(EasyPost::Models::Webhook)
 
-      webhook.delete # Remove the webhook once we have tested it so we don't pollute the account with test webhooks
-    end
-
-    it 'throws error for missing id' do
-      expect {
-        mock_webhook_no_id.update
-      }.to raise_error(EasyPost::Error)
-        .with_message('Could not determine which URL to request: EasyPost::Webhook instance has invalid ID: nil')
+      client.webhook.delete(webhook.id) # Remove the webhook once we have tested it so we don't pollute the account with test webhooks
     end
   end
 
   describe '.delete' do
     it 'deletes a webhook' do
-      webhook = described_class.create(
+      webhook = client.webhook.create(
         url: Fixture.webhook_url,
       )
 
-      response = webhook.delete
-
-      expect(response).to be_an_instance_of(described_class)
-    end
-
-    it 'throws error for missing id' do
-      expect {
-        mock_webhook_no_id.delete
-      }.to raise_error(EasyPost::Error)
-        .with_message('Could not determine which URL to request: EasyPost::Webhook instance has invalid ID: nil')
+      expect { client.webhook.delete(webhook.id) }.not_to raise_error
     end
   end
 
@@ -97,7 +81,7 @@ describe EasyPost::Webhook do
         'X-Hmac-Signature' => expected_hmac_signature,
       }
 
-      webhook_body = described_class.validate_webhook(Fixture.event_bytes, headers, webhook_secret)
+      webhook_body = EasyPost::Util.validate_webhook(Fixture.event_bytes, headers, webhook_secret)
       expect(webhook_body['description']).to eq('batch.created')
     end
 
@@ -108,7 +92,7 @@ describe EasyPost::Webhook do
       }
 
       expect {
-        described_class.validate_webhook(Fixture.event_bytes, headers, webhook_secret)
+        EasyPost::Util.validate_webhook(Fixture.event_bytes, headers, webhook_secret)
       }.to raise_error(
         EasyPost::Error,
         'Webhook received did not originate from EasyPost or had a webhook secret mismatch.',
@@ -122,7 +106,7 @@ describe EasyPost::Webhook do
       }
 
       expect {
-        described_class.validate_webhook(Fixture.event_bytes, headers, webhook_secret)
+        EasyPost::Util.validate_webhook(Fixture.event_bytes, headers, webhook_secret)
       }.to raise_error(EasyPost::Error, 'Webhook received does not contain an HMAC signature.')
     end
   end

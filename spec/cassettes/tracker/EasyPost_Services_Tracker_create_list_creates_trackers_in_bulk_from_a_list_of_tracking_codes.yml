@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/trackers/create_list
+    body:
+      encoding: UTF-8
+      string: '{"trackers":{"0":{"tracking_code":"EZ1000000001"},"1":{"tracking_code":"EZ1000000002"},"2":{"tracking_code":"EZ1000000003"},"3":{"tracking_code":"EZ1000000004"}}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - a4ae9a0464652e17e0dc9b9e00070ca6
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"44136fa355b3678a1146ad16f7e8649e"
+      X-Runtime:
+      - '0.040748'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb1nuq
+      X-Version-Label:
+      - easypost-202305171925-180fff930b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb1wdc a29e4ad05c
+      - intlb2nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: "{}"
+  recorded_at: Wed, 17 May 2023 19:42:16 GMT
+recorded_with: VCR 6.1.0

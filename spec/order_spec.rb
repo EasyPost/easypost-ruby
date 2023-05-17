@@ -2,12 +2,14 @@
 
 require 'spec_helper'
 
-describe EasyPost::Order do
+describe EasyPost::Services::Order do
+  let(:client) { EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY']) }
+
   describe '.create' do
     it 'creates an order' do
-      order = described_class.create(Fixture.basic_order)
+      order = client.order.create(Fixture.basic_order)
 
-      expect(order).to be_an_instance_of(described_class)
+      expect(order).to be_an_instance_of(EasyPost::Models::Order)
       expect(order.id).to match('order_')
       expect(order.rates).not_to be_nil
     end
@@ -15,42 +17,39 @@ describe EasyPost::Order do
 
   describe '.retrieve' do
     it 'retrieves an order' do
-      order = described_class.create(Fixture.basic_order)
-      retrieved_order = described_class.retrieve(order.id)
+      order = client.order.create(Fixture.basic_order)
+      retrieved_order = client.order.retrieve(order.id)
 
-      expect(retrieved_order).to be_an_instance_of(described_class)
+      expect(retrieved_order).to be_an_instance_of(EasyPost::Models::Order)
       expect(retrieved_order.id).to eq(order.id)
-    end
-  end
-
-  describe '.all' do
-    it 'raises not implemented error' do
-      expect { described_class.all }.to raise_error(NotImplementedError)
     end
   end
 
   describe '.get_rates' do
     it 'retrieves rates for an order' do
-      order = described_class.create(Fixture.basic_order)
-      rates = order.get_rates
+      order = client.order.create(Fixture.basic_order)
+      rates = client.order.get_rates(order.id)
 
       rates_array = rates.rates
 
       expect(rates_array).to be_an_instance_of(Array)
-      expect(rates_array).to all(be_an_instance_of(EasyPost::Rate))
+      expect(rates_array).to all(be_an_instance_of(EasyPost::Models::Rate))
     end
   end
 
   describe '.buy' do
     it 'buys an order' do
-      order = described_class.create(Fixture.basic_order)
+      order = client.order.create(Fixture.basic_order)
 
-      order.buy(
-        carrier: Fixture.usps,
-        service: Fixture.usps_service,
+      bought_order = client.order.buy(
+        order.id,
+        {
+          carrier: Fixture.usps,
+          service: Fixture.usps_service,
+        },
       )
 
-      shipments_array = order.shipments
+      shipments_array = bought_order.shipments
 
       shipments_array.each do |shipment|
         expect(shipment.postage_label).not_to be_nil
@@ -58,11 +57,11 @@ describe EasyPost::Order do
     end
 
     it 'buys an order with a rate object' do
-      order = described_class.create(Fixture.basic_order)
+      order = client.order.create(Fixture.basic_order)
 
-      order.buy(order.lowest_rate)
+      bought_order = client.order.buy(order.id, order.lowest_rate)
 
-      shipments_array = order.shipments
+      shipments_array = bought_order.shipments
 
       shipments_array.each do |shipment|
         expect(shipment.postage_label).not_to be_nil
@@ -72,18 +71,18 @@ describe EasyPost::Order do
 
   describe '.lowest_rate' do
     it 'tests various usage alterations of the lowest_rate method' do
-      shipment = described_class.create(Fixture.basic_order)
+      shipment = client.order.create(Fixture.basic_order)
 
       # Test lowest rate with no filters
       lowest_rate = shipment.lowest_rate
       expect(lowest_rate.service).to eq('First')
-      expect(lowest_rate.rate).to eq('5.57')
+      expect(lowest_rate.rate).to eq('6.07')
       expect(lowest_rate.carrier).to eq('USPS')
 
       # Test lowest rate with service filter (this rate is higher than the lowest but should filter)
       lowest_rate = shipment.lowest_rate([], ['Priority'])
       expect(lowest_rate.service).to eq('Priority')
-      expect(lowest_rate.rate).to eq('7.90')
+      expect(lowest_rate.rate).to eq('7.15')
       expect(lowest_rate.carrier).to eq('USPS')
 
       # Test lowest rate with carrier filter (should error due to bad carrier)

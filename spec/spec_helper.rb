@@ -20,7 +20,7 @@ SimpleCov.start do
   add_filter '/spec/'
   add_filter 'lib/easypost/version.rb'
   enable_coverage :branch
-  minimum_coverage 88 # TODO: bump this once the rewrite is finished
+  minimum_coverage 92
 end
 
 require 'open-uri'
@@ -42,9 +42,6 @@ RSpec.configure do |config|
     end
 
     check_expired_cassette(cassette_path)
-
-    # Reset `EasyPost.http_config` to avoid flakey tests.
-    EasyPost.reset_http_config
   end
 end
 

@@ -49,7 +49,7 @@ EasyPost::Connection = Struct.new(:uri, :config, keyword_init: true) do
     end
 
     request = Net::HTTP.const_get(method.capitalize).new(path)
-    request.body = JSON.dump(EasyPost::Util.objects_to_ids(body)) if body
+    request.body = JSON.dump(EasyPost::InternalUtilities.objects_to_ids(body)) if body
 
     EasyPost.default_headers.each_pair { |h, v| request[h] = v }
     request['Authorization'] = EasyPost.authorization(api_key)

@@ -1,0 +1,151 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/scan_forms
+    body:
+      encoding: UTF-8
+      string: '{"page_size":5}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - a4ae9a0764652de1e0dc97a50006f85a
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"596976831a37f26f3b4186b7947baaf7"
+      X-Runtime:
+      - '0.058057'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4nuq
+      X-Version-Label:
+      - easypost-202305171925-180fff930b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      - intlb2wdc a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"scan_forms":[{"id":"sf_39e229ab97a840df83feeec54efd29e9","object":"ScanForm","created_at":"2023-05-17T19:41:20Z","updated_at":"2023-05-17T19:41:20Z","tracking_codes":["9400100104262210693392"],"address":{"id":"adr_cb96ecacf4ea11edb102ac1f6bc539aa","object":"Address","created_at":"2023-05-17T19:41:19+00:00","updated_at":"2023-05-17T19:41:19+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20230517/c1713fa6697b4f8ea09723f35620c997.pdf","form_file_type":null,"batch_id":"batch_3d78ad8482964618916cc8f73539861c","confirmation":null},{"id":"sf_efa1c89cf0bf481fbea495922e5cc584","object":"ScanForm","created_at":"2023-05-17T19:41:18Z","updated_at":"2023-05-17T19:41:18Z","tracking_codes":["9400100104262210693361"],"address":{"id":"adr_ca723a69f4ea11ed9762ac1f6bc7b362","object":"Address","created_at":"2023-05-17T19:41:17+00:00","updated_at":"2023-05-17T19:41:17+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20230517/b05bbd5b525d4a1989c286ffb13d2b44.pdf","form_file_type":null,"batch_id":"batch_35b00799bf0e4d95a1f844ffa949da9e","confirmation":null},{"id":"sf_bfaa23bf7bd5462d88d85f292312949a","object":"ScanForm","created_at":"2023-05-17T19:39:42Z","updated_at":"2023-05-17T19:39:43Z","tracking_codes":["9400100104262210692715"],"address":{"id":"adr_8ec69afef4ea11ed98aeac1f6bc539aa","object":"Address","created_at":"2023-05-17T19:39:37+00:00","updated_at":"2023-05-17T19:39:37+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20230517/856b5b4ef21542cab7b1f8d348c4ce63.pdf","form_file_type":null,"batch_id":"batch_6b43e26d430e487fb35a1bef135423b5","confirmation":null},{"id":"sf_45d96ed2ee844733812b88dca6f9b311","object":"ScanForm","created_at":"2023-05-17T16:21:18Z","updated_at":"2023-05-17T16:21:18Z","tracking_codes":["9400100104262210643885"],"address":{"id":"adr_d9d4360af4ce11ed8658ac1f6bc539aa","object":"Address","created_at":"2023-05-17T16:21:17+00:00","updated_at":"2023-05-17T16:21:17+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20230517/a7bcfc0d784146ec97363d4adf234480.pdf","form_file_type":null,"batch_id":"batch_72f3a3b04a5f4107b2df80eac7458169","confirmation":null},{"id":"sf_afaac783621f4ae1a26692efbc3e3c34","object":"ScanForm","created_at":"2023-05-17T16:21:16Z","updated_at":"2023-05-17T16:21:16Z","tracking_codes":["9400100104262210643861"],"address":{"id":"adr_d8ad9074f4ce11edb56fac1f6b0a0d1e","object":"Address","created_at":"2023-05-17T16:21:15+00:00","updated_at":"2023-05-17T16:21:15+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20230517/ea37d3dae181465a9c0367d05e4a4ea6.pdf","form_file_type":null,"batch_id":"batch_c7f43596ef334b0e93d3882846f51321","confirmation":null}],"has_more":true}'
+  recorded_at: Wed, 17 May 2023 19:41:21 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/scan_forms
+    body:
+      encoding: UTF-8
+      string: '{"before_id":"sf_afaac783621f4ae1a26692efbc3e3c34"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - a4ae9a0a64652de1e0dc97a60006f872
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"a5039d6a0330a22862b39abf7f874b83"
+      X-Runtime:
+      - '0.078938'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb4nuq
+      X-Version-Label:
+      - easypost-202305171925-180fff930b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      - intlb2wdc a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"scan_forms":[{"id":"sf_b4237a52350149de997c40ebf896dda3","object":"ScanForm","created_at":"2023-05-10T17:28:26Z","updated_at":"2023-05-10T17:28:27Z","tracking_codes":["9400100104262208374746"],"address":{"id":"adr_0f44cfdbef5811ed9867ac1f6bc72124","object":"Address","created_at":"2023-05-10T17:28:21+00:00","updated_at":"2023-05-10T17:28:21+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20230510/3c2a6440543c4fadb63d705968f9bc74.pdf","form_file_type":null,"batch_id":"batch_a8b76e398f824a709cc4a3541dadf5e3","confirmation":null},{"id":"sf_c959e4450cd94b53b02ee818e65cc9d7","object":"ScanForm","created_at":"2023-05-16T20:01:36Z","updated_at":"2023-05-16T20:01:37Z","tracking_codes":["9400100104262210395630"],"address":{"id":"adr_75f23ca2f42411ed910aac1f6bc53342","object":"Address","created_at":"2023-05-16T20:01:35+00:00","updated_at":"2023-05-16T20:01:35+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20230516/c964586a05454448b6d626dd64e476bb.pdf","form_file_type":null,"batch_id":"batch_3a06ed26568e448fad8dddc3299c7eb1","confirmation":null},{"id":"sf_575b1d5f75d047088fd55a6bada32ce9","object":"ScanForm","created_at":"2023-05-16T20:03:34Z","updated_at":"2023-05-16T20:03:34Z","tracking_codes":["9400100104262210395890"],"address":{"id":"adr_bbcd5ad6f42411ed9961ac1f6bc539ae","object":"Address","created_at":"2023-05-16T20:03:32+00:00","updated_at":"2023-05-16T20:03:32+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"status":"created","message":null,"form_url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/scan_form/20230516/c182f1484a644<REDACTED>964ceca9ca34acd0.pdf","form_file_type":null,"batch_id":"batch_8d2e89344a784dddb12474a997d88603","confirmation":null}],"has_more":false}'
+  recorded_at: Wed, 17 May 2023 19:41:22 GMT
+recorded_with: VCR 6.1.0

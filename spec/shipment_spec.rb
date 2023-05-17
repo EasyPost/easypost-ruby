@@ -2,14 +2,14 @@
 
 require 'spec_helper'
 
-describe EasyPost::Shipment do
-  let(:mock_shipment) { described_class.new('shp_123') }
+describe EasyPost::Services::Shipment do
+  let(:client) { EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY']) }
 
   describe '.create' do
     it 'creates a shipment' do
-      shipment = described_class.create(Fixture.full_shipment)
+      shipment = client.shipment.create(Fixture.full_shipment)
 
-      expect(shipment).to be_an_instance_of(described_class)
+      expect(shipment).to be_an_instance_of(EasyPost::Models::Shipment)
       expect(shipment.id).to match('shp_')
       expect(shipment.rates).not_to be_nil
       expect(shipment.options.label_format).to eq('PNG')
@@ -24,9 +24,9 @@ describe EasyPost::Shipment do
       shipment_data[:tax_identifiers] = nil
       shipment_data[:reference] = ''
 
-      shipment = described_class.create(shipment_data)
+      shipment = client.shipment.create(shipment_data)
 
-      expect(shipment).to be_an_instance_of(described_class)
+      expect(shipment).to be_an_instance_of(EasyPost::Models::Shipment)
       expect(shipment.id).to match('shp_')
       expect(shipment.options).not_to be_nil # The EasyPost API populates some default values here
       expect(shipment.customs_info).to be_nil
@@ -37,19 +37,19 @@ describe EasyPost::Shipment do
       shipment_data = Fixture.basic_shipment
       shipment_data[:tax_identifiers] = [Fixture.tax_identifier]
 
-      shipment = described_class.create(shipment_data)
+      shipment = client.shipment.create(shipment_data)
 
-      expect(shipment).to be_an_instance_of(described_class)
+      expect(shipment).to be_an_instance_of(EasyPost::Models::Shipment)
       expect(shipment.id).to match('shp_')
       expect(shipment.tax_identifiers[0].tax_id_type).to eq('IOSS')
     end
 
     it 'creates a shipment when only IDs are used' do
-      from_address = EasyPost::Address.create(Fixture.ca_address1)
-      to_address = EasyPost::Address.create(Fixture.ca_address1)
-      parcel = EasyPost::Parcel.create(Fixture.basic_parcel)
+      from_address = client.address.create(Fixture.ca_address1)
+      to_address = client.address.create(Fixture.ca_address1)
+      parcel = client.parcel.create(Fixture.basic_parcel)
 
-      shipment = described_class.create(
+      shipment = client.shipment.create(
         {
           from_address: { id: from_address.id },
           to_address: { id: to_address.id },
@@ -57,7 +57,7 @@ describe EasyPost::Shipment do
         },
       )
 
-      expect(shipment).to be_an_instance_of(described_class)
+      expect(shipment).to be_an_instance_of(EasyPost::Models::Shipment)
       expect(shipment.id).to match('shp_')
       expect(shipment.from_address.id).to match('adr_')
       expect(shipment.to_address.id).to match('adr_')
@@ -66,9 +66,9 @@ describe EasyPost::Shipment do
     end
 
     it 'creates a shipment with carbon_offset' do
-      shipment = described_class.create(Fixture.basic_shipment, nil, true)
+      shipment = client.shipment.create(Fixture.basic_shipment, true)
 
-      expect(shipment).to be_an_instance_of(described_class)
+      expect(shipment).to be_an_instance_of(EasyPost::Models::Shipment)
       expect(shipment.rates).not_to be_nil
 
       rate = shipment.rates.first
@@ -76,7 +76,7 @@ describe EasyPost::Shipment do
     end
 
     it 'creates a one-call-buy shipment with carbon_offset' do
-      shipment = described_class.create(Fixture.one_call_buy_shipment, nil, true)
+      shipment = client.shipment.create(Fixture.one_call_buy_shipment, true)
 
       carbon_offset_found = false
       shipment.fees.each do |fee|
@@ -90,17 +90,17 @@ describe EasyPost::Shipment do
 
   describe '.retrieve' do
     it 'retrieves a shipment' do
-      shipment = described_class.create(Fixture.full_shipment)
-      retrieved_shipment = described_class.retrieve(shipment.id)
+      shipment = client.shipment.create(Fixture.full_shipment)
+      retrieved_shipment = client.shipment.retrieve(shipment.id)
 
-      expect(retrieved_shipment).to be_an_instance_of(described_class)
+      expect(retrieved_shipment).to be_an_instance_of(EasyPost::Models::Shipment)
       expect(retrieved_shipment.id).to eq(shipment.id)
     end
   end
 
   describe '.all' do
     it 'retrieves all shipments' do
-      shipments = described_class.all(
+      shipments = client.shipment.all(
         page_size: Fixture.page_size,
       )
 
@@ -108,11 +108,11 @@ describe EasyPost::Shipment do
 
       expect(shipments_array.count).to be <= Fixture.page_size
       expect(shipments.has_more).not_to be_nil
-      expect(shipments_array).to all(be_an_instance_of(described_class))
+      expect(shipments_array).to all(be_an_instance_of(EasyPost::Models::Shipment))
     end
 
     it 'stores the params used to retrieve the shipments' do
-      shipments = described_class.all(
+      shipments = client.shipment.all(
         page_size: Fixture.page_size,
         include_children: true,
         purchased: false,
@@ -125,12 +125,12 @@ describe EasyPost::Shipment do
 
   describe '.get_next_page' do
     it 'retrieves the next page of a collection' do
-      first_page = described_class.all(
+      first_page = client.shipment.all(
         page_size: Fixture.page_size,
       )
 
       begin
-        next_page = described_class.get_next_page(first_page)
+        next_page = client.shipment.get_next_page(first_page)
 
         first_page_first_id = first_page.shipments.first.id
         next_page_first_id = next_page.shipments.first.id
@@ -142,45 +142,27 @@ describe EasyPost::Shipment do
         expect(e.message).to eq('There are no more pages to retrieve.')
       end
     end
-
-    it 'reuses the params used to retrieve the first page' do
-      include_children = true
-      purchased = false
-
-      first_page = described_class.all(
-        page_size: Fixture.page_size,
-        include_children: include_children,
-        purchased: purchased,
-      )
-
-      # No shipments match the above filters, so we need to mock up some fake results
-      shipments = [described_class.new(id: 'shp_123')]
-
-      next_page_params = described_class.build_next_page_params(first_page, shipments, 0)
-
-      expect(next_page_params[:include_children]).to eq(include_children)
-      expect(next_page_params[:purchased]).to eq(purchased)
-    end
   end
 
   describe '.buy' do
     it 'buys a shipment' do
-      shipment = described_class.create(Fixture.full_shipment)
+      shipment = client.shipment.create(Fixture.full_shipment)
 
-      shipment.buy(
+      bought_shipment = client.shipment.buy(
+        shipment.id,
         shipment.lowest_rate,
       )
 
-      expect(shipment.postage_label).not_to be_nil
+      expect(bought_shipment.postage_label).not_to be_nil
     end
 
     it 'buys a shipment with carbon offset' do
-      shipment = described_class.create(Fixture.basic_shipment)
+      shipment = client.shipment.create(Fixture.basic_shipment)
 
-      shipment.buy(shipment.lowest_rate, true)
+      bought_shipment = client.shipment.buy(shipment.id, shipment.lowest_rate, true)
 
       carbon_offset_found = false
-      shipment.fees.each do |fee|
+      bought_shipment.fees.each do |fee|
         if fee.type == 'CarbonOffsetFee'
           carbon_offset_found = true
         end
@@ -189,43 +171,43 @@ describe EasyPost::Shipment do
     end
 
     it 'buys a shipment with carbon offset in params hash' do
-      shipment = described_class.create(Fixture.basic_shipment)
+      shipment = client.shipment.create(Fixture.basic_shipment)
 
-      shipment.buy({ rate: shipment.lowest_rate, with_carbon_offset: true })
+      bought_shipment = client.shipment.buy(shipment.id, { rate: shipment.lowest_rate, with_carbon_offset: true })
 
-      expect(shipment).to be_an_instance_of(described_class)
+      expect(shipment).to be_an_instance_of(EasyPost::Models::Shipment)
       expect(shipment.rates).not_to be_nil
 
-      rate = shipment.rates.first
+      rate = bought_shipment.rates.first
       expect(rate.carbon_offset).not_to be_nil
     end
 
     it 'buys a shipment with end_shipper_id' do
-      end_shipper = EasyPost::EndShipper.create(Fixture.ca_address1)
+      end_shipper = client.end_shipper.create(Fixture.ca_address1)
 
-      shipment = described_class.create(Fixture.basic_shipment)
-      shipment.buy(shipment.lowest_rate, nil, end_shipper[:id])
+      shipment = client.shipment.create(Fixture.basic_shipment)
+      bought_shipment = client.shipment.buy(shipment.id, shipment.lowest_rate, false, end_shipper.id)
 
-      expect(shipment.postage_label).not_to be_nil
+      expect(bought_shipment.postage_label).not_to be_nil
     end
   end
 
   describe '.regenerate_rates' do
     it 'regenerates rates for a shipment' do
-      shipment = described_class.create(Fixture.full_shipment)
+      shipment = client.shipment.create(Fixture.full_shipment)
 
-      shipment = shipment.regenerate_rates
+      regenerated_shipment = client.shipment.regenerate_rates(shipment.id)
 
-      rates_array = shipment.rates
+      rates_array = regenerated_shipment.rates
 
       expect(rates_array).to be_an_instance_of(Array)
-      expect(rates_array).to all(be_an_instance_of(EasyPost::Rate))
+      expect(rates_array).to all(be_an_instance_of(EasyPost::Models::Rate))
     end
 
     it 'regenerates rates for a shipment with carbon offset' do
-      shipment = described_class.create(Fixture.basic_shipment)
+      shipment = client.shipment.create(Fixture.basic_shipment)
 
-      shipment_with_carbon_offset = shipment.regenerate_rates(true)
+      shipment_with_carbon_offset = client.shipment.regenerate_rates(shipment.id, true)
 
       shipment_with_carbon_offset.rates.each do |rate|
         expect(rate.carbon_offset).not_to be_nil
@@ -235,29 +217,32 @@ describe EasyPost::Shipment do
 
   describe '.label' do
     it 'converts the label format of a shipment' do
-      shipment = described_class.create(Fixture.full_shipment)
+      shipment = client.shipment.create(Fixture.full_shipment)
 
-      shipment.buy(
+      bought_shipment = client.shipment.buy(
+        shipment.id,
         shipment.lowest_rate,
       )
 
-      shipment.label(
+      label_shipment = client.shipment.label(
+        bought_shipment.id,
         file_format: 'ZPL',
       )
 
-      expect(shipment.postage_label.label_zpl_url).not_to be_nil
+      expect(label_shipment.postage_label.label_zpl_url).not_to be_nil
     end
 
     it 'converts the label format of a shipment with unwrapped params' do
-      shipment = described_class.create(Fixture.full_shipment)
+      shipment = client.shipment.create(Fixture.full_shipment)
 
-      shipment.buy(
+      bought_shipment = client.shipment.buy(
+        shipment.id,
         shipment.lowest_rate,
       )
 
-      shipment.label('ZPL')
+      label_shipment = client.shipment.label(bought_shipment.id, 'ZPL')
 
-      expect(shipment.postage_label.label_zpl_url).not_to be_nil
+      expect(label_shipment.postage_label.label_zpl_url).not_to be_nil
     end
   end
 
@@ -268,26 +253,14 @@ describe EasyPost::Shipment do
       shipment_data = Fixture.one_call_buy_shipment
       shipment_data[:insurance] = 0
 
-      shipment = described_class.create(shipment_data)
+      shipment = client.shipment.create(shipment_data)
 
-      shipment.insure(
+      insured_shipment = client.shipment.insure(
+        shipment.id,
         amount: '100',
       )
 
-      expect(shipment.insurance).to eq('100.00')
-    end
-
-    it 'insures a shipment with unwrapped params' do
-      # If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
-      # so that USPS doesn't automatically insure it so we could manually insure it here.
-      shipment_data = Fixture.one_call_buy_shipment
-      shipment_data[:insurance] = 0
-
-      shipment = described_class.create(shipment_data)
-
-      shipment.insure(100)
-
-      expect(shipment.insurance).to eq('100.00')
+      expect(insured_shipment.insurance).to eq('100.00')
     end
   end
 
@@ -296,46 +269,46 @@ describe EasyPost::Shipment do
       # Refunding a test shipment must happen within seconds of the shipment being created as test shipments naturally
       # follow a flow of created -> delivered to cycle through tracking events in test mode - as such anything older
       # than a few seconds in test mode may not be refundable.
-      shipment = described_class.create(Fixture.one_call_buy_shipment)
+      shipment = client.shipment.create(Fixture.one_call_buy_shipment)
 
-      shipment.refund
+      refund_shipment = client.shipment.refund(shipment.id)
 
-      expect(shipment.refund_status).to eq('submitted')
+      expect(refund_shipment.refund_status).to eq('submitted')
     end
   end
 
   describe '.get_smartrates' do
     it 'retrieves smartrates of a shipment' do
-      shipment = described_class.create(Fixture.one_call_buy_shipment)
+      shipment = client.shipment.create(Fixture.one_call_buy_shipment)
 
       expect(shipment.rates).not_to be_nil
 
-      smartrates = shipment.get_smartrates
+      smartrates = client.shipment.get_smart_rates(shipment.id)
 
-      expect(smartrates[0]['time_in_transit']['percentile_50']).not_to be_nil
-      expect(smartrates[0]['time_in_transit']['percentile_75']).not_to be_nil
-      expect(smartrates[0]['time_in_transit']['percentile_85']).not_to be_nil
-      expect(smartrates[0]['time_in_transit']['percentile_90']).not_to be_nil
-      expect(smartrates[0]['time_in_transit']['percentile_95']).not_to be_nil
-      expect(smartrates[0]['time_in_transit']['percentile_97']).not_to be_nil
-      expect(smartrates[0]['time_in_transit']['percentile_99']).not_to be_nil
+      expect(smartrates[0].time_in_transit.percentile_50).not_to be_nil
+      expect(smartrates[0].time_in_transit.percentile_75).not_to be_nil
+      expect(smartrates[0].time_in_transit.percentile_85).not_to be_nil
+      expect(smartrates[0].time_in_transit.percentile_90).not_to be_nil
+      expect(smartrates[0].time_in_transit.percentile_95).not_to be_nil
+      expect(smartrates[0].time_in_transit.percentile_97).not_to be_nil
+      expect(smartrates[0].time_in_transit.percentile_99).not_to be_nil
     end
   end
 
   describe '.lowest_rate' do
     it 'tests various usage alterations of the lowest_rate method' do
-      shipment = described_class.create(Fixture.full_shipment)
+      shipment = client.shipment.create(Fixture.full_shipment)
 
       # Test lowest rate with no filters
       lowest_rate = shipment.lowest_rate
       expect(lowest_rate.service).to eq('First')
-      expect(lowest_rate.rate).to eq('5.57')
+      expect(lowest_rate.rate).to eq('6.07')
       expect(lowest_rate.carrier).to eq('USPS')
 
       # Test lowest rate with service filter (this rate is higher than the lowest but should filter)
       lowest_rate = shipment.lowest_rate([], ['Priority'])
       expect(lowest_rate.service).to eq('Priority')
-      expect(lowest_rate.rate).to eq('7.90')
+      expect(lowest_rate.rate).to eq('7.15')
       expect(lowest_rate.carrier).to eq('USPS')
 
       # Test lowest rate with carrier filter (should error due to bad carrier)
@@ -345,98 +318,99 @@ describe EasyPost::Shipment do
     end
 
     it 'tests various usage alterations of the lowest_rate method when excluding params' do
-      shipment = described_class.create(Fixture.full_shipment)
+      shipment = client.shipment.create(Fixture.full_shipment)
 
       # Test lowest rate by excluding a carrier (this is a weak test but we cannot assume existence of a non-USPS carrier)
       lowest_rate = shipment.lowest_rate(['!RandomCarrier'])
       expect(lowest_rate.service).to eq('First')
-      expect(lowest_rate.rate).to eq('5.57')
+      expect(lowest_rate.rate).to eq('6.07')
       expect(lowest_rate.carrier).to eq('USPS')
 
       # Test lowest rate by excluding the `Priority` service
       lowest_rate = shipment.lowest_rate([], ['!Priority'])
       expect(lowest_rate.service).to eq('First')
-      expect(lowest_rate.rate).to eq('5.57')
+      expect(lowest_rate.rate).to eq('6.07')
       expect(lowest_rate.carrier).to eq('USPS')
     end
   end
 
   describe '.lowest_smartrate' do
     it 'gets the lowest smartrate of a shipment' do
-      shipment = described_class.create(Fixture.basic_shipment)
+      shipment = client.shipment.create(Fixture.basic_shipment)
 
-      # Test lowest smartrate with valid filters
-      lowest_smartrate = shipment.lowest_smartrate(2, 'percentile_90')
-      expect(lowest_smartrate['service']).to eq('First')
-      expect(lowest_smartrate['rate']).to eq(5.57)
-      expect(lowest_smartrate['carrier']).to eq('USPS')
+      # Test lowest SmartRate with valid filters
+      lowest_smartrate = client.shipment.lowest_smart_rate(shipment.id, 2, 'percentile_90')
+      expect(lowest_smartrate.service).to eq('First')
+      expect(lowest_smartrate.rate).to eq(6.07)
+      expect(lowest_smartrate.carrier).to eq('USPS')
     end
 
     it 'raises an error when no rates are found due to delivery_days' do
-      shipment = described_class.create(Fixture.basic_shipment)
+      shipment = client.shipment.create(Fixture.basic_shipment)
 
-      # Test lowest smartrate with invalid filters (should error due to strict delivery_days)
+      # Test lowest SmartRate with invalid filters (should error due to strict delivery_days)
       expect {
-        shipment.lowest_smartrate(0, 'percentile_90')
+        client.shipment.lowest_smart_rate(shipment.id, 0, 'percentile_90')
       }.to raise_error(EasyPost::Error, 'No rates found.')
     end
 
     it 'raises an error when no rates are found due to delivery_accuracy' do
-      shipment = described_class.create(Fixture.basic_shipment)
+      shipment = client.shipment.create(Fixture.basic_shipment)
 
-      # Test lowest smartrate with invalid filters (should error due to invalid delivery_accuracy)
+      # Test lowest SmartRate with invalid filters (should error due to invalid delivery_accuracy)
       expect {
-        shipment.lowest_smartrate(3, 'BAD_ACCURACY')
+        client.shipment.lowest_smart_rate(shipment.id, 3, 'BAD_ACCURACY')
       }.to raise_error(EasyPost::Error)
     end
   end
 
   describe '.get_lowest_smartrate' do
     it 'gets the lowest smartrate from a list of smartrates' do
-      shipment = described_class.create(Fixture.basic_shipment)
-      smartrates = shipment.get_smartrates
+      shipment = client.shipment.create(Fixture.basic_shipment)
+      smartrates = client.shipment.get_smart_rates(shipment.id)
 
-      # Test lowest smartrate with valid filters
-      lowest_smartrate = described_class.get_lowest_smartrate(smartrates, 2, 'percentile_90')
+      # Test lowest SmartRate with valid filters
+      lowest_smartrate = EasyPost::Util.get_lowest_smart_rate(smartrates, 2, 'percentile_90')
       expect(lowest_smartrate['service']).to eq('First')
-      expect(lowest_smartrate['rate']).to eq(5.57)
+      expect(lowest_smartrate['rate']).to eq(6.07)
       expect(lowest_smartrate['carrier']).to eq('USPS')
     end
 
     it 'raises an error when no rates are found due to delivery_days' do
-      shipment = described_class.create(Fixture.basic_shipment)
-      smartrates = shipment.get_smartrates
+      shipment = client.shipment.create(Fixture.basic_shipment)
+      smartrates = client.shipment.get_smart_rates(shipment.id)
 
-      # Test lowest smartrate with invalid filters (should error due to strict delivery_days)
+      # Test lowest SmartRate with invalid filters (should error due to strict delivery_days)
       expect {
-        described_class.get_lowest_smartrate(smartrates, 0, 'percentile_90')
+        EasyPost::Util.get_lowest_smart_rate(smartrates, 0, 'percentile_90')
       }.to raise_error(EasyPost::Error, 'No rates found.')
     end
 
     it 'raises an error when no rates are found due to delivery_accuracy' do
-      shipment = described_class.create(Fixture.basic_shipment)
-      smartrates = shipment.get_smartrates
+      shipment = client.shipment.create(Fixture.basic_shipment)
+      smartrates = client.shipment.get_smart_rates(shipment.id)
 
-      # Test lowest smartrate with invalid filters (should error due to invalid delivery_accuracy)
+      # Test lowest SmartRate with invalid filters (should error due to invalid delivery_accuracy)
       expect {
-        described_class.get_lowest_smartrate(smartrates, 3, 'BAD_ACCURACY')
+        EasyPost::Util.get_lowest_smart_rate(smartrates, 3, 'BAD_ACCURACY')
       }.to raise_error(EasyPost::Error)
     end
   end
 
   describe '.generate_form' do
     it 'generates a form for a shipment' do
-      shipment = described_class.create(Fixture.one_call_buy_shipment)
+      shipment = client.shipment.create(Fixture.one_call_buy_shipment)
       form_type = 'return_packing_slip'
 
-      shipment.generate_form(
+      generared_shipment = client.shipment.generate_form(
+        shipment.id,
         form_type,
         Fixture.rma_form_options,
       )
 
-      expect(shipment.forms.count).to be > 0
+      expect(generared_shipment.forms.count).to be > 0
 
-      form = shipment.forms[0]
+      form = generared_shipment.forms[0]
 
       expect(form.form_type).to eq(form_type)
       expect(form.form_url).not_to be_nil
@@ -445,10 +419,13 @@ describe EasyPost::Shipment do
 
   describe '.retrieve_estimated_delivery_date' do
     it 'retrieve time-in-transit data for each of the Rates of a shipment' do
-      shipment = described_class.create(Fixture.full_shipment)
-      estimated_delivery_dates = shipment.retrieve_estimated_delivery_date(Fixture.planned_ship_date)
+      shipment = client.shipment.create(Fixture.full_shipment)
+      estimated_delivery_dates = client.shipment.retrieve_estimated_delivery_date(
+        shipment.id,
+        Fixture.planned_ship_date,
+      )
 
-      expect(estimated_delivery_dates.all? { |entry| entry['easypost_time_in_transit_data'] }).not_to be_nil
+      expect(estimated_delivery_dates.all?(&:easypost_time_in_transit_data)).not_to be_nil
     end
   end
 end

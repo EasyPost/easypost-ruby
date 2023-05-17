@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/reports/shipment
+    body:
+      encoding: UTF-8
+      string: '{"page_size":5}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - a4ae9a0764652ddce0dc97810006f632
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"b2bc60223834cb49323dc1fcf9107618"
+      X-Runtime:
+      - '0.041491'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb9nuq
+      X-Version-Label:
+      - easypost-202305171925-180fff930b-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb1wdc a29e4ad05c
+      - intlb2nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"reports":[{"id":"shprep_4694694cb1ae44289f42150251a44045","object":"ShipmentReport","created_at":"2023-05-17T19:41:16Z","updated_at":"2023-05-17T19:41:16Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_f3036f9ee5864c988e886a13f5d9b471","object":"ShipmentReport","created_at":"2023-05-17T19:41:15Z","updated_at":"2023-05-17T19:41:15Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_db0ab7ea935a4fdb8ecc1ccb31c41b50","object":"ShipmentReport","created_at":"2023-05-17T19:41:15Z","updated_at":"2023-05-17T19:41:15Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_461489c4390d428a8f6c22bcda33ee4d","object":"ShipmentReport","created_at":"2023-05-17T19:41:15Z","updated_at":"2023-05-17T19:41:15Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_5d7de81d677c470a92f7d15dfbc31323","object":"ShipmentReport","created_at":"2023-05-16T23:02:29Z","updated_at":"2023-05-16T23:02:29Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false}],"has_more":true}'
+  recorded_at: Wed, 17 May 2023 19:41:16 GMT
+recorded_with: VCR 6.1.0

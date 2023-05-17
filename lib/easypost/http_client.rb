@@ -24,7 +24,7 @@ class EasyPost::HttpClient
     # Create the request, set the headers and body if necessary.
     request = Net::HTTP.const_get(method.capitalize).new(uri)
     headers.each { |k, v| request[k] = v }
-    request.body = JSON.dump(EasyPost::Util.objects_to_ids(body)) if body
+    request.body = JSON.dump(EasyPost::InternalUtilities.objects_to_ids(body)) if body
 
     # Execute the request, return the response.
     Net::HTTP.start(

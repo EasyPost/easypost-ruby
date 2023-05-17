@@ -13,5 +13,4 @@ RSpec/FilePath:
 # TODO: Remove this once we start using keyword arguments
 Style/OptionalBooleanParameter:
   Exclude:
-    - 'lib/easypost/shipment.rb'
     - 'lib/easypost/services/*.rb'
