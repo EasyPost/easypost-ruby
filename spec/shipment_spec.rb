@@ -262,6 +262,22 @@ describe EasyPost::Services::Shipment do
 
       expect(insured_shipment.insurance).to eq('100.00')
     end
+
+    it 'insures a shipment with unwrapped params' do
+      # If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
+      # so that USPS doesn't automatically insure it so we could manually insure it here.
+      shipment_data = Fixture.one_call_buy_shipment
+      shipment_data[:insurance] = 0
+
+      shipment = client.shipment.create(shipment_data)
+
+      insured_shipment = client.shipment.insure(
+        shipment.id,
+        amount: 100,
+      )
+
+      expect(insured_shipment.insurance).to eq('100.00')
+    end
   end
 
   describe '.refund' do
