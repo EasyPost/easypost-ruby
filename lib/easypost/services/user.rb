@@ -26,6 +26,9 @@ class EasyPost::Services::User < EasyPost::Services::Service
   # Delete a User
   def delete(id)
     @client.make_request(:delete, "users/#{id}")
+
+    # Return true if succeeds, an error will be thrown if it fails
+    true
   end
 
   # Retrieve a list of all ApiKey objects.

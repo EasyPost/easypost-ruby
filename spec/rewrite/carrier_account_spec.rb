@@ -72,9 +72,9 @@ describe EasyPost::Services::CarrierAccount do
     it 'deletes a carrier account' do
       carrier_account = client.carrier_account.create(Fixture.basic_carrier_account)
 
-      response = client.carrier_account.delete(carrier_account.id)
-
-      expect(response).to be_an_instance_of(EasyPost::Models::EasyPostObject)
+      expect {
+        client.carrier_account.delete(carrier_account.id)
+      }.not_to raise_error
     end
   end
 end

@@ -27,5 +27,8 @@ class EasyPost::Services::Webhook < EasyPost::Services::Service
   # Delete a Webhook.
   def delete(id)
     @client.make_request(:delete, "webhooks/#{id}")
+
+    # Return true if succeeds, an error will be thrown if it fails
+    true
   end
 end

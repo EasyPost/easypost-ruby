@@ -12,6 +12,7 @@
 - References to `smartrate` are now `SmartRate` and `smart_rate` to match the API and docs
   - Rename function `get_smartrates` to `get_smart_rates`
   - Rename function `get_lowest_smartrate` to `get_lowest_smart_rate`
+- Empty API response functions for `delete` return `true` instead of empty object
 - Drops support for Ruby 2.5
 - Bumps all dev dependencies
 - Improves Error Deserialization to dynamically handle edge cases that have a bad format

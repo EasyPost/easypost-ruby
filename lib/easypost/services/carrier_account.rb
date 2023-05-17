@@ -37,5 +37,8 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
   # Delete a carrier account
   def delete(id)
     @client.make_request(:delete, "carrier_accounts/#{id}")
+
+    # Return true if succeeds, an error will be thrown if it fails
+    true
   end
 end
