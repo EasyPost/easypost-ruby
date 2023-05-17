@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# A Tracker service contains all of the tracking information for a package.
 class EasyPost::Services::Tracker < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::Tracker
 

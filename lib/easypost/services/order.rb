@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# The Order service represents a collection of packages and can be used for Multi-Piece Shipments.
 class EasyPost::Services::Order < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::Order
 

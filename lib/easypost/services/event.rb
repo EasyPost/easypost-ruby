@@ -2,7 +2,6 @@
 
 require 'json'
 
-# Webhook Events are triggered by changes in objects you've created via the API.
 class EasyPost::Services::Event < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::Event
 

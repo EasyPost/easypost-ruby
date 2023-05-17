@@ -2,8 +2,6 @@
 
 require 'set'
 
-# The workhorse of the EasyPost API, a Shipment is made up of a "to" and "from" Address, the Parcel
-# being shipped, and any customs forms required for international deliveries.
 class EasyPost::Services::Shipment < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::Shipment
 
@@ -43,7 +41,7 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
   end
 
   # Get the SmartRates of a Shipment.
-  def get_smartrates(id)
+  def get_smart_rates(id)
     @client.make_request(:get, "shipments/#{id}/smartrate", MODEL_CLASS).result || []
   end
 
@@ -80,10 +78,10 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
     @client.make_request(:get, "shipments/#{id}/label", MODEL_CLASS, params)
   end
 
-  # Get the lowest smartrate of a Shipment.
-  def lowest_smartrate(id, delivery_days, delivery_accuracy)
-    smartrates = get_smartrates(id)
-    EasyPost::Util.get_lowest_smartrate(smartrates, delivery_days, delivery_accuracy)
+  # Get the lowest SmartRate of a Shipment.
+  def lowest_smart_rate(id, delivery_days, delivery_accuracy)
+    smart_rates = get_smart_rates(id)
+    EasyPost::Util.get_lowest_smart_rate(smart_rates, delivery_days, delivery_accuracy)
   end
 
   # Generate a form for a Shipment.

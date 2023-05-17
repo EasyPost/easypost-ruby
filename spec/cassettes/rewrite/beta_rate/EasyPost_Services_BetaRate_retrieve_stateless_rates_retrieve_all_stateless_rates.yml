@@ -37,7 +37,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a55534716464413ae0d9e25d0009cedc
+      - 69f113026464f94fe0daff8200123842
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -47,32 +47,33 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"b32f270346db5af3948d01e9f9c63bfa"
+      - W/"d8e462855e10e39aec480ee02d1de486"
       X-Runtime:
-      - '0.582306'
+      - '0.586366'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9nuq
+      - bigweb11nuq
       X-Version-Label:
       - easypost-202305162013-ad43550112-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 5ab12a3ed2
+      - extlb3wdc 5ab12a3ed2
       - intlb2nuq a29e4ad05c
+      - intlb2wdc a29e4ad05c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: '{"from_address":{"object":"Address","name":"Jack Sparrow","street1":"388
         Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>"},"to_address":{"object":"Address","name":"Elizabeth
-        Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>"},"rates":[{"object":"Rate","mode":"test","service":"First","carrier":"USPS","rate":"6.07","currency":"USD","retail_rate":"6.07","retail_currency":"USD","list_rate":"6.07","list_currency":"USD","billing_type":"easypost","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"object":"Rate","mode":"test","service":"Express","carrier":"USPS","rate":"31.25","currency":"USD","retail_rate":"35.80","retail_currency":"USD","list_rate":"31.25","list_currency":"USD","billing_type":"easypost","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"object":"Rate","mode":"test","service":"ParcelSelect","carrier":"USPS","rate":"6.76","currency":"USD","retail_rate":"7.75","retail_currency":"USD","list_rate":"7.75","list_currency":"USD","billing_type":"easypost","delivery_days":5,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":5,"carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"object":"Rate","mode":"test","service":"Priority","carrier":"USPS","rate":"7.15","currency":"USD","retail_rate":"10.20","retail_currency":"USD","list_rate":"8.24","list_currency":"USD","billing_type":"easypost","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"}],"options":{"currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"parcel":{"object":"Parcel","length":10.0,"width":8.0,"height":4.0,"weight":15.4},"messages":[{"carrier":"DhlEcs","carrier_account_id":"ca_91ae96a5fc1f4cf4aa4b69067df5686b","type":"rate_error","message":"Unauthorized.
-        Please check credentials and try again"},{"carrier":"DhlEcs","carrier_account_id":"ca_e94e4fa45aba4058809c9246a48712b3","type":"rate_error","message":"Unauthorized.
+        Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>"},"rates":[{"object":"Rate","mode":"test","service":"ParcelSelect","carrier":"USPS","rate":"6.76","currency":"USD","retail_rate":"7.75","retail_currency":"USD","list_rate":"7.75","list_currency":"USD","billing_type":"easypost","delivery_days":5,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":5,"carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"object":"Rate","mode":"test","service":"Priority","carrier":"USPS","rate":"7.15","currency":"USD","retail_rate":"10.20","retail_currency":"USD","list_rate":"8.24","list_currency":"USD","billing_type":"easypost","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"object":"Rate","mode":"test","service":"First","carrier":"USPS","rate":"6.07","currency":"USD","retail_rate":"6.07","retail_currency":"USD","list_rate":"6.07","list_currency":"USD","billing_type":"easypost","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"},{"object":"Rate","mode":"test","service":"Express","carrier":"USPS","rate":"31.25","currency":"USD","retail_rate":"35.80","retail_currency":"USD","list_rate":"31.25","list_currency":"USD","billing_type":"easypost","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"carrier_account_id":"ca_716f33fd9fd348238b85c2922237f98b"}],"options":{"currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"parcel":{"object":"Parcel","length":10.0,"width":8.0,"height":4.0,"weight":15.4},"messages":[{"carrier":"DhlEcs","carrier_account_id":"ca_e94e4fa45aba4058809c9246a48712b3","type":"rate_error","message":"Unauthorized.
         Please check credentials and try again"},{"carrier":"DhlEcs","carrier_account_id":"ca_c02da7bfb4264ea3bcb85c0f760d4a6e","type":"rate_error","message":"Unauthorized.
         Please check credentials and try again"},{"carrier":"DhlEcs","carrier_account_id":"ca_b437adf5f4c64f3d8823d5ffa776a158","type":"rate_error","message":"Unauthorized.
+        Please check credentials and try again"},{"carrier":"DhlEcs","carrier_account_id":"ca_91ae96a5fc1f4cf4aa4b69067df5686b","type":"rate_error","message":"Unauthorized.
         Please check credentials and try again"}]}'
-  recorded_at: Wed, 17 May 2023 02:51:38 GMT
+  recorded_at: Wed, 17 May 2023 15:57:03 GMT
 recorded_with: VCR 6.1.0

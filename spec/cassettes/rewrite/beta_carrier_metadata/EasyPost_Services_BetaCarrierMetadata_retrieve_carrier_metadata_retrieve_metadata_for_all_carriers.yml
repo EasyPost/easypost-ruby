@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 69f113006464e47fe0da7307000ac1a9
+      - af42fffe646500bbe0db724400024923
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -47,21 +47,20 @@ http_interactions:
       Etag:
       - W/"0b770e61a0767b4c16d7670d9fc5cf01"
       X-Runtime:
-      - '0.157427'
+      - '0.160435'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb12nuq
       X-Version-Label:
       - easypost-202305162013-ad43550112-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb3wdc 5ab12a3ed2
+      - extlb1nuq 5ab12a3ed2
       - intlb1nuq a29e4ad05c
-      - intlb1wdc a29e4ad05c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -497,5 +496,5 @@ http_interactions:
         days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":64.0,"name":"FirstClassPackageInternationalService"},{"carrier":"usps","description":"6-10
         business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120.0,"name":"PriorityMailInternational"},{"carrier":"usps","description":"3-5
         business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120.0,"name":"ExpressMailInternational"}],"shipment_options":[],"supported_features":[]},{"human_readable":"Veho","name":"veho","predefined_packages":[],"service_levels":[{"carrier":"veho","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"nextDay"},{"carrier":"veho","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"sameDay"}],"shipment_options":[],"supported_features":[]},{"human_readable":"Yanwen","name":"yanwen","predefined_packages":[],"service_levels":[],"shipment_options":[],"supported_features":[]}]}'
-  recorded_at: Wed, 17 May 2023 14:28:15 GMT
+  recorded_at: Wed, 17 May 2023 16:28:43 GMT
 recorded_with: VCR 6.1.0

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# ReferralCustomer objects are User objects created from a Partner user.
 class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::User
 

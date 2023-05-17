@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Billing class that users can manage their payment and fund
 class EasyPost::Services::Billing < EasyPost::Services::Service
   # Get payment method info (type of the payment method and ID of the payment method)
   def self.get_payment_method_info(priority)

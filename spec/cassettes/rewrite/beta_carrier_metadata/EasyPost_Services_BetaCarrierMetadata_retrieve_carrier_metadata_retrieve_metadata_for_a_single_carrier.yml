@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 69f113006464e47fe0da7308000ac1d3
+      - af430003646500bce0db725c00024956
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -47,21 +47,20 @@ http_interactions:
       Etag:
       - W/"a842c1378a5f4d5f9ad9956312671ebe"
       X-Runtime:
-      - '0.027689'
+      - '0.028079'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb11nuq
+      - bigweb9nuq
       X-Version-Label:
       - easypost-202305162013-ad43550112-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb3wdc 5ab12a3ed2
+      - extlb1nuq 5ab12a3ed2
       - intlb1nuq a29e4ad05c
-      - intlb2wdc a29e4ad05c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -76,5 +75,5 @@ http_interactions:
         days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":64.0,"name":"FirstClassPackageInternationalService"},{"carrier":"usps","description":"6-10
         business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120.0,"name":"PriorityMailInternational"},{"carrier":"usps","description":"3-5
         business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120.0,"name":"ExpressMailInternational"}]}]}'
-  recorded_at: Wed, 17 May 2023 14:28:16 GMT
+  recorded_at: Wed, 17 May 2023 16:28:44 GMT
 recorded_with: VCR 6.1.0

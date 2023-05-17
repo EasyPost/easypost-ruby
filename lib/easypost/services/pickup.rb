@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# The Pickup service allows you to schedule a pickup from your carrier from your customer's residence or place of business.
 class EasyPost::Services::Pickup < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::Pickup
 

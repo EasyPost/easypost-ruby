@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# EndShipper objects are fully-qualified Address objects that require all parameters and get verified upon creation.
 class EasyPost::Services::EndShipper < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::EndShipper
 

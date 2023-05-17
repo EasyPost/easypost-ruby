@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# The Refund service contains details about the Refund of a Shipment.
 class EasyPost::Services::Report < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::Report
 

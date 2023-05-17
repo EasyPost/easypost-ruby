@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# The User service can be used to manage your own account and to create child accounts.
 class EasyPost::Services::User < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::User
 

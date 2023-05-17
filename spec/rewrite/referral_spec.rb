@@ -96,8 +96,8 @@ describe EasyPost::Services::ReferralCustomer do
   end
 
   it 'raises an error when we cannot send details to Stripe' do
-    # allow(client.referral_customer).to receive(:create_stripe_token).and_raise(StandardError)
-    # allow(client.referral_customer).to receive(:retrieve_easypost_stripe_api_key)
+    allow(client.referral_customer).to receive(:create_stripe_token).and_raise(StandardError)
+    allow(client.referral_customer).to receive(:retrieve_easypost_stripe_api_key)
 
     expect {
       client.referral_customer.add_credit_card(

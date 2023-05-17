@@ -294,7 +294,8 @@ module EasyPost::Util
     EasyPost::InternalUtilities::Json.convert_json_to_object(JSON.parse(raw_input), EasyPost::Models::EasyPostObject)
   end
 
-  def self.get_lowest_smartrate(smartrates, delivery_days, delivery_accuracy)
+  # Get the lowest SmartRate from a list of SmartRate.
+  def self.get_lowest_smart_rate(smart_rates, delivery_days, delivery_accuracy)
     valid_delivery_accuracy_values = Set[
       'percentile_50',
       'percentile_75',
@@ -304,25 +305,25 @@ module EasyPost::Util
       'percentile_97',
       'percentile_99',
     ]
-    lowest_smartrate = nil
+    lowest_smart_rate = nil
 
     unless valid_delivery_accuracy_values.include?(delivery_accuracy.downcase)
       raise EasyPost::Error.new("Invalid delivery accuracy value, must be one of: #{valid_delivery_accuracy_values}")
     end
 
-    smartrates.each do |rate|
+    smart_rates.each do |rate|
       next if rate['time_in_transit'][delivery_accuracy] > delivery_days.to_i
 
-      if lowest_smartrate.nil? || rate['rate'].to_f < lowest_smartrate['rate'].to_f
-        lowest_smartrate = rate
+      if lowest_smart_rate.nil? || rate['rate'].to_f < lowest_smart_rate['rate'].to_f
+        lowest_smart_rate = rate
       end
     end
 
-    if lowest_smartrate.nil?
+    if lowest_smart_rate.nil?
       raise EasyPost::Error.new('No rates found.')
     end
 
-    lowest_smartrate
+    lowest_smart_rate
   end
 
   # Validate a webhook by comparing the HMAC signature header sent from EasyPost to your shared secret.

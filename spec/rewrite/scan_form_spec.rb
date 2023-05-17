@@ -2,19 +2,19 @@
 
 require_relative '../spec_helper'
 
-describe EasyPost::ScanForm do
+describe EasyPost::Services::ScanForm do
   let(:client) { EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY']) }
 
   describe '.create' do
     it 'creates a scanform' do
       shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
 
-      scanform = client.scan_form.create(
+      scan_form = client.scan_form.create(
         shipments: [shipment],
       )
 
-      expect(scanform).to be_an_instance_of(EasyPost::Models::ScanForm)
-      expect(scanform.id).to match('sf_')
+      expect(scan_form).to be_an_instance_of(EasyPost::Models::ScanForm)
+      expect(scan_form.id).to match('sf_')
     end
   end
 
@@ -22,28 +22,28 @@ describe EasyPost::ScanForm do
     it 'retrieves a scanform' do
       shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
 
-      scanform = client.scan_form.create(
+      scan_form = client.scan_form.create(
         shipments: [shipment],
       )
 
-      retrieved_scanform = client.scan_form.retrieve(scanform.id)
+      retrieved_scan_form = client.scan_form.retrieve(scan_form.id)
 
-      expect(retrieved_scanform).to be_an_instance_of(EasyPost::Models::ScanForm)
-      expect(retrieved_scanform.to_s).to eq(scanform.to_s)
+      expect(retrieved_scan_form).to be_an_instance_of(EasyPost::Models::ScanForm)
+      expect(retrieved_scan_form.to_s).to eq(scan_form.to_s)
     end
   end
 
   describe '.all' do
     it 'retrieves all scanforms' do
-      scanforms = client.scan_form.all(
+      scan_forms = client.scan_form.all(
         page_size: Fixture.page_size,
       )
 
-      scanforms_array = scanforms.scan_forms
+      scan_forms_array = scan_forms.scan_forms
 
-      expect(scanforms_array.count).to be <= Fixture.page_size
-      expect(scanforms.has_more).not_to be_nil
-      expect(scanforms_array).to all(be_an_instance_of(EasyPost::Models::ScanForm))
+      expect(scan_forms_array.count).to be <= Fixture.page_size
+      expect(scan_forms.has_more).not_to be_nil
+      expect(scan_forms_array).to all(be_an_instance_of(EasyPost::Models::ScanForm))
     end
   end
 

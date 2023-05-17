@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# The Batch service allows you to perform operations on multiple Shipments at once.
 class EasyPost::Services::Batch < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::Batch
 
