@@ -86,8 +86,6 @@
 
   <section class="description">
     
-<p>An <a href="ApiKey.html"><code>ApiKey</code></a> allows you to authenticate with the <a href="../../EasyPost.html"><code>EasyPost</code></a> API.</p>
-
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -114,7 +112,7 @@
           <p>Retrieve all api keys.</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/api_key.rb, line 6</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/api_key.rb, line 5</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;api_keys&#39;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">ApiKey</span>)
 <span class="ruby-keyword">end</span></pre>

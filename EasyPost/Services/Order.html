@@ -89,8 +89,6 @@
 
   <section class="description">
     
-<p>The <a href="Order.html"><code>Order</code></a> service represents a collection of packages and can be used for Multi-Piece Shipments.</p>
-
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -102,7 +100,7 @@
       </header>
       <dl>
         <dt id="MODEL_CLASS">MODEL_CLASS
-        <dd>
+        <dd><p>The <a href="Order.html"><code>Order</code></a> object represents a collection of packages and can be used for Multi-Piece Shipments.</p>
       </dl>
     </section>
 
@@ -126,7 +124,7 @@
           <p>Buy an <a href="Order.html"><code>Order</code></a> object</p>
 
           <div class="method-source-code" id="buy-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/order.rb, line 24</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/order.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">buy</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">Rate</span>)
     <span class="ruby-identifier">params</span> = { <span class="ruby-value">carrier:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:carrier</span>], <span class="ruby-value">service:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:service</span>] }
@@ -153,7 +151,7 @@
           <p>Create an <a href="Order.html"><code>Order</code></a> object</p>
 
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/order.rb, line 8</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/order.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">order:</span> <span class="ruby-identifier">params</span> }
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;orders&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
@@ -177,7 +175,7 @@
           <p>Retrieve new rates for an <a href="Order.html"><code>Order</code></a> object</p>
 
           <div class="method-source-code" id="get_rates-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/order.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/order.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_rates</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;orders/#{id}/rates&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -200,7 +198,7 @@
           <p>Retrieve an <a href="Order.html"><code>Order</code></a> object</p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/order.rb, line 14</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/order.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;orders/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>

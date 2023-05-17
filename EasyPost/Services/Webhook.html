@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class EasyPost::Services::EndShipper - EasyPost Ruby Docs</title>
+<title>class EasyPost::Services::Webhook - EasyPost Ruby Docs</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
@@ -74,6 +74,7 @@
   <ul class="link-list" role="directory">
     <li ><a href="#method-i-all">#all</a>
     <li ><a href="#method-i-create">#create</a>
+    <li ><a href="#method-i-delete">#delete</a>
     <li ><a href="#method-i-retrieve">#retrieve</a>
     <li ><a href="#method-i-update">#update</a>
   </ul>
@@ -82,9 +83,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-EasyPost::Services::EndShipper">
-  <h1 id="class-EasyPost::Services::EndShipper" class="class">
-    class EasyPost::Services::EndShipper
+<main role="main" aria-labelledby="class-EasyPost::Services::Webhook">
+  <h1 id="class-EasyPost::Services::Webhook" class="class">
+    class EasyPost::Services::Webhook
   </h1>
 
   <section class="description">
@@ -100,7 +101,7 @@
       </header>
       <dl>
         <dt id="MODEL_CLASS">MODEL_CLASS
-        <dd><p><a href="EndShipper.html"><code>EndShipper</code></a> objects are fully-qualified Address objects that require all parameters and get verified upon creation.</p>
+        <dd><p>Each <a href="Webhook.html"><code>Webhook</code></a> contains the url which <a href="../../EasyPost.html"><code>EasyPost</code></a> will notify whenever an object in our system updates. Several types of objects are processed asynchronously in the <a href="../../EasyPost.html"><code>EasyPost</code></a> system, so whenever an object updates, an Event is sent via HTTP POST to each configured webhook URL.</p>
       </dl>
     </section>
 
@@ -121,12 +122,12 @@
         </div>
 
         <div class="method-description">
-          <p>Retrieve all <a href="EndShipper.html"><code>EndShipper</code></a> objects.</p>
+          <p>Retrieve a list of Webhooks</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/end_shipper.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;end_shippers&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;webhooks&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -144,14 +145,39 @@
         </div>
 
         <div class="method-description">
-          <p>Create an <a href="EndShipper.html"><code>EndShipper</code></a> object.</p>
+          <p>Create a <a href="Webhook.html"><code>Webhook</code></a>.</p>
 
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/end_shipper.rb, line 7</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
-  <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">address:</span> <span class="ruby-identifier">params</span> }
+  <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">webhook:</span> <span class="ruby-identifier">params</span> }
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;webhooks&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
 
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;end_shippers&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
+
+      </div>
+
+      <div id="method-i-delete" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">delete</span><span
+              class="method-args">(id)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Delete a <a href="Webhook.html"><code>Webhook</code></a>.</p>
+
+          <div class="method-source-code" id="delete-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:delete</span>, <span class="ruby-node">&quot;webhooks/#{id}&quot;</span>)
+
+  <span class="ruby-comment"># Return true if succeeds, an error will be thrown if it fails</span>
+  <span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -169,12 +195,12 @@
         </div>
 
         <div class="method-description">
-          <p>Retrieve an <a href="EndShipper.html"><code>EndShipper</code></a> object.</p>
+          <p>Retrieve a <a href="Webhook.html"><code>Webhook</code></a></p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/end_shipper.rb, line 14</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;end_shippers/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;webhooks/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -186,20 +212,18 @@
         <div class="method-header">
           <div class="method-heading">
             <span class="method-name">update</span><span
-              class="method-args">(id, params)</span>
+              class="method-args">(id, params = {})</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
 
         <div class="method-description">
-          <p>Updates an <a href="EndShipper.html"><code>EndShipper</code></a> object. This requires all parameters to be set.</p>
+          <p>Update a <a href="Webhook.html"><code>Webhook</code></a>.</p>
 
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/end_shipper.rb, line 24</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span>)
-  <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">address:</span> <span class="ruby-identifier">params</span> }
-
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:put</span>, <span class="ruby-node">&quot;end_shippers/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
+            <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:patch</span>, <span class="ruby-node">&quot;webhooks/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

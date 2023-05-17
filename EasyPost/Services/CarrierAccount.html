@@ -90,8 +90,6 @@
 
   <section class="description">
     
-<p>The <a href="CarrierAccount.html"><code>CarrierAccount</code></a> encapsulates your credentials with the carrier.</p>
-
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -105,7 +103,7 @@
         <dt id="CUSTOM_WORKFLOW_CARRIER_TYPES">CUSTOM_WORKFLOW_CARRIER_TYPES
         <dd>
         <dt id="MODEL_CLASS">MODEL_CLASS
-        <dd>
+        <dd><p>A <a href="CarrierAccount.html"><code>CarrierAccount</code></a> encapsulates your credentials with the carrier.</p>
       </dl>
     </section>
 
@@ -129,7 +127,7 @@
           <p>Retrieve all carrier accounts</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 28</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;carrier_accounts&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -152,7 +150,7 @@
           <p>Create a carrier account</p>
 
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 9</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 8</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">carrier_account:</span> <span class="ruby-identifier">params</span> }
 
@@ -184,9 +182,12 @@
           <p>Delete a carrier account</p>
 
           <div class="method-source-code" id="delete-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 39</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:delete</span>, <span class="ruby-node">&quot;carrier_accounts/#{id}&quot;</span>)
+
+  <span class="ruby-comment"># Return true if succeeds, an error will be thrown if it fails</span>
+  <span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -207,7 +208,7 @@
           <p>Retrieve a carrier account</p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 23</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;carrier_accounts/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -230,7 +231,7 @@
           <p>Update a carrier account</p>
 
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 33</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span>)
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">carrier_account:</span> <span class="ruby-identifier">params</span> }
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:put</span>, <span class="ruby-node">&quot;carrier_accounts/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)

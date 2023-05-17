@@ -87,8 +87,6 @@
 
   <section class="description">
     
-<p><a href="Parcel.html"><code>Parcel</code></a> service represents the physical container being shipped.</p>
-
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -100,7 +98,7 @@
       </header>
       <dl>
         <dt id="MODEL_CLASS">MODEL_CLASS
-        <dd>
+        <dd><p><a href="Parcel.html"><code>Parcel</code></a> objects represent the physical container being shipped.</p>
       </dl>
     </section>
 
@@ -124,7 +122,7 @@
           <p>Create a <a href="Parcel.html"><code>Parcel</code></a> object</p>
 
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/parcel.rb, line 8</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/parcel.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">parcel:</span> <span class="ruby-identifier">params</span> }
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;parcels&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
@@ -148,7 +146,7 @@
           <p>Retrieve a <a href="Parcel.html"><code>Parcel</code></a> object</p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/parcel.rb, line 14</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/parcel.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;parcels/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>

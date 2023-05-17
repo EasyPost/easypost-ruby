@@ -89,8 +89,6 @@
 
   <section class="description">
     
-<p>An <a href="Insurance.html"><code>Insurance</code></a> service represents insurance for packages purchased both via the <a href="../../EasyPost.html"><code>EasyPost</code></a> API as well as shipments purchased through third parties and later registered with <a href="../../EasyPost.html"><code>EasyPost</code></a>.</p>
-
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -102,7 +100,7 @@
       </header>
       <dl>
         <dt id="MODEL_CLASS">MODEL_CLASS
-        <dd>
+        <dd><p>An <a href="Insurance.html"><code>Insurance</code></a> object represents insurance for packages purchased both via the <a href="../../EasyPost.html"><code>EasyPost</code></a> API as well as shipments purchased through third parties and later registered with <a href="../../EasyPost.html"><code>EasyPost</code></a>.</p>
       </dl>
     </section>
 
@@ -126,7 +124,7 @@
           <p>Retrieve all <a href="Insurance.html"><code>Insurance</code></a> objects</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/insurance.rb, line 20</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/insurance.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;insurances&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -149,7 +147,7 @@
           <p>Create an <a href="Insurance.html"><code>Insurance</code></a> object</p>
 
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/insurance.rb, line 9</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/insurance.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">insurance:</span> <span class="ruby-identifier">params</span> }
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;insurances&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
@@ -173,7 +171,7 @@
           <p>Get the next page of insurances.</p>
 
           <div class="method-source-code" id="get_next_page-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/insurance.rb, line 25</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/insurance.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">get_next_page_helper</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">insurances</span>, <span class="ruby-string">&#39;insurances&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">page_size</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -196,7 +194,7 @@
           <p>Retrieve an <a href="Insurance.html"><code>Insurance</code></a> object</p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/insurance.rb, line 15</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/insurance.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;insurances/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>

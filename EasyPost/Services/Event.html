@@ -90,8 +90,6 @@
 
   <section class="description">
     
-<p>Webhook Events are triggered by changes in objects you’ve created via the API.</p>
-
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -103,7 +101,7 @@
       </header>
       <dl>
         <dt id="MODEL_CLASS">MODEL_CLASS
-        <dd>
+        <dd><p>Webhook Events are triggered by changes in objects you’ve created via the API.</p>
       </dl>
     </section>
 
@@ -127,7 +125,7 @@
           <p>Retrieve all <a href="Event.html"><code>Event</code></a> objects</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/event.rb, line 15</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/event.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;events&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -150,7 +148,7 @@
           <p>Get the next page of events.</p>
 
           <div class="method-source-code" id="get_next_page-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/event.rb, line 30</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/event.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">get_next_page_helper</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">events</span>, <span class="ruby-string">&#39;events&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">page_size</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -173,7 +171,7 @@
           <p>Retrieve an <a href="Event.html"><code>Event</code></a> object</p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/event.rb, line 10</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/event.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;events/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -196,7 +194,7 @@
           <p>Retrieve all payloads for an event.</p>
 
           <div class="method-source-code" id="retrieve_all_payloads-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/event.rb, line 20</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/event.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve_all_payloads</span>(<span class="ruby-identifier">event_id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;events/#{event_id}/payloads&quot;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">Payload</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -219,7 +217,7 @@
           <p>Retrieve a specific payload for an event.</p>
 
           <div class="method-source-code" id="retrieve_payload-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/event.rb, line 25</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/event.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve_payload</span>(<span class="ruby-identifier">event_id</span>, <span class="ruby-identifier">payload_id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;events/#{event_id}/payloads/#{payload_id}&quot;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">Payload</span>)
 <span class="ruby-keyword">end</span></pre>

@@ -87,8 +87,6 @@
 
   <section class="description">
     
-<p><a href="CustomsInfo.html"><code>CustomsInfo</code></a> service contains CustomsItem objects and all necessary information for the generation of customs forms required for international shipping.</p>
-
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -100,7 +98,7 @@
       </header>
       <dl>
         <dt id="MODEL_CLASS">MODEL_CLASS
-        <dd>
+        <dd><p><a href="CustomsInfo.html"><code>CustomsInfo</code></a> objects contain CustomsItem objects and all necessary information for the generation of customs forms required for international shipping.</p>
       </dl>
     </section>
 
@@ -124,7 +122,7 @@
           <p>Create a <a href="CustomsInfo.html"><code>CustomsInfo</code></a> object</p>
 
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/customs_info.rb, line 8</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/customs_info.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;customs_infos&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -147,7 +145,7 @@
           <p>Retrieve a <a href="CustomsInfo.html"><code>CustomsInfo</code></a> object</p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/customs_info.rb, line 13</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/customs_info.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;customs_infos/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>

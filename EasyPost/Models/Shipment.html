@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class EasyPost::Models::Order - EasyPost Ruby Docs</title>
+<title>class EasyPost::Models::Shipment - EasyPost Ruby Docs</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
@@ -79,14 +79,14 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-EasyPost::Models::Order">
-  <h1 id="class-EasyPost::Models::Order" class="class">
-    class EasyPost::Models::Order
+<main role="main" aria-labelledby="class-EasyPost::Models::Shipment">
+  <h1 id="class-EasyPost::Models::Shipment" class="class">
+    class EasyPost::Models::Shipment
   </h1>
 
   <section class="description">
     
-<p>The Order object represents a collection of packages and can be used for Multi-Piece Shipments.</p>
+<p>The workhorse of the <a href="../../EasyPost.html"><code>EasyPost</code></a> API, a Shipment is made up of a “to” and “from” Address, the Parcel being shipped, and any customs forms required for international deliveries.</p>
 
   </section>
 
@@ -111,10 +111,10 @@
         </div>
 
         <div class="method-description">
-          <p>Get the lowest rate of an <a href="Order.html"><code>Order</code></a> (can exclude by having ‘’!‘` as the first element of your optional filter lists).</p>
+          <p>Get the lowest rate of a <a href="Shipment.html"><code>Shipment</code></a> (can exclude by having ‘’!‘` as the first element of your optional filter lists).</p>
 
           <div class="method-source-code" id="lowest_rate-source">
-            <pre><span class="ruby-comment"># File lib/easypost/models/order.rb, line 6</span>
+            <pre><span class="ruby-comment"># File lib/easypost/models/shipment.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lowest_rate</span>(<span class="ruby-identifier">carriers</span> = [], <span class="ruby-identifier">services</span> = [])
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">get_lowest_object_rate</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">carriers</span>, <span class="ruby-identifier">services</span>)
 <span class="ruby-keyword">end</span></pre>

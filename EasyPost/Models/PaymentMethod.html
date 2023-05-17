@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class EasyPost::Models::Order - EasyPost Ruby Docs</title>
+<title>class EasyPost::Models::PaymentMethod - EasyPost Ruby Docs</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
@@ -67,26 +67,17 @@
     
     
     
-<!-- Method Quickref -->
-<div id="method-list-section" class="nav-section">
-  <h3>Methods</h3>
-
-  <ul class="link-list" role="directory">
-    <li ><a href="#method-i-lowest_rate">#lowest_rate</a>
-  </ul>
-</div>
-
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-EasyPost::Models::Order">
-  <h1 id="class-EasyPost::Models::Order" class="class">
-    class EasyPost::Models::Order
+<main role="main" aria-labelledby="class-EasyPost::Models::PaymentMethod">
+  <h1 id="class-EasyPost::Models::PaymentMethod" class="class">
+    class EasyPost::Models::PaymentMethod
   </h1>
 
   <section class="description">
     
-<p>The Order object represents a collection of packages and can be used for Multi-Piece Shipments.</p>
+<p><a href="PaymentMethod.html"><code>PaymentMethod</code></a> objects represent a payment method of a user.</p>
 
   </section>
 
@@ -95,36 +86,6 @@
 
 
 
-
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Public Instance Methods</h3>
-       </header>
-
-      <div id="method-i-lowest_rate" class="method-detail ">
-        <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">lowest_rate</span><span
-              class="method-args">(carriers = [], services = [])</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-        </div>
-
-        <div class="method-description">
-          <p>Get the lowest rate of an <a href="Order.html"><code>Order</code></a> (can exclude by having ‘’!‘` as the first element of your optional filter lists).</p>
-
-          <div class="method-source-code" id="lowest_rate-source">
-            <pre><span class="ruby-comment"># File lib/easypost/models/order.rb, line 6</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lowest_rate</span>(<span class="ruby-identifier">carriers</span> = [], <span class="ruby-identifier">services</span> = [])
-  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">get_lowest_object_rate</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">carriers</span>, <span class="ruby-identifier">services</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-    </section>
 
   </section>
 </main>

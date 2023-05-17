@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class EasyPost::Models::Order - EasyPost Ruby Docs</title>
+<title>class EasyPost::Services::BetaRate - EasyPost Ruby Docs</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
@@ -61,7 +61,7 @@
 <div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  <p class="link"><a href="EasyPostObject.html">EasyPost::Models::EasyPostObject</a>
+  <p class="link"><a href="Service.html">EasyPost::Services::Service</a>
 </div>
 
     
@@ -72,22 +72,20 @@
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    <li ><a href="#method-i-lowest_rate">#lowest_rate</a>
+    <li ><a href="#method-i-retrieve_stateless_rates">#retrieve_stateless_rates</a>
   </ul>
 </div>
 
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-EasyPost::Models::Order">
-  <h1 id="class-EasyPost::Models::Order" class="class">
-    class EasyPost::Models::Order
+<main role="main" aria-labelledby="class-EasyPost::Services::BetaRate">
+  <h1 id="class-EasyPost::Services::BetaRate" class="class">
+    class EasyPost::Services::BetaRate
   </h1>
 
   <section class="description">
     
-<p>The Order object represents a collection of packages and can be used for Multi-Piece Shipments.</p>
-
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -101,22 +99,26 @@
          <h3>Public Instance Methods</h3>
        </header>
 
-      <div id="method-i-lowest_rate" class="method-detail ">
+      <div id="method-i-retrieve_stateless_rates" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
-            <span class="method-name">lowest_rate</span><span
-              class="method-args">(carriers = [], services = [])</span>
+            <span class="method-name">retrieve_stateless_rates</span><span
+              class="method-args">(params = {})</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
 
         <div class="method-description">
-          <p>Get the lowest rate of an <a href="Order.html"><code>Order</code></a> (can exclude by having ‘’!‘` as the first element of your optional filter lists).</p>
+          <p>Retrieve a list of stateless rates.</p>
 
-          <div class="method-source-code" id="lowest_rate-source">
-            <pre><span class="ruby-comment"># File lib/easypost/models/order.rb, line 6</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lowest_rate</span>(<span class="ruby-identifier">carriers</span> = [], <span class="ruby-identifier">services</span> = [])
-  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">get_lowest_object_rate</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">carriers</span>, <span class="ruby-identifier">services</span>)
+          <div class="method-source-code" id="retrieve_stateless_rates-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/beta_rate.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve_stateless_rates</span>(<span class="ruby-identifier">params</span> = {})
+  <span class="ruby-identifier">wrapped_params</span> = {
+    <span class="ruby-value">shipment:</span> <span class="ruby-identifier">params</span>,
+  }
+
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;rates&#39;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">Rate</span>, <span class="ruby-identifier">wrapped_params</span>, <span class="ruby-string">&#39;beta&#39;</span>).<span class="ruby-identifier">rates</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

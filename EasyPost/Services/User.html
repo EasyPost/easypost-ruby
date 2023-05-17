@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class EasyPost::Services::User - EasyPost Ruby Docs</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+  var index_rel_prefix = "../../";
+</script>
+
+<script src="../../js/navigation.js" defer></script>
+<script src="../../js/search.js" defer></script>
+<script src="../../js/search_index.js" defer></script>
+<script src="../../js/searcher.js" defer></script>
+<script src="../../js/darkfish.js" defer></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+<div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  <p class="link"><a href="Service.html">EasyPost::Services::Service</a>
+</div>
+
+    
+    
+    
+<!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    <li ><a href="#method-i-all_api_keys">#all_api_keys</a>
+    <li ><a href="#method-i-api_keys">#api_keys</a>
+    <li ><a href="#method-i-create">#create</a>
+    <li ><a href="#method-i-delete">#delete</a>
+    <li ><a href="#method-i-retrieve">#retrieve</a>
+    <li ><a href="#method-i-retrieve_me">#retrieve_me</a>
+    <li ><a href="#method-i-update">#update</a>
+    <li ><a href="#method-i-update_brand">#update_brand</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-EasyPost::Services::User">
+  <h1 id="class-EasyPost::Services::User" class="class">
+    class EasyPost::Services::User
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  <section id="5Buntitled-5D" class="documentation-section">
+
+
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+        <dt id="MODEL_CLASS">MODEL_CLASS
+        <dd><p>The <a href="User.html"><code>User</code></a> object can be used to manage your own account and to create child accounts.</p>
+      </dl>
+    </section>
+
+
+
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+      <div id="method-i-all_api_keys" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">all_api_keys</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Retrieve a list of all ApiKey objects.</p>
+
+          <div class="method-source-code" id="all_api_keys-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all_api_keys</span>
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;api_keys&#39;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">ApiKey</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-api_keys" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">api_keys</span><span
+              class="method-args">(id)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Retrieve a list of ApiKey objects (works for the authenticated user or a child user).</p>
+
+          <div class="method-source-code" id="api_keys-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">api_keys</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-identifier">api_keys</span> = <span class="ruby-identifier">all_api_keys</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span>
+    <span class="ruby-comment"># This function was called on the authenticated user</span>
+    <span class="ruby-identifier">my_api_keys</span> = <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">keys</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># This function was called on a child user (authenticated as parent, only return this child user&#39;s details).</span>
+    <span class="ruby-identifier">my_api_keys</span> = []
+    <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span>
+        <span class="ruby-identifier">my_api_keys</span> = <span class="ruby-identifier">child</span>.<span class="ruby-identifier">keys</span>
+        <span class="ruby-keyword">break</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">my_api_keys</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-create" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">create</span><span
+              class="method-args">(params = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Create a child <a href="User.html"><code>User</code></a>.</p>
+
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;users&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-delete" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">delete</span><span
+              class="method-args">(id)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Delete a <a href="User.html"><code>User</code></a></p>
+
+          <div class="method-source-code" id="delete-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:delete</span>, <span class="ruby-node">&quot;users/#{id}&quot;</span>)
+
+  <span class="ruby-comment"># Return true if succeeds, an error will be thrown if it fails</span>
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-retrieve" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">retrieve</span><span
+              class="method-args">(id)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Retrieve a user</p>
+
+          <div class="method-source-code" id="retrieve-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;users/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-retrieve_me" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">retrieve_me</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Retrieve the authenticated <a href="User.html"><code>User</code></a>.</p>
+
+          <div class="method-source-code" id="retrieve_me-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve_me</span>
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;users&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-update" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">update</span><span
+              class="method-args">(id, params = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Update a <a href="User.html"><code>User</code></a></p>
+
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:put</span>, <span class="ruby-node">&quot;users/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-update_brand" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">update_brand</span><span
+              class="method-args">(id, params = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Update the Brand of a <a href="User.html"><code>User</code></a>.</p>
+
+          <div class="method-source-code" id="update_brand-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update_brand</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
+  <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">brand:</span> <span class="ruby-identifier">params</span> }
+
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;users/#{id}/brand&quot;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">Brand</span>, <span class="ruby-identifier">wrapped_params</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.5.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

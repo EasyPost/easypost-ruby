@@ -86,8 +86,6 @@
 
   <section class="description">
     
-<p>A <a href="Rate.html"><code>Rate</code></a> object contains all the details about the rate of a Shipment.</p>
-
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -114,7 +112,7 @@
           <p>Retrieve a <a href="Rate.html"><code>Rate</code></a></p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/rate.rb, line 6</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/rate.rb, line 5</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;rates/#{id}&quot;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">Rate</span>)
 <span class="ruby-keyword">end</span></pre>

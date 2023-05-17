@@ -89,8 +89,6 @@
 
   <section class="description">
     
-<p><a href="Billing.html"><code>Billing</code></a> class that users can manage their payment and fund</p>
-
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -117,7 +115,7 @@
           <p>Get payment method info (type of the payment method and ID of the payment method)</p>
 
           <div class="method-source-code" id="get_payment_method_info-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 6</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 5</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_payment_method_info</span>(<span class="ruby-identifier">priority</span>)
   <span class="ruby-identifier">payment_methods</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Services</span><span class="ruby-operator">::</span><span class="ruby-constant">Billing</span>.<span class="ruby-identifier">retrieve_payment_methods</span>
   <span class="ruby-identifier">payment_method_map</span> = {
@@ -170,7 +168,7 @@
           <p>Delete a payment method.</p>
 
           <div class="method-source-code" id="delete_payment_method-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 47</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_payment_method</span>(<span class="ruby-identifier">priority</span>)
   <span class="ruby-identifier">payment_info</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Services</span><span class="ruby-operator">::</span><span class="ruby-constant">Billing</span>.<span class="ruby-identifier">get_payment_method_info</span>(<span class="ruby-identifier">priority</span>.<span class="ruby-identifier">downcase</span>)
   <span class="ruby-identifier">endpoint</span> = <span class="ruby-identifier">payment_info</span>[<span class="ruby-value">0</span>]
@@ -200,7 +198,7 @@
           <p>Fund your <a href="../../EasyPost.html"><code>EasyPost</code></a> wallet by charging your primary or secondary card on file.</p>
 
           <div class="method-source-code" id="fund_wallet-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 34</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fund_wallet</span>(<span class="ruby-identifier">amount</span>, <span class="ruby-identifier">priority</span> = <span class="ruby-string">&#39;primary&#39;</span>)
   <span class="ruby-identifier">payment_info</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Services</span><span class="ruby-operator">::</span><span class="ruby-constant">Billing</span>.<span class="ruby-identifier">get_payment_method_info</span>(<span class="ruby-identifier">priority</span>.<span class="ruby-identifier">downcase</span>)
   <span class="ruby-identifier">endpoint</span> = <span class="ruby-identifier">payment_info</span>[<span class="ruby-value">0</span>]
@@ -231,7 +229,7 @@
           <p>Retrieve all payment methods.</p>
 
           <div class="method-source-code" id="retrieve_payment_methods-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 59</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 58</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve_payment_methods</span>
   <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;/v2/payment_methods&#39;</span>)
 

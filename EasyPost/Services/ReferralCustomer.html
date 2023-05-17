@@ -90,8 +90,6 @@
 
   <section class="description">
     
-<p><a href="ReferralCustomer.html"><code>ReferralCustomer</code></a> objects are User objects created from a Partner user.</p>
-
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -103,7 +101,7 @@
       </header>
       <dl>
         <dt id="MODEL_CLASS">MODEL_CLASS
-        <dd>
+        <dd><p>The User object can be used to manage your own account and to create child accounts.</p>
       </dl>
     </section>
 
@@ -127,7 +125,7 @@
           <p>Add credit card to a referral customer. This function requires the <a href="ReferralCustomer.html"><code>ReferralCustomer</code></a> Customer’s API key.</p>
 
           <div class="method-source-code" id="add_credit_card-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/referral_customer.rb, line 36</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/referral_customer.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_credit_card</span>(<span class="ruby-identifier">referral_api_key</span>, <span class="ruby-identifier">number</span>, <span class="ruby-identifier">expiration_month</span>, <span class="ruby-identifier">expiration_year</span>, <span class="ruby-identifier">cvc</span>, <span class="ruby-identifier">priority</span> = <span class="ruby-string">&#39;primary&#39;</span>)
   <span class="ruby-identifier">easypost_stripe_api_key</span> = <span class="ruby-identifier">retrieve_easypost_stripe_api_key</span>
 
@@ -164,7 +162,7 @@
           <p>Retrieve a list of referral customers. This function requires the Partner User’s API key.</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/referral_customer.rb, line 26</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/referral_customer.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;referral_customers&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -187,7 +185,7 @@
           <p>Create a referral customer. This function requires the Partner User’s API key.</p>
 
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/referral_customer.rb, line 8</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/referral_customer.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;referral_customers&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, { <span class="ruby-value">user:</span> <span class="ruby-identifier">params</span> })
 <span class="ruby-keyword">end</span></pre>
@@ -210,7 +208,7 @@
           <p>Get the next page of referral customers.</p>
 
           <div class="method-source-code" id="get_next_page-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/referral_customer.rb, line 31</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/referral_customer.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">get_next_page_helper</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">referral_customers</span>, <span class="ruby-string">&#39;referral_customers&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">page_size</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -233,7 +231,7 @@
           <p>Update a referral customer. This function requires the Partner User’s API key.</p>
 
           <div class="method-source-code" id="update_email-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/referral_customer.rb, line 13</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/referral_customer.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update_email</span>(<span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">email</span>)
   <span class="ruby-identifier">wrapped_params</span> = {
     <span class="ruby-value">user:</span> {
