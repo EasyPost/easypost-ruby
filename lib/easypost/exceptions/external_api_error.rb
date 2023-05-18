@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 
 class EasyPost::Exceptions::ExternalApiError < EasyPost::Exceptions::EasyPostError
-  attr_reader :status_code, :code
+  attr_reader :status_code
 
-  def initialize(message, status_code = nil, error_type = nil)
+  def initialize(message, status_code = nil)
     super message
     @status_code = status_code
-    @code = error_type
   end
 
   def pretty_print
-    "#{code} (#{status_code}): #{message}"
+    "(#{status_code}): #{message}"
   end
 end

@@ -76,7 +76,7 @@ class EasyPost::Client
   )
     response = @http_client.request(method, endpoint, nil, body, api_version)
 
-    potential_error = EasyPost::Exceptions::ApiError.get_potential_error(response)
+    potential_error = EasyPost::Exceptions::ApiError.handle_api_error(response)
     raise potential_error unless potential_error.nil?
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response.body, cls)

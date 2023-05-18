@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../spec_helper'
+require 'spec_helper'
 
 describe EasyPost::Exceptions do
   let(:client) { EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY']) }
