@@ -19,7 +19,9 @@ describe EasyPost::Client do
     it 'create a client with a missing api key' do
       expect {
         described_class.new(api_key: nil)
-      }.to raise_error(EasyPost::Error, 'API key is required.')
+      }.to raise_error(
+             EasyPost::Exceptions::MissingParameterError,
+             EasyPost::Constants::ErrorMessages::MISSING_REQUIRED_PARAMETER % 'api_key',)
     end
 
     it 'create a client with read timeout' do

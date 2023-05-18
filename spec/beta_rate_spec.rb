@@ -22,11 +22,11 @@ describe EasyPost::Services::BetaRate do
 
         expect {
           EasyPost::Util.get_lowest_stateless_rate(stateless_rates, ['invalid_carrier'])
-        }.to raise_error(EasyPost::Error, 'No rates found.')
+        }.to raise_error(EasyPost::Exceptions::FilteringError, EasyPost::Constants::ErrorMessages::NO_MATCHING_RATES)
 
         expect {
           EasyPost::Util.get_lowest_stateless_rate(stateless_rates, [], ['invalid_service'])
-        }.to raise_error(EasyPost::Error, 'No rates found.')
+        }.to raise_error(EasyPost::Exceptions::FilteringError, EasyPost::Constants::ErrorMessages::NO_MATCHING_RATES)
       end
     end
   end

@@ -6,11 +6,11 @@ require 'easypost/constants'
 class EasyPost::Exceptions::ApiError < EasyPost::Exceptions::EasyPostError
   attr_reader :status_code, :code, :errors
 
-  def initialize(message, status_code = nil, error_type = nil, errors = nil)
+  def initialize(message, status_code = nil, error_code = nil, sub_errors = nil)
     super message
     @status_code = status_code
-    @code = error_type
-    @errors = errors
+    @code = error_code
+    @errors = sub_errors
   end
 
   def pretty_print
@@ -19,6 +19,20 @@ class EasyPost::Exceptions::ApiError < EasyPost::Exceptions::EasyPostError
       error_string += "\nField: #{error.field}\nMessage: #{error.message}"
     end
     error_string
+  end
+
+  # Recursively traverses a JSON element to extract error messages and returns them as a comma-separated string.
+  def self.collect_error_messages(error_message, messages_list)
+    case error_message
+    when Hash
+      error_message.each_value { |value| collect_error_messages(value, messages_list) }
+    when Array
+      error_message.each { |value| collect_error_messages(value, messages_list) }
+    else
+      messages_list.push(error_message.to_s)
+    end
+
+    messages_list.join(', ')
   end
 
   def self.handle_api_error(response)
@@ -36,7 +50,7 @@ class EasyPost::Exceptions::ApiError < EasyPost::Exceptions::EasyPostError
       error_message = error_data['message']
       error_type = error_data['code']
       errors = error_data['errors']&.map do |error|
-        EasyPost::InternalUtilities::Json.convert_json_to_object(error, EasyPost::Models::Error)
+        EasyPost::Models::Error.from_api_error_response(error)
       end
     rescue StandardError
       error_message = response.code.to_s

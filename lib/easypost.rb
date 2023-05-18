@@ -5,7 +5,6 @@ require 'cgi'
 require 'net/http'
 
 require 'easypost/version'
-require 'easypost/error'
 require 'easypost/connection'
 require 'easypost/util'
 

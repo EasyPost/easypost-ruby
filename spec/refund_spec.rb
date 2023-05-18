@@ -48,9 +48,9 @@ describe EasyPost::Services::Refund do
 
         # Did we actually get a new page?
         expect(first_page_first_id).not_to eq(next_page_first_id)
-      rescue EasyPost::Error => e
+      rescue EasyPost::Exceptions::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.
-        expect(e.message).to eq('There are no more pages to retrieve.')
+        expect(e.message).to eq(EasyPost::Constants::ErrorMessages::NO_MORE_PAGES)
       end
     end
   end
