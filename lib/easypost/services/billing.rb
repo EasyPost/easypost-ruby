@@ -61,7 +61,7 @@ class EasyPost::Services::Billing < EasyPost::Services::Service
     response = @client.make_request(:get, '/v2/payment_methods')
 
     if response['id'].nil?
-      raise EasyPost::Exceptions::InvalidObjectError.new(EasyPost::Constants::ErrorMessages::NO_PAYMENT_METHODS)
+      raise EasyPost::Exceptions::InvalidObjectError.new(EasyPost::Constants::NO_PAYMENT_METHODS)
     end
 
     response

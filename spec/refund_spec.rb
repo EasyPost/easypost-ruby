@@ -50,7 +50,7 @@ describe EasyPost::Services::Refund do
         expect(first_page_first_id).not_to eq(next_page_first_id)
       rescue EasyPost::Exceptions::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.
-        expect(e.message).to eq(EasyPost::Constants::ErrorMessages::NO_MORE_PAGES)
+        expect(e.message).to eq(EasyPost::Constants::NO_MORE_PAGES)
       end
     end
   end

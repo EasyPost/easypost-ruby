@@ -95,7 +95,7 @@ describe EasyPost::Services::Webhook do
         EasyPost::Util.validate_webhook(Fixture.event_bytes, headers, webhook_secret)
       }.to raise_error(
         EasyPost::Exceptions::SignatureVerificationError,
-        EasyPost::Constants::ErrorMessages::WEBHOOK_SIGNATURE_MISMATCH,
+        EasyPost::Constants::WEBHOOK_SIGNATURE_MISMATCH,
       )
     end
 
@@ -109,7 +109,7 @@ describe EasyPost::Services::Webhook do
         EasyPost::Util.validate_webhook(Fixture.event_bytes, headers, webhook_secret)
       }.to raise_error(
         EasyPost::Exceptions::SignatureVerificationError,
-        EasyPost::Constants::ErrorMessages::WEBHOOK_MISSING_SIGNATURE,
+        EasyPost::Constants::WEBHOOK_MISSING_SIGNATURE,
       )
     end
   end

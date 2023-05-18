@@ -8,9 +8,9 @@ describe EasyPost::Exceptions do
 
   describe 'api error' do
     it 'raised when API returns error' do
-      expect do
+      expect {
         fake_client.address.create({})
-      end.to raise_error(EasyPost::Exceptions::ApiError)
+      }.to raise_error(EasyPost::Exceptions::ApiError)
     end
 
     it 'deserialize HTTP error response properly' do
@@ -22,12 +22,12 @@ describe EasyPost::Exceptions do
       expect(e.message).to eq('Unable to verify address.')
       expect(e.code).to eq('ADDRESS.VERIFY.FAILURE')
       expect(e.errors).to be_a(Array)
-      expect(e.errors).to_not be_empty
+      expect(e.errors).not_to be_empty
       first_error = e.errors.first
       expect(first_error).to be_a(EasyPost::Models::Error)
-      expect(first_error.field).to_not be_nil
-      expect(first_error.code).to_not be_nil
-      expect(first_error.message).to_not be_nil
+      expect(first_error.field).not_to be_nil
+      expect(first_error.code).not_to be_nil
+      expect(first_error.message).not_to be_nil
     end
 
     it 'pretty prints properly' do
@@ -36,7 +36,7 @@ describe EasyPost::Exceptions do
       client.address.verify(address.id)
     rescue EasyPost::Exceptions::InvalidRequestError => e
       expect(e.pretty_print).to be_a(String)
-      expect(e.pretty_print).to_not be_empty
+      expect(e.pretty_print).not_to be_empty
       expect(e.pretty_print).to include('Unable to verify address.')
     end
   end

@@ -4,6 +4,6 @@ require 'easypost/constants'
 
 class EasyPost::Exceptions::InvalidParameterError < EasyPost::Exceptions::EasyPostError
   def initialize(parameter, tip = nil)
-    super EasyPost::Constants::ErrorMessages::INVALID_PARAMETER % parameter + (tip.nil? ? '' : tip)
+    super EasyPost::Constants::INVALID_PARAMETER % parameter + (tip.nil? ? '' : tip)
   end
 end

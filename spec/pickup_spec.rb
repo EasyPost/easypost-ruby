@@ -66,7 +66,7 @@ describe EasyPost::Services::Pickup do
         expect(first_page_first_id).not_to eq(next_page_first_id)
       rescue EasyPost::Exceptions::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.
-        expect(e.message).to eq(EasyPost::Constants::ErrorMessages::NO_MORE_PAGES)
+        expect(e.message).to eq(EasyPost::Constants::NO_MORE_PAGES)
       end
     end
   end
@@ -153,12 +153,12 @@ describe EasyPost::Services::Pickup do
       # Test lowest rate with service filter (should error due to bad service)
       expect {
         pickup.lowest_rate([], ['BAD SERVICE'])
-      }.to raise_error(EasyPost::Exceptions::FilteringError, EasyPost::Constants::ErrorMessages::NO_MATCHING_RATES)
+      }.to raise_error(EasyPost::Exceptions::FilteringError, EasyPost::Constants::NO_MATCHING_RATES)
 
       # Test lowest rate with carrier filter (should error due to bad carrier)
       expect {
         pickup.lowest_rate(['BAD CARRIER'], [])
-      }.to raise_error(EasyPost::Exceptions::FilteringError, EasyPost::Constants::ErrorMessages::NO_MATCHING_RATES)
+      }.to raise_error(EasyPost::Exceptions::FilteringError, EasyPost::Constants::NO_MATCHING_RATES)
     end
   end
 end

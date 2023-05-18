@@ -54,14 +54,14 @@ class EasyPost::Exceptions::ApiError < EasyPost::Exceptions::EasyPostError
       end
     rescue StandardError
       error_message = response.code.to_s
-      error_type = EasyPost::Constants::ErrorMessages::API_ERROR_DETAILS_PARSING_ERROR
+      error_type = EasyPost::Constants::API_ERROR_DETAILS_PARSING_ERROR
       errors = nil
     end
 
     cls = exception_cls_from_status_code(status_code)
 
     if cls == EasyPost::Exceptions::UnknownHttpError
-      error_message = EasyPost::Constants::ErrorMessages::UNEXPECTED_HTTP_STATUS_CODE % status_code
+      error_message = EasyPost::Constants::UNEXPECTED_HTTP_STATUS_CODE % status_code
       raise EasyPost::Exceptions::UnknownHttpError.new(error_message, status_code, nil, nil)
     end
 
@@ -70,6 +70,7 @@ class EasyPost::Exceptions::ApiError < EasyPost::Exceptions::EasyPostError
   end
 
   def self.exception_cls_from_status_code(status_code)
+    # rubocop:disable Lint/DuplicateBranch
     case status_code
     when 0
       EasyPost::Exceptions::ConnectionError
@@ -100,5 +101,6 @@ class EasyPost::Exceptions::ApiError < EasyPost::Exceptions::EasyPostError
     else
       EasyPost::Exceptions::UnknownHttpError
     end
+    # rubocop:enable Lint/DuplicateBranch
   end
 end

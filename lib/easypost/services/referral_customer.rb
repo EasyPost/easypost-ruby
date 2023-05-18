@@ -44,7 +44,7 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
         easypost_stripe_api_key,
       )
     rescue StandardError
-      msg = EasyPost::Constants::ErrorMessages::STRIPE_CARD_CREATE_FAILED
+      msg = EasyPost::Constants::STRIPE_CARD_CREATE_FAILED
       raise EasyPost::Exceptions::ExternalApiError.new(msg)
     end
 

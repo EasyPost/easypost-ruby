@@ -51,7 +51,9 @@ module EasyPost::Util
       end
     end
 
-    raise EasyPost::Exceptions::FilteringError.new(EasyPost::Constants::ErrorMessages::NO_MATCHING_RATES) if lowest_rate.nil?
+    if lowest_rate.nil?
+      raise EasyPost::Exceptions::FilteringError.new(EasyPost::Constants::NO_MATCHING_RATES)
+    end
 
     lowest_rate
   end
@@ -103,7 +105,9 @@ module EasyPost::Util
       end
     end
 
-    raise EasyPost::Exceptions::FilteringError.new(EasyPost::Constants::ErrorMessages::NO_MATCHING_RATES) if lowest_rate.nil?
+    if lowest_rate.nil?
+      raise EasyPost::Exceptions::FilteringError.new(EasyPost::Constants::NO_MATCHING_RATES)
+    end
 
     lowest_rate
   end
@@ -140,7 +144,7 @@ module EasyPost::Util
     end
 
     if lowest_smart_rate.nil?
-      raise EasyPost::Exceptions::FilteringError.new(EasyPost::Constants::ErrorMessages::NO_MATCHING_RATES)
+      raise EasyPost::Exceptions::FilteringError.new(EasyPost::Constants::NO_MATCHING_RATES)
     end
 
     lowest_smart_rate
@@ -154,7 +158,7 @@ module EasyPost::Util
     easypost_hmac_signature = headers['X-Hmac-Signature']
 
     if easypost_hmac_signature.nil?
-      msg = EasyPost::Constants::ErrorMessages::WEBHOOK_MISSING_SIGNATURE
+      msg = EasyPost::Constants::WEBHOOK_MISSING_SIGNATURE
       raise EasyPost::Exceptions::SignatureVerificationError.new(msg)
     end
 
@@ -163,7 +167,7 @@ module EasyPost::Util
     expected_signature = OpenSSL::HMAC.hexdigest('sha256', encoded_webhook_secret, event_body)
     digest = "hmac-sha256-hex=#{expected_signature}"
     unless digest == easypost_hmac_signature
-      msg = EasyPost::Constants::ErrorMessages::WEBHOOK_SIGNATURE_MISMATCH
+      msg = EasyPost::Constants::WEBHOOK_SIGNATURE_MISMATCH
       raise EasyPost::Exceptions::SignatureVerificationError.new(msg)
     end
 

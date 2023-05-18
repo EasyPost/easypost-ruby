@@ -88,7 +88,7 @@ describe EasyPost::Services::Order do
       # Test lowest rate with carrier filter (should error due to bad carrier)
       expect {
         shipment.lowest_rate(['BAD CARRIER'], [])
-      }.to raise_error(EasyPost::Exceptions::FilteringError, EasyPost::Constants::ErrorMessages::NO_MATCHING_RATES)
+      }.to raise_error(EasyPost::Exceptions::FilteringError, EasyPost::Constants::NO_MATCHING_RATES)
     end
   end
 end

@@ -28,4 +28,3 @@ require_relative 'exceptions/api/ssl_error'
 require_relative 'exceptions/api/timeout_error'
 require_relative 'exceptions/api/unauthorized_error'
 require_relative 'exceptions/api/unknown_http_error'
-
