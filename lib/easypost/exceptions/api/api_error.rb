@@ -48,7 +48,7 @@ class EasyPost::Exceptions::ApiError < EasyPost::Exceptions::EasyPostError
 
     if cls == EasyPost::Exceptions::UnknownHttpError
       error_message = EasyPost::Constants::ErrorMessages::UNEXPECTED_HTTP_STATUS_CODE % status_code
-      raise(EasyPost::Exceptions::UnknownHttpError.new(error_message, status_code, nil, nil))
+      raise EasyPost::Exceptions::UnknownHttpError.new(error_message, status_code, nil, nil)
     end
 
     # Return (don't throw here) an instance of the appropriate error class

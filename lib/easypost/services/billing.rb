@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'easypost/constants'
+
 class EasyPost::Services::Billing < EasyPost::Services::Service
   # Get payment method info (type of the payment method and ID of the payment method)
   def self.get_payment_method_info(priority)
@@ -12,7 +14,7 @@ class EasyPost::Services::Billing < EasyPost::Services::Service
     payment_method_to_use = payment_method_map[priority]
 
     error_string = 'The chosen payment method is not valid. Please try again.'
-    raise EasyPost::Error.new(error_string) if payment_methods[payment_method_to_use].nil?
+    raise EasyPost::Exceptions::EasyPostError.new(error_string) if payment_methods[payment_method_to_use].nil?
 
     payment_method_id = payment_methods[payment_method_to_use]['id']
 
@@ -22,7 +24,7 @@ class EasyPost::Services::Billing < EasyPost::Services::Service
       elsif payment_method_id.start_with?('bank_')
         endpoint = '/v2/bank_accounts'
       else
-        raise EasyPost::Error.new(error_string)
+        raise EasyPost::Exceptions::EasyPostError.new(error_string)
       end
     end
 
@@ -59,7 +61,7 @@ class EasyPost::Services::Billing < EasyPost::Services::Service
     response = @client.make_request(:get, '/v2/payment_methods')
 
     if response['id'].nil?
-      raise EasyPost::Error.new('Billing has not been setup for this user. Please add a payment method.')
+      raise EasyPost::Exceptions::InvalidObjectError.new(EasyPost::Constants::ErrorMessages::NO_PAYMENT_METHODS)
     end
 
     response

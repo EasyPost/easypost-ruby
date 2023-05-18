@@ -4,7 +4,13 @@ module EasyPost::Exceptions
 end
 
 require_relative 'exceptions/easy_post_error'
+require_relative 'exceptions/end_of_pagination_error'
 require_relative 'exceptions/external_api_error'
+require_relative 'exceptions/filtering_error'
+require_relative 'exceptions/invalid_object_error'
+require_relative 'exceptions/invalid_parameter_error'
+require_relative 'exceptions/missing_parameter_error'
+require_relative 'exceptions/signature_verification_error'
 require_relative 'exceptions/api/api_error'
 require_relative 'exceptions/api/connection_error'
 require_relative 'exceptions/api/gateway_timeout_error'

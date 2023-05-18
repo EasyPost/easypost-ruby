@@ -9,6 +9,10 @@ class EasyPost::Exceptions::ExternalApiError < EasyPost::Exceptions::EasyPostErr
   end
 
   def pretty_print
+    if status_code.nil?
+      return message
+    end
+
     "(#{status_code}): #{message}"
   end
 end

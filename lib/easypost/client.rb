@@ -9,7 +9,7 @@ class EasyPost::Client
   attr_reader :open_timeout, :read_timeout, :api_base
 
   def initialize(api_key:, read_timeout: 60, open_timeout: 30, api_base: 'https://api.easypost.com')
-    raise EasyPost::Error.new('API key is required.') if api_key.nil?
+    raise EasyPost::Exceptions::MissingParameterError.new('api_key') if api_key.nil?
 
     @api_key = api_key
     @api_base = api_base

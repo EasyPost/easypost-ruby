@@ -44,7 +44,8 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
         easypost_stripe_api_key,
       )
     rescue StandardError
-      raise EasyPost::Error.new('Could not send card details to Stripe, please try again later.')
+      msg = EasyPost::Constants::ErrorMessages::STRIPE_CARD_CREATE_FAILED
+      raise EasyPost::Exceptions::ExternalApiError.new(msg)
     end
 
     create_easypost_credit_card(referral_api_key, stripe_credit_card_token, priority)

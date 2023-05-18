@@ -22,6 +22,6 @@ class EasyPost::Services::Service
     end
 
     # issue with getting the next page
-    raise EasyPost::Error.new('There are no more pages to retrieve.')
+    raise EasyPost::Exceptions::EndOfPaginationError.new
   end
 end
