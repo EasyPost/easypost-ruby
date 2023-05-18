@@ -205,7 +205,7 @@
   <span class="ruby-identifier">payment_id</span> = <span class="ruby-identifier">payment_info</span>[<span class="ruby-value">1</span>]
 
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">amount:</span> <span class="ruby-identifier">amount</span> }
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-node">&quot;#{endpoint}/#{payment_id}/charges&quot;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>, <span class="ruby-identifier">wrapped_params</span>)
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-node">&quot;#{endpoint}/#{payment_id}/charges&quot;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>, <span class="ruby-identifier">wrapped_params</span>)
 
   <span class="ruby-comment"># Return true if succeeds, an error will be thrown if it fails</span>
   <span class="ruby-keyword">true</span>

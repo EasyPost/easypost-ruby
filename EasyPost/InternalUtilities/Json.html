@@ -98,7 +98,7 @@
         <div class="method-header">
           <div class="method-heading">
             <span class="method-name">convert_json_to_object</span><span
-              class="method-args">(data, cls)</span>
+              class="method-args">(data, cls = EasyPost::Models::EasyPostObject)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
@@ -108,7 +108,7 @@
 
           <div class="method-source-code" id="convert_json_to_object-source">
             <pre><span class="ruby-comment"># File lib/easypost/utilities/json.rb, line 4</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_json_to_object</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">cls</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_json_to_object</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">cls</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>)
   <span class="ruby-identifier">data</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">data</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-comment"># Parse JSON to a Hash or Array if it&#39;s a string</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
     <span class="ruby-comment"># Deserialize array data into an array of objects</span>

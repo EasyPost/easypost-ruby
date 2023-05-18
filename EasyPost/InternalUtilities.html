@@ -66,6 +66,10 @@
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
+    <li ><a href="#method-c-build_dict_key">::build_dict_key</a>
+    <li ><a href="#method-c-form_encode_params">::form_encode_params</a>
+    <li ><a href="#method-c-normalize_string_list">::normalize_string_list</a>
+    <li ><a href="#method-c-objects_to_ids">::objects_to_ids</a>
     <li ><a href="#method-c-to_snake_case">::to_snake_case</a>
   </ul>
 </div>
@@ -93,6 +97,128 @@
          <h3>Public Class Methods</h3>
        </header>
 
+      <div id="method-c-build_dict_key" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">build_dict_key</span><span
+              class="method-args">(keys)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Build a dict key from a list of keys. Example: [code, number] -&gt; <a href="number">code</a></p>
+
+          <div class="method-source-code" id="build_dict_key-source">
+            <pre><span class="ruby-comment"># File lib/easypost/internal_utilities.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">build_dict_key</span>(<span class="ruby-identifier">keys</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">keys</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_s</span>
+
+  <span class="ruby-identifier">keys</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">result</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;[#{key}]&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-form_encode_params" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">form_encode_params</span><span
+              class="method-args">(hash, parent_keys = [], parent_dict = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Form-encode a multi-layer dictionary to a one-layer dictionary.</p>
+
+          <div class="method-source-code" id="form_encode_params-source">
+            <pre><span class="ruby-comment"># File lib/easypost/internal_utilities.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">form_encode_params</span>(<span class="ruby-identifier">hash</span>, <span class="ruby-identifier">parent_keys</span> = [], <span class="ruby-identifier">parent_dict</span> = {})
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">parent_dict</span> <span class="ruby-keyword">or</span> {}
+  <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">parent_keys</span> <span class="ruby-keyword">or</span> []
+
+  <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">Hash</span>)
+      <span class="ruby-identifier">keys</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">key</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">form_encode_params</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">keys</span>, <span class="ruby-identifier">result</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">dict_key</span> = <span class="ruby-identifier">build_dict_key</span>(<span class="ruby-identifier">keys</span> <span class="ruby-operator">+</span> [<span class="ruby-identifier">key</span>])
+      <span class="ruby-identifier">result</span>[<span class="ruby-identifier">dict_key</span>] = <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-normalize_string_list" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">normalize_string_list</span><span
+              class="method-args">(lst)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Normalizes a list of strings.</p>
+
+          <div class="method-source-code" id="normalize_string_list-source">
+            <pre><span class="ruby-comment"># File lib/easypost/internal_utilities.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">normalize_string_list</span>(<span class="ruby-identifier">lst</span>)
+  <span class="ruby-identifier">lst</span> = <span class="ruby-identifier">lst</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">lst</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>) <span class="ruby-operator">:</span> <span class="ruby-constant">Array</span>(<span class="ruby-identifier">lst</span>)
+  <span class="ruby-identifier">lst</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_s</span>).<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:downcase</span>).<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:strip</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-c-objects_to_ids" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">objects_to_ids</span><span
+              class="method-args">(obj)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Converts an object to an object ID.</p>
+
+          <div class="method-source-code" id="objects_to_ids-source">
+            <pre><span class="ruby-comment"># File lib/easypost/internal_utilities.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">objects_to_ids</span>(<span class="ruby-identifier">obj</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">obj</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>
+    { <span class="ruby-value">id:</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">id</span> }
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Hash</span>
+    <span class="ruby-identifier">result</span> = {}
+    <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">result</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">objects_to_ids</span>(<span class="ruby-identifier">v</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span> }
+    <span class="ruby-identifier">result</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span>
+    <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">objects_to_ids</span>(<span class="ruby-identifier">v</span>) }
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">obj</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
       <div id="method-c-to_snake_case" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
@@ -103,10 +229,10 @@
         </div>
 
         <div class="method-description">
-          
+          <p>Convert a string to snake case</p>
 
           <div class="method-source-code" id="to_snake_case-source">
-            <pre><span class="ruby-comment"># File lib/easypost/internal_utilities.rb, line 4</span>
+            <pre><span class="ruby-comment"># File lib/easypost/internal_utilities.rb, line 5</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">to_snake_case</span>(<span class="ruby-identifier">str</span>)
   <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/([A-Z]+)([A-Z][a-z])/</span>, <span class="ruby-string">&#39;\1_\2&#39;</span>)
      .<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/([a-z\d])([A-Z])/</span>, <span class="ruby-string">&#39;\1_\2&#39;</span>)

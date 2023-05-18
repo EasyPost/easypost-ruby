@@ -151,7 +151,7 @@
           <div class="method-source-code" id="buy-source">
             <pre><span class="ruby-comment"># File lib/easypost/services/pickup.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">buy</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">PickupRate</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">PickupRate</span>)
     <span class="ruby-identifier">params</span> = { <span class="ruby-value">carrier:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:carrier</span>], <span class="ruby-value">service:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:service</span>] }
   <span class="ruby-keyword">end</span>
 
