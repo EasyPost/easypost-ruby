@@ -77,7 +77,7 @@ EasyPost.default_connection = lambda do |method, path, api_key = nil, body = nil
     }
     .public_send(method, path) { |request|
       request.headers['Authorization'] = EasyPost.authorization(api_key)
-      request.body = JSON.dump(EasyPost::Util.objects_to_ids(body)) if body
+      request.body = JSON.dump(EasyPost::InternalUtilities.objects_to_ids(body)) if body
     }.yield_self { |response|
       EasyPost.parse_response(
         status: response.status,
@@ -98,7 +98,7 @@ EasyPost.default_connection = lambda do |method, path, api_key = nil, body = nil
     method,
     File.join(EasyPost.api_base, path),
     headers: EasyPost.default_headers.merge('Authorization' => EasyPost.authorization(api_key)),
-    body: body.nil? ? nil : JSON.dump(EasyPost::Util.objects_to_ids(body)),
+    body: body.nil? ? nil : JSON.dump(EasyPost::InternalUtilities.objects_to_ids(body)),
   ).yield_self { |response|
     EasyPost.parse_response(
       status: response.code,

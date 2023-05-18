@@ -76,7 +76,7 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
       },
     }
 
-    form_encoded_params = EasyPost::Util.form_encode_params(credit_card_hash)
+    form_encoded_params = EasyPost::InternalUtilities.form_encode_params(credit_card_hash)
 
     uri = URI.parse('https://api.stripe.com/v1/tokens')
     http = Net::HTTP.new(uri.host, uri.port)

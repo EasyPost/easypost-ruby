@@ -2,17 +2,19 @@
 
 require 'spec_helper'
 
-describe EasyPost::Pickup do
+describe EasyPost::Services::Pickup do
+  let(:client) { EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY']) }
+
   describe '.create' do
     it 'creates a pickup' do
-      shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
+      shipment = client.shipment.create(Fixture.one_call_buy_shipment)
 
       pickup_data = Fixture.basic_pickup
       pickup_data[:shipment] = shipment
 
-      pickup = described_class.create(pickup_data)
+      pickup = client.pickup.create(pickup_data)
 
-      expect(pickup).to be_an_instance_of(described_class)
+      expect(pickup).to be_an_instance_of(EasyPost::Models::Pickup)
       expect(pickup.id).to match('pickup_')
       expect(pickup.pickup_rates).not_to be_nil
     end
@@ -20,23 +22,23 @@ describe EasyPost::Pickup do
 
   describe '.retrieve' do
     it 'retrieves a pickup' do
-      shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
+      shipment = client.shipment.create(Fixture.one_call_buy_shipment)
 
       pickup_data = Fixture.basic_pickup
       pickup_data[:shipment] = shipment
 
-      pickup = described_class.create(pickup_data)
+      pickup = client.pickup.create(pickup_data)
 
-      retrieved_pickup = described_class.retrieve(pickup.id)
+      retrieved_pickup = client.pickup.retrieve(pickup.id)
 
-      expect(retrieved_pickup).to be_an_instance_of(described_class)
-      expect(retrieved_pickup.to_s).to eq(pickup.to_s)
+      expect(retrieved_pickup).to be_an_instance_of(EasyPost::Models::Pickup)
+      expect(retrieved_pickup.id.to_s).to eq(pickup.id.to_s)
     end
   end
 
   describe '.all' do
     it 'retrieves all pickups' do
-      pickups = described_class.all(
+      pickups = client.pickup.all(
         page_size: Fixture.page_size,
       )
 
@@ -44,18 +46,18 @@ describe EasyPost::Pickup do
 
       expect(pickups_array.count).to be <= Fixture.page_size
       expect(pickups.has_more).not_to be_nil
-      expect(pickups_array).to all(be_an_instance_of(described_class))
+      expect(pickups_array).to all(be_an_instance_of(EasyPost::Models::Pickup))
     end
   end
 
   describe '.get_next_page' do
     it 'retrieves the next page of a collection' do
-      first_page = described_class.all(
+      first_page = client.pickup.all(
         page_size: Fixture.page_size,
       )
 
       begin
-        next_page = described_class.get_next_page(first_page)
+        next_page = client.pickup.get_next_page(first_page)
 
         first_page_first_id = first_page.pickups.first.id
         next_page_first_id = next_page.pickups.first.id
@@ -71,35 +73,38 @@ describe EasyPost::Pickup do
 
   describe '.buy' do
     it 'buys a pickup' do
-      shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
+      shipment = client.shipment.create(Fixture.one_call_buy_shipment)
 
       pickup_data = Fixture.basic_pickup
       pickup_data[:shipment] = shipment
 
-      pickup = described_class.create(pickup_data)
+      pickup = client.pickup.create(pickup_data)
 
-      bought_pickup = pickup.buy(
-        carrier: Fixture.usps,
-        service: Fixture.pickup_service,
+      bought_pickup = client.pickup.buy(
+        pickup.id,
+        {
+          carrier: Fixture.usps,
+          service: 'NextDay',
+        },
       )
 
-      expect(bought_pickup).to be_an_instance_of(described_class)
+      expect(bought_pickup).to be_an_instance_of(EasyPost::Models::Pickup)
       expect(bought_pickup.id).to match('pickup_')
       expect(bought_pickup.confirmation).not_to be_nil
       expect(bought_pickup.status).to eq('scheduled')
     end
 
     it 'buys a pickup with a pickup_rate object' do
-      shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
+      shipment = client.shipment.create(Fixture.one_call_buy_shipment)
 
       pickup_data = Fixture.basic_pickup
       pickup_data[:shipment] = shipment
 
-      pickup = described_class.create(pickup_data)
+      pickup = client.pickup.create(pickup_data)
 
-      bought_pickup = pickup.buy(pickup.lowest_rate)
+      bought_pickup = client.pickup.buy(pickup.id, pickup.lowest_rate)
 
-      expect(bought_pickup).to be_an_instance_of(described_class)
+      expect(bought_pickup).to be_an_instance_of(EasyPost::Models::Pickup)
       expect(bought_pickup.id).to match('pickup_')
       expect(bought_pickup.confirmation).not_to be_nil
       expect(bought_pickup.status).to eq('scheduled')
@@ -108,20 +113,23 @@ describe EasyPost::Pickup do
 
   describe '.cancel' do
     it 'cancels a pickup' do
-      shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
+      shipment = client.shipment.create(Fixture.one_call_buy_shipment)
 
       pickup_data = Fixture.basic_pickup
       pickup_data[:shipment] = shipment
 
-      pickup = described_class.create(pickup_data)
-      bought_pickup = pickup.buy(
-        carrier: Fixture.usps,
-        service: Fixture.pickup_service,
+      pickup = client.pickup.create(pickup_data)
+      bought_pickup = client.pickup.buy(
+        pickup.id,
+        {
+          carrier: Fixture.usps,
+          service: 'NextDay',
+        },
       )
 
-      cancelled_pickup = bought_pickup.cancel
+      cancelled_pickup = client.pickup.cancel(bought_pickup.id)
 
-      expect(cancelled_pickup).to be_an_instance_of(described_class)
+      expect(cancelled_pickup).to be_an_instance_of(EasyPost::Models::Pickup)
       expect(cancelled_pickup.id).to match('pickup_')
       expect(cancelled_pickup.status).to eq('canceled')
     end
@@ -129,12 +137,12 @@ describe EasyPost::Pickup do
 
   describe '.lowest_rate' do
     it 'tests various usage alterations of the lowest_rate method' do
-      shipment = EasyPost::Shipment.create(Fixture.one_call_buy_shipment)
+      shipment = client.shipment.create(Fixture.one_call_buy_shipment)
 
       pickup_data = Fixture.basic_pickup
       pickup_data[:shipment] = shipment
 
-      pickup = described_class.create(pickup_data)
+      pickup = client.pickup.create(pickup_data)
 
       # Test lowest rate with no filters
       lowest_rate = pickup.lowest_rate

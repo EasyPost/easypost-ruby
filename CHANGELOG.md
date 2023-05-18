@@ -17,6 +17,7 @@
 - Bumps all dev dependencies
 - Improves Error Deserialization to dynamically handle edge cases that have a bad format
 - Adds `retrieve_estimated_delivery_date` function in Shipment
+- Removes deprecated `endshipper` beta class, please use the GA one `EasyPost::Services::EndShipper`
 
 ## v4.13.0 (2023-04-04)
 

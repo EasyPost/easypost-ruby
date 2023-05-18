@@ -21,7 +21,7 @@ class EasyPost::Services::Pickup < EasyPost::Services::Service
 
   # Buy a Pickup
   def buy(id, params = {})
-    if params.instance_of?(EasyPost::PickupRate)
+    if params.instance_of?(EasyPost::Models::PickupRate)
       params = { carrier: params[:carrier], service: params[:service] }
     end
 
