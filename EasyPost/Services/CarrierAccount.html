@@ -222,7 +222,7 @@
         <div class="method-header">
           <div class="method-heading">
             <span class="method-name">update</span><span
-              class="method-args">(id, params)</span>
+              class="method-args">(id, params = {})</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
@@ -232,7 +232,7 @@
 
           <div class="method-source-code" id="update-source">
             <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 32</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">carrier_account:</span> <span class="ruby-identifier">params</span> }
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:put</span>, <span class="ruby-node">&quot;carrier_accounts/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
 <span class="ruby-keyword">end</span></pre>

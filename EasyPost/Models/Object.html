@@ -75,6 +75,7 @@
     <li ><a href="#method-c-new">::new</a>
     <li ><a href="#method-i-5B-5D">#[]</a>
     <li ><a href="#method-i-5B-5D-3D">#[]=</a>
+    <li ><a href="#method-i-to_hash">#to_hash</a>
     <li ><a href="#method-i-to_s">#to_s</a>
   </ul>
 </div>
@@ -148,7 +149,7 @@
           <p>Get element of an array.</p>
 
           <div class="method-source-code" id="5B-5D-source">
-            <pre><span class="ruby-comment"># File lib/easypost/models/base.rb, line 18</span>
+            <pre><span class="ruby-comment"># File lib/easypost/models/base.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]</span>(<span class="ruby-identifier">key</span>)
   <span class="ruby-ivar">@values</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -171,9 +172,32 @@
           <p>Set the element of an array.</p>
 
           <div class="method-source-code" id="5B-5D-3D-source">
-            <pre><span class="ruby-comment"># File lib/easypost/models/base.rb, line 23</span>
+            <pre><span class="ruby-comment"># File lib/easypost/models/base.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">[]=</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
   <span class="ruby-identifier">send</span>(<span class="ruby-value">:&quot;#{key}=&quot;</span>, <span class="ruby-identifier">value</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-to_hash" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">to_hash</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Convert object to hash</p>
+
+          <div class="method-source-code" id="to_hash-source">
+            <pre><span class="ruby-comment"># File lib/easypost/models/base.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_hash</span>
+  <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-constant">JSON</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@values</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
