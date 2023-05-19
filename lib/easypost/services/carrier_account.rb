@@ -29,7 +29,7 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
   end
 
   # Update a carrier account
-  def update(id, params)
+  def update(id, params = {})
     wrapped_params = { carrier_account: params }
     @client.make_request(:put, "carrier_accounts/#{id}", MODEL_CLASS, wrapped_params)
   end

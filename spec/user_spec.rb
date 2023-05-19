@@ -44,7 +44,7 @@ describe EasyPost::Services::User, :authenticate_prod do
 
       test_name = 'New Test Name'
 
-      updated_user = client.user.update(user.id, test_name)
+      updated_user = client.user.update(user.id, name: test_name)
 
       expect(updated_user).to be_an_instance_of(EasyPost::Models::User)
       expect(updated_user.id).to match('user_')

@@ -57,7 +57,7 @@ describe EasyPost::Services::CarrierAccount do
 
       carrier_account = client.carrier_account.create(Fixture.basic_carrier_account)
 
-      updated_carrier_account = client.carrier_account.update(carrier_account.id, { description: test_description })
+      updated_carrier_account = client.carrier_account.update(carrier_account.id, description: test_description)
 
       expect(updated_carrier_account).to be_an_instance_of(EasyPost::Models::CarrierAccount)
       expect(updated_carrier_account.id).to match('ca_')
