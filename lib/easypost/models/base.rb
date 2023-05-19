@@ -15,7 +15,7 @@ class EasyPost::Models::Object
   end
 
   # Convert object to hash
-  def to_hash(_options = {})
+  def to_hash
     JSON.parse(JSON.dump(@values))
   end
 
