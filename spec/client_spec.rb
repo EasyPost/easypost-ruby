@@ -26,21 +26,19 @@ describe EasyPost::Client do
     end
 
     it 'create a client with read timeout' do
-      # TODO: This error should be EasyPost::Timeout when we overhaul error handling
       client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'], read_timeout: 0.001, open_timeout: 10)
 
       expect {
         client.address.create(Fixture.ca_address1)
-      }.to raise_error(StandardError)
+      }.to raise_error(EasyPost::Exceptions::TimeoutError)
     end
 
     it 'create a client with open timeout' do
-      # TODO: This error should be EasyPost::Timeout when we overhaul error handling
       client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'], read_timeout: 10, open_timeout: 0.001)
 
       expect {
         client.address.create(Fixture.ca_address1)
-      }.to raise_error(StandardError)
+      }.to raise_error(EasyPost::Exceptions::TimeoutError)
     end
   end
 end

@@ -27,11 +27,16 @@ class EasyPost::HttpClient
     request.body = JSON.dump(EasyPost::InternalUtilities.objects_to_ids(body)) if body
 
     # Execute the request, return the response.
-    Net::HTTP.start(
-      uri.host,
-      uri.port, use_ssl: true, read_timeout: @config[:read_timeout], open_timeout: @config[:open_timeout],
-    ) do |http|
-      http.request(request)
+
+    begin
+      Net::HTTP.start(
+        uri.host,
+        uri.port, use_ssl: true, read_timeout: @config[:read_timeout], open_timeout: @config[:open_timeout],
+      ) do |http|
+        http.request(request)
+      end
+    rescue Net::ReadTimeout, Net::OpenTimeout => e
+      raise EasyPost::Exceptions::TimeoutError.new(e.message)
     end
   end
 end
