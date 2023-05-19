@@ -78,10 +78,12 @@ class EasyPost::Exceptions::ApiError < EasyPost::Exceptions::EasyPostError
       EasyPost::Exceptions::UnknownHttpError
     when 300, 301, 302, 303, 304, 305, 306, 307, 308
       EasyPost::Exceptions::RedirectError
-    when 401, 403
+    when 401
       EasyPost::Exceptions::UnauthorizedError
     when 402
       EasyPost::Exceptions::PaymentError
+    when 403
+      EasyPost::Exceptions::ForbiddenError
     when 404
       EasyPost::Exceptions::NotFoundError
     when 405
