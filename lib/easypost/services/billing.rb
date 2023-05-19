@@ -13,8 +13,14 @@ class EasyPost::Services::Billing < EasyPost::Services::Service
 
     payment_method_to_use = payment_method_map[priority]
 
-    error_string = 'The chosen payment method is not valid. Please try again.'
-    raise EasyPost::Exceptions::EasyPostError.new(error_string) if payment_methods[payment_method_to_use].nil?
+    error_string = EasyPost::Constants::INVALID_PAYMENT_METHOD
+    suggestion = "Please use a valid payment method: #{payment_method_map.keys.join(', ')}"
+    if payment_methods[payment_method_to_use].nil?
+      raise EasyPost::Errors::InvalidParameterError.new(
+        error_string,
+        suggestion,
+      )
+    end
 
     payment_method_id = payment_methods[payment_method_to_use]['id']
 
@@ -24,7 +30,7 @@ class EasyPost::Services::Billing < EasyPost::Services::Service
       elsif payment_method_id.start_with?('bank_')
         endpoint = '/v2/bank_accounts'
       else
-        raise EasyPost::Exceptions::EasyPostError.new(error_string)
+        raise EasyPost::Errors::InvalidObjectError.new(error_string)
       end
     end
 
@@ -61,7 +67,7 @@ class EasyPost::Services::Billing < EasyPost::Services::Service
     response = @client.make_request(:get, '/v2/payment_methods')
 
     if response['id'].nil?
-      raise EasyPost::Exceptions::InvalidObjectError.new(EasyPost::Constants::NO_PAYMENT_METHODS)
+      raise EasyPost::Errors::InvalidObjectError.new(EasyPost::Constants::NO_PAYMENT_METHODS)
     end
 
     response

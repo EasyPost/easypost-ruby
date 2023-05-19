@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe EasyPost::Exceptions do
+describe EasyPost::Errors do
   let(:client) { EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY']) }
   let(:fake_client) { EasyPost::Client.new(api_key: 'not_a_real_key') }
 
@@ -10,14 +10,14 @@ describe EasyPost::Exceptions do
     it 'raised when API returns error' do
       expect {
         fake_client.address.create({})
-      }.to raise_error(EasyPost::Exceptions::ApiError)
+      }.to raise_error(EasyPost::Errors::ApiError)
     end
 
     it 'deserialize HTTP error response properly' do
       # bad request
       address = client.address.create(street1: 'invalid')
       client.address.verify(address.id)
-    rescue EasyPost::Exceptions::InvalidRequestError => e
+    rescue EasyPost::Errors::InvalidRequestError => e
       # should construct an InvalidRequestError object correctly
       expect(e.message).to eq('Unable to verify address.')
       expect(e.code).to eq('ADDRESS.VERIFY.FAILURE')
@@ -34,7 +34,7 @@ describe EasyPost::Exceptions do
       # bad request
       address = client.address.create(street1: 'invalid')
       client.address.verify(address.id)
-    rescue EasyPost::Exceptions::InvalidRequestError => e
+    rescue EasyPost::Errors::InvalidRequestError => e
       expect(e.pretty_print).to be_a(String)
       expect(e.pretty_print).not_to be_empty
       expect(e.pretty_print).to include('Unable to verify address.')

@@ -9,7 +9,7 @@ class EasyPost::Client
   attr_reader :open_timeout, :read_timeout, :api_base
 
   def initialize(api_key:, read_timeout: 60, open_timeout: 30, api_base: 'https://api.easypost.com')
-    raise EasyPost::Exceptions::MissingParameterError.new('api_key') if api_key.nil?
+    raise EasyPost::Errors::MissingParameterError.new('api_key') if api_key.nil?
 
     @api_key = api_key
     @api_base = api_base
@@ -76,7 +76,7 @@ class EasyPost::Client
   )
     response = @http_client.request(method, endpoint, nil, body, api_version)
 
-    potential_error = EasyPost::Exceptions::ApiError.handle_api_error(response)
+    potential_error = EasyPost::Errors::ApiError.handle_api_error(response)
     raise potential_error unless potential_error.nil?
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response.body, cls)

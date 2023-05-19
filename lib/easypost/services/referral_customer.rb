@@ -45,7 +45,7 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
       )
     rescue StandardError
       msg = EasyPost::Constants::STRIPE_CARD_CREATE_FAILED
-      raise EasyPost::Exceptions::ExternalApiError.new(msg)
+      raise EasyPost::Errors::ExternalApiError.new(msg)
     end
 
     create_easypost_credit_card(referral_api_key, stripe_credit_card_token, priority)

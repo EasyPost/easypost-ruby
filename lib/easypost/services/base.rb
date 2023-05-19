@@ -22,6 +22,6 @@ class EasyPost::Services::Service
     end
 
     # issue with getting the next page
-    raise EasyPost::Exceptions::EndOfPaginationError.new
+    raise EasyPost::Errors::EndOfPaginationError.new
   end
 end

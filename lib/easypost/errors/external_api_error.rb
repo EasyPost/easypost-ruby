@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class EasyPost::Exceptions::ExternalApiError < EasyPost::Exceptions::EasyPostError
+class EasyPost::Errors::ExternalApiError < EasyPost::Errors::EasyPostError
   attr_reader :status_code
 
   def initialize(message, status_code = nil)

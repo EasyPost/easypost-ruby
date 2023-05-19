@@ -15,7 +15,7 @@ describe EasyPost::Services::BetaReferralCustomer do
           'cus_123',
           'ba_123',
         )
-      }.to raise_error(EasyPost::Exceptions::EasyPostError).with_message('Invalid Payment Gateway Reference.')
+      }.to raise_error(EasyPost::Errors::EasyPostError).with_message('Invalid Payment Gateway Reference.')
     end
   end
 
@@ -26,7 +26,7 @@ describe EasyPost::Services::BetaReferralCustomer do
         client.beta_referral_customer.refund_by_amount(
           2000,
         )
-      }.to raise_error(EasyPost::Exceptions::EasyPostError).with_message(
+      }.to raise_error(EasyPost::Errors::EasyPostError).with_message(
         'Refund amount is invalid. Please use a valid amount or escalate to finance.',
       )
     end
@@ -39,7 +39,7 @@ describe EasyPost::Services::BetaReferralCustomer do
         client.beta_referral_customer.refund_by_payment_log(
           'paylog_123',
         )
-      }.to raise_error(EasyPost::Exceptions::EasyPostError).with_message(
+      }.to raise_error(EasyPost::Errors::EasyPostError).with_message(
         'We could not find a transaction with that id.',
       )
     end

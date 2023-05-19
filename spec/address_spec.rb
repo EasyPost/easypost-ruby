@@ -89,7 +89,7 @@ describe EasyPost::Services::Address do
 
         # Did we actually get a new page?
         expect(first_page_first_id).not_to eq(next_page_first_id)
-      rescue EasyPost::Exceptions::EndOfPaginationError => e
+      rescue EasyPost::Errors::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.
         expect(e.message).to eq(EasyPost::Constants::NO_MORE_PAGES)
       end
@@ -121,7 +121,7 @@ describe EasyPost::Services::Address do
     it 'throws an error for invalid address verification' do
       address = client.address.create(street1: 'invalid')
       client.address.verify(address.id)
-    rescue EasyPost::Exceptions::InvalidRequestError => e
+    rescue EasyPost::Errors::InvalidRequestError => e
       expect(e.message).to eq('Unable to verify address.')
     end
   end

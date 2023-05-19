@@ -19,7 +19,7 @@ require 'easypost/services'
 require 'easypost/models'
 
 # Exceptions
-require 'easypost/exceptions'
+require 'easypost/errors'
 
 # Internal Utilities
 require 'easypost/internal_utilities'

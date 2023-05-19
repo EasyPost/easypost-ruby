@@ -52,7 +52,7 @@ module EasyPost::Util
     end
 
     if lowest_rate.nil?
-      raise EasyPost::Exceptions::FilteringError.new(EasyPost::Constants::NO_MATCHING_RATES)
+      raise EasyPost::Errors::FilteringError.new(EasyPost::Constants::NO_MATCHING_RATES)
     end
 
     lowest_rate
@@ -106,7 +106,7 @@ module EasyPost::Util
     end
 
     if lowest_rate.nil?
-      raise EasyPost::Exceptions::FilteringError.new(EasyPost::Constants::NO_MATCHING_RATES)
+      raise EasyPost::Errors::FilteringError.new(EasyPost::Constants::NO_MATCHING_RATES)
     end
 
     lowest_rate
@@ -131,8 +131,8 @@ module EasyPost::Util
     lowest_smart_rate = nil
 
     unless valid_delivery_accuracy_values.include?(delivery_accuracy.downcase)
-      tip = "Must be one of: #{valid_delivery_accuracy_values}"
-      raise EasyPost::Exceptions::InvalidParameterError.new('delivery_accuracy', tip)
+      suggestion = "Must be one of: #{valid_delivery_accuracy_values}"
+      raise EasyPost::Errors::InvalidParameterError.new('delivery_accuracy', suggestion)
     end
 
     smart_rates.each do |rate|
@@ -144,7 +144,7 @@ module EasyPost::Util
     end
 
     if lowest_smart_rate.nil?
-      raise EasyPost::Exceptions::FilteringError.new(EasyPost::Constants::NO_MATCHING_RATES)
+      raise EasyPost::Errors::FilteringError.new(EasyPost::Constants::NO_MATCHING_RATES)
     end
 
     lowest_smart_rate
@@ -159,7 +159,7 @@ module EasyPost::Util
 
     if easypost_hmac_signature.nil?
       msg = EasyPost::Constants::WEBHOOK_MISSING_SIGNATURE
-      raise EasyPost::Exceptions::SignatureVerificationError.new(msg)
+      raise EasyPost::Errors::SignatureVerificationError.new(msg)
     end
 
     encoded_webhook_secret = webhook_secret.unicode_normalize(:nfkd).encode('utf-8')
@@ -168,7 +168,7 @@ module EasyPost::Util
     digest = "hmac-sha256-hex=#{expected_signature}"
     unless digest == easypost_hmac_signature
       msg = EasyPost::Constants::WEBHOOK_SIGNATURE_MISMATCH
-      raise EasyPost::Exceptions::SignatureVerificationError.new(msg)
+      raise EasyPost::Errors::SignatureVerificationError.new(msg)
     end
 
     JSON.parse(event_body)

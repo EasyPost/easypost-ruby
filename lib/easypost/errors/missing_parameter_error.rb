@@ -2,7 +2,7 @@
 
 require 'easypost/constants'
 
-class EasyPost::Exceptions::MissingParameterError < EasyPost::Exceptions::EasyPostError
+class EasyPost::Errors::MissingParameterError < EasyPost::Errors::EasyPostError
   def initialize(parameter)
     super EasyPost::Constants::MISSING_REQUIRED_PARAMETER % parameter
   end

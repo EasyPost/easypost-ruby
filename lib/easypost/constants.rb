@@ -11,4 +11,5 @@ class EasyPost::Constants
   WEBHOOK_SIGNATURE_MISMATCH = 'Webhook received did not originate from EasyPost or had a webhook secret mismatch.'
   WEBHOOK_MISSING_SIGNATURE = 'Webhook received does not contain an HMAC signature.'
   STRIPE_CARD_CREATE_FAILED = 'Could not send card details to Stripe, please try again later.'
+  INVALID_PAYMENT_METHOD = 'The chosen payment method is not valid. Please try again.'
 end

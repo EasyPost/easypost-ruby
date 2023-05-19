@@ -3,7 +3,7 @@
 require_relative '../easy_post_error'
 require 'easypost/constants'
 
-class EasyPost::Exceptions::ApiError < EasyPost::Exceptions::EasyPostError
+class EasyPost::Errors::ApiError < EasyPost::Errors::EasyPostError
   attr_reader :status_code, :code, :errors
 
   def initialize(message, status_code = nil, error_code = nil, sub_errors = nil)
@@ -60,9 +60,9 @@ class EasyPost::Exceptions::ApiError < EasyPost::Exceptions::EasyPostError
 
     cls = exception_cls_from_status_code(status_code)
 
-    if cls == EasyPost::Exceptions::UnknownHttpError
+    if cls == EasyPost::Errors::UnknownHttpError
       error_message = EasyPost::Constants::UNEXPECTED_HTTP_STATUS_CODE % status_code
-      return EasyPost::Exceptions::UnknownHttpError.new(error_message, status_code, nil, nil)
+      return EasyPost::Errors::UnknownHttpError.new(error_message, status_code, nil, nil)
     end
 
     # Return (don't throw here) an instance of the appropriate error class
@@ -70,39 +70,36 @@ class EasyPost::Exceptions::ApiError < EasyPost::Exceptions::EasyPostError
   end
 
   def self.exception_cls_from_status_code(status_code)
-    # rubocop:disable Lint/DuplicateBranch
     case status_code
     when 0
-      EasyPost::Exceptions::ConnectionError
-    when 100, 101, 102, 103
-      EasyPost::Exceptions::UnknownHttpError
+      EasyPost::Errors::ConnectionError
     when 300, 301, 302, 303, 304, 305, 306, 307, 308
-      EasyPost::Exceptions::RedirectError
+      EasyPost::Errors::RedirectError
     when 401
-      EasyPost::Exceptions::UnauthorizedError
+      EasyPost::Errors::UnauthorizedError
     when 402
-      EasyPost::Exceptions::PaymentError
+      EasyPost::Errors::PaymentError
     when 403
-      EasyPost::Exceptions::ForbiddenError
+      EasyPost::Errors::ForbiddenError
     when 404
-      EasyPost::Exceptions::NotFoundError
+      EasyPost::Errors::NotFoundError
     when 405
-      EasyPost::Exceptions::MethodNotAllowedError
+      EasyPost::Errors::MethodNotAllowedError
     when 408
-      EasyPost::Exceptions::TimeoutError
+      EasyPost::Errors::TimeoutError
     when 422
-      EasyPost::Exceptions::InvalidRequestError
+      EasyPost::Errors::InvalidRequestError
     when 429
-      EasyPost::Exceptions::RateLimitError
+      EasyPost::Errors::RateLimitError
     when 500
-      EasyPost::Exceptions::InternalServerError
+      EasyPost::Errors::InternalServerError
     when 502, 504
-      EasyPost::Exceptions::GatewayTimeoutError
+      EasyPost::Errors::GatewayTimeoutError
     when 503
-      EasyPost::Exceptions::ServiceUnavailableError
+      EasyPost::Errors::ServiceUnavailableError
     else
-      EasyPost::Exceptions::UnknownHttpError
+      # 1xx codes will also be caught here
+      EasyPost::Errors::UnknownHttpError
     end
-    # rubocop:enable Lint/DuplicateBranch
   end
 end

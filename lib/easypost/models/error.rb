@@ -11,6 +11,7 @@ class EasyPost::Models::Error
     @message = message
   end
 
+  # Create an EasyPost Error from an API error response.
   def self.from_api_error_response(data)
     code = data['code']
     field = data['field'] || nil

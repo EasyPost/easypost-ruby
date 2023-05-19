@@ -20,7 +20,7 @@ describe EasyPost::Client do
       expect {
         described_class.new(api_key: nil)
       }.to raise_error(
-        EasyPost::Exceptions::MissingParameterError,
+        EasyPost::Errors::MissingParameterError,
         EasyPost::Constants::MISSING_REQUIRED_PARAMETER % 'api_key',
       )
     end
@@ -30,7 +30,7 @@ describe EasyPost::Client do
 
       expect {
         client.address.create(Fixture.ca_address1)
-      }.to raise_error(EasyPost::Exceptions::TimeoutError)
+      }.to raise_error(EasyPost::Errors::TimeoutError)
     end
 
     it 'create a client with open timeout' do
@@ -38,7 +38,7 @@ describe EasyPost::Client do
 
       expect {
         client.address.create(Fixture.ca_address1)
-      }.to raise_error(EasyPost::Exceptions::TimeoutError)
+      }.to raise_error(EasyPost::Errors::TimeoutError)
     end
   end
 end
