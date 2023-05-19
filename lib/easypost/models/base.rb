@@ -14,6 +14,11 @@ class EasyPost::Models::Object
     JSON.dump(@values)
   end
 
+  # Convert object to hash
+  def to_hash
+    JSON.parse(JSON.dump(@values))
+  end
+
   # Get element of an array.
   def [](key)
     @values[key.to_s]
@@ -27,9 +32,9 @@ class EasyPost::Models::Object
   private
 
   def add_properties(values)
-    values.each do |key, val|
-      define_singleton_method(key) { handle_value(val) } # getter
-      define_singleton_method("#{key}=") { |v| handle_value(v) } # setter
+    values.each do |key, _|
+      define_singleton_method(key) { handle_value(@values[key]) } # getter
+      define_singleton_method("#{key}=") { |v| @values[key] = handle_value(v) } # setter
     end
   end
 

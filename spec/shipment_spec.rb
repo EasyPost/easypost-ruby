@@ -150,7 +150,8 @@ describe EasyPost::Services::Shipment do
 
       bought_shipment = client.shipment.buy(
         shipment.id,
-        shipment.lowest_rate,
+        rate: shipment.lowest_rate,
+        insurance: '244.99',
       )
 
       expect(bought_shipment.postage_label).not_to be_nil

@@ -110,4 +110,26 @@ describe EasyPost::Util do
       expect(object.first).to be_a(EasyPost::Models::Address)
     end
   end
+
+  describe 'Setter and getter' do
+    it 'Test updating/retrieving an EasyPostObject attribute' do
+      data = { 'id' => 'adr_123' }
+      address = EasyPost::InternalUtilities::Json.convert_json_to_object(data, EasyPost::Models::Address)
+      address.id = 'fake_id'
+
+      expect(address.id).to eq('fake_id')
+    end
+  end
+
+  describe '.to_hash' do
+    it 'Test converting EasyPostObject to hash' do
+      data = { 'id' => 'adr_123' }
+      address = EasyPost::InternalUtilities::Json.convert_json_to_object(data, EasyPost::Models::Address)
+      address.id = address.id = 'fake_id'
+
+      address_hash = address.to_hash
+
+      expect(address_hash).to eq({ 'id' => 'fake_id' })
+    end
+  end
 end

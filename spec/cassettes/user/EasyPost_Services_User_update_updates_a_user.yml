@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0464652e1ae0dc9bc000070db9
+      - 16285a466467b52ce0d9d59d001eb816
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -47,19 +47,18 @@ http_interactions:
       Etag:
       - W/"b323cd47aad616c4c360d28086676214"
       X-Runtime:
-      - '0.045526'
+      - '0.046945'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb6nuq
+      - bigweb5nuq
       X-Version-Label:
-      - easypost-202305171805-88442329bc-master
+      - easypost-202305180228-bcb90ccbd6-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
+      - extlb2nuq 5ab12a3ed2
       - intlb2nuq a29e4ad05c
-      - intlb2wdc a29e4ad05c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -67,13 +66,13 @@ http_interactions:
       string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"New
         Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
         User","phone_number":"8005550100","verified":true,"created_at":"2023-05-16T22:01:20Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
-  recorded_at: Wed, 17 May 2023 19:42:18 GMT
+  recorded_at: Fri, 19 May 2023 17:43:08 GMT
 - request:
     method: put
     uri: https://api.easypost.com/v2/users/user_0f6b83e3530b401cb1e8aeaa6a250d4d
     body:
       encoding: UTF-8
-      string: '"New Test Name"'
+      string: '{"name":"New Test Name"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -103,7 +102,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0864652e1be0dc9bc100070dcf
+      - 16285a456467b52ce0d9d59e001eb835
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -115,19 +114,18 @@ http_interactions:
       Etag:
       - W/"b323cd47aad616c4c360d28086676214"
       X-Runtime:
-      - '0.039937'
+      - '0.064499'
       Transfer-Encoding:
       - chunked
       X-Node:
       - bigweb1nuq
       X-Version-Label:
-      - easypost-202305171925-180fff930b-master
+      - easypost-202305180228-bcb90ccbd6-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
+      - extlb2nuq 5ab12a3ed2
       - intlb1nuq a29e4ad05c
-      - intlb2wdc a29e4ad05c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -135,5 +133,5 @@ http_interactions:
       string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"New
         Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
         User","phone_number":"8005550100","verified":true,"created_at":"2023-05-16T22:01:20Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
-  recorded_at: Wed, 17 May 2023 19:42:19 GMT
+  recorded_at: Fri, 19 May 2023 17:43:08 GMT
 recorded_with: VCR 6.1.0
