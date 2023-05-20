@@ -55,7 +55,6 @@ describe EasyPost::Client do
       )
 
       client.address.retrieve('adr_123')
-
     end
   end
 end

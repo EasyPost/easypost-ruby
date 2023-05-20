@@ -25,6 +25,7 @@ class EasyPost::HttpClient
     read_timeout = @config[:read_timeout]
 
     # Execute the request, return the response.
+
     if @custom_client_exec
       @custom_client_exec.call(method, uri, headers, open_timeout, read_timeout, body)
     else
