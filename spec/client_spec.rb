@@ -40,5 +40,22 @@ describe EasyPost::Client do
         client.address.create(Fixture.ca_address1)
       }.to raise_error(EasyPost::Errors::TimeoutError)
     end
+
+    it 'calls custom client exec' do
+      client = described_class.new(
+        api_key: ENV['EASYPOST_TEST_API_KEY'],
+        custom_client_exec: lambda { |method, uri, headers, open_timeout, read_timeout, body = nil|
+          expect(method).to eq('get')
+          expect(uri).to be_a(URI)
+          expect(headers).to be_a(Hash)
+          expect(open_timeout).to eq(10)
+          expect(read_timeout).to eq(10)
+          expect(body).to be_nil
+        },
+      )
+
+      client.address.retrieve('adr_123')
+
+    end
   end
 end
