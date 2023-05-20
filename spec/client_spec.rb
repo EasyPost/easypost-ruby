@@ -45,16 +45,19 @@ describe EasyPost::Client do
       client = described_class.new(
         api_key: ENV['EASYPOST_TEST_API_KEY'],
         custom_client_exec: lambda { |method, uri, headers, open_timeout, read_timeout, body = nil|
-          expect(method).to eq('get')
+          expect(method).to eq(:get)
           expect(uri).to be_a(URI)
           expect(headers).to be_a(Hash)
-          expect(open_timeout).to eq(10)
-          expect(read_timeout).to eq(10)
+          expect(open_timeout).to eq(30)
+          expect(read_timeout).to eq(60)
           expect(body).to be_nil
+          return OpenStruct.new(status_code: 401, body: '{}')
         },
       )
 
-      client.address.retrieve('adr_123')
+      expect {
+        client.address.retrieve('adr_123')
+      }.to raise_error(StandardError) # should throw error because our lambda returns 401
     end
   end
 end
