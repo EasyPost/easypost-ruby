@@ -24,9 +24,9 @@ A simple create & buy shipment example:
 ```ruby
 require 'easypost'
 
-EasyPost.api_key = ENV['EASYPOST_API_KEY']
+client = EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY'])
 
-shipment = EasyPost::Shipment.create(
+shipment = client.shipment.create(
   from_address: {
     company: 'EasyPost',
     street1: '118 2nd Street',
@@ -53,9 +53,9 @@ shipment = EasyPost::Shipment.create(
   },
 )
 
-shipment.buy(rate: shipment.lowest_rate)
+bought_shipment = client.shipment.buy(shipment.id, rate: shipment.lowest_rate)
 
-puts shipment
+puts bought_shipment
 ```
 
 ### Custom Connections
