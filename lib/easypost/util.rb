@@ -131,8 +131,10 @@ module EasyPost::Util
     lowest_smart_rate = nil
 
     unless valid_delivery_accuracy_values.include?(delivery_accuracy.downcase)
-      suggestion = "Must be one of: #{valid_delivery_accuracy_values}"
-      raise EasyPost::Errors::InvalidParameterError.new('delivery_accuracy', suggestion)
+      raise EasyPost::Errors::InvalidParameterError.new(
+        'delivery_accuracy',
+        "Must be one of: #{valid_delivery_accuracy_values}",
+      )
     end
 
     smart_rates.each do |rate|
@@ -158,8 +160,7 @@ module EasyPost::Util
     easypost_hmac_signature = headers['X-Hmac-Signature']
 
     if easypost_hmac_signature.nil?
-      msg = EasyPost::Constants::WEBHOOK_MISSING_SIGNATURE
-      raise EasyPost::Errors::SignatureVerificationError.new(msg)
+      raise EasyPost::Errors::SignatureVerificationError.new(EasyPost::Constants::WEBHOOK_MISSING_SIGNATURE)
     end
 
     encoded_webhook_secret = webhook_secret.unicode_normalize(:nfkd).encode('utf-8')

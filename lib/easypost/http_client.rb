@@ -22,9 +22,9 @@ class EasyPost::HttpClient
     headers = @config[:headers].merge(headers || {})
 
     # Create the request, set the headers and body if necessary.
-    req = Net::HTTP.const_get(method.capitalize).new(uri)
-    headers.each { |k, v| req[k] = v }
-    req.body = JSON.dump(EasyPost::InternalUtilities.objects_to_ids(body)) if body
+    request = Net::HTTP.const_get(method.capitalize).new(uri)
+    headers.each { |k, v| request[k] = v }
+    request.body = JSON.dump(EasyPost::InternalUtilities.objects_to_ids(body)) if body
 
     begin
       # Attempt to make the request and return the response.
@@ -32,7 +32,7 @@ class EasyPost::HttpClient
         uri.host,
         uri.port, use_ssl: true, read_timeout: @config[:read_timeout], open_timeout: @config[:open_timeout],
       ) do |http|
-        http.request(req)
+        http.request(request)
       end
     rescue Net::ReadTimeout, Net::OpenTimeout, Errno::EHOSTUNREACH => e
       # Raise a timeout error if the request times out.
