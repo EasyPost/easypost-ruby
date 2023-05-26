@@ -34,7 +34,7 @@ class EasyPost::HttpClient
       ) do |http|
         http.request(req)
       end
-    rescue Net::ReadTimeout, Net::OpenTimeout => e
+    rescue Net::ReadTimeout, Net::OpenTimeout, Errno::EHOSTUNREACH => e
       # Raise a timeout error if the request times out.
       raise EasyPost::Errors::TimeoutError.new(e.message)
     rescue OpenSSL::SSL::SSLError => e
@@ -43,7 +43,7 @@ class EasyPost::HttpClient
     rescue StandardError => e
       # Raise an unknown HTTP error if anything else causes the request to fail to complete
       # (this is different from processing 4xx/5xx errors from the API)
-      raise EasyPost::Errors::UnknownHttpError.new(e.message)
+      raise EasyPost::Errors::UnknownApiError.new(e.message)
     end
   end
 end

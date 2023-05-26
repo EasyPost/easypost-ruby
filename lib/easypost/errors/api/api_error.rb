@@ -60,9 +60,9 @@ class EasyPost::Errors::ApiError < EasyPost::Errors::EasyPostError
 
     cls = exception_cls_from_status_code(status_code)
 
-    if cls == EasyPost::Errors::UnknownHttpError
+    if cls == EasyPost::Errors::UnknownApiError
       error_message = EasyPost::Constants::UNEXPECTED_HTTP_STATUS_CODE % status_code
-      return EasyPost::Errors::UnknownHttpError.new(error_message, status_code, nil, nil)
+      return EasyPost::Errors::UnknownApiError.new(error_message, status_code, nil, nil)
     end
 
     # Return (don't throw here) an instance of the appropriate error class
@@ -98,8 +98,7 @@ class EasyPost::Errors::ApiError < EasyPost::Errors::EasyPostError
     when 503
       EasyPost::Errors::ServiceUnavailableError
     else
-      # 1xx codes will also be caught here
-      EasyPost::Errors::UnknownHttpError
+      EasyPost::Errors::UnknownApiError
     end
   end
 end
