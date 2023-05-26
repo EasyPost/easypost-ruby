@@ -168,8 +168,7 @@ module EasyPost::Util
     expected_signature = OpenSSL::HMAC.hexdigest('sha256', encoded_webhook_secret, event_body)
     digest = "hmac-sha256-hex=#{expected_signature}"
     unless digest == easypost_hmac_signature
-      msg = EasyPost::Constants::WEBHOOK_SIGNATURE_MISMATCH
-      raise EasyPost::Errors::SignatureVerificationError.new(msg)
+      raise EasyPost::Errors::SignatureVerificationError.new(EasyPost::Constants::WEBHOOK_SIGNATURE_MISMATCH)
     end
 
     JSON.parse(event_body)
