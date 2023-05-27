@@ -138,7 +138,7 @@
       <span class="ruby-identifier">easypost_stripe_api_key</span>,
     )
   <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Could not send card details to Stripe, please try again later.&#39;</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">ExternalApiError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">STRIPE_CARD_CREATE_FAILED</span>)
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">create_easypost_credit_card</span>(<span class="ruby-identifier">referral_api_key</span>, <span class="ruby-identifier">stripe_credit_card_token</span>, <span class="ruby-identifier">priority</span>)

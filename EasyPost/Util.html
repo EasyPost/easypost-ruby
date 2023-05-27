@@ -112,7 +112,7 @@
           <p>Gets the lowest rate of an <a href="../EasyPost.html"><code>EasyPost</code></a> object such as a Shipment, Order, or Pickup. You can exclude by having ‘’!‘` as the first element of your optional filter lists</p>
 
           <div class="method-source-code" id="get_lowest_object_rate-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 7</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_lowest_object_rate</span>(<span class="ruby-identifier">easypost_object</span>, <span class="ruby-identifier">carriers</span> = [], <span class="ruby-identifier">services</span> = [], <span class="ruby-identifier">rates_key</span> = <span class="ruby-string">&#39;rates&#39;</span>)
   <span class="ruby-identifier">lowest_rate</span> = <span class="ruby-keyword">nil</span>
 
@@ -158,7 +158,9 @@
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;No rates found.&#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">lowest_rate</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">lowest_rate</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">FilteringError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">NO_MATCHING_RATES</span>)
+  <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">lowest_rate</span>
 <span class="ruby-keyword">end</span></pre>
@@ -181,7 +183,7 @@
           <p>Get the lowest SmartRate from a list of SmartRate.</p>
 
           <div class="method-source-code" id="get_lowest_smart_rate-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 115</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 121</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_lowest_smart_rate</span>(<span class="ruby-identifier">smart_rates</span>, <span class="ruby-identifier">delivery_days</span>, <span class="ruby-identifier">delivery_accuracy</span>)
   <span class="ruby-identifier">valid_delivery_accuracy_values</span> = <span class="ruby-constant">Set</span>[
     <span class="ruby-string">&#39;percentile_50&#39;</span>,
@@ -195,7 +197,10 @@
   <span class="ruby-identifier">lowest_smart_rate</span> = <span class="ruby-keyword">nil</span>
 
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">valid_delivery_accuracy_values</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">delivery_accuracy</span>.<span class="ruby-identifier">downcase</span>)
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Invalid delivery accuracy value, must be one of: #{valid_delivery_accuracy_values}&quot;</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidParameterError</span>.<span class="ruby-identifier">new</span>(
+      <span class="ruby-string">&#39;delivery_accuracy&#39;</span>,
+      <span class="ruby-node">&quot;Must be one of: #{valid_delivery_accuracy_values}&quot;</span>,
+    )
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">smart_rates</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">rate</span><span class="ruby-operator">|</span>
@@ -207,7 +212,7 @@
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">lowest_smart_rate</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;No rates found.&#39;</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">FilteringError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">NO_MATCHING_RATES</span>)
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">lowest_smart_rate</span>
@@ -231,7 +236,7 @@
           <p>Gets the lowest stateless rate. You can exclude by having ‘’!‘` as the first element of your optional filter lists</p>
 
           <div class="method-source-code" id="get_lowest_stateless_rate-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 59</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_lowest_stateless_rate</span>(<span class="ruby-identifier">stateless_rates</span>, <span class="ruby-identifier">carriers</span> = [], <span class="ruby-identifier">services</span> = [])
   <span class="ruby-identifier">lowest_rate</span> = <span class="ruby-keyword">nil</span>
 
@@ -277,7 +282,9 @@
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;No rates found.&#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">lowest_rate</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">lowest_rate</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">FilteringError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">NO_MATCHING_RATES</span>)
+  <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">lowest_rate</span>
 <span class="ruby-keyword">end</span></pre>
@@ -300,7 +307,7 @@
           <p>Converts a raw webhook event into an <a href="../EasyPost.html"><code>EasyPost</code></a> object.</p>
 
           <div class="method-source-code" id="receive_event-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 110</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">receive_event</span>(<span class="ruby-identifier">raw_input</span>)
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">raw_input</span>), <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -323,12 +330,12 @@
           <p>Validate a webhook by comparing the HMAC signature header sent from <a href="../EasyPost.html"><code>EasyPost</code></a> to your shared secret. If the signatures do not match, an error will be raised signifying the webhook either did not originate from <a href="../EasyPost.html"><code>EasyPost</code></a> or the secrets do not match. If the signatures do match, the ‘event_body` will be returned as JSON.</p>
 
           <div class="method-source-code" id="validate_webhook-source">
-            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 150</span>
+            <pre><span class="ruby-comment"># File lib/easypost/util.rb, line 159</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">validate_webhook</span>(<span class="ruby-identifier">event_body</span>, <span class="ruby-identifier">headers</span>, <span class="ruby-identifier">webhook_secret</span>)
   <span class="ruby-identifier">easypost_hmac_signature</span> = <span class="ruby-identifier">headers</span>[<span class="ruby-string">&#39;X-Hmac-Signature&#39;</span>]
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">easypost_hmac_signature</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Webhook received does not contain an HMAC signature.&#39;</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">SignatureVerificationError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">WEBHOOK_MISSING_SIGNATURE</span>)
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">encoded_webhook_secret</span> = <span class="ruby-identifier">webhook_secret</span>.<span class="ruby-identifier">unicode_normalize</span>(<span class="ruby-value">:nfkd</span>).<span class="ruby-identifier">encode</span>(<span class="ruby-string">&#39;utf-8&#39;</span>)
@@ -336,7 +343,7 @@
   <span class="ruby-identifier">expected_signature</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">HMAC</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-string">&#39;sha256&#39;</span>, <span class="ruby-identifier">encoded_webhook_secret</span>, <span class="ruby-identifier">event_body</span>)
   <span class="ruby-identifier">digest</span> = <span class="ruby-node">&quot;hmac-sha256-hex=#{expected_signature}&quot;</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">digest</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">easypost_hmac_signature</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Webhook received did not originate from EasyPost or had a webhook secret mismatch.&#39;</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">SignatureVerificationError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">WEBHOOK_SIGNATURE_MISMATCH</span>)
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">event_body</span>)
