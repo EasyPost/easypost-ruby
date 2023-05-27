@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'easypost/constants'
+
 # Client Library helper functions
 module EasyPost::Util
   # Gets the lowest rate of an EasyPost object such as a Shipment, Order, or Pickup.
@@ -49,7 +51,9 @@ module EasyPost::Util
       end
     end
 
-    raise EasyPost::Error.new('No rates found.') if lowest_rate.nil?
+    if lowest_rate.nil?
+      raise EasyPost::Errors::FilteringError.new(EasyPost::Constants::NO_MATCHING_RATES)
+    end
 
     lowest_rate
   end
@@ -101,7 +105,9 @@ module EasyPost::Util
       end
     end
 
-    raise EasyPost::Error.new('No rates found.') if lowest_rate.nil?
+    if lowest_rate.nil?
+      raise EasyPost::Errors::FilteringError.new(EasyPost::Constants::NO_MATCHING_RATES)
+    end
 
     lowest_rate
   end
@@ -125,7 +131,10 @@ module EasyPost::Util
     lowest_smart_rate = nil
 
     unless valid_delivery_accuracy_values.include?(delivery_accuracy.downcase)
-      raise EasyPost::Error.new("Invalid delivery accuracy value, must be one of: #{valid_delivery_accuracy_values}")
+      raise EasyPost::Errors::InvalidParameterError.new(
+        'delivery_accuracy',
+        "Must be one of: #{valid_delivery_accuracy_values}",
+      )
     end
 
     smart_rates.each do |rate|
@@ -137,7 +146,7 @@ module EasyPost::Util
     end
 
     if lowest_smart_rate.nil?
-      raise EasyPost::Error.new('No rates found.')
+      raise EasyPost::Errors::FilteringError.new(EasyPost::Constants::NO_MATCHING_RATES)
     end
 
     lowest_smart_rate
@@ -151,7 +160,7 @@ module EasyPost::Util
     easypost_hmac_signature = headers['X-Hmac-Signature']
 
     if easypost_hmac_signature.nil?
-      raise EasyPost::Error.new('Webhook received does not contain an HMAC signature.')
+      raise EasyPost::Errors::SignatureVerificationError.new(EasyPost::Constants::WEBHOOK_MISSING_SIGNATURE)
     end
 
     encoded_webhook_secret = webhook_secret.unicode_normalize(:nfkd).encode('utf-8')
@@ -159,7 +168,7 @@ module EasyPost::Util
     expected_signature = OpenSSL::HMAC.hexdigest('sha256', encoded_webhook_secret, event_body)
     digest = "hmac-sha256-hex=#{expected_signature}"
     unless digest == easypost_hmac_signature
-      raise EasyPost::Error.new('Webhook received did not originate from EasyPost or had a webhook secret mismatch.')
+      raise EasyPost::Errors::SignatureVerificationError.new(EasyPost::Constants::WEBHOOK_SIGNATURE_MISMATCH)
     end
 
     JSON.parse(event_body)

@@ -137,9 +137,9 @@ describe EasyPost::Services::Shipment do
 
         # Did we actually get a new page?
         expect(first_page_first_id).not_to eq(next_page_first_id)
-      rescue EasyPost::Error => e
+      rescue EasyPost::Errors::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.
-        expect(e.message).to eq('There are no more pages to retrieve.')
+        expect(e.message).to eq(EasyPost::Constants::NO_MORE_PAGES)
       end
     end
   end
@@ -331,7 +331,7 @@ describe EasyPost::Services::Shipment do
       # Test lowest rate with carrier filter (should error due to bad carrier)
       expect {
         shipment.lowest_rate(['BAD CARRIER'], [])
-      }.to raise_error(EasyPost::Error, 'No rates found.')
+      }.to raise_error(EasyPost::Errors::FilteringError, EasyPost::Constants::NO_MATCHING_RATES)
     end
 
     it 'tests various usage alterations of the lowest_rate method when excluding params' do
@@ -368,7 +368,7 @@ describe EasyPost::Services::Shipment do
       # Test lowest SmartRate with invalid filters (should error due to strict delivery_days)
       expect {
         client.shipment.lowest_smart_rate(shipment.id, 0, 'percentile_90')
-      }.to raise_error(EasyPost::Error, 'No rates found.')
+      }.to raise_error(EasyPost::Errors::FilteringError, EasyPost::Constants::NO_MATCHING_RATES)
     end
 
     it 'raises an error when no rates are found due to delivery_accuracy' do
@@ -377,7 +377,7 @@ describe EasyPost::Services::Shipment do
       # Test lowest SmartRate with invalid filters (should error due to invalid delivery_accuracy)
       expect {
         client.shipment.lowest_smart_rate(shipment.id, 3, 'BAD_ACCURACY')
-      }.to raise_error(EasyPost::Error)
+      }.to raise_error(EasyPost::Errors::InvalidParameterError)
     end
   end
 
@@ -400,7 +400,7 @@ describe EasyPost::Services::Shipment do
       # Test lowest SmartRate with invalid filters (should error due to strict delivery_days)
       expect {
         EasyPost::Util.get_lowest_smart_rate(smartrates, 0, 'percentile_90')
-      }.to raise_error(EasyPost::Error, 'No rates found.')
+      }.to raise_error(EasyPost::Errors::FilteringError, EasyPost::Constants::NO_MATCHING_RATES)
     end
 
     it 'raises an error when no rates are found due to delivery_accuracy' do
@@ -410,7 +410,7 @@ describe EasyPost::Services::Shipment do
       # Test lowest SmartRate with invalid filters (should error due to invalid delivery_accuracy)
       expect {
         EasyPost::Util.get_lowest_smart_rate(smartrates, 3, 'BAD_ACCURACY')
-      }.to raise_error(EasyPost::Error)
+      }.to raise_error(EasyPost::Errors::InvalidParameterError)
     end
   end
 

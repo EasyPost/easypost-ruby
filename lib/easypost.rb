@@ -5,7 +5,6 @@ require 'cgi'
 require 'net/http'
 
 require 'easypost/version'
-require 'easypost/error'
 require 'easypost/connection'
 require 'easypost/util'
 
@@ -18,6 +17,9 @@ require 'easypost/services'
 
 # Models
 require 'easypost/models'
+
+# Exceptions
+require 'easypost/errors'
 
 # Internal Utilities
 require 'easypost/internal_utilities'

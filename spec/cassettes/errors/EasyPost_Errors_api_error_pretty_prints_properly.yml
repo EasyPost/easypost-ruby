@@ -1,0 +1,138 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses
+    body:
+      encoding: UTF-8
+      string: '{"street1":"invalid"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 84d2fabf6470ddede0de498a0014cb9a
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_333df1cafbe211edbe7aac1f6bc539aa"
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"61730a5246373b4047245c1ef3087a9b"
+      X-Runtime:
+      - '0.035180'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb7nuq
+      X-Version-Label:
+      - easypost-202305252213-e719365a4c-master
+      X-Backend:
+      - easypost
+      X-Canary:
+      - direct
+      X-Proxied:
+      - extlb1nuq 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"adr_333df1cafbe211edbe7aac1f6bc539aa","object":"Address","created_at":"2023-05-26T16:27:25+00:00","updated_at":"2023-05-26T16:27:25+00:00","name":null,"company":null,"street1":"invalid","street2":null,"city":null,"state":null,"zip":null,"country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+  recorded_at: Fri, 26 May 2023 16:27:25 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/addresses/adr_333df1cafbe211edbe7aac1f6bc539aa/verify
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 84d2fabc6470ddeee0de498b0014cbb7
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.034621'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb8nuq
+      X-Version-Label:
+      - easypost-202305252213-e719365a4c-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 5ab12a3ed2
+      - intlb2nuq a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"ADDRESS.VERIFY.FAILURE","message":"Unable to verify
+        address.","errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
+        not found","suggestion":null},{"code":"E.HOUSE_NUMBER.MISSING","field":"street1","message":"House
+        number is missing","suggestion":null}]}}'
+  recorded_at: Fri, 26 May 2023 16:27:26 GMT
+recorded_with: VCR 6.1.0

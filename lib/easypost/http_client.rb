@@ -26,12 +26,24 @@ class EasyPost::HttpClient
     headers.each { |k, v| request[k] = v }
     request.body = JSON.dump(EasyPost::InternalUtilities.objects_to_ids(body)) if body
 
-    # Execute the request, return the response.
-    Net::HTTP.start(
-      uri.host,
-      uri.port, use_ssl: true, read_timeout: @config[:read_timeout], open_timeout: @config[:open_timeout],
-    ) do |http|
-      http.request(request)
+    begin
+      # Attempt to make the request and return the response.
+      Net::HTTP.start(
+        uri.host,
+        uri.port, use_ssl: true, read_timeout: @config[:read_timeout], open_timeout: @config[:open_timeout],
+      ) do |http|
+        http.request(request)
+      end
+    rescue Net::ReadTimeout, Net::OpenTimeout, Errno::EHOSTUNREACH => e
+      # Raise a timeout error if the request times out.
+      raise EasyPost::Errors::TimeoutError.new(e.message)
+    rescue OpenSSL::SSL::SSLError => e
+      # Raise an SSL error if the request fails due to an SSL error.
+      raise EasyPost::Errors::SslError.new(e.message)
+    rescue StandardError => e
+      # Raise an unknown HTTP error if anything else causes the request to fail to complete
+      # (this is different from processing 4xx/5xx errors from the API)
+      raise EasyPost::Errors::UnknownApiError.new(e.message)
     end
   end
 end
