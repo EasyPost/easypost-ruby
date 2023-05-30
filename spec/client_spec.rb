@@ -51,13 +51,13 @@ describe EasyPost::Client do
           expect(open_timeout).to eq(30)
           expect(read_timeout).to eq(60)
           expect(body).to be_nil
-          return OpenStruct.new(status_code: 401, body: '{}')
+          return OpenStruct.new(code: 401, body: '{}')
         },
       )
 
       expect {
         client.address.retrieve('adr_123')
-      }.to raise_error(StandardError) # should throw error because our lambda returns 401
+      }.to raise_error(EasyPost::Errors::UnauthorizedError) # should throw error because our lambda returns 401
     end
   end
 end
