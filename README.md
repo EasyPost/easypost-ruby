@@ -60,32 +60,38 @@ puts shipment
 
 ### Custom Connections
 
-Set `EasyPost.default_connection` to an object that responds to `call(method, path, api_key = nil, body = nil)`
+Pass in a lambda function as `custom_client_exec` when initializing a client that responds to `call(method, uri, headers, open_timeout, read_timeout, body = nil)` where:
+- `uri` is the fully-qualified URL of the EasyPost endpoint, including query parameters (`Uri` object)
+- `method` is the lowercase name of the HTTP method being used for the request (e.g. `:get`, `:post`, `:put`, `:delete`)
+- `headers` is a hash with all headers needed for the request pre-populated, including authorization (`Hash` object)
+- `open_timeout` is the number of seconds to wait for the connection to open (integer)
+- `read_timeout` is the number of seconds to wait for one block to be read (integer)
+- `body` is a string of the body data to be included in the request, or nil (e.g. GET or DELETE request) (string or `nil`)
+
+The lambda function should return an object with `code` and `body` attributes, where:
+- `code` is the HTTP response status code (integer) 
+- `body` is the response body (string)
 
 #### Faraday
 
 ```ruby
 require 'faraday'
-require 'faraday/response/logger'
-require 'logger'
 
-EasyPost.default_connection = lambda do |method, path, api_key = nil, body = nil|
-  Faraday
-    .new(url: EasyPost.api_base, headers: EasyPost.default_headers) { |builder|
-      builder.use Faraday::Response::Logger, Logger.new(STDOUT), {bodies: true, headers: true}
-      builder.adapter :net_http
-    }
-    .public_send(method, path) { |request|
-      request.headers['Authorization'] = EasyPost.authorization(api_key)
-      request.body = JSON.dump(EasyPost::InternalUtilities.objects_to_ids(body)) if body
-    }.yield_self { |response|
-      EasyPost.parse_response(
-        status: response.status,
-        body: response.body,
-        json: response.headers['Content-Type'].start_with?('application/json'),
-      )
-    }
-end
+custom_connection = lambda { |method, uri, headers, _open_timeout, _read_timeout, body = nil|
+  conn = Faraday.new(url: uri.to_s, headers: headers) do |faraday|
+    faraday.adapter Faraday.default_adapter
+  end
+  conn.public_send(method, uri.path) { |request|
+    request.body = body if body
+  }.yield_self do |response|
+    OpenStruct.new(code: response.status, body: response.body)
+  end
+}
+
+my_client = described_class.new(
+  api_key: ENV['EASYPOST_API_KEY'],
+  custom_client_exec: custom_connection,
+)
 ```
 
 #### Typhoeus
@@ -93,20 +99,21 @@ end
 ```ruby
 require 'typhoeus'
 
-EasyPost.default_connection = lambda do |method, path, api_key = nil, body = nil|
+custom_connection = lambda { |method, uri, headers, _open_timeout, _read_timeout, body = nil|
   Typhoeus.public_send(
     method,
-    File.join(EasyPost.api_base, path),
-    headers: EasyPost.default_headers.merge('Authorization' => EasyPost.authorization(api_key)),
-    body: body.nil? ? nil : JSON.dump(EasyPost::InternalUtilities.objects_to_ids(body)),
-  ).yield_self { |response|
-    EasyPost.parse_response(
-      status: response.code,
-      body: response.body,
-      json: response.headers['Content-Type'].start_with?('application/json'),
-    )
-  }
-end
+    uri.to_s,
+    headers: headers,
+    body: body,
+  ).yield_self do |response|
+    OpenStruct.new(code: response.code, body: response.body)
+  end
+}
+
+my_client = described_class.new(
+  api_key: ENV['EASYPOST_API_KEY'],
+  custom_client_exec: custom_connection,
+)
 ```
 
 ## Documentation
