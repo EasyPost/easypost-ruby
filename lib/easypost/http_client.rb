@@ -44,7 +44,7 @@ class EasyPost::HttpClient
       Net::HTTP.start(
         uri.host,
         uri.port, use_ssl: true, read_timeout: read_timeout, open_timeout: open_timeout,
-        ) do |http|
+      ) do |http|
         http.request(request)
       end
     rescue Net::ReadTimeout, Net::OpenTimeout, Errno::EHOSTUNREACH => e
