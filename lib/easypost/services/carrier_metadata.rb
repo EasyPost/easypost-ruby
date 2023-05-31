@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class EasyPost::Services::BetaCarrierMetadata < EasyPost::Services::Service
+class EasyPost::Services::CarrierMetadata < EasyPost::Services::Service
   # Retrieve metadata for carrier(s).
   def retrieve_carrier_metadata(carriers = [], types = [])
-    path = '/metadata?'
+    path = '/metadata/carriers?'
 
     params = {}
 
@@ -17,6 +17,6 @@ class EasyPost::Services::BetaCarrierMetadata < EasyPost::Services::Service
 
     path += URI.encode_www_form(params)
 
-    @client.make_request(:get, path, EasyPost::Models::EasyPostObject, params, 'beta').carriers
+    @client.make_request(:get, path, EasyPost::Models::EasyPostObject, params).carriers
   end
 end

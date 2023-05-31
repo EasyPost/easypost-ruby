@@ -2,12 +2,12 @@
 
 require 'spec_helper'
 
-describe EasyPost::Services::BetaCarrierMetadata do
+describe EasyPost::Services::CarrierMetadata do
   let(:client) { EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY']) }
 
   describe '.retrieve_carrier_metadata' do
     it 'retrieve metadata for all carriers' do
-      metadata = client.beta_carrier_metadata.retrieve_carrier_metadata
+      metadata = client.carrier_metadata.retrieve_carrier_metadata
 
       expect(metadata).to be_an_instance_of(Array)
 
@@ -19,7 +19,7 @@ describe EasyPost::Services::BetaCarrierMetadata do
       carrier = 'usps'
       types = %w[service_levels predefined_packages]
 
-      metadata = client.beta_carrier_metadata.retrieve_carrier_metadata(['usps'], types)
+      metadata = client.carrier_metadata.retrieve_carrier_metadata(['usps'], types)
 
       expect(metadata).to be_an_instance_of(Array)
 
