@@ -7,7 +7,7 @@ describe EasyPost::Services::CarrierMetadata do
 
   describe '.retrieve_carrier_metadata' do
     it 'retrieve metadata for all carriers' do
-      metadata = client.carrier_metadata.retrieve_carrier_metadata
+      metadata = client.carrier_metadata.retrieve
 
       expect(metadata).to be_an_instance_of(Array)
 
@@ -19,7 +19,7 @@ describe EasyPost::Services::CarrierMetadata do
       carrier = 'usps'
       types = %w[service_levels predefined_packages]
 
-      metadata = client.carrier_metadata.retrieve_carrier_metadata(['usps'], types)
+      metadata = client.carrier_metadata.retrieve(['usps'], types)
 
       expect(metadata).to be_an_instance_of(Array)
 

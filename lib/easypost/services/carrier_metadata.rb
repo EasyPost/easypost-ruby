@@ -2,7 +2,7 @@
 
 class EasyPost::Services::CarrierMetadata < EasyPost::Services::Service
   # Retrieve metadata for carrier(s).
-  def retrieve_carrier_metadata(carriers = [], types = [])
+  def retrieve(carriers = [], types = [])
     path = '/metadata/carriers?'
 
     params = {}
