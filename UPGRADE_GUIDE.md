@@ -2,7 +2,126 @@
 
 Use the following guide to assist in the upgrade process of the `easypost-ruby` library between major versions.
 
+- [Upgrading from 4.x to 5.0](#upgrading-from-4x-to-50)
+- [Upgrading from 3.x to 4.0](#upgrading-from-3x-to-40)
+
+## Upgrading from 4.x to 5.0
+
+### 5.0 High Impact Changes
+
+- [New Client object](#50-thread-safe-with-client-object)
+- [Updated Dependencies](#50-updated-dependencies)
+- [Improved Error Handling](#50-improved-error-handling)
+
+### 5.0 Medium Impact Changes
+
+- [Corrected Naming Conventions](#50-corrected-naming-conventions)
+
+### 5.0 Low Impact Changes
+
+- [Beta Namespace Changed](#50-beta-namespace-changed)
+
+## 5.0 Thread-Safe with Client Object
+
+Likelihood of Impact: High
+
+This library is now thread-safe with the introduction of a new `Client` object. Instead of defining a global API key that all requests use, you now create an `Client` object and pass your API key to it with optional open and read timeout params. You then call your desired functions against a `service` which are called against a `Client` object:
+
+```ruby
+# Old way
+EasyPost.api_key = ENV['EASYPOST_API_KEY']
+shipment = EasyPost::Shipment.retrieve('shp_...')
+
+# New way
+client = EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY'])
+shipment = client.shipment.retrieve('shp_...')
+```
+
+All instance methods are now static with the exception of `lowest_rate` as these make API calls and require the Client object(EasyPost objects do not contain an API key to make API calls with).
+
+Previously used `.save()` instance methods are now static `.update()` functions where you specify first the ID of the object you are updating and second, the parameters that need updating.
+
+## 5.0 Updated Dependencies
+
+Likelihood of Impact: High
+
+**Ruby 2.6 Required**
+
+easypost-ruby now requires Ruby 2.6 or greater.
+
+**Dependencies**
+
+All dependencies had minor version bumps.
+
+## 5.0 Improved Error Handling
+
+Likelihood of Impact: High
+
+There are ~2 dozen new error types that extend either `ApiError` or `EasyPostError`.
+
+New ApiErrors (extends EasyPostError):
+
+- `ApiError`
+- `ConnectionError`
+- `ExternalApiError`
+- `ForbiddenError`
+- `GatewayTimeoutError`
+- `InternalServerError`
+- `InvalidRequestError`
+- `MethodNotAllowedError`
+- `NotFoundError`
+- `PaymentError`
+- `ProxyError`
+- `RateLimitError`
+- `RedirectError`
+- `RetryError`
+- `ServiceUnavailableError`
+- `SSLError`
+- `TimeoutError`
+- `UnauthorizedError`
+- `UnknownApiError`
+
+New EasyPostErrors (extends builtin Exception):
+
+- `EasyPostError`
+- `EndOfPaginationError`
+- `FilteringError`
+- `InvalidObjectError`
+- `InvalidParameterError`
+- `MissingParameterError`
+- `SignatureVerificationError`
+
+ApiErrors will behave like the previous Error class did. They will include a `message`, `http_status`, and `http_body`. Additionally, a new `code` and `errors` keys are present and populate when available. This class extends the more generic `EasyPostError` which only contains a message, used for errors thrown directly from this library.
+
+## 5.0 Corrected Naming Conventions
+
+Likelihood of Impact: Medium
+
+Occurances of `referral` are now `referral_customer` and `Referral` are now `ReferralCustomer` to match the documentation and API.
+
+Occurances of `smartrate` are now `smart_rate` and `Smartrate` are now `SmartRate` to match the documentation and API.
+
+Occurances of `scanform` are now `scan_form` and `Scanform` are now `ScanForm` to match the documentation and API.
+
+Rename function `get_smartrates` to `get_smart_rates`
+
+Rename function `get_lowest_smartrate` to `get_lowest_smart_rate`
+
+## 5.0 Beta Namespace Changed
+
+Likelihood of Impact: Low
+
+Previously, the beta namespace was found at `easypost.beta.x` where `x` is the name of your model. Now, the beta namespace is simply prepended to the name of your service: `client.beta_x`. for instance, you can call `client.beta_referral_customer.add_payment_method()`.
+
+## 5.0 Return True For Empty API Response
+
+Likelihood of Impact: Low
+
+Empty API response functions for `delete` return `true` instead of empty object
+
 ## Upgrading from 3.x to 4.0
+
+**NOTICE:** v4 is deprecated.
 
 ### 4.0 High Impact Changes
 
