@@ -41,8 +41,6 @@ All instance methods are now static with the exception of `lowest_rate` as these
 
 Previously used `.save()` instance methods are now static `.update()` functions where you specify first the ID of the object you are updating and second, the parameters that need updating.
 
-Functions no longer accept an API key as an optional parameter. If you need per-function API key changes, create a new Client object and call the function on the new client that uses the API key you need.
-
 ## 5.0 Updated Dependencies
 
 Likelihood of Impact: High
