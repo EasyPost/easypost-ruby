@@ -9,7 +9,7 @@ Use the following guide to assist in the upgrade process of the `easypost-ruby` 
 
 ### 5.0 High Impact Changes
 
-- [Thread-Safe With Client Object](#50-thread-safe-with-client-object)
+- [New Client object](#50-thread-safe-with-client-object)
 - [Updated Dependencies](#50-updated-dependencies)
 - [Improved Error Handling](#50-improved-error-handling)
 
@@ -25,27 +25,23 @@ Use the following guide to assist in the upgrade process of the `easypost-ruby` 
 
 Likelihood of Impact: High
 
-This library is now thread-safe with the introduction of a new `Client` object. Instead of defining a global API key that all requests use, you now create an `Client` object and pass your API key to it with optional open and read timeout params. You then call your desired functions against a `service` which coincide with the `Client` object:
+This library is now thread-safe with the introduction of a new `Client` object. Instead of defining a global API key that all requests use, you now create an `Client` object and pass your API key to it with optional open and read timeout params. You then call your desired functions against a `service` which are called against a `Client` object:
 
 ```ruby
 # Old way
-require 'easypost'
-
 EasyPost.api_key = ENV['EASYPOST_API_KEY']
 shipment = EasyPost::Shipment.retrieve('shp_...')
 
 # New way
-require 'easypost'
-
 client = EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY'])
 shipment = client.shipment.retrieve('shp_...')
 ```
 
-All instance methods are now static with the exception of `lowest_rate` as these make API calls and require the EasyPostClient (EasyPost objects do not contain an API key to make API calls with).
+All instance methods are now static with the exception of `lowest_rate` as these make API calls and require the Client object(EasyPost objects do not contain an API key to make API calls with).
 
 Previously used `.save()` instance methods are now static `.update()` functions where you specify first the ID of the object you are updating and second, the parameters that need updating.
 
-Functions no longer accept an API key as an optional parameter. If you need per-function API key changes, create a new EasyPostClient object and call the function on the new client that uses the API key you need.
+Functions no longer accept an API key as an optional parameter. If you need per-function API key changes, create a new Client object and call the function on the new client that uses the API key you need.
 
 ## 5.0 Updated Dependencies
 
