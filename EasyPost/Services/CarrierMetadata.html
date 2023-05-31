@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class EasyPost::Services::BetaCarrierMetadata - EasyPost Ruby Docs</title>
+<title>class EasyPost::Services::CarrierMetadata - EasyPost Ruby Docs</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../../";
@@ -72,16 +72,16 @@
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    <li ><a href="#method-i-retrieve_carrier_metadata">#retrieve_carrier_metadata</a>
+    <li ><a href="#method-i-retrieve">#retrieve</a>
   </ul>
 </div>
 
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-EasyPost::Services::BetaCarrierMetadata">
-  <h1 id="class-EasyPost::Services::BetaCarrierMetadata" class="class">
-    class EasyPost::Services::BetaCarrierMetadata
+<main role="main" aria-labelledby="class-EasyPost::Services::CarrierMetadata">
+  <h1 id="class-EasyPost::Services::CarrierMetadata" class="class">
+    class EasyPost::Services::CarrierMetadata
   </h1>
 
   <section class="description">
@@ -99,10 +99,10 @@
          <h3>Public Instance Methods</h3>
        </header>
 
-      <div id="method-i-retrieve_carrier_metadata" class="method-detail ">
+      <div id="method-i-retrieve" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
-            <span class="method-name">retrieve_carrier_metadata</span><span
+            <span class="method-name">retrieve</span><span
               class="method-args">(carriers = [], types = [])</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
@@ -111,10 +111,10 @@
         <div class="method-description">
           <p>Retrieve metadata for carrier(s).</p>
 
-          <div class="method-source-code" id="retrieve_carrier_metadata-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/beta_carrier_metadata.rb, line 5</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve_carrier_metadata</span>(<span class="ruby-identifier">carriers</span> = [], <span class="ruby-identifier">types</span> = [])
-  <span class="ruby-identifier">path</span> = <span class="ruby-string">&#39;/metadata?&#39;</span>
+          <div class="method-source-code" id="retrieve-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_metadata.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">carriers</span> = [], <span class="ruby-identifier">types</span> = [])
+  <span class="ruby-identifier">path</span> = <span class="ruby-string">&#39;/metadata/carriers?&#39;</span>
 
   <span class="ruby-identifier">params</span> = {}
 
@@ -128,7 +128,7 @@
 
   <span class="ruby-identifier">path</span> <span class="ruby-operator">+=</span> <span class="ruby-constant">URI</span>.<span class="ruby-identifier">encode_www_form</span>(<span class="ruby-identifier">params</span>)
 
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-identifier">path</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>, <span class="ruby-identifier">params</span>, <span class="ruby-string">&#39;beta&#39;</span>).<span class="ruby-identifier">carriers</span>
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-identifier">path</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>, <span class="ruby-identifier">params</span>).<span class="ruby-identifier">carriers</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
