@@ -149,17 +149,18 @@
         <div class="method-header">
           <div class="method-heading">
             <span class="method-name">new</span><span
-              class="method-args">(api_key:, read_timeout: 60, open_timeout: 30, api_base: &#39;https://api.easypost.com&#39;)</span>
+              class="method-args">(api_key:, read_timeout: 60, open_timeout: 30, api_base: &#39;https://api.easypost.com&#39;, custom_client_exec: nil)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
 
         <div class="method-description">
-          
+          <p>Initialize a new <a href="Client.html"><code>Client</code></a> object @param api_key [String] the API key to be used for requests @param <a href="Client.html#attribute-i-read_timeout"><code>read_timeout</code></a> [Integer] (60) the number of seconds to wait for a response before timing out @param <a href="Client.html#attribute-i-open_timeout"><code>open_timeout</code></a> [Integer] (30) the number of seconds to wait for the connection to open before timing out @param <a href="Client.html#attribute-i-api_base"><code>api_base</code></a> [String] (‘<a href="https://api.easypost.com">api.easypost.com</a>’) the base URL for the API @param custom_client_exec [Proc] (nil) a custom client execution block to be used for requests instead of the default HTTP client (function signature: method, uri, headers, <a href="Client.html#attribute-i-open_timeout"><code>open_timeout</code></a>, <a href="Client.html#attribute-i-read_timeout"><code>read_timeout</code></a>, body = nil) @return [EasyPost::Client] the client object</p>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 11</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-value">api_key:</span>, <span class="ruby-value">read_timeout:</span> <span class="ruby-value">60</span>, <span class="ruby-value">open_timeout:</span> <span class="ruby-value">30</span>, <span class="ruby-value">api_base:</span> <span class="ruby-string">&#39;https://api.easypost.com&#39;</span>)
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-value">api_key:</span>, <span class="ruby-value">read_timeout:</span> <span class="ruby-value">60</span>, <span class="ruby-value">open_timeout:</span> <span class="ruby-value">30</span>, <span class="ruby-value">api_base:</span> <span class="ruby-string">&#39;https://api.easypost.com&#39;</span>,
+               <span class="ruby-value">custom_client_exec:</span> <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">MissingParameterError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;api_key&#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">api_key</span>.<span class="ruby-identifier">nil?</span>
 
   <span class="ruby-ivar">@api_key</span> = <span class="ruby-identifier">api_key</span>
@@ -171,7 +172,7 @@
 
   <span class="ruby-comment"># Make an HTTP client once, reuse it for all requests made by this client</span>
   <span class="ruby-comment"># Configuration is immutable, so this is safe</span>
-  <span class="ruby-ivar">@http_client</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">HttpClient</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">api_base</span>, <span class="ruby-identifier">http_config</span>)
+  <span class="ruby-ivar">@http_client</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">HttpClient</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">api_base</span>, <span class="ruby-identifier">http_config</span>, <span class="ruby-identifier">custom_client_exec</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -201,7 +202,7 @@
 <p>@param method [Symbol] the HTTP Verb (get, method, put, post, etc.) @param endpoint [String] URI path of the resource @param cls [Class] the class to deserialize to @param body [Object] (nil) object to be dumped to JSON @param api_version [String] the version of API to hit @raise [EasyPost::Error] if the response has a non-2xx status code @return [Hash] JSON object parsed from the response body</p>
 
           <div class="method-source-code" id="make_request-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 70</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">make_request</span>(
   <span class="ruby-identifier">method</span>,
   <span class="ruby-identifier">endpoint</span>,
