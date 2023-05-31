@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/addresses/adr_123
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent: "<REDACTED>"
+      Authorization: "<REDACTED>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 836ce04d64<REDACTED>856e0dc8edf001c1efa
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Runtime:
+      - '0.007865'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb5nuq
+      X-Version-Label:
+      - easypost-202305311544-49bde6df69-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb4wdc 5ab12a3ed2
+      - intlb1nuq a29e4ad05c
+      - intlb2wdc a29e4ad05c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"APIKEY.INACTIVE","message":"This api key is no longer
+        active. Please use a different api key or reactivate this key.","errors":[]}}'
+  recorded_at: Wed, 31 May 2023 17:48:06 GMT
+recorded_with: VCR 6.1.0
