@@ -8,7 +8,15 @@ require 'json'
 class EasyPost::Client
   attr_reader :open_timeout, :read_timeout, :api_base
 
-  def initialize(api_key:, read_timeout: 60, open_timeout: 30, api_base: 'https://api.easypost.com')
+  # Initialize a new Client object
+  # @param api_key [String] the API key to be used for requests
+  # @param read_timeout [Integer] (60) the number of seconds to wait for a response before timing out
+  # @param open_timeout [Integer] (30) the number of seconds to wait for the connection to open before timing out
+  # @param api_base [String] ('https://api.easypost.com') the base URL for the API
+  # @param custom_client_exec [Proc] (nil) a custom client execution block to be used for requests instead of the default HTTP client (function signature: method, uri, headers, open_timeout, read_timeout, body = nil)
+  # @return [EasyPost::Client] the client object
+  def initialize(api_key:, read_timeout: 60, open_timeout: 30, api_base: 'https://api.easypost.com',
+                 custom_client_exec: nil)
     raise EasyPost::Errors::MissingParameterError.new('api_key') if api_key.nil?
 
     @api_key = api_key
@@ -20,7 +28,7 @@ class EasyPost::Client
 
     # Make an HTTP client once, reuse it for all requests made by this client
     # Configuration is immutable, so this is safe
-    @http_client = EasyPost::HttpClient.new(api_base, http_config)
+    @http_client = EasyPost::HttpClient.new(api_base, http_config, custom_client_exec)
   end
 
   SERVICE_CLASSES = [
