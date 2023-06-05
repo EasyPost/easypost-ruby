@@ -24,8 +24,12 @@ docs:
 fix:
 	bundle exec rubocop -a
 
+## install-style - Download style guide
+install-style:
+	curl -LJs https://raw.githubusercontent.com/EasyPost/examples/style_guides/easycop.yml -o easycop.yml
+
 ## install - Install globally from source
-install:
+install: | install-style
 	git submodule init
 	git submodule update
 	bundle install
@@ -56,4 +60,4 @@ update:
 	git submodule init
 	git submodule update --remote
 
-.PHONY: help build clean coverage docs fix install lint publish release scan test update
+.PHONY: help build clean coverage docs fix install install-style lint publish release scan test update
