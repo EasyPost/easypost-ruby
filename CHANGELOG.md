@@ -1,6 +1,8 @@
 # CHANGELOG
 
-## Next Release (Major)
+## v5.0.0 (2023-06-06)
+
+See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-4x-to-50) for more details.
 
 - Library is now thread-safe. Closes GitHub Issue ([#183](https://github.com/EasyPost/easypost-ruby/issues/183))
   - Initialize a `Client` object with an API key. Optionally set open and read timeout params
