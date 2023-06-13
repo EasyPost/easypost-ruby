@@ -136,11 +136,14 @@ For additional support, see our [org-wide support policy](https://github.com/Eas
 # Install dependencies
 make install
 
+# Install style guide (Unix only)
+make install-style
+
 # Lint project
 make lint
 
 # Fix linting errors
-make fix
+make format
 
 # Run tests (coverage is generated on a successful test suite run)
 EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make test
