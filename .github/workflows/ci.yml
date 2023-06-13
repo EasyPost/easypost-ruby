@@ -44,6 +44,8 @@ jobs:
           bundler-cache: true
       - name: Install Dependencies
         run: make install
+      - name: Install style guides
+        run: make install-styleguide
       - name: Lint Project
         run: make lint
       - name: Run security analysis
