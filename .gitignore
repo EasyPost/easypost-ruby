@@ -24,3 +24,5 @@ test/tmp
 test/version_tmp
 tmp
 vendor/
+/easycop.yml
+/.rubocop.yml

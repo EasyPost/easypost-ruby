@@ -20,15 +20,22 @@ coverage:
 docs:
 	bundle exec rdoc lib -o docs --title "EasyPost Ruby Docs"
 
-## fix - Fix Rubocop errors
-fix:
+## format - Fix Rubocop errors
+format:
 	bundle exec rubocop -a
 
+## install-styleguide - Import the style guides (Unix only)
+install-styleguide: | update-examples-submodule
+	sh examples/symlink_directory_files.sh examples/style_guides/ruby .
+
 ## install - Install globally from source
-install:
-	git submodule init
-	git submodule update
+install: | update-examples-submodule
 	bundle install
+
+## update-examples-submodule - Update the examples submodule
+update-examples-submodule:
+	git submodule init
+	git submodule update --remote
 
 ## lint - Lint the project
 lint:
@@ -52,8 +59,6 @@ test:
 	bundle exec rspec
 
 ## update - Updates dependencies
-update:
-	git submodule init
-	git submodule update --remote
+update: | update-examples-submodule
 
-.PHONY: help build clean coverage docs fix install lint publish release scan test update
+.PHONY: help build clean coverage docs format install install-styleguide lint publish release scan test update update-examples-submodule
