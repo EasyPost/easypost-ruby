@@ -43,7 +43,10 @@ class EasyPost::HttpClient
       # Attempt to make the request and return the response.
       Net::HTTP.start(
         uri.host,
-        uri.port, use_ssl: true, read_timeout: read_timeout, open_timeout: open_timeout,
+        uri.port, 
+        use_ssl: true, 
+        read_timeout: read_timeout, 
+        open_timeout: open_timeout,
       ) do |http|
         http.request(request)
       end
