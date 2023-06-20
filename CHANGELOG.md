@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v5.0.1 (2023-06-20)
+
+- Fixes a bug where the params of a `customs_info` on create weren't wrapped properly which led to an empty set of `customs_items`
+
 ## v5.0.0 (2023-06-06)
 
 See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-4x-to-50) for more details.

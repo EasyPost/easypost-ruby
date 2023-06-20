@@ -10,6 +10,7 @@ describe EasyPost::Services::CustomsInfo do
       customs_info = client.customs_info.create(Fixture.basic_customs_info)
 
       expect(customs_info).to be_an_instance_of(EasyPost::Models::CustomsInfo)
+      expect(customs_info.customs_items).to all(be_an_instance_of(EasyPost::Models::CustomsItem))
       expect(customs_info.id).to match('cstinfo_')
       expect(customs_info.eel_pfc).to eq('NOEEI 30.37(a)')
     end

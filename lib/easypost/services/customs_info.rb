@@ -5,7 +5,9 @@ class EasyPost::Services::CustomsInfo < EasyPost::Services::Service
 
   # Create a CustomsInfo object
   def create(params)
-    @client.make_request(:post, 'customs_infos', MODEL_CLASS, params)
+    wrapped_params = { customs_info: params }
+
+    @client.make_request(:post, 'customs_infos', MODEL_CLASS, wrapped_params)
   end
 
   # Retrieve a CustomsInfo object
