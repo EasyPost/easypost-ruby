@@ -48,8 +48,6 @@ jobs:
         run: make install-styleguide
       - name: Lint Project
         run: make lint
-      - name: Run security analysis
-        run: make scan
   docs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest

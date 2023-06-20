@@ -20,10 +20,6 @@ coverage:
 docs:
 	bundle exec rdoc lib -o docs --title "EasyPost Ruby Docs"
 
-## format - Fix Rubocop errors
-format:
-	bundle exec rubocop -a
-
 ## install-styleguide - Import the style guides (Unix only)
 install-styleguide: | update-examples-submodule
 	sh examples/symlink_directory_files.sh examples/style_guides/ruby .
@@ -32,14 +28,11 @@ install-styleguide: | update-examples-submodule
 install: | update-examples-submodule
 	bundle install
 
-## update-examples-submodule - Update the examples submodule
-update-examples-submodule:
-	git submodule init
-	git submodule update --remote
-
 ## lint - Lint the project
-lint:
-	bundle exec rubocop
+lint: rubocop scan
+
+## lint-fix - Fix Rubocop errors
+lint-fix: rubocop-fix
 
 ## publish - Publishes the built gem to Rubygems
 publish:
@@ -49,6 +42,14 @@ publish:
 # tag = The associated tag title of the release
 release:
 	gh release create ${tag} dist/*
+
+## rubocop - lints the project with rubocop
+rubocop:
+	bundle exec rubocop
+
+## rubocop-fix - fix rubocop errors
+rubocop-fix:
+	bundle exec rubocop -a
 
 ## scan - Runs security analysis on the project with Brakeman
 scan:
@@ -61,4 +62,9 @@ test:
 ## update - Updates dependencies
 update: | update-examples-submodule
 
-.PHONY: help build clean coverage docs format install install-styleguide lint publish release scan test update update-examples-submodule
+## update-examples-submodule - Update the examples submodule
+update-examples-submodule:
+	git submodule init
+	git submodule update --remote
+
+.PHONY: help build clean coverage docs install install-styleguide lint lint-fix publish release rubocop rubocop-fix scan test update update-examples-submodule
