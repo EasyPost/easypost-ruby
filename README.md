@@ -61,16 +61,18 @@ puts bought_shipment
 ### Custom Connections
 
 Pass in a lambda function as `custom_client_exec` when initializing a client that responds to `call(method, uri, headers, open_timeout, read_timeout, body = nil)` where:
-    - `uri` is the fully-qualified URL of the EasyPost endpoint, including query parameters (`Uri` object)
-    - `method` is the lowercase name of the HTTP method being used for the request (e.g. `:get`, `:post`, `:put`, `:delete`)
-    - `headers` is a hash with all headers needed for the request pre-populated, including authorization (`Hash` object)
-    - `open_timeout` is the number of seconds to wait for the connection to open (integer)
-    - `read_timeout` is the number of seconds to wait for one block to be read (integer)
-    - `body` is a string of the body data to be included in the request, or nil (e.g. GET or DELETE request) (string or `nil`)
+
+- `uri` is the fully-qualified URL of the EasyPost endpoint, including query parameters (`Uri` object)
+- `method` is the lowercase name of the HTTP method being used for the request (e.g. `:get`, `:post`, `:put`, `:delete`)
+- `headers` is a hash with all headers needed for the request pre-populated, including authorization (`Hash` object)
+- `open_timeout` is the number of seconds to wait for the connection to open (integer)
+- `read_timeout` is the number of seconds to wait for one block to be read (integer)
+- `body` is a string of the body data to be included in the request, or nil (e.g. GET or DELETE request) (string or `nil`)
 
 The lambda function should return an object with `code` and `body` attributes, where:
-    - `code` is the HTTP response status code (integer)
-    - `body` is the response body (string)
+
+- `code` is the HTTP response status code (integer)
+- `body` is the response body (string)
 
 #### Faraday
 
