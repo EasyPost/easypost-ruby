@@ -77,6 +77,8 @@ class EasyPost::Errors::ApiError < EasyPost::Errors::EasyPostError
       EasyPost::Errors::ConnectionError
     when 300, 301, 302, 303, 304, 305, 306, 307, 308
       EasyPost::Errors::RedirectError
+    when 400
+      EasyPost::Errors::BadRequestError
     when 401
       EasyPost::Errors::UnauthorizedError
     when 402
