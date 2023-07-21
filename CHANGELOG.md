@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Maps 400 status code responses to the new `BadRequestError` class
+
 ## v5.0.1 (2023-06-20)
 
 - Fixes a bug where the params of a `customs_info` on create weren't wrapped properly which led to an empty set of `customs_items`
