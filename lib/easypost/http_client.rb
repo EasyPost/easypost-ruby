@@ -30,13 +30,13 @@ class EasyPost::HttpClient
 
     if EasyPost::Hooks.any_subscribers?(:request)
       request_context = EasyPost::Hooks::RequestContext.new(
-                          method: method,
-                          path: uri.to_s,
-                          headers: headers,
-                          request_body: body,
-                          request_timestamp: request_timestamp,
-                          request_uuid: request_uuid
-                        )
+        method: method,
+        path: uri.to_s,
+        headers: headers,
+        request_body: body,
+        request_timestamp: request_timestamp,
+        request_uuid: request_uuid,
+      )
       EasyPost::Hooks.notify(:request, request_context)
     end
 
@@ -59,22 +59,24 @@ class EasyPost::HttpClient
         request_timestamp: request_timestamp,
         response_timestamp: response_timestamp,
         client_response_object: response,
-        request_uuid: request_uuid
+        request_uuid: request_uuid,
       }
 
       # If using a custom HTTP client, the user will have to infer these from the raw
       # client_response_object attribute
       if response.is_a?(Net::HTTPResponse)
         response_body = begin
-                          JSON.parse(response.body)
-                        rescue
-                          response.body
-                        end
-        response_context.merge!({
-          http_status: response.code.to_i,
-          headers: response.each_header.to_h,
-          response_body: response_body
-        })
+          JSON.parse(response.body)
+        rescue JSON::ParseError
+          response.body
+        end
+        response_context.merge!(
+          {
+            http_status: response.code.to_i,
+            headers: response.each_header.to_h,
+            response_body: response_body,
+          }
+        )
       end
 
       EasyPost::Hooks.notify(:response, EasyPost::Hooks::ResponseContext.new(response_context))

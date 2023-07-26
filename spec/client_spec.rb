@@ -117,7 +117,7 @@ describe EasyPost::Client do
     end
 
     describe 'hooks' do
-      after(:each) { EasyPost::Hooks.send(:subscribers).clear }
+      after { EasyPost::Hooks.send(:subscribers).clear }
 
       it 'subscribes to request events' do
         notifications = []
@@ -139,7 +139,7 @@ describe EasyPost::Client do
         expect {
           client.address.retrieve('adr_123')
         }.to raise_error(EasyPost::Errors::NotFoundError) # Address doesn't exist
-        
+
         expect(notifications.size).to eq(1)
       end
 
@@ -189,15 +189,15 @@ describe EasyPost::Client do
       it 'notifies multiple subscribers' do
         request_notifications = []
         response_notifications = []
-        request_notifier = lambda { |data| request_notifications << data }
-        response_notifier = lambda { |data| response_notifications << data }
+        request_notifier = -> { |data| request_notifications << data }
+        response_notifier = -> { |data| response_notifications << data }
         client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'])
 
-        client.subscribe_request_hook &request_notifier
-        client.subscribe_request_hook &request_notifier
-        client.subscribe_request_hook &request_notifier
-        client.subscribe_response_hook &response_notifier
-        client.subscribe_response_hook &response_notifier
+        client.subscribe_request_hook(&request_notifier)
+        client.subscribe_request_hook(&request_notifier)
+        client.subscribe_request_hook(&request_notifier)
+        client.subscribe_response_hook(&response_notifier)
+        client.subscribe_response_hook(&response_notifier)
 
         expect(EasyPost::Hooks.any_subscribers?(:request)).to eq(true)
         expect(EasyPost::Hooks.any_subscribers?(:response)).to eq(true)
@@ -205,7 +205,7 @@ describe EasyPost::Client do
         expect {
           client.address.retrieve('adr_123')
         }.to raise_error(EasyPost::Errors::NotFoundError) # Address doesn't exist
-        
+
         expect(request_notifications.size).to eq(3)
         expect(response_notifications.size).to eq(2)
       end
@@ -213,12 +213,12 @@ describe EasyPost::Client do
       it 'removes subscribers' do
         request_notifications = []
         response_notifications = []
-        request_notifier = lambda { |data| request_notifications << data }
-        response_notifier = lambda { |data| response_notifications << data }
+        request_notifier = -> { |data| request_notifications << data }
+        response_notifier = -> { |data| response_notifications << data }
         client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'])
 
-        request_notifier_name = client.subscribe_request_hook &request_notifier
-        response_notifier_name = client.subscribe_response_hook &response_notifier
+        request_notifier_name = client.subscribe_request_hook(&request_notifier)
+        response_notifier_name = client.subscribe_response_hook(&response_notifier)
 
         expect(EasyPost::Hooks.any_subscribers?(:request)).to eq(true)
         expect(EasyPost::Hooks.any_subscribers?(:response)).to eq(true)

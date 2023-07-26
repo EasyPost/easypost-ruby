@@ -96,7 +96,7 @@ class EasyPost::Client
   # @param name [Symbol] the name of the hook. Defaults ot a ranom hexadecimal-based symbol
   # @param block [Block] a code block that will be executed before a request is made
   # @return [Symbol] the name of the request hook
-  def subscribe_request_hook(name=SecureRandom.hex.to_sym, &block)
+  def subscribe_request_hook(name = SecureRandom.hex.to_sym, &block)
     EasyPost::Hooks.subscribe(:request, name, block)
   end
 
@@ -120,7 +120,7 @@ class EasyPost::Client
   # @param name [Symbol] the name of the hook. Defaults ot a ranom hexadecimal-based symbol
   # @param block [Block] a code block that will be executed upon receiving the response from a request
   # @return [Symbol] the name of the response hook
-  def subscribe_response_hook(name=SecureRandom.hex.to_sym, &block)
+  def subscribe_response_hook(name = SecureRandom.hex.to_sym, &block)
     EasyPost::Hooks.subscribe(:response, name, block)
   end
 
@@ -138,6 +138,7 @@ class EasyPost::Client
   def unsubscribe_all_response_hooks
     EasyPost::Hooks.unsubscribe_all(:response)
   end
+
   private
 
   def http_config
