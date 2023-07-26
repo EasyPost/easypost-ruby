@@ -228,7 +228,7 @@ describe EasyPost::Client do
         expect {
           client.address.retrieve('adr_123')
         }.to raise_error(EasyPost::Errors::NotFoundError) # Address doesn't exist
-        
+
         expect(request_notifications).to be_empty
         expect(response_notifications).to be_empty
         expect(EasyPost::Hooks.any_subscribers?(:request)).to eq(false)
