@@ -75,7 +75,7 @@ class EasyPost::HttpClient
             http_status: response.code.to_i,
             headers: response.each_header.to_h,
             response_body: response_body,
-          }
+          },
         )
       end
 
