@@ -79,7 +79,7 @@ class EasyPost::HttpClient
         )
       end
 
-      EasyPost::Hooks.notify(:response, EasyPost::Hooks::ResponseContext.new(response_context))
+      EasyPost::Hooks.notify(:response, EasyPost::Hooks::ResponseContext.new(**response_context))
     end
 
     response
