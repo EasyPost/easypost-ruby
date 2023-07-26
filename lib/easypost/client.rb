@@ -4,6 +4,7 @@ require_relative 'services'
 require_relative 'http_client'
 require_relative 'internal_utilities'
 require 'json'
+require 'securerandom'
 
 class EasyPost::Client
   attr_reader :open_timeout, :read_timeout, :api_base
@@ -90,6 +91,53 @@ class EasyPost::Client
     EasyPost::InternalUtilities::Json.convert_json_to_object(response.body, cls)
   end
 
+  # Subscribe a request hook
+  #
+  # @param name [Symbol] the name of the hook. Defaults ot a ranom hexadecimal-based symbol
+  # @param block [Block] a code block that will be executed before a request is made
+  # @return [Symbol] the name of the request hook
+  def subscribe_request_hook(name=SecureRandom.hex.to_sym, &block)
+    EasyPost::Hooks.subscribe(:request, name, block)
+  end
+
+  # Unsubscribe a request hook
+  #
+  # @param name [Symbol] the name of the hook
+  # @return [Block] the hook code block
+  def unsubscribe_request_hook(name)
+    EasyPost::Hooks.unsubscribe(:request, name)
+  end
+
+  # Unsubscribe all request hooks
+  #
+  # @return [Hash] a hash containing all request hook subscriptions
+  def unsubscribe_all_request_hooks
+    EasyPost::Hooks.unsubscribe_all(:request)
+  end
+
+  # Subscribe a response hook
+  #
+  # @param name [Symbol] the name of the hook. Defaults ot a ranom hexadecimal-based symbol
+  # @param block [Block] a code block that will be executed upon receiving the response from a request
+  # @return [Symbol] the name of the response hook
+  def subscribe_response_hook(name=SecureRandom.hex.to_sym, &block)
+    EasyPost::Hooks.subscribe(:response, name, block)
+  end
+
+  # Unsubscribe a response hook
+  #
+  # @param name [Symbol] the name of the hook
+  # @return [Block] the hook code block
+  def unsubscribe_response_hook(name)
+    EasyPost::Hooks.unsubscribe(:response, name)
+  end
+
+  # Unsubscribe all response hooks
+  #
+  # @return [Hash] a hash containing all response hook subscriptions
+  def unsubscribe_all_response_hooks
+    EasyPost::Hooks.unsubscribe_all(:response)
+  end
   private
 
   def http_config

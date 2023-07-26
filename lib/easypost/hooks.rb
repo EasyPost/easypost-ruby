@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 module EasyPost::Hooks
-  def self.subscribers
-    @subscribers ||= Hash.new { |hash, key| hash[key] = {} }
-  end
-
-  def self.subscribe(type, name=rand, &block)
+  def self.subscribe(type, name, block)
     subscribers[type][name] = block
 
     name
@@ -27,5 +23,12 @@ module EasyPost::Hooks
     !subscribers[type].empty?
   end
 
+  def self.subscribers
+    @subscribers ||= Hash.new { |hash, key| hash[key] = {} }
+  end
+
   private_class_method :subscribers
 end
+
+require_relative 'hooks/request_context'
+require_relative 'hooks/response_context'
