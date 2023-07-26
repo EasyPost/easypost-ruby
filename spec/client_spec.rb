@@ -189,8 +189,8 @@ describe EasyPost::Client do
       it 'notifies multiple subscribers' do
         request_notifications = []
         response_notifications = []
-        request_notifier = -> (data) { request_notifications << data }
-        response_notifier = -> (data) { response_notifications << data }
+        request_notifier = ->(data) { request_notifications << data }
+        response_notifier = ->(data) { response_notifications << data }
         client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'])
 
         client.subscribe_request_hook(&request_notifier)
@@ -213,8 +213,8 @@ describe EasyPost::Client do
       it 'removes subscribers' do
         request_notifications = []
         response_notifications = []
-        request_notifier = -> (data) { request_notifications << data }
-        response_notifier = -> (data) { response_notifications << data }
+        request_notifier = ->(data) { request_notifications << data }
+        response_notifier = ->(data) { response_notifications << data }
         client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'])
 
         request_notifier_name = client.subscribe_request_hook(&request_notifier)
