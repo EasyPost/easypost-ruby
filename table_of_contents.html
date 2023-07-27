@@ -121,6 +121,15 @@
   <li class="class">
     <a href="EasyPost/Errors/UnknownApiError.html">EasyPost::Errors::UnknownApiError</a>
   </li>
+  <li class="module">
+    <a href="EasyPost/Hooks.html">EasyPost::Hooks</a>
+  </li>
+  <li class="class">
+    <a href="EasyPost/Hooks/RequestContext.html">EasyPost::Hooks::RequestContext</a>
+  </li>
+  <li class="class">
+    <a href="EasyPost/Hooks/ResponseContext.html">EasyPost::Hooks::ResponseContext</a>
+  </li>
   <li class="class">
     <a href="EasyPost/HttpClient.html">EasyPost::HttpClient</a>
   </li>
@@ -382,6 +391,11 @@
 <ul>
 
   <li class="method">
+    <a href="EasyPost/Hooks.html#method-c-any_subscribers-3F">::any_subscribers?</a>
+    &mdash;
+    <span class="container">EasyPost::Hooks</span>
+
+  <li class="method">
     <a href="EasyPost/InternalUtilities.html#method-c-build_dict_key">::build_dict_key</a>
     &mdash;
     <span class="container">EasyPost::InternalUtilities</span>
@@ -477,6 +491,16 @@
     <span class="container">EasyPost::Errors::MissingParameterError</span>
 
   <li class="method">
+    <a href="EasyPost/Hooks/RequestContext.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">EasyPost::Hooks::RequestContext</span>
+
+  <li class="method">
+    <a href="EasyPost/Hooks/ResponseContext.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">EasyPost::Hooks::ResponseContext</span>
+
+  <li class="method">
     <a href="EasyPost/HttpClient.html#method-c-new">::new</a>
     &mdash;
     <span class="container">EasyPost::HttpClient</span>
@@ -500,6 +524,11 @@
     <a href="EasyPost/InternalUtilities.html#method-c-normalize_string_list">::normalize_string_list</a>
     &mdash;
     <span class="container">EasyPost::InternalUtilities</span>
+
+  <li class="method">
+    <a href="EasyPost/Hooks.html#method-c-notify">::notify</a>
+    &mdash;
+    <span class="container">EasyPost::Hooks</span>
 
   <li class="method">
     <a href="EasyPost/InternalUtilities.html#method-c-objects_to_ids">::objects_to_ids</a>
@@ -537,9 +566,24 @@
     <span class="container">EasyPost::InternalUtilities::System</span>
 
   <li class="method">
+    <a href="EasyPost/Hooks.html#method-c-subscribe">::subscribe</a>
+    &mdash;
+    <span class="container">EasyPost::Hooks</span>
+
+  <li class="method">
     <a href="EasyPost/InternalUtilities.html#method-c-to_snake_case">::to_snake_case</a>
     &mdash;
     <span class="container">EasyPost::InternalUtilities</span>
+
+  <li class="method">
+    <a href="EasyPost/Hooks.html#method-c-unsubscribe">::unsubscribe</a>
+    &mdash;
+    <span class="container">EasyPost::Hooks</span>
+
+  <li class="method">
+    <a href="EasyPost/Hooks.html#method-c-unsubscribe_all">::unsubscribe_all</a>
+    &mdash;
+    <span class="container">EasyPost::Hooks</span>
 
   <li class="method">
     <a href="EasyPost/Util.html#method-c-validate_webhook">::validate_webhook</a>
@@ -1122,6 +1166,16 @@
     <span class="container">EasyPost::Services::BetaRate</span>
 
   <li class="method">
+    <a href="EasyPost/Client.html#method-i-subscribe_request_hook">#subscribe_request_hook</a>
+    &mdash;
+    <span class="container">EasyPost::Client</span>
+
+  <li class="method">
+    <a href="EasyPost/Client.html#method-i-subscribe_response_hook">#subscribe_response_hook</a>
+    &mdash;
+    <span class="container">EasyPost::Client</span>
+
+  <li class="method">
     <a href="EasyPost/Models/Object.html#method-i-to_hash">#to_hash</a>
     &mdash;
     <span class="container">EasyPost::Models::Object</span>
@@ -1130,6 +1184,26 @@
     <a href="EasyPost/Models/Object.html#method-i-to_s">#to_s</a>
     &mdash;
     <span class="container">EasyPost::Models::Object</span>
+
+  <li class="method">
+    <a href="EasyPost/Client.html#method-i-unsubscribe_all_request_hooks">#unsubscribe_all_request_hooks</a>
+    &mdash;
+    <span class="container">EasyPost::Client</span>
+
+  <li class="method">
+    <a href="EasyPost/Client.html#method-i-unsubscribe_all_response_hooks">#unsubscribe_all_response_hooks</a>
+    &mdash;
+    <span class="container">EasyPost::Client</span>
+
+  <li class="method">
+    <a href="EasyPost/Client.html#method-i-unsubscribe_request_hook">#unsubscribe_request_hook</a>
+    &mdash;
+    <span class="container">EasyPost::Client</span>
+
+  <li class="method">
+    <a href="EasyPost/Client.html#method-i-unsubscribe_response_hook">#unsubscribe_response_hook</a>
+    &mdash;
+    <span class="container">EasyPost::Client</span>
 
   <li class="method">
     <a href="EasyPost/Services/CarrierAccount.html#method-i-update">#update</a>
