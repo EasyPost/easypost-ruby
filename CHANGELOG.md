@@ -1,9 +1,9 @@
 # CHANGELOG
 
-## Next Release
+## v5.1.0 (2023-07-28)
 
-- Maps 400 status code responses to the new `BadRequestError` class
 - Adds hooks to introspect the request and response of API calls (see `HTTP Hooks` section in the README for more details)
+- Maps 400 status code responses to the new `BadRequestError` class
 
 ## v5.0.1 (2023-06-20)
 

@@ -120,7 +120,7 @@ my_client = described_class.new(
 
 ### HTTP Hooks
 
-Users can audit the HTTP requests and response being made by the library by subscribing to request and response events. To do so, pass a block to `subscribe_request_hook` and `subscribe_response_hook` methods of an instance of `EasyPost::Client`:
+Users can audit HTTP requests and responses being made by the library by subscribing to request and response events. To do so, pass a block to the `subscribe_request_hook` and `subscribe_response_hook` methods of an instance of `EasyPost::Client`:
 
 ```ruby
 require 'easypost'
@@ -157,7 +157,7 @@ puts response_hook # :my_response_hook
 
 Keep in mind that subscribing a hook with the same name of an existing hook will replace the existing hook with the new one. A request hook and a response hook can share the same name.
 
-#### A note on response hooks and custom HTTP connections
+#### Custom HTTP Connections with HTTP Hooks
 
 If you're using a custom HTTP connection, keep in mind that the `response_data` parameter that a response hook receives *will not be hydrated* with all the response data. You will have to inspect the `client_response_object` property in `response_data` to inspect the response code, response headers and response body.
 
