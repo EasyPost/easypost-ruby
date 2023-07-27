@@ -127,7 +127,8 @@ describe EasyPost::Client do
           expect(request_data.method).to eq(:get)
           expect(request_data.path).to end_with('/addresses/adr_123')
           expect(request_data.headers).to be_a(Hash)
-          request_data.headers.each { |key, value| expect(request_data.headers[key]).to eq(value) }
+          expect(request_data.headers['Content-Type']).to eq('application/json')
+          # Because the library is making a GET request, it is expected the request to not have a body
           expect(request_data.request_body).to be_nil
           expect(request_data.request_timestamp).to be_a(Time)
           expect(request_data.request_uuid).to be_a(String)
@@ -154,7 +155,7 @@ describe EasyPost::Client do
           expect(request_data.method).to eq(:post)
           expect(request_data.path).to end_with('/addresses')
           expect(request_data.headers).to be_a(Hash)
-          request_data.headers.each { |key, value| expect(request_data.headers[key]).to eq(value) }
+          expect(request_data.headers['Content-Type']).to eq('application/json')
           expect(request_data.request_body).to be_a(Hash)
           expect(request_data.request_body).to eq(address_to_create)
           expect(request_data.request_timestamp).to be_a(Time)
@@ -168,8 +169,9 @@ describe EasyPost::Client do
           expect(response_data.method).to eq(:post)
           expect(response_data.path).to end_with('/addresses')
           expect(response_data.headers).to be_a(Hash)
-          response_data.headers.each { |key, value| expect(response_data.headers[key]).to eq(value) }
+          expect(response_data.headers['content-type']).to include('application/json')
           expect(response_data.response_body).to be_a(Hash)
+          expect(response_data.response_body['object']).to eq('Address')
           expect(response_data.request_timestamp).to be_a(Time)
           expect(response_data.response_timestamp).to be_a(Time)
           # Might break due to machine clock
