@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'securerandom'
+
 class EasyPost::HttpClient
   def initialize(base_url, config, custom_client_exec = nil)
     @base_url = base_url
@@ -20,17 +22,67 @@ class EasyPost::HttpClient
 
     uri = URI.parse("#{@base_url}/#{api_version}/#{path}")
     headers = @config[:headers].merge(headers || {})
-    body = JSON.dump(EasyPost::InternalUtilities.objects_to_ids(body)) if body
+    serialized_body = JSON.dump(EasyPost::InternalUtilities.objects_to_ids(body)) if body
     open_timeout = @config[:open_timeout]
     read_timeout = @config[:read_timeout]
+    request_timestamp = Time.now
+    request_uuid = SecureRandom.uuid
+
+    if EasyPost::Hooks.any_subscribers?(:request)
+      request_context = EasyPost::Hooks::RequestContext.new(
+        method: method,
+        path: uri.to_s,
+        headers: headers,
+        request_body: body,
+        request_timestamp: request_timestamp,
+        request_uuid: request_uuid,
+      )
+      EasyPost::Hooks.notify(:request, request_context)
+    end
 
     # Execute the request, return the response.
 
-    if @custom_client_exec
-      @custom_client_exec.call(method, uri, headers, open_timeout, read_timeout, body)
-    else
-      default_request_execute(method, uri, headers, open_timeout, read_timeout, body)
+    response = if @custom_client_exec
+                 @custom_client_exec.call(method, uri, headers, open_timeout, read_timeout, serialized_body)
+               else
+                 default_request_execute(method, uri, headers, open_timeout, read_timeout, serialized_body)
+               end
+    response_timestamp = Time.now
+
+    if EasyPost::Hooks.any_subscribers?(:response)
+      response_context = {
+        http_status: nil,
+        method: method,
+        path: uri.to_s,
+        headers: nil,
+        response_body: nil,
+        request_timestamp: request_timestamp,
+        response_timestamp: response_timestamp,
+        client_response_object: response,
+        request_uuid: request_uuid,
+      }
+
+      # If using a custom HTTP client, the user will have to infer these from the raw
+      # client_response_object attribute
+      if response.is_a?(Net::HTTPResponse)
+        response_body = begin
+          JSON.parse(response.body)
+        rescue JSON::ParseError
+          response.body
+        end
+        response_context.merge!(
+          {
+            http_status: response.code.to_i,
+            headers: response.each_header.to_h,
+            response_body: response_body,
+          },
+        )
+      end
+
+      EasyPost::Hooks.notify(:response, EasyPost::Hooks::ResponseContext.new(**response_context))
     end
+
+    response
   end
 
   def default_request_execute(method, uri, headers, open_timeout, read_timeout, body = nil)

@@ -115,5 +115,122 @@ describe EasyPost::Client do
         client.address.retrieve('adr_123')
       }.to raise_error(EasyPost::Errors::NotFoundError) # should throw error because our lambda returns 404
     end
+
+    describe 'hooks' do
+      after { EasyPost::Hooks.send(:subscribers).clear }
+
+      it 'subscribes to request events' do
+        notifications = []
+        client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'])
+        client.subscribe_request_hook do |request_data|
+          expect(request_data).to be_an(EasyPost::Hooks::RequestContext)
+          expect(request_data.method).to eq(:get)
+          expect(request_data.path).to end_with('/addresses/adr_123')
+          expect(request_data.headers['Content-Type']).to eq('application/json')
+          # Because the library is making a GET request, it is expected the request to not have a body
+          expect(request_data.request_body).to be_nil
+          expect(request_data.request_timestamp).to be_a(Time)
+          expect(request_data.request_uuid).to be_a(String)
+          notifications << request_data
+        end
+        expect(EasyPost::Hooks.any_subscribers?(:request)).to eq(true)
+        expect(EasyPost::Hooks.any_subscribers?(:response)).to eq(false)
+
+        expect {
+          client.address.retrieve('adr_123')
+        }.to raise_error(EasyPost::Errors::NotFoundError) # Address doesn't exist
+
+        expect(notifications.size).to eq(1)
+      end
+
+      it 'subscribes to response events' do
+        address_to_create = Fixture.ca_address1
+        lifecycle_request_uuid = ''
+        request_notifications = []
+        response_notifications = []
+        client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'])
+        client.subscribe_request_hook do |request_data|
+          expect(request_data).to be_an(EasyPost::Hooks::RequestContext)
+          expect(request_data.method).to eq(:post)
+          expect(request_data.path).to end_with('/addresses')
+          expect(request_data.headers['Content-Type']).to eq('application/json')
+          expect(request_data.request_body).to eq(address_to_create)
+          expect(request_data.request_timestamp).to be_a(Time)
+          expect(request_data.request_uuid).to be_a(String)
+          lifecycle_request_uuid = request_data.request_uuid
+          request_notifications << request_data
+        end
+        client.subscribe_response_hook do |response_data|
+          expect(response_data).to be_an(EasyPost::Hooks::ResponseContext)
+          expect(response_data.http_status).to eq(201)
+          expect(response_data.method).to eq(:post)
+          expect(response_data.path).to end_with('/addresses')
+          expect(response_data.headers['content-type']).to include('application/json')
+          expect(response_data.response_body['object']).to eq('Address')
+          expect(response_data.request_timestamp).to be_a(Time)
+          expect(response_data.response_timestamp).to be_a(Time)
+          # Might break due to machine clock
+          expect(response_data.response_timestamp > response_data.request_timestamp).to eq(true)
+          expect(response_data.request_uuid).to eq(lifecycle_request_uuid)
+          response_notifications << response_data
+        end
+        expect(EasyPost::Hooks.any_subscribers?(:request)).to eq(true)
+        expect(EasyPost::Hooks.any_subscribers?(:response)).to eq(true)
+
+        address = client.address.create(address_to_create)
+        expect(address).to be_an(EasyPost::Models::Address)
+        expect(request_notifications.size).to eq(1)
+        expect(response_notifications.size).to eq(1)
+      end
+
+      it 'notifies multiple subscribers' do
+        request_notifications = []
+        response_notifications = []
+        request_notifier = ->(data) { request_notifications << data }
+        response_notifier = ->(data) { response_notifications << data }
+        client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'])
+
+        client.subscribe_request_hook(&request_notifier)
+        client.subscribe_request_hook(&request_notifier)
+        client.subscribe_request_hook(&request_notifier)
+        client.subscribe_response_hook(&response_notifier)
+        client.subscribe_response_hook(&response_notifier)
+
+        expect(EasyPost::Hooks.any_subscribers?(:request)).to eq(true)
+        expect(EasyPost::Hooks.any_subscribers?(:response)).to eq(true)
+
+        expect {
+          client.address.retrieve('adr_123')
+        }.to raise_error(EasyPost::Errors::NotFoundError) # Address doesn't exist
+
+        expect(request_notifications.size).to eq(3)
+        expect(response_notifications.size).to eq(2)
+      end
+
+      it 'removes subscribers' do
+        request_notifications = []
+        response_notifications = []
+        request_notifier = ->(data) { request_notifications << data }
+        response_notifier = ->(data) { response_notifications << data }
+        client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'])
+
+        request_notifier_name = client.subscribe_request_hook(&request_notifier)
+        response_notifier_name = client.subscribe_response_hook(&response_notifier)
+
+        expect(EasyPost::Hooks.any_subscribers?(:request)).to eq(true)
+        expect(EasyPost::Hooks.any_subscribers?(:response)).to eq(true)
+        expect(client.unsubscribe_request_hook(request_notifier_name)).to eq(request_notifier)
+        expect(client.unsubscribe_response_hook(response_notifier_name)).to eq(response_notifier)
+
+        expect {
+          client.address.retrieve('adr_123')
+        }.to raise_error(EasyPost::Errors::NotFoundError) # Address doesn't exist
+
+        expect(request_notifications).to be_empty
+        expect(response_notifications).to be_empty
+        expect(EasyPost::Hooks.any_subscribers?(:request)).to eq(false)
+        expect(EasyPost::Hooks.any_subscribers?(:response)).to eq(false)
+      end
+    end
   end
 end

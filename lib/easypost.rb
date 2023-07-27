@@ -24,5 +24,8 @@ require 'easypost/errors'
 # Internal Utilities
 require 'easypost/internal_utilities'
 
+# Hooks
+require 'easypost/hooks'
+
 module EasyPost
 end
