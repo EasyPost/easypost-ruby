@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Fix endpoint for creating a FedEx Smartpost carrier account
+
 ## v5.1.0 (2023-07-28)
 
 - Adds hooks to introspect the request and response of API calls (see `HTTP Hooks` section in the README for more details)
