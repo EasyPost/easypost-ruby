@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
-  CUSTOM_WORKFLOW_CARRIER_TYPES = %w[UpsAccount FedexAccount].freeze
+  CUSTOM_WORKFLOW_CARRIER_TYPES = %w[UpsAccount FedexAccount FedexSmartpostAccount].freeze
   MODEL_CLASS = EasyPost::Models::CarrierAccount
 
   # Create a carrier account
