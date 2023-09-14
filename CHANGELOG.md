@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v5.2.0 (2023-09-14)
+
+- Add `carrier_type` service + `carrier_type.all` method
+
 ## v5.1.1 (2023-09-05)
 
 - Fix endpoint for creating a FedEx Smartpost carrier account
