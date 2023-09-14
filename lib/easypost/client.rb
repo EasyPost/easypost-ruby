@@ -41,6 +41,7 @@ class EasyPost::Client
     EasyPost::Services::Billing,
     EasyPost::Services::CarrierAccount,
     EasyPost::Services::CarrierMetadata,
+    EasyPost::Services::CarrierType,
     EasyPost::Services::CustomsInfo,
     EasyPost::Services::CustomsItem,
     EasyPost::Services::EndShipper,
