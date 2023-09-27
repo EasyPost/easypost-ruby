@@ -33,11 +33,15 @@ class EasyPost::Services::User < EasyPost::Services::Service
 
   # Retrieve a list of all ApiKey objects.
   def all_api_keys
+    warn '[DEPRECATION] `all_api_keys` is deprecated. Please use `all` in the `api_key` service instead.'
     @client.make_request(:get, 'api_keys', EasyPost::Models::ApiKey)
   end
 
   # Retrieve a list of ApiKey objects (works for the authenticated user or a child user).
   def api_keys(id)
+    warn '[DEPRECATION] `api_keys` is deprecated.
+Please use `retrieve_api_keys_for_user` in the `api_key` service instead.'
+
     api_keys = all_api_keys
 
     if api_keys.id == id
