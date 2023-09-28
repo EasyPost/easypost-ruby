@@ -12,18 +12,16 @@ class EasyPost::Services::ApiKey < EasyPost::Services::Service
 
     if api_keys.id == id
       # This function was called on the authenticated user
-      my_api_keys = api_keys.keys
-    else
-      # This function was called on a child user (authenticated as parent, only return this child user's details).
-      my_api_keys = []
-      api_keys.children.each do |child|
-        if child.id == id
-          my_api_keys = child.keys
-          break
-        end
+      return api_keys.keys
+    end
+
+    # This function was called on a child user (authenticated as parent, only return this child user's details).
+    api_keys.children.each do |child|
+      if child.id == id
+        return child.keys
       end
     end
 
-    my_api_keys
+    raise EasyPost::Errors::FilteringError.new(EasyPost::Constants::NO_USER_FOUND)
   end
 end
