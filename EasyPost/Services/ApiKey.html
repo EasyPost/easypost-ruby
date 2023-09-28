@@ -73,6 +73,7 @@
 
   <ul class="link-list" role="directory">
     <li ><a href="#method-i-all">#all</a>
+    <li ><a href="#method-i-retrieve_api_keys_for_user">#retrieve_api_keys_for_user</a>
   </ul>
 </div>
 
@@ -109,12 +110,49 @@
         </div>
 
         <div class="method-description">
-          <p>Retrieve all api keys.</p>
+          <p>Retrieve a list of all <a href="ApiKey.html"><code>ApiKey</code></a> objects.</p>
 
           <div class="method-source-code" id="all-source">
             <pre><span class="ruby-comment"># File lib/easypost/services/api_key.rb, line 5</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;api_keys&#39;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">ApiKey</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-retrieve_api_keys_for_user" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">retrieve_api_keys_for_user</span><span
+              class="method-args">(id)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Retrieve a list of <a href="ApiKey.html"><code>ApiKey</code></a> objects (works for the authenticated user or a child user).</p>
+
+          <div class="method-source-code" id="retrieve_api_keys_for_user-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/api_key.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve_api_keys_for_user</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-identifier">api_keys</span> = <span class="ruby-identifier">all</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span>
+    <span class="ruby-comment"># This function was called on the authenticated user</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">keys</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># This function was called on a child user (authenticated as parent, only return this child user&#39;s details).</span>
+  <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">keys</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">FilteringError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">NO_USER_FOUND</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

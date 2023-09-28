@@ -130,6 +130,7 @@
           <div class="method-source-code" id="all_api_keys-source">
             <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all_api_keys</span>
+  <span class="ruby-identifier">warn</span> <span class="ruby-string">&#39;[DEPRECATION] `all_api_keys` is deprecated. Please use `all` in the `api_key` service instead.&#39;</span>
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;api_keys&#39;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">ApiKey</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -151,26 +152,29 @@
           <p>Retrieve a list of ApiKey objects (works for the authenticated user or a child user).</p>
 
           <div class="method-source-code" id="api_keys-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 40</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">api_keys</span>(<span class="ruby-identifier">id</span>)
-  <span class="ruby-identifier">api_keys</span> = <span class="ruby-identifier">all_api_keys</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 41</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">api_keys</span>(<span class="ruby-identifier">id</span>)
+    <span class="ruby-identifier">warn</span> <span class="ruby-string">&#39;[DEPRECATION] `api_keys` is deprecated.
+Please use `retrieve_api_keys_for_user` in the `api_key` service instead.&#39;</span>
 
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span>
-    <span class="ruby-comment"># This function was called on the authenticated user</span>
-    <span class="ruby-identifier">my_api_keys</span> = <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">keys</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-comment"># This function was called on a child user (authenticated as parent, only return this child user&#39;s details).</span>
-    <span class="ruby-identifier">my_api_keys</span> = []
-    <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span>
-        <span class="ruby-identifier">my_api_keys</span> = <span class="ruby-identifier">child</span>.<span class="ruby-identifier">keys</span>
-        <span class="ruby-keyword">break</span>
+    <span class="ruby-identifier">api_keys</span> = <span class="ruby-identifier">all_api_keys</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span>
+      <span class="ruby-comment"># This function was called on the authenticated user</span>
+      <span class="ruby-identifier">my_api_keys</span> = <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">keys</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-comment"># This function was called on a child user (authenticated as parent, only return this child user&#39;s details).</span>
+      <span class="ruby-identifier">my_api_keys</span> = []
+      <span class="ruby-identifier">api_keys</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">id</span>
+          <span class="ruby-identifier">my_api_keys</span> = <span class="ruby-identifier">child</span>.<span class="ruby-identifier">keys</span>
+          <span class="ruby-keyword">break</span>
+        <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">my_api_keys</span>
-<span class="ruby-keyword">end</span></pre>
+    <span class="ruby-identifier">my_api_keys</span>
+  <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
 
@@ -308,7 +312,7 @@
           <p>Update the Brand of a <a href="User.html"><code>User</code></a>.</p>
 
           <div class="method-source-code" id="update_brand-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 61</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update_brand</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">brand:</span> <span class="ruby-identifier">params</span> }
 
