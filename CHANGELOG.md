@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Migrate API Key-related functions out of `user` service into `api_key` service
+
 ## v5.2.0 (2023-09-14)
 
 - Add `carrier_type` service + `carrier_type.all` method
