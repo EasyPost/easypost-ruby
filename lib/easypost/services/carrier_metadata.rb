@@ -4,7 +4,6 @@ class EasyPost::Services::CarrierMetadata < EasyPost::Services::Service
   # Retrieve metadata for carrier(s).
   def retrieve(carriers = [], types = [])
     path = '/metadata/carriers?'
-
     params = {}
 
     if carriers.length.positive?
@@ -16,7 +15,8 @@ class EasyPost::Services::CarrierMetadata < EasyPost::Services::Service
     end
 
     path += URI.encode_www_form(params)
+    response = @client.make_request(:get, path, EasyPost::Models::EasyPostObject, params)
 
-    @client.make_request(:get, path, EasyPost::Models::EasyPostObject, params).carriers
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response).carriers
   end
 end

@@ -10,13 +10,15 @@ class EasyPost::Services::BetaReferralCustomer < EasyPost::Services::Service
         priority: priority.downcase,
       },
     }
-    @client.make_request(
+    response = @client.make_request(
       :post,
       'referral_customers/payment_method',
       EasyPost::Models::EasyPostObject,
       wrapped_params,
       'beta',
     )
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response)
   end
 
   # Refund a ReferralCustomer Customer's wallet by a specified amount. Refund will be issued to the user's original payment method.
@@ -25,8 +27,9 @@ class EasyPost::Services::BetaReferralCustomer < EasyPost::Services::Service
     params = {
       refund_amount: amount,
     }
-    @client.make_request(:post, 'referral_customers/refunds', EasyPost::Models::EasyPostObject, params, 'beta')
-    # noinspection RubyMismatchedReturnType
+    response = @client.make_request(:post, 'referral_customers/refunds', EasyPost::Models::EasyPostObject, params, 'beta')
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response)
   end
 
   # Refund a ReferralCustomer Customer's wallet for a specified payment log entry. Refund will be issued to the user's original payment method.
@@ -35,6 +38,8 @@ class EasyPost::Services::BetaReferralCustomer < EasyPost::Services::Service
     params = {
       payment_log_id: payment_log_id,
     }
-    @client.make_request(:post, 'referral_customers/refunds', EasyPost::Models::EasyPostObject, params, 'beta')
+    response = @client.make_request(:post, 'referral_customers/refunds', EasyPost::Models::EasyPostObject, params, 'beta')
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response)
   end
 end

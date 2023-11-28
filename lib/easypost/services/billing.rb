@@ -65,11 +65,12 @@ class EasyPost::Services::Billing < EasyPost::Services::Service
   # Retrieve all payment methods.
   def retrieve_payment_methods
     response = @client.make_request(:get, '/v2/payment_methods')
+    payment_methods = EasyPost::InternalUtilities::Json.convert_json_to_object(response)
 
-    if response['id'].nil?
+    if payment_methods['id'].nil?
       raise EasyPost::Errors::InvalidObjectError.new(EasyPost::Constants::NO_PAYMENT_METHODS)
     end
 
-    response
+    payment_methods
   end
 end
