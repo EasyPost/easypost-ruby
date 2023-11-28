@@ -8,8 +8,9 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
   # Create a Shipment.
   def create(params = {})
     wrapped_params = { shipment: params }
+    response = @client.make_request(:post, 'shipments', MODEL_CLASS, wrapped_params)
 
-    @client.make_request(:post, 'shipments', MODEL_CLASS, wrapped_params)
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a Shipment.
