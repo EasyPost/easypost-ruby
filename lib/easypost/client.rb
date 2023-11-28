@@ -89,7 +89,7 @@ class EasyPost::Client
     potential_error = EasyPost::Errors::ApiError.handle_api_error(response)
     raise potential_error unless potential_error.nil?
 
-    EasyPost::InternalUtilities::Json.convert_json_to_object(response.body, cls)
+    EasyPost::InternalUtilities::Json.parse_json(response.body)
   end
 
   # Subscribe a request hook

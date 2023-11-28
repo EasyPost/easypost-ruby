@@ -17,7 +17,9 @@ class EasyPost::Services::Address < EasyPost::Services::Service
       wrapped_params[:verify_strict] = params[:verify_strict]
     end
 
-    @client.make_request(:post, 'addresses', MODEL_CLASS, params)
+    response = @client.make_request(:post, 'addresses', MODEL_CLASS, params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Create and verify an Address in one call.
@@ -25,26 +27,39 @@ class EasyPost::Services::Address < EasyPost::Services::Service
     wrapped_params = {}
     wrapped_params[:address] = params
 
-    @client.make_request(:post, 'addresses/create_and_verify', MODEL_CLASS, wrapped_params).address
+    response = @client.make_request(:post, 'addresses/create_and_verify', MODEL_CLASS, wrapped_params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS).address
   end
 
   # Verify an Address.
   def verify(id)
-    @client.make_request(:get, "addresses/#{id}/verify", MODEL_CLASS).address
+    response = @client.make_request(:get, "addresses/#{id}/verify", MODEL_CLASS)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS).address
   end
 
   # Retrieve an Address.
   def retrieve(id)
-    @client.make_request(:get, "addresses/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "addresses/#{id}", MODEL_CLASS)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve all Addresses.
-  def all(filters = {})
-    @client.make_request(:get, 'addresses', MODEL_CLASS, filters)
+  def all(params = {})
+    filters = { 'key' => 'addresses' }
+
+    get_all_helper('addresses', MODEL_CLASS, params, filters)
   end
 
   # Get the next page of addresses.
   def get_next_page(collection, page_size = nil)
-    get_next_page_helper(collection, collection.addresses, 'addresses', MODEL_CLASS, page_size)
+    raise EasyPost::Errors::EndOfPaginationError.new unless has_more_pages?(collection)
+
+    params = { before_id: collection.addresses.last.id }
+    params[:page_size] = page_size unless page_size.nil?
+
+    all(params)
   end
 end

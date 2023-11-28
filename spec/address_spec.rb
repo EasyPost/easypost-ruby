@@ -89,6 +89,11 @@ describe EasyPost::Services::Address do
 
         # Did we actually get a new page?
         expect(first_page_first_id).not_to eq(next_page_first_id)
+
+        # Verify that filters are being passed along for internal reference
+        expect(first_page.filters[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to eq(
+          next_page.filters[EasyPost::InternalUtilities::Constants::FILTERS_KEY]
+        )
       rescue EasyPost::Errors::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.
         expect(e.message).to eq(EasyPost::Constants::NO_MORE_PAGES)
