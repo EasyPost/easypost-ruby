@@ -11,14 +11,14 @@ class EasyPost::Services::Report < EasyPost::Services::Service
 
     type = params.delete(:type)
     url = "reports/#{type}"
-    response = @client.make_request(:post, url, MODEL_CLASS, params)
+    response = @client.make_request(:post, url, params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a Report
   def retrieve(id)
-    response = @client.make_request(:get, "reports/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "reports/#{id}")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end

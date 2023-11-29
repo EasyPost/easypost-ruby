@@ -6,14 +6,14 @@ class EasyPost::Services::Tracker < EasyPost::Services::Service
   # Create a Tracker
   def create(params = {})
     wrapped_params = { tracker: params }
-    response = @client.make_request(:post, 'trackers', MODEL_CLASS, wrapped_params)
+    response = @client.make_request(:post, 'trackers', wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a Tracker
   def retrieve(id)
-    response = @client.make_request(:get, "trackers/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "trackers/#{id}")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -36,7 +36,7 @@ class EasyPost::Services::Tracker < EasyPost::Services::Service
   def create_list(params = {})
     wrapped_params = { 'trackers' => params }
 
-    @client.make_request(:post, 'trackers/create_list', MODEL_CLASS, wrapped_params)
+    @client.make_request(:post, 'trackers/create_list', wrapped_params)
     true # This endpoint does not return a response so we return true here instead
   end
 

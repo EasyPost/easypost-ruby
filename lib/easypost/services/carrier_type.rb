@@ -5,7 +5,7 @@ class EasyPost::Services::CarrierType < EasyPost::Services::Service
 
   # Retrieve all carrier types
   def all
-    response = @client.make_request(:get, 'carrier_types', MODEL_CLASS)
+    response = @client.make_request(:get, 'carrier_types')
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end

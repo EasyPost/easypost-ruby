@@ -6,14 +6,14 @@ class EasyPost::Services::Insurance < EasyPost::Services::Service
   # Create an Insurance object
   def create(params = {})
     wrapped_params = { insurance: params }
-    response = @client.make_request(:post, 'insurances', MODEL_CLASS, wrapped_params)
+    response = @client.make_request(:post, 'insurances', wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve an Insurance object
   def retrieve(id)
-    response = @client.make_request(:get, "insurances/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "insurances/#{id}")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end

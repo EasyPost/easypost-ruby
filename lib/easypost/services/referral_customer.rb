@@ -5,7 +5,7 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
 
   # Create a referral customer. This function requires the Partner User's API key.
   def create(params = {})
-    response = @client.make_request(:post, 'referral_customers', MODEL_CLASS, { user: params })
+    response = @client.make_request(:post, 'referral_customers', { user: params })
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -17,7 +17,7 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
         email: email,
       },
     }
-    @client.make_request(:put, "referral_customers/#{user_id}", MODEL_CLASS, wrapped_params)
+    @client.make_request(:put, "referral_customers/#{user_id}", wrapped_params)
 
     # return true if API succeeds, else an error is throw if it fails.
     true
@@ -63,7 +63,7 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
 
   # Retrieve EasyPost's Stripe public API key.
   def retrieve_easypost_stripe_api_key
-    response = @client.make_request(:get, 'partners/stripe_public_key', EasyPost::Models::EasyPostObject, nil, 'beta')
+    response = @client.make_request(:get, 'partners/stripe_public_key', nil, 'beta')
     response['public_key']
   end
 
@@ -110,7 +110,6 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
     response = referral_client.make_request(
       :post,
       'credit_cards',
-      EasyPost::Models::EasyPostObject,
       wrapped_params,
       'beta',
     )

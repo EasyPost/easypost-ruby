@@ -6,14 +6,14 @@ class EasyPost::Services::Pickup < EasyPost::Services::Service
   # Create a Pickup object
   def create(params = {})
     wrapped_params = { pickup: params }
-    response = @client.make_request(:post, 'pickups', MODEL_CLASS, wrapped_params)
+    response = @client.make_request(:post, 'pickups', wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a Pickup object
   def retrieve(id)
-    response = @client.make_request(:get, "pickups/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "pickups/#{id}")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -31,14 +31,14 @@ class EasyPost::Services::Pickup < EasyPost::Services::Service
       params = { carrier: params[:carrier], service: params[:service] }
     end
 
-    response = @client.make_request(:post, "pickups/#{id}/buy", MODEL_CLASS, params)
+    response = @client.make_request(:post, "pickups/#{id}/buy", params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Cancel a Pickup
   def cancel(id, params = {})
-    response = @client.make_request(:post, "pickups/#{id}/cancel", MODEL_CLASS, params)
+    response = @client.make_request(:post, "pickups/#{id}/cancel", params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end

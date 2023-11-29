@@ -6,14 +6,14 @@ class EasyPost::Services::Webhook < EasyPost::Services::Service
   # Create a Webhook.
   def create(params = {})
     wrapped_params = { webhook: params }
-    response = @client.make_request(:post, 'webhooks', MODEL_CLASS, wrapped_params)
+    response = @client.make_request(:post, 'webhooks', wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a Webhook
   def retrieve(id)
-    response = @client.make_request(:get, "webhooks/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "webhooks/#{id}")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -27,7 +27,7 @@ class EasyPost::Services::Webhook < EasyPost::Services::Service
 
   # Update a Webhook.
   def update(id, params = {})
-    response = @client.make_request(:patch, "webhooks/#{id}", MODEL_CLASS, params)
+    response = @client.make_request(:patch, "webhooks/#{id}", params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end

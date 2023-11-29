@@ -17,7 +17,7 @@ class EasyPost::Services::Address < EasyPost::Services::Service
       wrapped_params[:verify_strict] = params[:verify_strict]
     end
 
-    response = @client.make_request(:post, 'addresses', MODEL_CLASS, params)
+    response = @client.make_request(:post, 'addresses', params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -27,21 +27,21 @@ class EasyPost::Services::Address < EasyPost::Services::Service
     wrapped_params = {}
     wrapped_params[:address] = params
 
-    response = @client.make_request(:post, 'addresses/create_and_verify', MODEL_CLASS, wrapped_params)
+    response = @client.make_request(:post, 'addresses/create_and_verify', wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS).address
   end
 
   # Verify an Address.
   def verify(id)
-    response = @client.make_request(:get, "addresses/#{id}/verify", MODEL_CLASS)
+    response = @client.make_request(:get, "addresses/#{id}/verify")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS).address
   end
 
   # Retrieve an Address.
   def retrieve(id)
-    response = @client.make_request(:get, "addresses/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "addresses/#{id}")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end

@@ -7,7 +7,7 @@ class EasyPost::Services::Event < EasyPost::Services::Service
 
   # Retrieve an Event object
   def retrieve(id)
-    response = @client.make_request(:get, "events/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "events/#{id}")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -21,14 +21,14 @@ class EasyPost::Services::Event < EasyPost::Services::Service
 
   # Retrieve all payloads for an event.
   def retrieve_all_payloads(event_id)
-    response = @client.make_request(:get, "events/#{event_id}/payloads", EasyPost::Models::Payload)
+    response = @client.make_request(:get, "events/#{event_id}/payloads")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::Payload)
   end
 
   # Retrieve a specific payload for an event.
   def retrieve_payload(event_id, payload_id)
-    response = @client.make_request(:get, "events/#{event_id}/payloads/#{payload_id}", EasyPost::Models::Payload)
+    response = @client.make_request(:get, "events/#{event_id}/payloads/#{payload_id}")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::Payload)
   end

@@ -5,14 +5,14 @@ class EasyPost::Services::ScanForm < EasyPost::Services::Service
 
   # Create a ScanForm.
   def create(params = {})
-    response = @client.make_request(:post, 'scan_forms', MODEL_CLASS, params)
+    response = @client.make_request(:post, 'scan_forms', params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a ScanForm.
   def retrieve(id)
-    response = @client.make_request(:get, "scan_forms/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "scan_forms/#{id}")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end

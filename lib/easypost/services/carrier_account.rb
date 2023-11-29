@@ -14,14 +14,14 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
                  else
                    'carrier_accounts'
                  end
-    response = @client.make_request(:post, create_url, MODEL_CLASS, wrapped_params)
+    response = @client.make_request(:post, create_url, wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a carrier account
   def retrieve(id)
-    response = @client.make_request(:get, "carrier_accounts/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "carrier_accounts/#{id}")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -34,7 +34,7 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
   # Update a carrier account
   def update(id, params = {})
     wrapped_params = { carrier_account: params }
-    response = @client.make_request(:put, "carrier_accounts/#{id}", MODEL_CLASS, wrapped_params)
+    response = @client.make_request(:put, "carrier_accounts/#{id}", wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end

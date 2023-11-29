@@ -15,7 +15,7 @@ class EasyPost::Services::CarrierMetadata < EasyPost::Services::Service
     end
 
     path += URI.encode_www_form(params)
-    response = @client.make_request(:get, path, EasyPost::Models::EasyPostObject, params)
+    response = @client.make_request(:get, path, params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response).carriers
   end

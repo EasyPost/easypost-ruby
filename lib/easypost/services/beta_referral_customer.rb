@@ -13,7 +13,6 @@ class EasyPost::Services::BetaReferralCustomer < EasyPost::Services::Service
     response = @client.make_request(
       :post,
       'referral_customers/payment_method',
-      EasyPost::Models::EasyPostObject,
       wrapped_params,
       'beta',
     )
@@ -27,7 +26,7 @@ class EasyPost::Services::BetaReferralCustomer < EasyPost::Services::Service
     params = {
       refund_amount: amount,
     }
-    response = @client.make_request(:post, 'referral_customers/refunds', EasyPost::Models::EasyPostObject, params, 'beta')
+    response = @client.make_request(:post, 'referral_customers/refunds', params, 'beta')
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response)
   end
@@ -38,7 +37,7 @@ class EasyPost::Services::BetaReferralCustomer < EasyPost::Services::Service
     params = {
       payment_log_id: payment_log_id,
     }
-    response = @client.make_request(:post, 'referral_customers/refunds', EasyPost::Models::EasyPostObject, params, 'beta')
+    response = @client.make_request(:post, 'referral_customers/refunds', params, 'beta')
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response)
   end

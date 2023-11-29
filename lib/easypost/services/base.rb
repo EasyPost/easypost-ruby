@@ -11,7 +11,7 @@ class EasyPost::Services::Service
   protected
 
   def get_all_helper(endpoint, cls, params, filters = nil)
-    response = @client.make_request(:get, endpoint, cls, params)
+    response = @client.make_request(:get, endpoint, params)
 
     response[EasyPost::InternalUtilities::Constants::FILTERS_KEY] = filters unless filters.nil?
 

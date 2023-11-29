@@ -3,7 +3,7 @@
 class EasyPost::Services::ApiKey < EasyPost::Services::Service
   # Retrieve a list of all ApiKey objects.
   def all
-    response = @client.make_request(:get, 'api_keys', EasyPost::Models::ApiKey)
+    response = @client.make_request(:get, 'api_keys')
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::ApiKey)
   end

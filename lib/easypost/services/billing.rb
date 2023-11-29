@@ -44,7 +44,7 @@ class EasyPost::Services::Billing < EasyPost::Services::Service
     payment_id = payment_info[1]
 
     wrapped_params = { amount: amount }
-    @client.make_request(:post, "#{endpoint}/#{payment_id}/charges", EasyPost::Models::EasyPostObject, wrapped_params)
+    @client.make_request(:post, "#{endpoint}/#{payment_id}/charges", wrapped_params)
 
     # Return true if succeeds, an error will be thrown if it fails
     true

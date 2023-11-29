@@ -20,7 +20,6 @@ describe EasyPost::Services::CarrierAccount do
     it 'sends FedexAccount to the correct endpoint' do
       allow(client).to receive(:make_request).with(
         :post, 'carrier_accounts/register',
-        EasyPost::Models::CarrierAccount,
         { carrier_account: { type: 'FedexAccount' } },
       ).and_return({ 'id' => 'ca_123' })
 

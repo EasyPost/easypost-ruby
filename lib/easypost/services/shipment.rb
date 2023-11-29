@@ -8,14 +8,14 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
   # Create a Shipment.
   def create(params = {})
     wrapped_params = { shipment: params }
-    response = @client.make_request(:post, 'shipments', MODEL_CLASS, wrapped_params)
+    response = @client.make_request(:post, 'shipments', wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a Shipment.
   def retrieve(id)
-    response = @client.make_request(:get, "shipments/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "shipments/#{id}")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -53,14 +53,14 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
 
   # Regenerate the rates of a Shipment.
   def regenerate_rates(id)
-    response = @client.make_request(:post, "shipments/#{id}/rerate", MODEL_CLASS)
+    response = @client.make_request(:post, "shipments/#{id}/rerate")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Get the SmartRates of a Shipment.
   def get_smart_rates(id)
-    response = @client.make_request(:get, "shipments/#{id}/smartrate", MODEL_CLASS)
+    response = @client.make_request(:get, "shipments/#{id}/smartrate")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS).result || []
   end
@@ -72,7 +72,7 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
     end
 
     params[:end_shipper_id] = end_shipper_id if end_shipper_id
-    response = @client.make_request(:post, "shipments/#{id}/buy", MODEL_CLASS, params)
+    response = @client.make_request(:post, "shipments/#{id}/buy", params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -80,14 +80,14 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
   # Insure a Shipment.
   def insure(id, params = {})
     params = { amount: params } if params.is_a?(Integer) || params.is_a?(Float)
-    response = @client.make_request(:post, "shipments/#{id}/insure", MODEL_CLASS, params)
+    response = @client.make_request(:post, "shipments/#{id}/insure", params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Refund a Shipment.
   def refund(id, params = {})
-    response = @client.make_request(:post, "shipments/#{id}/refund", MODEL_CLASS, params)
+    response = @client.make_request(:post, "shipments/#{id}/refund", params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -95,7 +95,7 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
   # Convert the label format of a Shipment.
   def label(id, params = {})
     params = { file_format: params } if params.is_a?(String)
-    response = @client.make_request(:get, "shipments/#{id}/label", MODEL_CLASS, params)
+    response = @client.make_request(:get, "shipments/#{id}/label", params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -114,7 +114,7 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
     wrapped_params = {
       form: merged_params,
     }
-    response = @client.make_request(:post, "shipments/#{id}/forms", MODEL_CLASS, wrapped_params)
+    response = @client.make_request(:post, "shipments/#{id}/forms", wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -123,7 +123,7 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
   def retrieve_estimated_delivery_date(id, planned_ship_date)
     url = "shipments/#{id}/smartrate/delivery_date"
     params = { planned_ship_date: planned_ship_date }
-    response = @client.make_request(:get, url, MODEL_CLASS, params)
+    response = @client.make_request(:get, url, params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS).rates
   end

@@ -6,14 +6,14 @@ class EasyPost::Services::Refund < EasyPost::Services::Service
   # Create a Refund object
   def create(params = {})
     wrapped_params = { refund: params }
-    response = @client.make_request(:post, 'refunds', MODEL_CLASS, wrapped_params)
+    response = @client.make_request(:post, 'refunds', wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a Refund object
   def retrieve(id)
-    response = @client.make_request(:get, "refunds/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "refunds/#{id}")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
