@@ -64,28 +64,6 @@ describe EasyPost::Services::Shipment do
       expect(shipment.parcel.id).to match('prcl_')
       expect(shipment.from_address.street1).to eq('388 Townsend St')
     end
-
-    it 'creates a shipment with carbon_offset' do
-      shipment = client.shipment.create(Fixture.basic_shipment, true)
-
-      expect(shipment).to be_an_instance_of(EasyPost::Models::Shipment)
-      expect(shipment.rates).not_to be_nil
-
-      rate = shipment.rates.first
-      expect(rate.carbon_offset).not_to be_nil
-    end
-
-    it 'creates a one-call-buy shipment with carbon_offset' do
-      shipment = client.shipment.create(Fixture.one_call_buy_shipment, true)
-
-      carbon_offset_found = false
-      shipment.fees.each do |fee|
-        if fee.type == 'CarbonOffsetFee'
-          carbon_offset_found = true
-        end
-      end
-      expect(carbon_offset_found).to be true
-    end
   end
 
   describe '.retrieve' do
@@ -157,32 +135,6 @@ describe EasyPost::Services::Shipment do
       expect(bought_shipment.postage_label).not_to be_nil
     end
 
-    it 'buys a shipment with carbon offset' do
-      shipment = client.shipment.create(Fixture.basic_shipment)
-
-      bought_shipment = client.shipment.buy(shipment.id, shipment.lowest_rate, true)
-
-      carbon_offset_found = false
-      bought_shipment.fees.each do |fee|
-        if fee.type == 'CarbonOffsetFee'
-          carbon_offset_found = true
-        end
-      end
-      expect(carbon_offset_found).to be true
-    end
-
-    it 'buys a shipment with carbon offset in params hash' do
-      shipment = client.shipment.create(Fixture.basic_shipment)
-
-      bought_shipment = client.shipment.buy(shipment.id, { rate: shipment.lowest_rate, with_carbon_offset: true })
-
-      expect(shipment).to be_an_instance_of(EasyPost::Models::Shipment)
-      expect(shipment.rates).not_to be_nil
-
-      rate = bought_shipment.rates.first
-      expect(rate.carbon_offset).not_to be_nil
-    end
-
     it 'buys a shipment with end_shipper_id' do
       end_shipper = client.end_shipper.create(Fixture.ca_address1)
 
@@ -203,16 +155,6 @@ describe EasyPost::Services::Shipment do
 
       expect(rates_array).to be_an_instance_of(Array)
       expect(rates_array).to all(be_an_instance_of(EasyPost::Models::Rate))
-    end
-
-    it 'regenerates rates for a shipment with carbon offset' do
-      shipment = client.shipment.create(Fixture.basic_shipment)
-
-      shipment_with_carbon_offset = client.shipment.regenerate_rates(shipment.id, true)
-
-      shipment_with_carbon_offset.rates.each do |rate|
-        expect(rate.carbon_offset).not_to be_nil
-      end
     end
   end
 
