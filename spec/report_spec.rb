@@ -93,7 +93,7 @@ describe EasyPost::Services::Report do
         # Did we actually get a new page?
         expect(first_page_first_id).not_to eq(next_page_first_id)
         expect(first_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to eq(
-          next_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]
+          next_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY],
         )
         expect(first_page[:_filters][:type]).to eq(next_page[:_filters][:type])
       rescue EasyPost::Errors::EndOfPaginationError => e

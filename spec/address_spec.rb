@@ -93,7 +93,7 @@ describe EasyPost::Services::Address do
 
         # Verify that filters are being passed along for internal reference
         expect(first_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to eq(
-          next_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]
+          next_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY],
         )
       rescue EasyPost::Errors::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.

@@ -27,7 +27,7 @@ class EasyPost::Services::Insurance < EasyPost::Services::Service
 
   # Get the next page of insurances.
   def get_next_page(collection, page_size = nil)
-    raise EasyPost::Errors::EndOfPaginationError.new unless has_more_pages?(collection)
+    raise EasyPost::Errors::EndOfPaginationError.new unless more_pages?(collection)
 
     params = { before_id: collection.insurances.last.id }
     params[:page_size] = page_size unless page_size.nil?

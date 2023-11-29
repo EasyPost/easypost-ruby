@@ -18,7 +18,7 @@ class EasyPost::Services::Service
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, cls)
   end
 
-  def has_more_pages?(collection)
+  def more_pages?(collection)
     collection&.has_more
   end
 end

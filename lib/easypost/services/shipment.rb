@@ -37,7 +37,7 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
 
   # Get the next page of shipments.
   def get_next_page(collection, page_size = nil)
-    raise EasyPost::Errors::EndOfPaginationError.new unless has_more_pages?(collection)
+    raise EasyPost::Errors::EndOfPaginationError.new unless more_pages?(collection)
 
     params = {
       before_id: collection.shipments.last.id,
@@ -47,7 +47,7 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
       ).fetch(:include_children, nil),
     }
     params[:page_size] = page_size unless page_size.nil?
-    
+ 
     all(params)
   end
 

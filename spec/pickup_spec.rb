@@ -66,7 +66,7 @@ describe EasyPost::Services::Pickup do
         # Did we actually get a new page?
         expect(first_page_first_id).not_to eq(next_page_first_id)
         expect(first_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to eq(
-          next_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]
+          next_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY],
         )
       rescue EasyPost::Errors::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.

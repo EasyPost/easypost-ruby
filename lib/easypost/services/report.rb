@@ -43,7 +43,7 @@ class EasyPost::Services::Report < EasyPost::Services::Service
 
   # Get next page of Report objects
   def get_next_page(collection, page_size = nil)
-    raise EasyPost::Errors::EndOfPaginationError.new unless has_more_pages?(collection)
+    raise EasyPost::Errors::EndOfPaginationError.new unless more_pages?(collection)
 
     params = {
       before_id: collection.reports.last.id,

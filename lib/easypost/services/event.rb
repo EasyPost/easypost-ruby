@@ -35,7 +35,7 @@ class EasyPost::Services::Event < EasyPost::Services::Service
 
   # Get the next page of events.
   def get_next_page(collection, page_size = nil)
-    raise EasyPost::Errors::EndOfPaginationError.new unless has_more_pages?(collection)
+    raise EasyPost::Errors::EndOfPaginationError.new unless more_pages?(collection)
 
     params = { before_id: collection.events.last.id }
     params[:page_size] = page_size unless page_size.nil?
