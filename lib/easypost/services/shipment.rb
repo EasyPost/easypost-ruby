@@ -47,7 +47,7 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
       ).fetch(:include_children, nil),
     }
     params[:page_size] = page_size unless page_size.nil?
- 
+
     all(params)
   end
 
