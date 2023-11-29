@@ -2,5 +2,5 @@
 
 module EasyPost::InternalUtilities::Constants
   API_VERSION = 'v2'
-  FILTERS_KEY = 'filters'
+  FILTERS_KEY = '_filters'
 end

@@ -20,7 +20,7 @@ class EasyPost::Services::Refund < EasyPost::Services::Service
 
   # Retrieve all Refund objects
   def all(params = {})
-    filters = { 'key' => 'refunds' }
+    filters = { key: 'refunds' }
 
     get_all_helper('refunds', MODEL_CLASS, params, filters)
   end

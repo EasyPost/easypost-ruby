@@ -20,7 +20,7 @@ class EasyPost::Services::Pickup < EasyPost::Services::Service
 
   # Retrieve all Pickup objects
   def all(params = {})
-    filters = { 'key' => 'pickups' }
+    filters = { key: 'pickups' }
 
     get_all_helper('pickups', MODEL_CLASS, params, filters)
   end

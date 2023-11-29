@@ -5,22 +5,30 @@ class EasyPost::Services::User < EasyPost::Services::Service
 
   # Create a child User.
   def create(params = {})
-    @client.make_request(:post, 'users', MODEL_CLASS, params)
+    response = @client.make_request(:post, 'users', MODEL_CLASS, params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a user
   def retrieve(id)
-    @client.make_request(:get, "users/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "users/#{id}", MODEL_CLASS)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve the authenticated User.
   def retrieve_me
-    @client.make_request(:get, 'users', MODEL_CLASS)
+    response = @client.make_request(:get, 'users', MODEL_CLASS)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Update a User
   def update(id, params = {})
-    @client.make_request(:put, "users/#{id}", MODEL_CLASS, params)
+    response = @client.make_request(:put, "users/#{id}", MODEL_CLASS, params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Delete a User
@@ -34,7 +42,9 @@ class EasyPost::Services::User < EasyPost::Services::Service
   # Retrieve a list of all ApiKey objects.
   def all_api_keys
     warn '[DEPRECATION] `all_api_keys` is deprecated. Please use `all` in the `api_key` service instead.'
-    @client.make_request(:get, 'api_keys', EasyPost::Models::ApiKey)
+    response = @client.make_request(:get, 'api_keys', EasyPost::Models::ApiKey)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a list of ApiKey objects (works for the authenticated user or a child user).
@@ -64,7 +74,8 @@ Please use `retrieve_api_keys_for_user` in the `api_key` service instead.'
   # Update the Brand of a User.
   def update_brand(id, params = {})
     wrapped_params = { brand: params }
+    response = @client.make_request(:get, "users/#{id}/brand", EasyPost::Models::Brand, wrapped_params)
 
-    @client.make_request(:get, "users/#{id}/brand", EasyPost::Models::Brand, wrapped_params)
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::Brand)
   end
 end

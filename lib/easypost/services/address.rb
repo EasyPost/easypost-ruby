@@ -48,7 +48,7 @@ class EasyPost::Services::Address < EasyPost::Services::Service
 
   # Retrieve all Addresses.
   def all(params = {})
-    filters = { 'key' => 'addresses' }
+    filters = { key: 'addresses' }
 
     get_all_helper('addresses', MODEL_CLASS, params, filters)
   end

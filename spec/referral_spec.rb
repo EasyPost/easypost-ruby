@@ -44,6 +44,7 @@ describe EasyPost::Services::ReferralCustomer do
       referral_customers = client.referral_customer.all(
         page_size: Fixture.page_size,
       )
+      expect(referral_customers[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to be_a(Hash)
 
       referral_customers_array = referral_customers.referral_customers
 
@@ -67,6 +68,9 @@ describe EasyPost::Services::ReferralCustomer do
 
         # Did we actually get a new page?
         expect(first_page_first_id).not_to eq(next_page_first_id)
+        expect(first_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to eq(
+          next_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]
+        )
       rescue EasyPost::Errors::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.
         expect(e.message).to eq(EasyPost::Constants::NO_MORE_PAGES)

@@ -67,6 +67,7 @@ describe EasyPost::Services::Address do
       addresses = client.address.all(
         page_size: Fixture.page_size,
       )
+      expect(addresses[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to be_a(Hash)
 
       addresses_array = addresses.addresses
       expect(addresses_array.count).to be <= Fixture.page_size
@@ -91,8 +92,8 @@ describe EasyPost::Services::Address do
         expect(first_page_first_id).not_to eq(next_page_first_id)
 
         # Verify that filters are being passed along for internal reference
-        expect(first_page.filters[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to eq(
-          next_page.filters[EasyPost::InternalUtilities::Constants::FILTERS_KEY]
+        expect(first_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to eq(
+          next_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]
         )
       rescue EasyPost::Errors::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.

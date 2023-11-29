@@ -31,8 +31,8 @@ class EasyPost::Services::Report < EasyPost::Services::Service
 
     type = params.delete(:type)
     filters = {
-      'key' => 'reports',
-      'type' => type,
+      key: 'reports',
+      type: type,
     }
     url = "reports/#{type}"
     response = get_all_helper(url, MODEL_CLASS, params, filters)
@@ -47,7 +47,7 @@ class EasyPost::Services::Report < EasyPost::Services::Service
 
     params = {
       before_id: collection.reports.last.id,
-      type: collection.type,
+      type: (collection[EasyPost::InternalUtilities::Constants::FILTERS_KEY] || {}).fetch(:type, nil),
     }
     params[:page_size] = page_size unless page_size.nil?
 

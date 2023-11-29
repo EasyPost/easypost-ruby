@@ -16,6 +16,8 @@ module EasyPost::InternalUtilities::Json
   end
 
   def self.parse_json(data)
+    return if data.nil?
+
     JSON.parse(data)
   rescue JSON::ParserError
     data # Not JSON, return the original data (used mostly when dealing with final values like strings, booleans, etc.)

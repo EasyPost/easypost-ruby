@@ -40,6 +40,7 @@ describe EasyPost::Services::Insurance do
       all_insurances = client.insurance.all(
         page_size: Fixture.page_size,
       )
+      expect(all_insurances[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to be_a(Hash)
 
       insurance_array = all_insurances.insurances
 
@@ -62,6 +63,9 @@ describe EasyPost::Services::Insurance do
         next_page_first_id = next_page.insurances.first.id
 
         expect(first_page_first_id).not_to eq(next_page_first_id)
+        expect(first_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to eq(
+          next_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]
+        )
       rescue EasyPost::Errors::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.
         expect(e.message).to eq(EasyPost::Constants::NO_MORE_PAGES)

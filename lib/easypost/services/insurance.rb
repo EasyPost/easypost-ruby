@@ -20,7 +20,7 @@ class EasyPost::Services::Insurance < EasyPost::Services::Service
 
   # Retrieve all Insurance objects
   def all(params = {})
-    filters = { 'key' => 'insurances' }
+    filters = { key: 'insurances' }
 
     get_all_helper('insurances', MODEL_CLASS, params, filters)
   end

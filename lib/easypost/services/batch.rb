@@ -20,7 +20,7 @@ class EasyPost::Services::Batch < EasyPost::Services::Service
   end
 
   def all(params = {})
-    filters = { 'key' => 'batches' }
+    filters = { key: 'batches' }
 
     get_all_helper('batches', MODEL_CLASS, params, filters)
   end

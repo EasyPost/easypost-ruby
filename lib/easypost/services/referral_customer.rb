@@ -25,7 +25,7 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
 
   # Retrieve a list of referral customers. This function requires the Partner User's API key.
   def all(params = {})
-    filters = { 'key' => 'referral_customers' }
+    filters = { key: 'referral_customers' }
 
     get_all_helper('referral_customers', MODEL_CLASS, params, filters)
   end

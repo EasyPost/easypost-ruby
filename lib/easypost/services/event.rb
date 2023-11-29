@@ -14,7 +14,7 @@ class EasyPost::Services::Event < EasyPost::Services::Service
 
   # Retrieve all Event objects
   def all(params = {})
-    filters = { 'key' => 'events' }
+    filters = { key: 'events' }
 
     get_all_helper('events', MODEL_CLASS, params, filters)
   end
