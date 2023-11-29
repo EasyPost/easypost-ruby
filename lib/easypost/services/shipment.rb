@@ -28,25 +28,16 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
       include_children: params[:include_children],
     }
 
-    response = get_all_helper('shipments', MODEL_CLASS, params, filters)
-    response.define_singleton_method(:purchased) { params[:purchased] }
-    response.define_singleton_method(:include_children) { params[:include_children] }
-
-    response
+    get_all_helper('shipments', MODEL_CLASS, params, filters)
   end
 
   # Get the next page of shipments.
   def get_next_page(collection, page_size = nil)
     raise EasyPost::Errors::EndOfPaginationError.new unless more_pages?(collection)
 
-    params = {
-      before_id: collection.shipments.last.id,
-      purchased: (collection[EasyPost::InternalUtilities::Constants::FILTERS_KEY] || {}).fetch(:purchased, nil),
-      include_children: (
-        collection[EasyPost::InternalUtilities::Constants::FILTERS_KEY] || {}
-      ).fetch(:include_children, nil),
-    }
+    params = { before_id: collection.shipments.last.id }
     params[:page_size] = page_size unless page_size.nil?
+    params.merge!(collection[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).delete(:key)
 
     all(params)
   end

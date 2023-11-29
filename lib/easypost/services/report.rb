@@ -45,11 +45,9 @@ class EasyPost::Services::Report < EasyPost::Services::Service
   def get_next_page(collection, page_size = nil)
     raise EasyPost::Errors::EndOfPaginationError.new unless more_pages?(collection)
 
-    params = {
-      before_id: collection.reports.last.id,
-      type: (collection[EasyPost::InternalUtilities::Constants::FILTERS_KEY] || {}).fetch(:type, nil),
-    }
+    params = { before_id: collection.reports.last.id }
     params[:page_size] = page_size unless page_size.nil?
+    params.merge!(collection[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).delete(:key)
 
     all(params)
   end

@@ -97,9 +97,8 @@ describe EasyPost::Services::Shipment do
         include_children: true,
         purchased: false,
       )
-
-      expect(shipments.include_children).to be true
-      expect(shipments.purchased).to be false
+      expect(shipments[:_filters][:include_children]).to be true
+      expect(shipments[:_filters][:purchased]).to be false
     end
   end
 

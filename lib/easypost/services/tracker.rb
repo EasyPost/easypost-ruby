@@ -25,11 +25,8 @@ class EasyPost::Services::Tracker < EasyPost::Services::Service
       tracking_code: params[:tracking_code],
       carrier: params[:carrier],
     }
-    response = get_all_helper('trackers', MODEL_CLASS, params, filters)
-    response.define_singleton_method(:tracking_code) { params[:tracking_code] }
-    response.define_singleton_method(:carrier) { params[:carrier] }
 
-    response
+    get_all_helper('trackers', MODEL_CLASS, params, filters)
   end
 
   # Create multiple Tracker objects in bulk.
@@ -44,16 +41,9 @@ class EasyPost::Services::Tracker < EasyPost::Services::Service
   def get_next_page(collection, page_size = nil)
     raise EasyPost::Errors::EndOfPaginationError.new unless more_pages?(collection)
 
-    params = {
-      before_id: collection.trackers.last.id,
-      tracking_code: (
-        collection[EasyPost::InternalUtilities::Constants::FILTERS_KEY] || {}
-      ).fetch(:tracking_code, nil),
-      carrier: (
-        collection[EasyPost::InternalUtilities::Constants::FILTERS_KEY] || {}
-      ).fetch(:carrier, nil),
-    }
+    params = { before_id: collection.trackers.last.id }
     params[:page_size] = page_size unless page_size.nil?
+    params.merge!(collection[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).delete(:key)
 
     all(params)
   end

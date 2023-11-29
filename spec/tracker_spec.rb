@@ -55,8 +55,8 @@ describe EasyPost::Services::Tracker do
         carrier: carrier,
       )
 
-      expect(trackers.tracking_code).to eq(tracking_code)
-      expect(trackers.carrier).to eq(carrier)
+      expect(trackers[:_filters][:tracking_code]).to eq(tracking_code)
+      expect(trackers[:_filters][:carrier]).to eq(carrier)
     end
   end
 
