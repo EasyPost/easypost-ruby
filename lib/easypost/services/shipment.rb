@@ -6,11 +6,8 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
   MODEL_CLASS = EasyPost::Models::Shipment
 
   # Create a Shipment.
-  def create(params = {}, with_carbon_offset = false)
-    wrapped_params = {
-      shipment: params,
-      carbon_offset: with_carbon_offset,
-    }
+  def create(params = {})
+    wrapped_params = { shipment: params }
 
     @client.make_request(:post, 'shipments', MODEL_CLASS, wrapped_params)
   end
@@ -34,10 +31,8 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
   end
 
   # Regenerate the rates of a Shipment.
-  def regenerate_rates(id, with_carbon_offset = false)
-    params = { carbon_offset: with_carbon_offset }
-
-    @client.make_request(:post, "shipments/#{id}/rerate", MODEL_CLASS, params)
+  def regenerate_rates(id)
+    @client.make_request(:post, "shipments/#{id}/rerate", MODEL_CLASS)
   end
 
   # Get the SmartRates of a Shipment.
@@ -46,13 +41,10 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
   end
 
   # Buy a Shipment.
-  def buy(id, params = {}, with_carbon_offset = false, end_shipper_id = nil)
+  def buy(id, params = {}, end_shipper_id = nil)
     if params.instance_of?(EasyPost::Models::Rate)
       params = { rate: params.clone }
     end
-
-    params[:carbon_offset] = params[:with_carbon_offset] || with_carbon_offset
-    params.delete(:with_carbon_offset)
 
     params[:end_shipper_id] = end_shipper_id if end_shipper_id
 
