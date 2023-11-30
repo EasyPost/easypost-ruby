@@ -115,7 +115,9 @@
           <div class="method-source-code" id="all-source">
             <pre><span class="ruby-comment"># File lib/easypost/services/api_key.rb, line 5</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;api_keys&#39;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">ApiKey</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;api_keys&#39;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">ApiKey</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -136,7 +138,7 @@
           <p>Retrieve a list of <a href="ApiKey.html"><code>ApiKey</code></a> objects (works for the authenticated user or a child user).</p>
 
           <div class="method-source-code" id="retrieve_api_keys_for_user-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/api_key.rb, line 10</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/api_key.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve_api_keys_for_user</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-identifier">api_keys</span> = <span class="ruby-identifier">all</span>
 

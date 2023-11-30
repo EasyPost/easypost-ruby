@@ -127,9 +127,9 @@
           <p>Retrieve all carrier accounts</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 27</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;carrier_accounts&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">get_all_helper</span>(<span class="ruby-string">&#39;carrier_accounts&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -160,8 +160,9 @@
                <span class="ruby-keyword">else</span>
                  <span class="ruby-string">&#39;carrier_accounts&#39;</span>
                <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-identifier">create_url</span>, <span class="ruby-identifier">wrapped_params</span>)
 
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-identifier">create_url</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -182,7 +183,7 @@
           <p>Delete a carrier account</p>
 
           <div class="method-source-code" id="delete-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 38</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:delete</span>, <span class="ruby-node">&quot;carrier_accounts/#{id}&quot;</span>)
 
@@ -208,9 +209,11 @@
           <p>Retrieve a carrier account</p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 22</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;carrier_accounts/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;carrier_accounts/#{id}&quot;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -231,10 +234,12 @@
           <p>Update a carrier account</p>
 
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 32</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">carrier_account:</span> <span class="ruby-identifier">params</span> }
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:put</span>, <span class="ruby-node">&quot;carrier_accounts/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:put</span>, <span class="ruby-node">&quot;carrier_accounts/#{id}&quot;</span>, <span class="ruby-identifier">wrapped_params</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

@@ -116,7 +116,7 @@
         <div class="method-header">
           <div class="method-heading">
             <span class="method-name">all</span><span
-              class="method-args">(params)</span>
+              class="method-args">(params = {})</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
@@ -125,12 +125,15 @@
           <p>Retrieve a list of Trackers</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 19</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span>)
-  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;trackers&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
-  <span class="ruby-identifier">response</span>.<span class="ruby-identifier">define_singleton_method</span>(<span class="ruby-value">:tracking_code</span>) { <span class="ruby-identifier">params</span>[<span class="ruby-value">:tracking_code</span>] }
-  <span class="ruby-identifier">response</span>.<span class="ruby-identifier">define_singleton_method</span>(<span class="ruby-value">:carrier</span>) { <span class="ruby-identifier">params</span>[<span class="ruby-value">:carrier</span>] }
-  <span class="ruby-identifier">response</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
+  <span class="ruby-identifier">filters</span> = {
+    <span class="ruby-value">key:</span> <span class="ruby-string">&#39;trackers&#39;</span>,
+    <span class="ruby-value">tracking_code:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:tracking_code</span>],
+    <span class="ruby-value">carrier:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:carrier</span>],
+  }
+
+  <span class="ruby-identifier">get_all_helper</span>(<span class="ruby-string">&#39;trackers&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>, <span class="ruby-identifier">filters</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -154,8 +157,9 @@
             <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">tracker:</span> <span class="ruby-identifier">params</span> }
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;trackers&#39;</span>, <span class="ruby-identifier">wrapped_params</span>)
 
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;trackers&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -176,11 +180,11 @@
           <p>Create multiple <a href="Tracker.html"><code>Tracker</code></a> objects in bulk.</p>
 
           <div class="method-source-code" id="create_list-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 27</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_list</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-string">&#39;trackers&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">params</span> }
 
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;trackers/create_list&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;trackers/create_list&#39;</span>, <span class="ruby-identifier">wrapped_params</span>)
   <span class="ruby-keyword">true</span> <span class="ruby-comment"># This endpoint does not return a response so we return true here instead</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -202,9 +206,15 @@
           <p>Get the next page of trackers.</p>
 
           <div class="method-source-code" id="get_next_page-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-identifier">get_next_page_helper</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">trackers</span>, <span class="ruby-string">&#39;trackers&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">page_size</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">EndOfPaginationError</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">more_pages?</span>(<span class="ruby-identifier">collection</span>)
+
+  <span class="ruby-identifier">params</span> = { <span class="ruby-value">before_id:</span> <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">trackers</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">id</span> }
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_size</span>] = <span class="ruby-identifier">page_size</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">page_size</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">collection</span>[<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">FILTERS_KEY</span>]).<span class="ruby-identifier">delete</span>(<span class="ruby-value">:key</span>)
+
+  <span class="ruby-identifier">all</span>(<span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -225,9 +235,11 @@
           <p>Retrieve a <a href="Tracker.html"><code>Tracker</code></a></p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 14</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;trackers/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;trackers/#{id}&quot;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

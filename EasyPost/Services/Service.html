@@ -73,7 +73,8 @@
 
   <ul class="link-list" role="directory">
     <li ><a href="#method-c-new">::new</a>
-    <li ><a href="#method-i-get_next_page_helper">#get_next_page_helper</a>
+    <li ><a href="#method-i-get_all_helper">#get_all_helper</a>
+    <li ><a href="#method-i-more_pages-3F">#more_pages?</a>
   </ul>
 </div>
 
@@ -115,7 +116,7 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/base.rb, line 5</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/base.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">client</span>)
   <span class="ruby-ivar">@client</span> = <span class="ruby-identifier">client</span>
 <span class="ruby-keyword">end</span></pre>
@@ -132,34 +133,49 @@
          <h3>Protected Instance Methods</h3>
        </header>
 
-      <div id="method-i-get_next_page_helper" class="method-detail ">
+      <div id="method-i-get_all_helper" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
-            <span class="method-name">get_next_page_helper</span><span
-              class="method-args">(collection, current_page_items, endpoint, cls, page_size = nil)</span>
+            <span class="method-name">get_all_helper</span><span
+              class="method-args">(endpoint, cls, params, filters = nil)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
 
         <div class="method-description">
-          <p>Get next page of an object collection</p>
+          
 
-          <div class="method-source-code" id="get_next_page_helper-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/base.rb, line 12</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page_helper</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">current_page_items</span>, <span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">cls</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-identifier">has_more</span> = <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">has_more</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
-  <span class="ruby-keyword">unless</span> <span class="ruby-operator">!</span><span class="ruby-identifier">has_more</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">current_page_items</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">current_page_items</span>.<span class="ruby-identifier">empty?</span>
-    <span class="ruby-identifier">params</span> = {}
-    <span class="ruby-identifier">params</span>[<span class="ruby-value">:before_id</span>] = <span class="ruby-identifier">current_page_items</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">id</span>
-    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">page_size</span>.<span class="ruby-identifier">nil?</span>
-      <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_size</span>] = <span class="ruby-identifier">page_size</span>
-    <span class="ruby-keyword">end</span>
+          <div class="method-source-code" id="get_all_helper-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/base.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_all_helper</span>(<span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">cls</span>, <span class="ruby-identifier">params</span>, <span class="ruby-identifier">filters</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">params</span>)
 
-    <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">cls</span>, <span class="ruby-identifier">params</span>)
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">response</span>[<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">FILTERS_KEY</span>] = <span class="ruby-identifier">filters</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">filters</span>.<span class="ruby-identifier">nil?</span>
 
-  <span class="ruby-comment"># issue with getting the next page</span>
-  <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">EndOfPaginationError</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-identifier">cls</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-more_pages-3F" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">more_pages?</span><span
+              class="method-args">(collection)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="more_pages-3F-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/base.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">more_pages?</span>(<span class="ruby-identifier">collection</span>)
+  <span class="ruby-identifier">collection</span>&amp;.<span class="ruby-identifier">has_more</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

@@ -115,7 +115,6 @@
             <pre><span class="ruby-comment"># File lib/easypost/services/carrier_metadata.rb, line 5</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">carriers</span> = [], <span class="ruby-identifier">types</span> = [])
   <span class="ruby-identifier">path</span> = <span class="ruby-string">&#39;/metadata/carriers?&#39;</span>
-
   <span class="ruby-identifier">params</span> = {}
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">carriers</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">positive?</span>
@@ -127,8 +126,9 @@
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">path</span> <span class="ruby-operator">+=</span> <span class="ruby-constant">URI</span>.<span class="ruby-identifier">encode_www_form</span>(<span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-identifier">path</span>, <span class="ruby-identifier">params</span>)
 
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-identifier">path</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>, <span class="ruby-identifier">params</span>).<span class="ruby-identifier">carriers</span>
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>).<span class="ruby-identifier">carriers</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

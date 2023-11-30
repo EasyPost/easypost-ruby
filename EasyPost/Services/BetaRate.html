@@ -117,8 +117,9 @@
   <span class="ruby-identifier">wrapped_params</span> = {
     <span class="ruby-value">shipment:</span> <span class="ruby-identifier">params</span>,
   }
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;rates&#39;</span>, <span class="ruby-identifier">wrapped_params</span>, <span class="ruby-string">&#39;beta&#39;</span>)
 
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;rates&#39;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">Rate</span>, <span class="ruby-identifier">wrapped_params</span>, <span class="ruby-string">&#39;beta&#39;</span>).<span class="ruby-identifier">rates</span>
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">Rate</span>).<span class="ruby-identifier">rates</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

@@ -125,9 +125,11 @@
           <p>Retrieve a list of Webhooks</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 18</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;webhooks&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">filters</span> = { <span class="ruby-string">&#39;key&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;webhooks&#39;</span> }
+
+  <span class="ruby-identifier">get_all_helper</span>(<span class="ruby-string">&#39;webhooks&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>, <span class="ruby-identifier">filters</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -151,7 +153,9 @@
             <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">webhook:</span> <span class="ruby-identifier">params</span> }
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;webhooks&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;webhooks&#39;</span>, <span class="ruby-identifier">wrapped_params</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -172,7 +176,7 @@
           <p>Delete a <a href="Webhook.html"><code>Webhook</code></a>.</p>
 
           <div class="method-source-code" id="delete-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 28</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:delete</span>, <span class="ruby-node">&quot;webhooks/#{id}&quot;</span>)
 
@@ -198,9 +202,11 @@
           <p>Retrieve a <a href="Webhook.html"><code>Webhook</code></a></p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 13</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;webhooks/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;webhooks/#{id}&quot;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -221,9 +227,11 @@
           <p>Update a <a href="Webhook.html"><code>Webhook</code></a>.</p>
 
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 23</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/webhook.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:patch</span>, <span class="ruby-node">&quot;webhooks/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:patch</span>, <span class="ruby-node">&quot;webhooks/#{id}&quot;</span>, <span class="ruby-identifier">params</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

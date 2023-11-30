@@ -124,9 +124,11 @@
           <p>Retrieve all <a href="Refund.html"><code>Refund</code></a> objects</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/refund.rb, line 18</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/refund.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;refunds&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">filters</span> = { <span class="ruby-value">key:</span> <span class="ruby-string">&#39;refunds&#39;</span> }
+
+  <span class="ruby-identifier">get_all_helper</span>(<span class="ruby-string">&#39;refunds&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>, <span class="ruby-identifier">filters</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -150,7 +152,9 @@
             <pre><span class="ruby-comment"># File lib/easypost/services/refund.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">refund:</span> <span class="ruby-identifier">params</span> }
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;refunds&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;refunds&#39;</span>, <span class="ruby-identifier">wrapped_params</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -171,9 +175,14 @@
           <p>Get the next page of refunds</p>
 
           <div class="method-source-code" id="get_next_page-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/refund.rb, line 23</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/refund.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-identifier">get_next_page_helper</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">refunds</span>, <span class="ruby-string">&#39;refunds&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">page_size</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">EndOfPaginationError</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">more_pages?</span>(<span class="ruby-identifier">collection</span>)
+
+  <span class="ruby-identifier">params</span> = { <span class="ruby-value">before_id:</span> <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">refunds</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">id</span> }
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_size</span>] = <span class="ruby-identifier">page_size</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">page_size</span>.<span class="ruby-identifier">nil?</span>
+
+  <span class="ruby-identifier">all</span>(<span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -194,9 +203,11 @@
           <p>Retrieve a <a href="Refund.html"><code>Refund</code></a> object</p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/refund.rb, line 13</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/refund.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;refunds/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;refunds/#{id}&quot;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

@@ -124,9 +124,11 @@
           <p>Retrieve all <a href="EndShipper.html"><code>EndShipper</code></a> objects.</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/end_shipper.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/end_shipper.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;end_shippers&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;end_shippers&#39;</span>, <span class="ruby-identifier">params</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -150,8 +152,9 @@
             <pre><span class="ruby-comment"># File lib/easypost/services/end_shipper.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">address:</span> <span class="ruby-identifier">params</span> }
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;end_shippers&#39;</span>, <span class="ruby-identifier">wrapped_params</span>)
 
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;end_shippers&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -172,9 +175,11 @@
           <p>Retrieve an <a href="EndShipper.html"><code>EndShipper</code></a> object.</p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/end_shipper.rb, line 14</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/end_shipper.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;end_shippers/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;end_shippers/#{id}&quot;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -195,11 +200,12 @@
           <p>Updates an <a href="EndShipper.html"><code>EndShipper</code></a> object. This requires all parameters to be set.</p>
 
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/end_shipper.rb, line 24</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/end_shipper.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span>)
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">address:</span> <span class="ruby-identifier">params</span> }
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:put</span>, <span class="ruby-node">&quot;end_shippers/#{id}&quot;</span>, <span class="ruby-identifier">wrapped_params</span>)
 
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:put</span>, <span class="ruby-node">&quot;end_shippers/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

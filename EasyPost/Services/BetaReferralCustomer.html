@@ -123,13 +123,14 @@
       <span class="ruby-value">priority:</span> <span class="ruby-identifier">priority</span>.<span class="ruby-identifier">downcase</span>,
     },
   }
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(
     <span class="ruby-value">:post</span>,
     <span class="ruby-string">&#39;referral_customers/payment_method&#39;</span>,
-    <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>,
     <span class="ruby-identifier">wrapped_params</span>,
     <span class="ruby-string">&#39;beta&#39;</span>,
   )
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -150,13 +151,14 @@
           <p>Refund a ReferralCustomer Customer’s wallet by a specified amount. Refund will be issued to the user’s original payment method. This function requires the ReferralCustomer Customer’s API key.</p>
 
           <div class="method-source-code" id="refund_by_amount-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/beta_referral_customer.rb, line 24</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/beta_referral_customer.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">refund_by_amount</span>(<span class="ruby-identifier">amount</span>)
   <span class="ruby-identifier">params</span> = {
     <span class="ruby-value">refund_amount:</span> <span class="ruby-identifier">amount</span>,
   }
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;referral_customers/refunds&#39;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>, <span class="ruby-identifier">params</span>, <span class="ruby-string">&#39;beta&#39;</span>)
-  <span class="ruby-comment"># noinspection RubyMismatchedReturnType</span>
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;referral_customers/refunds&#39;</span>, <span class="ruby-identifier">params</span>, <span class="ruby-string">&#39;beta&#39;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -177,12 +179,14 @@
           <p>Refund a ReferralCustomer Customer’s wallet for a specified payment log entry. Refund will be issued to the user’s original payment method. This function requires the ReferralCustomer Customer’s API key.</p>
 
           <div class="method-source-code" id="refund_by_payment_log-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/beta_referral_customer.rb, line 34</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/beta_referral_customer.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">refund_by_payment_log</span>(<span class="ruby-identifier">payment_log_id</span>)
   <span class="ruby-identifier">params</span> = {
     <span class="ruby-value">payment_log_id:</span> <span class="ruby-identifier">payment_log_id</span>,
   }
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;referral_customers/refunds&#39;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>, <span class="ruby-identifier">params</span>, <span class="ruby-string">&#39;beta&#39;</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;referral_customers/refunds&#39;</span>, <span class="ruby-identifier">params</span>, <span class="ruby-string">&#39;beta&#39;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

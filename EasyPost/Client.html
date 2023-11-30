@@ -197,7 +197,7 @@
         <div class="method-header">
           <div class="method-heading">
             <span class="method-name">make_request</span><span
-              class="method-args">( method, endpoint, cls = EasyPost::Models::EasyPostObject, body = nil, api_version = EasyPost::InternalUtilities::Constants::API_VERSION )</span>
+              class="method-args">( method, endpoint, body = nil, api_version = EasyPost::InternalUtilities::Constants::API_VERSION )</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
@@ -205,14 +205,13 @@
         <div class="method-description">
           <p>Make an HTTP request</p>
 
-<p>@param method [Symbol] the HTTP Verb (get, method, put, post, etc.) @param endpoint [String] URI path of the resource @param cls [Class] the class to deserialize to @param body [Object] (nil) object to be dumped to JSON @param api_version [String] the version of API to hit @raise [EasyPost::Error] if the response has a non-2xx status code @return [Hash] JSON object parsed from the response body</p>
+<p>@param method [Symbol] the HTTP Verb (get, method, put, post, etc.) @param endpoint [String] URI path of the resource @param body [Object] (nil) object to be dumped to JSON @param api_version [String] the version of API to hit @raise [EasyPost::Error] if the response has a non-2xx status code @return [Hash] JSON object parsed from the response body</p>
 
           <div class="method-source-code" id="make_request-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 80</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">make_request</span>(
   <span class="ruby-identifier">method</span>,
   <span class="ruby-identifier">endpoint</span>,
-  <span class="ruby-identifier">cls</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">EasyPostObject</span>,
   <span class="ruby-identifier">body</span> = <span class="ruby-keyword">nil</span>,
   <span class="ruby-identifier">api_version</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">API_VERSION</span>
 )
@@ -221,7 +220,7 @@
   <span class="ruby-identifier">potential_error</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">ApiError</span>.<span class="ruby-identifier">handle_api_error</span>(<span class="ruby-identifier">response</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-identifier">potential_error</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">potential_error</span>.<span class="ruby-identifier">nil?</span>
 
-  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span>, <span class="ruby-identifier">cls</span>)
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">parse_json</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -244,7 +243,7 @@
 <p>@param name [Symbol] the name of the hook. Defaults ot a ranom hexadecimal-based symbol @param block [Block] a code block that will be executed before a request is made @return [Symbol] the name of the request hook</p>
 
           <div class="method-source-code" id="subscribe_request_hook-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 100</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 98</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">subscribe_request_hook</span>(<span class="ruby-identifier">name</span> = <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">hex</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Hooks</span>.<span class="ruby-identifier">subscribe</span>(<span class="ruby-value">:request</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -269,7 +268,7 @@
 <p>@param name [Symbol] the name of the hook. Defaults ot a ranom hexadecimal-based symbol @param block [Block] a code block that will be executed upon receiving the response from a request @return [Symbol] the name of the response hook</p>
 
           <div class="method-source-code" id="subscribe_response_hook-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 124</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 122</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">subscribe_response_hook</span>(<span class="ruby-identifier">name</span> = <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">hex</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Hooks</span>.<span class="ruby-identifier">subscribe</span>(<span class="ruby-value">:response</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -294,7 +293,7 @@
 <p>@return [Hash] a hash containing all request hook subscriptions</p>
 
           <div class="method-source-code" id="unsubscribe_all_request_hooks-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 115</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 113</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unsubscribe_all_request_hooks</span>
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Hooks</span>.<span class="ruby-identifier">unsubscribe_all</span>(<span class="ruby-value">:request</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -319,7 +318,7 @@
 <p>@return [Hash] a hash containing all response hook subscriptions</p>
 
           <div class="method-source-code" id="unsubscribe_all_response_hooks-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 139</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 137</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unsubscribe_all_response_hooks</span>
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Hooks</span>.<span class="ruby-identifier">unsubscribe_all</span>(<span class="ruby-value">:response</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -344,7 +343,7 @@
 <p>@param name [Symbol] the name of the hook @return [Block] the hook code block</p>
 
           <div class="method-source-code" id="unsubscribe_request_hook-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 108</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unsubscribe_request_hook</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Hooks</span>.<span class="ruby-identifier">unsubscribe</span>(<span class="ruby-value">:request</span>, <span class="ruby-identifier">name</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -369,7 +368,7 @@
 <p>@param name [Symbol] the name of the hook @return [Block] the hook code block</p>
 
           <div class="method-source-code" id="unsubscribe_response_hook-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 132</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 130</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unsubscribe_response_hook</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Hooks</span>.<span class="ruby-identifier">unsubscribe</span>(<span class="ruby-value">:response</span>, <span class="ruby-identifier">name</span>)
 <span class="ruby-keyword">end</span></pre>

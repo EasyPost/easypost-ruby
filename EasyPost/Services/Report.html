@@ -124,17 +124,21 @@
           <p>Retrieve all <a href="Report.html"><code>Report</code></a> objects</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/report.rb, line 24</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/report.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:type</span>]
     <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;Missing &#39;type&#39; parameter in params&quot;</span> <span class="ruby-comment"># TODO: replace the error in the error-handling overhaul PR</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">type</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:type</span>)
+  <span class="ruby-identifier">filters</span> = {
+    <span class="ruby-value">key:</span> <span class="ruby-string">&#39;reports&#39;</span>,
+    <span class="ruby-value">type:</span> <span class="ruby-identifier">type</span>,
+  }
   <span class="ruby-identifier">url</span> = <span class="ruby-node">&quot;reports/#{type}&quot;</span>
-
-  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-identifier">url</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-identifier">get_all_helper</span>(<span class="ruby-identifier">url</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>, <span class="ruby-identifier">filters</span>)
   <span class="ruby-identifier">response</span>.<span class="ruby-identifier">define_singleton_method</span>(<span class="ruby-value">:type</span>) { <span class="ruby-identifier">type</span> }
+
   <span class="ruby-identifier">response</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -164,8 +168,9 @@
 
   <span class="ruby-identifier">type</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:type</span>)
   <span class="ruby-identifier">url</span> = <span class="ruby-node">&quot;reports/#{type}&quot;</span>
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-identifier">url</span>, <span class="ruby-identifier">params</span>)
 
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-identifier">url</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -186,10 +191,15 @@
           <p>Get next page of <a href="Report.html"><code>Report</code></a> objects</p>
 
           <div class="method-source-code" id="get_next_page-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/report.rb, line 38</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/report.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-identifier">url</span> = <span class="ruby-node">&quot;reports/#{collection.type}&quot;</span>
-  <span class="ruby-identifier">get_next_page_helper</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">reports</span>, <span class="ruby-identifier">url</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">page_size</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">EndOfPaginationError</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">more_pages?</span>(<span class="ruby-identifier">collection</span>)
+
+  <span class="ruby-identifier">params</span> = { <span class="ruby-value">before_id:</span> <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">reports</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">id</span> }
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_size</span>] = <span class="ruby-identifier">page_size</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">page_size</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">collection</span>[<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">FILTERS_KEY</span>]).<span class="ruby-identifier">delete</span>(<span class="ruby-value">:key</span>)
+
+  <span class="ruby-identifier">all</span>(<span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -210,9 +220,11 @@
           <p>Retrieve a <a href="Report.html"><code>Report</code></a></p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/report.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/report.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;reports/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;reports/#{id}&quot;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

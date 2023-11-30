@@ -117,7 +117,7 @@
         <div class="method-header">
           <div class="method-heading">
             <span class="method-name">all</span><span
-              class="method-args">(filters = {})</span>
+              class="method-args">(params = {})</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
@@ -126,9 +126,11 @@
           <p>Retrieve all Addresses.</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/address.rb, line 42</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">filters</span> = {})
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;addresses&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">filters</span>)
+            <pre><span class="ruby-comment"># File lib/easypost/services/address.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
+  <span class="ruby-identifier">filters</span> = { <span class="ruby-value">key:</span> <span class="ruby-string">&#39;addresses&#39;</span> }
+
+  <span class="ruby-identifier">get_all_helper</span>(<span class="ruby-string">&#39;addresses&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>, <span class="ruby-identifier">filters</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -163,7 +165,9 @@
     <span class="ruby-identifier">wrapped_params</span>[<span class="ruby-value">:verify_strict</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:verify_strict</span>]
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;addresses&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;addresses&#39;</span>, <span class="ruby-identifier">params</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -184,12 +188,14 @@
           <p>Create and verify an <a href="Address.html"><code>Address</code></a> in one call.</p>
 
           <div class="method-source-code" id="create_and_verify-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/address.rb, line 24</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/address.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_and_verify</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = {}
   <span class="ruby-identifier">wrapped_params</span>[<span class="ruby-value">:address</span>] = <span class="ruby-identifier">params</span>
 
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;addresses/create_and_verify&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>).<span class="ruby-identifier">address</span>
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;addresses/create_and_verify&#39;</span>, <span class="ruby-identifier">wrapped_params</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>).<span class="ruby-identifier">address</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -210,9 +216,14 @@
           <p>Get the next page of addresses.</p>
 
           <div class="method-source-code" id="get_next_page-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/address.rb, line 47</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/address.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-identifier">get_next_page_helper</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">addresses</span>, <span class="ruby-string">&#39;addresses&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">page_size</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">EndOfPaginationError</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">more_pages?</span>(<span class="ruby-identifier">collection</span>)
+
+  <span class="ruby-identifier">params</span> = { <span class="ruby-value">before_id:</span> <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">addresses</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">id</span> }
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_size</span>] = <span class="ruby-identifier">page_size</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">page_size</span>.<span class="ruby-identifier">nil?</span>
+
+  <span class="ruby-identifier">all</span>(<span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -233,9 +244,11 @@
           <p>Retrieve an <a href="Address.html"><code>Address</code></a>.</p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/address.rb, line 37</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/address.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;addresses/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;addresses/#{id}&quot;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -256,9 +269,11 @@
           <p>Verify an <a href="Address.html"><code>Address</code></a>.</p>
 
           <div class="method-source-code" id="verify-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/address.rb, line 32</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/address.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verify</span>(<span class="ruby-identifier">id</span>)
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;addresses/#{id}/verify&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>).<span class="ruby-identifier">address</span>
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;addresses/#{id}/verify&quot;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>).<span class="ruby-identifier">address</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

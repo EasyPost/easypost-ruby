@@ -128,10 +128,12 @@
           <p>Retrieve a list of all ApiKey objects.</p>
 
           <div class="method-source-code" id="all_api_keys-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all_api_keys</span>
   <span class="ruby-identifier">warn</span> <span class="ruby-string">&#39;[DEPRECATION] `all_api_keys` is deprecated. Please use `all` in the `api_key` service instead.&#39;</span>
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;api_keys&#39;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">ApiKey</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;api_keys&#39;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">ApiKey</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -152,7 +154,7 @@
           <p>Retrieve a list of ApiKey objects (works for the authenticated user or a child user).</p>
 
           <div class="method-source-code" id="api_keys-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 41</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 51</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">api_keys</span>(<span class="ruby-identifier">id</span>)
     <span class="ruby-identifier">warn</span> <span class="ruby-string">&#39;[DEPRECATION] `api_keys` is deprecated.
 Please use `retrieve_api_keys_for_user` in the `api_key` service instead.&#39;</span>
@@ -196,7 +198,9 @@ Please use `retrieve_api_keys_for_user` in the `api_key` service instead.&#39;</
           <div class="method-source-code" id="create-source">
             <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;users&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;users&#39;</span>, <span class="ruby-identifier">params</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -217,7 +221,7 @@ Please use `retrieve_api_keys_for_user` in the `api_key` service instead.&#39;</
           <p>Delete a <a href="User.html"><code>User</code></a></p>
 
           <div class="method-source-code" id="delete-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 27</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:delete</span>, <span class="ruby-node">&quot;users/#{id}&quot;</span>)
 
@@ -243,9 +247,11 @@ Please use `retrieve_api_keys_for_user` in the `api_key` service instead.&#39;</
           <p>Retrieve a user</p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 12</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;users/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;users/#{id}&quot;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -266,9 +272,11 @@ Please use `retrieve_api_keys_for_user` in the `api_key` service instead.&#39;</
           <p>Retrieve the authenticated <a href="User.html"><code>User</code></a>.</p>
 
           <div class="method-source-code" id="retrieve_me-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 17</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve_me</span>
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;users&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;users&#39;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -289,9 +297,11 @@ Please use `retrieve_api_keys_for_user` in the `api_key` service instead.&#39;</
           <p>Update a <a href="User.html"><code>User</code></a></p>
 
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 22</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:put</span>, <span class="ruby-node">&quot;users/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:put</span>, <span class="ruby-node">&quot;users/#{id}&quot;</span>, <span class="ruby-identifier">params</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -312,11 +322,12 @@ Please use `retrieve_api_keys_for_user` in the `api_key` service instead.&#39;</
           <p>Update the Brand of a <a href="User.html"><code>User</code></a>.</p>
 
           <div class="method-source-code" id="update_brand-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 65</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 75</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update_brand</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">brand:</span> <span class="ruby-identifier">params</span> }
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;users/#{id}/brand&quot;</span>, <span class="ruby-identifier">wrapped_params</span>)
 
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;users/#{id}/brand&quot;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">Brand</span>, <span class="ruby-identifier">wrapped_params</span>)
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">Brand</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
