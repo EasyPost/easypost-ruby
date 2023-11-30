@@ -139,7 +139,7 @@ describe EasyPost::Services::Shipment do
       end_shipper = client.end_shipper.create(Fixture.ca_address1)
 
       shipment = client.shipment.create(Fixture.basic_shipment)
-      bought_shipment = client.shipment.buy(shipment.id, shipment.lowest_rate, false, end_shipper.id)
+      bought_shipment = client.shipment.buy(shipment.id, shipment.lowest_rate, end_shipper.id)
 
       expect(bought_shipment.postage_label).not_to be_nil
     end
@@ -260,14 +260,14 @@ describe EasyPost::Services::Shipment do
 
       # Test lowest rate with no filters
       lowest_rate = shipment.lowest_rate
-      expect(lowest_rate.service).to eq('First')
-      expect(lowest_rate.rate).to eq('6.07')
+      expect(lowest_rate.service).to eq('GroundAdvantage')
+      expect(lowest_rate.rate).to eq('5.93')
       expect(lowest_rate.carrier).to eq('USPS')
 
       # Test lowest rate with service filter (this rate is higher than the lowest but should filter)
       lowest_rate = shipment.lowest_rate([], ['Priority'])
       expect(lowest_rate.service).to eq('Priority')
-      expect(lowest_rate.rate).to eq('7.15')
+      expect(lowest_rate.rate).to eq('6.95')
       expect(lowest_rate.carrier).to eq('USPS')
 
       # Test lowest rate with carrier filter (should error due to bad carrier)
@@ -281,14 +281,14 @@ describe EasyPost::Services::Shipment do
 
       # Test lowest rate by excluding a carrier (this is a weak test but we cannot assume existence of a non-USPS carrier)
       lowest_rate = shipment.lowest_rate(['!RandomCarrier'])
-      expect(lowest_rate.service).to eq('First')
-      expect(lowest_rate.rate).to eq('6.07')
+      expect(lowest_rate.service).to eq('GroundAdvantage')
+      expect(lowest_rate.rate).to eq('5.93')
       expect(lowest_rate.carrier).to eq('USPS')
 
       # Test lowest rate by excluding the `Priority` service
       lowest_rate = shipment.lowest_rate([], ['!Priority'])
-      expect(lowest_rate.service).to eq('First')
-      expect(lowest_rate.rate).to eq('6.07')
+      expect(lowest_rate.service).to eq('GroundAdvantage')
+      expect(lowest_rate.rate).to eq('5.93')
       expect(lowest_rate.carrier).to eq('USPS')
     end
   end
@@ -298,9 +298,9 @@ describe EasyPost::Services::Shipment do
       shipment = client.shipment.create(Fixture.basic_shipment)
 
       # Test lowest SmartRate with valid filters
-      lowest_smartrate = client.shipment.lowest_smart_rate(shipment.id, 2, 'percentile_90')
-      expect(lowest_smartrate.service).to eq('First')
-      expect(lowest_smartrate.rate).to eq(6.07)
+      lowest_smartrate = client.shipment.lowest_smart_rate(shipment.id, 3, 'percentile_90')
+      expect(lowest_smartrate.service).to eq('GroundAdvantage')
+      expect(lowest_smartrate.rate).to eq(5.93)
       expect(lowest_smartrate.carrier).to eq('USPS')
     end
 
@@ -329,9 +329,9 @@ describe EasyPost::Services::Shipment do
       smartrates = client.shipment.get_smart_rates(shipment.id)
 
       # Test lowest SmartRate with valid filters
-      lowest_smartrate = EasyPost::Util.get_lowest_smart_rate(smartrates, 2, 'percentile_90')
-      expect(lowest_smartrate['service']).to eq('First')
-      expect(lowest_smartrate['rate']).to eq(6.07)
+      lowest_smartrate = EasyPost::Util.get_lowest_smart_rate(smartrates, 3, 'percentile_90')
+      expect(lowest_smartrate['service']).to eq('GroundAdvantage')
+      expect(lowest_smartrate['rate']).to eq(5.93)
       expect(lowest_smartrate['carrier']).to eq('USPS')
     end
 
