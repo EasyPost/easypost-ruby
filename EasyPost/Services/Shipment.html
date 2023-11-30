@@ -41,7 +41,7 @@
     <div id="search-field-wrapper">
       <input id="search-field" role="combobox" aria-label="Search"
              aria-autocomplete="list" aria-controls="search-results"
-             type="text" name="search" placeholder="Search" spellcheck="false"
+             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
              title="Type to search, Up and Down to navigate, Enter to load">
     </div>
 
@@ -133,7 +133,7 @@
           <p>Retrieve a list of Shipments</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 24</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;shipments&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
   <span class="ruby-identifier">response</span>.<span class="ruby-identifier">define_singleton_method</span>(<span class="ruby-value">:purchased</span>) { <span class="ruby-identifier">params</span>[<span class="ruby-value">:purchased</span>] }
@@ -150,7 +150,7 @@
         <div class="method-header">
           <div class="method-heading">
             <span class="method-name">buy</span><span
-              class="method-args">(id, params = {}, with_carbon_offset = false, end_shipper_id = nil)</span>
+              class="method-args">(id, params = {}, end_shipper_id = nil)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
@@ -159,14 +159,11 @@
           <p>Buy a <a href="Shipment.html"><code>Shipment</code></a>.</p>
 
           <div class="method-source-code" id="buy-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 49</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">buy</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {}, <span class="ruby-identifier">with_carbon_offset</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">end_shipper_id</span> = <span class="ruby-keyword">nil</span>)
+            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">buy</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {}, <span class="ruby-identifier">end_shipper_id</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">Rate</span>)
     <span class="ruby-identifier">params</span> = { <span class="ruby-value">rate:</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">clone</span> }
   <span class="ruby-keyword">end</span>
-
-  <span class="ruby-identifier">params</span>[<span class="ruby-value">:carbon_offset</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:with_carbon_offset</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">with_carbon_offset</span>
-  <span class="ruby-identifier">params</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:with_carbon_offset</span>)
 
   <span class="ruby-identifier">params</span>[<span class="ruby-value">:end_shipper_id</span>] = <span class="ruby-identifier">end_shipper_id</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">end_shipper_id</span>
 
@@ -182,7 +179,7 @@
         <div class="method-header">
           <div class="method-heading">
             <span class="method-name">create</span><span
-              class="method-args">(params = {}, with_carbon_offset = false)</span>
+              class="method-args">(params = {})</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
@@ -192,11 +189,8 @@
 
           <div class="method-source-code" id="create-source">
             <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 9</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {}, <span class="ruby-identifier">with_carbon_offset</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">wrapped_params</span> = {
-    <span class="ruby-value">shipment:</span> <span class="ruby-identifier">params</span>,
-    <span class="ruby-value">carbon_offset:</span> <span class="ruby-identifier">with_carbon_offset</span>,
-  }
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
+  <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">shipment:</span> <span class="ruby-identifier">params</span> }
 
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;shipments&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">wrapped_params</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -219,7 +213,7 @@
           <p>Generate a form for a <a href="Shipment.html"><code>Shipment</code></a>.</p>
 
           <div class="method-source-code" id="generate_form-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 88</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">generate_form</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">form_type</span>, <span class="ruby-identifier">form_options</span> = {})
   <span class="ruby-identifier">params</span> = {}
   <span class="ruby-identifier">params</span>[<span class="ruby-value">:type</span>] = <span class="ruby-identifier">form_type</span>
@@ -249,7 +243,7 @@
           <p>Get the next page of shipments.</p>
 
           <div class="method-source-code" id="get_next_page-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 32</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">get_next_page_helper</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">shipments</span>, <span class="ruby-string">&#39;shipments&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">page_size</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -272,7 +266,7 @@
           <p>Get the SmartRates of a <a href="Shipment.html"><code>Shipment</code></a>.</p>
 
           <div class="method-source-code" id="get_smart_rates-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 44</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_smart_rates</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;shipments/#{id}/smartrate&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>).<span class="ruby-identifier">result</span> <span class="ruby-operator">||</span> []
 <span class="ruby-keyword">end</span></pre>
@@ -295,7 +289,7 @@
           <p>Insure a <a href="Shipment.html"><code>Shipment</code></a>.</p>
 
           <div class="method-source-code" id="insure-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 63</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">insure</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">params</span> = { <span class="ruby-value">amount:</span> <span class="ruby-identifier">params</span> } <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Float</span>)
 
@@ -320,7 +314,7 @@
           <p>Convert the label format of a <a href="Shipment.html"><code>Shipment</code></a>.</p>
 
           <div class="method-source-code" id="label-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 75</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">label</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">params</span> = { <span class="ruby-value">file_format:</span> <span class="ruby-identifier">params</span> } <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
 
@@ -345,7 +339,7 @@
           <p>Get the lowest SmartRate of a <a href="Shipment.html"><code>Shipment</code></a>.</p>
 
           <div class="method-source-code" id="lowest_smart_rate-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 82</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lowest_smart_rate</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">delivery_days</span>, <span class="ruby-identifier">delivery_accuracy</span>)
   <span class="ruby-identifier">smart_rates</span> = <span class="ruby-identifier">get_smart_rates</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">get_lowest_smart_rate</span>(<span class="ruby-identifier">smart_rates</span>, <span class="ruby-identifier">delivery_days</span>, <span class="ruby-identifier">delivery_accuracy</span>)
@@ -369,7 +363,7 @@
           <p>Refund a <a href="Shipment.html"><code>Shipment</code></a>.</p>
 
           <div class="method-source-code" id="refund-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 70</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">refund</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-node">&quot;shipments/#{id}/refund&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -383,7 +377,7 @@
         <div class="method-header">
           <div class="method-heading">
             <span class="method-name">regenerate_rates</span><span
-              class="method-args">(id, with_carbon_offset = false)</span>
+              class="method-args">(id)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
@@ -392,11 +386,9 @@
           <p>Regenerate the rates of a <a href="Shipment.html"><code>Shipment</code></a>.</p>
 
           <div class="method-source-code" id="regenerate_rates-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 37</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">regenerate_rates</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">with_carbon_offset</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">params</span> = { <span class="ruby-value">carbon_offset:</span> <span class="ruby-identifier">with_carbon_offset</span> }
-
-  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-node">&quot;shipments/#{id}/rerate&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
+            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">regenerate_rates</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-node">&quot;shipments/#{id}/rerate&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -417,7 +409,7 @@
           <p>Retrieve a <a href="Shipment.html"><code>Shipment</code></a>.</p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 19</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;shipments/#{id}&quot;</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -440,7 +432,7 @@
           <p>Retrieves the estimated delivery date of each Rate via SmartRate.</p>
 
           <div class="method-source-code" id="retrieve_estimated_delivery_date-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 100</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve_estimated_delivery_date</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">planned_ship_date</span>)
   <span class="ruby-identifier">url</span> = <span class="ruby-node">&quot;shipments/#{id}/smartrate/delivery_date&quot;</span>
   <span class="ruby-identifier">params</span> = { <span class="ruby-value">planned_ship_date:</span> <span class="ruby-identifier">planned_ship_date</span> }
@@ -461,7 +453,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.5.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.6.0.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
