@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next release
+
+- Removed `with_carbon_offset` parameter from `create`, `buy` and `regenerate_rates` methods in the shipment service since now EasyPost offers carbon neutral shipments by default for free
+
 ## v5.3.0 (2023-10-11)
 
 - Migrate API Key-related functions out of `user` service into `api_key` service, deprecating the old and introducing the new

@@ -42,7 +42,6 @@ module EasyPost::InternalUtilities::StaticMapper
     'BankAccount' => EasyPost::Models::PaymentMethod,
     'Batch' => EasyPost::Models::Batch,
     'Brand' => EasyPost::Models::Brand,
-    'CarbonOffset' => EasyPost::Models::CarbonOffset,
     'CarrierAccount' => EasyPost::Models::CarrierAccount,
     'CreditCard' => EasyPost::Models::PaymentMethod,
     'CustomsInfo' => EasyPost::Models::CustomsInfo,
