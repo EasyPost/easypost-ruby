@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../internal_utilities'
+
 # The base class for all services in the library.
 class EasyPost::Services::Service
   def initialize(client)
@@ -8,20 +10,15 @@ class EasyPost::Services::Service
 
   protected
 
-  # Get next page of an object collection
-  def get_next_page_helper(collection, current_page_items, endpoint, cls, page_size = nil)
-    has_more = collection.has_more || false
-    unless !has_more || current_page_items.nil? || current_page_items.empty?
-      params = {}
-      params[:before_id] = current_page_items.last.id
-      unless page_size.nil?
-        params[:page_size] = page_size
-      end
+  def get_all_helper(endpoint, cls, params, filters = nil)
+    response = @client.make_request(:get, endpoint, params)
 
-      @client.make_request(:get, endpoint, cls, params)
-    end
+    response[EasyPost::InternalUtilities::Constants::FILTERS_KEY] = filters unless filters.nil?
 
-    # issue with getting the next page
-    raise EasyPost::Errors::EndOfPaginationError.new
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, cls)
+  end
+
+  def more_pages?(collection)
+    collection&.has_more
   end
 end

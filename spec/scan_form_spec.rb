@@ -38,6 +38,7 @@ describe EasyPost::Services::ScanForm do
       scan_forms = client.scan_form.all(
         page_size: Fixture.page_size,
       )
+      expect(scan_forms[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to be_a(Hash)
 
       scan_forms_array = scan_forms.scan_forms
 
@@ -61,6 +62,9 @@ describe EasyPost::Services::ScanForm do
 
         # Did we actually get a new page?
         expect(first_page_first_id).not_to eq(next_page_first_id)
+        expect(first_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to eq(
+          next_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY],
+        )
       rescue EasyPost::Errors::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.
         expect(e.message).to eq(EasyPost::Constants::NO_MORE_PAGES)

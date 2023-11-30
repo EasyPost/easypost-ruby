@@ -11,13 +11,16 @@ class EasyPost::Services::Report < EasyPost::Services::Service
 
     type = params.delete(:type)
     url = "reports/#{type}"
+    response = @client.make_request(:post, url, params)
 
-    @client.make_request(:post, url, MODEL_CLASS, params)
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a Report
   def retrieve(id)
-    @client.make_request(:get, "reports/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "reports/#{id}")
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve all Report objects
@@ -27,16 +30,25 @@ class EasyPost::Services::Report < EasyPost::Services::Service
     end
 
     type = params.delete(:type)
+    filters = {
+      key: 'reports',
+      type: type,
+    }
     url = "reports/#{type}"
-
-    response = @client.make_request(:get, url, MODEL_CLASS, params)
+    response = get_all_helper(url, MODEL_CLASS, params, filters)
     response.define_singleton_method(:type) { type }
+
     response
   end
 
   # Get next page of Report objects
   def get_next_page(collection, page_size = nil)
-    url = "reports/#{collection.type}"
-    get_next_page_helper(collection, collection.reports, url, MODEL_CLASS, page_size)
+    raise EasyPost::Errors::EndOfPaginationError.new unless more_pages?(collection)
+
+    params = { before_id: collection.reports.last.id }
+    params[:page_size] = page_size unless page_size.nil?
+    params.merge!(collection[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).delete(:key)
+
+    all(params)
   end
 end

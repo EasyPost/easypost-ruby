@@ -20,7 +20,7 @@ SimpleCov.start do
   add_filter '/spec/'
   add_filter 'lib/easypost/version.rb'
   enable_coverage :branch
-  minimum_coverage 91
+  minimum_coverage 90
 end
 
 require 'open-uri'

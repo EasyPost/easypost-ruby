@@ -6,22 +6,30 @@ class EasyPost::Services::Webhook < EasyPost::Services::Service
   # Create a Webhook.
   def create(params = {})
     wrapped_params = { webhook: params }
-    @client.make_request(:post, 'webhooks', MODEL_CLASS, wrapped_params)
+    response = @client.make_request(:post, 'webhooks', wrapped_params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a Webhook
   def retrieve(id)
-    @client.make_request(:get, "webhooks/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "webhooks/#{id}")
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a list of Webhooks
   def all(params = {})
-    @client.make_request(:get, 'webhooks', MODEL_CLASS, params)
+    filters = { 'key' => 'webhooks' }
+
+    get_all_helper('webhooks', MODEL_CLASS, params, filters)
   end
 
   # Update a Webhook.
   def update(id, params = {})
-    @client.make_request(:patch, "webhooks/#{id}", MODEL_CLASS, params)
+    response = @client.make_request(:patch, "webhooks/#{id}", params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Delete a Webhook.

@@ -72,7 +72,6 @@ class EasyPost::Client
   #
   # @param method [Symbol] the HTTP Verb (get, method, put, post, etc.)
   # @param endpoint [String] URI path of the resource
-  # @param cls [Class] the class to deserialize to
   # @param body [Object] (nil) object to be dumped to JSON
   # @param api_version [String] the version of API to hit
   # @raise [EasyPost::Error] if the response has a non-2xx status code
@@ -80,7 +79,6 @@ class EasyPost::Client
   def make_request(
     method,
     endpoint,
-    cls = EasyPost::Models::EasyPostObject,
     body = nil,
     api_version = EasyPost::InternalUtilities::Constants::API_VERSION
   )
@@ -89,7 +87,7 @@ class EasyPost::Client
     potential_error = EasyPost::Errors::ApiError.handle_api_error(response)
     raise potential_error unless potential_error.nil?
 
-    EasyPost::InternalUtilities::Json.convert_json_to_object(response.body, cls)
+    EasyPost::InternalUtilities::Json.parse_json(response.body)
   end
 
   # Subscribe a request hook

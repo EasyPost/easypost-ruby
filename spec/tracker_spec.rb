@@ -35,6 +35,8 @@ describe EasyPost::Services::Tracker do
       trackers = client.tracker.all(
         page_size: Fixture.page_size,
       )
+      expect(trackers[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to be_a(Hash)
+      expect(trackers[:_filters]).to include(:tracking_code, :carrier)
 
       trackers_array = trackers.trackers
 
@@ -53,8 +55,8 @@ describe EasyPost::Services::Tracker do
         carrier: carrier,
       )
 
-      expect(trackers.tracking_code).to eq(tracking_code)
-      expect(trackers.carrier).to eq(carrier)
+      expect(trackers[:_filters][:tracking_code]).to eq(tracking_code)
+      expect(trackers[:_filters][:carrier]).to eq(carrier)
     end
   end
 
@@ -72,6 +74,9 @@ describe EasyPost::Services::Tracker do
 
         # Did we actually get a new page?
         expect(first_page_first_id).not_to eq(next_page_first_id)
+        expect(first_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to eq(
+          next_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY],
+        )
       rescue EasyPost::Errors::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.
         expect(e.message).to eq(EasyPost::Constants::NO_MORE_PAGES)

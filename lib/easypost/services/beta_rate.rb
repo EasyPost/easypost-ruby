@@ -6,7 +6,8 @@ class EasyPost::Services::BetaRate < EasyPost::Services::Service
     wrapped_params = {
       shipment: params,
     }
+    response = @client.make_request(:post, 'rates', wrapped_params, 'beta')
 
-    @client.make_request(:post, 'rates', EasyPost::Models::Rate, wrapped_params, 'beta').rates
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::Rate).rates
   end
 end

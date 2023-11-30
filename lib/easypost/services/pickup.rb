@@ -6,17 +6,23 @@ class EasyPost::Services::Pickup < EasyPost::Services::Service
   # Create a Pickup object
   def create(params = {})
     wrapped_params = { pickup: params }
-    @client.make_request(:post, 'pickups', MODEL_CLASS, wrapped_params)
+    response = @client.make_request(:post, 'pickups', wrapped_params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve a Pickup object
   def retrieve(id)
-    @client.make_request(:get, "pickups/#{id}", MODEL_CLASS)
+    response = @client.make_request(:get, "pickups/#{id}")
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve all Pickup objects
   def all(params = {})
-    @client.make_request(:get, 'pickups', MODEL_CLASS, params)
+    filters = { key: 'pickups' }
+
+    get_all_helper('pickups', MODEL_CLASS, params, filters)
   end
 
   # Buy a Pickup
@@ -25,16 +31,25 @@ class EasyPost::Services::Pickup < EasyPost::Services::Service
       params = { carrier: params[:carrier], service: params[:service] }
     end
 
-    @client.make_request(:post, "pickups/#{id}/buy", MODEL_CLASS, params)
+    response = @client.make_request(:post, "pickups/#{id}/buy", params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Cancel a Pickup
   def cancel(id, params = {})
-    @client.make_request(:post, "pickups/#{id}/cancel", MODEL_CLASS, params)
+    response = @client.make_request(:post, "pickups/#{id}/cancel", params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Get next page of Pickups
   def get_next_page(collection, page_size = nil)
-    get_next_page_helper(collection, collection.pickups, 'pickups', MODEL_CLASS, page_size)
+    raise EasyPost::Errors::EndOfPaginationError.new unless more_pages?(collection)
+
+    params = { before_id: collection.pickups.last.id }
+    params[:page_size] = page_size unless page_size.nil?
+
+    all(params)
   end
 end

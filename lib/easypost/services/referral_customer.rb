@@ -5,7 +5,9 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
 
   # Create a referral customer. This function requires the Partner User's API key.
   def create(params = {})
-    @client.make_request(:post, 'referral_customers', MODEL_CLASS, { user: params })
+    response = @client.make_request(:post, 'referral_customers', { user: params })
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Update a referral customer. This function requires the Partner User's API key.
@@ -15,7 +17,7 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
         email: email,
       },
     }
-    @client.make_request(:put, "referral_customers/#{user_id}", MODEL_CLASS, wrapped_params)
+    @client.make_request(:put, "referral_customers/#{user_id}", wrapped_params)
 
     # return true if API succeeds, else an error is throw if it fails.
     true
@@ -23,12 +25,19 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
 
   # Retrieve a list of referral customers. This function requires the Partner User's API key.
   def all(params = {})
-    @client.make_request(:get, 'referral_customers', MODEL_CLASS, params)
+    filters = { key: 'referral_customers' }
+
+    get_all_helper('referral_customers', MODEL_CLASS, params, filters)
   end
 
   # Get the next page of referral customers.
   def get_next_page(collection, page_size = nil)
-    get_next_page_helper(collection, collection.referral_customers, 'referral_customers', MODEL_CLASS, page_size)
+    raise EasyPost::Errors::EndOfPaginationError.new unless more_pages?(collection)
+
+    params = { before_id: collection.referral_customers.last.id }
+    params[:page_size] = page_size unless page_size.nil?
+
+    all(params)
   end
 
   # Add credit card to a referral customer. This function requires the ReferralCustomer Customer's API key.
@@ -54,7 +63,7 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
 
   # Retrieve EasyPost's Stripe public API key.
   def retrieve_easypost_stripe_api_key
-    response = @client.make_request(:get, 'partners/stripe_public_key', EasyPost::Models::EasyPostObject, nil, 'beta')
+    response = @client.make_request(:get, 'partners/stripe_public_key', nil, 'beta')
     response['public_key']
   end
 
@@ -98,6 +107,13 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
       },
     }
     referral_client = EasyPost::Client.new(api_key: referral_api_key)
-    referral_client.make_request(:post, 'credit_cards', EasyPost::Models::EasyPostObject, wrapped_params, 'beta')
+    response = referral_client.make_request(
+      :post,
+      'credit_cards',
+      wrapped_params,
+      'beta',
+    )
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response)
   end
 end
