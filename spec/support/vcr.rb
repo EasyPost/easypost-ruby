@@ -84,10 +84,10 @@ VCR.configure do |config|
         data[key] = replacement
       else
         # Nested scrubbing
-        data.each do |_top_item, top_values|
+        data.each_value do |top_values|
           case top_values
           when Array
-            top_values.each do |nested_item, _nested_index|
+            top_values.each_key do |nested_item|
               scrub_data(nested_item, scrubber)
             end
           when Hash

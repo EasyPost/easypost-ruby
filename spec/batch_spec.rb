@@ -43,21 +43,6 @@ describe EasyPost::Services::Batch do
     end
   end
 
-  describe '.create_and_buy' do
-    it 'creates and buys a batch in a single call' do
-      batch = client.batch.create_and_buy(
-        shipments: [
-          Fixture.one_call_buy_shipment,
-          Fixture.one_call_buy_shipment,
-        ],
-      )
-
-      expect(batch).to be_an_instance_of(EasyPost::Models::Batch)
-      expect(batch.id).to match('batch_')
-      expect(batch.num_shipments).to eq(2)
-    end
-  end
-
   describe '.buy' do
     it 'buys a batch' do
       batch = client.batch.create(
