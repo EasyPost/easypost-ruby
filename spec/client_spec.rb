@@ -53,7 +53,7 @@ describe EasyPost::Client do
           expect(open_timeout).to eq(30)
           expect(read_timeout).to eq(60)
           expect(body).to be_nil
-          return OpenStruct.new(code: 401, body: '{}')
+          OpenStruct.new(code: 401, body: '{}')
         },
       )
 

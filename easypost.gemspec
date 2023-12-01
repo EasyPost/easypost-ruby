@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rdoc', '~> 6.5'
   spec.add_development_dependency 'rspec', '~> 3.12'
-  spec.add_development_dependency 'rubocop', '~> 1.49' , '< 1.58'
+  spec.add_development_dependency 'rubocop', '~> 1.49'
   spec.add_development_dependency 'rubocop-rspec', '2.19' # pin to 2.19 because latest version doesn't support Ruby 2.6
   spec.add_development_dependency 'simplecov', '~> 0.22'
   spec.add_development_dependency 'simplecov-lcov', '~> 0.8'

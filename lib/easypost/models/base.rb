@@ -32,7 +32,7 @@ class EasyPost::Models::Object
   private
 
   def add_properties(values)
-    values.each do |key, _|
+    values.each_key do |key|
       next if key == EasyPost::InternalUtilities::Constants::FILTERS_KEY
 
       define_singleton_method(key) { handle_value(@values[key]) } # getter
