@@ -11,14 +11,6 @@ class EasyPost::Services::Batch < EasyPost::Services::Service
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
-  # Create and buy a batch in one call.
-  def create_and_buy(params = {})
-    wrapped_params = { batch: params }
-    response = @client.make_request(:post, 'batches/create_and_buy', wrapped_params)
-
-    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
-  end
-
   def all(params = {})
     filters = { key: 'batches' }
 

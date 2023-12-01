@@ -2,8 +2,9 @@
 
 ## Next release
 
-- Removed `with_carbon_offset` parameter from `create`, `buy` and `regenerate_rates` methods in the shipment service since now EasyPost offers carbon neutral shipments by default for free
+- Removes `with_carbon_offset` parameter from `create`, `buy` and `regenerate_rates` methods in the shipment service since now EasyPost offers carbon neutral shipments by default for free
 - Fixes a bug where the original filtering criteria of `all` calls wasn't passed along to `get_next_page` calls. Now, these are persisted via `_params` key on response objects
+- Removes the undocumented `create_and_buy` function from the Batch service. The proper usage is to create a batch first and buy it separately
 
 ## v5.3.0 (2023-10-11)
 
