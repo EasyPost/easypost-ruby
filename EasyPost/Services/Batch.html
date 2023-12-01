@@ -76,7 +76,6 @@
     <li ><a href="#method-i-all">#all</a>
     <li ><a href="#method-i-buy">#buy</a>
     <li ><a href="#method-i-create">#create</a>
-    <li ><a href="#method-i-create_and_buy">#create_and_buy</a>
     <li ><a href="#method-i-create_scan_form">#create_scan_form</a>
     <li ><a href="#method-i-label">#label</a>
     <li ><a href="#method-i-remove_shipments">#remove_shipments</a>
@@ -129,7 +128,7 @@
           <p>Add Shipments to a <a href="Batch.html"><code>Batch</code></a>.</p>
 
           <div class="method-source-code" id="add_shipments-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 57</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_shipments</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-node">&quot;batches/#{id}/add_shipments&quot;</span>, <span class="ruby-identifier">params</span>)
 
@@ -154,7 +153,7 @@
           
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 22</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">filters</span> = { <span class="ruby-value">key:</span> <span class="ruby-string">&#39;batches&#39;</span> }
 
@@ -179,7 +178,7 @@
           <p>Buy a <a href="Batch.html"><code>Batch</code></a>.</p>
 
           <div class="method-source-code" id="buy-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 36</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">buy</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-node">&quot;batches/#{id}/buy&quot;</span>, <span class="ruby-identifier">params</span>)
 
@@ -217,32 +216,6 @@
 
       </div>
 
-      <div id="method-i-create_and_buy" class="method-detail ">
-        <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">create_and_buy</span><span
-              class="method-args">(params = {})</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-        </div>
-
-        <div class="method-description">
-          <p>Create and buy a batch in one call.</p>
-
-          <div class="method-source-code" id="create_and_buy-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 15</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_and_buy</span>(<span class="ruby-identifier">params</span> = {})
-  <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">batch:</span> <span class="ruby-identifier">params</span> }
-  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;batches/create_and_buy&#39;</span>, <span class="ruby-identifier">wrapped_params</span>)
-
-  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
       <div id="method-i-create_scan_form" class="method-detail ">
         <div class="method-header">
           <div class="method-heading">
@@ -256,7 +229,7 @@
           <p>Create a ScanForm for a <a href="Batch.html"><code>Batch</code></a>.</p>
 
           <div class="method-source-code" id="create_scan_form-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 64</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_scan_form</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-node">&quot;batches/#{id}/scan_form&quot;</span>, <span class="ruby-identifier">params</span>)
 
@@ -281,7 +254,7 @@
           <p>Convert the label format of a <a href="Batch.html"><code>Batch</code></a>.</p>
 
           <div class="method-source-code" id="label-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 43</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">label</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-node">&quot;batches/#{id}/label&quot;</span>, <span class="ruby-identifier">params</span>)
 
@@ -306,7 +279,7 @@
           <p>Remove Shipments from a <a href="Batch.html"><code>Batch</code></a>.</p>
 
           <div class="method-source-code" id="remove_shipments-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 50</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">remove_shipments</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-node">&quot;batches/#{id}/remove_shipments&quot;</span>, <span class="ruby-identifier">params</span>)
 
@@ -331,7 +304,7 @@
           <p>Retrieve a <a href="Batch.html"><code>Batch</code></a></p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 29</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/batch.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;batches/#{id}&quot;</span>)
 
