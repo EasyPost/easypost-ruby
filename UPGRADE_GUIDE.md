@@ -2,10 +2,41 @@
 
 Use the following guide to assist in the upgrade process of the `easypost-ruby` library between major versions.
 
+- [Upgrading from 5.x to 6.0](#upgrading-from-5x-to-60)
 - [Upgrading from 4.x to 5.0](#upgrading-from-4x-to-50)
 - [Upgrading from 3.x to 4.0](#upgrading-from-3x-to-40)
 
+## Upgrading from 5.x to 6.0
+
+### 6.0 High Impact Changes
+
+- [Carbon Offset Removed](#60-carbon-offset-removed)
+
+### 6.0 Low Impact Changes
+
+- [Create and Buy Batch Function Removed](#60-create-and-buy-batch-function-removed)
+
+## 6.0 Carbon Offset Removed
+
+*Likelihood of Impact: **High***
+
+EasyPost now offers Carbon Neutral shipments by default for free! Because of this, there is no longer a need to specify if you want to offset the carbon footprint of a shipment.
+
+The `with_carbon_offset` parameter of the `create`, `buy`, and `regenerate_rates` shipment functions has been removed.
+
+This is a high-impact change for those using `EndShippers`, as the signature for the `create` and `buy` shipment function has changed. You will need to inspect these callsites to ensure that the EndShipper parameter is being passed in the correct place.
+
+## 6.0 Create and Buy Batch Function Removed
+
+*Likelihood of Impact: **Low***
+
+The `create_and_buy` batch endpoint has been deprecated, and the `create_and_buy` Batch service function has been removed.
+
+The correct procedure is to first create a batch and then purchase it with two separate API calls.
+
 ## Upgrading from 4.x to 5.0
+
+**NOTICE:** v5 is deprecated.
 
 ### 5.0 High Impact Changes
 
