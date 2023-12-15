@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Add `all_children` and `get_next_page_of_children` in beta `beta_user` service
+
 ## v6.0.0 (2023-12-06)
 
 - Removes `with_carbon_offset` parameter from `create`, `buy` and `regenerate_rates` methods in the shipment service since now EasyPost offers carbon neutral shipments by default for free

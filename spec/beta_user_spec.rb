@@ -9,7 +9,7 @@ describe EasyPost::Services::BetaUser, :authenticate_prod do
     it 'retrieves all child users' do
       children = client.beta_user.all_children(
         page_size: Fixture.page_size,
-        )
+      )
       expect(children[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to be_a(Hash)
 
       child_user_array = children.children
@@ -23,7 +23,7 @@ describe EasyPost::Services::BetaUser, :authenticate_prod do
     it 'retrieves the next page of a collection' do
       first_page = client.beta_user.all_children(
         page_size: Fixture.page_size,
-        )
+      )
 
       begin
         next_page = client.beta_user.get_next_page_of_children(first_page)
@@ -36,8 +36,8 @@ describe EasyPost::Services::BetaUser, :authenticate_prod do
 
         # Verify that filters are being passed along for internal reference
         expect(first_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to eq(
-                                                                                     next_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY],
-                                                                                     )
+          next_page[EasyPost::InternalUtilities::Constants::FILTERS_KEY],
+        )
       rescue EasyPost::Errors::EndOfPaginationError => e
         # If we get an error, make sure it's because there are no more pages.
         expect(e.message).to eq(EasyPost::Constants::NO_MORE_PAGES)
