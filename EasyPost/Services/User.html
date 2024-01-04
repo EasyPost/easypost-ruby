@@ -73,9 +73,11 @@
 
   <ul class="link-list" role="directory">
     <li ><a href="#method-i-all_api_keys">#all_api_keys</a>
+    <li ><a href="#method-i-all_children">#all_children</a>
     <li ><a href="#method-i-api_keys">#api_keys</a>
     <li ><a href="#method-i-create">#create</a>
     <li ><a href="#method-i-delete">#delete</a>
+    <li ><a href="#method-i-get_next_page_of_children">#get_next_page_of_children</a>
     <li ><a href="#method-i-retrieve">#retrieve</a>
     <li ><a href="#method-i-retrieve_me">#retrieve_me</a>
     <li ><a href="#method-i-update">#update</a>
@@ -134,6 +136,31 @@
   <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;api_keys&#39;</span>)
 
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">ApiKey</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-all_children" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">all_children</span><span
+              class="method-args">(params = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Retrieve all child Users.</p>
+
+          <div class="method-source-code" id="all_children-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all_children</span>(<span class="ruby-identifier">params</span> = {})
+  <span class="ruby-identifier">filters</span> = { <span class="ruby-value">key:</span> <span class="ruby-string">&#39;children&#39;</span> }
+
+  <span class="ruby-identifier">get_all_helper</span>(<span class="ruby-string">&#39;users/children&#39;</span>, <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">User</span>, <span class="ruby-identifier">params</span>, <span class="ruby-identifier">filters</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -227,6 +254,34 @@ Please use `retrieve_api_keys_for_user` in the `api_key` service instead.&#39;</
 
   <span class="ruby-comment"># Return true if succeeds, an error will be thrown if it fails</span>
   <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-get_next_page_of_children" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">get_next_page_of_children</span><span
+              class="method-args">(collection, page_size = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Get the next page of child users.</p>
+
+          <div class="method-source-code" id="get_next_page_of_children-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/user.rb, line 90</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page_of_children</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">EndOfPaginationError</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">more_pages?</span>(<span class="ruby-identifier">collection</span>)
+
+  <span class="ruby-identifier">params</span> = { <span class="ruby-value">before_id:</span> <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">id</span> }
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_size</span>] = <span class="ruby-identifier">page_size</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">page_size</span>.<span class="ruby-identifier">nil?</span>
+
+  <span class="ruby-identifier">all_children</span>(<span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -343,7 +398,7 @@ Please use `retrieve_api_keys_for_user` in the `api_key` service instead.&#39;</
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.6.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.6.2.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
