@@ -38,7 +38,6 @@ class EasyPost::Client
     EasyPost::Services::Batch,
     EasyPost::Services::BetaRate,
     EasyPost::Services::BetaReferralCustomer,
-    EasyPost::Services::BetaUser,
     EasyPost::Services::Billing,
     EasyPost::Services::CarrierAccount,
     EasyPost::Services::CarrierMetadata,

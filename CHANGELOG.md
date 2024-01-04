@@ -2,7 +2,7 @@
 
 ## Next Release
 
-- Add `all_children` and `get_next_page_of_children` in beta `beta_user` service
+- Add `all_children` and `get_next_page_of_children` in `user` service
 
 ## v6.0.0 (2023-12-06)
 
