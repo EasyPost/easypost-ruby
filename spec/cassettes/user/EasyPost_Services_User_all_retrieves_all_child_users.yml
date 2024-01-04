@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/users/children
+    body:
+      encoding: UTF-8
+      string: '{"page_size":5}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 3c78c40b65970b9df3f84e82001239cb
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.035986'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb41nuq
+      X-Version-Label:
+      - easypost-202401041812-437974c716-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 2c48984abf
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2023-05-16T22:01:20Z"},{"id":"user_14e894c0d541459395f4456e7cf4f175","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2023-09-27T22:05:26Z"},{"id":"user_f04df3dad13848339a7975d295d6629f","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2023-11-30T19:23:22Z"}],"has_more":false}'
+  recorded_at: Thu, 04 Jan 2024 19:48:45 GMT
+recorded_with: VCR 6.1.0
