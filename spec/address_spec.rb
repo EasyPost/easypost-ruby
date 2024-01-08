@@ -15,16 +15,20 @@ describe EasyPost::Services::Address do
     end
 
     it 'creates an address with verify param' do
-      # We purposefully pass in slightly incorrect data to get the corrected address back once verified.
       address_data = Fixture.incorrect_address
-      address_data[:verify] = true
 
+      # Creating normally (without specifying "verify") will make the address, perform no verifications
       address = client.address.create(address_data)
 
       expect(address).to be_an_instance_of(EasyPost::Models::Address)
-      expect(address.id).to match('adr_')
-      expect(address.street1).to eq('417 MONTGOMERY ST FL 5')
-      expect(address.verifications.zip4.errors[0].message).to eq('Invalid secondary information(Apt/Suite#)')
+      expect(address.verifications.instance_variable_defined?(:@delivery)).to be false
+
+      # Creating with verify = true will make the address, perform verifications
+      address_data[:verify] = true
+      address = client.address.create(address_data)
+
+      expect(address).to be_an_instance_of(EasyPost::Models::Address)
+      expect(address.verifications.delivery.success).to be false
     end
 
     it 'creates an address with verify_strict param' do
@@ -39,16 +43,20 @@ describe EasyPost::Services::Address do
     end
 
     it 'creates an address with an array verify param' do
-      # We purposefully pass in slightly incorrect data to get the corrected address back once verified.
       address_data = Fixture.incorrect_address
-      address_data[:verify] = [true]
 
+      # Creating normally (without specifying "verify") will make the address, perform no verifications
       address = client.address.create(address_data)
 
       expect(address).to be_an_instance_of(EasyPost::Models::Address)
-      expect(address.id).to match('adr_')
-      expect(address.street1).to eq('417 MONTGOMERY ST FL 5')
-      expect(address.verifications.zip4.errors[0].message).to eq('Invalid secondary information(Apt/Suite#)')
+      expect(address.verifications.instance_variable_defined?(:@delivery)).to be false
+
+      # Creating with verify = true will make the address, perform verifications
+      address_data[:verify] = [true]
+      address = client.address.create(address_data)
+
+      expect(address).to be_an_instance_of(EasyPost::Models::Address)
+      expect(address.verifications.delivery.success).to be false
     end
   end
 
@@ -104,24 +112,33 @@ describe EasyPost::Services::Address do
 
   describe '.create_and_verify' do
     it 'creates a verified address' do
-      # We purposefully pass in slightly incorrect data to get the corrected address back once verified.
-      address = client.address.create_and_verify(Fixture.incorrect_address)
+      address = client.address.create_and_verify(Fixture.ca_address1)
 
       expect(address).to be_an_instance_of(EasyPost::Models::Address)
       expect(address.id).to match('adr_')
-      expect(address.street1).to eq('417 MONTGOMERY ST FL 5')
+      expect(address.street1).to eq('388 TOWNSEND ST APT 20')
+    end
+
+    it 'throws an error for invalid address verification' do
+      address_data = Fixture.incorrect_address
+
+      # Creates with verify = true behind the scenes, will make the address, perform verifications
+      # Will throw an error if the address is invalid
+      client.address.create_and_verify(address_data)
+    rescue EasyPost::Errors::InvalidRequestError => e
+      expect(e.message).to eq('Unable to verify address.')
     end
   end
 
   describe '.verify' do
     it 'verifies an already created address' do
       # We purposefully pass in slightly incorrect data to get the corrected address back once verified.
-      address = client.address.create(Fixture.incorrect_address)
+      address = client.address.create(Fixture.ca_address1)
       verified_address = client.address.verify(address.id)
 
       expect(verified_address).to be_an_instance_of(EasyPost::Models::Address)
       expect(verified_address.id).to match('adr_')
-      expect(verified_address.street1).to eq('417 MONTGOMERY ST FL 5')
+      expect(verified_address.street1).to eq('388 TOWNSEND ST APT 20')
     end
 
     it 'throws an error for invalid address verification' do
