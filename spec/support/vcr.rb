@@ -87,7 +87,7 @@ VCR.configure do |config|
         data.each_value do |top_values|
           case top_values
           when Array
-            top_values.each_key do |nested_item|
+            top_values.each_entry do |nested_item|
               scrub_data(nested_item, scrubber)
             end
           when Hash
