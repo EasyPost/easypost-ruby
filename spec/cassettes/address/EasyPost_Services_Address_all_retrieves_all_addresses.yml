@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - bc30cf0564652d49e0dc8f3e0006aaa9
+      - e77cdde965b00a28e787d4dc0006ebdd
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -44,37 +44,34 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"663d79c3e3d523b1cc48d9afeaf6173a"
       X-Runtime:
-      - '0.065334'
+      - '0.039031'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb6nuq
+      - bigweb38nuq
       X-Version-Label:
-      - easypost-202305171805-88442329bc-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 5ab12a3ed2
-      - intlb2nuq a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"addresses":[{"id":"adr_72097048f4ea11ed8a7d3cecef1b359e","object":"Address","created_at":"2023-05-17T19:38:49+00:00","updated_at":"2023-05-17T19:38:49+00:00","name":"Jack
+      string: '{"addresses":[{"id":"adr_18d9cb91ba2011eeb0a5ac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:11+00:00","updated_at":"2024-01-23T18:49:11+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_71aea0bbf4ea11ed9418ac1f6bc72124","object":"Address","created_at":"2023-05-17T19:38:48+00:00","updated_at":"2023-05-17T19:38:48+00:00","name":"JACK
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_187849afba2011eeb06cac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:10+00:00","updated_at":"2024-01-23T18:49:10+00:00","name":null,"company":"EasyPost","street1":"000
+        unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_18aac0a3ba2011ee8d4d3cecef1b359e","object":"Address","created_at":"2024-01-23T18:49:11+00:00","updated_at":"2024-01-23T18:49:11+00:00","name":null,"company":"EasyPost","street1":"000
+        unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
+        not found","suggestion":null}],"details":null},"delivery":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
+        not found","suggestion":null}],"details":{}}}},{"id":"adr_181b1887ba2011eeb037ac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:10+00:00","updated_at":"2024-01-23T18:49:10+00:00","name":"JACK
         SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
-        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_71da101cf4ea11eda08bac1f6bc539ae","object":"Address","created_at":"2023-05-17T19:38:48+00:00","updated_at":"2023-05-17T19:38:48+00:00","name":null,"company":"EASYPOST","street1":"417
-        MONTGOMERY ST FL 5","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94104-1129","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid
-        secondary information(Apt/Suite#)","suggestion":null}],"details":null},"delivery":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid
-        secondary information(Apt/Suite#)","suggestion":null}],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_7186c684f4ea11ed89123cecef1b359e","object":"Address","created_at":"2023-05-17T19:38:48+00:00","updated_at":"2023-05-17T19:38:48+00:00","name":null,"company":"EASYPOST","street1":"417
-        MONTGOMERY ST FL 5","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94104-1129","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid
-        secondary information(Apt/Suite#)","suggestion":null}],"details":null},"delivery":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid
-        secondary information(Apt/Suite#)","suggestion":null}],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_7158ee7cf4ea11ed9f16ac1f6bc539ae","object":"Address","created_at":"2023-05-17T19:38:47+00:00","updated_at":"2023-05-17T19:38:47+00:00","name":"Jack
-        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}],"has_more":true}'
-  recorded_at: Wed, 17 May 2023 19:38:50 GMT
-recorded_with: VCR 6.1.0
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_17e75853ba2011eeb01cac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:09+00:00","updated_at":"2024-01-23T18:49:09+00:00","name":null,"company":"EasyPost","street1":"000
+        unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
+        not found","suggestion":null}],"details":null},"delivery":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
+        not found","suggestion":null}],"details":{}}}}],"has_more":true}'
+  recorded_at: Tue, 23 Jan 2024 18:49:12 GMT
+recorded_with: VCR 6.2.0

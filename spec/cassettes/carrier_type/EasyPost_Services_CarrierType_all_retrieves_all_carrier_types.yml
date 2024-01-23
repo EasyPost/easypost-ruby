@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 699ed206650370a6e78859a3000fa967
+      - e77cdde765b00a46e787d5c2000703b2
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -44,21 +44,19 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"f1824e07e1dfd8025329fe1cd39d9050"
       X-Runtime:
-      - '0.026198'
+      - '0.028807'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb35nuq
+      - bigweb42nuq
       X-Version-Label:
-      - easypost-202309141829-6768203179-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 003ad9bca0
-      - intlb1nuq 2bcb349163
+      - extlb2nuq 003ad9bca0
+      - intlb1nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -95,5 +93,5 @@ http_interactions:
         Express","logo":null,"fields":[]},{"object":"CarrierType","type":"SmartKargoAccount","readable":"SmartKargo","logo":null,"fields":[]},{"object":"CarrierType","type":"SonicAccount","readable":"Sonic","logo":null,"fields":[]},{"object":"CarrierType","type":"SpeedeeAccount","readable":"Spee-Dee","logo":null,"fields":[]},{"object":"CarrierType","type":"SwyftAccount","readable":"Swyft","logo":null,"fields":[]},{"object":"CarrierType","type":"TforceConciseAccount","readable":"TForce","logo":null,"fields":[]},{"object":"CarrierType","type":"TollAccount","readable":"Toll","logo":null,"fields":[]},{"object":"CarrierType","type":"UdsAccount","readable":"UDS","logo":null,"fields":[]},{"object":"CarrierType","type":"UpsAccount","readable":"UPS","logo":null,"fields":[]},{"object":"CarrierType","type":"UpsIparcelAccount","readable":"UPS
         i-Parcel","logo":null,"fields":[]},{"object":"CarrierType","type":"UpsMailInnovationsAccount","readable":"UPS
         Mail Innovations","logo":null,"fields":[]},{"object":"CarrierType","type":"UspsAccount","readable":"USPS","logo":null,"fields":[]},{"object":"CarrierType","type":"VehoAccount","readable":"Veho","logo":null,"fields":[]},{"object":"CarrierType","type":"XDeliveryAccount","readable":"Maergo","logo":null,"fields":[]}]'
-  recorded_at: Thu, 14 Sep 2023 20:44:22 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Tue, 23 Jan 2024 18:49:42 GMT
+recorded_with: VCR 6.2.0

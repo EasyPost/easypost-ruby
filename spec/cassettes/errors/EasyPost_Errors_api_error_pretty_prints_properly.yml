@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 84d2fabf6470ddede0de498a0014cb9a
+      - e77cdde765b00a4ee787d92200070971
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -43,35 +43,31 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_333df1cafbe211edbe7aac1f6bc539aa"
+      - "/api/v2/addresses/adr_3004627eba2011ee8b42ac1f6bc53342"
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"61730a5246373b4047245c1ef3087a9b"
       X-Runtime:
-      - '0.035180'
+      - '0.035641'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb7nuq
+      - bigweb41nuq
       X-Version-Label:
-      - easypost-202305252213-e719365a4c-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb1nuq 5ab12a3ed2
-      - intlb1nuq a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"adr_333df1cafbe211edbe7aac1f6bc539aa","object":"Address","created_at":"2023-05-26T16:27:25+00:00","updated_at":"2023-05-26T16:27:25+00:00","name":null,"company":null,"street1":"invalid","street2":null,"city":null,"state":null,"zip":null,"country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
-  recorded_at: Fri, 26 May 2023 16:27:25 GMT
+      string: '{"id":"adr_3004627eba2011ee8b42ac1f6bc53342","object":"Address","created_at":"2024-01-23T18:49:50+00:00","updated_at":"2024-01-23T18:49:50+00:00","name":null,"company":null,"street1":"invalid","street2":null,"city":null,"state":null,"zip":null,"country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+  recorded_at: Tue, 23 Jan 2024 18:49:50 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/addresses/adr_333df1cafbe211edbe7aac1f6bc539aa/verify
+    uri: https://api.easypost.com/v2/addresses/adr_3004627eba2011ee8b42ac1f6bc53342/verify
     body:
       encoding: US-ASCII
       string: ''
@@ -104,7 +100,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 84d2fabc6470ddeee0de498b0014cbb7
+      - e77cdde465b00a4ee787d923000709b8
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -114,18 +110,20 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.034621'
+      - '0.173339'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb8nuq
+      - bigweb32nuq
       X-Version-Label:
-      - easypost-202305252213-e719365a4c-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb1nuq 5ab12a3ed2
-      - intlb2nuq a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb1nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -134,5 +132,5 @@ http_interactions:
         address.","errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
         not found","suggestion":null},{"code":"E.HOUSE_NUMBER.MISSING","field":"street1","message":"House
         number is missing","suggestion":null}]}}'
-  recorded_at: Fri, 26 May 2023 16:27:26 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Tue, 23 Jan 2024 18:49:50 GMT
+recorded_with: VCR 6.2.0

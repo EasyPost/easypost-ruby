@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0a64652d8ae0dc8fca0006d725
+      - e77cdde565b00a3fe787d5840006fe7a
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,26 +45,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.512357'
+      - '0.393876'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb1nuq
+      - bigweb43nuq
       X-Version-Label:
-      - easypost-202305171925-180fff930b-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb1wdc a29e4ad05c
-      - intlb2nuq a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: '{"error":{"code":"TRANSACTION.AMOUNT_INVALID","message":"Refund amount
         is invalid. Please use a valid amount or escalate to finance.","errors":[]}}'
-  recorded_at: Wed, 17 May 2023 19:39:54 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Tue, 23 Jan 2024 18:49:36 GMT
+recorded_with: VCR 6.2.0

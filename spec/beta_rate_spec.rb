@@ -18,7 +18,7 @@ describe EasyPost::Services::BetaRate do
 
         lowest_stateless_rate = EasyPost::Util.get_lowest_stateless_rate(stateless_rates)
 
-        expect(lowest_stateless_rate.service).to match('First')
+        expect(lowest_stateless_rate.service).to match('GroundAdvantage')
 
         expect {
           EasyPost::Util.get_lowest_stateless_rate(stateless_rates, ['invalid_carrier'])

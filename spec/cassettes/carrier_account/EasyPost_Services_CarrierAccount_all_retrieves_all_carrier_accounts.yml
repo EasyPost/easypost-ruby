@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0364652d8de0dc8fe90006d824
+      - e77cdde965b00a43e787d5a2000700fa
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -44,22 +44,19 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"942411b4fc661bbf31f3e5cd5ab21659"
       X-Runtime:
-      - '0.074643'
+      - '0.073843'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb12nuq
+      - bigweb33nuq
       X-Version-Label:
-      - easypost-202305171925-180fff930b-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb1wdc a29e4ad05c
-      - intlb2nuq a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -74,5 +71,5 @@ http_interactions:
         eCommerce Solutions","logo":null,"fields":[],"credentials":{},"test_credentials":{}},{"id":"ca_91ae96a5fc1f4cf4aa4b69067df5686b","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2023-05-10T22:21:26Z","updated_at":"2023-05-10T22:21:26Z","description":"My
         custom description","reference":null,"billing_type":"carrier","readable":"DHL
         eCommerce Solutions","logo":null,"fields":[],"credentials":{},"test_credentials":{}}]'
-  recorded_at: Wed, 17 May 2023 19:39:57 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Tue, 23 Jan 2024 18:49:39 GMT
+recorded_with: VCR 6.2.0

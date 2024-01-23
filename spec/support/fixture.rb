@@ -96,7 +96,7 @@ class Fixture
   # If you need to re-record cassettes, increment the date below and ensure it is one day in the future,
   # USPS only does "next-day" pickups including Saturday but not Sunday or Holidays.
   def self.basic_pickup
-    pickup_date = '2023-12-04'
+    pickup_date = '2024-01-24'
 
     pickup_data = read_fixture_data['pickups']['basic']
     pickup_data['min_datetime'] = pickup_date
@@ -144,6 +144,6 @@ class Fixture
   end
 
   def self.planned_ship_date
-    '2023-12-04'
+    '2024-01-25'
   end
 end

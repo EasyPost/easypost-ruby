@@ -37,7 +37,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0864652d81e0dc8fa80006d482
+      - e77cdde465b00a38e787d5650006f87d
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -46,31 +46,28 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"c514f1064aeb8ef6d600946bfe22ebd7"
       X-Runtime:
-      - '0.047471'
+      - '0.039471'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb12nuq
+      - bigweb41nuq
       X-Version-Label:
-      - easypost-202305171925-180fff930b-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb1nuq a29e4ad05c
-      - intlb1wdc a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"batch_dfbd593be19b4edf84cbd94ba08b06c3","object":"Batch","mode":"test","state":"creating","num_shipments":1,"reference":null,"created_at":"2023-05-17T19:39:45Z","updated_at":"2023-05-17T19:39:45Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
-  recorded_at: Wed, 17 May 2023 19:39:45 GMT
+      string: '{"id":"batch_c5f66dc5aa0940f5ab4b2cc93e684ab4","object":"Batch","mode":"test","state":"creating","num_shipments":1,"reference":null,"created_at":"2024-01-23T18:49:28Z","updated_at":"2024-01-23T18:49:28Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+  recorded_at: Tue, 23 Jan 2024 18:49:28 GMT
 - request:
     method: post
-    uri: https://api.easypost.com/v2/batches/batch_dfbd593be19b4edf84cbd94ba08b06c3/buy
+    uri: https://api.easypost.com/v2/batches/batch_c5f66dc5aa0940f5ab4b2cc93e684ab4/buy
     body:
       encoding: UTF-8
       string: "{}"
@@ -103,7 +100,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0764652d81e0dc8fa90006d49a
+      - e77cdde665b00a38e787d5660006f8af
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -112,31 +109,28 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"9c67edf94fa47c42ce4e19d42690a2ca"
       X-Runtime:
-      - '0.058799'
+      - '0.078467'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb5nuq
+      - bigweb31nuq
       X-Version-Label:
-      - easypost-202305171805-88442329bc-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb1nuq a29e4ad05c
-      - intlb1wdc a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"batch_dfbd593be19b4edf84cbd94ba08b06c3","object":"Batch","mode":"test","state":"created","num_shipments":1,"reference":null,"created_at":"2023-05-17T19:39:45Z","updated_at":"2023-05-17T19:39:45Z","scan_form":null,"shipments":[{"batch_status":"queued_for_purchase","batch_message":null,"reference":null,"tracking_code":null,"id":"shp_ab2edc8666c04b59937c5e87b413bda1"}],"status":{"created":1,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
-  recorded_at: Wed, 17 May 2023 19:39:45 GMT
+      string: '{"id":"batch_c5f66dc5aa0940f5ab4b2cc93e684ab4","object":"Batch","mode":"test","state":"created","num_shipments":1,"reference":null,"created_at":"2024-01-23T18:49:28Z","updated_at":"2024-01-23T18:49:28Z","scan_form":null,"shipments":[{"batch_status":"queued_for_purchase","batch_message":null,"reference":null,"tracking_code":null,"id":"shp_88d41fb4cac547f2be1e73261e1b22f1"}],"status":{"created":1,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+  recorded_at: Tue, 23 Jan 2024 18:49:28 GMT
 - request:
     method: post
-    uri: https://api.easypost.com/v2/batches/batch_dfbd593be19b4edf84cbd94ba08b06c3/label
+    uri: https://api.easypost.com/v2/batches/batch_c5f66dc5aa0940f5ab4b2cc93e684ab4/label
     body:
       encoding: UTF-8
       string: '{"file_format":"ZPL"}'
@@ -169,7 +163,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0764652d87e0dc8fc30006d631
+      - e77cdde465b00a3de787d5800006fcdf
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -178,26 +172,23 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"dc0adaad21f43458f5c9951eab604e6e"
       X-Runtime:
-      - '0.035385'
+      - '0.043517'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb2nuq
+      - bigweb33nuq
       X-Version-Label:
-      - easypost-202305171805-88442329bc-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb2nuq a29e4ad05c
-      - intlb2wdc a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"batch_dfbd593be19b4edf84cbd94ba08b06c3","object":"Batch","mode":"test","state":"label_generating","num_shipments":1,"reference":null,"created_at":"2023-05-17T19:39:45Z","updated_at":"2023-05-17T19:39:51Z","scan_form":null,"shipments":[{"batch_status":"postage_purchased","batch_message":null,"reference":null,"tracking_code":"9400100104262210692753","id":"shp_ab2edc8666c04b59937c5e87b413bda1"}],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":1,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
-  recorded_at: Wed, 17 May 2023 19:39:51 GMT
-recorded_with: VCR 6.1.0
+      string: '{"id":"batch_c5f66dc5aa0940f5ab4b2cc93e684ab4","object":"Batch","mode":"test","state":"label_generating","num_shipments":1,"reference":null,"created_at":"2024-01-23T18:49:28Z","updated_at":"2024-01-23T18:49:33Z","scan_form":null,"shipments":[{"batch_status":"postage_purchased","batch_message":null,"reference":null,"tracking_code":"9400100207552011757482","id":"shp_88d41fb4cac547f2be1e73261e1b22f1"}],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":1,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+  recorded_at: Tue, 23 Jan 2024 18:49:33 GMT
+recorded_with: VCR 6.2.0

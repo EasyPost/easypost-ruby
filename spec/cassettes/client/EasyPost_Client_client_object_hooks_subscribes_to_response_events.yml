@@ -36,7 +36,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - bb751d5e64c05c6eee7f171900189c9e
+      - e77cdde765b00a48e787d5c7000704f1
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -44,30 +44,30 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_0b6de7302b4411ee8cb2ac1f6bc539ae"
+      - "/api/v2/addresses/adr_2c8bb6b1ba2011ee98083cecef1b359e"
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"48850e2ee8920db2bf8c4b5855731d12"
       X-Runtime:
-      - 0.032<REDACTED>
+      - '0.034491'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb42nuq
+      - bigweb32nuq
       X-Version-Label:
-      - easypost-202307252255-c698f2fec7-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb1nuq 003ad9bca0
-      - intlb1nuq d3d339cca1
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"adr_0b6de7302b4411ee8cb2ac1f6bc539ae","object":"Address","created_at":"2023-07-25T23:36:14+00:00","updated_at":"2023-07-25T23:36:14+00:00","name":"Jack
+      string: '{"id":"adr_2c8bb6b1ba2011ee98083cecef1b359e","object":"Address","created_at":"2024-01-23T18:49:44+00:00","updated_at":"2024-01-23T18:49:44+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
         Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
-  recorded_at: Tue, 25 Jul 2023 23:36:14 GMT
+  recorded_at: Tue, 23 Jan 2024 18:49:44 GMT
 recorded_with: VCR 6.2.0

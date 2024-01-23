@@ -82,7 +82,7 @@ describe EasyPost::Services::ReferralCustomer do
     it 'adds a credit card to a referral customer account' do
       # We override the VCR config here since it cannot match the URL due to data scrubbing
       VCR.use_cassette(
-        'rewrite/referral/EasyPost_Referral_add_credit_card_adds_a_credit_card_to_a_referral_customer_account',
+        'referral/EasyPost_Services_ReferralCustomer_add_credit_card_adds_a_credit_card_to_a_referral_customer_account',
         match_requests_on: [:method, :uri],
       ) do
         credit_card = client.referral_customer.add_credit_card(

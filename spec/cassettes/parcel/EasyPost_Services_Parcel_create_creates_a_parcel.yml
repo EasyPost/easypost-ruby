@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0664652db1e0dc93e30006e661
+      - e77cdde665b00a6de787d9c40007261d
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -43,29 +43,26 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/prcl_f148c268ba1c49dcb1a5334986ba6b80/parcels"
+      - "/api/v2/parcels/prcl_48660b1b50d14d4c976c6d3819c31f38"
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"e240acbbb8202af5fb9c4dbb2c3ed21e"
       X-Runtime:
-      - '0.027828'
+      - '0.035869'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb2nuq
+      - bigweb42nuq
       X-Version-Label:
-      - easypost-202305171805-88442329bc-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb1nuq a29e4ad05c
-      - intlb1wdc a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"prcl_f148c268ba1c49dcb1a5334986ba6b80","object":"Parcel","created_at":"2023-05-17T19:40:33Z","updated_at":"2023-05-17T19:40:33Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
-  recorded_at: Wed, 17 May 2023 19:40:33 GMT
-recorded_with: VCR 6.1.0
+      string: '{"id":"prcl_48660b1b50d14d4c976c6d3819c31f38","object":"Parcel","created_at":"2024-01-23T18:50:21Z","updated_at":"2024-01-23T18:50:21Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
+  recorded_at: Tue, 23 Jan 2024 18:50:21 GMT
+recorded_with: VCR 6.2.0

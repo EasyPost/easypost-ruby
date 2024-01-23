@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - cd9e264164c19503ee6e16d2001108b1
+      - e77cdde365b00a48e787d5c90007057a
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,23 +45,23 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.034737'
+      - '0.039344'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb31nuq
+      - bigweb38nuq
       X-Version-Label:
-      - easypost-202307261627-fcb57da543-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq 003ad9bca0
-      - intlb2nuq d3d339cca1
+      - extlb2nuq 003ad9bca0
+      - intlb1nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: '{"error":{"code":"NOT_FOUND","message":"The requested resource could
         not be found.","errors":[]}}'
-  recorded_at: Wed, 26 Jul 2023 21:49:56 GMT
+  recorded_at: Tue, 23 Jan 2024 18:49:45 GMT
 recorded_with: VCR 6.2.0

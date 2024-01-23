@@ -24,7 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'brakeman', '~> 5.4'
   spec.add_development_dependency 'faraday', '~> 2.7.5' # used for integration tests
   spec.add_development_dependency 'pry', '~> 0.14'
-  spec.add_development_dependency 'psych', '~> 5.1'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rdoc', '~> 6.5'
   spec.add_development_dependency 'rspec', '~> 3.12'
