@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Fix issues funding wallet due to invalid internal function call
+
 ## v6.1.0 (2024-01-08)
 
 - Add `all_children` and `get_next_page_of_children` in `user` service
