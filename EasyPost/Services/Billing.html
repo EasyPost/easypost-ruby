@@ -72,7 +72,6 @@
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    <li ><a href="#method-c-get_payment_method_info">::get_payment_method_info</a>
     <li ><a href="#method-i-delete_payment_method">#delete_payment_method</a>
     <li ><a href="#method-i-fund_wallet">#fund_wallet</a>
     <li ><a href="#method-i-retrieve_payment_methods">#retrieve_payment_methods</a>
@@ -97,65 +96,6 @@
 
 
 
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Public Class Methods</h3>
-       </header>
-
-      <div id="method-c-get_payment_method_info" class="method-detail ">
-        <div class="method-header">
-          <div class="method-heading">
-            <span class="method-name">get_payment_method_info</span><span
-              class="method-args">(priority)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-        </div>
-
-        <div class="method-description">
-          <p>Get payment method info (type of the payment method and ID of the payment method)</p>
-
-          <div class="method-source-code" id="get_payment_method_info-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 7</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">get_payment_method_info</span>(<span class="ruby-identifier">priority</span>)
-  <span class="ruby-identifier">payment_methods</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Services</span><span class="ruby-operator">::</span><span class="ruby-constant">Billing</span>.<span class="ruby-identifier">retrieve_payment_methods</span>
-  <span class="ruby-identifier">payment_method_map</span> = {
-    <span class="ruby-string">&#39;primary&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;primary_payment_method&#39;</span>,
-    <span class="ruby-string">&#39;secondary&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;secondary_payment_method&#39;</span>,
-  }
-
-  <span class="ruby-identifier">payment_method_to_use</span> = <span class="ruby-identifier">payment_method_map</span>[<span class="ruby-identifier">priority</span>]
-
-  <span class="ruby-identifier">error_string</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">INVALID_PAYMENT_METHOD</span>
-  <span class="ruby-identifier">suggestion</span> = <span class="ruby-node">&quot;Please use a valid payment method: #{payment_method_map.keys.join(&#39;, &#39;)}&quot;</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">payment_methods</span>[<span class="ruby-identifier">payment_method_to_use</span>].<span class="ruby-identifier">nil?</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidParameterError</span>.<span class="ruby-identifier">new</span>(
-      <span class="ruby-identifier">error_string</span>,
-      <span class="ruby-identifier">suggestion</span>,
-    )
-  <span class="ruby-keyword">end</span>
-
-  <span class="ruby-identifier">payment_method_id</span> = <span class="ruby-identifier">payment_methods</span>[<span class="ruby-identifier">payment_method_to_use</span>][<span class="ruby-string">&#39;id&#39;</span>]
-
-  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">payment_method_id</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">payment_method_id</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&#39;card_&#39;</span>)
-      <span class="ruby-identifier">endpoint</span> = <span class="ruby-string">&#39;/v2/credit_cards&#39;</span>
-    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">payment_method_id</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&#39;bank_&#39;</span>)
-      <span class="ruby-identifier">endpoint</span> = <span class="ruby-string">&#39;/v2/bank_accounts&#39;</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidObjectError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">error_string</span>)
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-
-  [<span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">payment_method_id</span>]
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-    </section>
-
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
@@ -174,9 +114,9 @@
           <p>Delete a payment method.</p>
 
           <div class="method-source-code" id="delete_payment_method-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 54</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_payment_method</span>(<span class="ruby-identifier">priority</span>)
-  <span class="ruby-identifier">payment_info</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Services</span><span class="ruby-operator">::</span><span class="ruby-constant">Billing</span>.<span class="ruby-identifier">get_payment_method_info</span>(<span class="ruby-identifier">priority</span>.<span class="ruby-identifier">downcase</span>)
+  <span class="ruby-identifier">payment_info</span> = <span class="ruby-identifier">get_payment_method_info</span>(<span class="ruby-identifier">priority</span>.<span class="ruby-identifier">downcase</span>)
   <span class="ruby-identifier">endpoint</span> = <span class="ruby-identifier">payment_info</span>[<span class="ruby-value">0</span>]
   <span class="ruby-identifier">payment_id</span> = <span class="ruby-identifier">payment_info</span>[<span class="ruby-value">1</span>]
 
@@ -204,9 +144,9 @@
           <p>Fund your <a href="../../EasyPost.html"><code>EasyPost</code></a> wallet by charging your primary or secondary card on file.</p>
 
           <div class="method-source-code" id="fund_wallet-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 41</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fund_wallet</span>(<span class="ruby-identifier">amount</span>, <span class="ruby-identifier">priority</span> = <span class="ruby-string">&#39;primary&#39;</span>)
-  <span class="ruby-identifier">payment_info</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Services</span><span class="ruby-operator">::</span><span class="ruby-constant">Billing</span>.<span class="ruby-identifier">get_payment_method_info</span>(<span class="ruby-identifier">priority</span>.<span class="ruby-identifier">downcase</span>)
+  <span class="ruby-identifier">payment_info</span> = <span class="ruby-identifier">get_payment_method_info</span>(<span class="ruby-identifier">priority</span>.<span class="ruby-identifier">downcase</span>)
   <span class="ruby-identifier">endpoint</span> = <span class="ruby-identifier">payment_info</span>[<span class="ruby-value">0</span>]
   <span class="ruby-identifier">payment_id</span> = <span class="ruby-identifier">payment_info</span>[<span class="ruby-value">1</span>]
 
@@ -235,9 +175,9 @@
           <p>Retrieve all payment methods.</p>
 
           <div class="method-source-code" id="retrieve_payment_methods-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 66</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/billing.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve_payment_methods</span>
-  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;/v2/payment_methods&#39;</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-string">&#39;/payment_methods&#39;</span>)
   <span class="ruby-identifier">payment_methods</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>)
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">payment_methods</span>[<span class="ruby-string">&#39;id&#39;</span>].<span class="ruby-identifier">nil?</span>
