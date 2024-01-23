@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v6.1.1 (2024-01-23)
 
 - Fix issues funding wallet due to invalid internal function call
 
