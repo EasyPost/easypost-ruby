@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0764652ddce0dc97810006f632
+      - e77cdde765b00a88e787dda400073f85
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -44,26 +44,25 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"b2bc60223834cb49323dc1fcf9107618"
       X-Runtime:
-      - '0.041491'
+      - '0.037465'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9nuq
+      - bigweb43nuq
       X-Version-Label:
-      - easypost-202305171925-180fff930b-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb1wdc a29e4ad05c
-      - intlb2nuq a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"reports":[{"id":"shprep_4694694cb1ae44289f42150251a44045","object":"ShipmentReport","created_at":"2023-05-17T19:41:16Z","updated_at":"2023-05-17T19:41:16Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_f3036f9ee5864c988e886a13f5d9b471","object":"ShipmentReport","created_at":"2023-05-17T19:41:15Z","updated_at":"2023-05-17T19:41:15Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_db0ab7ea935a4fdb8ecc1ccb31c41b50","object":"ShipmentReport","created_at":"2023-05-17T19:41:15Z","updated_at":"2023-05-17T19:41:15Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_461489c4390d428a8f6c22bcda33ee4d","object":"ShipmentReport","created_at":"2023-05-17T19:41:15Z","updated_at":"2023-05-17T19:41:15Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_5d7de81d677c470a92f7d15dfbc31323","object":"ShipmentReport","created_at":"2023-05-16T23:02:29Z","updated_at":"2023-05-16T23:02:29Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false}],"has_more":true}'
-  recorded_at: Wed, 17 May 2023 19:41:16 GMT
-recorded_with: VCR 6.1.0
+      string: '{"reports":[{"id":"shprep_ba364350de4243048f5db00b818e4d8b","object":"ShipmentReport","created_at":"2024-01-23T18:50:48Z","updated_at":"2024-01-23T18:50:48Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_edb8c24bedd64ef48134f8e41cb07256","object":"ShipmentReport","created_at":"2024-01-23T18:50:47Z","updated_at":"2024-01-23T18:50:48Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_5a972ed04f0246cb87d52602c3f72cb2","object":"ShipmentReport","created_at":"2024-01-23T18:50:47Z","updated_at":"2024-01-23T18:50:47Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_7b785e70e9d14a6aab34cbaad5937e1f","object":"ShipmentReport","created_at":"2024-01-23T18:50:47Z","updated_at":"2024-01-23T18:50:47Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_b37fd6f77e97458ba4a86e885c90ea0a","object":"ShipmentReport","created_at":"2023-11-30T19:23:05Z","updated_at":"2023-11-30T19:23:05Z","start_date":"2022-04-11","end_date":"2022-04-11","mode":"test","status":"available","url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/shipment_report/20231130/e85b3075e9bc4848ccb9f25592ce52d706.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQQSFK3MJI%2F20240123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240123T185048Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=8a093eacea51b4e006062aa59399f47fa0cb489bda77056875c93cf63aedcaec","url_expires_at":"2024-01-23T18:51:18Z","include_children":false}],"has_more":true}'
+  recorded_at: Tue, 23 Jan 2024 18:50:48 GMT
+recorded_with: VCR 6.2.0

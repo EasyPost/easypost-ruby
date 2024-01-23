@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e09e62206514a756f43e07e90009159c
+      - e77cdde365b00a2be787d4fd0006ee69
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -44,22 +44,19 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"45ae2b7b24126607f8fb02487cb99e21"
       X-Runtime:
-      - '0.144425'
+      - 0.0<REDACTED>70
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb41nuq
+      - bigweb42nuq
       X-Version-Label:
-      - easypost-202309272131-33dc63b17b-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 003ad9bca0
-      - intlb2nuq cac2303bbb
-      - intlb2wdc cac2303bbb
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -67,8 +64,9 @@ http_interactions:
       string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"Test
         User","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
         User","phone_number":"8005550100","verified":true,"created_at":"2023-05-16T22:01:20Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_14e894c0d541459395f4456e7cf4f175","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
-        User","phone_number":"8005550100","verified":true,"created_at":"2023-09-27T22:05:26Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
-  recorded_at: Wed, 27 Sep 2023 22:06:15 GMT
+        User","phone_number":"8005550100","verified":true,"created_at":"2023-09-27T22:05:26Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_f04df3dad13848339a7975d295d6629f","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2023-11-30T19:23:22Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
+  recorded_at: Tue, 23 Jan 2024 18:49:15 GMT
 - request:
     method: get
     uri: https://api.easypost.com/v2/api_keys
@@ -104,7 +102,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e09e621b6514a757f41dbafb000915c7
+      - e77cdde565b00a2be787d4fe0006eeb6
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -113,26 +111,23 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"e51953861e7272545eafa20c872acf3d"
       X-Runtime:
-      - '0.030130'
+      - '0.032991'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb41nuq
+      - bigweb40nuq
       X-Version-Label:
-      - easypost-202309272131-33dc63b17b-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 003ad9bca0
-      - intlb2nuq cac2303bbb
-      - intlb2wdc cac2303bbb
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2022-02-16T22:18:19Z","id":"ak_8ba3529286794a64b1792f2c9456ff06"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2022-02-16T22:18:43Z","id":"ak_558c24dec0284506bd9bb754c1db764d"}],"children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2023-05-16T22:01:20Z","id":"ak_8ea8950ecb1443d9a13009368c77fdf3"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2023-05-16T22:01:20Z","id":"ak_61f8f0824ad444ad96448ecf8ae0c613"}],"children":[]},{"id":"user_14e894c0d541459395f4456e7cf4f175","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2023-09-27T22:05:26Z","id":"ak_86f5343eb7c14d7e90a0dec0512c8329"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2023-09-27T22:05:26Z","id":"ak_5ec276fb301443dca2dfdef0435d7f7f"}],"children":[]}]}'
-  recorded_at: Wed, 27 Sep 2023 22:06:15 GMT
-recorded_with: VCR 6.1.0
+      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2022-02-16T22:18:19Z","id":"ak_8ba3529286794a64b1792f2c9456ff06"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2022-02-16T22:18:43Z","id":"ak_558c24dec0284506bd9bb754c1db764d"}],"children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2023-05-16T22:01:20Z","id":"ak_8ea8950ecb1443d9a13009368c77fdf3"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2023-05-16T22:01:20Z","id":"ak_61f8f0824ad444ad96448ecf8ae0c613"}],"children":[]},{"id":"user_14e894c0d541459395f4456e7cf4f175","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2023-09-27T22:05:26Z","id":"ak_86f5343eb7c14d7e90a0dec0512c8329"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2023-09-27T22:05:26Z","id":"ak_5ec276fb301443dca2dfdef0435d7f7f"}],"children":[]},{"id":"user_f04df3dad13848339a7975d295d6629f","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2023-11-30T19:23:22Z","id":"ak_ae2068e151f24ba29f43fb9cbca3c373"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2023-11-30T19:23:22Z","id":"ak_4cea95eaa6184ff793f56f3b540f8214"}],"children":[]}]}'
+  recorded_at: Tue, 23 Jan 2024 18:49:15 GMT
+recorded_with: VCR 6.2.0

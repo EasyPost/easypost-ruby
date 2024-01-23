@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0a64652d90e0dc93210006d945
+      - e77cdde865b00a4ae787d6090007069c
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -43,35 +43,32 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/customs_items/cstitem_f039b124bee84738b56cd3c8eb652b54"
+      - "/api/v2/customs_items/cstitem_c563ef13bf0f478bb4c06bddcd2c15e0"
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"dd4c7092aa48e96e0bbf07da787488f3"
       X-Runtime:
-      - '0.026967'
+      - '0.027300'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb6nuq
+      - bigweb36nuq
       X-Version-Label:
-      - easypost-202305171805-88442329bc-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb2nuq a29e4ad05c
-      - intlb2wdc a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"cstitem_f039b124bee84738b56cd3c8eb652b54","object":"CustomsItem","created_at":"2023-05-17T19:40:00Z","updated_at":"2023-05-17T19:40:00Z","description":"Sweet
+      string: '{"id":"cstitem_c563ef13bf0f478bb4c06bddcd2c15e0","object":"CustomsItem","created_at":"2024-01-23T18:49:46Z","updated_at":"2024-01-23T18:49:46Z","description":"Sweet
         shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
-  recorded_at: Wed, 17 May 2023 19:40:00 GMT
+  recorded_at: Tue, 23 Jan 2024 18:49:46 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/customs_items/cstitem_f039b124bee84738b56cd3c8eb652b54
+    uri: https://api.easypost.com/v2/customs_items/cstitem_c563ef13bf0f478bb4c06bddcd2c15e0
     body:
       encoding: US-ASCII
       string: ''
@@ -104,7 +101,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0364652d90e0dc93220006d959
+      - e77cdde865b00a4ae787d60a000706f7
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -113,27 +110,24 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"dd4c7092aa48e96e0bbf07da787488f3"
       X-Runtime:
-      - '0.021317'
+      - '0.023719'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9nuq
+      - bigweb38nuq
       X-Version-Label:
-      - easypost-202305171925-180fff930b-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb1nuq a29e4ad05c
-      - intlb2wdc a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"cstitem_f039b124bee84738b56cd3c8eb652b54","object":"CustomsItem","created_at":"2023-05-17T19:40:00Z","updated_at":"2023-05-17T19:40:00Z","description":"Sweet
+      string: '{"id":"cstitem_c563ef13bf0f478bb4c06bddcd2c15e0","object":"CustomsItem","created_at":"2024-01-23T18:49:46Z","updated_at":"2024-01-23T18:49:46Z","description":"Sweet
         shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
-  recorded_at: Wed, 17 May 2023 19:40:00 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Tue, 23 Jan 2024 18:49:46 GMT
+recorded_with: VCR 6.2.0

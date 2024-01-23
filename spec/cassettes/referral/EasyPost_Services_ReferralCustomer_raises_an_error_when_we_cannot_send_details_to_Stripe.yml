@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0964652dcae0dc942d0006f040
+      - e77cdde965b00a7de787da4400073633
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -44,30 +44,29 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"86cc970265a111486b443bf66ef85e91"
       X-Runtime:
-      - '0.017454'
+      - '0.023653'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb12nuq
+      - bigweb43nuq
       X-Version-Label:
-      - easypost-202305171925-180fff930b-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb1nuq a29e4ad05c
-      - intlb1wdc a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb1nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: '{"public_key":"pk_x3JSr5eOVWNTLRej8cZDde9VQ0AT5"}'
-  recorded_at: Wed, 17 May 2023 19:40:58 GMT
+  recorded_at: Tue, 23 Jan 2024 18:50:37 GMT
 - request:
     method: post
     uri: https://api.stripe.com/v1/tokens
@@ -91,49 +90,56 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 17 May 2023 19:40:59 GMT
+      - Tue, 23 Jan 2024 18:50:38 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '738'
+      - '739'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Allow-Methods:
-      - GET, POST, HEAD, OPTIONS, DELETE
+      - GET,HEAD,PUT,PATCH,POST,DELETE
       Access-Control-Allow-Origin:
       - "*"
       Access-Control-Expose-Headers:
-      - Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required
+      - Request-Id, Stripe-Manage-Version, Stripe-Should-Retry, X-Stripe-External-Auth-Required,
+        X-Stripe-Privileged-Session-Required
       Access-Control-Max-Age:
       - '300'
       Cache-Control:
       - no-cache, no-store
+      Content-Security-Policy:
+      - report-uri https://q.stripe.com/csp-report?p=v1%2Ftokens; block-all-mixed-content;
+        default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none';
+        img-src 'self'; script-src 'self' 'report-sample'; style-src 'self'
       Idempotency-Key:
-      - d505ea70-c3a1-4a98-9449-993a3b1fa335
+      - a3e617d9-5a3d-4579-8255-0e600505e3bd
       Original-Request:
-      - req_y9U4js62dFCEEq
+      - req_62lwE6CVpO1Ri5
       Request-Id:
-      - req_y9U4js62dFCEEq
+      - req_62lwE6CVpO1Ri5
       Stripe-Should-Retry:
       - 'false'
       Stripe-Version:
       - '2020-08-27'
+      Vary:
+      - Origin
       X-Stripe-Routing-Context-Priority-Tier:
       - livemode-critical
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"tok_0N8qDWDqT4huGUvdMiboonTN","object":"token","card":{"id":"card_0N8qDWDqT4huGUvdYpnUU88D","object":"card","address_city":null,"address_country":null,"address_line1":null,"address_line1_check":null,"address_line2":null,"address_state":null,"address_zip":null,"address_zip_check":null,"brand":"Visa","country":"US","cvc_check":"unchecked","dynamic_last4":null,"exp_month":5,"exp_year":2028,"funding":"credit","last4":"6170","name":null,"tokenization_method":null,"wallet":null},"client_ip":"<REDACTED>","created":1684352458,"livemode":true,"type":"card","used":false}'
-  recorded_at: Wed, 17 May 2023 19:40:59 GMT
+      string: '{"id":"tok_0Obp3SDqT4huGUvdN4LMoFPm","object":"token","card":{"id":"card_0Obp3SDqT4huGUvdlKadBd2X","object":"card","address_city":null,"address_country":null,"address_line1":null,"address_line1_check":null,"address_line2":null,"address_state":null,"address_zip":null,"address_zip_check":null,"brand":"Visa","country":"US","cvc_check":"unchecked","dynamic_last4":null,"exp_month":5,"exp_year":2028,"funding":"credit","last4":"6170","name":null,"tokenization_method":null,"wallet":null},"client_ip":"<REDACTED>","created":1706035838,"livemode":true,"type":"card","used":false}'
+  recorded_at: Tue, 23 Jan 2024 18:50:38 GMT
 - request:
     method: post
     uri: https://api.easypost.com/beta/credit_cards
     body:
       encoding: UTF-8
-      string: '{"credit_card":{"stripe_object_id":"tok_0N8qDWDqT4huGUvdMiboonTN","priority":"primary"}}'
+      string: '{"credit_card":{"stripe_object_id":"tok_0Obp3SDqT4huGUvdN4LMoFPm","priority":"primary"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -147,8 +153,8 @@ http_interactions:
       Authorization: "<REDACTED>"
   response:
     status:
-      code: 201
-      message: Created
+      code: 403
+      message: Forbidden
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -163,37 +169,29 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0664652dcbe0dc973d0006f098
-      Cache-Control:
-      - private, no-cache, no-store
-      Pragma:
-      - no-cache
-      Expires:
-      - '0'
+      - e77cdde865b00a7ee787da46000736e9
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"6119e656776944494c0066bcca34c730"
       X-Runtime:
-      - '3.427643'
+      - '0.008770'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb9nuq
+      - bigweb31nuq
       X-Version-Label:
-      - easypost-202305171925-180fff930b-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb2nuq a29e4ad05c
-      - intlb2wdc a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"card_228709453606427d89c6ee628d5eae83","disabled_at":null,"object":"CreditCard","name":null,"last4":"6170","exp_month":5,"exp_year":2028,"brand":"Visa"}'
-  recorded_at: Wed, 17 May 2023 19:41:02 GMT
-recorded_with: VCR 6.1.0
+      string: '{"error":{"code":"APIKEY.INACTIVE","message":"This api key is no longer
+        active. Please use a different api key or reactivate this key.","errors":[]}}'
+  recorded_at: Tue, 23 Jan 2024 18:50:38 GMT
+recorded_with: VCR 6.2.0

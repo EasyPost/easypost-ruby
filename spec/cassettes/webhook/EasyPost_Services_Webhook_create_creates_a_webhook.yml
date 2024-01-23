@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0464652e20e0dc9c080007100b
+      - e77cdde665b00ac3e787e2c600076b98
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -44,31 +44,28 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"46c9db0550a8feea7728c045c025f765"
       X-Runtime:
-      - '0.121719'
+      - '0.171180'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb4nuq
+      - bigweb42nuq
       X-Version-Label:
-      - easypost-202305171925-180fff930b-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb1nuq a29e4ad05c
-      - intlb2wdc a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb2nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"hook_f2762cf0f4ea11eda5bd19c3f4ad4909","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2023-05-17T19:42:25Z","disabled_at":null}'
-  recorded_at: Wed, 17 May 2023 19:42:24 GMT
+      string: '{"id":"hook_75e6b7bcba2011ee9ed9037e89421640","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2024-01-23T18:51:47Z","disabled_at":null}'
+  recorded_at: Tue, 23 Jan 2024 18:51:47 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/webhooks/hook_f2762cf0f4ea11eda5bd19c3f4ad4909
+    uri: https://api.easypost.com/v2/webhooks/hook_75e6b7bcba2011ee9ed9037e89421640
     body:
       encoding: US-ASCII
       string: ''
@@ -101,7 +98,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - a4ae9a0664652e20e0dc9c0900071033
+      - e77cdde465b00ac3e787e2c700076bdc
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -110,26 +107,23 @@ http_interactions:
       - '0'
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"44136fa355b3678a1146ad16f7e8649e"
       X-Runtime:
-      - '0.358757'
+      - '0.294099'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb6nuq
+      - bigweb31nuq
       X-Version-Label:
-      - easypost-202305171805-88442329bc-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb1nuq a29e4ad05c
-      - intlb2wdc a29e4ad05c
+      - extlb2nuq 003ad9bca0
+      - intlb1nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: "{}"
-  recorded_at: Wed, 17 May 2023 19:42:25 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Tue, 23 Jan 2024 18:51:48 GMT
+recorded_with: VCR 6.2.0

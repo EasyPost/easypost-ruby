@@ -37,7 +37,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - b135b6106491c99be786a80500112e0f
+      - e77cdde965b00a49e787d5e7000705b1
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,31 +45,30 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/customs_infos/cstinfo_937a03cece6a4c53a9b1de43b6389500"
+      - "/api/v2/customs_infos/cstinfo_73329421d98d4de290ab0503a5187979"
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"74de73c3351fc117bafb061079700cf9"
       X-Runtime:
-      - '0.035774'
+      - '0.041755'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb4nuq
+      - bigweb43nuq
       X-Version-Label:
-      - easypost-202306162038-54b6e7ec52-master
+      - easypost-202401222120-581bacedf7-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb4wdc 5ab12a3ed2
-      - intlb2nuq 255dce5529
-      - intlb2wdc 255dce5529
+      - extlb2nuq 003ad9bca0
+      - intlb1nuq 1a7e326d32
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"cstinfo_937a03cece6a4c53a9b1de43b6389500","object":"CustomsInfo","created_at":"2023-06-20T15:45:31Z","updated_at":"2023-06-20T15:45:31Z","contents_explanation":"","contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve
-        Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_c84a2c83a15d467d9a92277c8fbe87fd","object":"CustomsItem","created_at":"2023-06-20T15:45:31Z","updated_at":"2023-06-20T15:45:31Z","description":"Sweet
+      string: '{"id":"cstinfo_73329421d98d4de290ab0503a5187979","object":"CustomsInfo","created_at":"2024-01-23T18:49:45Z","updated_at":"2024-01-23T18:49:45Z","contents_explanation":"","contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve
+        Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_63a6a461508d48459f288ced84c1e013","object":"CustomsItem","created_at":"2024-01-23T18:49:45Z","updated_at":"2024-01-23T18:49:45Z","description":"Sweet
         shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}]}'
-  recorded_at: Tue, 20 Jun 2023 15:45:29 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Tue, 23 Jan 2024 18:49:45 GMT
+recorded_with: VCR 6.2.0
