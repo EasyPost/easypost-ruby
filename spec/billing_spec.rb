@@ -7,11 +7,14 @@ describe EasyPost::Services::Billing do
 
   describe '.fund_wallet' do
     it 'fund wallet by using a payment method' do
-      allow(described_class).to receive(:get_payment_method_info).and_return(['/credit_cards', 'cc_123'])
-      allow(client).to receive(:make_request).with(
-        :post, '/credit_cards/cc_123/charges', { amount: '2000' },
-      )
-
+      allow(client).to receive(:make_request).with(:get, '/payment_methods')
+                                             .and_return({
+                                                           'id' => 'cust_thisisdummydata',
+                                                           'object' => 'PaymentMethods', 'primary_payment_method' =>
+                                                             { 'id' => 'card_123', 'object' => 'CreditCard' },
+                                                         },
+                                             )
+      allow(client).to receive(:make_request).with(:post, '/credit_cards/card_123/charges', { amount: '2000' })
       credit_card = client.billing.fund_wallet('2000', 'primary')
 
       expect(credit_card).to eq(true)
@@ -20,10 +23,14 @@ describe EasyPost::Services::Billing do
 
   describe '.delete_payment_method' do
     it 'delete a payment method' do
-      allow(described_class).to receive(:get_payment_method_info).and_return(['/credit_cards', 'cc_123'])
-      allow(client).to receive(:make_request).with(
-        :delete, '/credit_cards/cc_123',
-      )
+      allow(client).to receive(:make_request).with(:get, '/payment_methods')
+                                             .and_return({
+                                                           'id' => 'cust_thisisdummydata',
+                                                           'object' => 'PaymentMethods', 'primary_payment_method' =>
+                                                             { 'id' => 'card_123', 'object' => 'CreditCard' },
+                                                         },
+                                             )
+      allow(client).to receive(:make_request).with(:delete, '/credit_cards/card_123')
 
       deleted_credit_card = client.billing.delete_payment_method('primary')
 
