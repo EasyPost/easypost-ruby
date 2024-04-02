@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next release
+
+- Add `refund` function in Insurance service for requesting a refund for standalone insurance.
+
 ## v6.1.1 (2024-01-23)
 
 - Fix issues funding wallet due to invalid internal function call

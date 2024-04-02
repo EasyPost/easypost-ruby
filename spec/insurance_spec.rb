@@ -72,4 +72,18 @@ describe EasyPost::Services::Insurance do
       end
     end
   end
+
+  describe '.refund' do
+    it 'cancels an insurance' do
+      insurance_data = Fixture.basic_insurance
+      insurance_data[:tracking_code] = 'EZ1000000001'
+
+      insurance = client.insurance.create(insurance_data)
+      cancelled_insurance = client.insurance.refund(insurance.id)
+
+      expect(cancelled_insurance).to be_an_instance_of(EasyPost::Models::Insurance)
+      expect(cancelled_insurance.id).to match('ins_')
+      expect(cancelled_insurance.status).to eq('cancelled')
+    end
+  end
 end
