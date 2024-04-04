@@ -37,7 +37,6 @@ class EasyPost::Services::Insurance < EasyPost::Services::Service
 
   # Refund an Insurance object
   def refund(id)
-    # TODO: Move beta when endpoint is in GA.
     response = @client.make_request(:post, "insurances/#{id}/refund")
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
