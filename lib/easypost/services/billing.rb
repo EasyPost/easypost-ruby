@@ -62,11 +62,13 @@ class EasyPost::Services::Billing < EasyPost::Services::Service
     end
 
     payment_method_id = payment_methods[payment_method_to_use]['id']
+    payment_method_object_type = payment_methods[payment_method_to_use]['object']
 
     unless payment_method_id.nil?
-      if payment_method_id.start_with?('card_')
+      if payment_method_id.start_with?('card_') || payment_method_object_type == 'CreditCard'
+
         endpoint = '/credit_cards'
-      elsif payment_method_id.start_with?('bank_')
+      elsif payment_method_id.start_with?('bank_') || payment_method_object_type == 'BankAccount'
         endpoint = '/bank_accounts'
       else
         raise EasyPost::Errors::InvalidObjectError.new(error_string)
