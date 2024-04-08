@@ -84,6 +84,7 @@ describe EasyPost::Services::Insurance do
       expect(cancelled_insurance).to be_an_instance_of(EasyPost::Models::Insurance)
       expect(cancelled_insurance.id).to match('ins_')
       expect(cancelled_insurance.status).to eq('cancelled')
+      expect(cancelled_insurance.messages[0]).to eq('Insurance was cancelled by the user.')
     end
   end
 end
