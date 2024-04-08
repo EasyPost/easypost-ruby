@@ -3,6 +3,7 @@
 require 'spec_helper'
 require 'faraday'
 require 'typhoeus'
+require 'ostruct'
 
 describe EasyPost::Client do
   describe 'client object' do
