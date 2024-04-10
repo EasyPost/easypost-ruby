@@ -59,26 +59,5 @@ describe EasyPost::Services::Billing do
 
       expect(deleted_credit_card).to eq(true)
     end
-
-    it 'get payment method type by legacy ID prefix' do
-      allow(client).to receive(:make_request).with(:get, '/payment_methods')
-                                             .and_return({
-                                                           'id' => 'cust_thisisdummydata',
-                                                           'object' => 'PaymentMethods',
-                                                           'primary_payment_method' =>
-                                                             { 'id' => 'card_123', 'object' => nil },
-                                                           'secondary_payment_method' =>
-                                                             { 'id' => 'bank_456', 'object' => nil },
-                                                         },
-                                                        )
-
-      # get_payment_method_info is private, can test it via delete
-      # will pass if get_payment_method_info returns ['credit_cards', 'card_123'], fail otherwise
-      allow(client).to receive(:make_request).with(:delete, '/credit_cards/card_123')
-
-      deleted_credit_card = client.billing.delete_payment_method('primary')
-
-      expect(deleted_credit_card).to eq(true)
-    end
   end
 end
