@@ -30,6 +30,7 @@ class EasyPost::Services::Tracker < EasyPost::Services::Service
   end
 
   # Create multiple Tracker objects in bulk.
+  # <b>DEPRECATED:</b> Please use <tt>create</tt> instead. This function will be removed in a future release.
   def create_list(params = {})
     wrapped_params = { 'trackers' => params }
 

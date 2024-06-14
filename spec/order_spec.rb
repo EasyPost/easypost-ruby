@@ -76,13 +76,13 @@ describe EasyPost::Services::Order do
       # Test lowest rate with no filters
       lowest_rate = shipment.lowest_rate
       expect(lowest_rate.service).to eq('GroundAdvantage')
-      expect(lowest_rate.rate).to eq('5.93')
+      expect(lowest_rate.rate).to eq('11.33')
       expect(lowest_rate.carrier).to eq('USPS')
 
       # Test lowest rate with service filter (this rate is higher than the lowest but should filter)
       lowest_rate = shipment.lowest_rate([], ['Priority'])
       expect(lowest_rate.service).to eq('Priority')
-      expect(lowest_rate.rate).to eq('6.88')
+      expect(lowest_rate.rate).to eq('13.79')
       expect(lowest_rate.carrier).to eq('USPS')
 
       # Test lowest rate with carrier filter (should error due to bad carrier)
