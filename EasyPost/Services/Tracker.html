@@ -177,10 +177,10 @@
         </div>
 
         <div class="method-description">
-          <p>Create multiple <a href="Tracker.html"><code>Tracker</code></a> objects in bulk.</p>
+          <p>Create multiple <a href="Tracker.html"><code>Tracker</code></a> objects in bulk. <strong>DEPRECATED:</strong> Please use <code>create</code> instead. This function will be removed in a future release.</p>
 
           <div class="method-source-code" id="create_list-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 33</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_list</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-string">&#39;trackers&#39;</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">params</span> }
 
@@ -206,7 +206,7 @@
           <p>Get the next page of trackers.</p>
 
           <div class="method-source-code" id="get_next_page-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 41</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">EndOfPaginationError</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">more_pages?</span>(<span class="ruby-identifier">collection</span>)
 
