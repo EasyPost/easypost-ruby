@@ -163,7 +163,7 @@ If you're using a custom HTTP connection, keep in mind that the `response_data` 
 
 ## Documentation
 
-API documentation can be found at: <https://easypost.com/docs/api>.
+API documentation can be found at: <https://docs.easypost.com>.
 
 Library documentation can be found on the web at: <https://easypost.github.io/easypost-ruby/> or by building them locally via the `make docs` command.
 
