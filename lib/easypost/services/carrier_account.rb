@@ -1,16 +1,20 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
-  CUSTOM_WORKFLOW_CARRIER_TYPES = %w[UpsAccount FedexAccount FedexSmartpostAccount].freeze
+  CUSTOM_WORKFLOW_CARRIER_TYPES = %w[FedexAccount FedexSmartpostAccount].freeze
+  UPS_WORKFLOW_CARRIER_TYPES = %w[UpsAccount UpsMailInnovationsAccount UpsSurepostAccount].freeze
   MODEL_CLASS = EasyPost::Models::CarrierAccount
 
   # Create a carrier account
   def create(params = {})
-    wrapped_params = { carrier_account: params }
+    carrier_account_type = params[:type]
+    wrapped_params = { select_top_layer_key(carrier_account_type).to_sym => params }
 
     # For UPS and FedEx the endpoint is different
-    create_url = if CUSTOM_WORKFLOW_CARRIER_TYPES.include?(params[:type])
+    create_url = if CUSTOM_WORKFLOW_CARRIER_TYPES.include?(carrier_account_type)
                    'carrier_accounts/register'
+                 elsif UPS_WORKFLOW_CARRIER_TYPES.include?(carrier_account_type)
+                   'ups_oauth_registrations'
                  else
                    'carrier_accounts'
                  end
@@ -33,8 +37,14 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
 
   # Update a carrier account
   def update(id, params = {})
-    wrapped_params = { carrier_account: params }
-    response = @client.make_request(:put, "carrier_accounts/#{id}", wrapped_params)
+    carrier_account = self.retrieve(id)
+    wrapped_params = { select_top_layer_key(carrier_account[:type]).to_sym => params }
+    update_url = if UPS_WORKFLOW_CARRIER_TYPES.include?(params[:type])
+      'ups_oauth_registrations/'
+    else
+      'carrier_accounts/'
+    end
+    response = @client.make_request(:put, "#{update_url}#{id}", wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -45,5 +55,13 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
 
     # Return true if succeeds, an error will be thrown if it fails
     true
+  end
+
+  private
+
+  # Select the top-layer key for the carrier account creation/update request based on the carrier type. 
+  def select_top_layer_key(carrier_account_type)
+    UPS_WORKFLOW_CARRIER_TYPES.include?(carrier_account_type) ?
+      "ups_oauth_registrations" : "carrier_account"
   end
 end

@@ -24,8 +24,13 @@ docs:
 install-styleguide: | update-examples-submodule
 	sh examples/symlink_directory_files.sh examples/style_guides/ruby .
 
+## init-examples-submodule - Initialize the examples submodule
+init-examples-submodule:
+	git submodule init
+	git submodule update
+
 ## install - Install globally from source
-install: | update-examples-submodule
+install: | init-examples-submodule
 	bundle install
 
 ## lint - Lint the project

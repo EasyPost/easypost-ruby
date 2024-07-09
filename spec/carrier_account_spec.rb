@@ -17,6 +17,17 @@ describe EasyPost::Services::CarrierAccount do
       client.carrier_account.delete(carrier_account.id)
     end
 
+    it 'creates an UPS account' do
+      carrier_account = client.carrier_account.create({type: 'UpsAccount', account_number: '123456789'})
+
+      expect(carrier_account).to be_an_instance_of(EasyPost::Models::CarrierAccount)
+      expect(carrier_account.id).to match('ca_')
+      expect(carrier_account.type).to eq('UpsAccount')
+
+      # Remove the carrier account once we have tested it so we don't pollute the account with test accounts
+      client.carrier_account.delete(carrier_account.id)
+    end
+
     it 'sends FedexAccount to the correct endpoint' do
       allow(client).to receive(:make_request).with(
         :post, 'carrier_accounts/register',
@@ -64,6 +75,19 @@ describe EasyPost::Services::CarrierAccount do
 
       # Remove the carrier account once we have tested it so we don't pollute the account with test accounts
       client.carrier_account.delete(carrier_account.id)
+    end
+
+    it 'updates an ups account' do
+      ups_account = client.carrier_account.create({type: 'UpsAccount', account_number: '123456789'})
+
+      updated_ups_account = client.carrier_account.update(ups_account.id, account_number: '987654321')
+
+      expect(updated_ups_account).to be_an_instance_of(EasyPost::Models::CarrierAccount)
+      expect(updated_ups_account.id).to match('ca_')
+      expect(updated_ups_account.type).to eq('UpsAccount')
+
+      # Remove the carrier account once we have tested it so we don't pollute the account with test accounts
+      client.carrier_account.delete(ups_account.id)
     end
   end
 
