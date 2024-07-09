@@ -37,13 +37,13 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
 
   # Update a carrier account
   def update(id, params = {})
-    carrier_account = self.retrieve(id)
+    carrier_account = retrieve(id)
     wrapped_params = { select_top_layer_key(carrier_account[:type]).to_sym => params }
     update_url = if UPS_WORKFLOW_CARRIER_TYPES.include?(params[:type])
-      'ups_oauth_registrations/'
-    else
-      'carrier_accounts/'
-    end
+                   'ups_oauth_registrations/'
+                 else
+                   'carrier_accounts/'
+                 end
     response = @client.make_request(:put, "#{update_url}#{id}", wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
@@ -59,9 +59,12 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
 
   private
 
-  # Select the top-layer key for the carrier account creation/update request based on the carrier type. 
+  # Select the top-layer key for the carrier account creation/update request based on the carrier type.
   def select_top_layer_key(carrier_account_type)
-    UPS_WORKFLOW_CARRIER_TYPES.include?(carrier_account_type) ?
-      "ups_oauth_registrations" : "carrier_account"
+    if UPS_WORKFLOW_CARRIER_TYPES.include?(carrier_account_type)
+      'ups_oauth_registrations'
+    else
+      'carrier_account'
+    end
   end
 end

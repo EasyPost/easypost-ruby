@@ -18,7 +18,7 @@ describe EasyPost::Services::CarrierAccount do
     end
 
     it 'creates an UPS account' do
-      carrier_account = client.carrier_account.create({type: 'UpsAccount', account_number: '123456789'})
+      carrier_account = client.carrier_account.create({ type: 'UpsAccount', account_number: '123456789' })
 
       expect(carrier_account).to be_an_instance_of(EasyPost::Models::CarrierAccount)
       expect(carrier_account.id).to match('ca_')
@@ -78,7 +78,7 @@ describe EasyPost::Services::CarrierAccount do
     end
 
     it 'updates an ups account' do
-      ups_account = client.carrier_account.create({type: 'UpsAccount', account_number: '123456789'})
+      ups_account = client.carrier_account.create({ type: 'UpsAccount', account_number: '123456789' })
 
       updated_ups_account = client.carrier_account.update(ups_account.id, account_number: '987654321')
 
