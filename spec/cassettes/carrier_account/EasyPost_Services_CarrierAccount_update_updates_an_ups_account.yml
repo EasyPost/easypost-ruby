@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.easypost.com/v2/carrier_accounts
+    uri: https://api.easypost.com/v2/ups_oauth_registrations
     body:
       encoding: UTF-8
-      string: '{"carrier_account":{"type":"DhlEcsAccount","credentials":{"client_id":"123456","client_secret":"123abc","distribution_center":"USLAX1","pickup_id":"123456"},"test_credentials":{"client_id":"123456","client_secret":"123abc","distribution_center":"USLAX1","pickup_id":"123456"}}}'
+      string: '{"ups_oauth_registrations":{"type":"UpsAccount","account_number":"123456789"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 6754031d668da62be78b1fab0026b987
+      - 6754031e668da5fbe78b1f43002681c9
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,31 +45,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.072141'
+      - '0.091424'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb43nuq
+      - bigweb34nuq
       X-Version-Label:
       - easypost-202407092027-324ee50b5a-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
       - extlb1nuq fa152d4755
-      - intlb4nuq fa152d4755
+      - intlb3nuq fa152d4755
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"ca_0170260b58dc43998885391a7dcf9108","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2024-07-09T21:05:47Z","updated_at":"2024-07-09T21:05:47Z","description":"DHL
-        eCommerce Solutions Account","reference":null,"billing_type":"carrier","readable":"DHL
-        eCommerce Solutions","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
-  recorded_at: Tue, 09 Jul 2024 21:05:47 GMT
+      string: '{"id":"ca_cd7761c14b7a43da9d57fbf16cf26467","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2024-07-09T21:04:59Z","updated_at":"2024-07-09T21:04:59Z","description":null,"reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
+  recorded_at: Tue, 09 Jul 2024 21:04:59 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_0170260b58dc43998885391a7dcf9108
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_cd7761c14b7a43da9d57fbf16cf26467
     body:
       encoding: US-ASCII
       string: ''
@@ -102,7 +98,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 6754031f668da62ce78b1fad0026b9f9
+      - 6754031c668da5fce78b1f4400268239
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -112,11 +108,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.036055'
+      - '0.037772'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb53nuq
+      - bigweb42nuq
       X-Version-Label:
       - easypost-202407092027-324ee50b5a-master
       X-Backend:
@@ -128,16 +124,14 @@ http_interactions:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"ca_0170260b58dc43998885391a7dcf9108","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2024-07-09T21:05:47Z","updated_at":"2024-07-09T21:05:47Z","description":"DHL
-        eCommerce Solutions Account","reference":null,"billing_type":"carrier","readable":"DHL
-        eCommerce Solutions","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
-  recorded_at: Tue, 09 Jul 2024 21:05:48 GMT
+      string: '{"id":"ca_cd7761c14b7a43da9d57fbf16cf26467","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2024-07-09T21:04:59Z","updated_at":"2024-07-09T21:04:59Z","description":null,"reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
+  recorded_at: Tue, 09 Jul 2024 21:05:00 GMT
 - request:
     method: put
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_0170260b58dc43998885391a7dcf9108
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_cd7761c14b7a43da9d57fbf16cf26467
     body:
       encoding: UTF-8
-      string: '{"carrier_account":{"description":"My custom description"}}'
+      string: '{"ups_oauth_registrations":{"account_number":"987654321"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -167,7 +161,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 6754031e668da62ce78b1fc50026ba72
+      - 67540321668da5fce78b1f45002682a3
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -177,7 +171,70 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.103991'
+      - '0.078106'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb39nuq
+      X-Version-Label:
+      - easypost-202407092027-324ee50b5a-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq fa152d4755
+      - intlb3nuq fa152d4755
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"ca_cd7761c14b7a43da9d57fbf16cf26467","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2024-07-09T21:04:59Z","updated_at":"2024-07-09T21:05:00Z","description":null,"reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
+  recorded_at: Tue, 09 Jul 2024 21:05:00 GMT
+- request:
+    method: delete
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_cd7761c14b7a43da9d57fbf16cf26467
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 6754031b668da5fde78b1f4600268309
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.068042'
       Transfer-Encoding:
       - chunked
       X-Node:
@@ -193,71 +250,6 @@ http_interactions:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"ca_0170260b58dc43998885391a7dcf9108","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2024-07-09T21:05:47Z","updated_at":"2024-07-09T21:05:48Z","description":"My
-        custom description","reference":null,"billing_type":"carrier","readable":"DHL
-        eCommerce Solutions","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
-  recorded_at: Tue, 09 Jul 2024 21:05:48 GMT
-- request:
-    method: delete
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_0170260b58dc43998885391a7dcf9108
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent: "<REDACTED>"
-      Host:
-      - api.easypost.com
-      Content-Type:
-      - application/json
-      Authorization: "<REDACTED>"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Download-Options:
-      - noopen
-      X-Permitted-Cross-Domain-Policies:
-      - none
-      Referrer-Policy:
-      - strict-origin-when-cross-origin
-      X-Ep-Request-Uuid:
-      - 6754031d668da62de78b1fc60026bafd
-      Cache-Control:
-      - private, no-cache, no-store
-      Pragma:
-      - no-cache
-      Expires:
-      - '0'
-      Content-Type:
-      - application/json; charset=utf-8
-      X-Runtime:
-      - '0.060783'
-      Transfer-Encoding:
-      - chunked
-      X-Node:
-      - bigweb36nuq
-      X-Version-Label:
-      - easypost-202407092027-324ee50b5a-master
-      X-Backend:
-      - easypost
-      X-Proxied:
-      - extlb1nuq fa152d4755
-      - intlb3nuq fa152d4755
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-    body:
-      encoding: UTF-8
       string: "{}"
-  recorded_at: Tue, 09 Jul 2024 21:05:49 GMT
+  recorded_at: Tue, 09 Jul 2024 21:05:01 GMT
 recorded_with: VCR 6.1.0
