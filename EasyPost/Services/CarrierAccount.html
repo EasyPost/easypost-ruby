@@ -104,6 +104,8 @@
         <dd>
         <dt id="MODEL_CLASS">MODEL_CLASS
         <dd><p>A <a href="CarrierAccount.html"><code>CarrierAccount</code></a> encapsulates your credentials with the carrier.</p>
+        <dt id="UPS_OAUTH_CARRIER_ACCOUNT_TYPES">UPS_OAUTH_CARRIER_ACCOUNT_TYPES
+        <dd>
       </dl>
     </section>
 
@@ -127,7 +129,7 @@
           <p>Retrieve all carrier accounts</p>
 
           <div class="method-source-code" id="all-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 30</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">all</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-identifier">get_all_helper</span>(<span class="ruby-string">&#39;carrier_accounts&#39;</span>, <span class="ruby-constant">MODEL_CLASS</span>, <span class="ruby-identifier">params</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -150,13 +152,16 @@
           <p>Create a carrier account</p>
 
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 8</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(<span class="ruby-identifier">params</span> = {})
-  <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">carrier_account:</span> <span class="ruby-identifier">params</span> }
+  <span class="ruby-identifier">carrier_account_type</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:type</span>]
+  <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-identifier">select_top_layer_key</span>(<span class="ruby-identifier">carrier_account_type</span>).<span class="ruby-identifier">to_sym</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">params</span> }
 
   <span class="ruby-comment"># For UPS and FedEx the endpoint is different</span>
-  <span class="ruby-identifier">create_url</span> = <span class="ruby-keyword">if</span> <span class="ruby-constant">CUSTOM_WORKFLOW_CARRIER_TYPES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:type</span>])
+  <span class="ruby-identifier">create_url</span> = <span class="ruby-keyword">if</span> <span class="ruby-constant">CUSTOM_WORKFLOW_CARRIER_TYPES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">carrier_account_type</span>)
                  <span class="ruby-string">&#39;carrier_accounts/register&#39;</span>
+               <span class="ruby-keyword">elsif</span> <span class="ruby-constant">UPS_OAUTH_CARRIER_ACCOUNT_TYPES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">carrier_account_type</span>)
+                 <span class="ruby-string">&#39;ups_oauth_registrations&#39;</span>
                <span class="ruby-keyword">else</span>
                  <span class="ruby-string">&#39;carrier_accounts&#39;</span>
                <span class="ruby-keyword">end</span>
@@ -183,7 +188,7 @@
           <p>Delete a carrier account</p>
 
           <div class="method-source-code" id="delete-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 43</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:delete</span>, <span class="ruby-node">&quot;carrier_accounts/#{id}&quot;</span>)
 
@@ -209,7 +214,7 @@
           <p>Retrieve a carrier account</p>
 
           <div class="method-source-code" id="retrieve-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 23</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-node">&quot;carrier_accounts/#{id}&quot;</span>)
 
@@ -234,10 +239,16 @@
           <p>Update a carrier account</p>
 
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/carrier_account.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span> = {})
-  <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">carrier_account:</span> <span class="ruby-identifier">params</span> }
-  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:put</span>, <span class="ruby-node">&quot;carrier_accounts/#{id}&quot;</span>, <span class="ruby-identifier">wrapped_params</span>)
+  <span class="ruby-identifier">carrier_account</span> = <span class="ruby-identifier">retrieve</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-identifier">select_top_layer_key</span>(<span class="ruby-identifier">carrier_account</span>[<span class="ruby-value">:type</span>]).<span class="ruby-identifier">to_sym</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">params</span> }
+  <span class="ruby-identifier">update_url</span> = <span class="ruby-keyword">if</span> <span class="ruby-constant">UPS_OAUTH_CARRIER_ACCOUNT_TYPES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:type</span>])
+                 <span class="ruby-string">&#39;ups_oauth_registrations/&#39;</span>
+               <span class="ruby-keyword">else</span>
+                 <span class="ruby-string">&#39;carrier_accounts/&#39;</span>
+               <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:put</span>, <span class="ruby-node">&quot;#{update_url}#{id}&quot;</span>, <span class="ruby-identifier">wrapped_params</span>)
 
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
 <span class="ruby-keyword">end</span></pre>
