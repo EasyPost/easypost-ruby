@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe EasyPost::Services::Smartrate do
+describe EasyPost::Services::SmartRate do
   let(:client) { EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY']) }
 
   describe '.deliver_by' do
@@ -14,7 +14,7 @@ describe EasyPost::Services::Smartrate do
         carriers: [Fixture.usps],
       }
 
-      rates = client.smartrate.estimate_delivery_date(params)
+      rates = client.smart_rate.estimate_delivery_date(params)
 
       expect(rates['results'].all? { |rate| rate['easypost_time_in_transit_data'] }).not_to be_nil
     end
@@ -29,7 +29,7 @@ describe EasyPost::Services::Smartrate do
         carriers: [Fixture.usps],
       }
 
-      rates = client.smartrate.recommend_ship_date(params)
+      rates = client.smart_rate.recommend_ship_date(params)
 
       expect(rates['results'].all? { |rate| rate['easypost_time_in_transit_data'] }).not_to be_nil
     end
