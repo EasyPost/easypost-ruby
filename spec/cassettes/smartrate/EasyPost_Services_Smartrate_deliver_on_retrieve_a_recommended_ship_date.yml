@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/smartrate/deliver_on
+    body:
+      encoding: UTF-8
+      string: '{"from_zip":"94107","to_zip":"90277","desired_delivery_date":"2024-07-16","carriers":["USPS"]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - b8e53c1d66902a39e779a00d000947e8
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.069828'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb42nuq
+      X-Version-Label:
+      - easypost-202407111640-83b200930f-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq fa152d4755
+      - intlb3nuq fa152d4755
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"carriers_without_tint_estimates":null,"desired_delivery_date":"2024-07-16","from_zip":"94107","results":[{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":2,"percentile_75":2,"percentile_85":2,"percentile_90":3,"percentile_95":3,"percentile_97":4,"percentile_99":7},"delivery_date_confidence":0.47,"estimated_transit_days":1,"ship_on_date":"2024-07-15"},"service":"express"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":2,"percentile_75":3,"percentile_85":4,"percentile_90":4,"percentile_95":5,"percentile_97":5,"percentile_99":9},"delivery_date_confidence":0.21,"estimated_transit_days":3,"ship_on_date":"2024-07-13"},"service":"groundadvantage"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":2,"percentile_75":3,"percentile_85":4,"percentile_90":4,"percentile_95":5,"percentile_97":6,"percentile_99":9},"delivery_date_confidence":0.25,"estimated_transit_days":3,"ship_on_date":"2024-07-13"},"service":"librarymail"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":2,"percentile_75":3,"percentile_85":3,"percentile_90":4,"percentile_95":5,"percentile_97":5,"percentile_99":7},"delivery_date_confidence":0.24,"estimated_transit_days":3,"ship_on_date":"2024-07-13"},"service":"mediamail"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":2,"percentile_75":3,"percentile_85":4,"percentile_90":4,"percentile_95":5,"percentile_97":5,"percentile_99":7},"delivery_date_confidence":0.19,"estimated_transit_days":3,"ship_on_date":"2024-07-13"},"service":"priority"}],"saturday_delivery":null,"to_zip":"90277"}'
+  recorded_at: Thu, 11 Jul 2024 18:53:45 GMT
+recorded_with: VCR 6.1.0

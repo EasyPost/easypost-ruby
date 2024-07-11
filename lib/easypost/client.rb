@@ -56,6 +56,7 @@ class EasyPost::Client
     EasyPost::Services::Report,
     EasyPost::Services::ScanForm,
     EasyPost::Services::Shipment,
+    EasyPost::Services::Smartrate,
     EasyPost::Services::Tracker,
     EasyPost::Services::User,
     EasyPost::Services::Webhook,

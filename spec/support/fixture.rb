@@ -144,6 +144,10 @@ class Fixture
   end
 
   def self.planned_ship_date
-    '2024-01-25'
+    '2024-07-16'
+  end
+
+  def self.desired_delivery_date
+    '2024-07-16'
   end
 end

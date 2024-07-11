@@ -118,4 +118,13 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS).rates
   end
+
+  # Retrieve a recommended ship date for an existing Shipment via the Precision Shipping API, based on a specific desired delivery date.
+  def recommend_ship_date(id, desired_delivery_date)
+    url = "shipments/#{id}/smartrate/precision_shipping"
+    params = { desired_delivery_date: desired_delivery_date }
+    response = @client.make_request(:get, url, params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS).rates
+  end
 end
