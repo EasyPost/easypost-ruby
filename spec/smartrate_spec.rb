@@ -8,10 +8,10 @@ describe EasyPost::Services::Smartrate do
   describe '.deliver_by' do
     it 'retrieve the estimated delivery date' do
       params = {
-        "from_zip": Fixture.ca_address1["zip"],
-        "to_zip": Fixture.ca_address2["zip"],
-        "planned_ship_date": Fixture.planned_ship_date,
-        "carriers": [Fixture.usps],
+        from_zip: Fixture.ca_address1['zip'],
+        to_zip: Fixture.ca_address2['zip'],
+        planned_ship_date: Fixture.planned_ship_date,
+        carriers: [Fixture.usps],
       }
 
       rates = client.smartrate.estimate_delivery_date(params)
@@ -23,10 +23,10 @@ describe EasyPost::Services::Smartrate do
   describe '.deliver_on' do
     it 'retrieve a recommended ship date' do
       params = {
-        "from_zip": Fixture.ca_address1["zip"],
-        "to_zip": Fixture.ca_address2["zip"],
-        "desired_delivery_date": Fixture.desired_delivery_date,
-        "carriers": [Fixture.usps],
+        from_zip: Fixture.ca_address1['zip'],
+        to_zip: Fixture.ca_address2['zip'],
+        desired_delivery_date: Fixture.desired_delivery_date,
+        carriers: [Fixture.usps],
       }
 
       rates = client.smartrate.recommend_ship_date(params)
