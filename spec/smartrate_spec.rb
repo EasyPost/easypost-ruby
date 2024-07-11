@@ -15,7 +15,7 @@ describe EasyPost::Services::Smartrate do
       }
 
       rates = client.smartrate.estimate_delivery_date(params)
-      
+
       expect(rates['results'].all? { |rate| rate['easypost_time_in_transit_data'] }).not_to be_nil
     end
   end
@@ -30,7 +30,7 @@ describe EasyPost::Services::Smartrate do
       }
 
       rates = client.smartrate.recommend_ship_date(params)
-      
+
       expect(rates['results'].all? { |rate| rate['easypost_time_in_transit_data'] }).not_to be_nil
     end
   end
