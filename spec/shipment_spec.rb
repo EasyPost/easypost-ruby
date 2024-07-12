@@ -391,4 +391,16 @@ describe EasyPost::Services::Shipment do
       expect(estimated_delivery_dates.all?(&:easypost_time_in_transit_data)).not_to be_nil
     end
   end
+
+  describe '.retrieve_recommend_ship_date' do
+    it 'retrieve recommend ship date of a shipment' do
+      shipment = client.shipment.create(Fixture.full_shipment)
+      rates = client.shipment.recommend_ship_date(
+        shipment.id,
+        Fixture.desired_delivery_date,
+      )
+
+      expect(rates.all?(&:easypost_time_in_transit_data)).not_to be_nil
+    end
+  end
 end
