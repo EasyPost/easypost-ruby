@@ -81,6 +81,7 @@
     <li ><a href="#method-i-insure">#insure</a>
     <li ><a href="#method-i-label">#label</a>
     <li ><a href="#method-i-lowest_smart_rate">#lowest_smart_rate</a>
+    <li ><a href="#method-i-recommend_ship_date">#recommend_ship_date</a>
     <li ><a href="#method-i-refund">#refund</a>
     <li ><a href="#method-i-regenerate_rates">#regenerate_rates</a>
     <li ><a href="#method-i-retrieve">#retrieve</a>
@@ -359,6 +360,33 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lowest_smart_rate</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">delivery_days</span>, <span class="ruby-identifier">delivery_accuracy</span>)
   <span class="ruby-identifier">smart_rates</span> = <span class="ruby-identifier">get_smart_rates</span>(<span class="ruby-identifier">id</span>)
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">get_lowest_smart_rate</span>(<span class="ruby-identifier">smart_rates</span>, <span class="ruby-identifier">delivery_days</span>, <span class="ruby-identifier">delivery_accuracy</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-recommend_ship_date" class="method-detail ">
+        <div class="method-header">
+          <div class="method-heading">
+            <span class="method-name">recommend_ship_date</span><span
+              class="method-args">(id, desired_delivery_date)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+        </div>
+
+        <div class="method-description">
+          <p>Retrieve a recommended ship date for an existing <a href="Shipment.html"><code>Shipment</code></a> via the Precision Shipping API, based on a specific desired delivery date.</p>
+
+          <div class="method-source-code" id="recommend_ship_date-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/shipment.rb, line 123</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">recommend_ship_date</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">desired_delivery_date</span>)
+  <span class="ruby-identifier">url</span> = <span class="ruby-node">&quot;shipments/#{id}/smartrate/precision_shipping&quot;</span>
+  <span class="ruby-identifier">params</span> = { <span class="ruby-value">desired_delivery_date:</span> <span class="ruby-identifier">desired_delivery_date</span> }
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:get</span>, <span class="ruby-identifier">url</span>, <span class="ruby-identifier">params</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>).<span class="ruby-identifier">rates</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
