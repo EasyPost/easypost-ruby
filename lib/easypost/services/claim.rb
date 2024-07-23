@@ -5,14 +5,14 @@ class EasyPost::Services::Claim < EasyPost::Services::Service
 
   # Create an Claim object
   def create(params = {})
-    response = @client.make_request(:post, 'claims', params, 'beta') # TODO: change this to GA
+    response = @client.make_request(:post, 'claims', params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 
   # Retrieve an Claim object
   def retrieve(id)
-    response = @client.make_request(:get, "claims/#{id}", nil, 'beta') # TODO: change this to GA
+    response = @client.make_request(:get, "claims/#{id}", nil)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -21,7 +21,7 @@ class EasyPost::Services::Claim < EasyPost::Services::Service
   def all(params = {})
     filters = { key: 'claims' }
 
-    get_all_helper('claims', MODEL_CLASS, params, filters, true) # TODO: change this to GA
+    get_all_helper('claims', MODEL_CLASS, params, filters)
   end
 
   # Get the next page of claims.
@@ -36,7 +36,7 @@ class EasyPost::Services::Claim < EasyPost::Services::Service
 
   # Cancel a filed claim
   def cancel(id)
-    response = @client.make_request(:post, "claims/#{id}/cancel", nil, 'beta') # TODO: change this to GA
+    response = @client.make_request(:post, "claims/#{id}/cancel", nil)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
