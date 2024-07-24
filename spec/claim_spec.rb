@@ -42,11 +42,11 @@ describe EasyPost::Services::Claim do
       )
       expect(all_claims[EasyPost::InternalUtilities::Constants::FILTERS_KEY]).to be_a(Hash)
 
-      insurance_array = all_claims.claims
+      claim_array = all_claims.claims
 
-      expect(insurance_array.count).to be <= Fixture.page_size
+      expect(claim_array.count).to be <= Fixture.page_size
       expect(all_claims.has_more).not_to be_nil
-      expect(insurance_array).to all(be_an_instance_of(EasyPost::Models::Claim))
+      expect(claim_array).to all(be_an_instance_of(EasyPost::Models::Claim))
     end
   end
 
