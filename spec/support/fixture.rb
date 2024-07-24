@@ -150,4 +150,10 @@ class Fixture
   def self.desired_delivery_date
     '2024-07-16'
   end
+
+  # This fixture will require you to append a `tracking_code` key with the shipment's tracking code,
+  # and a `amount` key with the insurance amount.
+  def self.basic_claim
+    read_fixture_data['claims']['basic']
+  end
 end

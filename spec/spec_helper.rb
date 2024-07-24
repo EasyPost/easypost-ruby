@@ -28,6 +28,15 @@ require 'easypost'
 
 Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
+module ShipmentHelper
+  def create_and_insure_shipment(client, amount)
+    # This method will be mainly by claims testing.
+    shipment = client.shipment.create(Fixture.basic_shipment)
+    rate = shipment.lowest_rate
+    client.shipment.buy(shipment.id, rate: rate, insurance: amount)
+  end
+end
+
 RSpec.configure do |config|
   config.around do |example|
     # Automatically wrap the test in VCR to avoid forgetting it.
@@ -43,6 +52,9 @@ RSpec.configure do |config|
 
     check_expired_cassette(cassette_path)
   end
+
+  # Include the helper module
+  config.include ShipmentHelper
 end
 
 # Checks for an expired cassette and warns if it is too old and must be re-recorded
