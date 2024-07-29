@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde365b00a2be787d4fd0006ee69
+      - 0af7a3d266abe780e799d87d00158582
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,28 +45,40 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - 0.0<REDACTED>70
+      - '0.208284'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb42nuq
+      - bigweb33nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202408011906-6fc64ddcfc-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb2nuq 1a7e326d32
+      - extlb2nuq fa152d4755
+      - intlb3nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"Test
-        User","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"New
+        Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
         User","phone_number":"8005550100","verified":true,"created_at":"2023-05-16T22:01:20Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_14e894c0d541459395f4456e7cf4f175","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
         User","phone_number":"8005550100","verified":true,"created_at":"2023-09-27T22:05:26Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_f04df3dad13848339a7975d295d6629f","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
-        User","phone_number":"8005550100","verified":true,"created_at":"2023-11-30T19:23:22Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
-  recorded_at: Tue, 23 Jan 2024 18:49:15 GMT
+        User","phone_number":"8005550100","verified":true,"created_at":"2023-11-30T19:23:22Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_44d216445b2f4595a123a18084000d94","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-26T18:36:54Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_f3b7021a2d924bedb080d7caa00d753e","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-26T18:41:48Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_327a26c77be24e24b165450e7c0de3b9","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-26T19:08:21Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_acfa6f7268d14e449edd1fe6f4ab64cc","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T17:41:32Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_4b066506d76940aeb28943506eb76941","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T17:46:31Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_48b7c8e5981647a8aee52aa1cb910280","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T18:07:19Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_dc18fb938f184bfd8f345d7fb1469130","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T21:45:16Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_06004d67f8294a73b2a21b62d5a2e3d6","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T21:50:35Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_b760795a35e24bfc803b51b29cca0d7e","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T21:59:34Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_a2e569dd62f14b75b2f8c84aa62ded62","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T22:03:04Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_85480046d6514ea3863eb950fbea392e","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T22:04:22Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_89583592d7914082b3b61fdf9230db38","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-08-01T17:06:15Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
+  recorded_at: Thu, 01 Aug 2024 19:52:32 GMT
 - request:
     method: get
     uri: https://api.easypost.com/v2/api_keys
@@ -102,7 +114,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde565b00a2be787d4fe0006eeb6
+      - 3567504166abe780e799d89a0015124c
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -112,22 +124,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.032991'
+      - '0.082008'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb40nuq
+      - bigweb41nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202408011906-6fc64ddcfc-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb2nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2022-02-16T22:18:19Z","id":"ak_8ba3529286794a64b1792f2c9456ff06"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2022-02-16T22:18:43Z","id":"ak_558c24dec0284506bd9bb754c1db764d"}],"children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2023-05-16T22:01:20Z","id":"ak_8ea8950ecb1443d9a13009368c77fdf3"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2023-05-16T22:01:20Z","id":"ak_61f8f0824ad444ad96448ecf8ae0c613"}],"children":[]},{"id":"user_14e894c0d541459395f4456e7cf4f175","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2023-09-27T22:05:26Z","id":"ak_86f5343eb7c14d7e90a0dec0512c8329"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2023-09-27T22:05:26Z","id":"ak_5ec276fb301443dca2dfdef0435d7f7f"}],"children":[]},{"id":"user_f04df3dad13848339a7975d295d6629f","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2023-11-30T19:23:22Z","id":"ak_ae2068e151f24ba29f43fb9cbca3c373"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2023-11-30T19:23:22Z","id":"ak_4cea95eaa6184ff793f56f3b540f8214"}],"children":[]}]}'
-  recorded_at: Tue, 23 Jan 2024 18:49:15 GMT
-recorded_with: VCR 6.2.0
+      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2022-02-16T22:18:19Z","id":"ak_8ba3529286794a64b1792f2c9456ff06"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2022-02-16T22:18:43Z","id":"ak_558c24dec0284506bd9bb754c1db764d"}],"children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2023-05-16T22:01:20Z","id":"ak_8ea8950ecb1443d9a13009368c77fdf3"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2023-05-16T22:01:20Z","id":"ak_61f8f0824ad444ad96448ecf8ae0c613"}],"children":[]},{"id":"user_14e894c0d541459395f4456e7cf4f175","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2023-09-27T22:05:26Z","id":"ak_86f5343eb7c14d7e90a0dec0512c8329"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2023-09-27T22:05:26Z","id":"ak_5ec276fb301443dca2dfdef0435d7f7f"}],"children":[]},{"id":"user_f04df3dad13848339a7975d295d6629f","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2023-11-30T19:23:22Z","id":"ak_ae2068e151f24ba29f43fb9cbca3c373"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2023-11-30T19:23:22Z","id":"ak_4cea95eaa6184ff793f56f3b540f8214"}],"children":[]},{"id":"user_44d216445b2f4595a123a18084000d94","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2024-07-26T18:36:54Z","id":"ak_62b3a26541ec439f81e97363af162d25"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2024-07-26T18:36:54Z","id":"ak_bbdb116aef1c4c26b121390eabdc4c64"}],"children":[]},{"id":"user_f3b7021a2d924bedb080d7caa00d753e","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2024-07-26T18:41:48Z","id":"ak_1a6410d934554054abb9495844f1a68d"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2024-07-26T18:41:48Z","id":"ak_5f5c243d2a3143a2a34941686d79b49a"}],"children":[]},{"id":"user_327a26c77be24e24b165450e7c0de3b9","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2024-07-26T19:08:21Z","id":"ak_5ab6bd2693b94507ba715917a55651d3"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2024-07-26T19:08:21Z","id":"ak_48c62f8436a74553bb43da31b3a0db7c"}],"children":[]},{"id":"user_acfa6f7268d14e449edd1fe6f4ab64cc","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2024-07-29T17:41:32Z","id":"ak_561c9ba5441141fb9f2e1aa4acadcd62"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2024-07-29T17:41:32Z","id":"ak_331a8fd47aec4ec0a1f806b250be7b45"}],"children":[]},{"id":"user_4b066506d76940aeb28943506eb76941","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2024-07-29T17:46:31Z","id":"ak_30e5a29ea830436f9b488e5f019b30d9"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2024-07-29T17:46:31Z","id":"ak_d427828a287141aba69fdfd5383aca35"}],"children":[]},{"id":"user_48b7c8e5981647a8aee52aa1cb910280","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2024-07-29T18:07:19Z","id":"ak_2f078876a0084fada805780b9a42f374"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2024-07-29T18:07:19Z","id":"ak_ecd61530c32847889bc7822b4fa3ca88"}],"children":[]},{"id":"user_dc18fb938f184bfd8f345d7fb1469130","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2024-07-29T21:45:16Z","id":"ak_335942a52259467da83c3bf698d2be10"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2024-07-29T21:45:16Z","id":"ak_9986325fd2594d2dbe9b6ae425997380"}],"children":[]},{"id":"user_06004d67f8294a73b2a21b62d5a2e3d6","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2024-07-29T21:50:35Z","id":"ak_8fe993484f9441be971f18044eeeae70"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2024-07-29T21:50:35Z","id":"ak_ab45f76fc0764b24aa375e4e3bfb2bf3"}],"children":[]},{"id":"user_b760795a35e24bfc803b51b29cca0d7e","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2024-07-29T21:59:34Z","id":"ak_7e8c9b6b720349c59a90336554ebb15c"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2024-07-29T21:59:34Z","id":"ak_9c9ece2d18054719912cafdac2d8bdca"}],"children":[]},{"id":"user_a2e569dd62f14b75b2f8c84aa62ded62","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2024-07-29T22:03:04Z","id":"ak_124d416d89b14f5cb52d61e1d9e4d666"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2024-07-29T22:03:04Z","id":"ak_36e2325abc0044cfb3876bc9e3cdf776"}],"children":[]},{"id":"user_85480046d6514ea3863eb950fbea392e","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2024-07-29T22:04:22Z","id":"ak_4bbb1dea30f94b8097d9d1706796eb85"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2024-07-29T22:04:22Z","id":"ak_658ac82d9cdb47a49c2bca858e82d2a3"}],"children":[]},{"id":"user_89583592d7914082b3b61fdf9230db38","keys":[{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"test","created_at":"2024-08-01T17:06:15Z","id":"ak_f9fa18527f924bf68e0684e3c8416cbd"},{"object":"ApiKey","active":true,"key":"<REDACTED>","mode":"production","created_at":"2024-08-01T17:06:15Z","id":"ak_902f1c70ac1c457e8b49091cd8b7f974"}],"children":[]}]}'
+  recorded_at: Thu, 01 Aug 2024 19:52:32 GMT
+recorded_with: VCR 6.1.0

@@ -271,7 +271,7 @@ describe EasyPost::Services::Shipment do
       # Test lowest rate with service filter (this rate is higher than the lowest but should filter)
       lowest_rate = shipment.lowest_rate([], ['Priority'])
       expect(lowest_rate.service).to eq('Priority')
-      expect(lowest_rate.rate).to eq('6.88')
+      expect(lowest_rate.rate).to eq('6.90')
       expect(lowest_rate.carrier).to eq('USPS')
 
       # Test lowest rate with carrier filter (should error due to bad carrier)

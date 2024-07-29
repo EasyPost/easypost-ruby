@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 6754031d668da62be78b1fab0026b987
+      - d044fa7666a7da68e799d92500598ae1
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,31 +45,31 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.072141'
+      - 0.0<REDACTED>76
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb43nuq
+      - bigweb32nuq
       X-Version-Label:
-      - easypost-202407092027-324ee50b5a-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Canary:
       - direct
       X-Proxied:
       - extlb1nuq fa152d4755
-      - intlb4nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"ca_0170260b58dc43998885391a7dcf9108","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2024-07-09T21:05:47Z","updated_at":"2024-07-09T21:05:47Z","description":"DHL
+      string: '{"id":"ca_9f46c0af2dc34652b61fa4d18632ea83","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2024-07-29T18:07:36Z","updated_at":"2024-07-29T18:07:36Z","description":"DHL
         eCommerce Solutions Account","reference":null,"billing_type":"carrier","readable":"DHL
         eCommerce Solutions","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
-  recorded_at: Tue, 09 Jul 2024 21:05:47 GMT
+  recorded_at: Mon, 29 Jul 2024 18:07:36 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_0170260b58dc43998885391a7dcf9108
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_9f46c0af2dc34652b61fa4d18632ea83
     body:
       encoding: US-ASCII
       string: ''
@@ -102,7 +102,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 6754031f668da62ce78b1fad0026b9f9
+      - d044fa7966a7da69e799d92600598b59
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -112,29 +112,31 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.036055'
+      - '0.036459'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb53nuq
+      - bigweb43nuq
       X-Version-Label:
-      - easypost-202407092027-324ee50b5a-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
       - extlb1nuq fa152d4755
-      - intlb4nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"ca_0170260b58dc43998885391a7dcf9108","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2024-07-09T21:05:47Z","updated_at":"2024-07-09T21:05:47Z","description":"DHL
+      string: '{"id":"ca_9f46c0af2dc34652b61fa4d18632ea83","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2024-07-29T18:07:36Z","updated_at":"2024-07-29T18:07:36Z","description":"DHL
         eCommerce Solutions Account","reference":null,"billing_type":"carrier","readable":"DHL
         eCommerce Solutions","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
-  recorded_at: Tue, 09 Jul 2024 21:05:48 GMT
+  recorded_at: Mon, 29 Jul 2024 18:07:37 GMT
 - request:
     method: put
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_0170260b58dc43998885391a7dcf9108
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_9f46c0af2dc34652b61fa4d18632ea83
     body:
       encoding: UTF-8
       string: '{"carrier_account":{"description":"My custom description"}}'
@@ -167,7 +169,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 6754031e668da62ce78b1fc50026ba72
+      - d044fa7b66a7da69e799d92700598bcb
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -177,29 +179,29 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.103991'
+      - '0.215423'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb40nuq
+      - bigweb42nuq
       X-Version-Label:
-      - easypost-202407092027-324ee50b5a-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
       - extlb1nuq fa152d4755
-      - intlb4nuq fa152d4755
+      - intlb3nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"ca_0170260b58dc43998885391a7dcf9108","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2024-07-09T21:05:47Z","updated_at":"2024-07-09T21:05:48Z","description":"My
+      string: '{"id":"ca_9f46c0af2dc34652b61fa4d18632ea83","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2024-07-29T18:07:36Z","updated_at":"2024-07-29T18:07:37Z","description":"My
         custom description","reference":null,"billing_type":"carrier","readable":"DHL
         eCommerce Solutions","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
-  recorded_at: Tue, 09 Jul 2024 21:05:48 GMT
+  recorded_at: Mon, 29 Jul 2024 18:07:37 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_0170260b58dc43998885391a7dcf9108
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_9f46c0af2dc34652b61fa4d18632ea83
     body:
       encoding: US-ASCII
       string: ''
@@ -232,7 +234,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 6754031d668da62de78b1fc60026bafd
+      - d044fa7566a7da6ae799d93f00598c6e
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -242,22 +244,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.060783'
+      - '0.076349'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb36nuq
+      - bigweb41nuq
       X-Version-Label:
-      - easypost-202407092027-324ee50b5a-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
       - extlb1nuq fa152d4755
-      - intlb3nuq fa152d4755
+      - intlb3nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: "{}"
-  recorded_at: Tue, 09 Jul 2024 21:05:49 GMT
+  recorded_at: Mon, 29 Jul 2024 18:07:38 GMT
 recorded_with: VCR 6.1.0

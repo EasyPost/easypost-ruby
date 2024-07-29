@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.easypost.com/v2/addresses
+    uri: https://api.easypost.com/v2/addresses?page_size=5
     body:
-      encoding: UTF-8
-      string: '{"page_size":5}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde965b00a28e787d4dd0006ec20
+      - d044fa7666a7da51e799d8a0005970db
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,41 +45,43 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.037043'
+      - '0.038971'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb36nuq
+      - bigweb32nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb2nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"addresses":[{"id":"adr_18d9cb91ba2011eeb0a5ac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:11+00:00","updated_at":"2024-01-23T18:49:11+00:00","name":"Jack
+      string: '{"addresses":[{"id":"adr_6126b5104dd511ef964eac1f6bc539aa","object":"Address","created_at":"2024-07-29T18:07:12+00:00","updated_at":"2024-07-29T18:07:12+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_187849afba2011eeb06cac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:10+00:00","updated_at":"2024-01-23T18:49:10+00:00","name":null,"company":"EasyPost","street1":"000
-        unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_18aac0a3ba2011ee8d4d3cecef1b359e","object":"Address","created_at":"2024-01-23T18:49:11+00:00","updated_at":"2024-01-23T18:49:11+00:00","name":null,"company":"EasyPost","street1":"000
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_60e135584dd511ef86b0ac1f6bc53342","object":"Address","created_at":"2024-07-29T18:07:12+00:00","updated_at":"2024-07-29T18:07:12+00:00","name":null,"company":"EasyPost","street1":"000
         unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
         not found","suggestion":null}],"details":null},"delivery":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
-        not found","suggestion":null}],"details":{}}}},{"id":"adr_181b1887ba2011eeb037ac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:10+00:00","updated_at":"2024-01-23T18:49:10+00:00","name":"JACK
+        not found","suggestion":null}],"details":{}}}},{"id":"adr_609a38374dd511ef88573cecef1b359e","object":"Address","created_at":"2024-07-29T18:07:11+00:00","updated_at":"2024-07-29T18:07:11+00:00","name":null,"company":"EasyPost","street1":"000
+        unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_605729c14dd511ef95e7ac1f6bc539aa","object":"Address","created_at":"2024-07-29T18:07:11+00:00","updated_at":"2024-07-29T18:07:11+00:00","name":"JACK
         SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
-        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_17e75853ba2011eeb01cac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:09+00:00","updated_at":"2024-01-23T18:49:09+00:00","name":null,"company":"EasyPost","street1":"000
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_60097fbf4dd511ef9409ac1f6bc539ae","object":"Address","created_at":"2024-07-29T18:07:10+00:00","updated_at":"2024-07-29T18:07:10+00:00","name":null,"company":"EasyPost","street1":"000
         unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
         not found","suggestion":null}],"details":null},"delivery":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
         not found","suggestion":null}],"details":{}}}}],"has_more":true}'
-  recorded_at: Tue, 23 Jan 2024 18:49:12 GMT
+  recorded_at: Mon, 29 Jul 2024 18:07:13 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/addresses
+    uri: https://api.easypost.com/v2/addresses?before_id=adr_60097fbf4dd511ef9409ac1f6bc539ae
     body:
-      encoding: UTF-8
-      string: '{"before_id":"adr_17e75853ba2011eeb01cac1f6bc539aa"}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -109,7 +111,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde965b00a28e787d4de0006ec60
+      - d044fa7766a7da52e799d8a10059715b
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -119,62 +121,61 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.065065'
+      - '0.077623'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb40nuq
+      - bigweb39nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb1nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"addresses":[{"id":"adr_17b795c9ba2011eeaffdac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:09+00:00","updated_at":"2024-01-23T18:49:09+00:00","name":null,"company":"EasyPost","street1":"000
-        unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_176cab15ba2011ee8c8e3cecef1b359e","object":"Address","created_at":"2024-01-23T18:49:08+00:00","updated_at":"2024-01-23T18:49:08+00:00","name":"Jack
+      string: '{"addresses":[{"id":"adr_5fc0630a4dd511ef9595ac1f6bc539aa","object":"Address","created_at":"2024-07-29T18:07:10+00:00","updated_at":"2024-07-29T18:07:10+00:00","name":null,"company":"EasyPost","street1":"000
+        unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_5f7ae99a4dd511ef93b8ac1f6bc539ae","object":"Address","created_at":"2024-07-29T18:07:09+00:00","updated_at":"2024-07-29T18:07:09+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_e2de2640ba1f11eeb00cac1f6bc539ae","object":"Address","created_at":"2024-01-23T18:47:40+00:00","updated_at":"2024-01-23T18:47:40+00:00","name":"Jack
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_e01435484dd211ef9704ac1f6bc539ae","object":"Address","created_at":"2024-07-29T17:49:16+00:00","updated_at":"2024-07-29T17:49:16+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_f4461ce8b73b11ee919aac1f6bc53342","object":"Address","created_at":"2024-01-20T02:31:02+00:00","updated_at":"2024-01-20T02:31:02+00:00","name":"Jack
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_e011bc9c4dd211ef8737ac1f6bc53342","object":"Address","created_at":"2024-07-29T17:49:16+00:00","updated_at":"2024-07-29T17:49:16+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_df0dc6bc4dd211ef866eac1f6bc53342","object":"Address","created_at":"2024-07-29T17:49:15+00:00","updated_at":"2024-07-29T17:49:15+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_e88c4e0bb73b11ee95ebac1f6bc539ae","object":"Address","created_at":"2024-01-20T02:30:42+00:00","updated_at":"2024-01-20T02:30:42+00:00","name":"Jack
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_df0b026d4dd211ef88c93cecef1b359e","object":"Address","created_at":"2024-07-29T17:49:15+00:00","updated_at":"2024-07-29T17:49:15+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_de90c6d74dd211ef95ddac1f6bc539aa","object":"Address","created_at":"2024-07-29T17:49:14+00:00","updated_at":"2024-07-29T17:49:14+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_de8e55204dd211ef95d6ac1f6bc539ae","object":"Address","created_at":"2024-07-29T17:49:14+00:00","updated_at":"2024-07-29T17:49:14+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_d5665cffb73b11ee88e73cecef1b359e","object":"Address","created_at":"2024-01-20T02:30:10+00:00","updated_at":"2024-01-20T02:30:10+00:00","name":"Jack
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_dd9b1a2b4dd211ef87d63cecef1b359e","object":"Address","created_at":"2024-07-29T17:49:12+00:00","updated_at":"2024-07-29T17:49:12+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_18273da2b73911eebbfa3cecef1b359e","object":"Address","created_at":"2024-01-20T02:10:34+00:00","updated_at":"2024-01-20T02:10:34+00:00","name":"Jack
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_dd98d4834dd211ef87d33cecef1b359e","object":"Address","created_at":"2024-07-29T17:49:12+00:00","updated_at":"2024-07-29T17:49:12+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_dca87a284dd211ef94aaac1f6bc539aa","object":"Address","created_at":"2024-07-29T17:49:11+00:00","updated_at":"2024-07-29T17:49:11+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_0f105b51b73911ee8c7dac1f6bc539aa","object":"Address","created_at":"2024-01-20T02:10:18+00:00","updated_at":"2024-01-20T02:10:18+00:00","name":"Jack
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_dca683224dd211ef94a7ac1f6bc539aa","object":"Address","created_at":"2024-07-29T17:49:11+00:00","updated_at":"2024-07-29T17:49:11+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_db9d16524dd211ef841bac1f6bc53342","object":"Address","created_at":"2024-07-29T17:49:09+00:00","updated_at":"2024-07-29T17:49:09+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_0109eb2fb73911ee8987ac1f6bc539aa","object":"Address","created_at":"2024-01-20T02:09:55+00:00","updated_at":"2024-01-20T02:09:55+00:00","name":"Jack
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_db96e8b54dd211ef867e3cecef1b359e","object":"Address","created_at":"2024-07-29T17:49:09+00:00","updated_at":"2024-07-29T17:49:09+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_da8233c04dd211ef8362ac1f6bc53342","object":"Address","created_at":"2024-07-29T17:49:07+00:00","updated_at":"2024-07-29T17:49:07+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_ae1372ceb73811eeaa53ac1f6bc53342","object":"Address","created_at":"2024-01-20T02:07:36+00:00","updated_at":"2024-01-20T02:07:36+00:00","name":"Jack
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_da7e772c4dd211ef931dac1f6bc539ae","object":"Address","created_at":"2024-07-29T17:49:07+00:00","updated_at":"2024-07-29T17:49:07+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_d98332944dd211ef85343cecef1b359e","object":"Address","created_at":"2024-07-29T17:49:05+00:00","updated_at":"2024-07-29T17:49:05+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_7404fcecb73811ee9d3dac1f6bc53342","object":"Address","created_at":"2024-01-20T02:05:58+00:00","updated_at":"2024-01-20T02:05:58+00:00","name":"Jack
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_d9810f1e4dd211ef85323cecef1b359e","object":"Address","created_at":"2024-07-29T17:49:05+00:00","updated_at":"2024-07-29T17:49:05+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_d87c412c4dd211ef9212ac1f6bc539ae","object":"Address","created_at":"2024-07-29T17:49:04+00:00","updated_at":"2024-07-29T17:49:04+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_440e7b72b73811eea326ac1f6bc539aa","object":"Address","created_at":"2024-01-20T02:04:38+00:00","updated_at":"2024-01-20T02:04:38+00:00","name":"Jack
-        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_3862d6abae5911ee8addac1f6bc53342","object":"Address","created_at":"2024-01-08T19:07:51+00:00","updated_at":"2024-01-08T19:07:51+00:00","name":"Jack
-        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_37fc091cae5911ee8a9dac1f6bc53342","object":"Address","created_at":"2024-01-08T19:07:50+00:00","updated_at":"2024-01-08T19:07:50+00:00","name":"JACK
-        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
-        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_37dcfe11ae5911eeab72ac1f6bc539ae","object":"Address","created_at":"2024-01-08T19:07:50+00:00","updated_at":"2024-01-08T19:07:50+00:00","name":"Jack
-        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_37826e8fae5911ee80773cecef1b359e","object":"Address","created_at":"2024-01-08T19:07:50+00:00","updated_at":"2024-01-08T19:07:50+00:00","name":null,"company":"EasyPost","street1":"000
-        unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
-        not found","suggestion":null}],"details":null},"delivery":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
-        not found","suggestion":null}],"details":{}}}},{"id":"adr_37a5559bae5911ee937dac1f6bc539aa","object":"Address","created_at":"2024-01-08T19:07:50+00:00","updated_at":"2024-01-08T19:07:50+00:00","name":"JACK
-        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
-        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_376273a9ae5911eeab27ac1f6bc539ae","object":"Address","created_at":"2024-01-08T19:07:49+00:00","updated_at":"2024-01-08T19:07:49+00:00","name":null,"company":"EasyPost","street1":"000
-        unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_3746174cae5911eeab14ac1f6bc539ae","object":"Address","created_at":"2024-01-08T19:07:49+00:00","updated_at":"2024-01-08T19:07:49+00:00","name":"JACK
-        SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
-        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_3720dd48ae5911eeab0aac1f6bc539ae","object":"Address","created_at":"2024-01-08T19:07:49+00:00","updated_at":"2024-01-08T19:07:49+00:00","name":null,"company":"EasyPost","street1":"000
-        unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
-        not found","suggestion":null}],"details":null},"delivery":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
-        not found","suggestion":null}],"details":{}}}}],"has_more":true}'
-  recorded_at: Tue, 23 Jan 2024 18:49:12 GMT
-recorded_with: VCR 6.2.0
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_d879a13b4dd211ef848e3cecef1b359e","object":"Address","created_at":"2024-07-29T17:49:04+00:00","updated_at":"2024-07-29T17:49:04+00:00","name":"Elizabeth
+        Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo
+        Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}],"has_more":true}'
+  recorded_at: Mon, 29 Jul 2024 18:07:14 GMT
+recorded_with: VCR 6.1.0

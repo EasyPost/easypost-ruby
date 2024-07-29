@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.easypost.com/v2/reports/shipment
+    uri: https://api.easypost.com/v2/reports/shipment?page_size=5
     body:
-      encoding: UTF-8
-      string: '{"page_size":5}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde765b00a88e787dda400073f85
+      - d044fa7466a7dae6e799e141005a0fb5
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,24 +45,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.037465'
+      - '0.099072'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb43nuq
+      - bigweb41nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb2nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"reports":[{"id":"shprep_ba364350de4243048f5db00b818e4d8b","object":"ShipmentReport","created_at":"2024-01-23T18:50:48Z","updated_at":"2024-01-23T18:50:48Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_edb8c24bedd64ef48134f8e41cb07256","object":"ShipmentReport","created_at":"2024-01-23T18:50:47Z","updated_at":"2024-01-23T18:50:48Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_5a972ed04f0246cb87d52602c3f72cb2","object":"ShipmentReport","created_at":"2024-01-23T18:50:47Z","updated_at":"2024-01-23T18:50:47Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_7b785e70e9d14a6aab34cbaad5937e1f","object":"ShipmentReport","created_at":"2024-01-23T18:50:47Z","updated_at":"2024-01-23T18:50:47Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_b37fd6f77e97458ba4a86e885c90ea0a","object":"ShipmentReport","created_at":"2023-11-30T19:23:05Z","updated_at":"2023-11-30T19:23:05Z","start_date":"2022-04-11","end_date":"2022-04-11","mode":"test","status":"available","url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/shipment_report/20231130/e85b3075e9bc4848ccb9f25592ce52d706.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQQSFK3MJI%2F20240123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240123T185048Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=8a093eacea51b4e006062aa59399f47fa0cb489bda77056875c93cf63aedcaec","url_expires_at":"2024-01-23T18:51:18Z","include_children":false}],"has_more":true}'
-  recorded_at: Tue, 23 Jan 2024 18:50:48 GMT
-recorded_with: VCR 6.2.0
+      string: '{"reports":[{"id":"shprep_be0ee6831a3a4029926c69e926e45b1b","object":"ShipmentReport","created_at":"2024-07-29T18:09:41Z","updated_at":"2024-07-29T18:09:41Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_dfdd0a0570d94368b0ea48d24a35ef54","object":"ShipmentReport","created_at":"2024-07-29T18:09:41Z","updated_at":"2024-07-29T18:09:41Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_c27330b6b70442ddb6e9c685d2f3745d","object":"ShipmentReport","created_at":"2024-07-29T18:09:40Z","updated_at":"2024-07-29T18:09:41Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_ca07312e14754c8c89445edec4f18bf6","object":"ShipmentReport","created_at":"2024-07-29T18:09:40Z","updated_at":"2024-07-29T18:09:40Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_e848018e3058446d841ea8fe577c84e6","object":"ShipmentReport","created_at":"2024-07-29T17:48:23Z","updated_at":"2024-07-29T17:48:23Z","start_date":"2022-06-11","end_date":"2022-06-11","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false}],"has_more":true}'
+  recorded_at: Mon, 29 Jul 2024 18:09:42 GMT
+recorded_with: VCR 6.1.0

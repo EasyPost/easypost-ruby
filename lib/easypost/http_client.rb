@@ -32,7 +32,7 @@ class EasyPost::HttpClient
     if params
       if [:get, :delete].include?(method)
         uri.query = URI.encode_www_form(params)
-      else
+      elsif params
         serialized_body = JSON.dump(EasyPost::InternalUtilities.objects_to_ids(params))
       end
     end
@@ -75,10 +75,10 @@ class EasyPost::HttpClient
       # client_response_object attribute
       if response.is_a?(Net::HTTPResponse)
         response_body = begin
-                          JSON.parse(response.body)
-                        rescue JSON::ParseError
-                          response.body
-                        end
+          JSON.parse(response.body)
+        rescue JSON::ParseError
+          response.body
+        end
         response_context.merge!(
           {
             http_status: response.code.to_i,

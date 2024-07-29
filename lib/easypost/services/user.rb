@@ -90,7 +90,7 @@ Please use `retrieve_api_keys_for_user` in the `api_key` service instead.'
   def get_next_page_of_children(collection, page_size = nil)
     raise EasyPost::Errors::EndOfPaginationError.new unless more_pages?(collection)
 
-    params = { before_id: collection.children.last.id }
+    params = { after_id: collection.children.last.id }
     params[:page_size] = page_size unless page_size.nil?
 
     all_children(params)

@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.easypost.com/v2/claims
+    uri: https://api.easypost.com/v2/claims?page_size=5
     body:
-      encoding: UTF-8
-      string: '{"page_size":5}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 47648421669fe92fe799d4e1004d5cfb
+      - d044fa7a66a7da77e799dc5f00599ae6
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,25 +45,134 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.069174'
+      - '0.056718'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb32nuq
+      - bigweb40nuq
       X-Version-Label:
-      - easypost-202407231702-040a3c7b8f-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
       - extlb1nuq fa152d4755
-      - intlb3nuq c0f5e722d1
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"claims":[{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240723/1c5fd49a03e346819351cb28b3908225.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240723/f6145950b1624e1bb210990cc0c964d6.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240723/65afd26684f34a88a5ac48cfeb7b1d89.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-23T17:32:28","description":"Test
+      string: '{"claims":[{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/8d188493d4c84c16b6c14638da363b7d.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/34e6650240f0434189b1cf7cf3ea746f.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/66ce3b9de15b4eeba6b332f68db73582.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-29T18:07:49","description":"Test
+        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-29T18:07:49"}],"id":"clm_097f1366c96b49ce8e5ed1fde6956cb7","insurance_amount":"100.00","insurance_id":"ins_65a4a60887ea4aa7a24402019bf6e398","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_1752320ccb874243bd18ca51f02716d0","status":"submitted","status_detail":"Claim
+        was created.","status_timestamp":"2024-07-29T18:07:49","tracking_code":"9400100110368068500422","type":"damage","updated_at":"2024-07-29T18:07:49"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/3944491d028f4490ad8c706dff4cb66d.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/3b0c3c618d1d4a068564f691ca6e2ba8.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/2c27b0ad144741cab3750ce002144157.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-29T18:07:46","description":"Test
+        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-29T18:07:46"}],"id":"clm_097f01358752467c9a47a262aa6255d8","insurance_amount":"100.00","insurance_id":"ins_edf9f6fc77694dc8833a3ef290c15224","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_8220679ec9f14c859c9606df40048f69","status":"submitted","status_detail":"Claim
+        was created.","status_timestamp":"2024-07-29T18:07:46","tracking_code":"9400100110368068500408","type":"damage","updated_at":"2024-07-29T18:07:46"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/0026761b04bf45128486376c99d258f7.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/7ec5299815e14828900b95345c0eb1c5.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/98e5d5e6a05b45b69d1064a22f649c70.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-29T17:47:05","description":"Test
+        description","history":[{"status":"cancelled","status_detail":"Claim cancellation
+        was requested.","timestamp":"2024-07-29T17:47:07"},{"status":"submitted","status_detail":"Claim
+        was created.","timestamp":"2024-07-29T17:47:05"}],"id":"clm_097fe8063fbe4921a605da847c91ce95","insurance_amount":"100.00","insurance_id":"ins_0639829864d54ac58ef217298e81187a","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_aa40b04eceb543e5bd0e16eea52585b4","status":"cancelled","status_detail":"Claim
+        cancellation was requested.","status_timestamp":"2024-07-29T17:47:07","tracking_code":"9400100110368068493496","type":"damage","updated_at":"2024-07-29T17:47:06"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/bb86535a38ad46ce921c7f01519ee2e5.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/05ae9e2170674a9d8e0f409d6474c63e.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/ba5345ccd2e640b2a218bfbf6b38c54f.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-29T17:46:59","description":"Test
+        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-29T17:46:59"}],"id":"clm_097fd89ce30b4875b7cc1c7dbc6a3a5f","insurance_amount":"100.00","insurance_id":"ins_bdb7f948de8c49e78c7bf838446ff96b","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_e1677b524e1d436c968aae99f01f2508","status":"submitted","status_detail":"Claim
+        was created.","status_timestamp":"2024-07-29T17:46:59","tracking_code":"9400100110368068493427","type":"damage","updated_at":"2024-07-29T17:46:59"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/4a9c2eaf40724e0fbede23ffb0ca9881.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/46b4c4b5e473486aa3db1f1bde45a146.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/7cb414428d9444d5ae9cc26ad61040ec.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-29T17:46:55","description":"Test
+        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-29T17:46:55"}],"id":"clm_097ff127cc6c484dbd38fc9d0b1df1f9","insurance_amount":"100.00","insurance_id":"ins_41b7407e676a477b82fe47c1f0eaf454","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_7cfd9db1cae9419b96c4ffc929635b14","status":"submitted","status_detail":"Claim
+        was created.","status_timestamp":"2024-07-29T17:46:55","tracking_code":"9400100110368068493397","type":"damage","updated_at":"2024-07-29T17:46:55"}],"has_more":true}'
+  recorded_at: Mon, 29 Jul 2024 18:07:51 GMT
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/claims?before_id=clm_097ff127cc6c484dbd38fc9d0b1df1f9
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - d044fa7666a7da78e799dc6000599b58
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.120415'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb53nuq
+      X-Version-Label:
+      - easypost-202407291746-57ea285141-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"claims":[{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/454547084e9549ab99255648eaf26936.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/923feb6406994d3d954edb1b952a50f7.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/c063a362423246f7a0582a6c36015960.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-29T17:42:07","description":"Test
+        description","history":[{"status":"cancelled","status_detail":"Claim cancellation
+        was requested.","timestamp":"2024-07-29T17:42:09"},{"status":"submitted","status_detail":"Claim
+        was created.","timestamp":"2024-07-29T17:42:07"}],"id":"clm_097f281914994d33af8ee3187ff257fd","insurance_amount":"100.00","insurance_id":"ins_269ccc3939734d5b878bab38b1909d9a","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_1f0bb11c3dc44e27ae9ad83762cb0035","status":"cancelled","status_detail":"Claim
+        cancellation was requested.","status_timestamp":"2024-07-29T17:42:09","tracking_code":"9400100110368068492345","type":"damage","updated_at":"2024-07-29T17:42:09"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/258954b5aede492e97dc3f109f88453d.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/aa67dd11529b46a399c9fe5447ece210.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/2fa4427ab54348359dceea8fe5a0eedb.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-29T17:42:01","description":"Test
+        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-29T17:42:01"}],"id":"clm_097faa77006840a7a8f67a94a2eb1b44","insurance_amount":"100.00","insurance_id":"ins_3d3d5a8ad64b40a6927e7162731c2f9f","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_c20daaeab34442828bf310eca272fa58","status":"submitted","status_detail":"Claim
+        was created.","status_timestamp":"2024-07-29T17:42:01","tracking_code":"9400100110368068492314","type":"damage","updated_at":"2024-07-29T17:42:01"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/0b486502fb1a4e3ba1fc5354bdb27054.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/c6497d7f2f6a4ba2bffce55f30f3ff52.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240729/99332e684ed54fd389289edd1e654e8e.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-29T17:41:58","description":"Test
+        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-29T17:41:58"}],"id":"clm_097fae8370be4ba897cac74572afd1cc","insurance_amount":"100.00","insurance_id":"ins_49e35e596bd24d2194f65d377a94f08a","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_70b0cb528bd64850b089db95b9862846","status":"submitted","status_detail":"Claim
+        was created.","status_timestamp":"2024-07-29T17:41:58","tracking_code":"9400100110368068492291","type":"damage","updated_at":"2024-07-29T17:41:58"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/383a538ebf9d43be806901ba2ff468e4.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/6cfa8f978bfa4e03a61ccdc7a1b41e04.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/650db5325bf245ce80fcb46de1b7ac63.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-26T19:08:41","description":"Test
+        description","history":[{"status":"cancelled","status_detail":"Claim cancellation
+        was requested.","timestamp":"2024-07-26T19:08:42"},{"status":"submitted","status_detail":"Claim
+        was created.","timestamp":"2024-07-26T19:08:41"}],"id":"clm_097e751f88df40af9ee325e19b9c5429","insurance_amount":"100.00","insurance_id":"ins_2295bee5f56f463f873d751acd85517d","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_d3e03a092cf447fbb94743a76951d9f8","status":"cancelled","status_detail":"Claim
+        cancellation was requested.","status_timestamp":"2024-07-26T19:08:42","tracking_code":"9400100110368067697345","type":"damage","updated_at":"2024-07-26T19:08:42"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/0d8edadbfeb6455cadb619f7c8a92a17.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/2209a42134054feaa9aaad62daa3c0f1.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/788f078e0cfe4ae3ae6b59efe2594c31.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-26T19:08:37","description":"Test
+        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-26T19:08:37"}],"id":"clm_097e79d8303848159ec6f44b35057a7d","insurance_amount":"100.00","insurance_id":"ins_1df60a211c274d1caa273e8d8ec4662a","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_9fedb9f0b5de4fbc83eb66cddc978a62","status":"submitted","status_detail":"Claim
+        was created.","status_timestamp":"2024-07-26T19:08:37","tracking_code":"9400100110368067697314","type":"damage","updated_at":"2024-07-26T19:08:37"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/b0a12883b5c34c109a73e79f2d60b734.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/7130cc50ad384bc4a86d2d3610554e88.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/818f59378ab24830a43a954c19ad8ed4.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-26T19:08:34","description":"Test
+        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-26T19:08:34"}],"id":"clm_097e769fed86436ea28efcde039defce","insurance_amount":"100.00","insurance_id":"ins_5d3e1e0549584ac395995ac6e07e4048","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_5768c361c18541c1a2a16ad933e39eb2","status":"submitted","status_detail":"Claim
+        was created.","status_timestamp":"2024-07-26T19:08:34","tracking_code":"9400100110368067697277","type":"damage","updated_at":"2024-07-26T19:08:34"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/57afd61efe2e462b84cc63b7fb3252e1.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/5bfcf5f2c8464e388f03b750d49f02a1.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/8b3cae2a90c34c309ea4fa619d9ea406.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-26T18:42:08","description":"Test
+        description","history":[{"status":"cancelled","status_detail":"Claim cancellation
+        was requested.","timestamp":"2024-07-26T18:42:09"},{"status":"submitted","status_detail":"Claim
+        was created.","timestamp":"2024-07-26T18:42:08"}],"id":"clm_097e231ad3c84b1881e040a87fe24c06","insurance_amount":"100.00","insurance_id":"ins_ffafe8d9b9f3486cbb49ef7a1a233206","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_fa65a75397ed41e592af49ef6deecd2b","status":"cancelled","status_detail":"Claim
+        cancellation was requested.","status_timestamp":"2024-07-26T18:42:09","tracking_code":"9400100110368067687391","type":"damage","updated_at":"2024-07-26T18:42:09"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/971826ad42e440619b3cf58af17ddeeb.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/9cf6472d8168480bb02a269ec5e8111b.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/b99c9eb9f49d4689aa65a5285e60eaf6.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-26T18:42:04","description":"Test
+        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-26T18:42:04"}],"id":"clm_097ed03a92bd4959869b76f390c1a955","insurance_amount":"100.00","insurance_id":"ins_af14e52fb23c4f82bbb97dd5c0c7e85e","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_a4b15dc25fee481bbcaa673b82c8aeab","status":"submitted","status_detail":"Claim
+        was created.","status_timestamp":"2024-07-26T18:42:04","tracking_code":"9400100110368067687384","type":"damage","updated_at":"2024-07-26T18:42:04"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/8da84455454840e0a3faabdc7428be49.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/383a950f01594bada5e42f0a96b9ada2.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/bca395d2f4264acd83f1e77390df24da.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-26T18:42:01","description":"Test
+        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-26T18:42:01"}],"id":"clm_097e66fdba064a1598dfb99a807356cb","insurance_amount":"100.00","insurance_id":"ins_ca8d3ef33de141bfb762992882dea84e","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_f201c7ba83b04d3481370cc87a47bd65","status":"submitted","status_detail":"Claim
+        was created.","status_timestamp":"2024-07-26T18:42:01","tracking_code":"9400100110368067687377","type":"damage","updated_at":"2024-07-26T18:42:01"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/947d5a6c0b5c469eb27b3723408b4d8b.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/388a52ac163248fea72d6b2cb12e8f82.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/5aa92904d3d842879d282ba2c4ed0f01.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-26T18:37:13","description":"Test
+        description","history":[{"status":"cancelled","status_detail":"Claim cancellation
+        was requested.","timestamp":"2024-07-26T18:37:15"},{"status":"submitted","status_detail":"Claim
+        was created.","timestamp":"2024-07-26T18:37:13"}],"id":"clm_097ecb3a02bb4faebfb81a517b47ffc4","insurance_amount":"100.00","insurance_id":"ins_e89ea114c4be440ab7af69ac31586a5e","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_56e51722f1a848f08f054bf2eb9a75f8","status":"cancelled","status_detail":"Claim
+        cancellation was requested.","status_timestamp":"2024-07-26T18:37:15","tracking_code":"9400100110368067686431","type":"damage","updated_at":"2024-07-26T18:37:15"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/41be3433012e47f0b595d998d0080642.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/fcbed731e5de43ff902679592264d768.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/a20faa13084a46109ff0b66ae399c62d.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-26T18:37:10","description":"Test
+        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-26T18:37:10"}],"id":"clm_097e452a3c1e4531a33e3d73c20bd91f","insurance_amount":"100.00","insurance_id":"ins_e595cd9bf64742acbaa213673714bbc3","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_714990eb3c3841799c1ed3c7b6ad0333","status":"submitted","status_detail":"Claim
+        was created.","status_timestamp":"2024-07-26T18:37:10","tracking_code":"9400100110368067686417","type":"damage","updated_at":"2024-07-26T18:37:10"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/dc4730d185f34805b131e21155b02c20.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/c014117c789d47efb39146063bb9fbbf.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240726/a27ec18c25804b4bb73f0bd8a48083ec.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-26T18:37:06","description":"Test
+        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-26T18:37:06"}],"id":"clm_097ef61032cb4e66a5830721a70998eb","insurance_amount":"100.00","insurance_id":"ins_07cfca4cc3db4631a5ae16efa7c730c2","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_6257b7d6ad184026a4775e0e7d7df3f0","status":"submitted","status_detail":"Claim
+        was created.","status_timestamp":"2024-07-26T18:37:06","tracking_code":"9400100110368067686394","type":"damage","updated_at":"2024-07-26T18:37:06"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240723/3c56f6aee210413f8105b1e88442ab7f.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240723/57c80f02bcc9453cbadc6dc8e122b52e.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240723/f8d8d8917d8c46908b44d993fb8b6897.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-23T17:32:34","description":"Test
+        description","history":[{"status":"cancelled","status_detail":"Claim cancellation
+        was requested.","timestamp":"2024-07-23T17:32:36"},{"status":"submitted","status_detail":"Claim
+        was created.","timestamp":"2024-07-23T17:32:34"}],"id":"clm_097e86905934499b9d135957b23016f1","insurance_amount":"100.00","insurance_id":"ins_d435dfd8a06e4f3396f264389d718441","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_74cc4c6195784449825a9966c40f4665","status":"cancelled","status_detail":"Claim
+        cancellation was requested.","status_timestamp":"2024-07-23T17:32:36","tracking_code":"9400100110368066357837","type":"damage","updated_at":"2024-07-23T17:32:35"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240723/1c5fd49a03e346819351cb28b3908225.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240723/f6145950b1624e1bb210990cc0c964d6.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240723/65afd26684f34a88a5ac48cfeb7b1d89.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-23T17:32:28","description":"Test
         description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-23T17:32:28"}],"id":"clm_097e7b5e0fa04e98a145a3e0681d1d59","insurance_amount":"100.00","insurance_id":"ins_ae57c377df834b72ab6b3c7a2378d919","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_8e7849912515457280124c17b09d5d9d","status":"submitted","status_detail":"Claim
         was created.","status_timestamp":"2024-07-23T17:32:28","tracking_code":"9400100110368066357813","type":"damage","updated_at":"2024-07-23T17:32:28"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240723/99146b8dae184be99db6be685cb73415.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240723/0d43546e4a2f46be9e9c541d6e802998.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240723/4bd7fbb658504206bb1b95e698c309d1.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-23T17:32:25","description":"Test
         description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-23T17:32:25"}],"id":"clm_097e4cc005f64caaa260fb0678832743","insurance_amount":"100.00","insurance_id":"ins_e77cd5cbf0d54635a922f646d8721d7a","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_31b23a656a4f4cb4a0459a69929adb44","status":"submitted","status_detail":"Claim
@@ -81,12 +190,6 @@ http_interactions:
         description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-22T22:11:35"}],"id":"clm_097ea652dd4e40b9aeb2d11a75d5b06a","insurance_amount":"100.00","insurance_id":"ins_7d978d131f2c492b9c0c3deb1aea50ed","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_7ef32fbda0aa42ebbfa8a62cf179bedd","status":"submitted","status_detail":"Claim
         was created.","status_timestamp":"2024-07-22T22:11:35","tracking_code":"9400100110368065992398","type":"damage","updated_at":"2024-07-22T22:11:35"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240722/3838f343abb1470eb2364fa5e3594b7a.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240722/0dcd7eac43a54ad28cf366c805230294.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240722/4052042f53bf4af4b1ca99edbde2f0a6.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-22T21:58:09","description":"Test
         description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-22T21:58:09"}],"id":"clm_097ef5c211c54460b617b384224aa9e0","insurance_amount":"100.00","insurance_id":"ins_7b49a3a5e6ff4a5f9567e0c892a45068","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_391b96dc2c834db294ff60d3d4b03d10","status":"submitted","status_detail":"Claim
-        was created.","status_timestamp":"2024-07-22T21:58:09","tracking_code":"9400100110368065989848","type":"damage","updated_at":"2024-07-22T21:58:09"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240722/3838f343abb1470eb2364fa5e3594b7a.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240722/0dcd7eac43a54ad28cf366c805230294.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240722/4052042f53bf4af4b1ca99edbde2f0a6.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-22T21:58:09","description":"Test
-        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-22T21:58:09"}],"id":"clm_097ef5c211c54460b617b384224aa9e0","insurance_amount":"100.00","insurance_id":"ins_7b49a3a5e6ff4a5f9567e0c892a45068","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_391b96dc2c834db294ff60d3d4b03d10","status":"submitted","status_detail":"Claim
-        was created.","status_timestamp":"2024-07-22T21:58:09","tracking_code":"9400100110368065989848","type":"damage","updated_at":"2024-07-22T21:58:09"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240722/229c70e0f36a414686f96d008a8d0d7f.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240722/abed8d5da31f420ab1d508e8ebd9147d.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240722/fb64e7f8cf2f4460b02d789fb2c4fbc1.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-22T21:56:41","description":"Test
-        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-22T21:56:41"}],"id":"clm_097e43bbcfc449cda94cbf7c5993f301","insurance_amount":"100.00","insurance_id":"ins_4640e2c9e7df4e49ab9e70f3fc802e93","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_23ed6ac0f0f54db098caebd5c8a9ab8c","status":"submitted","status_detail":"Claim
-        was created.","status_timestamp":"2024-07-22T21:56:41","tracking_code":"9400100110368065989374","type":"damage","updated_at":"2024-07-22T21:56:41"},{"approved_amount":null,"attachments":["https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240722/229c70e0f36a414686f96d008a8d0d7f.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240722/abed8d5da31f420ab1d508e8ebd9147d.png","https://easypost-files.s3-us-west-2.amazonaws.com/insurance/20240722/fb64e7f8cf2f4460b02d789fb2c4fbc1.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-22T21:56:41","description":"Test
-        description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-22T21:56:41"}],"id":"clm_097e43bbcfc449cda94cbf7c5993f301","insurance_amount":"100.00","insurance_id":"ins_4640e2c9e7df4e49ab9e70f3fc802e93","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_23ed6ac0f0f54db098caebd5c8a9ab8c","status":"submitted","status_detail":"Claim
-        was created.","status_timestamp":"2024-07-22T21:56:41","tracking_code":"9400100110368065989374","type":"damage","updated_at":"2024-07-22T21:56:41"}],"has_more":false}'
-  recorded_at: Tue, 23 Jul 2024 17:32:31 GMT
+        was created.","status_timestamp":"2024-07-22T21:58:09","tracking_code":"9400100110368065989848","type":"damage","updated_at":"2024-07-22T21:58:09"}],"has_more":true}'
+  recorded_at: Mon, 29 Jul 2024 18:07:52 GMT
 recorded_with: VCR 6.1.0
