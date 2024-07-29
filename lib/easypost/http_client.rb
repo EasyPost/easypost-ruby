@@ -14,26 +14,35 @@ class EasyPost::HttpClient
     method,
     path,
     headers = nil,
-    body = nil,
+    params = nil,
     api_version = EasyPost::InternalUtilities::Constants::API_VERSION
   )
     # Remove leading slash from path.
     path = path[1..] if path[0] == '/'
 
-    uri = URI.parse("#{@base_url}/#{api_version}/#{path}")
     headers = @config[:headers].merge(headers || {})
-    serialized_body = JSON.dump(EasyPost::InternalUtilities.objects_to_ids(body)) if body
     open_timeout = @config[:open_timeout]
     read_timeout = @config[:read_timeout]
     request_timestamp = Time.now
     request_uuid = SecureRandom.uuid
+
+    uri = URI.parse("#{@base_url}/#{api_version}/#{path}")
+    serialized_body = nil
+
+    if params
+      if [:get, :delete].include?(method)
+        uri.query = URI.encode_www_form(params)
+      else
+        serialized_body = JSON.dump(EasyPost::InternalUtilities.objects_to_ids(params))
+      end
+    end
 
     if EasyPost::Hooks.any_subscribers?(:request)
       request_context = EasyPost::Hooks::RequestContext.new(
         method: method,
         path: uri.to_s,
         headers: headers,
-        request_body: body,
+        request_body: serialized_body,
         request_timestamp: request_timestamp,
         request_uuid: request_uuid,
       )
@@ -66,10 +75,10 @@ class EasyPost::HttpClient
       # client_response_object attribute
       if response.is_a?(Net::HTTPResponse)
         response_body = begin
-          JSON.parse(response.body)
-        rescue JSON::ParseError
-          response.body
-        end
+                          JSON.parse(response.body)
+                        rescue JSON::ParseError
+                          response.body
+                        end
         response_context.merge!(
           {
             http_status: response.code.to_i,
