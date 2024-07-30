@@ -24,7 +24,7 @@ jobs:
           chmod 0600 $HOME/.gem/credentials
           printf -- "---\n:rubygems_api_key: ${RUBYGEMS_API_KEY}\n" > $HOME/.gem/credentials
           gem push dist/*.gem
-          env:
+        env:
           RUBYGEMS_API_KEY: '${{secrets.RUBYGEMS_API_KEY}}'
       - name: Upload assets to release
         uses: AButler/upload-release-assets@v3.0
