@@ -1,0 +1,33 @@
+name: release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch: ~
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          rubygems: '3.3.0'
+          bundler-cache: true
+      - name: Build Package
+        run: make install build
+      - name: Publish to RubyGems
+        run: |
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: ${RUBYGEMS_API_KEY}\n" > $HOME/.gem/credentials
+          gem push dist/*.gem
+        env:
+          RUBYGEMS_API_KEY: '${{secrets.RUBYGEMS_API_KEY}}'
+      - name: Upload assets to release
+        uses: AButler/upload-release-assets@v3.0
+        with:
+          files: 'dist/*'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
