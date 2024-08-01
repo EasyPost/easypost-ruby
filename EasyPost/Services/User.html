@@ -278,7 +278,7 @@ Please use `retrieve_api_keys_for_user` in the `api_key` service instead.&#39;</
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page_of_children</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">EndOfPaginationError</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">more_pages?</span>(<span class="ruby-identifier">collection</span>)
 
-  <span class="ruby-identifier">params</span> = { <span class="ruby-value">before_id:</span> <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">id</span> }
+  <span class="ruby-identifier">params</span> = { <span class="ruby-value">after_id:</span> <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">children</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">id</span> }
   <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_size</span>] = <span class="ruby-identifier">page_size</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">page_size</span>.<span class="ruby-identifier">nil?</span>
 
   <span class="ruby-identifier">all_children</span>(<span class="ruby-identifier">params</span>)

@@ -197,7 +197,7 @@
         <div class="method-header">
           <div class="method-heading">
             <span class="method-name">make_request</span><span
-              class="method-args">( method, endpoint, body = nil, api_version = EasyPost::InternalUtilities::Constants::API_VERSION )</span>
+              class="method-args">( method, endpoint, params = nil, api_version = EasyPost::InternalUtilities::Constants::API_VERSION )</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
         </div>
@@ -205,17 +205,17 @@
         <div class="method-description">
           <p>Make an HTTP request</p>
 
-<p>@param method [Symbol] the HTTP Verb (get, method, put, post, etc.) @param endpoint [String] URI path of the resource @param body [Object] (nil) object to be dumped to JSON @param api_version [String] the version of API to hit @raise [EasyPost::Error] if the response has a non-2xx status code @return [Hash] JSON object parsed from the response body</p>
+<p>@param method [Symbol] the HTTP Verb (get, method, put, post, etc.) @param endpoint [String] URI path of the resource @param params [Object] (nil) object to be used as the request parameters @param api_version [String] the version of API to hit @raise [EasyPost::Error] if the response has a non-2xx status code @return [Hash] JSON object parsed from the response body</p>
 
           <div class="method-source-code" id="make_request-source">
             <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">make_request</span>(
   <span class="ruby-identifier">method</span>,
   <span class="ruby-identifier">endpoint</span>,
-  <span class="ruby-identifier">body</span> = <span class="ruby-keyword">nil</span>,
+  <span class="ruby-identifier">params</span> = <span class="ruby-keyword">nil</span>,
   <span class="ruby-identifier">api_version</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">API_VERSION</span>
 )
-  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@http_client</span>.<span class="ruby-identifier">request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">endpoint</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">body</span>, <span class="ruby-identifier">api_version</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@http_client</span>.<span class="ruby-identifier">request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">endpoint</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">params</span>, <span class="ruby-identifier">api_version</span>)
 
   <span class="ruby-identifier">potential_error</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">ApiError</span>.<span class="ruby-identifier">handle_api_error</span>(<span class="ruby-identifier">response</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-identifier">potential_error</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">potential_error</span>.<span class="ruby-identifier">nil?</span>
