@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.easypost.com/v2/webhooks
+    uri: https://api.easypost.com/v2/webhooks?page_size=5
     body:
-      encoding: UTF-8
-      string: '{"page_size":5}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde865b00ac5e787e2cc00076d4c
+      - d044fa7b66a7db3ce799e586005a692a
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,22 +45,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.025578'
+      - '0.037354'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb42nuq
+      - bigweb35nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb1nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb3nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: '{"webhooks":[]}'
-  recorded_at: Tue, 23 Jan 2024 18:51:49 GMT
-recorded_with: VCR 6.2.0
+  recorded_at: Mon, 29 Jul 2024 18:11:08 GMT
+recorded_with: VCR 6.1.0

@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde965b00a7de787da4400073633
+      - d044fa7666a7dad4e799e0e10059fe1e
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,7 +45,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.023653'
+      - '0.028697'
       Vary:
       - Origin
       Transfer-Encoding:
@@ -53,20 +53,20 @@ http_interactions:
       X-Node:
       - bigweb43nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Canary:
       - direct
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb1nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb3nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: '{"public_key":"pk_x3JSr5eOVWNTLRej8cZDde9VQ0AT5"}'
-  recorded_at: Tue, 23 Jan 2024 18:50:37 GMT
+  recorded_at: Mon, 29 Jul 2024 18:09:24 GMT
 - request:
     method: post
     uri: https://api.stripe.com/v1/tokens
@@ -90,11 +90,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 23 Jan 2024 18:50:38 GMT
+      - Mon, 29 Jul 2024 18:09:24 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '739'
+      - '787'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -114,32 +114,42 @@ http_interactions:
       - report-uri https://q.stripe.com/csp-report?p=v1%2Ftokens; block-all-mixed-content;
         default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none';
         img-src 'self'; script-src 'self' 'report-sample'; style-src 'self'
+      Cross-Origin-Opener-Policy-Report-Only:
+      - same-origin; report-to="coop"
       Idempotency-Key:
-      - a3e617d9-5a3d-4579-8255-0e600505e3bd
+      - 65b327b0-bfbf-459f-817f-ffa84327948b
       Original-Request:
-      - req_62lwE6CVpO1Ri5
+      - req_fhfsXKCnj8KiUE
+      Report-To:
+      - '{"group":"coop","max_age":8640,"endpoints":[{"url":"https://q.stripe.com/coop-report?s=payins-bapi-srv"}],"include_subdomains":true}'
+      Reporting-Endpoints:
+      - coop="https://q.stripe.com/coop-report?s=payins-bapi-srv"
       Request-Id:
-      - req_62lwE6CVpO1Ri5
+      - req_fhfsXKCnj8KiUE
       Stripe-Should-Retry:
       - 'false'
       Stripe-Version:
       - '2020-08-27'
       Vary:
       - Origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Stripe-Priority-Routing-Enabled:
+      - 'true'
       X-Stripe-Routing-Context-Priority-Tier:
       - livemode-critical
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"tok_0Obp3SDqT4huGUvdN4LMoFPm","object":"token","card":{"id":"card_0Obp3SDqT4huGUvdlKadBd2X","object":"card","address_city":null,"address_country":null,"address_line1":null,"address_line1_check":null,"address_line2":null,"address_state":null,"address_zip":null,"address_zip_check":null,"brand":"Visa","country":"US","cvc_check":"unchecked","dynamic_last4":null,"exp_month":5,"exp_year":2028,"funding":"credit","last4":"6170","name":null,"tokenization_method":null,"wallet":null},"client_ip":"<REDACTED>","created":1706035838,"livemode":true,"type":"card","used":false}'
-  recorded_at: Tue, 23 Jan 2024 18:50:38 GMT
+      string: '{"id":"tok_0Phy0eDqT4huGUvdiiEaw9M5","object":"token","card":{"id":"card_0Phy0eDqT4huGUvdOrZiggU4","object":"card","address_city":null,"address_country":null,"address_line1":null,"address_line1_check":null,"address_line2":null,"address_state":null,"address_zip":null,"address_zip_check":null,"brand":"Visa","country":"US","cvc_check":"unchecked","dynamic_last4":null,"exp_month":5,"exp_year":2028,"funding":"credit","last4":"6170","name":null,"networks":{"preferred":null},"tokenization_method":null,"wallet":null},"client_ip":"<REDACTED>","created":1722276564,"livemode":true,"type":"card","used":false}'
+  recorded_at: Mon, 29 Jul 2024 18:09:24 GMT
 - request:
     method: post
     uri: https://api.easypost.com/beta/credit_cards
     body:
       encoding: UTF-8
-      string: '{"credit_card":{"stripe_object_id":"tok_0Obp3SDqT4huGUvdN4LMoFPm","priority":"primary"}}'
+      string: '{"credit_card":{"stripe_object_id":"tok_0Phy0eDqT4huGUvdiiEaw9M5","priority":"primary"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -153,8 +163,8 @@ http_interactions:
       Authorization: "<REDACTED>"
   response:
     status:
-      code: 403
-      message: Forbidden
+      code: 201
+      message: Created
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -169,29 +179,34 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde865b00a7ee787da46000736e9
+      - d044fa7966a7dad5e799e0e30059fefb
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.008770'
+      - '2.432658'
       Vary:
       - Origin
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb31nuq
+      - bigweb40nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb2nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"error":{"code":"APIKEY.INACTIVE","message":"This api key is no longer
-        active. Please use a different api key or reactivate this key.","errors":[]}}'
-  recorded_at: Tue, 23 Jan 2024 18:50:38 GMT
-recorded_with: VCR 6.2.0
+      string: '{"id":"pm_0af17f09a34749ffbaee4e8bff99fc11","disabled_at":null,"object":"CreditCard","name":null,"last4":"6170","exp_month":5,"exp_year":2028,"brand":"Visa","requires_mandate_collection":false}'
+  recorded_at: Mon, 29 Jul 2024 18:09:27 GMT
+recorded_with: VCR 6.1.0

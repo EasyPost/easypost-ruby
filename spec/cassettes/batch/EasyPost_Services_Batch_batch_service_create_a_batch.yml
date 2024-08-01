@@ -7,7 +7,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"batch":{"shipments":[{"to_address":{"name":"Jack Sparrow","street1":"388
         Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"},"from_address":{"name":"Elizabeth
-        Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","email":"test@example.com","phone":"5555555555"},"parcel":{"length":10,"width":8,"height":4,"weight":15.4},"service":"First","carrier_accounts":["ca_716f33fd9fd348238b85c2922237f98b"],"carrier":"USPS"}]}}'
+        Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","email":"test@example.com","phone":"5555555555"},"parcel":{"length":10,"width":8,"height":4,"weight":15.4},"service":"GroundAdvantage","carrier_accounts":["ca_716f33fd9fd348238b85c2922237f98b"],"carrier":"USPS"}]}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -37,7 +37,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde365b00a2de787d5230006f07f
+      - 3567503f66abe7c7e799e56600154fd4
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -47,22 +47,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.041277'
+      - '0.054799'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb40nuq
+      - bigweb39nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202408011906-6fc64ddcfc-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb2nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"batch_15dcad8fb8d24bb1989a5e2e55f54647","object":"Batch","mode":"test","state":"creating","num_shipments":1,"reference":null,"created_at":"2024-01-23T18:49:17Z","updated_at":"2024-01-23T18:49:17Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
-  recorded_at: Tue, 23 Jan 2024 18:49:17 GMT
-recorded_with: VCR 6.2.0
+      string: '{"id":"batch_1f1d0f02355041038c5b9a9ad9660c87","object":"Batch","mode":"test","state":"creating","num_shipments":1,"reference":null,"created_at":"2024-08-01T19:53:44Z","updated_at":"2024-08-01T19:53:44Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+  recorded_at: Thu, 01 Aug 2024 19:53:44 GMT
+recorded_with: VCR 6.1.0

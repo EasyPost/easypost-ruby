@@ -93,7 +93,7 @@ describe EasyPost::Services::ReferralCustomer do
           Fixture.credit_card_details['cvc'],
         )
 
-        expect(credit_card.id).to match('card_')
+        expect(credit_card.id).to match('pm_')
         expect(credit_card.last4).to match('6170')
       end
     end

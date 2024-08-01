@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde465b00ac0e787e2a700076907
+      - d044fa7a66a7db33e799e560005a6062
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,28 +45,34 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.082114'
+      - '0.196399'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb42nuq
+      - bigweb33nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb2nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"Test
-        User","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+      string: '{"id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","object":"User","parent_id":null,"name":"New
+        Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
         User","phone_number":"8005550100","verified":true,"created_at":"2023-05-16T22:01:20Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_14e894c0d541459395f4456e7cf4f175","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
         User","phone_number":"8005550100","verified":true,"created_at":"2023-09-27T22:05:26Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_f04df3dad13848339a7975d295d6629f","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
-        User","phone_number":"8005550100","verified":true,"created_at":"2023-11-30T19:23:22Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
-  recorded_at: Tue, 23 Jan 2024 18:51:44 GMT
+        User","phone_number":"8005550100","verified":true,"created_at":"2023-11-30T19:23:22Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_44d216445b2f4595a123a18084000d94","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-26T18:36:54Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_f3b7021a2d924bedb080d7caa00d753e","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-26T18:41:48Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_327a26c77be24e24b165450e7c0de3b9","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-26T19:08:21Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_acfa6f7268d14e449edd1fe6f4ab64cc","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T17:41:32Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_4b066506d76940aeb28943506eb76941","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T17:46:31Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_48b7c8e5981647a8aee52aa1cb910280","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T18:07:19Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
+  recorded_at: Mon, 29 Jul 2024 18:10:59 GMT
 - request:
     method: put
     uri: https://api.easypost.com/v2/users/user_0f6b83e3530b401cb1e8aeaa6a250d4d
@@ -102,7 +108,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde465b00ac0e787e2a800076946
+      - d044fa7a66a7db34e799e561005a6101
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -112,18 +118,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.155261'
+      - '0.336570'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb40nuq
+      - bigweb36nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb1nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -132,6 +138,12 @@ http_interactions:
         Test Name","phone_number":"<REDACTED>","verified":true,"created_at":"2017-03-01T22:57:19Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.01000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0","default_insurance_amount":null,"insurance_fee_rate":"0.01","insurance_fee_minimum":"1.00","email":"<REDACTED>","children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
         User","phone_number":"8005550100","verified":true,"created_at":"2023-05-16T22:01:20Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_14e894c0d541459395f4456e7cf4f175","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
         User","phone_number":"8005550100","verified":true,"created_at":"2023-09-27T22:05:26Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_f04df3dad13848339a7975d295d6629f","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
-        User","phone_number":"8005550100","verified":true,"created_at":"2023-11-30T19:23:22Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
-  recorded_at: Tue, 23 Jan 2024 18:51:44 GMT
-recorded_with: VCR 6.2.0
+        User","phone_number":"8005550100","verified":true,"created_at":"2023-11-30T19:23:22Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_44d216445b2f4595a123a18084000d94","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-26T18:36:54Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_f3b7021a2d924bedb080d7caa00d753e","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-26T18:41:48Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_327a26c77be24e24b165450e7c0de3b9","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-26T19:08:21Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_acfa6f7268d14e449edd1fe6f4ab64cc","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T17:41:32Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_4b066506d76940aeb28943506eb76941","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T17:46:31Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_48b7c8e5981647a8aee52aa1cb910280","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T18:07:19Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
+  recorded_at: Mon, 29 Jul 2024 18:11:00 GMT
+recorded_with: VCR 6.1.0

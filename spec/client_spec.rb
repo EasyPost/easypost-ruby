@@ -155,7 +155,7 @@ describe EasyPost::Client do
           expect(request_data.method).to eq(:post)
           expect(request_data.path).to end_with('/addresses')
           expect(request_data.headers['Content-Type']).to eq('application/json')
-          expect(request_data.request_body).to eq(address_to_create)
+          expect(JSON.parse(request_data.request_body)).to eq(address_to_create)
           expect(request_data.request_timestamp).to be_a(Time)
           expect(request_data.request_uuid).to be_a(String)
           lifecycle_request_uuid = request_data.request_uuid

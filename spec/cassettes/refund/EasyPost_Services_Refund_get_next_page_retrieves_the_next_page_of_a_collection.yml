@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.easypost.com/v2/refunds
+    uri: https://api.easypost.com/v2/refunds?page_size=5
     body:
-      encoding: UTF-8
-      string: '{"page_size":5}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde365b00a86e787dd8500073daf
+      - d044fa7966a7dae3e799e122005a0cb8
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,22 +45,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.036707'
+      - '0.070245'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb33nuq
+      - bigweb38nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb1nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"refunds":[{"id":"rfnd_edc85cd90df74bb7a97d29982af58a59","object":"Refund","created_at":"2024-01-23T18:50:45Z","updated_at":"2024-01-23T18:50:45Z","tracking_code":"9400100207552011757697","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_67900cdb740f49c99887a67149ea8da1"}],"has_more":false}'
-  recorded_at: Tue, 23 Jan 2024 18:50:46 GMT
-recorded_with: VCR 6.2.0
+      string: '{"refunds":[{"id":"rfnd_c2ca22eea538446f8f2ad624c0a1a49e","object":"Refund","created_at":"2024-07-29T18:09:38Z","updated_at":"2024-07-29T18:09:38Z","tracking_code":"9400100110368068501047","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_b453ba1d2e504315ae0fd46c98344820"}],"has_more":false}'
+  recorded_at: Mon, 29 Jul 2024 18:09:38 GMT
+recorded_with: VCR 6.1.0

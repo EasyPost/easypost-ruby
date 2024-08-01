@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.easypost.com/v2/addresses
+    uri: https://api.easypost.com/v2/addresses?page_size=5
     body:
-      encoding: UTF-8
-      string: '{"page_size":5}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde965b00a28e787d4dc0006ebdd
+      - d044fa7666a7da51e799d89f0059704c
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,33 +45,33 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.039031'
+      - '0.051087'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb38nuq
+      - bigweb53nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb2nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb3nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"addresses":[{"id":"adr_18d9cb91ba2011eeb0a5ac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:11+00:00","updated_at":"2024-01-23T18:49:11+00:00","name":"Jack
+      string: '{"addresses":[{"id":"adr_6126b5104dd511ef964eac1f6bc539aa","object":"Address","created_at":"2024-07-29T18:07:12+00:00","updated_at":"2024-07-29T18:07:12+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
-        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_187849afba2011eeb06cac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:10+00:00","updated_at":"2024-01-23T18:49:10+00:00","name":null,"company":"EasyPost","street1":"000
-        unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_18aac0a3ba2011ee8d4d3cecef1b359e","object":"Address","created_at":"2024-01-23T18:49:11+00:00","updated_at":"2024-01-23T18:49:11+00:00","name":null,"company":"EasyPost","street1":"000
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_60e135584dd511ef86b0ac1f6bc53342","object":"Address","created_at":"2024-07-29T18:07:12+00:00","updated_at":"2024-07-29T18:07:12+00:00","name":null,"company":"EasyPost","street1":"000
         unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
         not found","suggestion":null}],"details":null},"delivery":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
-        not found","suggestion":null}],"details":{}}}},{"id":"adr_181b1887ba2011eeb037ac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:10+00:00","updated_at":"2024-01-23T18:49:10+00:00","name":"JACK
+        not found","suggestion":null}],"details":{}}}},{"id":"adr_609a38374dd511ef88573cecef1b359e","object":"Address","created_at":"2024-07-29T18:07:11+00:00","updated_at":"2024-07-29T18:07:11+00:00","name":null,"company":"EasyPost","street1":"000
+        unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},{"id":"adr_605729c14dd511ef95e7ac1f6bc539aa","object":"Address","created_at":"2024-07-29T18:07:11+00:00","updated_at":"2024-07-29T18:07:11+00:00","name":"JACK
         SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN
-        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_17e75853ba2011eeb01cac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:09+00:00","updated_at":"2024-01-23T18:49:09+00:00","name":null,"company":"EasyPost","street1":"000
+        FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},{"id":"adr_60097fbf4dd511ef9409ac1f6bc539ae","object":"Address","created_at":"2024-07-29T18:07:10+00:00","updated_at":"2024-07-29T18:07:10+00:00","name":null,"company":"EasyPost","street1":"000
         unknown street","street2":null,"city":"Not A City","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
         not found","suggestion":null}],"details":null},"delivery":{"success":false,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
         not found","suggestion":null}],"details":{}}}}],"has_more":true}'
-  recorded_at: Tue, 23 Jan 2024 18:49:12 GMT
-recorded_with: VCR 6.2.0
+  recorded_at: Mon, 29 Jul 2024 18:07:13 GMT
+recorded_with: VCR 6.1.0

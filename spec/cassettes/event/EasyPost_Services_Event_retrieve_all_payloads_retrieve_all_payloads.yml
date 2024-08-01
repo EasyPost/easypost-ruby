@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde365b00a51e787d94000070be7
+      - d044fa7966a7da8ae799dce20059ae77
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,26 +45,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.165578'
+      - '0.140335'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb32nuq
+      - bigweb41nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb2nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb3nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"hook_31c96462ba2011eebafa354725ed1955","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2024-01-23T18:49:53Z","disabled_at":null}'
-  recorded_at: Tue, 23 Jan 2024 18:49:53 GMT
+      string: '{"id":"hook_83f74f304dd511ef97c765d83c6c5295","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2024-07-29T18:08:11Z","disabled_at":null}'
+  recorded_at: Mon, 29 Jul 2024 18:08:10 GMT
 - request:
     method: post
     uri: https://api.easypost.com/v2/batches
@@ -72,7 +70,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"batch":{"shipments":[{"to_address":{"name":"Jack Sparrow","street1":"388
         Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"},"from_address":{"name":"Elizabeth
-        Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","email":"test@example.com","phone":"5555555555"},"parcel":{"length":10,"width":8,"height":4,"weight":15.4},"service":"First","carrier_accounts":["ca_716f33fd9fd348238b85c2922237f98b"],"carrier":"USPS"}]}}'
+        Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","email":"test@example.com","phone":"5555555555"},"parcel":{"length":10,"width":8,"height":4,"weight":15.4},"service":"GroundAdvantage","carrier_accounts":["ca_716f33fd9fd348238b85c2922237f98b"],"carrier":"USPS"}]}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -102,7 +100,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde765b00a51e787d94100070c3a
+      - d044fa7a66a7da8be799dce30059af04
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -112,32 +110,30 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.043269'
+      - '0.115384'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb43nuq
+      - bigweb53nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb1nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb3nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"batch_8bd3e07417294ec3921d54fe24df6b16","object":"Batch","mode":"test","state":"creating","num_shipments":1,"reference":null,"created_at":"2024-01-23T18:49:53Z","updated_at":"2024-01-23T18:49:53Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
-  recorded_at: Tue, 23 Jan 2024 18:49:53 GMT
+      string: '{"id":"batch_cfd240db5e714263b2e013a856c5147b","object":"Batch","mode":"test","state":"creating","num_shipments":1,"reference":null,"created_at":"2024-07-29T18:08:11Z","updated_at":"2024-07-29T18:08:11Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+  recorded_at: Mon, 29 Jul 2024 18:08:11 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/events
+    uri: https://api.easypost.com/v2/events?page_size=5
     body:
-      encoding: UTF-8
-      string: '{"page_size":5}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -167,7 +163,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cddea65b00a56e787d94200071049
+      - d044fa7a66a7da90e799dcfc0059b51c
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -177,27 +173,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.202839'
+      - '0.221428'
       Transfer-Encoding:
       - chunked
       X-Node:
       - bigweb39nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb2nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"events":[{"description":"tracker.created","id":"evt_3414c540ba2011ee8b2b19a9a48413dc","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2024-01-23T18:49:57.056Z","mode":"test","object":"Event"},{"description":"batch.updated","id":"evt_321e3ebaba2011ee97e273741fad8f28","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2024-01-23T18:49:53.762Z","mode":"test","object":"Event"},{"description":"batch.created","id":"evt_320f53dcba2011ee880b39e6c79b0032","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2024-01-23T18:49:53.664Z","mode":"test","object":"Event"},{"description":"tracker.created","id":"evt_30c0907cba2011ee88ce7b01aee0bb18","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2024-01-23T18:49:51.471Z","mode":"test","object":"Event"},{"description":"tracker.created","id":"evt_30666642ba2011ee8eca4db6e47e62eb","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2024-01-23T18:49:50.880Z","mode":"test","object":"Event"}],"has_more":true}'
-  recorded_at: Tue, 23 Jan 2024 18:49:59 GMT
+      string: '{"events":[{"description":"tracker.created","id":"evt_86dc4e304dd511ef908b0d4aa4c81d1e","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2024-07-29T18:08:15.773Z","mode":"test","object":"Event"},{"description":"batch.updated","id":"evt_8470132a4dd511ef87147712b144dcc7","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2024-07-29T18:08:11.708Z","mode":"test","object":"Event"},{"description":"batch.created","id":"evt_8457c8564dd511efbc032b0631ab7292","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2024-07-29T18:08:11.549Z","mode":"test","object":"Event"},{"description":"tracker.created","id":"evt_7b279f724dd511efbaf177ab1d53f2c3","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2024-07-29T18:07:56.134Z","mode":"test","object":"Event"},{"description":"batch.updated","id":"evt_6a6709b64dd511efbe3a5d9fb8d73922","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","status":"pending","created_at":"2024-07-29T18:07:28.028Z","mode":"test","object":"Event"}],"has_more":true}'
+  recorded_at: Mon, 29 Jul 2024 18:08:17 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/events/evt_3414c540ba2011ee8b2b19a9a48413dc/payloads
+    uri: https://api.easypost.com/v2/events/evt_86dc4e304dd511ef908b0d4aa4c81d1e/payloads
     body:
       encoding: US-ASCII
       string: ''
@@ -230,7 +226,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde565b00a57e787d94300071091
+      - d044fa7a66a7da91e799dcfd0059b5d2
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -240,27 +236,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.035411'
+      - '0.044748'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb36nuq
+      - bigweb38nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb1nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb3nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: '{"payloads":[]}'
-  recorded_at: Tue, 23 Jan 2024 18:49:59 GMT
+  recorded_at: Mon, 29 Jul 2024 18:08:17 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/webhooks/hook_31c96462ba2011eebafa354725ed1955
+    uri: https://api.easypost.com/v2/webhooks/hook_83f74f304dd511ef97c765d83c6c5295
     body:
       encoding: US-ASCII
       string: ''
@@ -293,7 +289,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde565b00a57e787d944000710c5
+      - d044fa7766a7da92e799dcfe0059b65a
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -303,22 +299,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.315257'
+      - '0.344305'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb41nuq
+      - bigweb34nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb2nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: "{}"
-  recorded_at: Tue, 23 Jan 2024 18:49:59 GMT
-recorded_with: VCR 6.2.0
+  recorded_at: Mon, 29 Jul 2024 18:08:18 GMT
+recorded_with: VCR 6.1.0

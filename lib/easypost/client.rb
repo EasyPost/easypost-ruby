@@ -74,17 +74,17 @@ class EasyPost::Client
   #
   # @param method [Symbol] the HTTP Verb (get, method, put, post, etc.)
   # @param endpoint [String] URI path of the resource
-  # @param body [Object] (nil) object to be dumped to JSON
+  # @param params [Object] (nil) object to be used as the request parameters
   # @param api_version [String] the version of API to hit
   # @raise [EasyPost::Error] if the response has a non-2xx status code
   # @return [Hash] JSON object parsed from the response body
   def make_request(
     method,
     endpoint,
-    body = nil,
+    params = nil,
     api_version = EasyPost::InternalUtilities::Constants::API_VERSION
   )
-    response = @http_client.request(method, endpoint, nil, body, api_version)
+    response = @http_client.request(method, endpoint, nil, params, api_version)
 
     potential_error = EasyPost::Errors::ApiError.handle_api_error(response)
     raise potential_error unless potential_error.nil?

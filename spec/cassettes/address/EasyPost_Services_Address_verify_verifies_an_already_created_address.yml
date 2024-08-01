@@ -36,7 +36,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde765b00a29e787d4e10006ed20
+      - d044fa7966a7da53e799d8bb005972d7
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -44,33 +44,33 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_1a3b7596ba2011ee8e283cecef1b359e"
+      - "/api/v2/addresses/adr_6309f5104dd511ef89ad3cecef1b359e"
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.040748'
+      - '0.048854'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb38nuq
+      - bigweb41nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb1nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"adr_1a3b7596ba2011ee8e283cecef1b359e","object":"Address","created_at":"2024-01-23T18:49:13+00:00","updated_at":"2024-01-23T18:49:13+00:00","name":"Jack
+      string: '{"id":"adr_6309f5104dd511ef89ad3cecef1b359e","object":"Address","created_at":"2024-07-29T18:07:15+00:00","updated_at":"2024-07-29T18:07:15+00:00","name":"Jack
         Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
         Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
-  recorded_at: Tue, 23 Jan 2024 18:49:13 GMT
+  recorded_at: Mon, 29 Jul 2024 18:07:15 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/addresses/adr_1a3b7596ba2011ee8e283cecef1b359e/verify
+    uri: https://api.easypost.com/v2/addresses/adr_6309f5104dd511ef89ad3cecef1b359e/verify
     body:
       encoding: US-ASCII
       string: ''
@@ -103,7 +103,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde965b00a29e787d4e20006ed6b
+      - d044fa7a66a7da54e799d8bc00597368
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -111,28 +111,30 @@ http_interactions:
       Expires:
       - '0'
       Location:
-      - "/api/v2/addresses/adr_1a6d5210ba2011eeb17fac1f6bc539aa"
+      - "/api/v2/addresses/adr_63574e884dd511ef883aac1f6bc53342"
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.067307'
+      - '0.070733'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb36nuq
+      - bigweb43nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb2nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb3nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"address":{"id":"adr_1a6d5210ba2011eeb17fac1f6bc539aa","object":"Address","created_at":"2024-01-23T18:49:14+00:00","updated_at":"2024-01-23T18:49:14+00:00","name":"JACK
+      string: '{"address":{"id":"adr_63574e884dd511ef883aac1f6bc53342","object":"Address","created_at":"2024-07-29T18:07:16+00:00","updated_at":"2024-07-29T18:07:16+00:00","name":"JACK
         SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN
         FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}}}'
-  recorded_at: Tue, 23 Jan 2024 18:49:14 GMT
-recorded_with: VCR 6.2.0
+  recorded_at: Mon, 29 Jul 2024 18:07:16 GMT
+recorded_with: VCR 6.1.0

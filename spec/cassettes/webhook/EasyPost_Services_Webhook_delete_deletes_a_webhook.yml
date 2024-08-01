@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde965b00ac7e78847b500076f14
+      - d044fa7a66a7db3ee799e5a2005a6bd6
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,29 +45,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.152572'
+      - '0.197463'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb32nuq
+      - bigweb42nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb2nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb3nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"hook_787d547cba2011ee83a011845b518633","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2024-01-23T18:51:52Z","disabled_at":null}'
-  recorded_at: Tue, 23 Jan 2024 18:51:51 GMT
+      string: '{"id":"hook_ef2b71dc4dd511efa48f35089a63c24b","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2024-07-29T18:11:11Z","disabled_at":null}'
+  recorded_at: Mon, 29 Jul 2024 18:11:10 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/webhooks/hook_787d547cba2011ee83a011845b518633
+    uri: https://api.easypost.com/v2/webhooks/hook_ef2b71dc4dd511efa48f35089a63c24b
     body:
       encoding: US-ASCII
       string: ''
@@ -100,7 +98,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - e77cdde465b00ac8e78847b600076f65
+      - d044fa7766a7db3fe799e5a3005a6c74
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -110,22 +108,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.390269'
+      - '0.381272'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb39nuq
+      - bigweb40nuq
       X-Version-Label:
-      - easypost-202401222120-581bacedf7-master
+      - easypost-202407291746-57ea285141-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 003ad9bca0
-      - intlb1nuq 1a7e326d32
+      - extlb1nuq fa152d4755
+      - intlb4nuq c0f5e722d1
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: "{}"
-  recorded_at: Tue, 23 Jan 2024 18:51:52 GMT
-recorded_with: VCR 6.2.0
+  recorded_at: Mon, 29 Jul 2024 18:11:11 GMT
+recorded_with: VCR 6.1.0
