@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next release
+## v6.4.1 (2024-08-09)
 
 - Send GET requests as query parameters instead of JSON body parameters
 - Fix get_next_page_of_children function for User service with correct filter key
