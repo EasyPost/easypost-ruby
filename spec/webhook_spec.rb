@@ -75,14 +75,13 @@ describe EasyPost::Services::Webhook do
 
   describe '.validate_webhook' do
     it 'validate a webhook' do
-      webhook_secret = 'sécret'
-      expected_hmac_signature = 'hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b'
       headers = {
-        'X-Hmac-Signature' => expected_hmac_signature,
+        'X-Hmac-Signature' => Fixture.webhook_hmac_signature,
       }
 
-      webhook_body = EasyPost::Util.validate_webhook(Fixture.event_bytes, headers, webhook_secret)
-      expect(webhook_body['description']).to eq('batch.created')
+      webhook_body = EasyPost::Util.validate_webhook(Fixture.event_bytes, headers, Fixture.webhook_secret)
+      expect(webhook_body['description']).to eq('tracker.updated')
+      expect(webhook_body['result']['weight']).to eq(136.0)
     end
 
     it 'validate a webhook with invalid secret' do
