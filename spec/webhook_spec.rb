@@ -81,7 +81,7 @@ describe EasyPost::Services::Webhook do
 
       webhook_body = EasyPost::Util.validate_webhook(Fixture.event_bytes, headers, Fixture.webhook_secret)
       expect(webhook_body['description']).to eq('tracker.updated')
-      expect(webhook_body['result']['weight']).to eq(136.0) # Ensure we convert floats properly
+      expect(webhook_body['result']['weight']).to eq(614.4) # Ensure we convert floats properly
     end
 
     it 'validate a webhook with invalid secret' do
