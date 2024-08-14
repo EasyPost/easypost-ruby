@@ -41,10 +41,6 @@ class Fixture
     '2022-06-11'
   end
 
-  def self.webhook_url
-    read_fixture_data['webhook_url']
-  end
-
   def self.ca_address1
     read_fixture_data['addresses']['ca_address_1']
   end
@@ -130,6 +126,18 @@ class Fixture
     data = File.open("#{current_dir}/examples/official/fixtures/event-body.json", &:readline)
 
     JSON.parse(data).to_json.encode('UTF-8')
+  end
+
+  def self.webhook_hmac_signature
+    read_fixture_data['webhook_hmac_signature']
+  end
+
+  def self.webhook_secret
+    read_fixture_data['webhook_secret']
+  end
+
+  def self.webhook_url
+    read_fixture_data['webhook_url']
   end
 
   # The credit card details below are for a valid proxy card usable
