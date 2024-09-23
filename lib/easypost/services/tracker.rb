@@ -29,15 +29,6 @@ class EasyPost::Services::Tracker < EasyPost::Services::Service
     get_all_helper('trackers', MODEL_CLASS, params, filters)
   end
 
-  # Create multiple Tracker objects in bulk.
-  # <b>DEPRECATED:</b> Please use <tt>create</tt> instead. This function will be removed in a future release.
-  def create_list(params = {})
-    wrapped_params = { 'trackers' => params }
-
-    @client.make_request(:post, 'trackers/create_list', wrapped_params)
-    true # This endpoint does not return a response so we return true here instead
-  end
-
   # Get the next page of trackers.
   def get_next_page(collection, page_size = nil)
     raise EasyPost::Errors::EndOfPaginationError.new unless more_pages?(collection)

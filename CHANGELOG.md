@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Removes the deprecated `create_list` tracker endpoint function as it is no longer available via API
+
 ## v6.4.1 (2024-08-09)
 
 - Send GET requests as query parameters instead of JSON body parameters
