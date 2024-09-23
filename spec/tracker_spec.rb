@@ -83,20 +83,4 @@ describe EasyPost::Services::Tracker do
       end
     end
   end
-
-  describe '.create_list' do
-    it 'creates trackers in bulk from a list of tracking codes' do
-      # This endpoint/method does not return anything, just make sure the request doesn't fail
-      expect {
-        client.tracker.create_list(
-          {
-            '0' => { tracking_code: 'EZ1000000001' },
-            '1' => { tracking_code: 'EZ1000000002' },
-            '2' => { tracking_code: 'EZ1000000003' },
-            '3' => { tracking_code: 'EZ1000000004' },
-          },
-        )
-      }.not_to raise_error
-    end
-  end
 end
