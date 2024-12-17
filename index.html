@@ -3,8 +3,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>EasyPost Ruby Docs</title>
+
+  <meta name="keywords" content="ruby,documentation,EasyPost Ruby Docs">
+
+    <meta name="description" content="Documentation for EasyPost Ruby Docs">
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
@@ -22,7 +27,12 @@
 
 
 <body id="top" role="document" class="file">
-<nav role="navigation">
+<div id="navigation-toggle" role="button" tabindex="0" aria-label="Toggle sidebar" aria-expanded="true" aria-controls="navigation">
+  <span aria-hidden="true">&#9776;</span>
+</div>
+
+
+<nav id="navigation" role="navigation">
   <div id="project-navigation">
     <div id="home-section" role="region" title="Quick navigation" class="nav-section">
   <h2>
@@ -35,7 +45,6 @@
     <a href="./table_of_contents.html#methods">Methods</a>
   </div>
 </div>
-
 
     <div id="search-section" role="search" class="project-section initially-hidden">
   <form action="#" method="get" accept-charset="utf-8">
@@ -54,14 +63,13 @@
 
   </div>
 
-  <div id="project-metadata">
-    
+  
 
-    <div id="classindex-section" class="nav-section">
+  <div id="classindex-section" class="nav-section">
   <h3>Class and Module Index</h3>
 
   <ul class="link-list">
-  <li><details><summary><code><a href="./EasyPost.html">EasyPost</a></code></summary>
+  <li><details open><summary><code><a href="./EasyPost.html">EasyPost</a></code></summary>
   <ul class="link-list">
   <li><code><a href="./EasyPost/Client.html">Client</a></code>
   <li><code><a href="./EasyPost/Constants.html">Constants</a></code>
@@ -110,38 +118,38 @@
   </ul></details>
   <li><details><summary><code><a href="./EasyPost/Models.html">Models</a></code></summary>
   <ul class="link-list">
-  <li><code><a href="./EasyPost/Models/Address.html">MODEL_CLASS</a></code>
+  <li><code><a href="./EasyPost/Models/Address.html">Address</a></code>
   <li><code><a href="./EasyPost/Models/ApiKey.html">ApiKey</a></code>
-  <li><code><a href="./EasyPost/Models/Batch.html">MODEL_CLASS</a></code>
+  <li><code><a href="./EasyPost/Models/Batch.html">Batch</a></code>
   <li><code><a href="./EasyPost/Models/Brand.html">Brand</a></code>
-  <li><code><a href="./EasyPost/Models/CarrierAccount.html">MODEL_CLASS</a></code>
-  <li><code><a href="./EasyPost/Models/CarrierType.html">MODEL_CLASS</a></code>
-  <li><code><a href="./EasyPost/Models/Claim.html">MODEL_CLASS</a></code>
-  <li><code><a href="./EasyPost/Models/CustomsInfo.html">MODEL_CLASS</a></code>
-  <li><code><a href="./EasyPost/Models/CustomsItem.html">MODEL_CLASS</a></code>
+  <li><code><a href="./EasyPost/Models/CarrierAccount.html">CarrierAccount</a></code>
+  <li><code><a href="./EasyPost/Models/CarrierType.html">CarrierType</a></code>
+  <li><code><a href="./EasyPost/Models/Claim.html">Claim</a></code>
+  <li><code><a href="./EasyPost/Models/CustomsInfo.html">CustomsInfo</a></code>
+  <li><code><a href="./EasyPost/Models/CustomsItem.html">CustomsItem</a></code>
   <li><code><a href="./EasyPost/Models/EasyPostObject.html">EasyPostObject</a></code>
-  <li><code><a href="./EasyPost/Models/EndShipper.html">MODEL_CLASS</a></code>
+  <li><code><a href="./EasyPost/Models/EndShipper.html">EndShipper</a></code>
   <li><code><a href="./EasyPost/Models/Error.html">Error</a></code>
-  <li><code><a href="./EasyPost/Models/Event.html">MODEL_CLASS</a></code>
-  <li><code><a href="./EasyPost/Models/Insurance.html">MODEL_CLASS</a></code>
+  <li><code><a href="./EasyPost/Models/Event.html">Event</a></code>
+  <li><code><a href="./EasyPost/Models/Insurance.html">Insurance</a></code>
   <li><code><a href="./EasyPost/Models/Object.html">Object</a></code>
-  <li><code><a href="./EasyPost/Models/Order.html">MODEL_CLASS</a></code>
-  <li><code><a href="./EasyPost/Models/Parcel.html">MODEL_CLASS</a></code>
+  <li><code><a href="./EasyPost/Models/Order.html">Order</a></code>
+  <li><code><a href="./EasyPost/Models/Parcel.html">Parcel</a></code>
   <li><code><a href="./EasyPost/Models/Payload.html">Payload</a></code>
   <li><code><a href="./EasyPost/Models/PaymentMethod.html">PaymentMethod</a></code>
-  <li><code><a href="./EasyPost/Models/Pickup.html">MODEL_CLASS</a></code>
+  <li><code><a href="./EasyPost/Models/Pickup.html">Pickup</a></code>
   <li><code><a href="./EasyPost/Models/PickupRate.html">PickupRate</a></code>
   <li><code><a href="./EasyPost/Models/PostageLabel.html">PostageLabel</a></code>
   <li><code><a href="./EasyPost/Models/Rate.html">Rate</a></code>
   <li><code><a href="./EasyPost/Models/Referral.html">Referral</a></code>
-  <li><code><a href="./EasyPost/Models/Refund.html">MODEL_CLASS</a></code>
-  <li><code><a href="./EasyPost/Models/Report.html">MODEL_CLASS</a></code>
-  <li><code><a href="./EasyPost/Models/ScanForm.html">MODEL_CLASS</a></code>
-  <li><code><a href="./EasyPost/Models/Shipment.html">MODEL_CLASS</a></code>
+  <li><code><a href="./EasyPost/Models/Refund.html">Refund</a></code>
+  <li><code><a href="./EasyPost/Models/Report.html">Report</a></code>
+  <li><code><a href="./EasyPost/Models/ScanForm.html">ScanForm</a></code>
+  <li><code><a href="./EasyPost/Models/Shipment.html">Shipment</a></code>
   <li><code><a href="./EasyPost/Models/TaxIdentifier.html">TaxIdentifier</a></code>
-  <li><code><a href="./EasyPost/Models/Tracker.html">MODEL_CLASS</a></code>
-  <li><code><a href="./EasyPost/Models/User.html">MODEL_CLASS</a></code>
-  <li><code><a href="./EasyPost/Models/Webhook.html">MODEL_CLASS</a></code>
+  <li><code><a href="./EasyPost/Models/Tracker.html">Tracker</a></code>
+  <li><code><a href="./EasyPost/Models/User.html">User</a></code>
+  <li><code><a href="./EasyPost/Models/Webhook.html">Webhook</a></code>
   </ul></details>
   <li><details><summary><code><a href="./EasyPost/Services.html">Services</a></code></summary>
   <ul class="link-list">
@@ -177,40 +185,18 @@
   </ul></details>
   <li><code><a href="./EasyPost/Util.html">Util</a></code>
   </ul></details>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
-  <li><code><a href="./MODEL_CLASS.html">MODEL_CLASS</a></code>
 </div>
 
-  </div>
+
+  <footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.9.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
 </nav>
 
 <main role="main">
 <p>This is the API documentation for EasyPost Ruby Docs.
 </main>
-
-
-<footer id="validator-badges" role="contentinfo">
-  <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.7.0.
-  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
-</footer>
 
