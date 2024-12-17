@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::Report < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::Report #:nodoc:
+  MODEL_CLASS = EasyPost::Models::Report # :nodoc:
 
   # Create a Report
   def create(params = {})

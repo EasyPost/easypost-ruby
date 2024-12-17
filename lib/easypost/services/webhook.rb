@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::Webhook < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::Webhook #:nodoc:
+  MODEL_CLASS = EasyPost::Models::Webhook # :nodoc:
 
   # Create a Webhook.
   def create(params = {})

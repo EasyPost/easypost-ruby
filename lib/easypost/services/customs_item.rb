@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::CustomsItem < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::CustomsItem #:nodoc:
+  MODEL_CLASS = EasyPost::Models::CustomsItem # :nodoc:
 
   # Create a CustomsItem object
   def create(params)

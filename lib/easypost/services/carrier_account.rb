@@ -3,7 +3,7 @@
 class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
   CUSTOM_WORKFLOW_CARRIER_TYPES = %w[FedexAccount FedexSmartpostAccount].freeze
   UPS_OAUTH_CARRIER_ACCOUNT_TYPES = %w[UpsAccount UpsMailInnovationsAccount UpsSurepostAccount].freeze
-  MODEL_CLASS = EasyPost::Models::CarrierAccount #:nodoc:
+  MODEL_CLASS = EasyPost::Models::CarrierAccount # :nodoc:
 
   # Create a carrier account
   def create(params = {})

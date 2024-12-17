@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::Insurance < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::Insurance #:nodoc:
+  MODEL_CLASS = EasyPost::Models::Insurance # :nodoc:
 
   # Create an Insurance object
   def create(params = {})

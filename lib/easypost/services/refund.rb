@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::Refund < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::Refund #:nodoc:
+  MODEL_CLASS = EasyPost::Models::Refund # :nodoc:
 
   # Create a Refund object
   def create(params = {})
