@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::User
+  MODEL_CLASS = EasyPost::Models::User #:nodoc:
 
   # Create a referral customer. This function requires the Partner User's API key.
   def create(params = {})

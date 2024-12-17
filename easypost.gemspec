@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'faraday', '~> 2.7.5' # used for integration tests
   spec.add_development_dependency 'pry', '~> 0.14'
   spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'rdoc', '~> 6.5'
+  spec.add_development_dependency 'rdoc', '~> 6.9'
   spec.add_development_dependency 'rspec', '~> 3.12'
   spec.add_development_dependency 'rubocop', '~> 1.49'
   spec.add_development_dependency 'rubocop-rspec', '2.19' # pin to 2.19 because latest version doesn't support Ruby 2.6

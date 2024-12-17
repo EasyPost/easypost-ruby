@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::ScanForm < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::ScanForm
+  MODEL_CLASS = EasyPost::Models::ScanForm #:nodoc:
 
   # Create a ScanForm.
   def create(params = {})

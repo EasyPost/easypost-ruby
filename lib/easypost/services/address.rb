@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::Address < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::Address
+  MODEL_CLASS = EasyPost::Models::Address #:nodoc:
 
   # Create an address.
   def create(params = {})

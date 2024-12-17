@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::Order < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::Order
+  MODEL_CLASS = EasyPost::Models::Order #:nodoc:
 
   # Create an Order object
   def create(params = {})
