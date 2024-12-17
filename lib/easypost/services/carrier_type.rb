@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::CarrierType < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::CarrierType
+  MODEL_CLASS = EasyPost::Models::CarrierType # :nodoc:
 
   # Retrieve all carrier types
   def all

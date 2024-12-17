@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::User < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::User
+  MODEL_CLASS = EasyPost::Models::User # :nodoc:
 
   # Create a child User.
   def create(params = {})

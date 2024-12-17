@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::EndShipper < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::EndShipper
+  MODEL_CLASS = EasyPost::Models::EndShipper # :nodoc:
 
   # Create an EndShipper object.
   def create(params = {})

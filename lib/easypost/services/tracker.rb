@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::Tracker < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::Tracker
+  MODEL_CLASS = EasyPost::Models::Tracker # :nodoc:
 
   # Create a Tracker
   def create(params = {})

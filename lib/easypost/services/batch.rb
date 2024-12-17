@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::Batch < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::Batch
+  MODEL_CLASS = EasyPost::Models::Batch # :nodoc:
 
   # Create a Batch.
   def create(params = {})

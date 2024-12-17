@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::Parcel < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::Parcel
+  MODEL_CLASS = EasyPost::Models::Parcel # :nodoc:
 
   # Create a Parcel object
   def create(params = {})

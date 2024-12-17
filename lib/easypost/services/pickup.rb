@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::Pickup < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::Pickup
+  MODEL_CLASS = EasyPost::Models::Pickup # :nodoc:
 
   # Create a Pickup object
   def create(params = {})

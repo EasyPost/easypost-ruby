@@ -3,7 +3,7 @@
 require 'set'
 
 class EasyPost::Services::Shipment < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::Shipment
+  MODEL_CLASS = EasyPost::Models::Shipment # :nodoc:
 
   # Create a Shipment.
   def create(params = {})

@@ -3,7 +3,7 @@
 require 'json'
 
 class EasyPost::Services::Event < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::Event
+  MODEL_CLASS = EasyPost::Models::Event # :nodoc:
 
   # Retrieve an Event object
   def retrieve(id)

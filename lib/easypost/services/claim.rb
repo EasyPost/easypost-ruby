@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::Claim < EasyPost::Services::Service
-  MODEL_CLASS = EasyPost::Models::Claim
+  MODEL_CLASS = EasyPost::Models::Claim # :nodoc:
 
   # Create an Claim object
   def create(params = {})
