@@ -3,11 +3,11 @@
 require 'vcr'
 require 'json'
 
-REPLACEMENT_STRING ||= '<REDACTED>'.freeze
-REPLACEMENT_ARRAY ||= [].freeze
-REPLACEMENT_HASH ||= {}.freeze
+REPLACEMENT_STRING = '<REDACTED>'
+REPLACEMENT_ARRAY = [].freeze
+REPLACEMENT_HASH = {}.freeze
 
-SCRUBBERS ||= [
+SCRUBBERS = [
   ['client_ip', REPLACEMENT_STRING],
   ['credentials', REPLACEMENT_HASH],
   ['email', REPLACEMENT_STRING],
