@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.easypost.com/v2/webhooks
     body:
       encoding: UTF-8
-      string: '{"webhook":{"url":"http://example.com"}}'
+      string: '{"webhook":{"url":"http://example.com","webhook_secret":"sécret"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - d044fa7866a7db38e799e581005a65cd
+      - 16a5647c67af849de787335600520fe2
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,27 +45,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.195541'
+      - '0.232766'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb38nuq
+      - bigweb53nuq
       X-Version-Label:
-      - easypost-202407291746-57ea285141-master
+      - easypost-202502132348-e5a3dc472b-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq fa152d4755
-      - intlb4nuq c0f5e722d1
+      - extlb2nuq 99aac35317
+      - intlb4nuq 51d74985a2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"hook_eba4eaf24dd511efa52d5d09a9f2573c","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2024-07-29T18:11:05Z","disabled_at":null}'
-  recorded_at: Mon, 29 Jul 2024 18:11:04 GMT
+      string: '{"id":"hook_8038e780eafd11efbce95b419fc17a54","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2025-02-14T17:59:57Z","disabled_at":null}'
+  recorded_at: Fri, 14 Feb 2025 17:59:57 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/webhooks/hook_eba4eaf24dd511efa52d5d09a9f2573c
+    uri: https://api.easypost.com/v2/webhooks/hook_8038e780eafd11efbce95b419fc17a54
     body:
       encoding: US-ASCII
       string: ''
@@ -98,7 +98,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - d044fa7966a7db39e799e582005a6689
+      - 16a5648067af849de787335800521065
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -108,22 +108,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.370557'
+      - '0.285611'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb35nuq
+      - bigweb32nuq
       X-Version-Label:
-      - easypost-202407291746-57ea285141-master
+      - easypost-202502132348-e5a3dc472b-master
       X-Backend:
       - easypost
+      X-Canary:
+      - direct
       X-Proxied:
-      - extlb1nuq fa152d4755
-      - intlb4nuq c0f5e722d1
+      - extlb2nuq 99aac35317
+      - intlb4nuq 51d74985a2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: "{}"
-  recorded_at: Mon, 29 Jul 2024 18:11:05 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Fri, 14 Feb 2025 17:59:57 GMT
+recorded_with: VCR 6.2.0

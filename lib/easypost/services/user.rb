@@ -74,7 +74,7 @@ Please use `retrieve_api_keys_for_user` in the `api_key` service instead.'
   # Update the Brand of a User.
   def update_brand(id, params = {})
     wrapped_params = { brand: params }
-    response = @client.make_request(:get, "users/#{id}/brand", wrapped_params)
+    response = @client.make_request(:patch, "users/#{id}/brand", wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::Brand)
   end

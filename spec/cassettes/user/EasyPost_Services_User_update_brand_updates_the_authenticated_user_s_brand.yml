@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - d044fa7b66a7db36e799e564005a6356
+      - 16a5647b67af85a2e787377a0053832a
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,18 +45,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.140684'
+      - '0.229489'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb39nuq
+      - bigweb33nuq
       X-Version-Label:
-      - easypost-202407291746-57ea285141-master
+      - easypost-202502132348-e5a3dc472b-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq fa152d4755
-      - intlb3nuq c0f5e722d1
+      - extlb2nuq 99aac35317
+      - intlb3nuq 51d74985a2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
@@ -71,14 +71,20 @@ http_interactions:
         User","phone_number":"8005550100","verified":true,"created_at":"2024-07-26T19:08:21Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_acfa6f7268d14e449edd1fe6f4ab64cc","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
         User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T17:41:32Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_4b066506d76940aeb28943506eb76941","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
         User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T17:46:31Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_48b7c8e5981647a8aee52aa1cb910280","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
-        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T18:07:19Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
-  recorded_at: Mon, 29 Jul 2024 18:11:02 GMT
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T18:07:19Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_dc18fb938f184bfd8f345d7fb1469130","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T21:45:16Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_06004d67f8294a73b2a21b62d5a2e3d6","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T21:50:35Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_b760795a35e24bfc803b51b29cca0d7e","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T21:59:34Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_a2e569dd62f14b75b2f8c84aa62ded62","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T22:03:04Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_85480046d6514ea3863eb950fbea392e","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-07-29T22:04:22Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_89583592d7914082b3b61fdf9230db38","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"8005550100","verified":true,"created_at":"2024-08-01T17:06:15Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
+  recorded_at: Fri, 14 Feb 2025 18:04:18 GMT
 - request:
-    method: get
-    uri: https://api.easypost.com/v2/users/user_0f6b83e3530b401cb1e8aeaa6a250d4d/brand?brand=%7B:color=%3E%22%23123456%22%7D
+    method: patch
+    uri: https://api.easypost.com/v2/users/user_0f6b83e3530b401cb1e8aeaa6a250d4d/brand
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"brand":{"color":"#123456"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -108,7 +114,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - d044fa7466a7db37e799e566005a63f6
+      - 16a5647e67af85a2e787377d005383ac
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -118,22 +124,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.090249'
+      - '0.101178'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb33nuq
+      - bigweb54nuq
       X-Version-Label:
-      - easypost-202407291746-57ea285141-master
+      - easypost-202502132348-e5a3dc472b-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq fa152d4755
-      - intlb4nuq c0f5e722d1
+      - extlb2nuq 99aac35317
+      - intlb4nuq 51d74985a2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: '{"ad":null,"ad_href":null,"background_color":null,"color":"#123456","id":"brd_136abcc3c9de49fcb1a0e963f26fdcac","logo":"https://assets.easypost.com/assets/images/branding/easypost-primary-logo.7324aa54b64b34d6cd70ca5ba4d1842d.svg","logo_href":"https://www.easypost.com","name":"EasyPost","object":"Brand","theme":"theme1","user_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d"}'
-  recorded_at: Mon, 29 Jul 2024 18:11:03 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Fri, 14 Feb 2025 18:04:18 GMT
+recorded_with: VCR 6.2.0

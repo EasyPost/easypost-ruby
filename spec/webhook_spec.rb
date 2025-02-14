@@ -9,6 +9,7 @@ describe EasyPost::Services::Webhook do
     it 'creates a webhook' do
       webhook = client.webhook.create(
         url: Fixture.webhook_url,
+        webhook_secret: Fixture.webhook_secret,
       )
 
       expect(webhook).to be_an_instance_of(EasyPost::Models::Webhook)
@@ -55,7 +56,7 @@ describe EasyPost::Services::Webhook do
         url: Fixture.webhook_url,
       )
 
-      updated_webhook = client.webhook.update(webhook.id)
+      updated_webhook = client.webhook.update(webhook.id, { webhook_secret: Fixture.webhook_secret })
 
       expect(updated_webhook).to be_an_instance_of(EasyPost::Models::Webhook)
 

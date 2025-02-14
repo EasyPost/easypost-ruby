@@ -71,7 +71,7 @@ describe EasyPost::Services::User, :authenticate_prod do
 
       brand = client.user.update_brand(
         user.id,
-        color: color,
+        { color: color },
       )
 
       expect(brand).to be_an_instance_of(EasyPost::Models::Brand)
