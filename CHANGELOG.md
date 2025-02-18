@@ -1,7 +1,8 @@
 # CHANGELOG
 
-## Next Release
+## Next Release (minor)
 
+- Adds Ruby 3.4 support
 - Fixes the update webhook function to wrap parameters in the request correctly
 - Corrects the HTTP verb for updating a brand from `GET` to `PATCH`
 - Removes the deprecated `create_list` tracker endpoint function as it is no longer available via API
