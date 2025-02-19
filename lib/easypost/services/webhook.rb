@@ -27,8 +27,7 @@ class EasyPost::Services::Webhook < EasyPost::Services::Service
 
   # Update a Webhook.
   def update(id, params = {})
-    wrapped_params = { webhook: params }
-    response = @client.make_request(:patch, "webhooks/#{id}", wrapped_params)
+    response = @client.make_request(:patch, "webhooks/#{id}", params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end

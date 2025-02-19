@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.easypost.com/v2/webhooks
     body:
       encoding: UTF-8
-      string: '{"webhook":{"url":"http://example.com","webhook_secret":"sécret"}}'
+      string: '{"webhook":{"url":"http://example.com","webhook_secret":"sécret","custom_headers":[{"name":"test","value":"header"}]}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 16a5647c67af849de787335600520fe2
+      - 4b64bb4d67b62818e2b8ff700009ab69
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,27 +45,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.232766'
+      - '0.426072'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb53nuq
+      - bigweb36nuq
       X-Version-Label:
-      - easypost-202502132348-e5a3dc472b-master
+      - easypost-202502191732-9cdc8ea15b-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 99aac35317
-      - intlb4nuq 51d74985a2
+      - extlb1nuq 99aac35317
+      - intlb3nuq 51d74985a2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"hook_8038e780eafd11efbce95b419fc17a54","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2025-02-14T17:59:57Z","disabled_at":null}'
-  recorded_at: Fri, 14 Feb 2025 17:59:57 GMT
+      string: '{"id":"hook_78e7a450eef211ef927d05e2cbdc7978","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2025-02-19T18:51:05Z","disabled_at":null,"custom_headers":[{"name":"test","value":"header"}]}'
+  recorded_at: Wed, 19 Feb 2025 18:51:05 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/webhooks/hook_8038e780eafd11efbce95b419fc17a54
+    uri: https://api.easypost.com/v2/webhooks/hook_78e7a450eef211ef927d05e2cbdc7978
     body:
       encoding: US-ASCII
       string: ''
@@ -98,7 +98,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 16a5648067af849de787335800521065
+      - 3c3ed33267b62819e2b8ff720008eb31
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -108,24 +108,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.285611'
+      - '0.241701'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb32nuq
+      - bigweb33nuq
       X-Version-Label:
-      - easypost-202502132348-e5a3dc472b-master
+      - easypost-202502191732-9cdc8ea15b-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
       - extlb2nuq 99aac35317
-      - intlb4nuq 51d74985a2
+      - intlb3nuq 51d74985a2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: "{}"
-  recorded_at: Fri, 14 Feb 2025 17:59:57 GMT
+  recorded_at: Wed, 19 Feb 2025 18:51:05 GMT
 recorded_with: VCR 6.2.0

@@ -10,11 +10,14 @@ describe EasyPost::Services::Webhook do
       webhook = client.webhook.create(
         url: Fixture.webhook_url,
         webhook_secret: Fixture.webhook_secret,
+        custom_headers: Fixture.webhook_custom_headers,
       )
 
       expect(webhook).to be_an_instance_of(EasyPost::Models::Webhook)
       expect(webhook.id).to match('hook_')
       expect(webhook.url).to eq(Fixture.webhook_url)
+      expect(webhook.custom_headers[0].name).to eq('test')
+      expect(webhook.custom_headers[0].value).to eq('header')
 
       # Remove the webhook once we have tested it so we don't pollute the account with test webhooks
       client.webhook.delete(webhook.id)
@@ -56,9 +59,14 @@ describe EasyPost::Services::Webhook do
         url: Fixture.webhook_url,
       )
 
-      updated_webhook = client.webhook.update(webhook.id, { webhook_secret: Fixture.webhook_secret })
+      updated_webhook = client.webhook.update(webhook.id, { 
+        webhook_secret: Fixture.webhook_secret, 
+        custom_headers: Fixture.webhook_custom_headers, 
+      })
 
       expect(updated_webhook).to be_an_instance_of(EasyPost::Models::Webhook)
+      expect(updated_webhook.custom_headers[0].name).to eq('test')
+      expect(updated_webhook.custom_headers[0].value).to eq('header')
 
       client.webhook.delete(webhook.id) # Remove the webhook once we have tested it so we don't pollute the account with test webhooks
     end

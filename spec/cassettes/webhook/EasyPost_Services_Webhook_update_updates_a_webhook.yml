@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 16a5647c67af849ee787335a00521121
+      - 4b64bb5067b6283ae2b8ffd60009d020
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,32 +45,30 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.140076'
+      - '0.109819'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb43nuq
+      - bigweb35nuq
       X-Version-Label:
-      - easypost-202502132348-e5a3dc472b-master
+      - easypost-202502191732-9cdc8ea15b-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb2nuq 99aac35317
+      - extlb1nuq 99aac35317
       - intlb3nuq 51d74985a2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"hook_80d0ee36eafd11efae1e2df6b01b5351","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2025-02-14T17:59:58Z","disabled_at":null}'
-  recorded_at: Fri, 14 Feb 2025 17:59:58 GMT
+      string: '{"id":"hook_8cbab03aeef211efabe53931f5ecc7b8","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2025-02-19T18:51:38Z","disabled_at":null,"custom_headers":[]}'
+  recorded_at: Wed, 19 Feb 2025 18:51:38 GMT
 - request:
     method: patch
-    uri: https://api.easypost.com/v2/webhooks/hook_80d0ee36eafd11efae1e2df6b01b5351
+    uri: https://api.easypost.com/v2/webhooks/hook_8cbab03aeef211efabe53931f5ecc7b8
     body:
       encoding: UTF-8
-      string: '{"webhook":{"webhook_secret":"sécret"}}'
+      string: '{"webhook_secret":"sécret","custom_headers":[{"name":"test","value":"header"}]}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -100,7 +98,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 16a5647e67af849ee787335c00521197
+      - 4b64bb5067b6283ae2b8ffd90009d056
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -110,27 +108,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.444654'
+      - '0.609185'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb36nuq
+      - bigweb58nuq
       X-Version-Label:
-      - easypost-202502132348-e5a3dc472b-master
+      - easypost-202502191732-9cdc8ea15b-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 99aac35317
+      - extlb1nuq 99aac35317
       - intlb4nuq 51d74985a2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"hook_80d0ee36eafd11efae1e2df6b01b5351","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2025-02-14T17:59:58Z","disabled_at":null}'
-  recorded_at: Fri, 14 Feb 2025 17:59:58 GMT
+      string: '{"id":"hook_8cbab03aeef211efabe53931f5ecc7b8","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2025-02-19T18:51:38Z","disabled_at":null,"custom_headers":[{"name":"test","value":"header"}]}'
+  recorded_at: Wed, 19 Feb 2025 18:51:38 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/webhooks/hook_80d0ee36eafd11efae1e2df6b01b5351
+    uri: https://api.easypost.com/v2/webhooks/hook_8cbab03aeef211efabe53931f5ecc7b8
     body:
       encoding: US-ASCII
       string: ''
@@ -163,7 +161,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - 16a5647e67af849fe787335e00521258
+      - 4b64bb4e67b6283be2b8ffdc0009d11a
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -173,22 +171,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.309618'
+      - '0.304757'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb42nuq
+      - bigweb33nuq
       X-Version-Label:
-      - easypost-202502132348-e5a3dc472b-master
+      - easypost-202502191732-9cdc8ea15b-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb2nuq 99aac35317
+      - extlb1nuq 99aac35317
       - intlb3nuq 51d74985a2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: "{}"
-  recorded_at: Fri, 14 Feb 2025 17:59:59 GMT
+  recorded_at: Wed, 19 Feb 2025 18:51:39 GMT
 recorded_with: VCR 6.2.0

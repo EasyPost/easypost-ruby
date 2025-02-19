@@ -129,15 +129,19 @@ class Fixture
   end
 
   def self.webhook_hmac_signature
-    read_fixture_data['webhook_hmac_signature']
+    read_fixture_data['webhooks']['hmac_signature']
   end
 
   def self.webhook_secret
-    read_fixture_data['webhook_secret']
+    read_fixture_data['webhooks']['secret']
   end
 
   def self.webhook_url
-    read_fixture_data['webhook_url']
+    read_fixture_data['webhooks']['url']
+  end
+
+  def self.webhook_custom_headers
+    read_fixture_data['webhooks']['custom_headers']
   end
 
   # The credit card details below are for a valid proxy card usable
