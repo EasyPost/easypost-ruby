@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.6'
 
   spec.add_development_dependency 'abbrev', '~> 0.1'
+  spec.add_development_dependency 'benchmark', '~> 0.4'
   spec.add_development_dependency 'bigdecimal', '~> 3'
   spec.add_development_dependency 'brakeman', '~> 5.4'
   spec.add_development_dependency 'faraday', '~> 2.7.5' # used for integration tests

@@ -59,10 +59,12 @@ describe EasyPost::Services::Webhook do
         url: Fixture.webhook_url,
       )
 
-      updated_webhook = client.webhook.update(webhook.id, { 
-        webhook_secret: Fixture.webhook_secret, 
-        custom_headers: Fixture.webhook_custom_headers, 
-      })
+      updated_webhook = client.webhook.update(
+        webhook.id, {
+          webhook_secret: Fixture.webhook_secret,
+          custom_headers: Fixture.webhook_custom_headers,
+        },
+      )
 
       expect(updated_webhook).to be_an_instance_of(EasyPost::Models::Webhook)
       expect(updated_webhook.custom_headers[0].name).to eq('test')
