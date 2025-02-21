@@ -4,40 +4,59 @@ require 'spec_helper'
 
 describe EasyPost::Errors do
   let(:client) { EasyPost::Client.new(api_key: ENV['EASYPOST_TEST_API_KEY']) }
-  let(:fake_client) { EasyPost::Client.new(api_key: 'not_a_real_key') }
 
   describe 'api error' do
-    it 'raised when API returns error' do
-      expect {
-        fake_client.address.create({})
-      }.to raise_error(EasyPost::Errors::ApiError)
+    it 'assigns properties of an error correctly' do
+      begin
+        client.shipment.create({})
+      rescue EasyPost::Errors::ApiError => e
+        expect(e.status_code).to eq(422)
+        expect(e.code).to eq('PARAMETER.REQUIRED')
+        expect(e.message).to eq('Missing required parameter.')
+        expect(e.errors.first).to eq({"field" => "shipment", "message" => "cannot be blank"})
+      end
     end
 
-    it 'deserialize HTTP error response properly' do
-      # bad request
-      address = client.address.create(street1: 'invalid')
-      client.address.verify(address.id)
-    rescue EasyPost::Errors::InvalidRequestError => e
-      # should construct an InvalidRequestError object correctly
-      expect(e.message).to eq('Unable to verify address.')
-      expect(e.code).to eq('ADDRESS.VERIFY.FAILURE')
-      expect(e.errors).to be_a(Array)
-      expect(e.errors).not_to be_empty
-      first_error = e.errors.first
-      expect(first_error).to be_a(EasyPost::Models::Error)
-      expect(first_error.field).not_to be_nil
-      expect(first_error.code).not_to be_nil
-      expect(first_error.message).not_to be_nil
+    it 'assigns properties of an error correctly when returned via the alternative format' do
+      claim_data = { tracking_code: '123' } # Intentionally pass a bad tracking code
+
+      begin
+        client.claim.create(claim_data)
+      rescue EasyPost::Errors::ApiError => e
+        expect(e.status_code).to eq(404)
+        expect(e.code).to eq('NOT_FOUND')
+        expect(e.message).to eq('The requested resource could not be found.')
+        expect(e.errors.first).to eq('No eligible insurance found with provided tracking code.')
+      end
     end
 
-    it 'pretty prints properly' do
-      # bad request
-      address = client.address.create(street1: 'invalid')
-      client.address.verify(address.id)
-    rescue EasyPost::Errors::InvalidRequestError => e
-      expect(e.pretty_print).to be_a(String)
-      expect(e.pretty_print).not_to be_empty
-      expect(e.pretty_print).to include('Unable to verify address.')
+    it 'concatenates error messages that are a list' do
+      error = EasyPost::Errors::ApiError.new(message: ['Error1', 'Error2'])
+
+      expect(error.message).to eq('Error1, Error2')
+    end
+
+    it 'concatenates error messages that are a dict' do
+      message_data = { 'errors' => ['Bad format 1', 'Bad format 2'] }
+      error = EasyPost::Errors::ApiError.new(message: message_data)
+
+      expect(error.message).to eq('Bad format 1, Bad format 2')
+    end
+
+    it 'concatenates error messages that have an invalid format' do
+      message_data = {
+        'errors' => ['Bad format 1', 'Bad format 2'],
+        'bad_data' => [
+          {
+            'first_message' => 'Bad format 3',
+            'second_message' => 'Bad format 4',
+            'third_message' => 'Bad format 5'
+          }
+        ]
+      }
+      error = EasyPost::Errors::ApiError.new(message: message_data)
+
+      expect(error.message).to eq('Bad format 1, Bad format 2, Bad format 3, Bad format 4, Bad format 5')
     end
   end
 end

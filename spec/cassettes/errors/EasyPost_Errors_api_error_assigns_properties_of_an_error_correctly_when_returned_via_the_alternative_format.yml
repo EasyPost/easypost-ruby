@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.easypost.com/v2/addresses
+    uri: https://api.easypost.com/v2/claims
     body:
       encoding: UTF-8
-      string: "{}"
+      string: '{"tracking_code":"123"}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -19,8 +19,8 @@ http_interactions:
       Authorization: "<REDACTED>"
   response:
     status:
-      code: 403
-      message: Forbidden
+      code: 404
+      message: Not Found
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -35,27 +35,34 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - d044fa7b66a7da85e799dcc00059a941
+      - 764a527967b8f96ce2ba1cdb0039a535
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.010842'
+      - '0.135492'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb36nuq
+      - bigweb40nuq
       X-Version-Label:
-      - easypost-202407291746-57ea285141-master
+      - easypost-202502212131-cc7bde76a5-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq fa152d4755
-      - intlb4nuq c0f5e722d1
+      - extlb1nuq 99aac35317
+      - intlb3nuq 51d74985a2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"error":{"code":"APIKEY.INACTIVE","message":"This api key is no longer
-        active. Please use a different api key or reactivate this key.","errors":[]}}'
-  recorded_at: Mon, 29 Jul 2024 18:08:05 GMT
-recorded_with: VCR 6.1.0
+      string: '{"error":{"code":"NOT_FOUND","errors":["No eligible insurance found
+        with provided tracking code."],"message":"The requested resource could not
+        be found."}}'
+  recorded_at: Fri, 21 Feb 2025 22:08:44 GMT
+recorded_with: VCR 6.2.0

@@ -2,20 +2,10 @@
 
 # EasyPost Error object.
 class EasyPost::Models::Error
-  attr_reader :code, :field, :message
+  attr_reader :message
 
   # Initialize a new EasyPost Error
-  def initialize(code, field = nil, message = nil)
-    @code = code
-    @field = field
+  def initialize(message = nil)
     @message = message
-  end
-
-  # Create an EasyPost Error from an API error response.
-  def self.from_api_error_response(data)
-    code = data['code']
-    field = data['field'] || nil
-    message = data['message'] || nil
-    EasyPost::Models::Error.new(code, field, message)
   end
 end
