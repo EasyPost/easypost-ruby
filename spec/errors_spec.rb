@@ -7,14 +7,12 @@ describe EasyPost::Errors do
 
   describe 'api error' do
     it 'assigns properties of an error correctly' do
-      begin
-        client.shipment.create({})
-      rescue EasyPost::Errors::ApiError => e
-        expect(e.status_code).to eq(422)
-        expect(e.code).to eq('PARAMETER.REQUIRED')
-        expect(e.message).to eq('Missing required parameter.')
-        expect(e.errors.first).to eq({"field" => "shipment", "message" => "cannot be blank"})
-      end
+      client.shipment.create({})
+    rescue EasyPost::Errors::ApiError => e
+      expect(e.status_code).to eq(422)
+      expect(e.code).to eq('PARAMETER.REQUIRED')
+      expect(e.message).to eq('Missing required parameter.')
+      expect(e.errors.first).to eq({ 'field' => 'shipment', 'message' => 'cannot be blank' })
     end
 
     it 'assigns properties of an error correctly when returned via the alternative format' do
@@ -31,7 +29,7 @@ describe EasyPost::Errors do
     end
 
     it 'concatenates error messages that are a list' do
-      error = EasyPost::Errors::ApiError.new(message: ['Error1', 'Error2'])
+      error = EasyPost::Errors::ApiError.new(message: %w[Error1 Error2])
 
       expect(error.message).to eq('Error1, Error2')
     end
@@ -50,9 +48,9 @@ describe EasyPost::Errors do
           {
             'first_message' => 'Bad format 3',
             'second_message' => 'Bad format 4',
-            'third_message' => 'Bad format 5'
-          }
-        ]
+            'third_message' => 'Bad format 5',
+          },
+        ],
       }
       error = EasyPost::Errors::ApiError.new(message: message_data)
 
