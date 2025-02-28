@@ -28,7 +28,23 @@ describe EasyPost::Services::Address do
       address = client.address.create(address_data)
 
       expect(address).to be_an_instance_of(EasyPost::Models::Address)
+
+      # Delivery verification assertions
       expect(address.verifications.delivery.success).to be false
+      # TODO: details is not deserializing correctly, related to the larger "double EasyPostObject" wrapping issue
+      # expect(address.verifications.delivery.details).to be_empty
+      expect(address.verifications.delivery.errors[0].code).to eq('E.ADDRESS.NOT_FOUND')
+      expect(address.verifications.delivery.errors[0].field).to eq('address')
+      expect(address.verifications.delivery.errors[0].suggestion).to be nil
+      expect(address.verifications.delivery.errors[0].message).to eq('Address not found')
+  
+      # Zip4 verification assertions
+      expect(address.verifications.zip4.success).to be false
+      expect(address.verifications.zip4.details).to be nil
+      expect(address.verifications.zip4.errors[0].code).to eq('E.ADDRESS.NOT_FOUND')
+      expect(address.verifications.zip4.errors[0].field).to eq('address')
+      expect(address.verifications.zip4.errors[0].suggestion).to be nil
+      expect(address.verifications.zip4.errors[0].message).to eq('Address not found')
     end
 
     it 'creates an address with verify_strict param' do
