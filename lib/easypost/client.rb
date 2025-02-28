@@ -76,7 +76,7 @@ class EasyPost::Client
   # @param endpoint [String] URI path of the resource
   # @param params [Object] (nil) object to be used as the request parameters
   # @param api_version [String] the version of API to hit
-  # @raise [EasyPost::Error] if the response has a non-2xx status code
+  # @raise [EasyPost::Errors::EasyPostError] if the response has a non-2xx status code
   # @return [Hash] JSON object parsed from the response body
   def make_request(
     method,

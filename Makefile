@@ -21,7 +21,7 @@ docs:
 	bundle exec rdoc lib -o docs --title "EasyPost Ruby Docs"
 
 ## install-styleguide - Import the style guides (Unix only)
-install-styleguide: | update-examples-submodule
+install-styleguide: | init-examples-submodule
 	sh examples/symlink_directory_files.sh examples/style_guides/ruby .
 
 ## init-examples-submodule - Initialize the examples submodule

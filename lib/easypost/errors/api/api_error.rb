@@ -4,10 +4,13 @@ require_relative '../easy_post_error'
 require 'easypost/constants'
 
 class EasyPost::Errors::ApiError < EasyPost::Errors::EasyPostError
-  attr_reader :status_code, :code, :errors
+  attr_reader :message, :status_code, :code, :errors
 
   def initialize(message, status_code = nil, error_code = nil, sub_errors = nil)
     super message
+    message_list = []
+    EasyPost::Errors::ApiError.collect_error_messages(message, message_list)
+    @message = message_list.join(', ')
     @status_code = status_code
     @code = error_code
     @errors = sub_errors
@@ -46,12 +49,9 @@ class EasyPost::Errors::ApiError < EasyPost::Errors::EasyPostError
     # Try to parse the response body as JSON
     begin
       error_data = JSON.parse(response.body)['error']
-
       error_message = error_data['message']
       error_type = error_data['code']
-      errors = error_data['errors']&.map do |error|
-        EasyPost::Models::Error.from_api_error_response(error)
-      end
+      errors = error_data['errors']
     rescue StandardError
       error_message = response.code.to_s
       error_type = EasyPost::Constants::API_ERROR_DETAILS_PARSING_ERROR

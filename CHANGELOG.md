@@ -3,6 +3,10 @@
 ## Next Release (minor)
 
 - Adds Ruby 3.4 support
+- Fixes error parsing
+  - Allows for alternative format of `errors` field
+  - Corrects available properties of an `EasyPostError` and `ApiError` (`code` and `field` removed from `EasyPostError`, `message` unfurled and explicitly added to `ApiError`)
+  - Removes unused `Error` model
 - Corrects the HTTP verb for updating a brand from `GET` to `PATCH`
 - Removes the deprecated `create_list` tracker endpoint function as it is no longer available via API
 

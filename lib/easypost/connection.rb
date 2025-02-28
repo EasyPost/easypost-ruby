@@ -7,7 +7,7 @@ EasyPost::Connection = Struct.new(:uri, :config, keyword_init: true) do
   # @param path [String] URI path of the resource
   # @param requested_api_key [String] ({EasyPost.api_key}) key set Authorization header.
   # @param body [String] (nil) body of the request
-  # @raise [EasyPost::Error] if the response has a non-2xx status code
+  # @raise [EasyPost::Errors::EasyPostError] if the response has a non-2xx status code
   # @return [Hash] JSON object parsed from the response body
   def call(method, path, api_key = nil, body = nil)
     raise EasyPost::Errors::MissingParameterError.new('api_key') if api_key.nil?
