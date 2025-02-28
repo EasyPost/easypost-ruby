@@ -144,6 +144,18 @@
         
         </div>
       </div>
+      <div id="attribute-i-message" class="method-detail anchor-link">
+        <div class="method-heading attribute-method-heading">
+          <a href="#attribute-i-message" title="Link to this attribute">
+            <span class="method-name">message</span>
+            <span class="attribute-access-type">[R]</span>
+          </a>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
       <div id="attribute-i-status_code" class="method-detail anchor-link">
         <div class="method-heading attribute-method-heading">
           <a href="#attribute-i-status_code" title="Link to this attribute">
@@ -182,7 +194,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="collect_error_messages-source">
-            <pre><span class="ruby-comment"># File lib/easypost/errors/api/api_error.rb, line 25</span>
+            <pre><span class="ruby-comment"># File lib/easypost/errors/api/api_error.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">collect_error_messages</span>(<span class="ruby-identifier">error_message</span>, <span class="ruby-identifier">messages_list</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">error_message</span>
   <span class="ruby-keyword">when</span> <span class="ruby-constant">Hash</span>
@@ -280,7 +292,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="handle_api_error-source">
-            <pre><span class="ruby-comment"># File lib/easypost/errors/api/api_error.rb, line 38</span>
+            <pre><span class="ruby-comment"># File lib/easypost/errors/api/api_error.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">handle_api_error</span>(<span class="ruby-identifier">response</span>)
   <span class="ruby-identifier">status_code</span> = <span class="ruby-identifier">response</span>.<span class="ruby-identifier">code</span>
   <span class="ruby-identifier">status_code</span> = <span class="ruby-identifier">status_code</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">status_code</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
@@ -292,12 +304,9 @@
   <span class="ruby-comment"># Try to parse the response body as JSON</span>
   <span class="ruby-keyword">begin</span>
     <span class="ruby-identifier">error_data</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span>)[<span class="ruby-string">&#39;error&#39;</span>]
-
     <span class="ruby-identifier">error_message</span> = <span class="ruby-identifier">error_data</span>[<span class="ruby-string">&#39;message&#39;</span>]
     <span class="ruby-identifier">error_type</span> = <span class="ruby-identifier">error_data</span>[<span class="ruby-string">&#39;code&#39;</span>]
-    <span class="ruby-identifier">errors</span> = <span class="ruby-identifier">error_data</span>[<span class="ruby-string">&#39;errors&#39;</span>]&amp;.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">error</span><span class="ruby-operator">|</span>
-      <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Models</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>.<span class="ruby-identifier">from_api_error_response</span>(<span class="ruby-identifier">error</span>)
-    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">errors</span> = <span class="ruby-identifier">error_data</span>[<span class="ruby-string">&#39;errors&#39;</span>]
   <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
     <span class="ruby-identifier">error_message</span> = <span class="ruby-identifier">response</span>.<span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_s</span>
     <span class="ruby-identifier">error_type</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">API_ERROR_DETAILS_PARSING_ERROR</span>
@@ -344,6 +353,9 @@
             <pre><span class="ruby-comment"># File lib/easypost/errors/api/api_error.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">status_code</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">error_code</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">sub_errors</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">super</span> <span class="ruby-identifier">message</span>
+  <span class="ruby-identifier">message_list</span> = []
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">ApiError</span>.<span class="ruby-identifier">collect_error_messages</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">message_list</span>)
+  <span class="ruby-ivar">@message</span> = <span class="ruby-identifier">message_list</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;, &#39;</span>)
   <span class="ruby-ivar">@status_code</span> = <span class="ruby-identifier">status_code</span>
   <span class="ruby-ivar">@code</span> = <span class="ruby-identifier">error_code</span>
   <span class="ruby-ivar">@errors</span> = <span class="ruby-identifier">sub_errors</span>
@@ -384,7 +396,7 @@
 
         <div class="method-description">
           <div class="method-source-code" id="pretty_print-source">
-            <pre><span class="ruby-comment"># File lib/easypost/errors/api/api_error.rb, line 16</span>
+            <pre><span class="ruby-comment"># File lib/easypost/errors/api/api_error.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pretty_print</span>
   <span class="ruby-identifier">error_string</span> = <span class="ruby-node">&quot;#{code} (#{status_code}): #{message}&quot;</span>
   <span class="ruby-identifier">errors</span>&amp;.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">error</span><span class="ruby-operator">|</span>
