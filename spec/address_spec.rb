@@ -37,7 +37,7 @@ describe EasyPost::Services::Address do
       expect(address.verifications.delivery.errors[0].field).to eq('address')
       expect(address.verifications.delivery.errors[0].suggestion).to be nil
       expect(address.verifications.delivery.errors[0].message).to eq('Address not found')
-  
+
       # Zip4 verification assertions
       expect(address.verifications.zip4.success).to be false
       expect(address.verifications.zip4.details).to be nil
