@@ -31,8 +31,7 @@ describe EasyPost::Services::Address do
 
       # Delivery verification assertions
       expect(address.verifications.delivery.success).to be false
-      # TODO: details is not deserializing correctly, related to the larger "double EasyPostObject" wrapping issue
-      # expect(address.verifications.delivery.details).to be_empty
+      expect(address.verifications.delivery.details.to_hash).to be_empty
       expect(address.verifications.delivery.errors[0].code).to eq('E.ADDRESS.NOT_FOUND')
       expect(address.verifications.delivery.errors[0].field).to eq('address')
       expect(address.verifications.delivery.errors[0].suggestion).to be nil
