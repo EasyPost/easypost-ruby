@@ -9,6 +9,7 @@
   - Removes unused `Error` model
 - Corrects the HTTP verb for updating a brand from `GET` to `PATCH`
 - Removes the deprecated `create_list` tracker endpoint function as it is no longer available via API
+- Removes deprecated `user.all_api_keys` and `user.api_keys`, use `api_key.all` and `api_key.retrieve_api_keys_for_user` respectively
 
 ## v6.4.1 (2024-08-09)
 
