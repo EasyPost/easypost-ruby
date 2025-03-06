@@ -13,8 +13,7 @@ clean:
 	rm -rf coverage doc *.gem dist
 
 ## coverage - Generate a test coverage report
-coverage:
-	make test
+coverage: test
 
 ## docs - Generate documentation for the library
 docs:

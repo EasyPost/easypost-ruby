@@ -39,38 +39,6 @@ class EasyPost::Services::User < EasyPost::Services::Service
     true
   end
 
-  # Retrieve a list of all ApiKey objects.
-  def all_api_keys
-    warn '[DEPRECATION] `all_api_keys` is deprecated. Please use `all` in the `api_key` service instead.'
-    response = @client.make_request(:get, 'api_keys')
-
-    EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::ApiKey)
-  end
-
-  # Retrieve a list of ApiKey objects (works for the authenticated user or a child user).
-  def api_keys(id)
-    warn '[DEPRECATION] `api_keys` is deprecated.
-Please use `retrieve_api_keys_for_user` in the `api_key` service instead.'
-
-    api_keys = all_api_keys
-
-    if api_keys.id == id
-      # This function was called on the authenticated user
-      my_api_keys = api_keys.keys
-    else
-      # This function was called on a child user (authenticated as parent, only return this child user's details).
-      my_api_keys = []
-      api_keys.children.each do |child|
-        if child.id == id
-          my_api_keys = child.keys
-          break
-        end
-      end
-    end
-
-    my_api_keys
-  end
-
   # Update the Brand of a User.
   def update_brand(id, params = {})
     wrapped_params = { brand: params }

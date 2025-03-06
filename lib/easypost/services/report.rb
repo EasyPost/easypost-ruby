@@ -6,7 +6,7 @@ class EasyPost::Services::Report < EasyPost::Services::Service
   # Create a Report
   def create(params = {})
     unless params[:type]
-      raise ArgumentError, "Missing 'type' parameter in params" # TODO: replace the error in the error-handling overhaul PR
+      raise EasyPost::Errors::MISSING_REQUIRED_PARAMETER.new('type')
     end
 
     type = params.delete(:type)
@@ -26,7 +26,7 @@ class EasyPost::Services::Report < EasyPost::Services::Service
   # Retrieve all Report objects
   def all(params = {})
     unless params[:type]
-      raise ArgumentError, "Missing 'type' parameter in params" # TODO: replace the error in the error-handling overhaul PR
+      raise EasyPost::Errors::MISSING_REQUIRED_PARAMETER.new('type')
     end
 
     type = params.delete(:type)
