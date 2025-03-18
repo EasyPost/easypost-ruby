@@ -43,7 +43,7 @@ class EasyPost::Services::BetaReferralCustomer < EasyPost::Services::Service
   end
 
   # Creates a client secret to use with Stripe when adding a credit card.
-  def create_credit_card_client_secret()
+  def create_credit_card_client_secret
     response = @client.make_request(:post, 'setup_intents', nil, 'beta')
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response)

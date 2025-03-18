@@ -81,10 +81,12 @@ describe EasyPost::Services::ReferralCustomer do
   describe '.add_credit_card' do
     it 'adds a credit card to a referral customer account' do
       # We override the VCR config here since it cannot match the URL due to data scrubbing
+      # rubocop:disable Layout/LineLength
       VCR.use_cassette(
         'referral_customer/EasyPost_Services_ReferralCustomer_add_credit_card_adds_a_credit_card_to_a_referral_customer_account',
         match_requests_on: [:method, :uri],
       ) do
+        # rubocop:enable Layout/LineLength
         credit_card = client.referral_customer.add_credit_card(
           REFERRAL_CUSTOMER_PROD_API_KEY,
           Fixture.credit_card_details['number'],
@@ -123,7 +125,9 @@ describe EasyPost::Services::ReferralCustomer do
           'pm_0Pn6bQDqT4huGUvd0CjpRerH',
           'primary',
         )
-      }.to raise_error(EasyPost::Errors::ApiError).with_message('Stripe::PaymentMethod does not exist for the specified reference_id')
+      }.to raise_error(EasyPost::Errors::ApiError).with_message(
+        'Stripe::PaymentMethod does not exist for the specified reference_id',
+      )
     end
   end
 
@@ -141,7 +145,9 @@ describe EasyPost::Services::ReferralCustomer do
           },
           'primary',
         )
-      }.to raise_error(EasyPost::Errors::ApiError).with_message('account_holder_name must be present when creating a Financial Connections payment method')
+      }.to raise_error(EasyPost::Errors::ApiError).with_message(
+        'account_holder_name must be present when creating a Financial Connections payment method',
+      )
     end
   end
 end
