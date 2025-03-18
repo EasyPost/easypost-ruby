@@ -82,7 +82,7 @@ describe EasyPost::Services::ReferralCustomer do
     it 'adds a credit card to a referral customer account' do
       # We override the VCR config here since it cannot match the URL due to data scrubbing
       VCR.use_cassette(
-        'referral/EasyPost_Services_ReferralCustomer_add_credit_card_adds_a_credit_card_to_a_referral_customer_account',
+        'referral_customer/EasyPost_Services_ReferralCustomer_add_credit_card_adds_a_credit_card_to_a_referral_customer_account',
         match_requests_on: [:method, :uri],
       ) do
         credit_card = client.referral_customer.add_credit_card(
@@ -112,5 +112,36 @@ describe EasyPost::Services::ReferralCustomer do
         Fixture.credit_card_details['cvc'],
       )
     }.to raise_error(StandardError).with_message('Could not send card details to Stripe, please try again later.')
+  end
+
+  describe '.add_credit_card_from_stripe' do
+    it 'raises an error when adding a credit card from Stripe fails' do
+      # This test requires a referral customer's production API key via REFERRAL_CUSTOMER_PROD_API_KEY.
+      expect {
+        client.referral_customer.add_credit_card_from_stripe(
+          REFERRAL_CUSTOMER_PROD_API_KEY,
+          'pm_0Pn6bQDqT4huGUvd0CjpRerH',
+          'primary',
+        )
+      }.to raise_error(EasyPost::Errors::ApiError).with_message('Stripe::PaymentMethod does not exist for the specified reference_id')
+    end
+  end
+
+  describe '.add_bank_account_from_stripe' do
+    it 'raises an error when adding a bank account from Stripe fails' do
+      # This test requires a referral customer's production API key via REFERRAL_CUSTOMER_PROD_API_KEY.
+      expect {
+        client.referral_customer.add_bank_account_from_stripe(
+          REFERRAL_CUSTOMER_PROD_API_KEY,
+          'fca_0QAc7sDqT4huGUvdf6BahYa9',
+          {
+            ip_address: '127.0.0.1',
+            user_agent: 'Mozilla/5.0',
+            accepted_at: 1_722_510_730,
+          },
+          'primary',
+        )
+      }.to raise_error(EasyPost::Errors::ApiError).with_message('account_holder_name must be present when creating a Financial Connections payment method')
+    end
   end
 end
