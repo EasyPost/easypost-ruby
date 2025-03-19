@@ -122,8 +122,8 @@ describe EasyPost::Services::ReferralCustomer do
       expect {
         client.referral_customer.add_credit_card_from_stripe(
           REFERRAL_CUSTOMER_PROD_API_KEY,
-          'pm_0Pn6bQDqT4huGUvd0CjpRerH',
-          'primary',
+          Fixture.billing['payment_method_id'],
+          Fixture.billing['priority'],
         )
       }.to raise_error(EasyPost::Errors::ApiError).with_message(
         'Stripe::PaymentMethod does not exist for the specified reference_id',
@@ -137,13 +137,9 @@ describe EasyPost::Services::ReferralCustomer do
       expect {
         client.referral_customer.add_bank_account_from_stripe(
           REFERRAL_CUSTOMER_PROD_API_KEY,
-          'fca_0QAc7sDqT4huGUvdf6BahYa9',
-          {
-            ip_address: '127.0.0.1',
-            user_agent: 'Mozilla/5.0',
-            accepted_at: 1_722_510_730,
-          },
-          'primary',
+          Fixture.billing['financial_connections_id'],
+          Fixture.billing['mandate_data'],
+          Fixture.billing['priority'],
         )
       }.to raise_error(EasyPost::Errors::ApiError).with_message(
         'account_holder_name must be present when creating a Financial Connections payment method',
