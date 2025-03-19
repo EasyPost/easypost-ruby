@@ -15,7 +15,7 @@ describe EasyPost::Services::Billing do
                                                          },
                                              )
       allow(client).to receive(:make_request).with(:post, '/credit_cards/pm_123/charges', { amount: '2000' })
-      credit_card = client.billing.fund_wallet('2000', 'primary')
+      credit_card = client.billing.fund_wallet('2000', Fixture.billing['priority'])
 
       expect(credit_card).to eq(true)
     end
@@ -32,7 +32,7 @@ describe EasyPost::Services::Billing do
                                              )
       allow(client).to receive(:make_request).with(:delete, '/credit_cards/pm_123')
 
-      deleted_credit_card = client.billing.delete_payment_method('primary')
+      deleted_credit_card = client.billing.delete_payment_method(Fixture.billing['priority'])
 
       expect(deleted_credit_card).to eq(true)
     end
@@ -55,7 +55,7 @@ describe EasyPost::Services::Billing do
       # will pass if get_payment_method_info returns ['credit_cards', 'pm_123'], fail otherwise
       allow(client).to receive(:make_request).with(:delete, '/credit_cards/pm_123')
 
-      deleted_credit_card = client.billing.delete_payment_method('primary')
+      deleted_credit_card = client.billing.delete_payment_method(Fixture.billing['priority'])
 
       expect(deleted_credit_card).to eq(true)
     end

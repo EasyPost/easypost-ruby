@@ -41,4 +41,19 @@ class EasyPost::Services::BetaReferralCustomer < EasyPost::Services::Service
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response)
   end
+
+  # Creates a client secret to use with Stripe when adding a credit card.
+  def create_credit_card_client_secret
+    response = @client.make_request(:post, 'setup_intents', nil, 'beta')
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response)
+  end
+
+  # Creates a client secret to use with Stripe when adding a bank account.
+  def create_bank_account_client_secret(return_url = nil)
+    params = return_url ? { return_url: return_url } : nil
+    response = @client.make_request(:post, 'financial_connections_sessions', params, 'beta')
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response)
+  end
 end

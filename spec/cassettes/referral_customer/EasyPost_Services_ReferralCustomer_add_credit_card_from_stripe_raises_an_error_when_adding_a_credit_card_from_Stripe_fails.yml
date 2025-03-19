@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/credit_cards
+    body:
+      encoding: UTF-8
+      string: '{"credit_card":{"payment_method_id":"pm_0Pn6bQDqT4huGUvd0CjpRerH","priority":"primary"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 3371ca1b67d9db2ce2ba06ef0029d923
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.431126'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb57nuq
+      X-Version-Label:
+      - easypost-202503181912-465deca9d7-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq 99aac35317
+      - intlb4nuq 324e75def6
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"CREDIT_CARD.NOT_FOUND","message":"Stripe::PaymentMethod
+        does not exist for the specified reference_id","errors":[]}}'
+  recorded_at: Tue, 18 Mar 2025 20:44:29 GMT
+recorded_with: VCR 6.3.1

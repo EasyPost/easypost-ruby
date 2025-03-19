@@ -39,4 +39,20 @@ describe EasyPost::Services::BetaReferralCustomer do
       )
     end
   end
+
+  describe '.create_credit_card_client_secret' do
+    it 'returns a client secret for credit cards' do
+      response = client.beta_referral_customer.create_credit_card_client_secret
+
+      expect(response.client_secret).to match('seti_')
+    end
+  end
+
+  describe '.create_bank_account_client_secret' do
+    it 'returns a client secret for bank accounts' do
+      response = client.beta_referral_customer.create_bank_account_client_secret
+
+      expect(response.client_secret).to match('fcsess_client_secret_')
+    end
+  end
 end

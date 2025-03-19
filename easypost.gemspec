@@ -29,8 +29,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'ostruct', '~> 0.6'
   spec.add_development_dependency 'rdoc', '~> 6.12'
   spec.add_development_dependency 'rspec', '~> 3.13'
-  spec.add_development_dependency 'rubocop', '= 1.73'
-  spec.add_development_dependency 'rubocop-rspec', '2.31' # can't upgrade to 3.0, requires easycop config changes
+  spec.add_development_dependency 'rubocop', '= 1.72' # TODO: v1.73 no longer packages certain plugins and will require changes
+  spec.add_development_dependency 'rubocop-rspec', '= 2.31' # can't upgrade to 3.0, requires easycop config changes
   spec.add_development_dependency 'simplecov', '~> 0.22'
   spec.add_development_dependency 'simplecov-lcov', '~> 0.8'
   spec.add_development_dependency 'typhoeus', '~> 1.4'

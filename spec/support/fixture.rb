@@ -168,4 +168,8 @@ class Fixture
   def self.basic_claim
     read_fixture_data['claims']['basic']
   end
+
+  def self.billing
+    read_fixture_data['billing']
+  end
 end

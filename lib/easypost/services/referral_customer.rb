@@ -40,7 +40,7 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
     all(params)
   end
 
-  # Add credit card to a referral customer. This function requires the ReferralCustomer Customer's API key.
+  # Add a credit card to EasyPost for a ReferralCustomer without needing a Stripe account. This function requires the ReferralCustomer User's API key.
   def add_credit_card(referral_api_key, number, expiration_month, expiration_year, cvc, priority = 'primary')
     easypost_stripe_api_key = retrieve_easypost_stripe_api_key
 
@@ -57,6 +57,41 @@ class EasyPost::Services::ReferralCustomer < EasyPost::Services::Service
     end
 
     create_easypost_credit_card(referral_api_key, stripe_credit_card_token, priority)
+  end
+
+  # Add a credit card to EasyPost for a ReferralCustomer with a payment method ID from Stripe. This function requires the ReferralCustomer User's API key.
+  def add_credit_card_from_stripe(referral_api_key, payment_method_id, priority = 'primary')
+    params = {
+      credit_card: {
+        payment_method_id: payment_method_id,
+        priority: priority,
+      },
+    }
+    referral_client = EasyPost::Client.new(api_key: referral_api_key)
+    response = referral_client.make_request(
+      :post,
+      'credit_cards',
+      params,
+    )
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response)
+  end
+
+  # Add a bank account to EasyPost for a ReferralCustomer. This function requires the ReferralCustomer User's API key.
+  def add_bank_account_from_stripe(referral_api_key, financial_connections_id, mandate_data, priority = 'primary')
+    params = {
+      financial_connections_id: financial_connections_id,
+      mandate_data: mandate_data,
+      priority: priority,
+    }
+    referral_client = EasyPost::Client.new(api_key: referral_api_key)
+    response = referral_client.make_request(
+      :post,
+      'bank_accounts',
+      params,
+    )
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response)
   end
 
   private
