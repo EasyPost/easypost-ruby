@@ -78,7 +78,9 @@
   <div class="nav-section">
     <h3>Instance Methods</h3>
     <ul class="link-list" role="directory">
+      <li ><a href="#method-i-add_bank_account_from_stripe">add_bank_account_from_stripe</a></li>
       <li ><a href="#method-i-add_credit_card">add_credit_card</a></li>
+      <li ><a href="#method-i-add_credit_card_from_stripe">add_credit_card_from_stripe</a></li>
       <li ><a href="#method-i-all">all</a></li>
       <li ><a href="#method-i-create">create</a></li>
       <li ><a href="#method-i-get_next_page">get_next_page</a></li>
@@ -115,6 +117,47 @@
        <header>
          <h3>Public Instance Methods</h3>
        </header>
+
+      <div id="method-i-add_bank_account_from_stripe" class="method-detail anchor-link ">
+        <div class="method-header">
+            <div class="method-heading">
+              <a href="#method-i-add_bank_account_from_stripe" title="Link to this method">
+                <span class="method-name">add_bank_account_from_stripe</span>
+                <span class="method-args">(referral_api_key, financial_connections_id, mandate_data, priority = &#39;primary&#39;)</span>
+              </a>
+            </div>
+        </div>
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+
+        <div class="method-description">
+          <div class="method-source-code" id="add_bank_account_from_stripe-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/referral_customer.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_bank_account_from_stripe</span>(<span class="ruby-identifier">referral_api_key</span>, <span class="ruby-identifier">financial_connections_id</span>, <span class="ruby-identifier">mandate_data</span>, <span class="ruby-identifier">priority</span> = <span class="ruby-string">&#39;primary&#39;</span>)
+  <span class="ruby-identifier">params</span> = {
+    <span class="ruby-value">financial_connections_id:</span> <span class="ruby-identifier">financial_connections_id</span>,
+    <span class="ruby-value">mandate_data:</span> <span class="ruby-identifier">mandate_data</span>,
+    <span class="ruby-value">priority:</span> <span class="ruby-identifier">priority</span>,
+  }
+  <span class="ruby-identifier">referral_client</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">api_key:</span> <span class="ruby-identifier">referral_api_key</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-identifier">referral_client</span>.<span class="ruby-identifier">make_request</span>(
+    <span class="ruby-value">:post</span>,
+    <span class="ruby-string">&#39;bank_accounts&#39;</span>,
+    <span class="ruby-identifier">params</span>,
+  )
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          <p>Add a bank account to <a href="../../EasyPost.html"><code>EasyPost</code></a> for a <a href="ReferralCustomer.html"><code>ReferralCustomer</code></a>. This function requires the <a href="ReferralCustomer.html"><code>ReferralCustomer</code></a> User’s API key.</p>
+        </div>
+
+
+      </div>
 
       <div id="method-i-add_credit_card" class="method-detail anchor-link ">
         <div class="method-header">
@@ -153,7 +196,49 @@
   <span class="ruby-identifier">create_easypost_credit_card</span>(<span class="ruby-identifier">referral_api_key</span>, <span class="ruby-identifier">stripe_credit_card_token</span>, <span class="ruby-identifier">priority</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
-          <p>Add credit card to a referral customer. This function requires the <a href="ReferralCustomer.html"><code>ReferralCustomer</code></a> Customer’s API key.</p>
+          <p>Add a credit card to <a href="../../EasyPost.html"><code>EasyPost</code></a> for a <a href="ReferralCustomer.html"><code>ReferralCustomer</code></a> without needing a Stripe account. This function requires the <a href="ReferralCustomer.html"><code>ReferralCustomer</code></a> User’s API key.</p>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-add_credit_card_from_stripe" class="method-detail anchor-link ">
+        <div class="method-header">
+            <div class="method-heading">
+              <a href="#method-i-add_credit_card_from_stripe" title="Link to this method">
+                <span class="method-name">add_credit_card_from_stripe</span>
+                <span class="method-args">(referral_api_key, payment_method_id, priority = &#39;primary&#39;)</span>
+              </a>
+            </div>
+        </div>
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+
+        <div class="method-description">
+          <div class="method-source-code" id="add_credit_card_from_stripe-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/referral_customer.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_credit_card_from_stripe</span>(<span class="ruby-identifier">referral_api_key</span>, <span class="ruby-identifier">payment_method_id</span>, <span class="ruby-identifier">priority</span> = <span class="ruby-string">&#39;primary&#39;</span>)
+  <span class="ruby-identifier">params</span> = {
+    <span class="ruby-value">credit_card:</span> {
+      <span class="ruby-value">payment_method_id:</span> <span class="ruby-identifier">payment_method_id</span>,
+      <span class="ruby-value">priority:</span> <span class="ruby-identifier">priority</span>,
+    },
+  }
+  <span class="ruby-identifier">referral_client</span> = <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">api_key:</span> <span class="ruby-identifier">referral_api_key</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-identifier">referral_client</span>.<span class="ruby-identifier">make_request</span>(
+    <span class="ruby-value">:post</span>,
+    <span class="ruby-string">&#39;credit_cards&#39;</span>,
+    <span class="ruby-identifier">params</span>,
+  )
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          <p>Add a credit card to <a href="../../EasyPost.html"><code>EasyPost</code></a> for a <a href="ReferralCustomer.html"><code>ReferralCustomer</code></a> with a payment method ID from Stripe. This function requires the <a href="ReferralCustomer.html"><code>ReferralCustomer</code></a> User’s API key.</p>
         </div>
 
 

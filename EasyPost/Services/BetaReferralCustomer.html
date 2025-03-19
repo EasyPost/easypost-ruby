@@ -79,6 +79,8 @@
     <h3>Instance Methods</h3>
     <ul class="link-list" role="directory">
       <li ><a href="#method-i-add_payment_method">add_payment_method</a></li>
+      <li ><a href="#method-i-create_bank_account_client_secret">create_bank_account_client_secret</a></li>
+      <li ><a href="#method-i-create_credit_card_client_secret">create_credit_card_client_secret</a></li>
       <li ><a href="#method-i-refund_by_amount">refund_by_amount</a></li>
       <li ><a href="#method-i-refund_by_payment_log">refund_by_payment_log</a></li>
     </ul>
@@ -152,6 +154,69 @@
 <span class="ruby-keyword">end</span></pre>
           </div>
           <p>Add a Stripe payment method to a ReferralCustomer Customer. This function requires the ReferralCustomer Customer’s API key.</p>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-create_bank_account_client_secret" class="method-detail anchor-link ">
+        <div class="method-header">
+            <div class="method-heading">
+              <a href="#method-i-create_bank_account_client_secret" title="Link to this method">
+                <span class="method-name">create_bank_account_client_secret</span>
+                <span class="method-args">(return_url = nil)</span>
+              </a>
+            </div>
+        </div>
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+
+        <div class="method-description">
+          <div class="method-source-code" id="create_bank_account_client_secret-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/beta_referral_customer.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_bank_account_client_secret</span>(<span class="ruby-identifier">return_url</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">params</span> = <span class="ruby-identifier">return_url</span> <span class="ruby-operator">?</span> { <span class="ruby-value">return_url:</span> <span class="ruby-identifier">return_url</span> } <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;financial_connections_sessions&#39;</span>, <span class="ruby-identifier">params</span>, <span class="ruby-string">&#39;beta&#39;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          <p>Creates a client secret to use with Stripe when adding a bank account.</p>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-create_credit_card_client_secret" class="method-detail anchor-link ">
+        <div class="method-header">
+            <div class="method-heading">
+              <a href="#method-i-create_credit_card_client_secret" title="Link to this method">
+                <span class="method-name">create_credit_card_client_secret</span>
+                <span class="method-args">()</span>
+              </a>
+            </div>
+        </div>
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+
+        <div class="method-description">
+          <div class="method-source-code" id="create_credit_card_client_secret-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/beta_referral_customer.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_credit_card_client_secret</span>
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;setup_intents&#39;</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-string">&#39;beta&#39;</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          <p>Creates a client secret to use with Stripe when adding a credit card.</p>
         </div>
 
 
