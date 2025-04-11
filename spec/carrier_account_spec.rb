@@ -33,9 +33,11 @@ describe EasyPost::Services::CarrierAccount do
         client.carrier_account.create({ type: 'FedexAccount', registration_data: {} })
       }.to raise_error(EasyPost::Errors::ApiError) { |error|
         expect(error.status_code).to eq(422)
-        expect(error.errors.any? do |err|
-          err['field'] == 'account_number' && err['message'] == 'must be present and a string'
-        end).to be true
+        expect(
+          error.errors.any? do |err|
+            err['field'] == 'account_number' && err['message'] == 'must be present and a string'
+          end,
+        ).to be true
       }
     end
 
