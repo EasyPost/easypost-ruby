@@ -17,7 +17,7 @@ describe EasyPost::Services::CarrierAccount do
       client.carrier_account.delete(carrier_account.id)
     end
 
-    it 'creates an UPS account' do
+    it 'creates a UPS account' do
       carrier_account = client.carrier_account.create({ type: 'UpsAccount', account_number: '123456789' })
 
       expect(carrier_account).to be_an_instance_of(EasyPost::Models::CarrierAccount)
@@ -28,15 +28,26 @@ describe EasyPost::Services::CarrierAccount do
       client.carrier_account.delete(carrier_account.id)
     end
 
-    it 'sends FedexAccount to the correct endpoint' do
-      allow(client).to receive(:make_request).with(
-        :post, 'carrier_accounts/register',
-        { carrier_account: { type: 'FedexAccount' } },
-      ).and_return({ 'id' => 'ca_123' })
+    it 'creates a FedEx account' do
+      expect {
+        client.carrier_account.create({ type: 'FedexAccount', registration_data: {} })
+      }.to raise_error(EasyPost::Errors::ApiError) { |error|
+        expect(error.status_code).to eq(422)
+        expect(error.errors.any? do |err|
+          err['field'] == 'account_number' && err['message'] == 'must be present and a string'
+        end).to be true
+      }
+    end
 
-      response = client.carrier_account.create(type: 'FedexAccount')
+    it 'creates an Amazon account' do
+      carrier_account = client.carrier_account.create({ type: 'AmazonShippingAccount', account_number: '123456789' })
 
-      expect(response['id']).to eq('ca_123')
+      expect(carrier_account).to be_an_instance_of(EasyPost::Models::CarrierAccount)
+      expect(carrier_account.id).to match('ca_')
+      expect(carrier_account.type).to eq('AmazonShippingAccount')
+
+      # Remove the carrier account once we have tested it so we don't pollute the account with test accounts
+      client.carrier_account.delete(carrier_account.id)
     end
   end
 

@@ -8,6 +8,7 @@
   - `beta_referral_customer.create_bank_account_client_secret`
   - `referral_customer.add_credit_card_from_stripe`
   - `referral_customer.add_bank_account_from_stripe`
+- Routes `AmazonShippingAccount` to the proper create endpoint
 - Fixes error parsing
   - Allows for alternative format of `errors` field
   - Corrects available properties of an `EasyPostError` and `ApiError` (`code` and `field` removed from `EasyPostError`, `message` unfurled and explicitly added to `ApiError`)

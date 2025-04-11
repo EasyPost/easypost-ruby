@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/carrier_accounts/register
+    body:
+      encoding: UTF-8
+      string: '{"carrier_account":{"type":"FedexAccount","registration_data":{}}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - d574b4b667f94839e2ca07b70052f8ac
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.019799'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb54nuq
+      X-Version-Label:
+      - easypost-202504102051-85835c857e-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 99aac35317
+      - intlb4nuq 284c5d344a
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"UNPROCESSABLE_ENTITY","message":"The request was
+        understood, but cannot be processed.","errors":[{"field":"shipping_streets","message":"must
+        be present and a string"},{"field":"shipping_city","message":"must be present
+        and a string"},{"field":"shipping_state","message":"must be present and a
+        string"},{"field":"shipping_postal_code","message":"must be present and a
+        string"},{"field":"shipping_country_code","message":"must be present and a
+        string"},{"field":"corporate_first_name","message":"must be present and a
+        string"},{"field":"corporate_last_name","message":"must be present and a string"},{"field":"corporate_job_title","message":"must
+        be present and a string"},{"field":"corporate_company_name","message":"must
+        be present and a string"},{"field":"corporate_phone_number","message":"must
+        be present and a string"},{"field":"corporate_email_address","message":"must
+        be present and a string"},{"field":"corporate_streets","message":"must be
+        present and a string"},{"field":"corporate_city","message":"must be present
+        and a string"},{"field":"corporate_state","message":"must be present and a
+        string"},{"field":"corporate_postal_code","message":"must be present and a
+        string"},{"field":"corporate_country_code","message":"must be present and
+        a string"},{"field":"account_number","message":"must be present and a string"}]}}'
+  recorded_at: Fri, 11 Apr 2025 16:50:01 GMT
+recorded_with: VCR 6.3.1

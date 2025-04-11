@@ -3,6 +3,7 @@
 class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
   CUSTOM_WORKFLOW_CARRIER_TYPES = %w[FedexAccount FedexSmartpostAccount].freeze
   UPS_OAUTH_CARRIER_ACCOUNT_TYPES = %w[UpsAccount UpsMailInnovationsAccount UpsSurepostAccount].freeze
+  CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH = %w[AmazonShippingAccount].freeze
   MODEL_CLASS = EasyPost::Models::CarrierAccount # :nodoc:
 
   # Create a carrier account
@@ -15,6 +16,8 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
                    'carrier_accounts/register'
                  elsif UPS_OAUTH_CARRIER_ACCOUNT_TYPES.include?(carrier_account_type)
                    'ups_oauth_registrations'
+                 elsif CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH.include?(carrier_account_type)
+                   'carrier_accounts/register_oauth'
                  else
                    'carrier_accounts'
                  end
@@ -63,6 +66,8 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
   def select_top_layer_key(carrier_account_type)
     if UPS_OAUTH_CARRIER_ACCOUNT_TYPES.include?(carrier_account_type)
       'ups_oauth_registrations'
+    elsif CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH.include?(carrier_account_type)
+      'carrier_account_oauth_registrations'
     else
       'carrier_account'
     end
