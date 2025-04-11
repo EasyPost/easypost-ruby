@@ -1,0 +1,129 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/ups_oauth_registrations
+    body:
+      encoding: UTF-8
+      string: '{"ups_oauth_registrations":{"type":"UpsAccount","account_number":"123456789"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - d574b4b467f94771e2ca041900520f14
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.088219'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb56nuq
+      X-Version-Label:
+      - easypost-202504102051-85835c857e-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 99aac35317
+      - intlb3nuq 284c5d344a
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"ca_67413142c8ba4766aeb04a08ca3b1526","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2025-04-11T16:46:41Z","updated_at":"2025-04-11T16:46:41Z","description":null,"reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
+  recorded_at: Fri, 11 Apr 2025 16:46:41 GMT
+- request:
+    method: delete
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_67413142c8ba4766aeb04a08ca3b1526
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - d574b4b567f94771e2ca041c00520f57
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.144699'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb58nuq
+      X-Version-Label:
+      - easypost-202504102051-85835c857e-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq 99aac35317
+      - intlb3nuq 284c5d344a
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: "{}"
+  recorded_at: Fri, 11 Apr 2025 16:46:41 GMT
+recorded_with: VCR 6.3.1
