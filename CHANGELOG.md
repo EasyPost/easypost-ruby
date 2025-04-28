@@ -1,6 +1,8 @@
 # CHANGELOG
 
-## Next Release
+## v7.0.0 (2025-04-28)
+
+See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-6x-to-70) for more details.
 
 - Adds Ruby 3.4 support
 - Adds the following functions to assist ReferralCustomers add credit cards and bank accounts:
@@ -49,6 +51,8 @@
 - Add `all_children` and `get_next_page_of_children` in `user` service
 
 ## v6.0.0 (2023-12-06)
+
+See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-5x-to-60) for more details.
 
 - Removes `with_carbon_offset` parameter from `create`, `buy` and `regenerate_rates` methods in the shipment service since now EasyPost offers carbon neutral shipments by default for free
 - Fixes a bug where the original filtering criteria of `all` calls wasn't passed along to `get_next_page` calls. Now, these are persisted via `_params` key on response objects
