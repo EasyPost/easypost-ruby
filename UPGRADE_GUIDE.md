@@ -35,7 +35,7 @@ The following deprecated functions have been removed:
 
 - `tracker.create_list` (trackers must be created individually moving forward)
 - `user.all_api_keys` (use `api_key.all`)
-- `users.api_keys` (use `api_key.retrieve_api_keys_for_user`)
+- `user.api_keys` (use `api_key.retrieve_api_keys_for_user`)
 
 The `irb` has been removed from this library.
 
