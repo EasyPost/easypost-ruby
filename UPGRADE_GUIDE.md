@@ -2,11 +2,46 @@
 
 Use the following guide to assist in the upgrade process of the `easypost-ruby` library between major versions.
 
+- [Upgrading from 6.x to 7.0](#upgrading-from-6x-to-70)
 - [Upgrading from 5.x to 6.0](#upgrading-from-5x-to-60)
 - [Upgrading from 4.x to 5.0](#upgrading-from-4x-to-50)
 - [Upgrading from 3.x to 4.0](#upgrading-from-3x-to-40)
 
+## Upgrading from 6.x to 7.0
+
+### 7.0 High Impact Changes
+
+- [Error Parsing](#70-error-parsing)
+
+### 7.0 Medium Impact Changes
+
+- [Deprecations](#70-deprecations)
+
+## 7.0 Error Parsing
+
+*Likelihood of Impact: **High***
+
+The `errors` key of an error response can return either a list of `FieldError` objects or a list of strings. The error parsing has been expanded to include both formats. As such, you will now need to check for the format of the `errors` field and handle the errors appropriately for the type that is returned.
+
+The `Error` model has been removed since it is unused and we directly assign properties of an error response to the `ApiError` type.
+
+The `code` and `field` properties of an `EasyPostError` have been removed as they only belong to the `ApiError` type.
+
+## 7.0 Deprecations
+
+*Likelihood of Impact: **Medium***
+
+The following deprecated functions have been removed:
+
+- `tracker.create_list` (trackers must be created individually moving forward)
+- `user.all_api_keys` (use `api_key.all`)
+- `user.api_keys` (use `api_key.retrieve_api_keys_for_user`)
+
+The `irb` has been removed from this library.
+
 ## Upgrading from 5.x to 6.0
+
+**NOTICE:** v6 is deprecated.
 
 ### 6.0 High Impact Changes
 
@@ -156,18 +191,18 @@ Empty API response functions for `delete` return `true` instead of empty object
 
 ### 4.0 High Impact Changes
 
-* [Updating Dependencies](#40-updating-dependencies)
+- [Updating Dependencies](#40-updating-dependencies)
 
 ### 4.0 Medium Impact Changes
 
-* [Removal of `get_rates` Shipment Method](#40-removal-of-getrates-shipment-method)
+- [Removal of `get_rates` Shipment Method](#40-removal-of-getrates-shipment-method)
 
 ### 4.0 Low Impact Changes
 
-* [Removal of `Print` and `PrintJob` Objects](#40-removal-of-print-and-printjob-objects)
-* [Removal of `stamp_and_barcode_by_reference` Batch Method](#40-removal-of-stampandbarcodebyreference-batch-method)
-* [Removal of `Address.verify` Parameters](#40-removal-of-addressverify-parameters)
-* [Removal of the `http_status` Property on EasyPost::Error](#40-removal-of-httpstatus-property-on-easyposterror)
+- [Removal of `Print` and `PrintJob` Objects](#40-removal-of-print-and-printjob-objects)
+- [Removal of `stamp_and_barcode_by_reference` Batch Method](#40-removal-of-stampandbarcodebyreference-batch-method)
+- [Removal of `Address.verify` Parameters](#40-removal-of-addressverify-parameters)
+- [Removal of the `http_status` Property on EasyPost::Error](#40-removal-of-httpstatus-property-on-easyposterror)
 
 ## 4.0 Updating Dependencies
 
