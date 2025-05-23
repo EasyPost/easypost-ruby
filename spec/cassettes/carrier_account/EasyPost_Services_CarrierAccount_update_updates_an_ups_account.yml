@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.easypost.com/v2/ups_oauth_registrations
+    uri: https://api.easypost.com/v2/carrier_accounts/register_oauth
     body:
       encoding: UTF-8
-      string: '{"ups_oauth_registrations":{"type":"UpsAccount","account_number":"123456789"}}'
+      string: '{"carrier_account_oauth_registrations":{"type":"UpsAccount","account_number":"123456789"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - d044fa7666a7da6ae799d94000598cfb
+      - 6be4a8f46830cb35e7873c200041a96c
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -45,27 +45,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.126232'
+      - '0.077006'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb41nuq
+      - bigweb33nuq
       X-Version-Label:
-      - easypost-202407291746-57ea285141-master
+      - easypost-202505231841-d89645a184-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq fa152d4755
-      - intlb4nuq c0f5e722d1
+      - extlb1nuq 99aac35317
+      - intlb4nuq 668d3fc830
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"ca_0643d45ed239429baf127357177b0e93","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2024-07-29T18:07:38Z","updated_at":"2024-07-29T18:07:38Z","description":null,"reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
-  recorded_at: Mon, 29 Jul 2024 18:07:38 GMT
+      string: '{"id":"ca_8d60e586beaf4f6b9079c4879c5a2b66","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2025-05-23T19:23:33Z","updated_at":"2025-05-23T19:23:33Z","description":null,"reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
+  recorded_at: Fri, 23 May 2025 19:23:33 GMT
 - request:
     method: get
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_0643d45ed239429baf127357177b0e93
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_8d60e586beaf4f6b9079c4879c5a2b66
     body:
       encoding: US-ASCII
       string: ''
@@ -98,7 +98,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - d044fa7b66a7da6be799d94100598da9
+      - 6be4a8f46830cb35e7873c3a0041a9e0
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -108,32 +108,30 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.043159'
+      - '0.029181'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb43nuq
+      - bigweb58nuq
       X-Version-Label:
-      - easypost-202407291746-57ea285141-master
+      - easypost-202505231841-d89645a184-master
       X-Backend:
       - easypost
-      X-Canary:
-      - direct
       X-Proxied:
-      - extlb1nuq fa152d4755
-      - intlb4nuq c0f5e722d1
+      - extlb1nuq 99aac35317
+      - intlb3nuq 668d3fc830
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"ca_0643d45ed239429baf127357177b0e93","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2024-07-29T18:07:38Z","updated_at":"2024-07-29T18:07:38Z","description":null,"reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
-  recorded_at: Mon, 29 Jul 2024 18:07:39 GMT
+      string: '{"id":"ca_8d60e586beaf4f6b9079c4879c5a2b66","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2025-05-23T19:23:33Z","updated_at":"2025-05-23T19:23:33Z","description":null,"reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
+  recorded_at: Fri, 23 May 2025 19:23:33 GMT
 - request:
     method: put
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_0643d45ed239429baf127357177b0e93
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_8d60e586beaf4f6b9079c4879c5a2b66
     body:
       encoding: UTF-8
-      string: '{"ups_oauth_registrations":{"account_number":"987654321"}}'
+      string: '{"carrier_account_oauth_registrations":{"account_number":"987654321"}}'
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -163,7 +161,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - d044fa7a66a7da6be799d94200598e34
+      - 6be4a8f16830cb35e7873c3d0041aa44
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -173,27 +171,27 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.155147'
+      - '0.074220'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb42nuq
+      - bigweb59nuq
       X-Version-Label:
-      - easypost-202407291746-57ea285141-master
+      - easypost-202505231841-d89645a184-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq fa152d4755
-      - intlb3nuq c0f5e722d1
+      - extlb1nuq 99aac35317
+      - intlb4nuq 668d3fc830
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"id":"ca_0643d45ed239429baf127357177b0e93","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2024-07-29T18:07:38Z","updated_at":"2024-07-29T18:07:39Z","description":null,"reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
-  recorded_at: Mon, 29 Jul 2024 18:07:39 GMT
+      string: '{"id":"ca_8d60e586beaf4f6b9079c4879c5a2b66","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2025-05-23T19:23:33Z","updated_at":"2025-05-23T19:23:33Z","description":null,"reference":null,"billing_type":"carrier","readable":"UPS","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
+  recorded_at: Fri, 23 May 2025 19:23:33 GMT
 - request:
     method: delete
-    uri: https://api.easypost.com/v2/carrier_accounts/ca_0643d45ed239429baf127357177b0e93
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_8d60e586beaf4f6b9079c4879c5a2b66
     body:
       encoding: US-ASCII
       string: ''
@@ -226,7 +224,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Ep-Request-Uuid:
-      - d044fa7a66a7da6ce799d94300598ecb
+      - 6be4a8f26830cb35e7873c400041aa9b
       Cache-Control:
       - private, no-cache, no-store
       Pragma:
@@ -236,22 +234,22 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Runtime:
-      - '0.075286'
+      - '0.115773'
       Transfer-Encoding:
       - chunked
       X-Node:
-      - bigweb42nuq
+      - bigweb36nuq
       X-Version-Label:
-      - easypost-202407291746-57ea285141-master
+      - easypost-202505231841-d89645a184-master
       X-Backend:
       - easypost
       X-Proxied:
-      - extlb1nuq fa152d4755
-      - intlb3nuq c0f5e722d1
+      - extlb1nuq 99aac35317
+      - intlb3nuq 668d3fc830
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       string: "{}"
-  recorded_at: Mon, 29 Jul 2024 18:07:40 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Fri, 23 May 2025 19:23:34 GMT
+recorded_with: VCR 6.3.1
