@@ -2,8 +2,10 @@
 
 class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
   CUSTOM_WORKFLOW_CARRIER_TYPES = %w[FedexAccount FedexSmartpostAccount].freeze
-  UPS_OAUTH_CARRIER_ACCOUNT_TYPES = %w[UpsAccount UpsMailInnovationsAccount UpsSurepostAccount].freeze
-  CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH = %w[AmazonShippingAccount].freeze
+  CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH = %w[
+    AmazonShippingAccount UpsAccount UpsMailInnovationsAccount
+    UpsSurepostAccount
+  ].freeze
   MODEL_CLASS = EasyPost::Models::CarrierAccount # :nodoc:
 
   # Create a carrier account
@@ -14,8 +16,6 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
     # For UPS and FedEx the endpoint is different
     create_url = if CUSTOM_WORKFLOW_CARRIER_TYPES.include?(carrier_account_type)
                    'carrier_accounts/register'
-                 elsif UPS_OAUTH_CARRIER_ACCOUNT_TYPES.include?(carrier_account_type)
-                   'ups_oauth_registrations'
                  elsif CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH.include?(carrier_account_type)
                    'carrier_accounts/register_oauth'
                  else
@@ -42,12 +42,7 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
   def update(id, params = {})
     carrier_account = retrieve(id)
     wrapped_params = { select_top_layer_key(carrier_account[:type]).to_sym => params }
-    update_url = if UPS_OAUTH_CARRIER_ACCOUNT_TYPES.include?(params[:type])
-                   'ups_oauth_registrations/'
-                 else
-                   'carrier_accounts/'
-                 end
-    response = @client.make_request(:put, "#{update_url}#{id}", wrapped_params)
+    response = @client.make_request(:put, "carrier_accounts/#{id}", wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
@@ -64,9 +59,7 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
 
   # Select the top-layer key for the carrier account creation/update request based on the carrier type.
   def select_top_layer_key(carrier_account_type)
-    if UPS_OAUTH_CARRIER_ACCOUNT_TYPES.include?(carrier_account_type)
-      'ups_oauth_registrations'
-    elsif CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH.include?(carrier_account_type)
+    if CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH.include?(carrier_account_type)
       'carrier_account_oauth_registrations'
     else
       'carrier_account'
