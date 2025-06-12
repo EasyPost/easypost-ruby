@@ -172,4 +172,12 @@ class Fixture
   def self.billing
     read_fixture_data['billing']
   end
+
+  def self.luma_ruleset_name
+    read_fixture_data['luma']['ruleset_name']
+  end
+
+  def self.luma_planned_ship_date
+    '2025-06-12'
+  end
 end

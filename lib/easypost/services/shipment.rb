@@ -113,8 +113,8 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
   # Retrieves the estimated delivery date of each Rate via SmartRate.
   def retrieve_estimated_delivery_date(id, planned_ship_date)
     url = "shipments/#{id}/smartrate/delivery_date"
-    params = { planned_ship_date: planned_ship_date }
-    response = @client.make_request(:get, url, params)
+    wrapped_params = { planned_ship_date: planned_ship_date }
+    response = @client.make_request(:get, url, wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS).rates
   end
@@ -122,9 +122,26 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
   # Retrieve a recommended ship date for an existing Shipment via the Precision Shipping API, based on a specific desired delivery date.
   def recommend_ship_date(id, desired_delivery_date)
     url = "shipments/#{id}/smartrate/precision_shipping"
-    params = { desired_delivery_date: desired_delivery_date }
-    response = @client.make_request(:get, url, params)
+    wrapped_params = { desired_delivery_date: desired_delivery_date }
+    response = @client.make_request(:get, url, wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS).rates
+  end
+
+  # Create and buy a Luma Shipment in one call.
+  def create_and_buy_luma(params = {})
+    url = "shipments/luma"
+    wrapped_params = { shipment: params }
+    response = @client.make_request(:post, url, wrapped_params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
+  end
+
+  # Buy a Shipment with Luma.
+  def buy_luma(id, params = {})
+    url = "shipments/#{id}/luma"
+    response = @client.make_request(:post, url, params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
   end
 end
