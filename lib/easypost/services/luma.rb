@@ -3,7 +3,7 @@
 class EasyPost::Services::Luma < EasyPost::Services::Service
   # Get service recommendations from Luma that meet the criteria of your ruleset.
   def get_promise(params = {})
-    url = "luma/promise"
+    url = 'luma/promise'
     wrapped_params = { shipment: params }
     response = @client.make_request(:post, url, wrapped_params)
 

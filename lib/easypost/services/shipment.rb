@@ -130,7 +130,7 @@ class EasyPost::Services::Shipment < EasyPost::Services::Service
 
   # Create and buy a Luma Shipment in one call.
   def create_and_buy_luma(params = {})
-    url = "shipments/luma"
+    url = 'shipments/luma'
     wrapped_params = { shipment: params }
     response = @client.make_request(:post, url, wrapped_params)
 
