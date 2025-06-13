@@ -403,4 +403,33 @@ describe EasyPost::Services::Shipment do
       expect(rates.all?(&:easypost_time_in_transit_data)).not_to be_nil
     end
   end
+
+  describe '.create_and_buy_luma' do
+    it 'creates and buys a Shipment with Luma' do
+      one_call_buy_shipment = Fixture.one_call_buy_shipment
+      one_call_buy_shipment.delete(:service)
+      one_call_buy_shipment['ruleset_name'] = Fixture.luma_ruleset_name
+      one_call_buy_shipment['planned_ship_date'] = Fixture.luma_planned_ship_date
+
+      shipment = client.shipment.create_and_buy_luma(one_call_buy_shipment)
+
+      expect(shipment.postage_label).not_to be_nil
+    end
+  end
+
+  describe '.buy_luma' do
+    it 'buys a Shipment with Luma' do
+      shipment = client.shipment.create(Fixture.basic_shipment)
+
+      bought_shipment = client.shipment.buy_luma(
+        shipment.id,
+        {
+          'ruleset_name' => Fixture.luma_ruleset_name,
+          'planned_ship_date' => Fixture.luma_planned_ship_date,
+        },
+      )
+
+      expect(bought_shipment.postage_label).not_to be_nil
+    end
+  end
 end
