@@ -7,6 +7,6 @@ class EasyPost::Services::Luma < EasyPost::Services::Service
     wrapped_params = { shipment: params }
     response = @client.make_request(:post, url, wrapped_params)
 
-    EasyPost::InternalUtilities::Json.convert_json_to_object(response)
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response).luma_info
   end
 end

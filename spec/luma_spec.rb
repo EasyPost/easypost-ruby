@@ -13,7 +13,7 @@ describe EasyPost::Services::Luma do
 
       response = client.luma.get_promise(basic_shipment)
 
-      expect(response.luma_info.luma_selected_rate).not_to be_nil
+      expect(response.luma_selected_rate).not_to be_nil
     end
   end
 end
