@@ -48,6 +48,7 @@ class EasyPost::Client
     EasyPost::Services::EndShipper,
     EasyPost::Services::Event,
     EasyPost::Services::Insurance,
+    EasyPost::Services::Luma,
     EasyPost::Services::Order,
     EasyPost::Services::Parcel,
     EasyPost::Services::Pickup,
