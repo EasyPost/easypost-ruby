@@ -5,11 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>class EasyPost::Models::Order - EasyPost Ruby Docs</title>
+<title>class EasyPost::Services::Luma - EasyPost Ruby Docs</title>
 
-  <meta name="keywords" content="ruby,class,EasyPost::Models::Order">
+  <meta name="keywords" content="ruby,class,EasyPost::Services::Luma">
 
-    <meta name="description" content="class EasyPost::Models::Order: The Order object represents a collection of packages and can be used for Multi-Piece Shipments.">
+    <meta name="description" content="Documentation for the EasyPost::Services::Luma class">
 
 
 <script type="text/javascript">
@@ -68,7 +68,7 @@
   
   <div id="parent-class-section" class="nav-section">
   <h3>Ancestors</h3>
-  <ul><li><a href="EasyPostObject.html">EasyPost::Models::EasyPostObject</a><ul><li><a href="Object.html">EasyPost::Models::Object</a><ul><li>Object</li></ul></li></ul></li></ul>
+  <ul><li><a href="Service.html">EasyPost::Services::Service</a><ul><li>Object</li></ul></li></ul>
 </div>
 
   
@@ -79,7 +79,7 @@
   <div class="nav-section">
     <h3>Instance Methods</h3>
     <ul class="link-list" role="directory">
-      <li ><a href="#method-i-lowest_rate">lowest_rate</a></li>
+      <li ><a href="#method-i-get_promise">get_promise</a></li>
     </ul>
   </div>
 
@@ -93,7 +93,7 @@
 
 </nav>
 
-<main role="main" aria-labelledby="class-EasyPost::Models::Order">
+<main role="main" aria-labelledby="class-EasyPost::Services::Luma">
   
   
     <ol role="navigation" aria-label="breadcrumb" class="breadcrumb">
@@ -106,27 +106,25 @@
       
       <li>
         
-        <a href="../../EasyPost/Models.html">Models</a><span>::</span>
+        <a href="../../EasyPost/Services.html">Services</a><span>::</span>
         
       </li>
       
       <li>
         
-        <span>Order</span>
+        <span>Luma</span>
         
       </li>
       
     </ol>
   
 
-  <h1 id="class-EasyPost::Models::Order" class="anchor-link class">
-    class EasyPost::Models::Order
+  <h1 id="class-EasyPost::Services::Luma" class="anchor-link class">
+    class EasyPost::Services::Luma
   </h1>
 
   <section class="description">
     
-<p>The <a href="Order.html"><code>Order</code></a> object represents a collection of packages and can be used for Multi-Piece Shipments.</p>
-
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section anchor-link">
@@ -140,12 +138,12 @@
          <h3>Public Instance Methods</h3>
        </header>
 
-      <div id="method-i-lowest_rate" class="method-detail anchor-link ">
+      <div id="method-i-get_promise" class="method-detail anchor-link ">
         <div class="method-header">
             <div class="method-heading">
-              <a href="#method-i-lowest_rate" title="Link to this method">
-                <span class="method-name">lowest_rate</span>
-                <span class="method-args">(carriers = [], services = [])</span>
+              <a href="#method-i-get_promise" title="Link to this method">
+                <span class="method-name">get_promise</span>
+                <span class="method-args">(params = {})</span>
               </a>
             </div>
         </div>
@@ -157,13 +155,17 @@
           </div>
 
         <div class="method-description">
-          <div class="method-source-code" id="lowest_rate-source">
-            <pre><span class="ruby-comment"># File lib/easypost/models/order.rb, line 6</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lowest_rate</span>(<span class="ruby-identifier">carriers</span> = [], <span class="ruby-identifier">services</span> = [])
-  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">get_lowest_object_rate</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">carriers</span>, <span class="ruby-identifier">services</span>)
+          <div class="method-source-code" id="get_promise-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/luma.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_promise</span>(<span class="ruby-identifier">params</span> = {})
+  <span class="ruby-identifier">url</span> = <span class="ruby-string">&#39;luma/promise&#39;</span>
+  <span class="ruby-identifier">wrapped_params</span> = { <span class="ruby-value">shipment:</span> <span class="ruby-identifier">params</span> }
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-identifier">url</span>, <span class="ruby-identifier">wrapped_params</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>).<span class="ruby-identifier">luma_info</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          <p>Get the lowest rate of an <a href="Order.html"><code>Order</code></a> (can exclude by having ‘’!‘` as the first element of your optional filter lists).</p>
+          <p>Get service recommendations from <a href="Luma.html"><code>Luma</code></a> that meet the criteria of your ruleset.</p>
         </div>
 
 
