@@ -4,7 +4,7 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
   CUSTOM_WORKFLOW_CARRIER_TYPES = %w[FedexAccount FedexSmartpostAccount].freeze
   CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH = %w[
     AmazonShippingAccount UpsAccount UpsMailInnovationsAccount
-    UpsSurepostAccount
+    UpsSurepostAccount UspsShipAccount
   ].freeze
   MODEL_CLASS = EasyPost::Models::CarrierAccount # :nodoc:
 

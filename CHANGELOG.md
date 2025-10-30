@@ -2,6 +2,10 @@
 
 ## v7.1.0 (2025-06-18)
 
+- Adds support for `UspsShipAccount`
+
+## v7.1.0 (2025-06-18)
+
 - Adds the following functions
   - `shipment.create_and_buy_luma`
   - `shipment.buy_luma`
