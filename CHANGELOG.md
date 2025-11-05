@@ -3,6 +3,7 @@
 ## v7.1.0 (2025-06-18)
 
 - Adds support for `UspsShipAccount`
+- Adds `tracker.retrieve_batch` function
 
 ## v7.1.0 (2025-06-18)
 

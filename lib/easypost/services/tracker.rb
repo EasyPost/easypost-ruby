@@ -29,6 +29,13 @@ class EasyPost::Services::Tracker < EasyPost::Services::Service
     get_all_helper('trackers', MODEL_CLASS, params, filters)
   end
 
+  # Retrieve a batch of Trackers
+  def retrieve_batch(params = {})
+    response = @client.make_request(:post, 'trackers/batch', params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
+  end
+
   # Get the next page of trackers.
   def get_next_page(collection, page_size = nil)
     raise EasyPost::Errors::EndOfPaginationError.new unless more_pages?(collection)
