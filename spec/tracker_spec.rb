@@ -60,6 +60,20 @@ describe EasyPost::Services::Tracker do
     end
   end
 
+  describe '.retrieve_batch' do
+    it 'retrieves a batch of trackers' do
+      tracker = client.tracker.create(
+        tracking_code: 'EZ1000000001',
+      )
+
+      trackers = client.tracker.retrieve_batch(
+        tracking_codes: [tracker.tracking_code],
+      )
+
+      expect(trackers).to be_an_instance_of(EasyPost::Models::Tracker)
+    end
+  end
+
   describe '.get_next_page' do
     it 'retrieves the next page of a collection' do
       first_page = client.tracker.all(
