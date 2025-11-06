@@ -100,6 +100,8 @@
 
       <li ><a href="#method-i-retrieve">retrieve</a></li>
 
+      <li ><a href="#method-i-retrieve_batch">retrieve_batch</a></li>
+
     </ul>
   </div>
 
@@ -285,7 +287,7 @@
         <div class="method-description">
 
           <div class="method-source-code" id="get_next_page-source">
-            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 33</span>
+            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_next_page</span>(<span class="ruby-identifier">collection</span>, <span class="ruby-identifier">page_size</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Errors</span><span class="ruby-operator">::</span><span class="ruby-constant">EndOfPaginationError</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">more_pages?</span>(<span class="ruby-identifier">collection</span>)
 
@@ -346,6 +348,52 @@
 
 
           <p>Retrieve a <a href="Tracker.html"><code>Tracker</code></a></p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-retrieve_batch" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-retrieve_batch" title="Link to this method">
+                <span class="method-name">retrieve_batch</span>
+                <span class="method-args">(params = {})</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+
+
+
+        <div class="method-description">
+
+          <div class="method-source-code" id="retrieve_batch-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retrieve_batch</span>(<span class="ruby-identifier">params</span> = {})
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:post</span>, <span class="ruby-string">&#39;trackers/batch&#39;</span>, <span class="ruby-identifier">params</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>, <span class="ruby-constant">MODEL_CLASS</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+          <p>Retrieve a batch of Trackers</p>
 
 
         </div>
