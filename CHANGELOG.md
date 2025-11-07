@@ -1,9 +1,10 @@
 # CHANGELOG
 
-## v7.1.0 (2025-06-18)
+## v7.2.0 (2025-11-10)
 
 - Adds support for `UspsShipAccount`
 - Adds `tracker.retrieve_batch` function
+- Adds `verify_carrier` address param
 
 ## v7.1.0 (2025-06-18)
 
