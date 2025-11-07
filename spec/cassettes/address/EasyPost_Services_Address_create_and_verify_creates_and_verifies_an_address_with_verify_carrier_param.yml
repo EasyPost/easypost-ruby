@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/addresses/create_and_verify
+    body:
+      encoding: UTF-8
+      string: '{"address":{"company":"EasyPost","street1":"000 unknown street","city":"Not
+        A City","state":"ZZ","zip":"00001","country":"US","email":"test@example.com","phone":"5555555555"},"verify_carrier":"UPS"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - bcd43720690e350ae786ab9b02a3e16c
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Location:
+      - "/api/v2/addresses/adr_6c353670bc0411f0a5d5ac1f6bc539ae"
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.774426'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb36nuq
+      X-Version-Label:
+      - easypost-202511071655-85836cab32-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq cbbd141214
+      - intlb3nuq c0061e0a2e
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"address":{"id":"adr_6c353670bc0411f0a5d5ac1f6bc539ae","object":"Address","created_at":"2025-11-07T18:06:02Z","updated_at":"2025-11-07T18:06:02Z","name":null,"company":"EASYPOST","street1":"000
+        UNKNOWN STREET","street2":"","city":"NOT A CITY","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
+        not found","suggestion":null}],"details":null},"delivery":{"success":true,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address
+        not found","suggestion":null}],"details":{"latitude":null,"longitude":null,"time_zone":null}},"verify_carrier":"ups"}}}'
+  recorded_at: Fri, 07 Nov 2025 18:06:02 GMT
+recorded_with: VCR 6.3.1

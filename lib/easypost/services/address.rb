@@ -5,7 +5,7 @@ class EasyPost::Services::Address < EasyPost::Services::Service
 
   # Create an address.
   def create(params = {})
-    address = params.reject { |k, _| [:verify, :verify_strict].include?(k) }
+    address = params.reject { |k, _| [:verify, :verify_strict, :verify_carrier].include?(k) }
 
     wrapped_params = { address: address }
 
@@ -17,6 +17,10 @@ class EasyPost::Services::Address < EasyPost::Services::Service
       wrapped_params[:verify_strict] = params[:verify_strict]
     end
 
+    if params[:verify_carrier]
+      wrapped_params[:verify_carrier] = params[:verify_carrier]
+    end
+
     response = @client.make_request(:post, 'addresses', params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
@@ -24,8 +28,13 @@ class EasyPost::Services::Address < EasyPost::Services::Service
 
   # Create and verify an Address in one call.
   def create_and_verify(params = {})
-    wrapped_params = {}
-    wrapped_params[:address] = params
+    address = params.reject { |k, _| [:verify_carrier].include?(k) }
+
+    wrapped_params = { address: address }
+
+    if params[:verify_carrier]
+      wrapped_params[:verify_carrier] = params[:verify_carrier]
+    end
 
     response = @client.make_request(:post, 'addresses/create_and_verify', wrapped_params)
 

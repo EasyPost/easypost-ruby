@@ -73,6 +73,19 @@ describe EasyPost::Services::Address do
       expect(address).to be_an_instance_of(EasyPost::Models::Address)
       expect(address.verifications.delivery.success).to be false
     end
+
+    it 'creates an address with verify_carrier param' do
+      address_data = Fixture.incorrect_address
+
+      address_data[:verify] = true
+      address_data[:verify_carrier] = 'UPS'
+      address = client.address.create(address_data)
+
+      expect(address).to be_an_instance_of(EasyPost::Models::Address)
+
+      expect(address.verifications.delivery.errors[0].message).to eq('Address not found')
+      expect(address.verifications.zip4.errors[0].message).to eq('Address not found')
+    end
   end
 
   describe '.retrieve' do
@@ -142,6 +155,18 @@ describe EasyPost::Services::Address do
       client.address.create_and_verify(address_data)
     rescue EasyPost::Errors::InvalidRequestError => e
       expect(e.message).to eq('Unable to verify address.')
+    end
+
+    it 'creates and verifies an address with verify_carrier param' do
+      address_data = Fixture.incorrect_address
+
+      address_data[:verify_carrier] = 'UPS'
+      address = client.address.create_and_verify(address_data)
+
+      expect(address).to be_an_instance_of(EasyPost::Models::Address)
+
+      expect(address.verifications.delivery.errors[0].message).to eq('Address not found')
+      expect(address.verifications.zip4.errors[0].message).to eq('Address not found')
     end
   end
 
