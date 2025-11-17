@@ -9,12 +9,14 @@ describe EasyPost::Services::CustomerPortal do
     it 'creates an account link' do
       user = client.user.all_children.children.first
 
-      account_link = client.customer_portal.create_account_link({
-        session_type: "account_onboarding",
-        user_id: user.id,
-        refresh_url: "https://example.com/refresh",
-        return_url: "https://example.com/return",
-      })
+      account_link = client.customer_portal.create_account_link(
+        {
+          session_type: 'account_onboarding',
+          user_id: user.id,
+          refresh_url: 'https://example.com/refresh',
+          return_url: 'https://example.com/return',
+        },
+      )
 
       expect(account_link.object).to eq('CustomerPortalAccountLink')
     end

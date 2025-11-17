@@ -9,10 +9,12 @@ describe EasyPost::Services::Embeddable do
     it 'creates a session' do
       user = client.user.all_children.children.first
 
-      session = client.embeddable.create_session({
-        origin_host: "https://example.com",
-        user_id: user.id,
-      })
+      session = client.embeddable.create_session(
+        {
+          origin_host: 'https://example.com',
+          user_id: user.id,
+        },
+      )
 
       expect(session.object).to eq('EmbeddablesSession')
     end
