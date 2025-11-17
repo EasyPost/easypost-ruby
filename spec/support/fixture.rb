@@ -180,4 +180,8 @@ class Fixture
   def self.luma_planned_ship_date
     '2025-06-12'
   end
+
+  def self.referral_user
+    read_fixture_data['users']['referral']
+  end
 end

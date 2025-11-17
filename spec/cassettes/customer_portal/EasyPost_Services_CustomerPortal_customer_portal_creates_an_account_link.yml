@@ -1,0 +1,144 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/users/children
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 56d897ac691b6ef7e786abfc0281efdb
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.090962'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb54nuq
+      X-Version-Label:
+      - easypost-202511171535-3e300ad867-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq cbbd141214
+      - intlb4nuq c0061e0a2e
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"children":[{"id":"user_484dd58db70a4f31b4bb862998cf0e04","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2023-05-16T22:01:20Z"},{"id":"user_14e894c0d541459395f4456e7cf4f175","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2023-09-27T22:05:26Z"},{"id":"user_f04df3dad13848339a7975d295d6629f","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2023-11-30T19:23:22Z"},{"id":"user_44d216445b2f4595a123a18084000d94","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-07-26T18:36:54Z"},{"id":"user_f3b7021a2d924bedb080d7caa00d753e","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-07-26T18:41:48Z"},{"id":"user_327a26c77be24e24b165450e7c0de3b9","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-07-26T19:08:21Z"},{"id":"user_acfa6f7268d14e449edd1fe6f4ab64cc","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-07-29T17:41:32Z"},{"id":"user_4b066506d76940aeb28943506eb76941","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-07-29T17:46:31Z"},{"id":"user_48b7c8e5981647a8aee52aa1cb910280","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-07-29T18:07:19Z"},{"id":"user_dc18fb938f184bfd8f345d7fb1469130","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-07-29T21:45:16Z"},{"id":"user_06004d67f8294a73b2a21b62d5a2e3d6","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-07-29T21:50:35Z"},{"id":"user_b760795a35e24bfc803b51b29cca0d7e","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-07-29T21:59:34Z"},{"id":"user_a2e569dd62f14b75b2f8c84aa62ded62","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-07-29T22:03:04Z"},{"id":"user_85480046d6514ea3863eb950fbea392e","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-07-29T22:04:22Z"},{"id":"user_89583592d7914082b3b61fdf9230db38","object":"User","parent_id":"user_0f6b83e3530b401cb1e8aeaa6a250d4d","name":"Test
+        User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-08-01T17:06:15Z"}],"has_more":false}'
+  recorded_at: Mon, 17 Nov 2025 18:52:39 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/customer_portal/account_link
+    body:
+      encoding: UTF-8
+      string: '{"session_type":"account_onboarding","user_id":"user_484dd58db70a4f31b4bb862998cf0e04","refresh_url":"https://example.com/refresh","return_url":"https://example.com/return"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 56d897a8691b6ef7e786abff0281f057
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.151938'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb41nuq
+      X-Version-Label:
+      - easypost-202511171535-3e300ad867-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq cbbd141214
+      - intlb6nuq c0061e0a2e
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"link":"https://app.easypost.com/customer-portal/onboarding?session_id=yIuV3XCFXvpyTCUJ","object":"CustomerPortalAccountLink","expires_at":"2025-11-17T18:57:39Z","created_at":"2025-11-17T18:52:39Z"}'
+  recorded_at: Mon, 17 Nov 2025 18:52:39 GMT
+recorded_with: VCR 6.3.1

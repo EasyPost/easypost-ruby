@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds the following functions:
+  - `embeddable.create_session`
+  - `customer_portal.create_account_link`
+
 ## v7.2.0 (2025-11-10)
 
 - Adds support for `UspsShipAccount`

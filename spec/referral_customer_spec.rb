@@ -11,14 +11,14 @@ describe EasyPost::Services::ReferralCustomer do
     it 'creates a referral customer' do
       # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY.
       created_referral_customer = client.referral_customer.create(
-        name: 'test user',
-        email: 'email@example.com',
-        phone: '8888888888',
+        name: Fixture.referral_user['name'],
+        email: Fixture.referral_user['email'],
+        phone: Fixture.referral_user['phone'],
       )
 
       expect(created_referral_customer).to be_an_instance_of(EasyPost::Models::User)
       expect(created_referral_customer.id).to match('user_')
-      expect(created_referral_customer.name).to eq('test user')
+      expect(created_referral_customer.name).to eq('Test Referral')
     end
   end
 
