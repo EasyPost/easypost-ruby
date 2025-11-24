@@ -13,11 +13,11 @@ jobs:
       matrix:
         rubyversion: ['2.7', '3.0', '3.1', '3.2', '3.3', '3.4']
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.rubyversion }}
-          rubygems: '3.3.0'
+          rubygems: '3.4.0'
           bundler-cache: true
       - name: Install Dependencies
         run: make install
@@ -32,7 +32,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4'
@@ -48,7 +48,7 @@ jobs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4'
