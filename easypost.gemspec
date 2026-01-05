@@ -20,6 +20,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.7'
 
+  spec.add_dependency 'base64'
+
   spec.add_development_dependency 'abbrev', '~> 0.1'
   spec.add_development_dependency 'benchmark', '~> 0.4'
   spec.add_development_dependency 'bigdecimal', '~> 3'
@@ -34,6 +36,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', '~> 0.22'
   spec.add_development_dependency 'simplecov-lcov', '~> 0.8'
   spec.add_development_dependency 'typhoeus', '~> 1.4'
-  spec.add_development_dependency 'vcr', '~> 6.3'
+  spec.add_development_dependency 'vcr', '~> 6.4'
   spec.add_development_dependency 'webmock', '~> 3.25'
 end
