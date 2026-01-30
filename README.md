@@ -165,7 +165,7 @@ If you're using a custom HTTP connection, keep in mind that the `response_data` 
 
 API documentation can be found at: <https://docs.easypost.com>.
 
-Library documentation can be found on the web at: <https://easypost.github.io/easypost-ruby/> or by building them locally via the `make docs` command.
+Library documentation can be found on the web at: <https://easypost.github.io/easypost-ruby/> or by building them locally via the `just docs` command.
 
 Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
 
@@ -179,26 +179,26 @@ For additional support, see our [org-wide support policy](https://github.com/Eas
 
 ```bash
 # Install dependencies
-make install
+just install
 
 # Install style guide (Unix only)
-make install-style
+just install-style
 
 # Lint project
-make lint
-make lint-fix
+just lint
+just lint-fix
 
 # Run tests (coverage is generated on a successful test suite run)
-EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make test
+EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... just test
 
 # Run security analysis
-make scan
+just scan
 
 # Generate library documentation
-make docs
+just docs
 
 # Update submodules
-make update-examples-submodule
+just update-examples-submodule
 ```
 
 ### Testing
