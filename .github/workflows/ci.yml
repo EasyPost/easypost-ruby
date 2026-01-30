@@ -13,16 +13,17 @@ jobs:
       matrix:
         rubyversion: ['2.7', '3.0', '3.1', '3.2', '3.3', '3.4', '4.0']
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
+      - uses: EasyPost/ep-actions/.github/actions/setup/just@main
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.rubyversion }}
           rubygems: '3.4.0'
           bundler-cache: true
       - name: Install Dependencies
-        run: make install
+        run: just install
       - name: run tests
-        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 make test
+        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 just test
       - name: Coveralls
         if: github.ref == 'refs/heads/master'
         uses: coverallsapp/github-action@master
@@ -32,32 +33,34 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
+      - uses: EasyPost/ep-actions/.github/actions/setup/just@main
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4'
           rubygems: '3.3.0'
           bundler-cache: true
       - name: Install Dependencies
-        run: make install
+        run: just install
       - name: Install style guides
-        run: make install-styleguide
+        run: just install-styleguide
       - name: Lint Project
-        run: make lint
+        run: just lint
   docs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
+      - uses: EasyPost/ep-actions/.github/actions/setup/just@main
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4'
           rubygems: '3.3.0'
           bundler-cache: true
       - name: Install Dependencies
-        run: make install
+        run: just install
       - name: Generate Docs
-        run: make docs
+        run: just docs
       - name: Deploy docs
         uses: peaceiris/actions-gh-pages@v3
         with:
