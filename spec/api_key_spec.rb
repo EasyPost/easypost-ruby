@@ -39,7 +39,7 @@ describe EasyPost::Services::ApiKey, :authenticate_prod do
   end
 
   describe 'API key lifecycle' do
-    let(:referral_client) { EasyPost::Client.new(api_key: ENV['REFERRAL_CUSTOMER_PROD_API_KEY']) }
+    let(:referral_client) { EasyPost::Client.new(api_key: ENV['REFERRAL_CUSTOMER_PROD_API_KEY'] || '123') }
 
     it 'creates, enables, disables, and deletes an API key for a referral customer' do
       # Create
