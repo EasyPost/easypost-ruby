@@ -17,7 +17,7 @@ jobs:
           rubygems: '3.3.0'
           bundler-cache: true
       - name: Build Package
-        run: make install build
+        run: just install build
       - name: Publish to RubyGems
         run: |
           mkdir -p $HOME/.gem
