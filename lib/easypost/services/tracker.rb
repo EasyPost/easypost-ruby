@@ -46,4 +46,12 @@ class EasyPost::Services::Tracker < EasyPost::Services::Service
 
     all(params)
   end
+
+  # Delete a Tracker.
+  def delete(id)
+    @client.make_request(:delete, "trackers/#{id}")
+
+    # Return true if succeeds, an error will be thrown if it fails
+    true
+  end
 end

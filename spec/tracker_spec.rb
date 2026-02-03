@@ -97,4 +97,14 @@ describe EasyPost::Services::Tracker do
       end
     end
   end
+
+  describe '.delete' do
+    it 'deletes a tracker' do
+      tracker = client.tracker.create(
+        tracking_code: 'EZ1000000001',
+      )
+
+      expect { client.tracker.delete(tracker.id) }.not_to raise_error
+    end
+  end
 end
