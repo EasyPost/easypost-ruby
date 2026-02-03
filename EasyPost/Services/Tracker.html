@@ -97,6 +97,8 @@
 
       <li ><a href="#method-i-create">create</a></li>
 
+      <li ><a href="#method-i-delete">delete</a></li>
+
       <li ><a href="#method-i-get_next_page">get_next_page</a></li>
 
       <li ><a href="#method-i-retrieve">retrieve</a></li>
@@ -253,6 +255,53 @@
 
 
           <p>Create a <a href="Tracker.html"><code>Tracker</code></a></p>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+      <div id="method-i-delete" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-delete" title="Link to this method">
+                <span class="method-name">delete</span>
+                <span class="method-args">(id)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+
+
+
+        <div class="method-description">
+
+          <div class="method-source-code" id="delete-source">
+            <pre><span class="ruby-comment"># File lib/easypost/services/tracker.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">make_request</span>(<span class="ruby-value">:delete</span>, <span class="ruby-node">&quot;trackers/#{id}&quot;</span>)
+
+  <span class="ruby-comment"># Return true if succeeds, an error will be thrown if it fails</span>
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+          <p>Delete a <a href="Tracker.html"><code>Tracker</code></a>.</p>
 
 
         </div>
