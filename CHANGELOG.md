@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v7.4.0 (2026-02-02)
+
+- Adds the following functions usable by child and referral customer users:
+  - `api_key.create`
+  - `api_key.delete`
+  - `api_key.enable`
+  - `api_key.disable`
+
 ## v7.3.0 (2025-11-24)
 
 - Adds the following functions:

@@ -1,0 +1,253 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/api_keys
+    body:
+      encoding: UTF-8
+      string: '{"mode":"production"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 2e56ccf06981140ae2baa53c02cc4fce
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.089773'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb34nuq
+      X-Version-Label:
+      - easypost-202602022023-e2aafa4ad5-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq cbbd141214
+      - intlb4nuq d9379ca146
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"object":"ApiKey","key":"<REDACTED>","mode":"production","created_at":"2026-02-02T21:15:54Z","active":true,"id":"ak_8de38f77277f420baffd2e6834ad65a2"}'
+  recorded_at: Mon, 02 Feb 2026 21:15:54 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/api_keys/ak_8de38f77277f420baffd2e6834ad65a2/disable
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 2e56ccf36981140ae2baa53e02cc5014
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.113790'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb43nuq
+      X-Version-Label:
+      - easypost-202602022023-e2aafa4ad5-master
+      X-Backend:
+      - easypost
+      X-Canary:
+      - direct
+      X-Proxied:
+      - extlb2nuq cbbd141214
+      - intlb5nuq d9379ca146
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"object":"ApiKey","key":"<REDACTED>","mode":"production","created_at":"2026-02-02T21:15:54Z","active":false,"id":"ak_8de38f77277f420baffd2e6834ad65a2"}'
+  recorded_at: Mon, 02 Feb 2026 21:15:54 GMT
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/api_keys/ak_8de38f77277f420baffd2e6834ad65a2/enable
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 2e56ccf06981140ae2baa54102cc5083
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.243929'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb54nuq
+      X-Version-Label:
+      - easypost-202602022023-e2aafa4ad5-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb2nuq cbbd141214
+      - intlb6nuq d9379ca146
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"object":"ApiKey","key":"<REDACTED>","mode":"production","created_at":"2026-02-02T21:15:54Z","active":true,"id":"ak_8de38f77277f420baffd2e6834ad65a2"}'
+  recorded_at: Mon, 02 Feb 2026 21:15:55 GMT
+- request:
+    method: delete
+    uri: https://api.easypost.com/v2/api_keys/ak_8de38f77277f420baffd2e6834ad65a2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - cfd5bd426981140be2baa55e02807d59
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Runtime:
+      - '0.134902'
+      X-Node:
+      - bigweb36nuq
+      X-Version-Label:
+      - easypost-202602022023-e2aafa4ad5-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq cbbd141214
+      - intlb6nuq d9379ca146
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 02 Feb 2026 21:15:55 GMT
+recorded_with: VCR 6.4.0
