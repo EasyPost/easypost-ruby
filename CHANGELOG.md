@@ -1,9 +1,5 @@
 # CHANGELOG
 
-## Next
-
-- Adds a `tracker.delete` function
-
 ## v7.4.0 (2026-02-02)
 
 - Adds the following functions usable by child and referral customer users:
@@ -11,6 +7,7 @@
   - `api_key.delete`
   - `api_key.enable`
   - `api_key.disable`
+- Adds a `tracker.delete` function
 
 ## v7.3.0 (2025-11-24)
 
