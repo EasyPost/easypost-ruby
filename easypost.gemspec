@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.7'
 
-  spec.add_dependency 'base64'
+  spec.add_dependency 'base64', '~> 0.3'
 
   spec.add_development_dependency 'abbrev', '~> 0.1'
   spec.add_development_dependency 'benchmark', '~> 0.4'
