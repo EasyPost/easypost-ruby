@@ -49,6 +49,7 @@ class EasyPost::Client
     EasyPost::Services::Embeddable,
     EasyPost::Services::EndShipper,
     EasyPost::Services::Event,
+    EasyPost::Services::FedexRegistration,
     EasyPost::Services::Insurance,
     EasyPost::Services::Luma,
     EasyPost::Services::Order,
