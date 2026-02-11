@@ -10,7 +10,7 @@ class EasyPost::Services::FedexRegistration < EasyPost::Services::Service
 
     response = @client.make_request(:post, endpoint, wrapped_params)
 
-    EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::FedExAccountValidationResponse)
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::EasyPostObject)
   end
 
   # Request a PIN for FedEx account verification.

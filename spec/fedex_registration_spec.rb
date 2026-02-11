@@ -24,9 +24,21 @@ describe EasyPost::Services::FedexRegistration do
         easypost_details: easypost_details,
       }
 
+      json_response = {
+        'email_address' => nil,
+        'options' => %w[SMS CALL INVOICE],
+        'phone_number' => '***-***-9721',
+      }
+
+      allow(client).to receive(:make_request).with(
+        :post,
+        "fedex_registrations/#{fedex_account_number}/address",
+        params,
+      ).and_return(json_response)
+
       response = client.fedex_registration.register_address(fedex_account_number, params)
 
-      expect(response).to be_an_instance_of(EasyPost::Models::FedExAccountValidationResponse)
+      expect(response).to be_an_instance_of(EasyPost::Models::EasyPostObject)
       expect(response.email_address).to be_nil
       expect(response.options).to include('SMS')
       expect(response.options).to include('CALL')
@@ -38,10 +50,25 @@ describe EasyPost::Services::FedexRegistration do
   describe '.request_pin' do
     it 'requests a pin' do
       fedex_account_number = '123456789'
+      wrapped_params = {
+        pin_method: {
+          option: 'SMS',
+        },
+      }
+
+      json_response = {
+        'message' => 'sent secured Pin',
+      }
+
+      allow(client).to receive(:make_request).with(
+        :post,
+        "fedex_registrations/#{fedex_account_number}/pin",
+        wrapped_params,
+      ).and_return(json_response)
 
       response = client.fedex_registration.request_pin(fedex_account_number, 'SMS')
 
-      expect(response).to be_an_instance_of(EasyPost::Models::FedExRequestPinResponse)
+      expect(response).to be_an_instance_of(EasyPost::Models::EasyPostObject)
       expect(response.message).to eq('sent secured Pin')
     end
   end
@@ -61,9 +88,25 @@ describe EasyPost::Services::FedexRegistration do
         easypost_details: easypost_details,
       }
 
+      json_response = {
+        'id' => 'ca_123',
+        'object' => 'CarrierAccount',
+        'type' => 'FedexAccount',
+        'credentials' => {
+          'account_number' => '123456789',
+          'mfa_key' => '123456789-XXXXX',
+        },
+      }
+
+      allow(client).to receive(:make_request).with(
+        :post,
+        "fedex_registrations/#{fedex_account_number}/pin/validate",
+        params,
+      ).and_return(json_response)
+
       response = client.fedex_registration.validate_pin(fedex_account_number, params)
 
-      expect(response).to be_an_instance_of(EasyPost::Models::FedExAccountValidationResponse)
+      expect(response).to be_an_instance_of(EasyPost::Models::EasyPostObject)
       expect(response.id).to eq('ca_123')
       expect(response.object).to eq('CarrierAccount')
       expect(response.type).to eq('FedexAccount')
@@ -90,9 +133,25 @@ describe EasyPost::Services::FedexRegistration do
         easypost_details: easypost_details,
       }
 
+      json_response = {
+        'id' => 'ca_123',
+        'object' => 'CarrierAccount',
+        'type' => 'FedexAccount',
+        'credentials' => {
+          'account_number' => '123456789',
+          'mfa_key' => '123456789-XXXXX',
+        },
+      }
+
+      allow(client).to receive(:make_request).with(
+        :post,
+        "fedex_registrations/#{fedex_account_number}/invoice",
+        params,
+      ).and_return(json_response)
+
       response = client.fedex_registration.submit_invoice(fedex_account_number, params)
 
-      expect(response).to be_an_instance_of(EasyPost::Models::FedExAccountValidationResponse)
+      expect(response).to be_an_instance_of(EasyPost::Models::EasyPostObject)
       expect(response.id).to eq('ca_123')
       expect(response.object).to eq('CarrierAccount')
       expect(response.type).to eq('FedexAccount')
