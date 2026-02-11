@@ -4,11 +4,6 @@ require 'securerandom'
 
 class EasyPost::Services::FedexRegistration < EasyPost::Services::Service
   # Register the billing address for a FedEx account.
-  # Advanced method for custom parameter structures.
-  #
-  # @param fedex_account_number [String] The FedEx account number.
-  # @param params [Hash] Map of parameters.
-  # @return [EasyPost::Models::FedExAccountValidationResponse] object with next steps (PIN or invoice validation).
   def register_address(fedex_account_number, params = {})
     wrapped_params = wrap_address_validation(params)
     endpoint = "fedex_registrations/#{fedex_account_number}/address"
@@ -19,10 +14,6 @@ class EasyPost::Services::FedexRegistration < EasyPost::Services::Service
   end
 
   # Request a PIN for FedEx account verification.
-  #
-  # @param fedex_account_number [String] The FedEx account number.
-  # @param pin_method_option [String] The PIN delivery method: "SMS", "CALL", or "EMAIL".
-  # @return [EasyPost::Models::FedExRequestPinResponse] object confirming PIN was sent.
   def request_pin(fedex_account_number, pin_method_option)
     wrapped_params = {
       pin_method: {
@@ -33,44 +24,33 @@ class EasyPost::Services::FedexRegistration < EasyPost::Services::Service
 
     response = @client.make_request(:post, endpoint, wrapped_params)
 
-    EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::FedExRequestPinResponse)
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::EasyPostObject)
   end
 
   # Validate the PIN entered by the user for FedEx account verification.
-  #
-  # @param fedex_account_number [String] The FedEx account number.
-  # @param params [Hash] Map of parameters.
-  # @return [EasyPost::Models::FedExAccountValidationResponse] object.
   def validate_pin(fedex_account_number, params = {})
     wrapped_params = wrap_pin_validation(params)
     endpoint = "fedex_registrations/#{fedex_account_number}/pin/validate"
 
     response = @client.make_request(:post, endpoint, wrapped_params)
 
-    EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::FedExAccountValidationResponse)
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::EasyPostObject)
   end
 
   # Submit invoice information to complete FedEx account registration.
-  #
-  # @param fedex_account_number [String] The FedEx account number.
-  # @param params [Hash] Map of parameters.
-  # @return [EasyPost::Models::FedExAccountValidationResponse] object.
   def submit_invoice(fedex_account_number, params = {})
     wrapped_params = wrap_invoice_validation(params)
     endpoint = "fedex_registrations/#{fedex_account_number}/invoice"
 
     response = @client.make_request(:post, endpoint, wrapped_params)
 
-    EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::FedExAccountValidationResponse)
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response, EasyPost::Models::EasyPostObject)
   end
 
   private
 
   # Wraps address validation parameters and ensures the "name" field exists.
   # If not present, generates a UUID (with hyphens removed) as the name.
-  #
-  # @param params [Hash] The original parameters hash.
-  # @return [Hash] A new hash with properly wrapped address_validation and easypost_details.
   def wrap_address_validation(params)
     wrapped_params = {}
 
@@ -87,9 +67,6 @@ class EasyPost::Services::FedexRegistration < EasyPost::Services::Service
 
   # Wraps PIN validation parameters and ensures the "name" field exists.
   # If not present, generates a UUID (with hyphens removed) as the name.
-  #
-  # @param params [Hash] The original parameters hash.
-  # @return [Hash] A new hash with properly wrapped pin_validation and easypost_details.
   def wrap_pin_validation(params)
     wrapped_params = {}
 
@@ -106,9 +83,6 @@ class EasyPost::Services::FedexRegistration < EasyPost::Services::Service
 
   # Wraps invoice validation parameters and ensures the "name" field exists.
   # If not present, generates a UUID (with hyphens removed) as the name.
-  #
-  # @param params [Hash] The original parameters hash.
-  # @return [Hash] A new hash with properly wrapped invoice_validation and easypost_details.
   def wrap_invoice_validation(params)
     wrapped_params = {}
 
@@ -126,8 +100,6 @@ class EasyPost::Services::FedexRegistration < EasyPost::Services::Service
   # Ensures the "name" field exists in the provided hash.
   # If not present, generates a UUID (with hyphens removed) as the name.
   # This follows the pattern used in the web UI implementation.
-  #
-  # @param hash [Hash] The hash to ensure the "name" field in.
   def ensure_name_field(hash)
     return if hash.key?(:name) && !hash[:name].nil?
 
