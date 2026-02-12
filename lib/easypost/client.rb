@@ -144,6 +144,22 @@ class EasyPost::Client
     EasyPost::Hooks.unsubscribe_all(:response)
   end
 
+  # Make an API call to the EasyPost API
+  #
+  # This public, generic interface is useful for making arbitrary API calls to the EasyPost API that
+  # are not yet supported by the client library's services. When possible, the service for your use case
+  # should be used instead as it provides a more convenient and higher-level interface depending on the endpoint.
+  #
+  # @param method [Symbol] the HTTP Verb (get, post, put, patch, delete, etc.)
+  # @param endpoint [String] URI path of the resource
+  # @param params [Object] (nil) object to be used as the request parameters
+  # @return [EasyPost::Models::EasyPostObject] EasyPost object parsed from the response body
+  def make_api_call(method, endpoint, params = nil)
+    response = make_request(method, endpoint, params)
+
+    EasyPost::InternalUtilities::Json.convert_json_to_object(response)
+  end
+
   private
 
   def http_config
