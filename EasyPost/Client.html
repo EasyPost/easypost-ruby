@@ -335,7 +335,7 @@
         <div class="method-description">
 
           <div class="method-source-code" id="make_request-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 84</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 85</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">make_request</span>(
   <span class="ruby-identifier">method</span>,
   <span class="ruby-identifier">endpoint</span>,
@@ -391,7 +391,7 @@
         <div class="method-description">
 
           <div class="method-source-code" id="subscribe_request_hook-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 103</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">subscribe_request_hook</span>(<span class="ruby-identifier">name</span> = <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">hex</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Hooks</span>.<span class="ruby-identifier">subscribe</span>(<span class="ruby-value">:request</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -437,7 +437,7 @@
         <div class="method-description">
 
           <div class="method-source-code" id="subscribe_response_hook-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 127</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">subscribe_response_hook</span>(<span class="ruby-identifier">name</span> = <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">hex</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Hooks</span>.<span class="ruby-identifier">subscribe</span>(<span class="ruby-value">:response</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -483,7 +483,7 @@
         <div class="method-description">
 
           <div class="method-source-code" id="unsubscribe_all_request_hooks-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 118</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 119</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unsubscribe_all_request_hooks</span>
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Hooks</span>.<span class="ruby-identifier">unsubscribe_all</span>(<span class="ruby-value">:request</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -529,7 +529,7 @@
         <div class="method-description">
 
           <div class="method-source-code" id="unsubscribe_all_response_hooks-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 142</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 143</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unsubscribe_all_response_hooks</span>
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Hooks</span>.<span class="ruby-identifier">unsubscribe_all</span>(<span class="ruby-value">:response</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -575,7 +575,7 @@
         <div class="method-description">
 
           <div class="method-source-code" id="unsubscribe_request_hook-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 111</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 112</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unsubscribe_request_hook</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Hooks</span>.<span class="ruby-identifier">unsubscribe</span>(<span class="ruby-value">:request</span>, <span class="ruby-identifier">name</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -621,7 +621,7 @@
         <div class="method-description">
 
           <div class="method-source-code" id="unsubscribe_response_hook-source">
-            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 135</span>
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 136</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unsubscribe_response_hook</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">Hooks</span>.<span class="ruby-identifier">unsubscribe</span>(<span class="ruby-value">:response</span>, <span class="ruby-identifier">name</span>)
 <span class="ruby-keyword">end</span></pre>
