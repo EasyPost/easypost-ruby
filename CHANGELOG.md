@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v7.5.0 (2026-02-20)
+
+- Adds the following functions:
+  - `fedex_registration.register_address`
+  - `fedex_registration.request_pin`
+  - `fedex_registration.validate_pin`
+  - `fedex_registration.submit_invoice`
+
 ## v7.4.0 (2026-02-02)
 
 - Adds the following functions usable by child and referral customer users:
