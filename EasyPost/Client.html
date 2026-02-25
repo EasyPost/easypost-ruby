@@ -102,6 +102,8 @@
     <h3>Instance Methods</h3>
     <ul class="link-list" role="directory">
 
+      <li ><a href="#method-i-make_api_call">make_api_call</a></li>
+
       <li ><a href="#method-i-make_request">make_request</a></li>
 
       <li ><a href="#method-i-subscribe_request_hook">subscribe_request_hook</a></li>
@@ -309,6 +311,56 @@
        <header>
          <h3>Public Instance Methods</h3>
        </header>
+
+
+      <div id="method-i-make_api_call" class="method-detail anchor-link ">
+        <div class="method-header">
+
+            <div class="method-heading">
+              <a href="#method-i-make_api_call" title="Link to this method">
+                <span class="method-name">make_api_call</span>
+                <span class="method-args">(method, endpoint, params = nil)</span>
+              </a>
+            </div>
+
+        </div>
+
+
+          <div class="method-controls">
+            <details class="method-source-toggle">
+              <summary>Source</summary>
+            </details>
+          </div>
+
+
+
+        <div class="method-description">
+
+          <div class="method-source-code" id="make_api_call-source">
+            <pre><span class="ruby-comment"># File lib/easypost/client.rb, line 157</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">make_api_call</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">params</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-identifier">make_request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">endpoint</span>, <span class="ruby-identifier">params</span>)
+
+  <span class="ruby-constant">EasyPost</span><span class="ruby-operator">::</span><span class="ruby-constant">InternalUtilities</span><span class="ruby-operator">::</span><span class="ruby-constant">Json</span>.<span class="ruby-identifier">convert_json_to_object</span>(<span class="ruby-identifier">response</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+
+
+
+          <p>Make an API call to the <a href="../EasyPost.html"><code>EasyPost</code></a> API</p>
+
+<p>This public, generic interface is useful for making arbitrary API calls to the <a href="../EasyPost.html"><code>EasyPost</code></a> API that are not yet supported by the client library’s services. When possible, the service for your use case should be used instead as it provides a more convenient and higher-level interface depending on the endpoint.</p>
+
+<p>@param method [Symbol] the HTTP Verb (get, post, put, patch, delete, etc.) @param endpoint [String] URI path of the resource @param params [Object] (nil) object to be used as the request parameters @return [EasyPost::Models::EasyPostObject] <a href="../EasyPost.html"><code>EasyPost</code></a> object parsed from the response body</p>
+
+
+        </div>
+
+
+
+
+
+      </div>
 
 
       <div id="method-i-make_request" class="method-detail anchor-link ">
