@@ -233,5 +233,14 @@ describe EasyPost::Client do
         expect(EasyPost::Hooks.any_subscribers?(:response)).to eq(false)
       end
     end
+
+    it 'make an API call using the generic make_api_call method', :vcr do
+      client = described_class.new(api_key: ENV['EASYPOST_TEST_API_KEY'])
+
+      response = client.make_api_call(:get, '/addresses', { page_size: 1 })
+
+      expect(response['addresses'].length).to eq(1)
+      expect(response['addresses'][0]['object']).to eq('Address')
+    end
   end
 end

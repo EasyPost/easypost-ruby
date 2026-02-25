@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.easypost.com/v2/addresses?page_size=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ep-Request-Uuid:
+      - 16819983698e0e4fe787c8bc011c9815
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.033115'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - bigweb59nuq
+      X-Version-Label:
+      - easypost-202602121702-bfe72e7ac7-master
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1nuq c01291cd8f
+      - intlb3nuq 0dcc3a6efb
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"addresses":[{"id":"adr_965375f9083811f1ad4d3cecef1b359e","object":"Address","created_at":"2026-02-12T17:30:55Z","updated_at":"2026-02-12T17:30:55Z","name":"Jack
+        Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San
+        Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}],"has_more":true}'
+  recorded_at: Thu, 12 Feb 2026 17:30:56 GMT
+recorded_with: VCR 6.4.0

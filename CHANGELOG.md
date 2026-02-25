@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v7.6.0 (2026-02-25)
+
+- Adds generic `make_api_call` function
+
 ## v7.5.0 (2026-02-20)
 
 - Adds the following functions:
