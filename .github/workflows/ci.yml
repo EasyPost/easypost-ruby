@@ -29,7 +29,6 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          directory: './coverage/lcov'
   lint:
     runs-on: ubuntu-latest
     steps:
