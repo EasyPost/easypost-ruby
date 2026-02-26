@@ -24,12 +24,12 @@ jobs:
         run: just install
       - name: run tests
         run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 just test
-      - name: Coveralls
+      - name: Coverage
         if: github.ref == 'refs/heads/master'
-        uses: coverallsapp/github-action@master
+        uses: codecov/codecov-action@v5
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: './coverage/lcov/easypost-ruby.lcov'
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: './coverage/lcov'
   lint:
     runs-on: ubuntu-latest
     steps:
