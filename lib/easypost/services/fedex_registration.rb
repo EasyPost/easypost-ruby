@@ -14,11 +14,10 @@ class EasyPost::Services::FedexRegistration < EasyPost::Services::Service
   end
 
   # Request a PIN for FedEx account verification.
-  def request_pin(fedex_account_number, pin_method_option)
-    wrapped_params = {
-      pin_method: {
-        option: pin_method_option,
-      },
+  def request_pin(fedex_account_number, pin_method_option, params = {})
+    wrapped_params = wrap_pin_validation(params)
+    wrapped_params[:pin_method] = {
+      option: pin_method_option,
     }
     endpoint = "fedex_registrations/#{fedex_account_number}/pin"
 
