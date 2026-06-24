@@ -50,17 +50,18 @@ describe EasyPost::Services::FedexRegistration do
   describe '.request_pin' do
     it 'requests a pin' do
       fedex_account_number = '123456789'
-      easypost_details = {
-        carrier_account_id: 'ca_123',
-      }
       params = {
-        easypost_details: easypost_details,
+        easypost_details: {
+          carrier_account_id: 'ca_123',
+        },
       }
-      wrapped_params = {
+      expected_params = {
+        easypost_details: {
+          carrier_account_id: 'ca_123',
+        },
         pin_method: {
           option: 'SMS',
         },
-        easypost_details: easypost_details,
       }
 
       json_response = {
@@ -70,7 +71,7 @@ describe EasyPost::Services::FedexRegistration do
       allow(client).to receive(:make_request).with(
         :post,
         "fedex_registrations/#{fedex_account_number}/pin",
-        wrapped_params,
+        expected_params,
       ).and_return(json_response)
 
       response = client.fedex_registration.request_pin(fedex_account_number, 'SMS', params)
