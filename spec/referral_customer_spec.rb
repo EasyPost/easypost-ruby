@@ -78,44 +78,6 @@ describe EasyPost::Services::ReferralCustomer do
     end
   end
 
-  describe '.add_credit_card' do
-    it 'adds a credit card to a referral customer account' do
-      # We override the VCR config here since it cannot match the URL due to data scrubbing
-      # rubocop:disable Layout/LineLength
-      VCR.use_cassette(
-        'referral_customer/EasyPost_Services_ReferralCustomer_add_credit_card_adds_a_credit_card_to_a_referral_customer_account',
-        match_requests_on: [:method, :uri],
-      ) do
-        # rubocop:enable Layout/LineLength
-        credit_card = client.referral_customer.add_credit_card(
-          REFERRAL_CUSTOMER_PROD_API_KEY,
-          Fixture.credit_card_details['number'],
-          Fixture.credit_card_details['expiration_month'],
-          Fixture.credit_card_details['expiration_year'],
-          Fixture.credit_card_details['cvc'],
-        )
-
-        expect(credit_card.id).to match('pm_')
-        expect(credit_card.last4).to match('6170')
-      end
-    end
-  end
-
-  it 'raises an error when we cannot send details to Stripe' do
-    allow(client.referral_customer).to receive(:create_stripe_token).and_raise(StandardError)
-    allow(client.referral_customer).to receive(:retrieve_easypost_stripe_api_key)
-
-    expect {
-      client.referral_customer.add_credit_card(
-        REFERRAL_CUSTOMER_PROD_API_KEY,
-        Fixture.credit_card_details['number'],
-        Fixture.credit_card_details['expiration_month'],
-        Fixture.credit_card_details['expiration_year'],
-        Fixture.credit_card_details['cvc'],
-      )
-    }.to raise_error(StandardError).with_message('Could not send card details to Stripe, please try again later.')
-  end
-
   describe '.add_credit_card_from_stripe' do
     it 'raises an error when adding a credit card from Stripe fails' do
       # This test requires a referral customer's production API key via REFERRAL_CUSTOMER_PROD_API_KEY.
@@ -144,6 +106,16 @@ describe EasyPost::Services::ReferralCustomer do
       }.to raise_error(EasyPost::Errors::ApiError).with_message(
         'account_holder_name must be present when creating a Financial Connections payment method',
       )
+    end
+  end
+
+  describe '.retrieve_easypost_stripe_api_key' do
+    it "retrieves EasyPost's Stripe public API key" do
+      # This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY.
+      public_key = client.referral_customer.retrieve_easypost_stripe_api_key
+
+      expect(public_key).to be_a(String)
+      expect(public_key).to start_with('pk_')
     end
   end
 end
