@@ -19,7 +19,7 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
       UpsMailInnovationsAccount
       UpsSurepostAccount
       UspsShipAccount
-    ].freeze
+    ].freeze,
   }.freeze
   MODEL_CLASS = EasyPost::Models::CarrierAccount # :nodoc:
 

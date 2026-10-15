@@ -40,7 +40,7 @@ describe EasyPost::Services::CarrierAccount do
           begin
             carrier_account = client.carrier_account.create(params)
           rescue EasyPost::Errors::ApiError => e
-            expect([404, 500]).not_to include(e.status_code)
+            expect(e.status_code).not_to be_in([404, 500])
           else
             expect(carrier_account).to be_an_instance_of(EasyPost::Models::CarrierAccount)
             expect(carrier_account.id).to match('ca_')
@@ -101,9 +101,9 @@ describe EasyPost::Services::CarrierAccount do
     it 'deletes a carrier account' do
       carrier_account = client.carrier_account.create(Fixture.basic_carrier_account)
 
-      expect do
+      expect {
         client.carrier_account.delete(carrier_account.id)
-      end.not_to raise_error
+      }.not_to raise_error
     end
   end
 end
