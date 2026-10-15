@@ -40,7 +40,8 @@ describe EasyPost::Services::CarrierAccount do
           begin
             carrier_account = client.carrier_account.create(params)
           rescue EasyPost::Errors::ApiError => e
-            expect(e.status_code).not_to be_in([404, 500])
+            expect(e.status_code).not_to eq(404)
+            expect(e.status_code).not_to eq(500)
           else
             expect(carrier_account).to be_an_instance_of(EasyPost::Models::CarrierAccount)
             expect(carrier_account.id).to match('ca_')
