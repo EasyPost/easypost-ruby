@@ -1,26 +1,34 @@
 # frozen_string_literal: true
 
 class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
-  CUSTOM_WORKFLOW_CARRIER_TYPES = %w[FedexAccount FedexSmartpostAccount].freeze
-  CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH = %w[
-    AmazonShippingAccount UpsAccount UpsMailInnovationsAccount
-    UpsSurepostAccount UspsShipAccount
-  ].freeze
+  CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES = {
+    'carrier_accounts/open' => %w[
+      FedexDefaultAccount
+      GofoWalletAccount
+      UpsDapAccount
+      UniUniWalletAccount
+      VehoWalletAccount
+    ].freeze,
+    'carrier_accounts/register' => %w[
+      FedexAccount
+      FedexSmartpostAccount
+    ].freeze,
+    'carrier_accounts/register_oauth' => %w[
+      AmazonShippingAccount
+      UpsAccount
+      UpsMailInnovationsAccount
+      UpsSurepostAccount
+      UspsShipAccount
+    ].freeze,
+  }.freeze
   MODEL_CLASS = EasyPost::Models::CarrierAccount # :nodoc:
 
   # Create a carrier account
   def create(params = {})
     carrier_account_type = params[:type]
-    wrapped_params = { select_top_layer_key(carrier_account_type).to_sym => params }
+    create_url = select_carrier_account_creation_endpoint(carrier_account_type)
+    wrapped_params = { select_top_layer_key(create_url).to_sym => params }
 
-    # For UPS and FedEx the endpoint is different
-    create_url = if CUSTOM_WORKFLOW_CARRIER_TYPES.include?(carrier_account_type)
-                   'carrier_accounts/register'
-                 elsif CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH.include?(carrier_account_type)
-                   'carrier_accounts/register_oauth'
-                 else
-                   'carrier_accounts'
-                 end
     response = @client.make_request(:post, create_url, wrapped_params)
 
     EasyPost::InternalUtilities::Json.convert_json_to_object(response, MODEL_CLASS)
@@ -57,12 +65,21 @@ class EasyPost::Services::CarrierAccount < EasyPost::Services::Service
 
   private
 
-  # Select the top-layer key for the carrier account creation/update request based on the carrier type.
-  def select_top_layer_key(carrier_account_type)
-    if CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH.include?(carrier_account_type)
+  # Select the top-layer key for the carrier account creation/update request based on the create endpoint.
+  def select_top_layer_key(create_url)
+    if create_url == 'carrier_accounts/register_oauth'
       'carrier_account_oauth_registrations'
     else
       'carrier_account'
     end
+  end
+
+  # Determines which API endpoint to use for the creation call.
+  def select_carrier_account_creation_endpoint(carrier_account_type)
+    CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES.each do |endpoint, carrier_account_types|
+      return endpoint if carrier_account_types.include?(carrier_account_type)
+    end
+
+    'carrier_accounts'
   end
 end

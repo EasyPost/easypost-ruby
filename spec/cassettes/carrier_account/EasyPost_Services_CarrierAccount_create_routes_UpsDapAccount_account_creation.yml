@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/carrier_accounts/open
+    body:
+      encoding: UTF-8
+      string: '{"carrier_account":{"type":"UpsDapAccount","registration_data":{}}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Easypost-Api-Version:
+      - '2015-01-01'
+      Vary:
+      - EasyPost-Api-Version
+      X-Ep-Request-Uuid:
+      - 5218e5876ad13792e2bc463f00087dca
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.048185'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - web107azw
+      X-Version-Label:
+      - easypost-202610151955-b13716d895-main
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1azw ff4cfe6eb5
+      - intlb1azw f29267e751
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"UNPROCESSABLE_ENTITY","message":"The request was
+        understood, but cannot be processed.","errors":[{"field":"type","message":"Cannot
+        open a UPS DAP account for a user with an existing UPS account"}]}}'
+  recorded_at: Thu, 15 Oct 2026 20:29:06 GMT
+recorded_with: VCR 6.4.0

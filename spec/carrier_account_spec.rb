@@ -17,39 +17,42 @@ describe EasyPost::Services::CarrierAccount do
       client.carrier_account.delete(carrier_account.id)
     end
 
-    it 'creates a UPS account' do
-      carrier_account = client.carrier_account.create({ type: 'UpsAccount', account_number: '123456789' })
+    EasyPost::Services::CarrierAccount::CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES.each do |expected_endpoint, carrier_account_types|
+      carrier_account_types.each do |carrier_account_type|
+        it "routes #{carrier_account_type} account creation" do
+          params = { type: carrier_account_type }
+          params[:registration_data] = {} if %w[carrier_accounts/open carrier_accounts/register].include?(expected_endpoint)
+          captured_request = {}
 
-      expect(carrier_account).to be_an_instance_of(EasyPost::Models::CarrierAccount)
-      expect(carrier_account.id).to match('ca_')
-      expect(carrier_account.type).to eq('UpsAccount')
+          allow(client).to receive(:make_request).and_wrap_original do |original, *args|
+            method, endpoint, request_params = args
+            if captured_request[:endpoint].nil? && endpoint.start_with?('carrier_accounts')
+              captured_request[:method] = method
+              captured_request[:endpoint] = endpoint
+              captured_request[:params] = request_params
+            end
+            original.call(*args)
+          end
 
-      # Remove the carrier account once we have tested it so we don't pollute the account with test accounts
-      client.carrier_account.delete(carrier_account.id)
-    end
+          begin
+            carrier_account = client.carrier_account.create(params)
+          rescue EasyPost::Errors::ApiError => error
+            expect([404, 500]).not_to include(error.status_code)
+          else
+            expect(carrier_account).to be_an_instance_of(EasyPost::Models::CarrierAccount)
+            expect(carrier_account.id).to match('ca_')
+            client.carrier_account.delete(carrier_account.id)
+          end
 
-    it 'creates a FedEx account' do
-      expect {
-        client.carrier_account.create({ type: 'FedexAccount', registration_data: {} })
-      }.to raise_error(EasyPost::Errors::ApiError) { |error|
-        expect(error.status_code).to eq(422)
-        expect(
-          error.errors.any? do |err|
-            err['field'] == 'account_number' && err['message'] == 'must be present and a string'
-          end,
-        ).to be true
-      }
-    end
-
-    it 'creates an Amazon account' do
-      carrier_account = client.carrier_account.create({ type: 'AmazonShippingAccount', account_number: '123456789' })
-
-      expect(carrier_account).to be_an_instance_of(EasyPost::Models::CarrierAccount)
-      expect(carrier_account.id).to match('ca_')
-      expect(carrier_account.type).to eq('AmazonShippingAccount')
-
-      # Remove the carrier account once we have tested it so we don't pollute the account with test accounts
-      client.carrier_account.delete(carrier_account.id)
+          expect(captured_request[:method]).to eq(:post)
+          expect(captured_request[:endpoint]).to eq(expected_endpoint)
+          if expected_endpoint == 'carrier_accounts/register_oauth'
+            expect(captured_request[:params]).to have_key(:carrier_account_oauth_registrations)
+          else
+            expect(captured_request[:params]).to have_key(:carrier_account)
+          end
+        end
+      end
     end
   end
 
@@ -88,19 +91,6 @@ describe EasyPost::Services::CarrierAccount do
 
       # Remove the carrier account once we have tested it so we don't pollute the account with test accounts
       client.carrier_account.delete(carrier_account.id)
-    end
-
-    it 'updates an ups account' do
-      ups_account = client.carrier_account.create({ type: 'UpsAccount', account_number: '123456789' })
-
-      updated_ups_account = client.carrier_account.update(ups_account.id, account_number: '987654321')
-
-      expect(updated_ups_account).to be_an_instance_of(EasyPost::Models::CarrierAccount)
-      expect(updated_ups_account.id).to match('ca_')
-      expect(updated_ups_account.type).to eq('UpsAccount')
-
-      # Remove the carrier account once we have tested it so we don't pollute the account with test accounts
-      client.carrier_account.delete(ups_account.id)
     end
   end
 

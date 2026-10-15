@@ -1,0 +1,138 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/carrier_accounts/open
+    body:
+      encoding: UTF-8
+      string: '{"carrier_account":{"type":"VehoWalletAccount","registration_data":{}}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Easypost-Api-Version:
+      - '2015-01-01'
+      Vary:
+      - EasyPost-Api-Version
+      X-Ep-Request-Uuid:
+      - aebfacb36ad13793e2bc466100622184
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.081736'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - web125azw
+      X-Version-Label:
+      - easypost-202610151955-b13716d895-main
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb3azw ff4cfe6eb5
+      - intlb1azw f29267e751
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"id":"ca_123d4bf1ee28460ea266af6d899f8f8b","object":"CarrierAccount","type":"VehoWalletAccount","clone":false,"created_at":"2026-10-15T20:29:07Z","updated_at":"2026-10-15T20:29:07Z","description":"Veho
+        Account","reference":null,"billing_type":"easypost","readable":"Veho","logo":null,"fields":[],"credentials":{},"test_credentials":{}}'
+  recorded_at: Thu, 15 Oct 2026 20:29:07 GMT
+- request:
+    method: delete
+    uri: https://api.easypost.com/v2/carrier_accounts/ca_123d4bf1ee28460ea266af6d899f8f8b
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Easypost-Api-Version:
+      - '2015-01-01'
+      Vary:
+      - EasyPost-Api-Version
+      X-Ep-Request-Uuid:
+      - aebfacb46ad13793e2bc4664006221ae
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.080009'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - web103azw
+      X-Version-Label:
+      - easypost-202610151955-b13716d895-main
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb3azw ff4cfe6eb5
+      - intlb4azw f29267e751
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: "{}"
+  recorded_at: Thu, 15 Oct 2026 20:29:07 GMT
+recorded_with: VCR 6.4.0

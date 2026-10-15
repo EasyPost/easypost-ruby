@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.easypost.com/v2/carrier_accounts/register
+    body:
+      encoding: UTF-8
+      string: '{"carrier_account":{"type":"FedexSmartpostAccount","registration_data":{}}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent: "<REDACTED>"
+      Host:
+      - api.easypost.com
+      Content-Type:
+      - application/json
+      Authorization: "<REDACTED>"
+  response:
+    status:
+      code: 410
+      message: Gone
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Easypost-Api-Version:
+      - '2015-01-01'
+      Vary:
+      - EasyPost-Api-Version
+      X-Ep-Request-Uuid:
+      - 5218e5876ad13793e2bc497900087ec3
+      Cache-Control:
+      - private, no-cache, no-store
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Runtime:
+      - '0.041263'
+      Transfer-Encoding:
+      - chunked
+      X-Node:
+      - web119azw
+      X-Version-Label:
+      - easypost-202610151955-b13716d895-main
+      X-Backend:
+      - easypost
+      X-Proxied:
+      - extlb1azw ff4cfe6eb5
+      - intlb2azw f29267e751
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"error":{"code":"GONE","message":"The requested resource is no longer
+        available at the server and no forwarding address is known.","errors":[{"message":"FedEx
+        account registrations must use the multi-factor authentication (MFA) registration
+        workflow. See: https://support.easypost.com/hc/en-us/articles/35262738410253-FedEx-Multi-Factor-Authentication"}]}}'
+  recorded_at: Thu, 15 Oct 2026 20:29:07 GMT
+recorded_with: VCR 6.4.0
