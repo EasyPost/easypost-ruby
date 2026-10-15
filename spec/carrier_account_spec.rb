@@ -17,11 +17,14 @@ describe EasyPost::Services::CarrierAccount do
       client.carrier_account.delete(carrier_account.id)
     end
 
-    EasyPost::Services::CarrierAccount::CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES.each do |expected_endpoint, carrier_account_types|
+    EasyPost::Services::CarrierAccount::CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES.each do |expected_endpoint,
+                                                                                         carrier_account_types|
       carrier_account_types.each do |carrier_account_type|
         it "routes #{carrier_account_type} account creation" do
           params = { type: carrier_account_type }
-          params[:registration_data] = {} if %w[carrier_accounts/open carrier_accounts/register].include?(expected_endpoint)
+          if %w[carrier_accounts/open carrier_accounts/register].include?(expected_endpoint)
+            params[:registration_data] = {}
+          end
           captured_request = {}
 
           allow(client).to receive(:make_request).and_wrap_original do |original, *args|
@@ -36,8 +39,8 @@ describe EasyPost::Services::CarrierAccount do
 
           begin
             carrier_account = client.carrier_account.create(params)
-          rescue EasyPost::Errors::ApiError => error
-            expect([404, 500]).not_to include(error.status_code)
+          rescue EasyPost::Errors::ApiError => e
+            expect([404, 500]).not_to include(e.status_code)
           else
             expect(carrier_account).to be_an_instance_of(EasyPost::Models::CarrierAccount)
             expect(carrier_account.id).to match('ca_')
@@ -98,9 +101,9 @@ describe EasyPost::Services::CarrierAccount do
     it 'deletes a carrier account' do
       carrier_account = client.carrier_account.create(Fixture.basic_carrier_account)
 
-      expect {
+      expect do
         client.carrier_account.delete(carrier_account.id)
-      }.not_to raise_error
+      end.not_to raise_error
     end
   end
 end
