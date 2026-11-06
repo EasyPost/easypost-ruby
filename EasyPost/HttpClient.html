@@ -379,7 +379,7 @@
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPResponse</span>)
       <span class="ruby-identifier">response_body</span> = <span class="ruby-keyword">begin</span>
         <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span>)
-      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">JSON</span><span class="ruby-operator">::</span><span class="ruby-constant">ParseError</span>
+      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">JSON</span><span class="ruby-operator">::</span><span class="ruby-constant">ParserError</span>
         <span class="ruby-identifier">response</span>.<span class="ruby-identifier">body</span>
       <span class="ruby-keyword">end</span>
       <span class="ruby-identifier">response_context</span>.<span class="ruby-identifier">merge!</span>(
