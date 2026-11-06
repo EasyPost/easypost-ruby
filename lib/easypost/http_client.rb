@@ -76,7 +76,7 @@ class EasyPost::HttpClient
       if response.is_a?(Net::HTTPResponse)
         response_body = begin
           JSON.parse(response.body)
-        rescue JSON::ParseError
+        rescue JSON::ParserError
           response.body
         end
         response_context.merge!(
