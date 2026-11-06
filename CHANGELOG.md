@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Fixes response hooks raising `NameError` when an HTTP body is not JSON
+
 ## v7.8.0 (2026-10-27)
 
 - Removes the deprecated, unusable `add_credit_card` function
