@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v7.8.1 (2026-11-09)
 
 - Fixes response hooks raising `NameError` when an HTTP body is not JSON
 
